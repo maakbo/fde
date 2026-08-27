@@ -49,6 +49,8 @@ The source canvas is square because Mermaid v11 sizes image nodes from the heigh
 
 Lift only the business label by `6px` with `margin-top` to compensate for the ellipse icon's transparent lower canvas. Avoid CSS transforms on the HTML label inside Mermaid's SVG `foreignObject`: some GitHub/browser combinations can move that label outside its node. The canonical CSS selects Mermaid image-node IDs containing the stable `-flowchart-b_` prefix because Mermaid does not preserve `class` statement names on image-node DOM elements. Do not shift labels for actors, information, systems, or devices.
 
+The canonical CSS also gives Mermaid's transparent image-boundary path a `10px` white stroke. This masks the last few pixels of a relation path and creates a stable visual gap between the line and the icon without shrinking the icon. Keep this rule paired with the white background token; if the background changes, change both together.
+
 ## Labels
 
 - Use short nouns for actors, information, and systems.
