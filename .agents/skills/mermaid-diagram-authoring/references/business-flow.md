@@ -13,6 +13,8 @@ Keep property order `img`, `label`, `pos`, `w`, `h`, `constraint` and one node p
 
 The square source canvas matches Mermaid v11's rendered image bounds. At `30 x 30`, the Lucide path remains a horizontal ellipse, keeps the label close, and no longer reads as a minor marker beside the `38 x 38` decision symbol.
 
+Lift only the activity label by `6px` to compensate for the ellipse icon's transparent lower canvas. The canonical CSS selects Mermaid image-node IDs containing the stable `-flowchart-b_` prefix because Mermaid does not preserve `class` statement names on image-node DOM elements. Do not shift decision labels.
+
 ## Scope and direction
 
 - Omit start and end symbols by default.

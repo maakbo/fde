@@ -22,7 +22,7 @@ config:
     edgeLabelBackground: "#FAF8F2"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "14px"
-  themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; }"
+  themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
 ---
 flowchart TB
   b_manage_intake@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Manage intake", pos: "b", w: 30, h: 30, constraint: "on" }

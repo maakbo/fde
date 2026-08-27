@@ -30,7 +30,8 @@ CLASS_DEF_RE = re.compile(
 
 CANONICAL_THEME_CSS = (
     'themeCSS: ".image-shape p { padding: 0 !important; } '
-    '.image-shape foreignObject { overflow: visible; }"'
+    '.image-shape foreignObject { overflow: visible; } '
+    ".image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }\""
 )
 CANONICAL_LINK_STYLE = (
     "linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;"

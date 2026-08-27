@@ -20,7 +20,7 @@ config:
     lineColor: "#8A847A"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "14px"
-  themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; }"
+  themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
 ---
 flowchart TB
   a_customer@{ img: "https://api.iconify.design/ph/user-thin.svg", label: "Customer", pos: "b", w: 38, h: 38, constraint: "on" }
