@@ -23,7 +23,7 @@ Use stable `prefix_lower_snake_case` IDs.
 | Prefix | Meaning | Iconify URL | Size |
 | --- | --- | --- | --- |
 | `a_` | actor | `https://api.iconify.design/ph/user-thin.svg` | `38 x 38` |
-| `b_` | business activity | `https://api.iconify.design/lucide/ellipse.svg` | `22 x 22` |
+| `b_` | business activity | `https://api.iconify.design/lucide/ellipse.svg` | `30 x 30` |
 | `i_` | information | `https://api.iconify.design/ph/file-thin.svg` | `38 x 38` |
 | `x_` | external system | `https://api.iconify.design/ph/hard-drives-thin.svg` | `38 x 38` |
 | `v_` | device or contact surface | Phosphor Thin device icon | `38 x 38` |
@@ -36,7 +36,7 @@ Device URLs:
 
 Keep node properties in this exact order: `img`, `label`, `pos`, `w`, `h`, `constraint`. Keep one node per line.
 
-The source canvas is square because Mermaid v11 sizes image nodes from the height property. The Lucide path inside that canvas remains a horizontal ellipse; do not enlarge the canvas merely to make the source numbers look use-case-shaped.
+The source canvas is square because Mermaid v11 sizes image nodes from the height property. At `30 x 30`, the Lucide path remains a horizontal ellipse with enough visual presence to carry the business subject while staying quieter than the `38 x 38` supporting icons.
 
 ## Labels
 

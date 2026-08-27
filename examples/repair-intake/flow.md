@@ -25,10 +25,10 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; }"
 ---
 flowchart TB
-  b_receive_request@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Receive request", pos: "b", w: 22, h: 22, constraint: "on" }
+  b_receive_request@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Receive request", pos: "b", w: 30, h: 30, constraint: "on" }
   d_information_complete@{ img: "https://api.iconify.design/ph/diamond-thin.svg", label: "Complete?", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_request_details@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Request details", pos: "b", w: 22, h: 22, constraint: "on" }
-  b_book_repair@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Book repair", pos: "b", w: 22, h: 22, constraint: "on" }
+  b_request_details@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Request details", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_book_repair@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Book repair", pos: "b", w: 30, h: 30, constraint: "on" }
 
   b_receive_request --> d_information_complete
   d_information_complete -->|Complete| b_book_repair

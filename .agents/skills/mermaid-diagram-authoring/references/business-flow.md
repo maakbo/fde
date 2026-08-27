@@ -6,12 +6,12 @@ Activity and decision symbols keep fixed canvases independent of labels.
 
 | Prefix | Meaning | Iconify URL | Size |
 | --- | --- | --- | --- |
-| `b_` | business activity | `https://api.iconify.design/lucide/ellipse.svg` | `22 x 22` |
+| `b_` | business activity | `https://api.iconify.design/lucide/ellipse.svg` | `30 x 30` |
 | `d_` | decision | `https://api.iconify.design/ph/diamond-thin.svg` | `38 x 38` |
 
 Keep property order `img`, `label`, `pos`, `w`, `h`, `constraint` and one node per line.
 
-The square source canvas matches Mermaid v11's rendered image bounds. The Lucide path inside it remains a horizontal ellipse and keeps the label close.
+The square source canvas matches Mermaid v11's rendered image bounds. At `30 x 30`, the Lucide path remains a horizontal ellipse, keeps the label close, and no longer reads as a minor marker beside the `38 x 38` decision symbol.
 
 ## Scope and direction
 

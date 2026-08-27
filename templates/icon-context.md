@@ -24,7 +24,7 @@ config:
 ---
 flowchart TB
   a_requester@{ img: "https://api.iconify.design/ph/user-thin.svg", label: "Requester", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_receive@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Receive request", pos: "b", w: 22, h: 22, constraint: "on" }
+  b_receive@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Receive request", pos: "b", w: 30, h: 30, constraint: "on" }
   i_request@{ img: "https://api.iconify.design/ph/file-thin.svg", label: "Request", pos: "b", w: 38, h: 38, constraint: "on" }
   i_record@{ img: "https://api.iconify.design/ph/file-thin.svg", label: "Intake record", pos: "b", w: 38, h: 38, constraint: "on" }
   x_service@{ img: "https://api.iconify.design/ph/hard-drives-thin.svg", label: "External service", pos: "b", w: 38, h: 38, constraint: "on" }

@@ -25,10 +25,10 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; }"
 ---
 flowchart TB
-  b_receive@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Receive", pos: "b", w: 22, h: 22, constraint: "on" }
+  b_receive@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Receive", pos: "b", w: 30, h: 30, constraint: "on" }
   d_complete@{ img: "https://api.iconify.design/ph/diamond-thin.svg", label: "Complete?", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_create@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Create", pos: "b", w: 22, h: 22, constraint: "on" }
-  b_review@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Review", pos: "b", w: 22, h: 22, constraint: "on" }
+  b_create@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Create", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_review@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Review", pos: "b", w: 30, h: 30, constraint: "on" }
 
   b_receive --> d_complete
   d_complete -->|Yes| b_create

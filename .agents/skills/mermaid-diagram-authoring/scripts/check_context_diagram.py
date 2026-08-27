@@ -51,7 +51,7 @@ CANONICAL_CLASS_STYLES = {
 
 ICON_RULES = {
     "a": ("https://api.iconify.design/ph/user-thin.svg", (38, 38), "actor"),
-    "b": ("https://api.iconify.design/lucide/ellipse.svg", (22, 22), "business"),
+    "b": ("https://api.iconify.design/lucide/ellipse.svg", (30, 30), "business"),
     "i": ("https://api.iconify.design/ph/file-thin.svg", (38, 38), "information"),
     "x": ("https://api.iconify.design/ph/hard-drives-thin.svg", (38, 38), "external"),
 }
