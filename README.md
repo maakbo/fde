@@ -74,16 +74,16 @@ The exporter reads the Mermaid block without changing the Markdown source. A sta
 
 The visual object is an icon, not a text box. Labels sit below fixed-size icons, so longer wording does not change visual weight.
 
-| Meaning | Iconify icon |
+| Meaning | Thin Lucide asset |
 | --- | --- |
-| Actor | `lucide:user` |
-| Business activity | `lucide:ellipse` |
-| Information | `lucide:file` |
-| External system | `lucide:server` |
-| Decision | `lucide:diamond` |
-| iPad / iPhone / laptop | Lucide device icons |
+| Actor | `lucide-thin/user.svg` |
+| Business activity | `lucide-thin/ellipse.svg` |
+| Information | `lucide-thin/file.svg` |
+| External system | `lucide-thin/server.svg` |
+| Decision | `lucide-thin/diamond.svg` |
+| iPad / iPhone / laptop | `lucide-thin/tablet.svg`, `smartphone.svg`, `laptop.svg` |
 
-Working Markdown blocks keep Iconify URLs for portability and immediate preview where Mermaid v11 image nodes are supported. Explicit export embeds the retrieved SVG data into generated assets so those assets remain self-contained.
+Working Markdown blocks reference the repository's thin Lucide SVGs through stable raw URLs for portability and immediate preview where Mermaid v11 image nodes are supported. The shapes remain Lucide; only the shared stroke width is normalized to `1.35`. Explicit export embeds the retrieved SVG data into generated assets so those assets remain self-contained.
 
 ## Project status
 

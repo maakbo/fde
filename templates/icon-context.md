@@ -23,11 +23,11 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
 ---
 flowchart TB
-  a_requester@{ img: "https://api.iconify.design/lucide/user.svg", label: "Requester", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_receive@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Receive request", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_request@{ img: "https://api.iconify.design/lucide/file.svg", label: "Request", pos: "b", w: 38, h: 38, constraint: "on" }
-  i_record@{ img: "https://api.iconify.design/lucide/file.svg", label: "Intake record", pos: "b", w: 38, h: 38, constraint: "on" }
-  x_service@{ img: "https://api.iconify.design/lucide/server.svg", label: "External service", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_requester@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", label: "Requester", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_receive@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Receive request", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_request@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", label: "Request", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_record@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", label: "Intake record", pos: "b", w: 38, h: 38, constraint: "on" }
+  x_service@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", label: "External service", pos: "b", w: 38, h: 38, constraint: "on" }
 
   a_requester --- b_receive
   i_request --- b_receive

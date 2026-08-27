@@ -1,11 +1,12 @@
 # Third-party notices
 
-Mermaid working sources reference icons through the public Iconify API. Explicit export embeds retrieved SVG bytes into generated artifacts. The repository does not claim ownership of those icons, and the following notices accompany their redistribution.
+The thin SVG assets used by Mermaid working sources are generated from the public Iconify API. Explicit export embeds retrieved SVG bytes into generated artifacts. The repository does not claim ownership of those icons, and the following notices accompany their redistribution.
 
 ## Lucide
 
 - Used icons: `user`, `ellipse`, `file`, `server`, `diamond`, `tablet`, `smartphone`, and `laptop`.
 - Source: <https://github.com/lucide-icons/lucide>
+- The SVG geometry is unchanged from Lucide; only the shared `stroke-width` is normalized to `1.35` for this repository's thin visual language.
 
 ```text
 ISC License

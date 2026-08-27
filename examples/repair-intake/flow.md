@@ -25,10 +25,10 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
 ---
 flowchart TB
-  b_receive_request@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Receive request", pos: "b", w: 30, h: 30, constraint: "on" }
-  d_information_complete@{ img: "https://api.iconify.design/lucide/diamond.svg", label: "Complete?", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_request_details@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Request details", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_book_repair@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Book repair", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_receive_request@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Receive request", pos: "b", w: 30, h: 30, constraint: "on" }
+  d_information_complete@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/diamond.svg", label: "Complete?", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_request_details@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Request details", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_book_repair@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Book repair", pos: "b", w: 30, h: 30, constraint: "on" }
 
   b_receive_request --> d_information_complete
   d_information_complete -->|Complete| b_book_repair

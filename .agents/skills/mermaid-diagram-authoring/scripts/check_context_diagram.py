@@ -51,15 +51,31 @@ CANONICAL_CLASS_STYLES = {
 }
 
 ICON_RULES = {
-    "a": ("https://api.iconify.design/lucide/user.svg", (38, 38), "actor"),
-    "b": ("https://api.iconify.design/lucide/ellipse.svg", (30, 30), "business"),
-    "i": ("https://api.iconify.design/lucide/file.svg", (38, 38), "information"),
-    "x": ("https://api.iconify.design/lucide/server.svg", (38, 38), "external"),
+    "a": (
+        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg",
+        (38, 38),
+        "actor",
+    ),
+    "b": (
+        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg",
+        (30, 30),
+        "business",
+    ),
+    "i": (
+        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg",
+        (38, 38),
+        "information",
+    ),
+    "x": (
+        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg",
+        (38, 38),
+        "external",
+    ),
 }
 DEVICE_ICONS = {
-    "https://api.iconify.design/lucide/tablet.svg",
-    "https://api.iconify.design/lucide/smartphone.svg",
-    "https://api.iconify.design/lucide/laptop.svg",
+    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/tablet.svg",
+    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/smartphone.svg",
+    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/laptop.svg",
 }
 
 

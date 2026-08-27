@@ -39,6 +39,16 @@ SKILLS = [
     "mermaid-diagram-authoring",
     "mermaid-diagram-export",
 ]
+THIN_LUCIDE_ICONS = (
+    "user",
+    "ellipse",
+    "file",
+    "server",
+    "diamond",
+    "tablet",
+    "smartphone",
+    "laptop",
+)
 OBSOLETE_SKILL_DIRS = [
     ".agents/skills/mermaid-icon-context-diagram",
     ".agents/skills/mermaid-business-flow-diagram",
@@ -85,6 +95,19 @@ def scan_public_text() -> None:
                 raise ValueError(f"private-path token `{token}` found in {path.relative_to(ROOT)}")
 
 
+def validate_thin_icons() -> None:
+    icon_dir = ROOT / "assets/icons/lucide-thin"
+    for name in THIN_LUCIDE_ICONS:
+        path = icon_dir / f"{name}.svg"
+        if not path.is_file():
+            raise FileNotFoundError(path.relative_to(ROOT))
+        text = path.read_text(encoding="utf-8")
+        if 'stroke-width="1.35"' not in text:
+            raise ValueError(f"thin Lucide icon has the wrong stroke width: {path.relative_to(ROOT)}")
+        if 'stroke-width="2"' in text:
+            raise ValueError(f"standard Lucide stroke width remains: {path.relative_to(ROOT)}")
+
+
 def main() -> int:
     for relative in REQUIRED:
         if not (ROOT / relative).is_file():
@@ -97,6 +120,7 @@ def main() -> int:
     json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
     json.loads((ROOT / "config/puppeteer.json").read_text(encoding="utf-8"))
     scan_public_text()
+    validate_thin_icons()
 
     python_files = [path for path in ROOT.rglob("*.py") if "node_modules" not in path.parts]
     for path in python_files:

@@ -25,9 +25,9 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
 ---
 flowchart TB
-  b_manage_intake@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Manage intake", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_repair_item@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Repair item", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_return_item@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Return item", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_manage_intake@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Manage intake", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_repair_item@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Repair item", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_return_item@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Return item", pos: "b", w: 30, h: 30, constraint: "on" }
 
   b_manage_intake --> b_repair_item
   b_repair_item --> b_return_item

@@ -12,7 +12,7 @@ Convert an agreed Mermaid source into stable media assets. Treat export as a pub
 - Require an existing `.md` with one Mermaid block or an explicitly maintained `.mmd` source.
 - Never rewrite the working source during export.
 - Validate the requested context or flow profile before rendering.
-- Embed Iconify SVG data into the generated outputs so they do not depend on remote icons afterward.
+- Embed the selected Lucide SVG data into the generated outputs so they do not depend on remote icons afterward.
 - Generate only the formats the user requests; default to both SVG and PNG when they ask generally for image export.
 - Inspect the PNG when visual review is part of the request.
 

@@ -5,7 +5,7 @@
 The icon is the visual object. Its size does not depend on its label.
 
 ```mermaid
-a_customer@{ img: "https://api.iconify.design/lucide/user.svg", label: "Customer", pos: "b", w: 38, h: 38, constraint: "on" }
+a_customer@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", label: "Customer", pos: "b", w: 38, h: 38, constraint: "on" }
 ```
 
 ## Scope and direction
@@ -20,19 +20,27 @@ a_customer@{ img: "https://api.iconify.design/lucide/user.svg", label: "Customer
 
 Use stable `prefix_lower_snake_case` IDs.
 
-| Prefix | Meaning | Iconify URL | Size |
+| Prefix | Meaning | Thin Lucide asset | Size |
 | --- | --- | --- | --- |
-| `a_` | actor | `https://api.iconify.design/lucide/user.svg` | `38 x 38` |
-| `b_` | business activity | `https://api.iconify.design/lucide/ellipse.svg` | `30 x 30` |
-| `i_` | information | `https://api.iconify.design/lucide/file.svg` | `38 x 38` |
-| `x_` | external system | `https://api.iconify.design/lucide/server.svg` | `38 x 38` |
-| `v_` | device or contact surface | Lucide device icon | `38 x 38` |
+| `a_` | actor | `lucide-thin/user.svg` | `38 x 38` |
+| `b_` | business activity | `lucide-thin/ellipse.svg` | `30 x 30` |
+| `i_` | information | `lucide-thin/file.svg` | `38 x 38` |
+| `x_` | external system | `lucide-thin/server.svg` | `38 x 38` |
+| `v_` | device or contact surface | Thin Lucide device asset | `38 x 38` |
+
+Use this raw asset base in Mermaid nodes:
+`https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/`
+
+The assets preserve Lucide geometry and normalize the shared stroke width to
+`1.35`. Do not switch back to standard Iconify Lucide URLs: their embedded
+`stroke-width` is `2`, so a Mermaid stylesheet cannot make the external SVG
+thinner consistently.
 
 Device URLs:
 
-- iPad: `https://api.iconify.design/lucide/tablet.svg`
-- iPhone: `https://api.iconify.design/lucide/smartphone.svg`
-- laptop: `https://api.iconify.design/lucide/laptop.svg`
+- iPad: `lucide-thin/tablet.svg`
+- iPhone: `lucide-thin/smartphone.svg`
+- laptop: `lucide-thin/laptop.svg`
 
 Keep node properties in this exact order: `img`, `label`, `pos`, `w`, `h`, `constraint`. Keep one node per line.
 
@@ -61,4 +69,4 @@ Use the template colors, 14px font, `diagramPadding: 40`, and a `0.75px` relatio
 
 ## Working-source compatibility
 
-Keep Iconify URLs in the Mermaid block. Default to a Markdown working file so GitHub or VS Code can preview the same source being discussed. A preview engine must support Mermaid v11 image nodes and remote Iconify URLs; if it does not, keep editing the source and use `mermaid-diagram-export` only when the user explicitly needs stable media assets.
+Keep the repository's thin Lucide raw URLs in the Mermaid block. The geometry remains Lucide and the shared stroke width is `1.35`. Default to a Markdown working file so GitHub or VS Code can preview the same source being discussed. A preview engine must support Mermaid v11 image nodes and remote SVG URLs; if it does not, keep editing the source and use `mermaid-diagram-export` only when the user explicitly needs stable media assets.
