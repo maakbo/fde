@@ -23,11 +23,11 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
 ---
 flowchart TB
-  a_customer@{ img: "https://api.iconify.design/ph/user-thin.svg", label: "Customer", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_customer@{ img: "https://api.iconify.design/lucide/user.svg", label: "Customer", pos: "b", w: 38, h: 38, constraint: "on" }
   b_receive_request@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Receive request", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_repair_request@{ img: "https://api.iconify.design/ph/file-thin.svg", label: "Repair request", pos: "b", w: 38, h: 38, constraint: "on" }
-  i_intake_record@{ img: "https://api.iconify.design/ph/file-thin.svg", label: "Intake record", pos: "b", w: 38, h: 38, constraint: "on" }
-  x_scheduling_service@{ img: "https://api.iconify.design/ph/hard-drives-thin.svg", label: "Scheduling", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_repair_request@{ img: "https://api.iconify.design/lucide/file.svg", label: "Repair request", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_intake_record@{ img: "https://api.iconify.design/lucide/file.svg", label: "Intake record", pos: "b", w: 38, h: 38, constraint: "on" }
+  x_scheduling_service@{ img: "https://api.iconify.design/lucide/server.svg", label: "Scheduling", pos: "b", w: 38, h: 38, constraint: "on" }
 
   a_customer --- b_receive_request
   i_repair_request --- b_receive_request

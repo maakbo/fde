@@ -51,15 +51,15 @@ CANONICAL_CLASS_STYLES = {
 }
 
 ICON_RULES = {
-    "a": ("https://api.iconify.design/ph/user-thin.svg", (38, 38), "actor"),
+    "a": ("https://api.iconify.design/lucide/user.svg", (38, 38), "actor"),
     "b": ("https://api.iconify.design/lucide/ellipse.svg", (30, 30), "business"),
-    "i": ("https://api.iconify.design/ph/file-thin.svg", (38, 38), "information"),
-    "x": ("https://api.iconify.design/ph/hard-drives-thin.svg", (38, 38), "external"),
+    "i": ("https://api.iconify.design/lucide/file.svg", (38, 38), "information"),
+    "x": ("https://api.iconify.design/lucide/server.svg", (38, 38), "external"),
 }
 DEVICE_ICONS = {
-    "https://api.iconify.design/ph/device-tablet-thin.svg",
-    "https://api.iconify.design/ph/device-mobile-thin.svg",
-    "https://api.iconify.design/ph/laptop-thin.svg",
+    "https://api.iconify.design/lucide/tablet.svg",
+    "https://api.iconify.design/lucide/smartphone.svg",
+    "https://api.iconify.design/lucide/laptop.svg",
 }
 
 
@@ -166,7 +166,7 @@ def main() -> int:
                 errors.append(f"{node_id}: use size {expected_size[0]}x{expected_size[1]}")
         elif prefix == "v":
             if image not in DEVICE_ICONS:
-                errors.append(f"{node_id}: use a supported Phosphor Thin device icon")
+                errors.append(f"{node_id}: use a supported Lucide device icon")
             if size != (38, 38):
                 errors.append(f"{node_id}: devices use size 38x38")
         else:

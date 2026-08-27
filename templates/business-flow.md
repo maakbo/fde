@@ -26,7 +26,7 @@ config:
 ---
 flowchart TB
   b_receive@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Receive", pos: "b", w: 30, h: 30, constraint: "on" }
-  d_complete@{ img: "https://api.iconify.design/ph/diamond-thin.svg", label: "Complete?", pos: "b", w: 38, h: 38, constraint: "on" }
+  d_complete@{ img: "https://api.iconify.design/lucide/diamond.svg", label: "Complete?", pos: "b", w: 38, h: 38, constraint: "on" }
   b_create@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Create", pos: "b", w: 30, h: 30, constraint: "on" }
   b_review@{ img: "https://api.iconify.design/lucide/ellipse.svg", label: "Review", pos: "b", w: 30, h: 30, constraint: "on" }
 

@@ -76,12 +76,12 @@ The visual object is an icon, not a text box. Labels sit below fixed-size icons,
 
 | Meaning | Iconify icon |
 | --- | --- |
-| Actor | `ph:user-thin` |
+| Actor | `lucide:user` |
 | Business activity | `lucide:ellipse` |
-| Information | `ph:file-thin` |
-| External system | `ph:hard-drives-thin` |
-| Decision | `ph:diamond-thin` |
-| iPad / iPhone / laptop | Phosphor Thin device icons |
+| Information | `lucide:file` |
+| External system | `lucide:server` |
+| Decision | `lucide:diamond` |
+| iPad / iPhone / laptop | Lucide device icons |
 
 Working Markdown blocks keep Iconify URLs for portability and immediate preview where Mermaid v11 image nodes are supported. Explicit export embeds the retrieved SVG data into generated assets so those assets remain self-contained.
 

@@ -43,7 +43,7 @@ CANONICAL_CLASS_STYLES = {
 
 RULES = {
     "b": ("https://api.iconify.design/lucide/ellipse.svg", (30, 30), "activity"),
-    "d": ("https://api.iconify.design/ph/diamond-thin.svg", (38, 38), "decision"),
+    "d": ("https://api.iconify.design/lucide/diamond.svg", (38, 38), "decision"),
 }
 
 

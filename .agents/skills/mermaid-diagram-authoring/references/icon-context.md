@@ -5,7 +5,7 @@
 The icon is the visual object. Its size does not depend on its label.
 
 ```mermaid
-a_customer@{ img: "https://api.iconify.design/ph/user-thin.svg", label: "Customer", pos: "b", w: 38, h: 38, constraint: "on" }
+a_customer@{ img: "https://api.iconify.design/lucide/user.svg", label: "Customer", pos: "b", w: 38, h: 38, constraint: "on" }
 ```
 
 ## Scope and direction
@@ -22,17 +22,17 @@ Use stable `prefix_lower_snake_case` IDs.
 
 | Prefix | Meaning | Iconify URL | Size |
 | --- | --- | --- | --- |
-| `a_` | actor | `https://api.iconify.design/ph/user-thin.svg` | `38 x 38` |
+| `a_` | actor | `https://api.iconify.design/lucide/user.svg` | `38 x 38` |
 | `b_` | business activity | `https://api.iconify.design/lucide/ellipse.svg` | `30 x 30` |
-| `i_` | information | `https://api.iconify.design/ph/file-thin.svg` | `38 x 38` |
-| `x_` | external system | `https://api.iconify.design/ph/hard-drives-thin.svg` | `38 x 38` |
-| `v_` | device or contact surface | Phosphor Thin device icon | `38 x 38` |
+| `i_` | information | `https://api.iconify.design/lucide/file.svg` | `38 x 38` |
+| `x_` | external system | `https://api.iconify.design/lucide/server.svg` | `38 x 38` |
+| `v_` | device or contact surface | Lucide device icon | `38 x 38` |
 
 Device URLs:
 
-- iPad: `https://api.iconify.design/ph/device-tablet-thin.svg`
-- iPhone: `https://api.iconify.design/ph/device-mobile-thin.svg`
-- laptop: `https://api.iconify.design/ph/laptop-thin.svg`
+- iPad: `https://api.iconify.design/lucide/tablet.svg`
+- iPhone: `https://api.iconify.design/lucide/smartphone.svg`
+- laptop: `https://api.iconify.design/lucide/laptop.svg`
 
 Keep node properties in this exact order: `img`, `label`, `pos`, `w`, `h`, `constraint`. Keep one node per line.
 

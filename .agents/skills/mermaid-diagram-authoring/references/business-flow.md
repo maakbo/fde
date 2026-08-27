@@ -7,7 +7,7 @@ Activity and decision symbols keep fixed canvases independent of labels.
 | Prefix | Meaning | Iconify URL | Size |
 | --- | --- | --- | --- |
 | `b_` | business activity | `https://api.iconify.design/lucide/ellipse.svg` | `30 x 30` |
-| `d_` | decision | `https://api.iconify.design/ph/diamond-thin.svg` | `38 x 38` |
+| `d_` | decision | `https://api.iconify.design/lucide/diamond.svg` | `38 x 38` |
 
 Keep property order `img`, `label`, `pos`, `w`, `h`, `constraint` and one node per line.
 
