@@ -4,7 +4,7 @@ Edit the Mermaid block directly and preview this Markdown file. Keep assumptions
 
 ```mermaid
 ---
-title: Business context
+title: 業務コンテキスト
 config:
   layout: dagre
   theme: neutral
@@ -20,14 +20,14 @@ config:
     lineColor: "#8A847A"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "14px"
-  themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FAF8F2 !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FAF8F2 !important; } .image-shape .label rect { fill:#FAF8F2 !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
 ---
 flowchart TB
-  a_requester@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", label: "Requester", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_receive@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Receive request", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_request@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", label: "Request", pos: "b", w: 38, h: 38, constraint: "on" }
-  i_record@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", label: "Intake record", pos: "b", w: 38, h: 38, constraint: "on" }
-  x_service@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", label: "External service", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_requester@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", label: "依頼者", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_receive@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "依頼受付", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_request@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", label: "依頼内容", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_record@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", label: "受付記録", pos: "b", w: 38, h: 38, constraint: "on" }
+  x_service@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", label: "外部サービス", pos: "b", w: 38, h: 38, constraint: "on" }
 
   a_requester --- b_receive
   i_request --- b_receive
@@ -46,6 +46,6 @@ flowchart TB
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## Open question
+## 未解決の問い
 
-What boundary, grain, classification, or relationship should the group examine next?
+次に、どの境界・粒度・分類・関係性を検討するか？

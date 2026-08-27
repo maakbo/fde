@@ -41,8 +41,8 @@ Use solid arrows:
 
 ```mermaid
 b_receive --> d_complete
-d_complete -->|Complete| b_book
-d_complete -->|Missing| b_request_details
+d_complete -->|揃っている| b_book
+d_complete -->|不足あり| b_request_details
 ```
 
 Only a decision may have labeled outgoing arrows. Give it exactly two distinct labels. Keep every node reachable from the first activity and able to reach the single last activity.

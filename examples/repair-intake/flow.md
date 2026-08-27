@@ -4,7 +4,7 @@ Focused task flow for completeness checking and missing-detail rework.
 
 ```mermaid
 ---
-title: Repair intake flow
+title: 修理受付の業務フロー
 config:
   layout: dagre
   theme: neutral
@@ -22,17 +22,17 @@ config:
     edgeLabelBackground: "#FAF8F2"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "14px"
-  themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FAF8F2 !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FAF8F2 !important; } .image-shape .label rect { fill:#FAF8F2 !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
 ---
 flowchart TB
-  b_receive_request@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Receive request", pos: "b", w: 30, h: 30, constraint: "on" }
-  d_information_complete@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/diamond.svg", label: "Complete?", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_request_details@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Request details", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_book_repair@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Book repair", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_receive_request@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "依頼受付", pos: "b", w: 30, h: 30, constraint: "on" }
+  d_information_complete@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/diamond.svg", label: "情報は揃った？", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_request_details@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "不足情報を確認", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_book_repair@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "修理予約", pos: "b", w: 30, h: 30, constraint: "on" }
 
   b_receive_request --> d_information_complete
-  d_information_complete -->|Complete| b_book_repair
-  d_information_complete -->|Missing| b_request_details
+  d_information_complete -->|揃っている| b_book_repair
+  d_information_complete -->|不足あり| b_request_details
   b_request_details --> d_information_complete
 
   class b_receive_request,b_request_details,b_book_repair activity;
@@ -43,10 +43,10 @@ flowchart TB
   linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
-## Reading
+## 読み方
 
-Receive the request, check completeness, request missing details and recheck when necessary, then book the repair.
+依頼を受け、情報が揃っているかを確認する。不足があれば確認し、揃ったら修理を予約する。
 
-## Open question
+## 未解決の問い
 
-Is completeness checking part of receiving, or a separate responsibility?
+情報の確認は受付の一部か、それとも別の担当か？

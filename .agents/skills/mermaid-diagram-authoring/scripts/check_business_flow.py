@@ -29,8 +29,10 @@ CLASS_DEF_RE = re.compile(
 )
 
 CANONICAL_THEME_CSS = (
-    'themeCSS: ".image-shape p { padding: 0 !important; } '
+    'themeCSS: ".image-shape p { padding: 0 !important; background-color:#FAF8F2 !important; } '
     '.image-shape foreignObject { overflow: visible; } '
+    '.image-shape .labelBkg { background-color:#FAF8F2 !important; } '
+    '.image-shape .label rect { fill:#FAF8F2 !important; opacity:1 !important; } '
     ".image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }\""
 )
 CANONICAL_LINK_STYLE = (

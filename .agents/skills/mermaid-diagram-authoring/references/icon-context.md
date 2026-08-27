@@ -5,7 +5,7 @@
 The icon is the visual object. Its size does not depend on its label.
 
 ```mermaid
-a_customer@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", label: "Customer", pos: "b", w: 38, h: 38, constraint: "on" }
+a_customer@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", label: "依頼者", pos: "b", w: 38, h: 38, constraint: "on" }
 ```
 
 ## Scope and direction

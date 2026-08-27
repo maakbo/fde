@@ -4,7 +4,7 @@ One-level-higher view connecting intake, repair, and return.
 
 ```mermaid
 ---
-title: Repair service overview
+title: 修理サービスの概要
 config:
   layout: dagre
   theme: neutral
@@ -22,12 +22,12 @@ config:
     edgeLabelBackground: "#FAF8F2"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "14px"
-  themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FAF8F2 !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FAF8F2 !important; } .image-shape .label rect { fill:#FAF8F2 !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
 ---
 flowchart TB
-  b_manage_intake@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Manage intake", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_repair_item@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Repair item", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_return_item@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Return item", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_manage_intake@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "受付管理", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_repair_item@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "修理品", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_return_item@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "返却", pos: "b", w: 30, h: 30, constraint: "on" }
 
   b_manage_intake --> b_repair_item
   b_repair_item --> b_return_item
@@ -38,6 +38,6 @@ flowchart TB
   linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
-## Reading
+## 読み方
 
-Repair service moves from intake to repair and then return. Each activity may expand into a focused Markdown view.
+修理サービスは受付から修理、返却へ進む。それぞれの業務は、詳細なMarkdown図へ展開できる。

@@ -4,7 +4,7 @@ Edit the Mermaid block directly and preview this Markdown file. Record unresolve
 
 ```mermaid
 ---
-title: Business flow
+title: 業務フロー
 config:
   layout: dagre
   theme: neutral
@@ -22,18 +22,18 @@ config:
     edgeLabelBackground: "#FAF8F2"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "14px"
-  themeCSS: ".image-shape p { padding: 0 !important; } .image-shape foreignObject { overflow: visible; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FAF8F2 !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FAF8F2 !important; } .image-shape .label rect { fill:#FAF8F2 !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }"
 ---
 flowchart TB
-  b_receive@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Receive", pos: "b", w: 30, h: 30, constraint: "on" }
-  d_complete@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/diamond.svg", label: "Complete?", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_create@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Create", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_review@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "Review", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_receive@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "受付", pos: "b", w: 30, h: 30, constraint: "on" }
+  d_complete@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/diamond.svg", label: "情報は揃った？", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_create@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "作成", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_review@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", label: "確認", pos: "b", w: 30, h: 30, constraint: "on" }
 
   b_receive --> d_complete
-  d_complete -->|Yes| b_create
+  d_complete -->|揃っている| b_create
   b_create --> b_review
-  d_complete -->|No| b_receive
+  d_complete -->|不足あり| b_receive
 
   class b_receive,b_create,b_review activity;
   class d_complete decision;
@@ -43,6 +43,6 @@ flowchart TB
   linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
-## Open question
+## 未解決の問い
 
-Which activity, decision, or return route could change the shared understanding?
+どの業務・判断・戻り道が、共有認識を変えそうか？
