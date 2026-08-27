@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mermaid Icon Context Diagram"
+  short_description: "Create quiet fixed-icon Mermaid relationship diagrams"
+  default_prompt: "Use $mermaid-icon-context-diagram to create and render a fixed-icon Mermaid context diagram."

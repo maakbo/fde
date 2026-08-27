@@ -1,0 +1,20 @@
+{
+  "name": "maakbo-fde",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A portable agent environment for forward-deployed business modeling and discussion-ready diagrams.",
+  "license": "MIT",
+  "scripts": {
+    "validate": "python3 scripts/validate_repository.py",
+    "render:overview": "python3 .agents/skills/mermaid-business-flow-diagram/scripts/render_business_flow.py examples/repair-intake/overview.mmd",
+    "render:context": "python3 .agents/skills/mermaid-icon-context-diagram/scripts/render_context_diagram.py examples/repair-intake/context.mmd",
+    "render:flow": "python3 .agents/skills/mermaid-business-flow-diagram/scripts/render_business_flow.py examples/repair-intake/flow.mmd",
+    "render:examples": "npm run render:overview && npm run render:context && npm run render:flow"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "11.16.0"
+  },
+  "allowScripts": {
+    "puppeteer@25.9.0": true
+  }
+}

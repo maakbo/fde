@@ -1,0 +1,4 @@
+interface:
+  display_name: "Business Context Modeling"
+  short_description: "Turn loose business talk into discussion-ready models"
+  default_prompt: "Use $business-context-modeling to turn this business description into a discussion-ready model."
