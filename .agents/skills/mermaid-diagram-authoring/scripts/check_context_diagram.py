@@ -44,7 +44,7 @@ CANONICAL_THEME_CSS = (
     '.image-shape foreignObject { overflow: visible; } '
     '.image-shape .labelBkg { background-color:#FFFFFF !important; } '
     '.image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } '
-    ".image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }\""
+    ".image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; }\""
 )
 CANONICAL_LINK_STYLE = (
     "linkStyle default stroke:#9E988E,stroke-width:0.75px;"
