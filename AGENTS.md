@@ -39,6 +39,7 @@ This repository is a portable environment for forward-deployed business modeling
 - Use the thin Lucide assets defined by the selected diagram Skill; do not introduce a new icon merely for decoration.
 - Do not create SVG or PNG during ordinary modeling or diagram authoring.
 - When export is explicitly requested, keep the Markdown source unchanged and inspect the PNG when visual review matters.
+- When a PNG is requested for review, surface the image in the final response. For public synthetic examples, also provide a tap-friendly raw URL; never publish a private diagram as a fallback.
 - Run `python3 scripts/validate_repository.py` before committing. Node and npm are optional until explicit export.
 - Keep changes small, reversible, and scoped to the active modeling question.
 

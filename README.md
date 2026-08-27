@@ -15,6 +15,7 @@
 - `templates/`: Markdown-first Mermaid starting points.
 - `templates/github-actions-validate.yml`: optional CI workflow; copy it to `.github/workflows/validate.yml` when the publishing credential allows workflow files.
 - `examples/repair-intake/`: a synthetic three-level example linking overview, focused context, and focused flow.
+- `examples/repair-intake/previews/`: explicit PNG review artifacts with tap-friendly links for mobile clients.
 - `scripts/validate_repository.py`: one command to validate the public bundle.
 
 ## Quick start
@@ -69,6 +70,8 @@ python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py \
 ```
 
 The exporter reads the Mermaid block without changing the Markdown source. A standalone `.mmd` remains supported when a user or integration explicitly requires it.
+
+The example's [review previews](examples/repair-intake/previews/) are tracked only because they are public, synthetic visual-review artifacts. New diagrams should remain Markdown-only unless media export is explicitly requested.
 
 ## Visual language
 

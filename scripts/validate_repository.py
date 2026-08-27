@@ -33,6 +33,7 @@ REQUIRED = [
     "examples/repair-intake/overview.md",
     "examples/repair-intake/context.md",
     "examples/repair-intake/flow.md",
+    "examples/repair-intake/previews/README.md",
 ]
 SKILLS = [
     "business-context-modeling",

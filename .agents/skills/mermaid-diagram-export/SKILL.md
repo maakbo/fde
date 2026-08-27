@@ -15,6 +15,7 @@ Convert an agreed Mermaid source into stable media assets. Treat export as a pub
 - Embed the selected Lucide SVG data into the generated outputs so they do not depend on remote icons afterward.
 - Generate only the formats the user requests; default to both SVG and PNG when they ask generally for image export.
 - Inspect the PNG when visual review is part of the request.
+- Surface the PNG as an image attachment in the final response. For public synthetic examples, include a tap-friendly raw URL as a fallback; never upload private diagrams merely to make a preview visible.
 
 ## Workflow
 
