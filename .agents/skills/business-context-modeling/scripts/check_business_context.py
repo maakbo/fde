@@ -13,8 +13,12 @@ sys.dont_write_bytecode = True
 
 
 NODE_RE = re.compile(r'^\s{2}(?P<id>[a-z][a-z0-9_]*)@\{')
-EDGE_RE = re.compile(
+UNDIRECTED_EDGE_RE = re.compile(
     r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+---\s+"
+    r"(?P<right>[a-z][a-z0-9_]*)\s*$"
+)
+DIRECTED_EDGE_RE = re.compile(
+    r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+-->\s+"
     r"(?P<right>[a-z][a-z0-9_]*)\s*$"
 )
 
@@ -47,28 +51,46 @@ def main() -> int:
         return 2
 
     nodes: set[str] = set()
-    edges: list[tuple[str, str]] = []
+    edges: list[tuple[str, str, bool]] = []
+    flow_lines: list[str] = []
     for line in source.splitlines():
         if match := NODE_RE.match(line):
             nodes.add(match.group("id"))
-        elif match := EDGE_RE.match(line):
-            edges.append((match.group("left"), match.group("right")))
+        elif match := DIRECTED_EDGE_RE.match(line):
+            edges.append((match.group("left"), match.group("right"), True))
+        elif match := UNDIRECTED_EDGE_RE.match(line):
+            edges.append((match.group("left"), match.group("right"), False))
+        elif line.strip().startswith("flowchart "):
+            flow_lines.append(line.strip())
 
     errors: list[str] = []
+    value_flow = flow_lines == ["flowchart LR"]
+    if len(flow_lines) != 1 or flow_lines[0] not in {"flowchart TB", "flowchart LR"}:
+        errors.append("use exactly one flowchart TB or flowchart LR declaration")
+    if value_flow and any(not directed for _left, _right, directed in edges):
+        errors.append("flowchart LR value views use only --> edges")
+    if not value_flow and any(directed for _left, _right, directed in edges):
+        errors.append("flowchart TB relationship views use only --- edges")
     unsupported = sorted({node.split("_", 1)[0] for node in nodes} - {"a", "b", "i", "x"})
     if unsupported:
         errors.append("foundation business context uses only a_, b_, i_, and x_")
     if not any(node.startswith("b_") for node in nodes):
         errors.append("include at least one b_ business activity")
-    for left, right in edges:
-        if left.startswith("b_") == right.startswith("b_"):
-            errors.append(f"{left} --- {right}: join exactly one activity and one non-business element")
+    if not value_flow:
+        for left, right, _directed in edges:
+            if left.startswith("b_") == right.startswith("b_"):
+                errors.append(
+                    f"{left} --- {right}: join exactly one activity and one non-business element"
+                )
+    elif not edges:
+        errors.append("value-flow context requires at least one --> edge")
 
     for message in errors:
         print(f"ERROR: {message}")
     if errors:
         return 1
-    print(f"OK: {args.input} — business-centered semantics")
+    view_name = "value-flow semantics" if value_flow else "business-centered semantics"
+    print(f"OK: {args.input} — {view_name}")
     return 0
 
 

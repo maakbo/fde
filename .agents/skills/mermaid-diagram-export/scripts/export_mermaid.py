@@ -135,7 +135,7 @@ def main() -> int:
                 "-o",
                 str(output),
                 "-b",
-                "#FAF8F2",
+                "#FFFFFF",
             ]
             print("+", " ".join(command))
             subprocess.run(command, check=True, env=browser_environment())

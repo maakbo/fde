@@ -23,8 +23,12 @@ NODE_RE = re.compile(
     r'h:\s*(?P<h>\d+),\s*'
     r'constraint:\s*"on"\s*\}\s*$'
 )
-EDGE_RE = re.compile(
+UNDIRECTED_EDGE_RE = re.compile(
     r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+---\s+"
+    r"(?P<right>[a-z][a-z0-9_]*)\s*$"
+)
+DIRECTED_EDGE_RE = re.compile(
+    r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+-->\s+"
     r"(?P<right>[a-z][a-z0-9_]*)\s*$"
 )
 CLASS_RE = re.compile(
@@ -36,10 +40,10 @@ CLASS_DEF_RE = re.compile(
 )
 
 CANONICAL_THEME_CSS = (
-    'themeCSS: ".image-shape p { padding: 0 !important; background-color:#FAF8F2 !important; } '
+    'themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } '
     '.image-shape foreignObject { overflow: visible; } '
-    '.image-shape .labelBkg { background-color:#FAF8F2 !important; } '
-    '.image-shape .label rect { fill:#FAF8F2 !important; opacity:1 !important; } '
+    '.image-shape .labelBkg { background-color:#FFFFFF !important; } '
+    '.image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } '
     ".image-shape[id*='-flowchart-b_'] .label p { transform: translateY(-6px); }\""
 )
 CANONICAL_LINK_STYLE = (
@@ -111,7 +115,7 @@ def main() -> int:
 
     lines = source.text.splitlines()
     nodes: dict[str, dict[str, object]] = {}
-    edges: list[tuple[str, str]] = []
+    edges: list[tuple[str, str, bool]] = []
     classes: dict[str, list[str]] = defaultdict(list)
     class_defs: dict[str, str] = {}
     link_styles: list[tuple[int, str]] = []
@@ -129,8 +133,11 @@ def main() -> int:
                 "size": (int(match.group("w")), int(match.group("h"))),
             }
             node_lines.append(number)
-        elif match := EDGE_RE.match(line):
-            edges.append((match.group("left"), match.group("right")))
+        elif match := DIRECTED_EDGE_RE.match(line):
+            edges.append((match.group("left"), match.group("right"), True))
+            edge_lines.append(number)
+        elif match := UNDIRECTED_EDGE_RE.match(line):
+            edges.append((match.group("left"), match.group("right"), False))
             edge_lines.append(number)
         elif match := CLASS_RE.match(line):
             for node_id in match.group("ids").split(","):
@@ -141,14 +148,21 @@ def main() -> int:
             link_styles.append((number, line.strip()))
         elif "@{" in line:
             errors.append(f"line {number}: use canonical one-line image-node properties")
-        elif any(token in line for token in ("-->", "-.->", "<--", "==>")):
-            errors.append(f"line {number}: context diagrams use only ---")
-        elif "---" in line and line.strip() != "---":
+        elif any(token in line for token in ("-.->", "<--", "==>")):
+            errors.append(f"line {number}: use only --- or --> value edges")
+        elif "-->" in line or ("---" in line and line.strip() != "---"):
             errors.append(f"line {number}: malformed or labeled context edge")
 
     flow_lines = [line.strip() for line in lines if line.strip().startswith("flowchart ")]
     if len(flow_lines) != 1 or flow_lines[0] not in {"flowchart TB", "flowchart LR"}:
         errors.append("use exactly one flowchart TB or flowchart LR declaration")
+    else:
+        value_flow = flow_lines[0] == "flowchart LR"
+        for left, right, directed in edges:
+            if value_flow and not directed:
+                errors.append(f"{left} --- {right}: flowchart LR value views use -->")
+            elif not value_flow and directed:
+                errors.append(f"{left} --> {right}: flowchart TB relationship views use ---")
     if not any(line.startswith("title:") for line in lines):
         warnings.append("frontmatter title is missing")
     if not any(line.strip() == "diagramPadding: 40" for line in lines):
@@ -205,7 +219,7 @@ def main() -> int:
             errors.append(f"{node_id}: use class {expected_class}")
 
     degree = Counter()
-    for left, right in edges:
+    for left, right, _directed in edges:
         for endpoint in (left, right):
             if endpoint not in nodes:
                 errors.append(f"undefined edge endpoint: {endpoint}")

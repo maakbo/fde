@@ -21,7 +21,7 @@ Write the smallest diagram people can inspect while the conversation is still ch
 1. Identify the diagram's purpose, reader, subject, and one-sentence reading.
 2. Reuse an existing Markdown file when one already carries the discussion. Otherwise copy `/templates/icon-context.md` or `/templates/business-flow.md`.
 3. Choose the smallest suitable profile:
-   - Read [references/icon-context.md](references/icon-context.md) for actors, activities, information, systems, and undirected relationships.
+   - Read [references/icon-context.md](references/icon-context.md) for actors, activities, information, systems, undirected relationships, and value-flow context views.
    - Read [references/business-flow.md](references/business-flow.md) for order, decisions, and rework.
    - For another Mermaid type, use native syntax and avoid adding visual machinery that the subject does not require.
 4. Edit the Mermaid block and its short reading or unresolved question together.

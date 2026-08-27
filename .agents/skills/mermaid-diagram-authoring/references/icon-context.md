@@ -13,8 +13,8 @@ a_customer@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icon
 - Keep one subject and one relationship meaning.
 - Start focused views with 3–7 nodes and up to 9 relationships.
 - Use `--allow-complexity` only after recognizing a larger view as intentional observation.
-- Use `flowchart TB` for narrow screens and `flowchart LR` only when the backbone benefits.
-- Direction never implies process in a context diagram.
+- Use `flowchart LR` when input/output value relationships are the question; use `flowchart TB` when only undirected business relationships matter.
+- In a value-flow context, arrows mean value or information handoff, not elapsed time or a detailed procedure.
 
 ## Node IDs and icons
 
@@ -57,7 +57,7 @@ Lift only the business label by `6px` to compensate for the ellipse icon's trans
 
 ## Relationships and style
 
-Use only undecorated undirected relationships:
+For a relationship context where direction is not part of the question, use undecorated undirected relationships:
 
 ```mermaid
 a_customer --- b_receive
@@ -65,7 +65,21 @@ a_customer --- b_receive
 
 Do not use arrows, edge labels, multiple weights, visible node boxes, or color hierarchy between equivalent nodes.
 
-Use the template colors, 14px font, `diagramPadding: 40`, and a `0.75px` relation line. The outer padding prevents labels on edge nodes from being clipped without enlarging the icons. Keep source order: frontmatter, flowchart declaration, nodes, relationships, classes, class definitions, link style.
+For an input/output value context, use a left-to-right backbone and solid arrows:
+
+```mermaid
+flowchart LR
+  a_requester --> i_request
+  i_request --> b_receive
+  b_receive --> i_record
+  i_record --> x_service
+  x_service --> i_booking
+  i_booking --> a_recipient
+```
+
+Keep the value nodes visible on both sides of the business activity. Use no edge labels unless the label is the only way to name an exchange; the node labels should carry the value meaning. Keep actors who provide the input and receive the output in the same view.
+
+Use the template colors, 14px font, `diagramPadding: 40`, and a `0.75px` relation line or arrow. The outer padding prevents labels on edge nodes from being clipped without enlarging the icons. Keep source order: frontmatter, flowchart declaration, nodes, relationships, classes, class definitions, link style.
 
 ## Working-source compatibility
 

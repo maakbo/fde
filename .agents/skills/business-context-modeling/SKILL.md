@@ -61,6 +61,15 @@ external system --- business activity
 
 Use only relationships stated by the user or explicitly marked as hypotheses. Reserve external system for software or technical systems outside the chosen boundary; outside people and organizations remain actors.
 
+When the modeling question is specifically how value or information enters and leaves the business activity, use a value-flow context variant:
+
+```text
+actor --> input information --> business activity --> output information --> recipient
+                                               \--> external system --> output information
+```
+
+Use `flowchart LR` and solid `-->` edges. Keep the input provider, output recipient, and any external system visible. In this variant, arrows mean a value or information handoff, not a detailed process sequence; move detailed order or decisions to a focused flow diagram.
+
 Use a separate general context view when ownership, storage, access, delivery, or technical integration is itself the question.
 
 ### 5. Observe complexity
