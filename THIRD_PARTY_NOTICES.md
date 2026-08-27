@@ -1,6 +1,6 @@
 # Third-party notices
 
-Canonical Mermaid sources reference icons through the public Iconify API. Renderers embed retrieved SVG bytes into generated artifacts. The repository does not claim ownership of those icons, and the following notices accompany their redistribution.
+Mermaid working sources reference icons through the public Iconify API. Explicit export embeds retrieved SVG bytes into generated artifacts. The repository does not claim ownership of those icons, and the following notices accompany their redistribution.
 
 ## Phosphor Icons
 

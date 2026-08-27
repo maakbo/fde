@@ -1,3 +1,8 @@
+# Repair intake flow
+
+Focused task flow for completeness checking and missing-detail rework.
+
+```mermaid
 ---
 title: Repair intake flow
 config:
@@ -36,3 +41,12 @@ flowchart TB
   classDef activity fill:none,stroke:none,color:#25231F;
   classDef decision fill:none,stroke:none,color:#25231F;
   linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
+```
+
+## Reading
+
+Receive the request, check completeness, request missing details and recheck when necessary, then book the repair.
+
+## Open question
+
+Is completeness checking part of receiving, or a separate responsibility?

@@ -9,6 +9,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.dont_write_bytecode = True
+
 
 NODE_RE = re.compile(r'^\s{2}(?P<id>[a-z][a-z0-9_]*)@\{')
 EDGE_RE = re.compile(
@@ -27,16 +29,26 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     root = Path(__file__).resolve().parents[4]
-    context_linter = root / ".agents/skills/mermaid-icon-context-diagram/scripts/check_context_diagram.py"
+    authoring_scripts = root / ".agents/skills/mermaid-diagram-authoring/scripts"
+    sys.path.insert(0, str(authoring_scripts))
+    from source_loader import SourceError, load_mermaid_source
+
+    context_linter = authoring_scripts / "check_context_diagram.py"
     command = [sys.executable, str(context_linter), str(args.input), "--strict"]
     if args.allow_complexity:
         command.append("--allow-complexity")
     if subprocess.run(command, check=False).returncode != 0:
         return 1
 
+    try:
+        source = load_mermaid_source(args.input).text
+    except SourceError as error:
+        print(f"ERROR: {error}", file=sys.stderr)
+        return 2
+
     nodes: set[str] = set()
     edges: list[tuple[str, str]] = []
-    for line in args.input.read_text(encoding="utf-8").splitlines():
+    for line in source.splitlines():
         if match := NODE_RE.match(line):
             nodes.add(match.group("id"))
         elif match := EDGE_RE.match(line):

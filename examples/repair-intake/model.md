@@ -21,16 +21,12 @@ How does a repair request become a bookable repair without hiding missing-inform
 
 ## Selected views
 
-- [Overview source](overview.mmd) · [SVG](overview.svg) · [PNG](overview.png)
-- [Context source](context.mmd) · [SVG](context.svg) · [PNG](context.png)
-- [Flow source](flow.mmd) · [SVG](flow.svg) · [PNG](flow.png)
+- [Overview working view](overview.md)
+- [Context working view](context.md)
+- [Flow working view](flow.md)
 - [Model-set trace](model-set-index.md)
 
-![Repair service overview](overview.svg)
-
-![Repair intake context](context.svg)
-
-![Repair intake flow](flow.svg)
+Each working view contains one Mermaid block for immediate preview. No standalone `.mmd`, SVG, or PNG is required during the modeling loop.
 
 ## Text alternative
 

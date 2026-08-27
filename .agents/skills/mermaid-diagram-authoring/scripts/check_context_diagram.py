@@ -9,6 +9,10 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+sys.dont_write_bytecode = True
+
+from source_loader import SourceError, load_mermaid_source
+
 
 NODE_RE = re.compile(
     r'^\s{2}(?P<id>[a-z][a-z0-9_]*)@\{\s*'
@@ -80,10 +84,13 @@ def main() -> int:
     if not args.input.is_file():
         print(f"ERROR: file not found: {args.input}", file=sys.stderr)
         return 2
-    if args.input.suffix != ".mmd":
-        errors.append("canonical source must use .mmd")
+    try:
+        source = load_mermaid_source(args.input)
+    except SourceError as error:
+        print(f"ERROR: {error}", file=sys.stderr)
+        return 2
 
-    lines = args.input.read_text(encoding="utf-8").splitlines()
+    lines = source.text.splitlines()
     nodes: dict[str, dict[str, object]] = {}
     edges: list[tuple[str, str]] = []
     classes: dict[str, list[str]] = defaultdict(list)
@@ -92,7 +99,7 @@ def main() -> int:
     node_lines: list[int] = []
     edge_lines: list[int] = []
 
-    for number, line in enumerate(lines, 1):
+    for number, line in enumerate(lines, source.start_line):
         if match := NODE_RE.match(line):
             node_id = match.group("id")
             if node_id in nodes:

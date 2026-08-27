@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mermaid Diagram Export"
+  short_description: "Export Mermaid sources to SVG and PNG assets"
+  default_prompt: "Use $mermaid-diagram-export to export this Mermaid diagram as SVG and PNG."

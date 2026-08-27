@@ -42,6 +42,6 @@ Only a decision may have labeled outgoing arrows. Give it exactly two distinct l
 
 Use template colors, 14px font, `diagramPadding: 40`, and `0.75px` arrows. The outer padding prevents edge labels from being clipped without enlarging symbols. Keep source order: frontmatter, flowchart declaration, nodes, forward route, return route, classes, class definitions, link style.
 
-## Compatibility
+## Working-source compatibility
 
-Keep Iconify URLs in `.mmd`. Rendering requires network access and embeds retrieved icon data into the generated SVG and PNG.
+Keep Iconify URLs in the Mermaid block. Default to a Markdown working file for immediate preview. If a preview engine cannot display Mermaid v11 image nodes, do not silently replace the visual language; use `mermaid-diagram-export` only after the user requests stable SVG or PNG assets.

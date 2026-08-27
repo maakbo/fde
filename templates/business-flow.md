@@ -1,3 +1,8 @@
+# Business flow diagram
+
+Edit the Mermaid block directly and preview this Markdown file. Record unresolved routes or responsibility questions below the diagram.
+
+```mermaid
 ---
 title: Business flow
 config:
@@ -36,3 +41,8 @@ flowchart TB
   classDef activity fill:none,stroke:none,color:#25231F;
   classDef decision fill:none,stroke:none,color:#25231F;
   linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
+```
+
+## Open question
+
+Which activity, decision, or return route could change the shared understanding?

@@ -14,8 +14,8 @@ This repository is a portable environment for forward-deployed business modeling
 
 1. If a request clearly matches a Skill under `.agents/skills/`, read that `SKILL.md` completely and follow it.
 2. Use `business-context-modeling` for loose business or operational descriptions.
-3. Use `mermaid-icon-context-diagram` for undirected relationships.
-4. Use `mermaid-business-flow-diagram` for sequence, decisions, or rework.
+3. Use `mermaid-diagram-authoring` for Mermaid source in Markdown, whether the request begins with a business model or a direct diagram task.
+4. Use `mermaid-diagram-export` only when the user explicitly asks for SVG, PNG, rendering, image generation, publishing assets, or visual artifact review.
 5. Read only the references directly required by the selected Skill.
 
 ## Working principles
@@ -33,12 +33,13 @@ This repository is a portable environment for forward-deployed business modeling
 
 ## Artifact rules
 
-- Keep canonical diagrams as `.mmd`.
+- Default to one Mermaid block inside a Markdown working file for immediate GitHub or VS Code preview.
+- Keep one editable source per diagram. Do not create a duplicate `.mmd` automatically.
 - Keep labels short and place them below fixed-size icons.
 - Use Iconify icons defined by the selected diagram Skill; do not introduce a new icon merely for decoration.
-- Render sibling `.svg` and `.png` after semantic changes.
-- Inspect the PNG, not only the Mermaid source.
-- Run `npm run validate` before committing.
+- Do not create SVG or PNG during ordinary modeling or diagram authoring.
+- When export is explicitly requested, keep the Markdown source unchanged and inspect the PNG when visual review matters.
+- Run `python3 scripts/validate_repository.py` before committing. Node and npm are optional until explicit export.
 - Keep changes small, reversible, and scoped to the active modeling question.
 
 ## Completion
@@ -48,7 +49,7 @@ Return or record:
 1. The modeling question, boundary, and reading sentence.
 2. Candidate actors, activities, information, and external systems.
 3. Selected nodes and relationships.
-4. Canonical `.mmd`, rendered `.svg`, and rendered `.png`.
+4. Markdown working source with one previewable Mermaid block.
 5. Assumptions, omitted details, and unresolved classifications.
 6. One focused question that can improve the shared model.
-7. Validation and render results.
+7. Source-validation results, plus export results only when explicitly requested.

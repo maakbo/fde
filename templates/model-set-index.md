@@ -9,9 +9,9 @@ State the shared discussion or decision this set supports.
 | View | Role | Level | Parent / expanded node | Child views | Focus | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | `overview` | overview context or flow | capability | — | `detail-a`, `observation` | Whole business shape | working hypothesis |
-| `observation` | complexity observation | activity | `overview.mmd / b_area_a` | — | Preserve full same-level backbone | working hypothesis |
-| `detail-a` | focused context | activity | `overview.mmd / b_area_a` | `detail-a-flow` | One business area | working hypothesis |
-| `detail-a-flow` | focused flow | task | `detail-a.mmd / b_activity` | — | Order and decisions | working hypothesis |
+| `observation` | complexity observation | activity | `overview.md / b_area_a` | — | Preserve full same-level backbone | working hypothesis |
+| `detail-a` | focused context | activity | `overview.md / b_area_a` | `detail-a-flow` | One business area | working hypothesis |
+| `detail-a-flow` | focused flow | task | `detail-a.md / b_activity` | — | Order and decisions | working hypothesis |
 
 Replace placeholders with relative links and stable Mermaid node IDs.
 

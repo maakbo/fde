@@ -1,3 +1,8 @@
+# Repair intake context
+
+Working view of the actors, information, and outside service around repair intake.
+
+```mermaid
 ---
 title: Repair intake context
 config:
@@ -39,3 +44,12 @@ flowchart TB
   classDef information fill:none,stroke:none,color:#5F5A52;
   classDef external fill:none,stroke:none,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
+```
+
+## Reading
+
+The customer, repair request, intake record, and scheduling service relate through receiving the repair request. The lines show business relationships, not time order.
+
+## Open question
+
+Does booking still belong inside the intake boundary?

@@ -17,7 +17,8 @@ Turn an ordinary conversation about a business or operation into a small model t
 - Preserve a dense observation view when seeing the complexity supports the discussion.
 - When focused diagrams multiply, add or update a one-level-higher overview and trace each detail to one expanded overview node.
 - Keep uncertainty, omitted details, and open questions in companion Markdown.
-- Keep `.mmd` canonical and render `.svg` and `.png`.
+- Use `mermaid-diagram-authoring` inside the modeling loop; let diagram density and layout pressure inform the next abstraction decision.
+- Default to one Mermaid block inside a Markdown working file. Do not create `.mmd`, SVG, or PNG unless the user explicitly asks for standalone source or export.
 
 Read [references/modeling-rules.md](references/modeling-rules.md) before classifying or connecting elements. Read [references/multi-view-modeling.md](references/multi-view-modeling.md) when a view grows beyond seven nodes or needs decomposition.
 
@@ -80,19 +81,22 @@ When adding focused diagrams, create or update an overview exactly one abstracti
 
 Move upward by grouping details around shared outcomes or responsibilities. Move downward by expanding one overview node into a focused context and, only when order matters, a focused flow.
 
-### 7. Draw, validate, and render
+### 7. Author, preview, and revise
 
-- Use `mermaid-icon-context-diagram` for relationships.
-- Use `mermaid-business-flow-diagram` for order, decisions, and rework.
+- Follow `mermaid-diagram-authoring` for both relationships and flows.
+- Use its icon-context profile for relationships.
+- Use its business-flow profile for order, decisions, and rework.
+- Keep the diagram in Markdown so the user can preview it immediately in GitHub or VS Code.
 
 For a foundation context:
 
 ```bash
-python3 .agents/skills/business-context-modeling/scripts/check_business_context.py path/to/context.mmd
-python3 .agents/skills/mermaid-icon-context-diagram/scripts/render_context_diagram.py path/to/context.mmd
+python3 .agents/skills/business-context-modeling/scripts/check_business_context.py path/to/context.md
 ```
 
-Add `--allow-complexity` to both commands for an intentionally dense observation view. Inspect the PNG.
+The business-context checker includes the authoring profile's strict source validation. Add `--allow-complexity` for an intentionally dense observation view. Inspect the Markdown preview and the relationships it exposes; do not export images as part of the normal modeling loop.
+
+Return to steps 3–6 when the diagram reveals mixed grain, boundary pressure, repeated outcomes, or an unstable parent-child trace.
 
 ### 8. Open the discussion
 
@@ -104,9 +108,9 @@ Return:
 
 1. Modeling question, boundary, and reading sentence.
 2. Four-part candidate inventory and nodes selected for the first view.
-3. Canonical `.mmd`, rendered `.svg`, rendered `.png`, and a visible preview.
+3. Markdown working source with one previewable Mermaid block.
 4. Compact text alternative of the relationship backbone.
 5. Assumptions, omitted details, and unresolved classifications.
 6. Model-set trace when multiple diagrams exist.
 7. One focused discussion question.
-8. Validation and render results.
+8. Source-validation result. Include export results only when the user explicitly requested `mermaid-diagram-export`.

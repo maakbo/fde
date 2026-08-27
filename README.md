@@ -10,23 +10,21 @@
 
 - `AGENTS.md`: every agent should share these working principles.
 - `.github/copilot-instructions.md`: a small GitHub Copilot adapter.
-- `.github/agents/`: business modeler, diagram author, and read-only reviewer agents.
-- `.agents/skills/`: portable Agent Skills for modeling, context diagrams, and business flows.
-- `templates/`: fixed-icon Mermaid starting points.
+- `.github/agents/`: business modeler, Markdown diagram author, explicit exporter, and read-only reviewer agents.
+- `.agents/skills/`: business modeling, Mermaid authoring, and explicit media-export Skills.
+- `templates/`: Markdown-first Mermaid starting points.
 - `templates/github-actions-validate.yml`: optional CI workflow; copy it to `.github/workflows/validate.yml` when the publishing credential allows workflow files.
 - `examples/repair-intake/`: a synthetic three-level example linking overview, focused context, and focused flow.
 - `scripts/validate_repository.py`: one command to validate the public bundle.
 
 ## Quick start
 
-Requirements: Python 3.9+, Node.js 20+, and npm.
+Requirements for normal modeling and authoring: Python 3.9+.
 
 ```bash
 git clone https://github.com/maakbo/fde.git
 cd fde
-npm ci
-npm run validate
-npm run render:examples
+python3 scripts/validate_repository.py
 ```
 
 Open the cloned repository in an AI agent environment and start with loose language:
@@ -37,6 +35,7 @@ Use the business-modeler agent.
 A customer sends a repair request. The coordinator checks the scheduling
 service, records the request, and asks for missing information before booking.
 Create the first discussion-ready model. Keep assumptions visible.
+Write the diagram inside Markdown for immediate preview. Do not export images.
 ```
 
 In GitHub Copilot, repository instructions, custom agents, and project Agent Skills are loaded from the standard locations included here. Other compatible agents can begin with `AGENTS.md` and `.agents/skills/`.
@@ -47,13 +46,29 @@ In GitHub Copilot, repository instructions, custom agents, and project Agent Ski
 loose conversation
   -> concrete candidates
   -> actors / activities / information / external systems
-  -> first relationship model
-  -> render and inspect
+  -> first Mermaid model in Markdown
+  -> preview and inspect density / relationships
   -> discuss boundary, grain, and assumptions
   -> move upward or downward in abstraction
 ```
 
 A focused diagram normally begins with 3–7 semantic nodes. More than seven is not an automatic failure. First preserve and inspect the complexity. Then decide whether to keep it, refine the subject or grain, or add focused diagrams and a one-level-higher overview. The repair-intake example demonstrates the reverse path too: a detail can change how its parent overview concept is understood.
+
+## Working source and export
+
+The default artifact is a Markdown file containing one `mermaid` code block. That same file carries its reading, assumptions, and next question, and is the single editable source for the diagram.
+
+Ordinary modeling and diagram requests stop after source validation. They do not generate `.mmd`, SVG, or PNG files. This keeps the conversation fast in GitHub Copilot and lets VS Code preview the working file directly.
+
+Media export is a separate, explicit action. When stable assets are needed for publication or visual review, install the optional renderer and invoke the export Skill:
+
+```bash
+npm ci
+python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py \
+  examples/repair-intake/context.md --type context --output-dir /tmp/fde-export
+```
+
+The exporter reads the Mermaid block without changing the Markdown source. A standalone `.mmd` remains supported when a user or integration explicitly requires it.
 
 ## Visual language
 
@@ -68,7 +83,7 @@ The visual object is an icon, not a text box. Labels sit below fixed-size icons,
 | Decision | `ph:diamond-thin` |
 | iPad / iPhone / laptop | Phosphor Thin device icons |
 
-Canonical `.mmd` files keep Iconify URLs for portability. Rendering embeds the retrieved SVG data into generated artifacts, so committed SVG and PNG previews are self-contained.
+Working Markdown blocks keep Iconify URLs for portability and immediate preview where Mermaid v11 image nodes are supported. Explicit export embeds the retrieved SVG data into generated assets so those assets remain self-contained.
 
 ## Project status
 

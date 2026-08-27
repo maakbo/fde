@@ -1,3 +1,8 @@
+# Icon context diagram
+
+Edit the Mermaid block directly and preview this Markdown file. Keep assumptions and open questions below the diagram when they matter.
+
+```mermaid
 ---
 title: Business context
 config:
@@ -39,3 +44,8 @@ flowchart TB
   classDef information fill:none,stroke:none,color:#5F5A52;
   classDef external fill:none,stroke:none,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
+```
+
+## Open question
+
+What boundary, grain, classification, or relationship should the group examine next?

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Mermaid Business Flow Diagram"
-  short_description: "Create minimal icon-based Mermaid business flows"
-  default_prompt: "Use $mermaid-business-flow-diagram to create and render a minimal Mermaid business flow."

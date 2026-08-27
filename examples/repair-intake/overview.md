@@ -1,3 +1,8 @@
+# Repair service overview
+
+One-level-higher view connecting intake, repair, and return.
+
+```mermaid
 ---
 title: Repair service overview
 config:
@@ -31,3 +36,8 @@ flowchart TB
 
   classDef activity fill:none,stroke:none,color:#25231F;
   linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
+```
+
+## Reading
+
+Repair service moves from intake to repair and then return. Each activity may expand into a focused Markdown view.

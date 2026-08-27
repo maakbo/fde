@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mermaid Diagram Authoring"
+  short_description: "Write fast, previewable Mermaid in Markdown"
+  default_prompt: "Use $mermaid-diagram-authoring to add a clear Mermaid diagram to this Markdown file."

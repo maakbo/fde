@@ -57,6 +57,6 @@ Do not use arrows, edge labels, multiple weights, visible node boxes, or color h
 
 Use the template colors, 14px font, `diagramPadding: 40`, and a `0.75px` relation line. The outer padding prevents labels on edge nodes from being clipped without enlarging the icons. Keep source order: frontmatter, flowchart declaration, nodes, relationships, classes, class definitions, link style.
 
-## Compatibility
+## Working-source compatibility
 
-Keep Iconify URLs in `.mmd` for portability. The renderer retrieves and embeds SVG data into output files. Rendering therefore requires network access, while committed `.svg` and `.png` remain self-contained.
+Keep Iconify URLs in the Mermaid block. Default to a Markdown working file so GitHub or VS Code can preview the same source being discussed. A preview engine must support Mermaid v11 image nodes and remote Iconify URLs; if it does not, keep editing the source and use `mermaid-diagram-export` only when the user explicitly needs stable media assets.
