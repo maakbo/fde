@@ -31,12 +31,13 @@ flowchart LR
   i_repair_booking@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", label: "修理予約", pos: "b", w: 38, h: 38, constraint: "on" }
   a_repair_team@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", label: "修理担当", pos: "b", w: 38, h: 38, constraint: "on" }
 
-  a_customer --> i_repair_request
+  a_customer --> b_receive_request
   i_repair_request --> b_receive_request
   b_receive_request --> i_intake_record
-  i_intake_record --> x_scheduling_service
-  x_scheduling_service --> i_repair_booking
-  i_repair_booking --> a_repair_team
+  b_receive_request --> x_scheduling_service
+  x_scheduling_service --> b_receive_request
+  b_receive_request --> i_repair_booking
+  b_receive_request --> a_repair_team
 
   class a_customer,a_repair_team actor;
   class b_receive_request business;
@@ -52,7 +53,7 @@ flowchart LR
 
 ## 読み方
 
-顧客から修理依頼を受け、依頼受付が受付記録をつくる。記録は予約管理へ渡り、修理予約として修理担当へ届く。矢印は時間の順序ではなく、価値・情報の受け渡しを示す。
+依頼受付を中心に、顧客と修理依頼が入力として入り、受付記録と修理予約が出ていく。予約管理は依頼受付と予約情報をやり取りする外部システムで、修理担当は修理予約という価値を受け取る。矢印は業務を中心とした価値・情報の関係を示す。
 
 ## 未解決の問い
 

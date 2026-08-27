@@ -69,15 +69,16 @@ For an input/output value context, use a left-to-right backbone and solid arrows
 
 ```mermaid
 flowchart LR
-  a_requester --> i_request
+  a_requester --> b_receive
   i_request --> b_receive
   b_receive --> i_record
-  i_record --> x_service
-  x_service --> i_booking
-  i_booking --> a_recipient
+  b_receive --> x_service
+  x_service --> b_receive
+  b_receive --> i_booking
+  b_receive --> a_recipient
 ```
 
-Keep the value nodes visible on both sides of the business activity. Use no edge labels unless the label is the only way to name an exchange; the node labels should carry the value meaning. Keep actors who provide the input and receive the output in the same view.
+Keep the business activity at the center of the value view. Every edge should join that activity to an actor, information item, or external system. Use no edge labels unless the label is the only way to name an exchange; the node labels should carry the value meaning. Keep actors who provide the input and receive the output in the same view.
 
 Use the template colors, 14px font, `diagramPadding: 40`, and a `0.75px` relation line or arrow. The outer padding prevents labels on edge nodes from being clipped without enlarging the icons. Keep source order: frontmatter, flowchart declaration, nodes, relationships, classes, class definitions, link style.
 

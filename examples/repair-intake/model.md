@@ -7,7 +7,7 @@ How does a repair request become a bookable repair without hiding missing-inform
 - Reader: customer-support and repair-operations participants.
 - Boundary: repair intake, before physical repair begins.
 - State: current-state synthetic example.
-- Context reading: the left-to-right arrows show value and information handoffs from the customer through intake and scheduling to the repair team.
+- Context reading: the left-to-right arrows show how the central intake activity relates to its input, output, external scheduling system, and repair-team recipient.
 - Flow reading: read from receiving a request to booking the repair, following the labeled decision branches.
 
 ## Candidate inventory
@@ -30,7 +30,7 @@ Each working view contains one Mermaid block for immediate preview. No standalon
 
 ## Text alternative
 
-The customer passes a repair request into intake. Intake creates a record, scheduling turns it into a repair booking, and the repair team receives that value. The flow then checks completeness, requests missing details, and rechecks when necessary.
+The intake activity receives the customer and repair request, creates an intake record and repair booking, exchanges information with scheduling, and hands value to the repair team. The flow then checks completeness, requests missing details, and rechecks when necessary.
 
 The overview places intake before repair and return. The context expands the stable overview node `b_manage_intake`; the detailed flow expands `b_receive_request` inside that context. If detailed intake work reveals that booking belongs to repair execution rather than intake, revise the boundary upward in the overview.
 

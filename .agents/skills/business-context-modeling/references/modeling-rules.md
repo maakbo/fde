@@ -39,7 +39,7 @@ Merge nodes with the same actor, outcome, and discussion consequence. Split node
 
 Foundation context lines mean relevant business relationships, not time order. Every line joins exactly one business activity and one actor, information item, or external system.
 
-When input/output value is the subject, a value-flow context is an intentional variant: use `flowchart LR` with solid `-->` arrows, place information nodes between providers, activities, systems, and recipients, and state that arrows mean value or information handoff. This is still a context view; detailed sequencing belongs in a flow view.
+When input/output value is the subject, a value-flow context is an intentional variant: use `flowchart LR` with solid `-->` arrows, keep one business activity as the hub, relate every node to that activity, and state that arrows mean value or information handoff. This is still a context view; detailed sequencing belongs in a flow view.
 
 Diagnostic smells:
 

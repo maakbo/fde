@@ -84,6 +84,12 @@ def main() -> int:
                 )
     elif not edges:
         errors.append("value-flow context requires at least one --> edge")
+    else:
+        for left, right, _directed in edges:
+            if left.startswith("b_") == right.startswith("b_"):
+                errors.append(
+                    f"{left} --> {right}: value-flow context edges join exactly one activity and one non-business element"
+                )
 
     for message in errors:
         print(f"ERROR: {message}")

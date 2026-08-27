@@ -64,11 +64,13 @@ Use only relationships stated by the user or explicitly marked as hypotheses. Re
 When the modeling question is specifically how value or information enters and leaves the business activity, use a value-flow context variant:
 
 ```text
-actor --> input information --> business activity --> output information --> recipient
-                                               \--> external system --> output information
+actor --> business activity <-- input information
+business activity --> output information
+business activity --> external system --> business activity
+business activity --> recipient
 ```
 
-Use `flowchart LR` and solid `-->` edges. Keep the input provider, output recipient, and any external system visible. In this variant, arrows mean a value or information handoff, not a detailed process sequence; move detailed order or decisions to a focused flow diagram.
+Use `flowchart LR` and solid `-->` edges. Keep the business activity as the hub, with the input provider, output recipient, and any external system visible around it. In this variant, arrows mean a value or information handoff, not a detailed process sequence; move detailed order or decisions to a focused flow diagram.
 
 Use a separate general context view when ownership, storage, access, delivery, or technical integration is itself the question.
 

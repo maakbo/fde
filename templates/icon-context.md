@@ -31,12 +31,13 @@ flowchart LR
   i_booking@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", label: "修理予約", pos: "b", w: 38, h: 38, constraint: "on" }
   a_recipient@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", label: "修理担当", pos: "b", w: 38, h: 38, constraint: "on" }
 
-  a_requester --> i_request
+  a_requester --> b_receive
   i_request --> b_receive
   b_receive --> i_record
-  i_record --> x_service
-  x_service --> i_booking
-  i_booking --> a_recipient
+  b_receive --> x_service
+  x_service --> b_receive
+  b_receive --> i_booking
+  b_receive --> a_recipient
 
   class a_requester,a_recipient actor;
   class b_receive business;

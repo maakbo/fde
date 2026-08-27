@@ -9,7 +9,7 @@ Connect the repair-intake boundary discussion to the wider repair service withou
 | View | Role | Level | Parent / expanded node | Child views | Focus | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | [overview](overview.md) | overview flow | capability / business area | — | [context](context.md) | High-level handoff from intake to repair and return | working hypothesis |
-| [context](context.md) | focused value context | business activity | `overview.md / b_manage_intake` | [flow](flow.md) | Value handoffs from customer through intake and scheduling to repair team | working hypothesis |
+| [context](context.md) | focused value context | business activity | `overview.md / b_manage_intake` | [flow](flow.md) | Input, output, scheduling exchange, and recipient around intake | working hypothesis |
 | [flow](flow.md) | focused flow | task | `context.md / b_receive_request` | — | Completeness decision and missing-detail rework | working hypothesis |
 
 ## Abstract to concrete
