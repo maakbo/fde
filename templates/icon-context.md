@@ -1,4 +1,4 @@
-# 価値関係コンテキスト図
+# 業務コンテキスト図
 
 Edit the Mermaid block directly and preview this Markdown file. Keep assumptions and open questions below the diagram when they matter.
 
@@ -12,8 +12,8 @@ config:
     curve: basis
     diagramPadding: 40
     htmlLabels: false
-    nodeSpacing: 48
-    rankSpacing: 64
+    nodeSpacing: 64
+    rankSpacing: 80
     padding: 8
   themeVariables:
     background: "#FFFFFF"
@@ -31,13 +31,14 @@ flowchart LR
   i_booking@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", label: "修理予約", pos: "b", w: 38, h: 38, constraint: "on" }
   a_recipient@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", label: "修理担当", pos: "b", w: 38, h: 38, constraint: "on" }
 
-  a_requester --> b_receive
-  i_request --> b_receive
-  b_receive --> i_record
-  b_receive --> x_service
-  x_service --> b_receive
-  b_receive --> i_booking
-  b_receive --> a_recipient
+  %% 通常の関係は---。-->は強い依存性を強調するときだけ使う。
+  a_requester --- b_receive
+  i_request --- b_receive
+  b_receive --- i_record
+  b_receive --- x_service
+  x_service --- b_receive
+  b_receive --- i_booking
+  b_receive --- a_recipient
 
   class a_requester,a_recipient actor;
   class b_receive business;

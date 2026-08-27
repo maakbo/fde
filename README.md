@@ -55,7 +55,7 @@ loose conversation
 
 A focused diagram normally begins with 3–7 semantic nodes. More than seven is not an automatic failure. First preserve and inspect the complexity. Then decide whether to keep it, refine the subject or grain, or add focused diagrams and a one-level-higher overview. The repair-intake example demonstrates the reverse path too: a detail can change how its parent overview concept is understood.
 
-Context views may stay undirected when they are only about business relationships. When the question is how value or information enters and leaves an activity, use the left-to-right value-flow variant so the provider, output recipient, and supporting system remain visible.
+Context views use undirected lines for ordinary business relationships. Use an arrow only to emphasize an explicitly strong dependency. When the question is specifically how value or information enters and leaves an activity, use the explicit left-to-right value-flow variant so the provider, output recipient, and supporting system remain visible.
 
 ## Working source and export
 

@@ -49,6 +49,8 @@ CANONICAL_THEME_CSS = (
 CANONICAL_LINK_STYLE = (
     "linkStyle default stroke:#9E988E,stroke-width:0.75px;"
 )
+CANONICAL_NODE_SPACING = 64
+CANONICAL_RANK_SPACING = 80
 CANONICAL_CLASS_STYLES = {
     "actor": "fill:none,stroke:none,color:#25231F",
     "business": "fill:none,stroke:none,color:#25231F",
@@ -123,6 +125,8 @@ def main() -> int:
     edge_lines: list[int] = []
 
     for number, line in enumerate(lines, source.start_line):
+        if line.strip().startswith("%%"):
+            continue
         if match := NODE_RE.match(line):
             node_id = match.group("id")
             if node_id in nodes:
@@ -156,17 +160,14 @@ def main() -> int:
     flow_lines = [line.strip() for line in lines if line.strip().startswith("flowchart ")]
     if len(flow_lines) != 1 or flow_lines[0] not in {"flowchart TB", "flowchart LR"}:
         errors.append("use exactly one flowchart TB or flowchart LR declaration")
-    else:
-        value_flow = flow_lines[0] == "flowchart LR"
-        for left, right, directed in edges:
-            if value_flow and not directed:
-                errors.append(f"{left} --- {right}: flowchart LR value views use -->")
-            elif not value_flow and directed:
-                errors.append(f"{left} --> {right}: flowchart TB relationship views use ---")
     if not any(line.startswith("title:") for line in lines):
         warnings.append("frontmatter title is missing")
     if not any(line.strip() == "diagramPadding: 40" for line in lines):
         warnings.append("use diagramPadding: 40 to protect edge-node labels")
+    if not any(line.strip() == f"nodeSpacing: {CANONICAL_NODE_SPACING}" for line in lines):
+        warnings.append(f"use nodeSpacing: {CANONICAL_NODE_SPACING} for relationship breathing room")
+    if not any(line.strip() == f"rankSpacing: {CANONICAL_RANK_SPACING}" for line in lines):
+        warnings.append(f"use rankSpacing: {CANONICAL_RANK_SPACING} for relationship breathing room")
     if not any(line.strip() == CANONICAL_THEME_CSS for line in lines):
         warnings.append("use the canonical themeCSS label-clipping guard")
     if len(link_styles) != 1 or link_styles[0][1] != CANONICAL_LINK_STYLE:

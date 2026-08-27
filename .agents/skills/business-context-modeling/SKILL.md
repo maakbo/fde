@@ -50,7 +50,7 @@ Name actors, information, and systems with short nouns. Name activities with one
 
 ### 4. Build the foundation backbone
 
-Prefer:
+Use ordinary relationship lines by default:
 
 ```text
 actor --- business activity
@@ -61,7 +61,9 @@ external system --- business activity
 
 Use only relationships stated by the user or explicitly marked as hypotheses. Reserve external system for software or technical systems outside the chosen boundary; outside people and organizations remain actors.
 
-When the modeling question is specifically how value or information enters and leaves the business activity, use a value-flow context variant:
+Use `-->` only when a strong dependency is an intentional part of the question. Do not use arrows for every ordinary relationship.
+
+When the modeling question is specifically how value or information enters and leaves the business activity, use an explicit value-flow context variant:
 
 ```text
 actor --> business activity <-- input information
@@ -70,7 +72,7 @@ business activity --> external system --> business activity
 business activity --> recipient
 ```
 
-Use `flowchart LR` and solid `-->` edges. Keep the business activity as the hub, with the input provider, output recipient, and any external system visible around it. In this variant, arrows mean a value or information handoff, not a detailed process sequence; move detailed order or decisions to a focused flow diagram.
+Use `flowchart LR` and solid `-->` edges. Keep the business activity as the hub, with the input provider, output recipient, and any external system visible around it. In this variant, arrows mean a value or information handoff, not a detailed process sequence; move detailed order or decisions to a focused flow diagram. Keep this exception visible in the companion reading so it is not confused with the ordinary context convention.
 
 Use a separate general context view when ownership, storage, access, delivery, or technical integration is itself the question.
 

@@ -64,31 +64,24 @@ def main() -> int:
             flow_lines.append(line.strip())
 
     errors: list[str] = []
-    value_flow = flow_lines == ["flowchart LR"]
+    value_flow = flow_lines == ["flowchart LR"] and bool(edges) and all(
+        directed for _left, _right, directed in edges
+    )
     if len(flow_lines) != 1 or flow_lines[0] not in {"flowchart TB", "flowchart LR"}:
         errors.append("use exactly one flowchart TB or flowchart LR declaration")
-    if value_flow and any(not directed for _left, _right, directed in edges):
-        errors.append("flowchart LR value views use only --> edges")
-    if not value_flow and any(directed for _left, _right, directed in edges):
-        errors.append("flowchart TB relationship views use only --- edges")
     unsupported = sorted({node.split("_", 1)[0] for node in nodes} - {"a", "b", "i", "x"})
     if unsupported:
         errors.append("foundation business context uses only a_, b_, i_, and x_")
     if not any(node.startswith("b_") for node in nodes):
         errors.append("include at least one b_ business activity")
-    if not value_flow:
-        for left, right, _directed in edges:
-            if left.startswith("b_") == right.startswith("b_"):
-                errors.append(
-                    f"{left} --- {right}: join exactly one activity and one non-business element"
-                )
-    elif not edges:
-        errors.append("value-flow context requires at least one --> edge")
+    if not edges:
+        errors.append("context requires at least one relationship")
     else:
-        for left, right, _directed in edges:
+        for left, right, directed in edges:
             if left.startswith("b_") == right.startswith("b_"):
+                connector = "-->" if directed else "---"
                 errors.append(
-                    f"{left} --> {right}: value-flow context edges join exactly one activity and one non-business element"
+                    f"{left} {connector} {right}: join exactly one activity and one non-business element"
                 )
 
     for message in errors:

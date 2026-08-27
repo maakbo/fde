@@ -12,8 +12,8 @@ config:
     curve: basis
     diagramPadding: 40
     htmlLabels: false
-    nodeSpacing: 48
-    rankSpacing: 64
+    nodeSpacing: 64
+    rankSpacing: 80
     padding: 8
   themeVariables:
     background: "#FFFFFF"
@@ -31,13 +31,14 @@ flowchart LR
   i_repair_booking@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", label: "修理予約", pos: "b", w: 38, h: 38, constraint: "on" }
   a_repair_team@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", label: "修理担当", pos: "b", w: 38, h: 38, constraint: "on" }
 
-  a_customer --> b_receive_request
-  i_repair_request --> b_receive_request
-  b_receive_request --> i_intake_record
-  b_receive_request --> x_scheduling_service
-  x_scheduling_service --> b_receive_request
-  b_receive_request --> i_repair_booking
-  b_receive_request --> a_repair_team
+  %% 通常の関係は---。-->は強い依存性を強調するときだけ使う。
+  a_customer --- b_receive_request
+  i_repair_request --- b_receive_request
+  b_receive_request --- i_intake_record
+  b_receive_request --- x_scheduling_service
+  x_scheduling_service --- b_receive_request
+  b_receive_request --- i_repair_booking
+  b_receive_request --- a_repair_team
 
   class a_customer,a_repair_team actor;
   class b_receive_request business;
@@ -53,7 +54,7 @@ flowchart LR
 
 ## 読み方
 
-依頼受付を中心に、顧客と修理依頼が入力として入り、受付記録と修理予約が出ていく。予約管理は依頼受付と予約情報をやり取りする外部システムで、修理担当は修理予約という価値を受け取る。矢印は業務を中心とした価値・情報の関係を示す。
+依頼受付を中心に、顧客、修理依頼、受付記録、予約管理、修理予約、修理担当との関係を整理する。左から右の配置は読みやすさのためで、通常の関係は線で表す。矢印は強い依存性を強調したい場合だけ使う。
 
 ## 未解決の問い
 

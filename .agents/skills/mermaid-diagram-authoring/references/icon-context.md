@@ -13,8 +13,9 @@ a_customer@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icon
 - Keep one subject and one relationship meaning.
 - Start focused views with 3–7 nodes and up to 9 relationships.
 - Use `--allow-complexity` only after recognizing a larger view as intentional observation.
-- Use `flowchart LR` when input/output value relationships are the question; use `flowchart TB` when only undirected business relationships matter.
-- In a value-flow context, arrows mean value or information handoff, not elapsed time or a detailed procedure.
+- Use `flowchart TB` or `flowchart LR` for layout, independently of line direction.
+- Use `---` for ordinary business relationships. Use `-->` only when a strong dependency is an intentional part of the question; do not turn every relationship into an arrow.
+- If input/output value handoff itself is the question, make that explicit as a value-flow context and use arrows there. Arrows still do not mean a detailed procedure.
 
 ## Node IDs and icons
 
@@ -44,7 +45,7 @@ Device URLs:
 
 Keep node properties in this exact order: `img`, `label`, `pos`, `w`, `h`, `constraint`. Keep one node per line.
 
-The source canvas is square because Mermaid v11 sizes image nodes from the height property. At `30 x 30`, the Lucide path remains a horizontal ellipse with enough visual presence to carry the business subject while staying quieter than the `38 x 38` supporting icons.
+The source canvas is square because Mermaid v11 sizes image nodes from the height property. At `30 x 30`, the Lucide path remains a horizontal ellipse with enough visual presence to carry the business subject while staying quieter than the `38 x 38` supporting icons. Use `nodeSpacing: 64` and `rankSpacing: 80` so relationship paths have roughly one-character breathing room around the icon field.
 
 Lift only the business label by `6px` with `margin-top` to compensate for the ellipse icon's transparent lower canvas. Avoid CSS transforms on the HTML label inside Mermaid's SVG `foreignObject`: some GitHub/browser combinations can move that label outside its node. The canonical CSS selects Mermaid image-node IDs containing the stable `-flowchart-b_` prefix because Mermaid does not preserve `class` statement names on image-node DOM elements. Do not shift labels for actors, information, systems, or devices.
 
@@ -57,13 +58,13 @@ Lift only the business label by `6px` with `margin-top` to compensate for the el
 
 ## Relationships and style
 
-For a relationship context where direction is not part of the question, use undecorated undirected relationships:
+For a relationship context, use undecorated undirected relationships by default:
 
 ```mermaid
 a_customer --- b_receive
 ```
 
-Do not use arrows, edge labels, multiple weights, visible node boxes, or color hierarchy between equivalent nodes.
+Do not use arrows, edge labels, multiple weights, visible node boxes, or color hierarchy between equivalent nodes. Replace one `---` with `-->` only when the arrow is needed to call out a strong dependency.
 
 For an input/output value context, use a left-to-right backbone and solid arrows:
 
@@ -78,7 +79,7 @@ flowchart LR
   b_receive --> a_recipient
 ```
 
-Keep the business activity at the center of the value view. Every edge should join that activity to an actor, information item, or external system. Use no edge labels unless the label is the only way to name an exchange; the node labels should carry the value meaning. Keep actors who provide the input and receive the output in the same view.
+Keep the business activity at the center of the value view. Every edge should join that activity to an actor, information item, or external system. Use no edge labels unless the label is the only way to name an exchange; the node labels should carry the value meaning. Keep actors who provide the input and receive the output in the same view. This value-flow profile is an explicit exception to the ordinary relationship-line default.
 
 Use the template colors, 14px font, `diagramPadding: 40`, and a `0.75px` relation line or arrow. The outer padding prevents labels on edge nodes from being clipped without enlarging the icons. Keep source order: frontmatter, flowchart declaration, nodes, relationships, classes, class definitions, link style.
 

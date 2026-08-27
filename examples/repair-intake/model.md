@@ -7,7 +7,7 @@ How does a repair request become a bookable repair without hiding missing-inform
 - Reader: customer-support and repair-operations participants.
 - Boundary: repair intake, before physical repair begins.
 - State: current-state synthetic example.
-- Context reading: the left-to-right arrows show how the central intake activity relates to its input, output, external scheduling system, and repair-team recipient.
+- Context reading: the central intake activity is related to its input, output, external scheduling system, and repair-team recipient. The left-to-right arrangement supports reading; the lines do not imply sequence. An arrow would be reserved for a strong dependency.
 - Flow reading: read from receiving a request to booking the repair, following the labeled decision branches.
 
 ## Candidate inventory
