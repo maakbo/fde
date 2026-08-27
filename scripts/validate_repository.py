@@ -90,7 +90,7 @@ def main() -> int:
         if not (ROOT / relative).is_file():
             raise FileNotFoundError(relative)
     for relative in OBSOLETE_SKILL_DIRS:
-        if (ROOT / relative).exists():
+        if (ROOT / relative / "SKILL.md").exists():
             raise ValueError(f"obsolete overlapping Skill remains: {relative}")
     for skill in SKILLS:
         validate_skill(skill)
