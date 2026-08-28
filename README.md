@@ -88,7 +88,7 @@ The visual object is an icon, not a text box. Labels sit below fixed-size icons,
 | Decision | `lucide-thin/diamond.svg` |
 | iPad / iPhone / laptop | `lucide-thin/tablet.svg`, `smartphone.svg`, `laptop.svg` |
 
-Working Markdown blocks reference the repository's thin Lucide SVGs through stable raw URLs for portability and immediate preview where Mermaid v11 image nodes are supported. The shapes remain Lucide; only the shared stroke width is normalized to `1.35`. The shared Mermaid CSS paints a small white halo over the transparent image boundary so relation paths stop with a consistent visual gap without shrinking the icon. Explicit export embeds the retrieved SVG data into generated assets so those assets remain self-contained.
+Working Markdown blocks reference the repository's thin Lucide SVGs through stable raw URLs for portability and immediate preview where Mermaid v11 image nodes are supported. The shapes remain Lucide; only the shared stroke width is normalized to `1.35`. The shared Mermaid CSS paints a small white halo over only the first, icon-sized transparent image boundary so relation paths stop with a consistent visual gap without covering the label boundary. This selector follows Mermaid v11.16's image-node structure; re-render and inspect all previews when upgrading Mermaid. Explicit export embeds the retrieved SVG data into generated assets so those assets remain self-contained.
 
 ## Project status
 
