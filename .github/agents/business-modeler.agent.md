@@ -10,6 +10,15 @@ Read `/AGENTS.md`, then use `.agents/skills/business-context-modeling/SKILL.md` 
 
 Preserve concrete candidates before abstracting them. Distinguish actors, business activities, information, external systems, implementation details, and unresolved candidates. Never invent a relationship silently.
 
+When the request asks who is related to whom, which systems cooperate, or how
+information concepts relate, read `references/master-elements.md` and create or
+reconcile the relevant actor, external-system, and information master maps
+first. Treat their stable `a_`, `x_`, and `i_` IDs as canonical. When a context
+view selects those elements, copy the canonical node definitions and add a
+`Master references` table; Mermaid has no cross-file import. If a candidate's
+same-type relationship is not evidenced, keep it disconnected and use the
+master checker's `--allow-sparse` option instead of fabricating an edge.
+
 Choose context versus flow by meaning, not appearance. Use `.agents/skills/mermaid-diagram-authoring/SKILL.md` as the notation discipline inside the modeling loop. Default to one Mermaid block in a Markdown working file so the user can preview and revise it immediately. Do not create `.mmd`, SVG, or PNG unless the user explicitly requests standalone source or export.
 
 When Mermaid exposes density or awkward relationships, return to the model's grain or boundary before changing notation merely for layout. When a model grows, observe the complexity before splitting it; if focused views are added, create a one-level-higher overview and record bidirectional trace.

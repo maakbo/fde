@@ -36,7 +36,6 @@ flowchart LR
   i_repair_request --- b_receive_request
   b_receive_request --- i_intake_record
   b_receive_request --- x_scheduling_service
-  x_scheduling_service --- b_receive_request
   b_receive_request --- i_repair_booking
   b_receive_request --- a_repair_team
 
@@ -55,6 +54,21 @@ flowchart LR
 ## 読み方
 
 依頼受付を中心に、顧客、修理依頼、受付記録、予約管理、修理予約、修理担当との関係を整理する。左から右の配置は読みやすさのためで、通常の関係は線で表す。矢印は強い依存性を強調したい場合だけ使う。
+
+## Master references
+
+この図の `a_`、`x_`、`i_` ノードは、次のマスタ図から正規ID・ラベル・
+アイコン定義を選択している。Mermaidにファイル間importはないため、図中
+のノード定義は正規定義をそのままコピーする。
+
+| Master | ID | Canonical label | Use in this view |
+| --- | --- | --- | --- |
+| [Actor master](master-actor-map.md) | `a_customer` | 顧客 | 価値の受け手 |
+| [Actor master](master-actor-map.md) | `a_repair_team` | 修理担当 | 価値の提供者 |
+| [External-system master](master-system-map.md) | `x_scheduling_service` | 予約管理 | 予約との接点 |
+| [Information master](master-information-model.md) | `i_repair_request` | 修理依頼 | 入力 |
+| [Information master](master-information-model.md) | `i_intake_record` | 受付記録 | 受付結果 |
+| [Information master](master-information-model.md) | `i_repair_booking` | 修理予約 | 成果 |
 
 ## 未解決の問い
 

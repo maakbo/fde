@@ -23,13 +23,24 @@ REQUIRED = [
     ".github/agents/diagram-reviewer.agent.md",
     "templates/icon-context.md",
     "templates/business-flow.md",
+    "templates/master-actor-map.md",
+    "templates/master-system-map.md",
+    "templates/master-information-model.md",
+    "templates/master-model-index.md",
     "templates/github-actions-validate.yml",
     ".agents/skills/mermaid-diagram-authoring/scripts/source_loader.py",
     ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py",
     ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py",
+    ".agents/skills/business-context-modeling/scripts/check_master_map.py",
+    ".agents/skills/business-context-modeling/scripts/check_master_references.py",
+    ".agents/skills/business-context-modeling/references/master-elements.md",
     ".agents/skills/mermaid-diagram-export/scripts/export_mermaid.py",
     "examples/repair-intake/model.md",
     "examples/repair-intake/model-set-index.md",
+    "examples/repair-intake/master-model-index.md",
+    "examples/repair-intake/master-actor-map.md",
+    "examples/repair-intake/master-system-map.md",
+    "examples/repair-intake/master-information-model.md",
     "examples/repair-intake/overview.md",
     "examples/repair-intake/context.md",
     "examples/repair-intake/flow.md",
@@ -131,6 +142,34 @@ def main() -> int:
     business = ".agents/skills/business-context-modeling/scripts/check_business_context.py"
     flow = ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py"
     run([sys.executable, context, "templates/icon-context.md", "--strict"])
+    master = ".agents/skills/business-context-modeling/scripts/check_master_map.py"
+    run([sys.executable, master, "templates/master-actor-map.md", "--kind", "actor", "--strict"])
+    run([sys.executable, master, "templates/master-system-map.md", "--kind", "system", "--strict"])
+    run([sys.executable, master, "templates/master-information-model.md", "--kind", "information", "--strict"])
+    run([
+        sys.executable,
+        master,
+        "examples/repair-intake/master-actor-map.md",
+        "--kind",
+        "actor",
+        "--strict",
+        "--allow-sparse",
+    ])
+    run([sys.executable, master, "examples/repair-intake/master-system-map.md", "--kind", "system", "--strict"])
+    run([sys.executable, master, "examples/repair-intake/master-information-model.md", "--kind", "information", "--strict"])
+    references = ".agents/skills/business-context-modeling/scripts/check_master_references.py"
+    run([
+        sys.executable,
+        references,
+        "examples/repair-intake/context.md",
+        "--actor",
+        "examples/repair-intake/master-actor-map.md",
+        "--system",
+        "examples/repair-intake/master-system-map.md",
+        "--information",
+        "examples/repair-intake/master-information-model.md",
+        "--allow-sparse",
+    ])
     run([sys.executable, business, "examples/repair-intake/context.md"])
     run([sys.executable, flow, "templates/business-flow.md", "--strict"])
     run([sys.executable, flow, "examples/repair-intake/overview.md", "--strict"])

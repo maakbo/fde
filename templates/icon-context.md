@@ -36,7 +36,6 @@ flowchart LR
   i_request --- b_receive
   b_receive --- i_record
   b_receive --- x_service
-  x_service --- b_receive
   b_receive --- i_booking
   b_receive --- a_recipient
 

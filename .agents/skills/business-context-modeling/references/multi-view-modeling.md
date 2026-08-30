@@ -1,5 +1,11 @@
 # Multi-view business modeling
 
+Master element maps are a parallel canonical layer, not another abstraction
+rung: actor, external-system, and information views hold same-type identities
+and relationships. Context and overview views select those IDs and record the
+links in the model-set index. If a detail changes the meaning of an element,
+revise the master first, then propagate the canonical label and ID to consumers.
+
 ## View roles
 
 | View | Purpose | Typical level |

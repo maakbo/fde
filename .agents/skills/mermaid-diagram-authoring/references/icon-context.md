@@ -67,6 +67,8 @@ a_customer --- b_receive
 ```
 
 Do not use arrows, edge labels, multiple weights, visible node boxes, or color hierarchy between equivalent nodes. Replace one `---` with `-->` only when the arrow is needed to call out a strong dependency.
+Do not write both `node_a --- node_b` and `node_b --- node_a`; an undirected
+line already represents both directions.
 
 For an input/output value context, use a left-to-right backbone and solid arrows:
 
@@ -82,6 +84,17 @@ flowchart LR
 ```
 
 Keep the business activity at the center of the value view. Every edge should join that activity to an actor, information item, or external system. Use no edge labels unless the label is the only way to name an exchange; the node labels should carry the value meaning. Keep actors who provide the input and receive the output in the same view. This value-flow profile is an explicit exception to the ordinary relationship-line default.
+
+## Master map exception
+
+An actor, external-system, or information master map intentionally connects
+same-type nodes. In that profile, `---` means an undirected structural relation
+and `-->` means a deliberate hierarchy, integration, derivation, or dependency
+direction as defined by the map's reading sentence. These arrows are not a
+business-process sequence. Read
+`../business-context-modeling/references/master-elements.md` and use the
+matching master template and checker; do not apply this exception to a
+business-centered context view.
 
 Use the template colors, 14px font, `diagramPadding: 40`, and a `0.75px` relation line or arrow. The outer padding prevents labels on edge nodes from being clipped without enlarging the icons. Keep source order: frontmatter, flowchart declaration, nodes, relationships, classes, class definitions, link style.
 

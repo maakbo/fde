@@ -15,6 +15,21 @@ State the shared discussion or decision this set supports.
 
 Replace placeholders with relative links and stable Mermaid node IDs.
 
+## Master layer
+
+When reusable element inventories are in scope, list their three canonical
+sources before the context views:
+
+| Master | Role | Prefix | Source | Context views that select it |
+| --- | --- | --- | --- | --- |
+| Actor map | participants, hierarchy, and peer relations | `a_` | `master-actor-map.md` | `context.md` |
+| External-system map | integrations and dependencies | `x_` | `master-system-map.md` | `context.md` |
+| Information model | conceptual information relationships | `i_` | `master-information-model.md` | `context.md` |
+
+The index is navigation and trace only. Canonical labels, icons, sizes, and
+stable identities live in the master Mermaid nodes. Each context source should
+also include a `Master references` table with the exact IDs it selects.
+
 ## Complexity observation
 
 Record what density, hubs, clusters, or crossings made visible before refinement.

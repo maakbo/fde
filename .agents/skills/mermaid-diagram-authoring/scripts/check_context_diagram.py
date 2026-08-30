@@ -98,6 +98,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("input", type=Path)
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--allow-complexity", action="store_true")
+    parser.add_argument(
+        "--allow-sparse",
+        action="store_true",
+        help="allow a sparse inventory or master map with missing/isolated relationships",
+    )
     return parser.parse_args()
 
 
@@ -124,6 +129,7 @@ def main() -> int:
     link_styles: list[tuple[int, str]] = []
     node_lines: list[int] = []
     edge_lines: list[int] = []
+    undirected_edges: dict[tuple[str, str], int] = {}
 
     for number, line in enumerate(lines, source.start_line):
         if line.strip().startswith("%%"):
@@ -142,7 +148,16 @@ def main() -> int:
             edges.append((match.group("left"), match.group("right"), True))
             edge_lines.append(number)
         elif match := UNDIRECTED_EDGE_RE.match(line):
-            edges.append((match.group("left"), match.group("right"), False))
+            left, right = match.group("left"), match.group("right")
+            edge_key = tuple(sorted((left, right)))
+            if edge_key in undirected_edges:
+                errors.append(
+                    f"line {number}: duplicate undirected relationship "
+                    f"({left} --- {right}); `---` already represents both directions"
+                )
+            else:
+                undirected_edges[edge_key] = number
+            edges.append((left, right, False))
             edge_lines.append(number)
         elif match := CLASS_RE.match(line):
             for node_id in match.group("ids").split(","):
@@ -173,7 +188,7 @@ def main() -> int:
         warnings.append("use the canonical themeCSS label-clipping guard")
     if len(link_styles) != 1 or link_styles[0][1] != CANONICAL_LINK_STYLE:
         errors.append(f"use `{CANONICAL_LINK_STYLE}` exactly once")
-    if len(nodes) < 3:
+    if len(nodes) < 3 and not args.allow_sparse:
         errors.append(f"use at least 3 semantic nodes; found {len(nodes)}")
     if len(nodes) > 7:
         message = f"complexity signal: {len(nodes)} nodes exceed the focused-view guideline"
@@ -227,7 +242,7 @@ def main() -> int:
                 errors.append(f"undefined edge endpoint: {endpoint}")
             degree[endpoint] += 1
     for node_id in nodes:
-        if degree[node_id] == 0:
+        if degree[node_id] == 0 and not args.allow_sparse:
             errors.append(f"{node_id}: isolated node")
 
     for class_name, style in class_defs.items():

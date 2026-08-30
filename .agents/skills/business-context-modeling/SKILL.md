@@ -1,6 +1,6 @@
 ---
 name: business-context-modeling
-description: Extract actors, business activities, information, and external systems from loose business descriptions; align their abstraction and grain; connect them into discussion-ready Mermaid models; and navigate between dense observation views, focused details, and one-level-higher overviews. Use when visualizing or organizing a business or operation, clarifying a current or future boundary, aligning stakeholder understanding, or moving repeatedly between concrete and abstract business views.
+description: Extract actors, business activities, information, and external systems from loose business descriptions; maintain reusable actor, external-system, and information master maps; align abstraction and grain; connect canonical elements into discussion-ready Mermaid models; and navigate between dense observation views, focused details, and one-level-higher overviews. Use when visualizing or organizing a business or operation, clarifying a current or future boundary, aligning stakeholder understanding, or moving repeatedly between concrete and abstract business views.
 ---
 
 # Business Context Modeling
@@ -11,6 +11,13 @@ Turn an ordinary conversation about a business or operation into a small model t
 
 - Start from loose language; do not require a form before producing a first model.
 - Extract four default types: actor, business activity, information, and external system.
+- When participants, systems, or information relationships matter, maintain three
+  canonical master views: an actor map, an external-system map, and an
+  information model. These maps may connect same-type nodes; they are not
+  substitutes for the business-centered context view.
+- Give master elements stable IDs and reuse those IDs, labels, icons, and sizes
+  when selecting them in a context view. Record the selection in a `Master
+  references` section because Mermaid cannot import another Markdown diagram.
 - Connect non-business elements through business activities in the foundation context view.
 - Keep one modeling question, boundary, state, and main abstraction level per diagram.
 - Start a focused view with 3–7 semantic nodes. Treat growth beyond seven as a signal to observe, not an automatic deletion rule.
@@ -20,7 +27,7 @@ Turn an ordinary conversation about a business or operation into a small model t
 - Use `mermaid-diagram-authoring` inside the modeling loop; let diagram density and layout pressure inform the next abstraction decision.
 - Default to one Mermaid block inside a Markdown working file. Do not create `.mmd`, SVG, or PNG unless the user explicitly asks for standalone source or export.
 
-Read [references/modeling-rules.md](references/modeling-rules.md) before classifying or connecting elements. Read [references/multi-view-modeling.md](references/multi-view-modeling.md) when a view grows beyond seven nodes or needs decomposition.
+Read [references/modeling-rules.md](references/modeling-rules.md) before classifying or connecting elements. Read [references/master-elements.md](references/master-elements.md) when the task asks for actor, system, or information inventories, same-type relationships, or reusable elements. Read [references/multi-view-modeling.md](references/multi-view-modeling.md) when a view grows beyond seven nodes or needs decomposition.
 
 ## Workflow
 
@@ -42,11 +49,22 @@ Collect the user's actual nouns and verbs before abstracting. Classify each as a
 
 Always return four compact candidate groups for actor, activity, information, and external system. Write `none observed` or `unresolved` rather than silently omitting a type. Keep omitted implementation details and unresolved items in prose.
 
+When a master layer already exists, reconcile each actor, external-system, and
+information candidate against its canonical ID before creating a new one. Keep
+source wording and possible aliases in the companion Markdown. Do not silently
+merge two candidates that differ by responsibility, abstraction, state, or
+boundary.
+
 ### 3. Align abstraction and grain
 
 Use the abstraction ladder in `modeling-rules.md`. Choose capability or outcome-sized activity for a context model. Choose outcome-sized activities or tasks for a flow. Do not mix a broad capability such as `sell products` with an operation such as `export CSV` in one foundation view.
 
 Name actors, information, and systems with short nouns. Name activities with one outcome-oriented verb phrase. Split or rename labels that contain two predicates.
+
+If the request includes same-type relationships, update the relevant master map
+before composing the context. Use the master templates and run
+`check_master_map.py` with `--kind actor`, `--kind system`, or `--kind
+information`.
 
 ### 4. Build the foundation backbone
 
@@ -74,6 +92,17 @@ business activity --> recipient
 
 Use `flowchart LR` and solid `-->` edges. Keep the business activity as the hub, with the input provider, output recipient, and any external system visible around it. In this variant, arrows mean a value or information handoff, not a detailed process sequence; move detailed order or decisions to a focused flow diagram. Keep this exception visible in the companion reading so it is not confused with the ordinary context convention.
 
+For every selected `a_`, `x_`, or `i_` node, copy the canonical master node
+definition and add a `## Master references` table with the master path, ID,
+canonical label, and reason for selection. The context may use a different
+layout or a narrower reading, but it must not invent a second identity.
+Use a path that resolves from the context file to the exact master source, not
+only a same-named file in another model set.
+Run `check_master_references.py` when the master paths are available; it compares
+the selected node's ID, label, icon, size, and class against the canonical map.
+Add `--allow-sparse` when a supplied master intentionally contains multiple
+candidate nodes whose same-type relationships have not been observed yet.
+
 Use a separate general context view when ownership, storage, access, delivery, or technical integration is itself the question.
 
 ### 5. Observe complexity
@@ -92,7 +121,7 @@ Do not simplify automatically. Choose deliberately among keeping the view, refin
 
 When adding focused diagrams, create or update an overview exactly one abstraction level higher. Decide whether the overview shows undirected relationships or directional handoffs. Let each detail expand one stable overview node ID and record the trace in the repository-root template `/templates/model-set-index.md`.
 
-Move upward by grouping details around shared outcomes or responsibilities. Move downward by expanding one overview node into a focused context and, only when order matters, a focused flow.
+Move upward by grouping details around shared outcomes or responsibilities. Move downward by expanding one overview node into a focused context and, only when order matters, a focused flow. Record the three master views in the model-set index with role `master`, then link context views to the exact master IDs they select. Treat the index as navigation and trace, not as a second canonical registry.
 
 ### 7. Author, preview, and revise
 
@@ -125,5 +154,6 @@ Return:
 4. Compact text alternative of the relationship backbone.
 5. Assumptions, omitted details, and unresolved classifications.
 6. Model-set trace when multiple diagrams exist.
-7. One focused discussion question.
-8. Source-validation result. Include export results only when the user explicitly requested `mermaid-diagram-export`.
+7. Master views and `Master references` when actor, system, or information maps are in scope.
+8. One focused discussion question.
+9. Source-validation result, including the matching master-map checks when used. Include export results only when the user explicitly requested `mermaid-diagram-export`.

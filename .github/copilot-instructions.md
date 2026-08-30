@@ -3,6 +3,12 @@
 Read and follow `/AGENTS.md` before changing artifacts.
 
 - Route loose business descriptions through `.agents/skills/business-context-modeling/SKILL.md`.
+- If actors, external systems, or information need their own relationships,
+  update the matching master map first and record `Master references` in each
+  context source.
+- If same-type relationships are not yet evidenced, keep candidates as
+  disconnected nodes and validate with `--allow-sparse` rather than inventing
+  a relationship.
 - Use `.agents/skills/mermaid-diagram-authoring/SKILL.md` for fast-preview Mermaid in Markdown.
 - Do not generate `.mmd`, SVG, or PNG during ordinary modeling or authoring.
 - Use `.agents/skills/mermaid-diagram-export/SKILL.md` only after an explicit export or image request.

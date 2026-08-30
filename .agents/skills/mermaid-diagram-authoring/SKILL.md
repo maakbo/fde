@@ -1,6 +1,6 @@
 ---
 name: mermaid-diagram-authoring
-description: Create and refine simple Mermaid diagrams directly inside Markdown or as explicitly requested standalone .mmd sources. Use for fast GitHub or VS Code preview, relationship diagrams, business context views, operational flows, decisions, rework, and source-only Mermaid cleanup. This Skill never creates SVG or PNG; route explicit media requests to mermaid-diagram-export.
+description: Create and refine simple Mermaid diagrams directly inside Markdown or as explicitly requested standalone .mmd sources. Use for fast GitHub or VS Code preview, actor/system/information master maps, relationship diagrams, business context views, operational flows, decisions, rework, and source-only Mermaid cleanup. This Skill never creates SVG or PNG; route explicit media requests to mermaid-diagram-export.
 ---
 
 # Mermaid Diagram Authoring
@@ -22,6 +22,9 @@ Write the smallest diagram people can inspect while the conversation is still ch
 2. Reuse an existing Markdown file when one already carries the discussion. Otherwise copy `/templates/icon-context.md` or `/templates/business-flow.md`.
 3. Choose the smallest suitable profile:
    - Read [references/icon-context.md](references/icon-context.md) for actors, activities, information, systems, undirected relationships, and value-flow context views.
+   - For an actor, external-system, or information master map, read
+     `../business-context-modeling/references/master-elements.md`, copy the
+     matching template, and run `check_master_map.py` with its `--kind`.
    - Read [references/business-flow.md](references/business-flow.md) for order, decisions, and rework.
    - For another Mermaid type, use native syntax and avoid adding visual machinery that the subject does not require.
 4. Edit the Mermaid block and its short reading or unresolved question together.

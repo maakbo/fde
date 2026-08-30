@@ -2,7 +2,7 @@
 
 対話から現場の構造を捉え、議論できるモデルと動く仕組みを一緒につくる、maakboなりの Forward Deployed Engineering。
 
-`fde` は、まだ整理されていない事業や業務の話を、AIエージェントと一緒に素早く可視化するための公開実験です。最初の能力として、アクター・業務・情報・外部システムを抽出し、Mermaidでコンテキスト図と業務フロー図へ変換します。
+`fde` は、まだ整理されていない事業や業務の話を、AIエージェントと一緒に素早く可視化するための公開実験です。アクター・業務・情報・外部システムを抽出し、必要ならアクター／外部システム／情報のマスタ図へ整理したうえで、Mermaidのコンテキスト図と業務フロー図へ変換します。
 
 図をきれいにすることだけが目的ではありません。自動配置に収まりにくい複雑さも観察しながら、具体と抽象を行き来し、粒度・境界・関係性を議論できる状態をつくります。
 
@@ -12,7 +12,7 @@
 - `.github/copilot-instructions.md`: a small GitHub Copilot adapter.
 - `.github/agents/`: business modeler, Markdown diagram author, explicit exporter, and read-only reviewer agents.
 - `.agents/skills/`: business modeling, Mermaid authoring, and explicit media-export Skills.
-- `templates/`: Markdown-first Mermaid starting points.
+- `templates/`: Markdown-first Mermaid starting points, including actor, external-system, and information master maps.
 - `templates/github-actions-validate.yml`: optional CI workflow; copy it to `.github/workflows/validate.yml` when the publishing credential allows workflow files.
 - `examples/repair-intake/`: a synthetic three-level example linking overview, focused context, and focused flow.
 - `examples/repair-intake/previews/`: explicit PNG review artifacts with tap-friendly links for mobile clients.
@@ -46,7 +46,8 @@ In GitHub Copilot, repository instructions, custom agents, and project Agent Ski
 ```text
 loose conversation
   -> concrete candidates
-  -> actors / activities / information / external systems
+  -> reconcile actor / system / information master maps
+  -> select canonical elements around an activity
   -> first Mermaid model in Markdown
   -> preview and inspect density / relationships
   -> discuss boundary, grain, and assumptions
@@ -54,6 +55,15 @@ loose conversation
 ```
 
 A focused diagram normally begins with 3–7 semantic nodes. More than seven is not an automatic failure. First preserve and inspect the complexity. Then decide whether to keep it, refine the subject or grain, or add focused diagrams and a one-level-higher overview. The repair-intake example demonstrates the reverse path too: a detail can change how its parent overview concept is understood.
+
+Master maps are the reusable semantic layer: the actor map captures participants
+and hierarchy, the external-system map captures integrations and dependencies,
+and the information model captures conceptual relationships. A context view
+copies their stable IDs, canonical labels, icons, and sizes and records the
+selection in `Master references`. The index that links these files is only a
+navigation aid; the master Mermaid node remains canonical. When candidates are
+known but a same-type relationship is not evidenced, keep them disconnected and
+validate with `--allow-sparse` rather than inventing a link.
 
 Context views use undirected lines for ordinary business relationships. Use an arrow only to emphasize an explicitly strong dependency. When the question is specifically how value or information enters and leaves an activity, use the explicit left-to-right value-flow variant so the provider, output recipient, and supporting system remain visible.
 

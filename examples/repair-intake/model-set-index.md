@@ -12,6 +12,17 @@ Connect the repair-intake boundary discussion to the wider repair service withou
 | [context](context.md) | focused relationship context | business activity | `overview.md / b_manage_intake` | [flow](flow.md) | Relationships among intake inputs, outputs, scheduling, and recipient | working hypothesis |
 | [flow](flow.md) | focused flow | task | `context.md / b_receive_request` | — | Completeness decision and missing-detail rework | working hypothesis |
 
+## Master layer
+
+| Master | Role | Canonical prefix | Source | Context consumer |
+| --- | --- | --- | --- | --- |
+| Actor map | participants and peer relations | `a_` | [master-actor-map.md](master-actor-map.md) | [context](context.md) |
+| External-system map | outside systems and integrations | `x_` | [master-system-map.md](master-system-map.md) | [context](context.md) |
+| Information model | conceptual information relations | `i_` | [master-information-model.md](master-information-model.md) | [context](context.md) |
+
+See the [master model index](master-model-index.md) for the canonical layer and
+its sparse-system note.
+
 ## Abstract to concrete
 
 - `b_manage_intake` expands into the customer, repair request, intake record, scheduling service, repair booking, repair team, and `b_receive_request` activity.

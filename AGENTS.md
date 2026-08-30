@@ -14,6 +14,10 @@ This repository is a portable environment for forward-deployed business modeling
 
 1. If a request clearly matches a Skill under `.agents/skills/`, read that `SKILL.md` completely and follow it.
 2. Use `business-context-modeling` for loose business or operational descriptions.
+   When actor, external-system, or information inventories and their same-type
+   relationships are part of the question, update the corresponding master maps
+   before assembling a business context. Reuse their stable IDs and record
+   `Master references` in the context Markdown.
 3. Use `mermaid-diagram-authoring` for Mermaid source in Markdown, whether the request begins with a business model or a direct diagram task.
 4. Use `mermaid-diagram-export` only when the user explicitly asks for SVG, PNG, rendering, image generation, publishing assets, or visual artifact review.
 5. Read only the references directly required by the selected Skill.
@@ -24,8 +28,15 @@ This repository is a portable environment for forward-deployed business modeling
 - Preserve the user's original nouns and verbs before abstracting them.
 - Separate observations, assumptions, omissions, and open questions.
 - Do not invent roles, exchanges, systems, or responsibilities because they are common elsewhere.
+- If a master contains multiple candidates but no same-type relationship is
+  evidenced yet, keep the nodes disconnected and use `--allow-sparse`; never
+  add an edge just to make the map look connected.
 - Keep one modeling question, boundary, state, and main abstraction level per diagram.
 - Center foundation context models on business activities.
+- Keep the three master views distinct from the business-centered context:
+  actor hierarchy/relations, external-system relations, and conceptual
+  information relations may connect same-type nodes; context edges still join
+  one business activity to one non-business element.
 - Treat Mermaid layout pressure as modeling evidence. Observe complexity before simplifying it.
 - When focused diagrams multiply, add or update a one-level-higher overview and trace each detail to its expanded overview node.
 - Keep important meaning in companion Markdown; a diagram alone is not the model.
