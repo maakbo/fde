@@ -72,12 +72,12 @@ ICON_RULES = {
     ),
     "i": (
         "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg",
-        (38, 38),
+        (32, 32),
         "information",
     ),
     "x": (
         "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg",
-        (38, 38),
+        (32, 32),
         "external",
     ),
 }

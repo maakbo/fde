@@ -25,8 +25,8 @@ Use stable `prefix_lower_snake_case` IDs.
 | --- | --- | --- | --- |
 | `a_` | actor | `lucide-thin/user.svg` | `38 x 38` |
 | `b_` | business activity | `lucide-thin/ellipse.svg` | `30 x 30` |
-| `i_` | information | `lucide-thin/file.svg` | `38 x 38` |
-| `x_` | external system | `lucide-thin/server.svg` | `38 x 38` |
+| `i_` | information | `lucide-thin/file.svg` | `32 x 32` |
+| `x_` | external system | `lucide-thin/server.svg` | `32 x 32` |
 | `v_` | device or contact surface | Thin Lucide device asset | `38 x 38` |
 
 Use this raw asset base in Mermaid nodes:
@@ -45,7 +45,7 @@ Device URLs:
 
 Keep node properties in this exact order: `img`, `label`, `pos`, `w`, `h`, `constraint`. Keep one node per line.
 
-The source canvas is square because Mermaid v11 sizes image nodes from the height property. At `30 x 30`, the Lucide path remains a horizontal ellipse with enough visual presence to carry the business subject while staying quieter than the `38 x 38` supporting icons. Use `nodeSpacing: 64` and `rankSpacing: 80` so relationship paths have roughly one-character breathing room around the icon field.
+The source canvas is square because Mermaid v11 sizes image nodes from the height property. The business ellipse stays at `30 x 30`; information and external-system icons use `32 x 32` so their visible geometry stays close to the actor and business marks without overpowering them. Actors and devices remain `38 x 38` because their Lucide geometry needs the taller canvas. Use `nodeSpacing: 64` and `rankSpacing: 80` so relationship paths have roughly one-character breathing room around the icon field.
 
 Lift only the business label by `6px` with `margin-top` to compensate for the ellipse icon's transparent lower canvas. Avoid CSS transforms on the HTML label inside Mermaid's SVG `foreignObject`: some GitHub/browser combinations can move that label outside its node. The canonical CSS selects Mermaid image-node IDs containing the stable `-flowchart-b_` prefix because Mermaid does not preserve `class` statement names on image-node DOM elements. Do not shift labels for actors, information, systems, or devices.
 
