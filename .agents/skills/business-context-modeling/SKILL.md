@@ -1,6 +1,6 @@
 ---
 name: business-context-modeling
-description: Extract actors, business activities, information, and external systems from loose business descriptions; maintain reusable actor, external-system, and information master maps; align abstraction and grain; connect canonical elements into discussion-ready Mermaid models; and navigate between dense observation views, focused details, and one-level-higher overviews. Use when visualizing or organizing a business or operation, clarifying a current or future boundary, aligning stakeholder understanding, or moving repeatedly between concrete and abstract business views.
+description: Extract actors, business activities, information, and external systems from loose business descriptions; maintain reusable actor, external-system, and information master maps; align abstraction and grain; connect canonical elements into discussion-ready Mermaid models; and move through overall, use-case, and flow views while navigating between dense observation, focused details, and one-level-higher overviews. Use when visualizing or organizing a business or operation, clarifying a current or future boundary, aligning stakeholder understanding, or moving repeatedly between concrete and abstract business views.
 ---
 
 # Business Context Modeling
@@ -20,6 +20,11 @@ Turn an ordinary conversation about a business or operation into a small model t
   references` section because Mermaid cannot import another Markdown diagram.
 - Connect non-business elements through business activities in the foundation context view.
 - Keep one modeling question, boundary, state, and main abstraction level per diagram.
+- Use a three-rung model set when the work needs more than one context: overall
+  context (title-level business area and major actors), use-case context (one
+  changing scene around one business outcome), then business flow (order,
+  decisions, or rework inside that scene). The flow is a separate diagram, not
+  another relationship context.
 - Start a focused view with 3–7 semantic nodes. Treat growth beyond seven as a signal to observe, not an automatic deletion rule.
 - Preserve a dense observation view when seeing the complexity supports the discussion.
 - When focused diagrams multiply, add or update a one-level-higher overview and trace each detail to one expanded overview node.
@@ -68,6 +73,21 @@ If the request includes same-type relationships, update the relevant master map
 before composing the context. Use the master templates and run
 `check_master_map.py` with `--kind actor`, `--kind system`, or `--kind
 information`.
+
+Choose the context rung before writing Mermaid:
+
+- **Overall context**: center a title-level business area or outcome as a
+  `b_` node and place the major actor subjects around it. This is a relationship
+  view, not a process route; keep detailed information and systems for a child
+  view unless they are essential to the overall boundary.
+- **Use-case context**: cut one scene where an actor responsibility, external
+  system boundary, information handoff, or value recipient changes. Center one
+  outcome-sized `b_` activity and select the surrounding `a_`, `x_`, and `i_`
+  nodes from the masters. If the scene becomes crowded, split by scene or
+  discussion question and trace each child to the same parent node.
+- **Business flow**: only after a use-case context shows that order, decisions,
+  or rework matter. Expand one activity from that context and use the
+  `mermaid-business-flow-diagram` Skill for directional arrows.
 
 ### 4. Build the foundation backbone
 
@@ -122,9 +142,19 @@ Do not simplify automatically. Choose deliberately among keeping the view, refin
 
 ### 6. Build a navigable model set
 
-When adding focused diagrams, create or update an overview exactly one abstraction level higher. Decide whether the overview shows undirected relationships or directional handoffs. Let each detail expand one stable overview node ID and record the trace in the repository-root template `/templates/model-set-index.md`.
+When adding use-case / scene diagrams, create or update an overall (or
+one-level-higher) overview exactly one abstraction level above them. Decide
+whether the overview shows undirected relationships or directional handoffs.
+Let each detail expand one stable overview node ID and record the trace in the
+repository-root template `/templates/model-set-index.md`.
 
 Move upward by grouping details around shared outcomes or responsibilities. Move downward by expanding one overview node into a focused context and, only when order matters, a focused flow. Record the three master views in the model-set index with role `master`, then link context views to the exact master IDs they select. Treat the index as navigation and trace, not as a second canonical registry.
+
+For a three-rung set, record the chain explicitly: `overall context` → `use-case
+context` → `business flow`. A use-case context has one overview parent and a flow
+has one use-case parent. If several use-case scenes emerge, keep sibling views
+separate and let the overview remain one level higher. If the overview itself
+becomes dense, add one more higher overview rather than flattening the set.
 
 ### 7. Author, preview, and revise
 
@@ -156,7 +186,8 @@ Return:
 3. Markdown working source with one previewable Mermaid block.
 4. Compact text alternative of the relationship backbone.
 5. Assumptions, omitted details, and unresolved classifications.
-6. Model-set trace when multiple diagrams exist.
+6. Model-set trace when multiple diagrams exist, including each view's rung,
+   parent, expanded node, and child views.
 7. Master views and `Master references` when actor, system, or information maps are in scope.
 8. One focused discussion question.
 9. Source-validation result, including the matching master-map checks when used. Include export results only when the user explicitly requested `mermaid-diagram-export`.

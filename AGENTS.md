@@ -39,6 +39,10 @@ This repository is a portable environment for forward-deployed business modeling
   one business activity to one non-business element.
 - Treat Mermaid layout pressure as modeling evidence. Observe complexity before simplifying it.
 - When focused diagrams multiply, add or update a one-level-higher overview and trace each detail to its expanded overview node.
+- Use the three-rung context ladder when it helps: overall context for the
+  title-level business area and major actors, use-case context for one changing
+  scene, and business flow for order or decisions inside that scene. Keep the
+  parent/expanded-node chain explicit.
 - Keep important meaning in companion Markdown; a diagram alone is not the model.
 - Use synthetic examples. Never add personal, customer, credential, or confidential data.
 

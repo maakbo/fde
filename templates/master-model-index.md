@@ -15,6 +15,8 @@ the navigation and trace surface that connects them to business context views.
 
 For every context view, record the selected master IDs and copy their canonical
 node definitions. Mermaid does not import another diagram automatically.
+The model-set may have an overall context and several use-case contexts; record
+the exact IDs selected by each context, not only the first diagram in the set.
 
 | Context view | Master | Selected IDs | Why selected |
 | --- | --- | --- | --- |

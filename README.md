@@ -14,9 +14,11 @@
 - `.agents/skills/`: business modeling, Mermaid authoring, and explicit media-export Skills.
 - `templates/`: Markdown-first Mermaid starting points, including actor, external-system, and information master maps.
 - `templates/github-actions-validate.yml`: optional CI workflow; copy it to `.github/workflows/validate.yml` when the publishing credential allows workflow files.
-- `examples/repair-intake/`: a synthetic three-level example linking overview, focused context, and focused flow.
+- `examples/maakbo-expression-loop/`: a maakbo-shaped three-rung example linking overall context, use-case context, and business flow.
+- `examples/repair-intake/`: a separate synthetic regression fixture for the same notation.
 - `examples/repair-intake/previews/`: explicit PNG review artifacts with tap-friendly links for mobile clients.
-- `scripts/validate_repository.py`: one command to validate the public bundle.
+- `scripts/validate_repository.py`: one command to validate the public bundle,
+  including master references and model-set parent/child traces.
 
 ## Quick start
 
@@ -33,9 +35,9 @@ Open the cloned repository in an AI agent environment and start with loose langu
 ```text
 Use the business-modeler agent.
 
-A customer sends a repair request. The coordinator checks the scheduling
-service, records the request, and asks for missing information before booking.
-Create the first discussion-ready model. Keep assumptions visible.
+I have a loose idea and want to turn it into words, a diagram, or a presentation.
+Start from the overall business context, cut one use-case scene, and add a flow
+only if order or decisions need to be discussed. Keep assumptions visible.
 Write the diagram inside Markdown for immediate preview. Do not export images.
 ```
 
@@ -54,7 +56,7 @@ loose conversation
   -> move upward or downward in abstraction
 ```
 
-A focused diagram normally begins with 3–7 semantic nodes. More than seven is not an automatic failure. First preserve and inspect the complexity. Then decide whether to keep it, refine the subject or grain, or add focused diagrams and a one-level-higher overview. The repair-intake example demonstrates the reverse path too: a detail can change how its parent overview concept is understood.
+A focused diagram normally begins with 3–7 semantic nodes. More than seven is not an automatic failure. First preserve and inspect the complexity. Then decide whether to keep it, refine the subject or grain, or add focused diagrams and a one-level-higher overview. The [maakbo expression loop example](examples/maakbo-expression-loop/) demonstrates the overall → use-case → flow path; the repair-intake fixture remains available as a neutral regression example.
 
 Master maps are the reusable semantic layer: the actor map captures participants
 and hierarchy, the external-system map captures integrations and dependencies,

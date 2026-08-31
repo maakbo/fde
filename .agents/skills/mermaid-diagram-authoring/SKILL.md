@@ -14,6 +14,10 @@ Write the smallest diagram people can inspect while the conversation is still ch
 - Keep the Markdown file as the single editable source; do not duplicate it into `.mmd` automatically.
 - Use a standalone `.mmd` only when the user explicitly asks for one or an integration requires it.
 - Preserve business meaning while improving notation and visual consistency.
+- In a business model set, keep the profiles separate: overall context for the
+  title-level business area and major actors, use-case context for one changing
+  scene, and business flow for order or decisions inside that scene. Record the
+  parent/expanded-node trace outside the Mermaid block.
 - Keep image-node properties in the exact order `label`, `img`, `pos`, `w`,
   `h`, `constraint`, so the stable English ID and Japanese label remain easy
   to compare while editing.

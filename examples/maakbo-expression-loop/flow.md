@@ -1,8 +1,7 @@
-# maakboの表現制作 — 業務フロー
+# アイデアを表現にする — 業務フロー
 
-This is a maakbo-shaped example of the third rung. Edit the Mermaid block
-directly and preview this Markdown file. Record unresolved routes or
-responsibility questions below the diagram.
+The third rung expands `b_shape_expression` only far enough to show the
+production loop and its one meaningful rework decision.
 
 ```mermaid
 ---
@@ -47,6 +46,13 @@ flowchart TB
   linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
+## 読み方
+
+アイデアの種を受け取り、芯を見つけて初稿をつくる。芯がまだ見えなければ
+見つけるところへ戻り、見えたら対話で磨く。ここでは順序と戻り道だけを
+示し、関係者や情報の意味は親のシーンコンテキストで確認する。
+
 ## 未解決の問い
 
-「芯が見える？」を誰と確認して、どこまでを一周とするか？
+「芯が見える？」を判断するのはつくる人だけか、それとも対話相手との
+合意を必要とするか？

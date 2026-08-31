@@ -17,6 +17,21 @@ a_customer@{ label: "依頼者", img: "https://raw.githubusercontent.com/maakbo/
 - Use `---` for ordinary business relationships. Use `-->` only when a strong dependency is an intentional part of the question; do not turn every relationship into an arrow.
 - If input/output value handoff itself is the question, make that explicit as a value-flow context and use arrows there. Arrows still do not mean a detailed procedure.
 
+## Context ladder profiles
+
+Use the profile that matches the question; do not make one figure carry every
+level at once.
+
+| Profile | Center | Include |
+| --- | --- | --- |
+| Overall context | A title-level business area or outcome as a `b_` anchor | Major actor subjects; keep detailed information and systems for child views |
+| Use-case / scene context | One outcome-sized `b_` activity | The `a_`, `x_`, and `i_` elements whose responsibility, boundary, handoff, or value changes in that scene |
+| Complexity observation | The current same-level backbone | All useful candidates when the density itself needs to be seen; acknowledge it with `--allow-complexity` |
+
+The next rung after a use-case context is a business flow, which belongs to the
+business-flow profile and uses arrows for order. When several scene contexts are
+needed, link each one to its single parent overview node in the model-set index.
+
 ## Node IDs and icons
 
 Use stable `prefix_lower_snake_case` IDs.

@@ -1,8 +1,8 @@
-# maakboの表現制作 — ユースケース・シーンコンテキスト
+# アイデアを表現にする — ユースケース・シーンコンテキスト
 
-This is a maakbo-shaped example of the second rung. Edit the Mermaid block
-directly and preview this Markdown file. Keep assumptions and open questions
-below the diagram when they matter.
+The second rung cuts the scene in which a loose idea becomes a reviewable first
+expression through dialogue. All non-business nodes are selected from the
+canonical master maps.
 
 ```mermaid
 ---
@@ -33,7 +33,6 @@ flowchart LR
   x_github@{ label: "GitHub", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   a_reader@{ label: "読み手", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
-  %% 通常の関係は---。-->は強い依存性を強調するときだけ使う。
   a_creator --- b_shape_expression
   i_idea_seed --- b_shape_expression
   b_shape_expression --- a_dialogue_partner
@@ -53,6 +52,24 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
+## 読み方
+
+アイデアの種を、つくる人と対話相手が表現の初稿へ形にする。GitHubは
+履歴を残す外部システムとして置き、読み手は成果を受け取る主体として
+仮置きする。線はこのシーンの関係を表し、作業順は示さない。
+
+## Master references
+
+| Master | ID | Canonical label | Use in this view |
+| --- | --- | --- | --- |
+| [Actor master](master-actor-map.md) | `a_creator` | つくる人 | 種を置き、判断する主体 |
+| [Actor master](master-actor-map.md) | `a_dialogue_partner` | 対話相手 | 初稿を一緒に検討する相手 |
+| [Actor master](master-actor-map.md) | `a_reader` | 読み手 | 初稿の価値を受け取る主体（仮） |
+| [External-system master](master-system-map.md) | `x_github` | GitHub | 履歴と差分を残す接点 |
+| [Information master](master-information-model.md) | `i_idea_seed` | アイデアの種 | 入力となる素材 |
+| [Information master](master-information-model.md) | `i_expression_draft` | 表現の初稿 | このシーンの成果 |
+
 ## 未解決の問い
 
-読み手をこのシーンの主体として残すか、それとも発信・共有の別シーンへ分けるか？
+GitHubをこのシーンの外部システムとして残すか。それとも作業環境の前段
+（別の環境コンテキスト図）へ分け、ここでは表現と対話に集中するか？

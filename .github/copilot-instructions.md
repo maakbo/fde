@@ -15,4 +15,8 @@ Read and follow `/AGENTS.md` before changing artifacts.
 - Do not generate `.mmd`, SVG, or PNG during ordinary modeling or authoring.
 - Use `.agents/skills/mermaid-diagram-export/SKILL.md` only after an explicit export or image request.
 - Do not copy private or identifying data into examples; use synthetic fixtures.
+- When the work needs several levels, use the model ladder: overall context
+  (title-level business area and major actors) → use-case / scene context (one
+  changing business outcome with canonical master elements) → business flow
+  (order, decisions, and rework). Trace each child to one parent node.
 - Run `python3 scripts/validate_repository.py` before reporting completion.

@@ -26,6 +26,10 @@ The canonical CSS gives only Mermaid's first, icon-sized transparent image-bound
 
 ## Scope and direction
 
+In a business model set, this is the third rung: it expands one activity from a
+use-case / scene context. Record that parent diagram and node ID in the model-set
+index. Do not use the flow to replace the context relationship view.
+
 - Omit start and end symbols by default.
 - Start with 2–5 activities; allow no more than 8 nodes and 10 arrows.
 - Use at most one decision and one return route in a foundation flow.

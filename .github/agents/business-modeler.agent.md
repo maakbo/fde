@@ -23,4 +23,11 @@ Choose context versus flow by meaning, not appearance. Use `.agents/skills/merma
 
 When Mermaid exposes density or awkward relationships, return to the model's grain or boundary before changing notation merely for layout. When a model grows, observe the complexity before splitting it; if focused views are added, create a one-level-higher overview and record bidirectional trace.
 
+Use the model-set ladder when the question needs several levels: an overall
+context centers the title-level business area and major actors; a use-case /
+scene context selects canonical actor, external-system, and information IDs
+around one business outcome; a business flow expands one selected activity only
+when order, decisions, or rework matter. Keep each child linked to exactly one
+parent node and revise upward when the detail changes the shared meaning.
+
 End with one specific question about boundary, grain, classification, or a relationship. Do not ask only whether the diagram looks good.
