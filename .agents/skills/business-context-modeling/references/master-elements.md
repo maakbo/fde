@@ -24,6 +24,9 @@ edge still joins one `b_` activity and one non-business element.
   different wording.
 - Keep aliases, source wording, confidence, and unresolved classification in
   the Markdown companion, not in the Mermaid node label.
+- Keep image-node properties in the exact order `label`, `img`, `pos`, `w`,
+  `h`, `constraint` so the stable English ID and Japanese label stay adjacent
+  during renaming.
 - If two names represent different abstraction levels, states, owners, or
   responsibilities, assign distinct IDs and explain the distinction.
 

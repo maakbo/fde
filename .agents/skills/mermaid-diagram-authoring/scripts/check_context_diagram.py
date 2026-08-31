@@ -16,8 +16,8 @@ from source_loader import SourceError, load_mermaid_source
 
 NODE_RE = re.compile(
     r'^\s{2}(?P<id>[a-z][a-z0-9_]*)@\{\s*'
-    r'img:\s*"(?P<img>[^"]+)",\s*'
     r'label:\s*"(?P<label>[^"]*)",\s*'
+    r'img:\s*"(?P<img>[^"]+)",\s*'
     r'pos:\s*"b",\s*'
     r'w:\s*(?P<w>\d+),\s*'
     r'h:\s*(?P<h>\d+),\s*'
@@ -167,7 +167,10 @@ def main() -> int:
         elif line.strip().startswith("linkStyle"):
             link_styles.append((number, line.strip()))
         elif "@{" in line:
-            errors.append(f"line {number}: use canonical one-line image-node properties")
+            errors.append(
+                f"line {number}: use canonical one-line image-node property order: "
+                "label, img, pos, w, h, constraint"
+            )
         elif any(token in line for token in ("-.->", "<--", "==>")):
             errors.append(f"line {number}: use only --- or --> value edges")
         elif "-->" in line or ("---" in line and line.strip() != "---"):

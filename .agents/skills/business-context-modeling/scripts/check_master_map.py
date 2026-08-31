@@ -14,8 +14,8 @@ sys.dont_write_bytecode = True
 
 NODE_RE = re.compile(
     r'^\s{2}(?P<id>[a-z][a-z0-9_]*)@\{\s*'
-    r'img:\s*"(?P<img>[^"]+)",\s*'
     r'label:\s*"(?P<label>[^"]*)",\s*'
+    r'img:\s*"(?P<img>[^"]+)",\s*'
     r'pos:\s*"b",\s*'
     r'w:\s*(?P<w>\d+),\s*'
     r'h:\s*(?P<h>\d+),\s*'

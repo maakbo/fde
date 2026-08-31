@@ -14,7 +14,9 @@ Use the raw asset base
 These are Lucide geometries with the shared `stroke-width` normalized to
 `1.35`; keep the same thin assets in context diagrams and flows.
 
-Keep property order `img`, `label`, `pos`, `w`, `h`, `constraint` and one node per line.
+Keep property order `label`, `img`, `pos`, `w`, `h`, `constraint` and one node
+per line. Keeping the English ID immediately next to the Japanese label makes
+renaming and consistency checks easier.
 
 The square source canvas matches Mermaid v11's rendered image bounds. At `30 x 30`, the Lucide path remains a horizontal ellipse, keeps the label close, and no longer reads as a minor marker beside the `38 x 38` decision symbol.
 

@@ -47,6 +47,9 @@ This repository is a portable environment for forward-deployed business modeling
 - Default to one Mermaid block inside a Markdown working file for immediate GitHub or VS Code preview.
 - Keep one editable source per diagram. Do not create a duplicate `.mmd` automatically.
 - Keep labels short and place them below fixed-size icons.
+- In image nodes, keep properties in the exact order `label`, `img`, `pos`,
+  `w`, `h`, `constraint`; keeping the English ID next to the Japanese label
+  makes renaming consistency easy to inspect.
 - Use the thin Lucide assets defined by the selected diagram Skill; do not introduce a new icon merely for decoration.
 - Do not create SVG or PNG during ordinary modeling or diagram authoring.
 - When export is explicitly requested, keep the Markdown source unchanged and inspect the PNG when visual review matters.

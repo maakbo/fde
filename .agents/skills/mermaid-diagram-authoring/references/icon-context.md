@@ -5,7 +5,7 @@
 The icon is the visual object. Its size does not depend on its label.
 
 ```mermaid
-a_customer@{ img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", label: "依頼者", pos: "b", w: 38, h: 38, constraint: "on" }
+a_customer@{ label: "依頼者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 ```
 
 ## Scope and direction
@@ -43,7 +43,9 @@ Device URLs:
 - iPhone: `lucide-thin/smartphone.svg`
 - laptop: `lucide-thin/laptop.svg`
 
-Keep node properties in this exact order: `img`, `label`, `pos`, `w`, `h`, `constraint`. Keep one node per line.
+Keep node properties in this exact order: `label`, `img`, `pos`, `w`, `h`,
+`constraint`. Keeping the English ID immediately next to the Japanese label
+makes renaming and consistency checks easier. Keep one node per line.
 
 The source canvas is square because Mermaid v11 sizes image nodes from the height property. The business ellipse stays at `30 x 30`; information and external-system icons use `32 x 32` so their visible geometry stays close to the actor and business marks without overpowering them. Actors and devices remain `38 x 38` because their Lucide geometry needs the taller canvas. Use `nodeSpacing: 64` and `rankSpacing: 80` so relationship paths have roughly one-character breathing room around the icon field.
 

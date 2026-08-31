@@ -25,6 +25,9 @@ Turn an ordinary conversation about a business or operation into a small model t
 - When focused diagrams multiply, add or update a one-level-higher overview and trace each detail to one expanded overview node.
 - Keep uncertainty, omitted details, and open questions in companion Markdown.
 - Use `mermaid-diagram-authoring` inside the modeling loop; let diagram density and layout pressure inform the next abstraction decision.
+- When writing Mermaid image nodes, keep properties in the exact order
+  `label`, `img`, `pos`, `w`, `h`, `constraint` so stable English IDs and
+  Japanese labels can be compared at a glance.
 - Default to one Mermaid block inside a Markdown working file. Do not create `.mmd`, SVG, or PNG unless the user explicitly asks for standalone source or export.
 
 Read [references/modeling-rules.md](references/modeling-rules.md) before classifying or connecting elements. Read [references/master-elements.md](references/master-elements.md) when the task asks for actor, system, or information inventories, same-type relationships, or reusable elements. Read [references/multi-view-modeling.md](references/multi-view-modeling.md) when a view grows beyond seven nodes or needs decomposition.

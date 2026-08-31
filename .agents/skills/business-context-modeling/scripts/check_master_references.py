@@ -14,8 +14,8 @@ sys.dont_write_bytecode = True
 
 NODE_RE = re.compile(
     r'^\s{2}(?P<id>[a-z][a-z0-9_]*)@\{\s*'
-    r'img:\s*"(?P<img>[^"]+)",\s*'
     r'label:\s*"(?P<label>[^"]*)",\s*'
+    r'img:\s*"(?P<img>[^"]+)",\s*'
     r'pos:\s*"b",\s*'
     r'w:\s*(?P<w>\d+),\s*'
     r'h:\s*(?P<h>\d+),\s*'
@@ -251,7 +251,7 @@ def main() -> int:
         if master_node is None:
             errors.append(f"{node_id}: not found in the supplied master map")
             continue
-        for field in ("img", "label", "pos", "w", "h", "constraint"):
+        for field in ("label", "img", "pos", "w", "h", "constraint"):
             if context_node[field] != master_node[field]:
                 errors.append(
                     f"{node_id}: {field} differs from master "

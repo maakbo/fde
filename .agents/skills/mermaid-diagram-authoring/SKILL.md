@@ -14,6 +14,9 @@ Write the smallest diagram people can inspect while the conversation is still ch
 - Keep the Markdown file as the single editable source; do not duplicate it into `.mmd` automatically.
 - Use a standalone `.mmd` only when the user explicitly asks for one or an integration requires it.
 - Preserve business meaning while improving notation and visual consistency.
+- Keep image-node properties in the exact order `label`, `img`, `pos`, `w`,
+  `h`, `constraint`, so the stable English ID and Japanese label remain easy
+  to compare while editing.
 - Never create SVG or PNG, invoke a renderer, or install rendering dependencies unless the user explicitly asks to export.
 
 ## Workflow

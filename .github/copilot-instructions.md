@@ -10,6 +10,8 @@ Read and follow `/AGENTS.md` before changing artifacts.
   disconnected nodes and validate with `--allow-sparse` rather than inventing
   a relationship.
 - Use `.agents/skills/mermaid-diagram-authoring/SKILL.md` for fast-preview Mermaid in Markdown.
+- Write image nodes as `label`, `img`, `pos`, `w`, `h`, `constraint` in that
+  order so the English ID and Japanese label stay adjacent while editing.
 - Do not generate `.mmd`, SVG, or PNG during ordinary modeling or authoring.
 - Use `.agents/skills/mermaid-diagram-export/SKILL.md` only after an explicit export or image request.
 - Do not copy private or identifying data into examples; use synthetic fixtures.
