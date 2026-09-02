@@ -28,21 +28,15 @@ config:
     fontSize: "14px"
 ---
 flowchart LR
-  subgraph providers[" "]
-    direction TB
-    a_maakbo_fde@{ label: "maakbo / fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-    a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  end
-  subgraph fde_business[" "]
-    direction TB
-    p_visible_choice(["見えるから、自分で選べる"])
-    b_fde@{ label: "FDE", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-    b_fde ~~~ p_visible_choice
-  end
+  a_maakbo_fde@{ label: "maakbo / fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_fde@{ label: "FDE", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   a_subject@{ label: "主体者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  p_visible_choice(["見えるから、自分で選べる"])
 
   a_maakbo_fde --- b_fde
   a_fde_ai --- b_fde
+  b_fde --- p_visible_choice
   b_fde --- a_subject
 
   class a_maakbo_fde,a_fde_ai,a_subject actor;
@@ -52,10 +46,7 @@ flowchart LR
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
   classDef purpose fill:#FFFFFF,stroke:#9E988E,color:#25231F,stroke-width:0.75px;
-  style providers fill:none,stroke:none;
-  style fde_business fill:none,stroke:none;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
-  linkStyle 0 stroke:transparent,fill:none;
 ```
 
 ## Boundary
