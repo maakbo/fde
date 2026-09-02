@@ -29,6 +29,9 @@ edge still joins one `b_` activity and one non-business element.
   during renaming.
 - If two names represent different abstraction levels, states, owners, or
   responsibilities, assign distinct IDs and explain the distinction.
+- A **rename** refines only the expression of the same concept: retain its stable ID and record the previous label as an alias or history.
+- A **split** discovers concepts that cannot share one meaning: create stable IDs for the new concepts and trace each to the former candidate or ID.
+- A **merge** is valid only when evidence shows the same concept, responsibility, state, boundary, and abstraction level: record the canonical survivor, absorbed identities, and evidence rather than silently collapsing them.
 
 Mermaid has no native import for another Markdown diagram. “Reference” means
 copying the canonical node identity and recording the link explicitly:

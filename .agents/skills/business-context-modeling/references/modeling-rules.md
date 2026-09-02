@@ -6,6 +6,12 @@ Before making an element inventory, describe the chosen Business in two or three
 
 Extract candidates only when they arise naturally from that description. Information should work as the object of a business verb such as receive, use as a basis, reference, create, update, or provide. Do not add `Model`, `View`, or another modeling-method concept merely because the method uses it; include it only when the described Business actually receives, uses, creates, updates, or provides it.
 
+## Semantic compression and identity
+
+Natural-language source phrases are evidence, not automatic model labels. After extraction, ask what each candidate essentially is and propose a short, simple business name that remains meaningful at the view's abstraction level and can be concretized later. Reread the business description with the proposed name before confirming the inventory. Do not shorten a name until it becomes unclear.
+
+A **rename** refines the expression of the same concept: retain its stable ID and record the previous label as an alias. A **split** marks a newly discovered difference in meaning: create new stable IDs and record their relationship to the former concept. A **merge** is allowed only when evidence shows candidates describe one concept at the same responsibility, state, boundary, and abstraction level; preserve the decision and absorbed identities instead of silently collapsing them.
+
 ## Element types
 
 | Type | Meaning | Naming | Exclude when |

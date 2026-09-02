@@ -12,6 +12,7 @@ Turn an ordinary conversation about a business or operation into a small model t
 - Start from loose language; do not require a form before producing a first model.
 - Before listing candidates, describe the business in two or three natural-language sentences: who (Actors and External Systems) provides which Information, how the Business uses it, which Information it creates or updates, and who receives it.
 - Extract four default types: actor, business activity, information, and external system from that description.
+- Treat naming after extraction as semantic compression: ask what each candidate essentially is, propose a short business name, reread the business description with it, and keep the source wording as evidence rather than automatically using it as the model label.
 - At the Business boundary, Actor and External System are peer kinds of participant: either may provide value or Information to the Business and either may receive value or Information from it. Distinguish them by purposeful action and responsibility (Actor) versus a technical system outside the selected boundary (External System).
 - Peer participation does not require both types to appear in every Business Context. Include an External System only when the described business shows its provider or recipient relationship; otherwise record `none observed` and keep genuinely possible systems as unresolved, outside the candidate inventory.
 - When participants, systems, or information relationships matter, maintain three
@@ -67,6 +68,14 @@ information candidate against its canonical ID before creating a new one. Keep
 source wording and possible aliases in the companion Markdown. Do not silently
 merge two candidates that differ by responsibility, abstraction, state, or
 boundary.
+
+### 2.5 Compress names before confirming the inventory
+
+For each extracted candidate, ask “what is this, in essence?” Propose a short, simple, meaningful business name that a first reader can broadly understand without the source sentence. This is semantic compression, not label formatting: prefer a name that can be concretized later, but do not shorten until it becomes vague.
+
+Reread the natural-language business description with each proposed name. Keep the source phrase, alias, confidence, and naming rationale in companion Markdown. Confirm the candidate inventory only after that reading.
+
+A refined expression for the same concept is a **rename**: keep its stable ID and record the former label. A newly discovered difference in meaning is a **split**: create new stable IDs and trace their origin to the prior concept. A confirmed shared concept may be a **merge**: retain or choose one canonical identity, record the absorbed IDs and evidence, and do not silently collapse different responsibilities, states, boundaries, or abstraction levels.
 
 ### 3. Align abstraction and grain
 
