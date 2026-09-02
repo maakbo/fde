@@ -24,6 +24,19 @@ Turn an ordinary conversation about a business or operation into a small model t
   references` section because Mermaid cannot import another Markdown diagram.
 - Connect non-business elements through business activities in the foundation context view.
 - Keep one modeling question, boundary, state, and main abstraction level per diagram.
+- Do not model only `How`. Preserve the trace from Why / Purpose through the
+  desired outcome, Business, and Actor / Information / System relationships to
+  Flow or implementation, so a changed How can be evaluated against its meaning.
+- Treat a model as a returnable meaning axis rather than a fixed answer: move
+  downward to concretize and return upward whenever detail changes the purpose,
+  business boundary, actor meaning, or responsibility.
+- Name a Business from its input-to-output transformation, not from a modeling,
+  prototyping, tuning, or other method merely used to perform it. Modeling is a
+  basic action across Business activities whenever important meaning can be
+  externalized.
+- Keep a Business Map of constituent capabilities separate from a Business
+  Flow. Map relationships do not imply order; use a Flow only when sequence,
+  decisions, or rework are the question.
 - Use a three-rung model set when the work needs more than one context: overall
   context (title-level business area and major actors), use-case context (one
   changing scene around one business outcome), then business flow (order,

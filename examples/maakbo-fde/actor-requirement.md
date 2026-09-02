@@ -2,7 +2,7 @@
 
 ## Modeling question
 
-主体者がFDEによって何をできる状態を必要とし、そのためにどのような対策を置くか。
+Desired Stateのうち、主体者がFDEによって何をできる状態を必要とし、そのためにどのような対策を置くか。
 
 ## Reading
 
@@ -26,6 +26,7 @@ config:
     lineColor: "#9E988E"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "14px"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:10px !important; }"
 ---
 flowchart LR
   subgraph actor_lane[" "]
@@ -67,8 +68,8 @@ flowchart LR
   class m_shape,m_explicit,m_visualize,m_prepare,m_handover measure;
 
   classDef actor fill:none,stroke:none,color:#25231F;
-  classDef requirement fill:#EDF2EA,stroke:#7C8975,color:#25231F,stroke-width:1px;
-  classDef measure fill:#FFF7E8,stroke:#B79661,color:#25231F,stroke-width:1px;
+  classDef requirement fill:#FFFFFF,stroke:#9E988E,color:#25231F,stroke-width:0.75px;
+  classDef measure fill:#FFFFFF,stroke:#9E988E,color:#25231F,stroke-width:0.75px;
   style actor_lane fill:none,stroke:none;
   style requirement_lane fill:none,stroke:none;
   style measure_lane fill:none,stroke:none;
@@ -77,4 +78,4 @@ flowchart LR
 
 ## Boundary
 
-主体者の三つの要求を中心に、FDEを担うActor側の役割上の前提と対策を最小限に置く。個別の実装、業務手順、AIの内部構成は扱わない。
+主体者の三つの要求を中心に、FDEを担うActor側の役割上の前提と対策を最小限に置く。これは[Purpose / Outcome](purpose-outcome.md)のDesired Stateを主体者から見たfocused Viewであり、Ultimate Purposeそのものではない。主体者の仲間に固有の要求、個別の実装、業務手順、AIの内部構成は扱わない。

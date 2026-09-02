@@ -56,6 +56,15 @@ REQUIRED = [
     "examples/maakbo-expression-loop/overview.md",
     "examples/maakbo-expression-loop/context.md",
     "examples/maakbo-expression-loop/flow.md",
+    "examples/maakbo-fde/README.md",
+    "examples/maakbo-fde/model.md",
+    "examples/maakbo-fde/business-story.md",
+    "examples/maakbo-fde/purpose-outcome.md",
+    "examples/maakbo-fde/model-axis.md",
+    "examples/maakbo-fde/business-map.md",
+    "examples/maakbo-fde/system-context.md",
+    "examples/maakbo-fde/actor-requirement.md",
+    "examples/maakbo-fde/business-context.md",
 ]
 SKILLS = [
     "business-context-modeling",
@@ -361,6 +370,14 @@ def main() -> int:
     run([sys.executable, business, "examples/maakbo-expression-loop/overview.md"])
     run([sys.executable, business, "examples/maakbo-expression-loop/context.md"])
     run([sys.executable, flow, "examples/maakbo-expression-loop/flow.md", "--strict"])
+    run([
+        sys.executable,
+        context,
+        "examples/maakbo-fde/business-map.md",
+        "--strict",
+        "--allow-complexity",
+    ])
+    run([sys.executable, business, "examples/maakbo-fde/business-context.md"])
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")
     return 0
 

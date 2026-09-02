@@ -1,10 +1,12 @@
 # fde
 
-対話から現場の構造を捉え、議論できるモデルと動く仕組みを一緒につくる、maakboなりの Forward Deployed Engineering。
+対話から現場の構造と目指す意味を捉え、人・AI Agent・Systemが協働する業務の仕組みを一緒にデザインし、形にする、maakboなりの Forward Deployed Engineering。
 
-`fde` は、まだ整理されていない事業や業務の話を、AIエージェントと一緒に素早く可視化するための公開実験です。アクター・業務・情報・外部システムを抽出し、必要ならアクター／外部システム／情報のマスタ図へ整理したうえで、Mermaidのコンテキスト図と業務フロー図へ変換します。
+`fde` は、まだ整理されていない事業や業務の話を、AIエージェントと一緒に素早くModelへ外在化するための公開実験です。Why / Purpose、目指す状態、Business、Actor・Information・Systemの関係、Howをつないで残し、必要な部分をMermaidのContextやFlowとして確かめます。
 
 図をきれいにすることだけが目的ではありません。自動配置に収まりにくい複雑さも観察しながら、具体と抽象を行き来し、粒度・境界・関係性を議論できる状態をつくります。
+
+Howだけを固定するのではなく、何を守り、何を変えてよいかを判断できる意味の軸を残します。Modelは固定された正解ではなく、現場や技術が変化したときに戻り、再設計するためのdiscussion surfaceです。
 
 ## What is included
 
@@ -15,6 +17,7 @@
 - `templates/`: Markdown-first Mermaid starting points, including actor, external-system, and information master maps.
 - `templates/github-actions-validate.yml`: optional CI workflow; copy it to `.github/workflows/validate.yml` when the publishing credential allows workflow files.
 - `examples/maakbo-expression-loop/`: a maakbo-shaped three-rung example linking overall context, use-case context, and business flow.
+- `examples/maakbo-fde/`: FDEのUltimate Purpose、Desired State、5W2H Business Story、Business Mapを扱うworking sample。
 - `examples/repair-intake/`: a separate synthetic regression fixture for the same notation.
 - `examples/repair-intake/previews/`: explicit PNG review artifacts with tap-friendly links for mobile clients.
 - `scripts/validate_repository.py`: one command to validate the public bundle,
