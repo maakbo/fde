@@ -5,10 +5,12 @@ FDEを価値提供Businessのworking nameとして置いた、公開レビュー
 
 ## 図を確認する
 
-| View | Markdown model | SVG preview | PNG preview |
-| --- | --- | --- | --- |
-| System Context | [開く](system-context.md) | [SVG](previews/system-context.svg) | [PNG](previews/system-context.png) |
-| Actor Requirement | [開く](actor-requirement.md) | [SVG](previews/actor-requirement.svg) | [PNG](previews/actor-requirement.png) |
+Markdown内のMermaidが、編集する正本でありworking visual-review surfaceです。
+
+| View | Markdown model |
+| --- | --- |
+| System Context | [開く](system-context.md) |
+| Actor Requirement | [開く](actor-requirement.md) |
 
 モデルの前提・境界・読み方は [model.md](model.md) に記録しています。
 
