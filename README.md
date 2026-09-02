@@ -71,11 +71,11 @@ Context views use undirected lines for ordinary business relationships. Use an a
 
 ## Working source and export
 
-The default artifact is a Markdown file containing one `mermaid` code block. That same file carries its reading, assumptions, and next question, and is the single editable source for the diagram.
+The default artifact is a Markdown file containing one `mermaid` code block. That same file carries its reading, assumptions, and next question, and is the single editable source and working visual-review surface for the diagram.
 
 Ordinary modeling and diagram requests stop after source validation. They do not generate `.mmd`, SVG, or PNG files. This keeps the conversation fast in GitHub Copilot and lets VS Code preview the working file directly.
 
-Media export is a separate, explicit action. When stable assets are needed for publication or visual review, install the optional renderer and invoke the export Skill:
+Media export is a separate, explicit action. When stable assets are needed for publication or a fixed public asset, install the optional renderer and invoke the export Skill:
 
 ```bash
 npm ci
@@ -83,7 +83,7 @@ python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py \
   examples/repair-intake/context.md --type context --output-dir /tmp/fde-export
 ```
 
-The exporter reads the Mermaid block without changing the Markdown source. A standalone `.mmd` remains supported when a user or integration explicitly requires it.
+The exporter reads the Mermaid block without changing the Markdown source. Its SVG and PNG are direct derivatives: do not add post-export position or typography adjustments. A standalone `.mmd` remains supported when a user or integration explicitly requires it.
 
 The example's [review previews](examples/repair-intake/previews/) are tracked only because they are public, synthetic visual-review artifacts. New diagrams should remain Markdown-only unless media export is explicitly requested.
 

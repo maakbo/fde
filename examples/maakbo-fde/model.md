@@ -31,6 +31,10 @@
 - `fdeAI` の内部構成や個別の役割分担は、このsampleの境界外である。
 - 要求・対策は主体者の判断を支えるための仮説であり、実装仕様ではない。
 
+## Local layout observation
+
+In the current renderer for this System Context, writing `b_fde --- p_visible_choice` before `b_fde --- a_subject` placed the purpose annotation to the right and slightly above FDE. This is a local renderer observation, not a general Mermaid rule; compare source order before introducing layout machinery.
+
 ## Next review question
 
 この2枚で、FDEが目指す状態と主体者への価値が過不足なく読めるか。

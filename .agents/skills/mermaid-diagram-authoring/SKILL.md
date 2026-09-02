@@ -11,9 +11,9 @@ Write the smallest diagram people can inspect while the conversation is still ch
 
 - Default to one `mermaid` code block inside a Markdown file.
 - Keep one diagram and one main question per working file.
-- Keep the Markdown file as the single editable source; do not duplicate it into `.mmd` automatically.
+- Keep the Markdown file as the single editable source and working visual-review surface; do not duplicate it into `.mmd` automatically.
 - Use a standalone `.mmd` only when the user explicitly asks for one or an integration requires it.
-- Preserve business meaning while improving notation and visual consistency.
+- Preserve business meaning while improving notation and visual consistency. Treat the established icon stroke width and size, spacing, relation line, arrow usage, color, and typography as visual-language assets; do not change them without explicit agreement.
 - In a business model set, keep the profiles separate: overall context for the
   title-level business area and major actors, use-case context for one changing
   scene, and business flow for order or decisions inside that scene. Record the
@@ -21,6 +21,7 @@ Write the smallest diagram people can inspect while the conversation is still ch
 - Keep image-node properties in the exact order `label`, `img`, `pos`, `w`,
   `h`, `constraint`, so the stable English ID and Japanese label remain easy
   to compare while editing.
+- Before adding layout machinery, try the semantic relationships, node and relationship source order, and Mermaid's native layout. Do not use dummy nodes, meaningless transparent relations, or derived-asset adjustments to force an arrangement.
 - Never create SVG or PNG, invoke a renderer, or install rendering dependencies unless the user explicitly asks to export.
 
 ## Workflow

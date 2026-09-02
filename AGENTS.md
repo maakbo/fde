@@ -48,7 +48,7 @@ This repository is a portable environment for forward-deployed business modeling
 
 ## Artifact rules
 
-- Default to one Mermaid block inside a Markdown working file for immediate GitHub or VS Code preview.
+- Treat the Mermaid block inside Markdown as the single editable source and the working visual-review surface in GitHub or VS Code.
 - Keep one editable source per diagram. Do not create a duplicate `.mmd` automatically.
 - Keep labels short and place them below fixed-size icons.
 - In image nodes, keep properties in the exact order `label`, `img`, `pos`,
@@ -56,8 +56,10 @@ This repository is a portable environment for forward-deployed business modeling
   makes renaming consistency easy to inspect.
 - Use the thin Lucide assets defined by the selected diagram Skill; do not introduce a new icon merely for decoration.
 - Do not create SVG or PNG during ordinary modeling or diagram authoring.
-- When export is explicitly requested, keep the Markdown source unchanged and inspect the PNG when visual review matters.
-- When a PNG is requested for review, surface the image in the final response. For public synthetic examples, also provide a tap-friendly raw URL; never publish a private diagram as a fallback.
+- When export is explicitly requested, generate SVG / PNG directly from the unchanged Markdown source. Do not apply position or typography adjustments to derived assets; working layout decisions return to the Markdown Mermaid.
+- When a PNG is explicitly requested, surface the image in the final response. For public synthetic examples, also provide a tap-friendly raw URL; never publish a private diagram as a fallback.
+- Treat the established icon stroke width and size, spacing, relation line, arrow usage, color, and typography as visual-language assets. Do not change those conventions without explicit agreement.
+- For layout, first try semantic relationships, node and relationship source order, and Mermaid's native layout. Do not add dummy nodes, meaningless transparent relations, or post-export positioning to force an arrangement.
 - Run `python3 scripts/validate_repository.py` before committing. Node and npm are optional until explicit export.
 - Keep changes small, reversible, and scoped to the active modeling question.
 
