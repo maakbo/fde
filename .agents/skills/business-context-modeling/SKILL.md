@@ -13,6 +13,7 @@ Turn an ordinary conversation about a business or operation into a small model t
 - Before listing candidates, describe the business in two or three natural-language sentences: who (Actors and External Systems) provides which Information, how the Business uses it, which Information it creates or updates, and who receives it.
 - Extract four default types: actor, business activity, information, and external system from that description.
 - At the Business boundary, Actor and External System are peer kinds of participant: either may provide value or Information to the Business and either may receive value or Information from it. Distinguish them by purposeful action and responsibility (Actor) versus a technical system outside the selected boundary (External System).
+- Peer participation does not require both types to appear in every Business Context. Include an External System only when the described business shows its provider or recipient relationship; otherwise record `none observed` and keep genuinely possible systems as unresolved, outside the candidate inventory.
 - When participants, systems, or information relationships matter, maintain three
   canonical master views: an actor map, an external-system map, and an
   information model. These maps may connect same-type nodes; they are not
@@ -55,7 +56,7 @@ Ask at most one blocking question. Build version zero when the input supports a 
 
 ### 2. Describe the business, then preserve concrete candidates
 
-Write a two- or three-sentence natural-language description before making an inventory. State who provides which Information, what the Business does with it, which Information it creates or updates, and who receives it. Here, `who` includes both Actors and External Systems. This description expresses relevant relationships, not a fixed chronological flow.
+Write a two- or three-sentence natural-language description before making an inventory. State who provides which Information, what the Business does with it, which Information it creates or updates, and who receives it. Here, `who` can include both Actors and External Systems; do not invent an External System to fill the type when none appears in the description. This description expresses relevant relationships, not a fixed chronological flow.
 
 Collect the nouns, verbs, and Information objects that actually occur in that description before abstracting. Classify each as actor, business activity, information, external system, implementation detail, or unresolved. Do not carry a candidate forward merely because it appeared in an earlier inventory or because it belongs to the modeling method itself.
 
@@ -109,6 +110,17 @@ Use only relationships stated by the user or explicitly marked as hypotheses. Re
 Use `-->` only when a strong dependency is an intentional part of the question. Do not use arrows for every ordinary relationship.
 
 Describe the provider, recipient, and Information relationship in companion prose. Keep the Business Context's ordinary lines as relationships, not a one-way route; move time, order, decisions, and detailed handoffs to a Business Flow.
+
+When the modeling question is specifically the direction of value or Information handoff, use an explicit value-flow context as a separate View variant:
+
+```text
+actor --> business activity <-- input information
+business activity --> output information
+business activity --> external system --> business activity
+business activity --> recipient
+```
+
+Use `flowchart LR` and solid `-->` edges only when that direction is the question. Keep the Business activity as the hub and include an External System only when one is observed. In this variant, arrows mean value or Information handoff, not chronology; move detailed order, decisions, and rework to a Business Flow. State this reading in the companion prose.
 
 For every selected `a_`, `x_`, or `i_` node, copy the canonical master node
 definition and add a `## Master references` table with the master path, ID,

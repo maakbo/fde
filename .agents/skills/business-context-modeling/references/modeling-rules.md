@@ -2,7 +2,7 @@
 
 ## Narrative grounding
 
-Before making an element inventory, describe the chosen Business in two or three ordinary sentences. Say which Actors or External Systems provide which Information, how the Business uses it, which Information it creates or updates, and which Actors or External Systems receive it. This is a relationship account, not a mandatory one-way process route; model time, decisions, and detailed order separately in a Business Flow.
+Before making an element inventory, describe the chosen Business in two or three ordinary sentences. Say which Actors or External Systems provide which Information, how the Business uses it, which Information it creates or updates, and which Actors or External Systems receive it. Actor and External System are peer participant types when they occur; neither type is mandatory. Do not invent an unobserved External System merely to fill the inventory; record `none observed` and retain genuinely possible systems as unresolved. This is a relationship account, not a mandatory one-way process route; model time, decisions, and detailed order separately in a Business Flow.
 
 Extract candidates only when they arise naturally from that description. Information should work as the object of a business verb such as receive, use as a basis, reference, create, update, or provide. Do not add `Model`, `View`, or another modeling-method concept merely because the method uses it; include it only when the described Business actually receives, uses, creates, updates, or provides it.
 
@@ -16,6 +16,7 @@ Extract candidates only when they arise naturally from that description. Informa
 | External system | Technical system outside the chosen responsibility boundary that provides value or Information to, or receives it from, the Business | Short system noun | It is internal or its product name adds no meaning |
 
 Classify from the selected boundary, not an absolute ontology. An outside company remains an actor; use external system only for software or technical systems. At the Business boundary, Actors and External Systems are peers as providers or recipients; they remain different types because Actors have purposeful action and responsibility, while External Systems mark technical responsibility boundaries.
+Peer status does not require both types in every view.
 
 ## Abstraction ladder
 
@@ -46,6 +47,8 @@ Merge nodes with the same actor, outcome, and discussion consequence. Split node
 Foundation context lines mean relevant business relationships, not time order. Every line joins exactly one business activity and one actor, information item, or external system.
 
 Describe providers, recipients, and Information relationships in companion prose. Keep the Business Context's ordinary lines as relationships, not a one-way route; detailed sequence belongs in a Business Flow.
+
+When direction of value or Information handoff is itself the modeling question, use a value-flow context as a separate View variant: use `flowchart LR` with solid `-->` arrows, keep one Business activity as the hub, and include each provider, recipient, or External System only when observed. Its arrows mean handoff direction, not chronological order; detailed sequence, decisions, and rework belong in a Business Flow. State that reading in companion prose.
 
 Diagnostic smells:
 
