@@ -1,5 +1,11 @@
 # Business modeling rules
 
+## Narrative grounding
+
+Before making an element inventory, describe the chosen Business in two or three ordinary sentences. Say which Actors or External Systems provide which Information, how the Business uses it, which Information it creates or updates, and which Actors or External Systems receive it. This is a relationship account, not a mandatory one-way process route; model time, decisions, and detailed order separately in a Business Flow.
+
+Extract candidates only when they arise naturally from that description. Information should work as the object of a business verb such as receive, use as a basis, reference, create, update, or provide. Do not add `Model`, `View`, or another modeling-method concept merely because the method uses it; include it only when the described Business actually receives, uses, creates, updates, or provides it.
+
 ## Element types
 
 | Type | Meaning | Naming | Exclude when |
@@ -7,9 +13,9 @@
 | Actor | Person, role, organization, or party participating in work | Short role noun | Responsibility is irrelevant to the question |
 | Business activity | Meaningful work unit producing an observable outcome | Short verb phrase | It is only a click, screen action, or technical job |
 | Information | Business object received, referenced, changed, or produced | Short domain noun | It is merely a format, folder, or transport |
-| External system | Technical system outside the chosen responsibility boundary | Short system noun | It is internal or its product name adds no meaning |
+| External system | Technical system outside the chosen responsibility boundary that provides value or Information to, or receives it from, the Business | Short system noun | It is internal or its product name adds no meaning |
 
-Classify from the selected boundary, not an absolute ontology. An outside company remains an actor; use external system only for software or technical systems.
+Classify from the selected boundary, not an absolute ontology. An outside company remains an actor; use external system only for software or technical systems. At the Business boundary, Actors and External Systems are peers as providers or recipients; they remain different types because Actors have purposeful action and responsibility, while External Systems mark technical responsibility boundaries.
 
 ## Abstraction ladder
 
@@ -39,7 +45,7 @@ Merge nodes with the same actor, outcome, and discussion consequence. Split node
 
 Foundation context lines mean relevant business relationships, not time order. Every line joins exactly one business activity and one actor, information item, or external system.
 
-When input/output value is the subject, a value-flow context is an intentional variant: use `flowchart LR` with solid `-->` arrows, keep one business activity as the hub, relate every node to that activity, and state that arrows mean value or information handoff. This is still a context view; detailed sequencing belongs in a flow view.
+Describe providers, recipients, and Information relationships in companion prose. Keep the Business Context's ordinary lines as relationships, not a one-way route; detailed sequence belongs in a Business Flow.
 
 Diagnostic smells:
 

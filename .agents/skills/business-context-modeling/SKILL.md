@@ -10,7 +10,9 @@ Turn an ordinary conversation about a business or operation into a small model t
 ## Core contract
 
 - Start from loose language; do not require a form before producing a first model.
-- Extract four default types: actor, business activity, information, and external system.
+- Before listing candidates, describe the business in two or three natural-language sentences: who (Actors and External Systems) provides which Information, how the Business uses it, which Information it creates or updates, and who receives it.
+- Extract four default types: actor, business activity, information, and external system from that description.
+- At the Business boundary, Actor and External System are peer kinds of participant: either may provide value or Information to the Business and either may receive value or Information from it. Distinguish them by purposeful action and responsibility (Actor) versus a technical system outside the selected boundary (External System).
 - When participants, systems, or information relationships matter, maintain three
   canonical master views: an actor map, an external-system map, and an
   information model. These maps may connect same-type nodes; they are not
@@ -51,9 +53,11 @@ Infer, when possible:
 
 Ask at most one blocking question. Build version zero when the input supports a plausible first pass and expose assumptions instead.
 
-### 2. Preserve concrete candidates
+### 2. Describe the business, then preserve concrete candidates
 
-Collect the user's actual nouns and verbs before abstracting. Classify each as actor, business activity, information, external system, implementation detail, or unresolved.
+Write a two- or three-sentence natural-language description before making an inventory. State who provides which Information, what the Business does with it, which Information it creates or updates, and who receives it. Here, `who` includes both Actors and External Systems. This description expresses relevant relationships, not a fixed chronological flow.
+
+Collect the nouns, verbs, and Information objects that actually occur in that description before abstracting. Classify each as actor, business activity, information, external system, implementation detail, or unresolved. Do not carry a candidate forward merely because it appeared in an earlier inventory or because it belongs to the modeling method itself.
 
 Always return four compact candidate groups for actor, activity, information, and external system. Write `none observed` or `unresolved` rather than silently omitting a type. Keep omitted implementation details and unresolved items in prose.
 
@@ -104,16 +108,7 @@ Use only relationships stated by the user or explicitly marked as hypotheses. Re
 
 Use `-->` only when a strong dependency is an intentional part of the question. Do not use arrows for every ordinary relationship.
 
-When the modeling question is specifically how value or information enters and leaves the business activity, use an explicit value-flow context variant:
-
-```text
-actor --> business activity <-- input information
-business activity --> output information
-business activity --> external system --> business activity
-business activity --> recipient
-```
-
-Use `flowchart LR` and solid `-->` edges. Keep the business activity as the hub, with the input provider, output recipient, and any external system visible around it. In this variant, arrows mean a value or information handoff, not a detailed process sequence; move detailed order or decisions to a focused flow diagram. Keep this exception visible in the companion reading so it is not confused with the ordinary context convention.
+Describe the provider, recipient, and Information relationship in companion prose. Keep the Business Context's ordinary lines as relationships, not a one-way route; move time, order, decisions, and detailed handoffs to a Business Flow.
 
 For every selected `a_`, `x_`, or `i_` node, copy the canonical master node
 definition and add a `## Master references` table with the master path, ID,
