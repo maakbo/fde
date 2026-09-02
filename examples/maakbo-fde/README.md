@@ -11,12 +11,14 @@ Markdown内のMermaidが、編集する正本でありworking visual-review surf
 | --- | --- |
 | System Context | [開く](system-context.md) |
 | Actor Requirement | [開く](actor-requirement.md) |
+| Business Context — 業務モデリング | [開く](business-context.md) |
 
 モデルの前提・境界・読み方は [model.md](model.md) に記録しています。
 
 ## このsampleの範囲
 
 - `FDE` は価値提供Businessのworking nameです。
-- `maakbo / fde` と `fdeAI` がFDEを担い、価値を受けるActorを `主体者` と置きます。
+- `fde` と `fdeAI` がFDEを担い、価値を受けるActorを `主体者` と置きます。
 - 目的は「見えるから、自分で選べる」です。
-- 今回はBusiness Context、Detailed Business Context、Business Flow、masterの変更を扱いません。
+- `業務モデリング`は、FDEを具体化する最初のBusiness Contextのworking sampleである。
+- Detailed Business Context、Business Flow、masterはまだ扱わない。
