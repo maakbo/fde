@@ -1,6 +1,6 @@
 # 協働の仕組みをつくる
 
-主体者と仲間、fde、fdeAIが、選んだ変化を誰が担うか一緒に決めます。役割と責任を業務モデルへ戻し、現場で使える業務の仕組みにします。
+主体者と仲間、fde、fdeAIが、変化案を見ながら誰が何を担うかを決めます。fdeとfdeAIが使える形へ具体化し、主体者が現場で使えるかを確かめます。
 
 ## モデル
 
@@ -51,7 +51,6 @@ flowchart LR
   b_collaboration_design --- a_subject
   b_realization --- a_subject
   b_collaboration_design --- a_companions
-  b_realization --- a_companions
 
   class a_fde,a_fde_ai,a_subject,a_companions actor;
   class b_collaboration_design,b_realization business;
@@ -65,6 +64,6 @@ flowchart LR
 
 ## このモデルが表していること
 
-四者が協働設計と仕組み化の両方に関わります。変化案、役割と責任、業務モデルを一緒に確かめ、実際に使える業務の仕組みへ具体化します。
+主体者と仲間は、協働の役割をfde、fdeAIと一緒に考えます。仕組み化では、fdeとfdeAIが業務モデルを具体化し、主体者が現場で使える仕組みかを確かめます。
 
 ← [FDEの業務全体へ](business-map.md)

@@ -1,6 +1,6 @@
 # 仕組みを現場へ根づかせる
 
-主体者と仲間、fde、fdeAIが、仕組みを使って分かった結果やズレを一緒に確かめます。業務の仕組みと業務モデルを整えながら、運営し、変える力を主体者側へ移します。
+主体者と仲間が仕組みを実際に使い、fdeとfdeAIと利用結果やズレを確かめます。fdeが理解、判断、変更、運営の引き継ぎを支え、主体者たちが自分で扱える状態へ近づけます。
 
 ## モデル
 
@@ -40,7 +40,6 @@ flowchart LR
   a_fde --- b_context_fit
   a_fde --- b_autonomy_transition
   a_fde_ai --- b_context_fit
-  a_fde_ai --- b_autonomy_transition
   i_usage_result --- b_context_fit
   i_mismatch --- b_context_fit
   i_roles_constraints --- b_context_fit
@@ -66,6 +65,6 @@ flowchart LR
 
 ## このモデルが表していること
 
-四者が現場適合と自律移行の両方に関わります。利用結果やズレを基に、役割と責任、業務モデル、業務の仕組みを確かめ、主体者と仲間が自分たちで扱える状態へつなぎます。
+現場適合には四者が関わり、利用結果やズレを業務モデルと仕組みへ戻します。自律移行では、fdeが主体者と仲間への引き継ぎを支え、自分たちで判断し、変えられる状態へつなぎます。
 
 ← [FDEの業務全体へ](business-map.md)

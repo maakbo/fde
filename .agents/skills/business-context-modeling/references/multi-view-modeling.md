@@ -15,6 +15,10 @@ Build Actor participation and Information vocabulary in the Model before
 projecting a Context. A visually clean chain is not evidence that the
 underlying relationship exists.
 
+Start with the smallest useful hypothesis instead of waiting for a complete
+Model. Let participants see it, talk with it, try the work, and return observed
+learning to the Model before refining the View again.
+
 Keep the Why-to-How trace in `business-story-and-5w2h.md`. Move downward to
 make meaning concrete and upward when detail reveals a wrong name, split,
 merge, responsibility, Information concept, or Context boundary.
