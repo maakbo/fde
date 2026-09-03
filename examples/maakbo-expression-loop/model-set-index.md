@@ -7,14 +7,15 @@
 
 ## View map
 
-| View | Role | Rung / level | Parent / expanded node | Child views | Focus | Status |
+| View | Role | Level | Parent / expanded node | Child views | Focus | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| [overview](overview.md) | overall context | 1 / business area | — | [context](context.md) | 表現制作という題名と主要主体 | working hypothesis |
-| [context](context.md) | use-case / scene context | 2 / outcome activity | `overview.md / b_expression_practice` | [flow](flow.md) | アイデアの種を初稿へ形にする場 | working hypothesis |
-| [flow](flow.md) | business flow | 3 / task | `context.md / b_shape_expression` | — | 芯を見つけ、初稿を磨く順序と戻り道 | working hypothesis |
+| [overview](overview.md) | overall context | business area | — | [context](context.md) | 表現制作という題名と主要主体 | working hypothesis |
+| [context](context.md) | Business Context | Business Use Case / scene | `overview.md / b_expression_practice` | [flow](flow.md) | アイデアの種を初稿へ形にする場 | working hypothesis |
+| [flow](flow.md) | Business Flow | task | `context.md / b_shape_expression` | — | 芯を見つけ、初稿を磨く順序と戻り道 | working hypothesis |
 
-The parent chain is intentional: overall context → use-case context → business
-flow. The flow is not a second context view.
+The parent trace is intentional: overall context → Business Context → selected
+Business node → Business Flow. A different Business node could instead expand
+into a recursive Detailed Business Context.
 
 ## Master layer
 

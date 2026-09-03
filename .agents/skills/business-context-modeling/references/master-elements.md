@@ -10,8 +10,9 @@ types that recur across business context views:
 | Information model | `i_` | Which business objects are associated, derived, or held together? |
 
 They are maps, not process diagrams. A master map may connect nodes of the same
-type. A business context remains business-centered: every foundation-context
-edge still joins one `b_` activity and one non-business element.
+type. A Business Context selects these identities around a multi-Business
+backbone. Context relations require at least one Business endpoint, while a
+direct Business-to-Business relation may express observed scene continuity.
 
 ## Canonical identity
 
@@ -79,7 +80,8 @@ cardinality, evidence, and uncertainty in companion prose or a small table.
    master maps: reuse, add, merge only with evidence, or mark unresolved.
 3. Update the affected master map before composing a context view when the
    candidate set or same-type relationships are part of the question.
-4. Build the business context by selecting master IDs around one `b_` activity.
+4. Build the Business Context by selecting master IDs around the scene's
+   sibling `b_` activities.
    Copy the canonical node lines and add a `## Master references` table.
 5. If the context reveals a missing or incorrect same-type relationship, move
    back up and revise the master. If it reveals a meaningful distinction,

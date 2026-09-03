@@ -65,23 +65,34 @@ Merge nodes with the same actor, outcome, and discussion consequence. Split node
 
 ## Relationship rules
 
-Foundation Business Context lines mean relevant business relationships, not
-time order. Every line joins exactly one Business Use Case and one Actor,
-Information item, or External System.
+One Business Context represents one Business Use Case or coherent business
+scene. Its central backbone contains one or more sibling Business activities
+that together make the Use Case work. Each activity has an observable outcome,
+marks a useful responsibility, sits above procedure/task grain, and is broadly
+comparable in size with its siblings.
 
 Use spatial meaning before arrow direction:
 
 - left: the Actor executing the Business, or an Actor / External System /
   Information item providing value or input;
-- center: one outcome-sized Business Use Case;
+- center: the Business backbone, made of sibling outcome-sized activities and
+  any observed Information that meaningfully connects them;
 - right: an Actor or External System receiving value, or Information created,
   updated, or provided by the Business.
 
-Use `flowchart LR` and `---` for ordinary relations. List left nodes, then the
-Business, then right nodes; write relation source as `left --- business` and
-`business --- right`. This gives Mermaid a meaningful layout signal without
-fake edges. Companion prose may clarify value, but it must not compensate for
-a diagram whose placement says nothing.
+Use `flowchart LR` and `---` for ordinary relations. List left-side nodes,
+interleave Business activities with genuine Information bridges in their
+approximate value progression, then list right-side nodes. Write relations in
+the same approximate left-to-right source order. This gives Mermaid a
+meaningful layout signal without fake edges; it does not assert exact sequence.
+
+When one Business creates or updates Information used by another, use
+`Business A --- Information X --- Business B` if that Information is a real
+business concept observed in the story. When continuity matters but no such
+Information is observed, `Business A --- Business B` is allowed. It means a
+business connection or handoff within the scene, not procedure order. Never
+invent a bridge or a direct edge only to improve layout. Companion prose may
+clarify value, but it must not compensate for meaningless placement.
 
 Input/output or provider/recipient meaning alone never justifies an arrow. Use
 `-->` only when direction is essential to the modeling question and placement
@@ -90,6 +101,22 @@ placement is insufficient in the authoring workspace and use the explicit
 checker exception. The former arrow-based “value-flow context” profile is
 retired; its useful value reading is now the canonical spatial Business
 Context. Sequence, decisions, and rework remain Business Flow concerns.
+
+## Context boundary and splitting
+
+Do not split because there is one Business activity, or because a fixed node
+count was crossed. Split into sibling Contexts when:
+
+- participant or stakeholder composition changes materially;
+- value provider or recipient changes materially;
+- Information or External System boundary changes materially;
+- responsibility or ownership moves enough to create a distinct scene; or
+- density, crossings, or backbone shape makes the discussion target hard to
+  see.
+
+Complexity thresholds are review signals. Semantic coherence and readability
+make the final decision. If central activities have slipped into small steps,
+keep the Context at outcome grain and expand one Business as a Business Flow.
 
 Diagnostic smells:
 
@@ -106,14 +133,15 @@ Use another general context view when information ownership, storage, access, or
 
 A common page structure helps readers navigate, but it does not justify a
 common diagram structure. Before reusing an existing Context, set its diagram
-aside and restate the Business Story, Why, input, transformation, output, and
-each participant's responsibility. For every Actor or External System, ask
+aside and restate the Use Case story, Why, sibling Business activities, their
+inputs, transformations, outputs, and each participant's responsibility. For
+every Actor or External System, ask
 what it provides, what it receives, and whether it participates directly in
 this Business.
 
 Then choose the Context contents from the meaning:
 
-- use the canonical left/center/right Business Context for ordinary value,
+- use the canonical left/backbone/right Business Context for ordinary value,
   participation, comparison, and feedback relationships;
 - use an arrow exception only when direction itself changes the answer and
   spatial placement is insufficient;

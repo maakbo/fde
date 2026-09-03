@@ -1,7 +1,7 @@
 # maakbo expression-production loop
 
-This public example uses the three-rung context ladder with maakbo's own work
-as the subject:
+This public example links an overall View, a Business Context, and one selected
+Business Flow with maakbo's own work as the subject:
 
 1. [Overall context](overview.md) — the title-level work and major actors.
 2. [Use-case / scene context](context.md) — turning a loose idea into a first

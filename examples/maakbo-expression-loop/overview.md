@@ -1,6 +1,6 @@
 # maakboの表現制作 — 全体コンテキスト
 
-The first rung names the whole work and the major actor subjects. It does not
+The Overall Context names the whole work and the major actor subjects. It does not
 describe process order or every tool used along the way.
 
 ```mermaid

@@ -14,10 +14,10 @@ Write the smallest diagram people can inspect while the conversation is still ch
 - Keep the Markdown file as the single editable source and working visual-review surface; do not duplicate it into `.mmd` automatically.
 - Use a standalone `.mmd` only when the user explicitly asks for one or an integration requires it.
 - Preserve business meaning while improving notation and visual consistency. Treat the established icon stroke width and size, spacing, relation line, arrow usage, color, and typography as visual-language assets; do not change them without explicit agreement.
-- In a business model set, keep the profiles separate: overall context for the
-  title-level business area and major actors, use-case context for one changing
-  scene, and business flow for order or decisions inside that scene. Record the
-  parent/expanded-node trace outside the Mermaid block.
+- In a business model set, keep the profiles separate: Overall / Business Map,
+  Business Context for one scene with a multi-Business backbone, and a Flow or
+  recursive Detailed Business Context expanding one selected Business. Record
+  the parent/expanded-node trace outside the Mermaid block.
 - Keep image-node properties in the exact order `label`, `img`, `pos`, `w`,
   `h`, `constraint`, so the stable English ID and Japanese label remain easy
   to compare while editing.
@@ -56,9 +56,9 @@ documented semantic exception, opt in with `--allow-arrow-exception`; ordinary
 provider, recipient, input, and output relations do not need it.
 
 6. Inspect the native or rendered preview after source validation. For a
-   Business Context, confirm the Business is centered, both semantic sides are
-   legible, and relation endpoints are intact. Then let the user inspect the
-   Markdown in GitHub or VS Code.
+   Business Context, confirm the Business backbone is traceable, both semantic
+   sides are legible, crossings do not hide the scene, and relation endpoints
+   are intact. Then let the user inspect the Markdown in GitHub or VS Code.
 
 ## Modeling relationship
 
@@ -72,8 +72,9 @@ conversation -> tentative model -> Mermaid -> inspect density and relationships
 Layout pressure is evidence for modeling, not permission to silently change meaning.
 
 Use source order as a semantic layout hint: provider/executor/input nodes,
-then the Business, then recipient/output nodes. Write each relation in that
-same endpoint order. Never add a fake edge to force coordinates.
+then Business activities interleaved with observed Information bridges, then
+recipient/output nodes. Write each relation in approximate left-to-right
+endpoint order. Never add a fake node or edge to force coordinates.
 
 ## Output contract
 

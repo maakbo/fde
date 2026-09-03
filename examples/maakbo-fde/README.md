@@ -24,12 +24,10 @@
 
 FDEを形づくる七つの業務を示します。
 
-## 業務を詳しく見る
+## 業務の場面を見る
 
-- [現場理解](context-understanding.md)
-- [業務構造化](business-context.md)
-- [変化設計](change-design.md)
-- [協働設計](collaboration-design.md)
-- [仕組み化](system-building.md)
-- [現場適合](context-fit.md)
-- [自律移行](autonomy-transition.md)
+- [業務の変化を描く](shape-change-context.md)
+- [協働の仕組みをつくる](build-collaboration-context.md)
+- [仕組みを現場へ根づかせる](establish-work-context.md)
+
+一つの場面にある複数の業務と、その間をつなぐ情報や関わる人を一緒に見られます。

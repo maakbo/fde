@@ -1,8 +1,8 @@
 # maakboの表現制作 — 業務フロー
 
-This is a maakbo-shaped example of the third rung. Edit the Mermaid block
-directly and preview this Markdown file. Record unresolved routes or
-responsibility questions below the diagram.
+This Flow expands one Business node from a parent Context. Edit the Mermaid
+block directly and record the parent View and expanded Business ID in the
+authoring workspace.
 
 ```mermaid
 ---

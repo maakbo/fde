@@ -1,8 +1,7 @@
-# maakboの表現制作 — ユースケース・シーンコンテキスト
+# maakboの表現制作 — Business Use Case Context
 
-This is a maakbo-shaped example of the second rung. Edit the Mermaid block
-directly and preview this Markdown file. Keep assumptions and open questions
-below the diagram when they matter.
+This View shows one business scene. Its Business backbone contains sibling
+activities; it is not a detailed procedure or flow.
 
 ```mermaid
 ---
@@ -28,21 +27,21 @@ flowchart LR
   a_creator@{ label: "つくる人", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   i_idea_seed@{ label: "アイデアの種", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_shape_expression@{ label: "形にする", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  a_dialogue_partner@{ label: "対話相手", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   i_expression_draft@{ label: "表現の初稿", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  b_share_expression@{ label: "届ける", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   x_github@{ label: "GitHub", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   a_reader@{ label: "読み手", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
-  %% 左に提供側、中央にBusiness、右に受領側を置く。通常relationは---。
+  %% 左に提供側、中央にBusiness backbone、右に受領側を置く。通常relationは---。
   a_creator --- b_shape_expression
   i_idea_seed --- b_shape_expression
-  b_shape_expression --- a_dialogue_partner
   b_shape_expression --- i_expression_draft
-  b_shape_expression --- x_github
-  b_shape_expression --- a_reader
+  i_expression_draft --- b_share_expression
+  b_share_expression --- x_github
+  b_share_expression --- a_reader
 
-  class a_creator,a_dialogue_partner,a_reader actor;
-  class b_shape_expression business;
+  class a_creator,a_reader actor;
+  class b_shape_expression,b_share_expression business;
   class i_idea_seed,i_expression_draft information;
   class x_github external;
 
@@ -53,6 +52,7 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## 未解決の問い
+## 読み方
 
-読み手をこのシーンの主体として残すか、それとも発信・共有の別シーンへ分けるか？
+アイデアを形にする仕事と届ける仕事が、表現の初稿を介してつながる。
+正確な手順や判断は、このContextではなく各BusinessのFlowで見る。

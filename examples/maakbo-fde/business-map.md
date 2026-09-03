@@ -51,12 +51,8 @@ flowchart TB
 
 七つは工程の順番ではありません。使って分かったズレから現場理解へ戻るなど、必要な業務を行き来します。
 
-- [現場理解](context-understanding.md): 断片的な事実や声から、みんなで扱える現場像をつくる
-- [業務構造化](business-context.md): 人、情報、システムの関係を、考えられる業務モデルにする
-- [変化設計](change-design.md): 現状とありたい姿の差から、何を変えるかを決める
-- [協働設計](collaboration-design.md): 人、AI、システムの役割と関係を組み立てる
-- [仕組み化](system-building.md): 設計した協働を、実際に使える仕組みにする
-- [現場適合](context-fit.md): 使って分かったズレを、仕組みとモデルへ戻す
-- [自律移行](autonomy-transition.md): 使う人たち自身が、仕組みを運営し、変えられるようにする
+- [業務の変化を描く](shape-change-context.md): 現場理解、業務構造化、変化設計を一つの場面で見る
+- [協働の仕組みをつくる](build-collaboration-context.md): 協働設計と仕組み化を一つの場面で見る
+- [仕組みを現場へ根づかせる](establish-work-context.md): 現場適合と自律移行を一つの場面で見る
 
 ← [FDEの全体へ](README.md)

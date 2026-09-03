@@ -7,6 +7,7 @@ import argparse
 import re
 import subprocess
 import sys
+from collections import defaultdict, deque
 from pathlib import Path
 
 sys.dont_write_bytecode = True
@@ -77,44 +78,87 @@ def main() -> int:
     if unsupported:
         errors.append("foundation business context uses only a_, b_, i_, and x_")
     businesses = [node for node in nodes if node.startswith("b_")]
-    if len(businesses) != 1:
-        errors.append(f"include exactly one central b_ business activity; found {len(businesses)}")
+    if not businesses:
+        errors.append("include at least one b_ Business activity")
     if not edges:
         errors.append("context requires at least one relationship")
     else:
         for left, right, directed in edges:
-            if left.startswith("b_") == right.startswith("b_"):
+            if not left.startswith("b_") and not right.startswith("b_"):
                 connector = "-->" if directed else "---"
                 errors.append(
-                    f"{left} {connector} {right}: join exactly one activity and one non-business element"
+                    f"{left} {connector} {right}: Business Context relations require at least one Business endpoint"
                 )
 
-    if len(businesses) == 1:
-        business = businesses[0]
-        business_index = nodes.index(business)
-        left_nodes: set[str] = set()
-        right_nodes: set[str] = set()
-        for left, right, _directed in edges:
-            if right == business and left != business:
-                left_nodes.add(left)
-            elif left == business and right != business:
-                right_nodes.add(right)
+    node_index = {node: index for index, node in enumerate(nodes)}
+    reverse_edges = [
+        (left, right, directed)
+        for left, right, directed in edges
+        if left in node_index and right in node_index and node_index[left] >= node_index[right]
+    ]
+    for left, right, directed in reverse_edges:
+        connector = "-->" if directed else "---"
+        errors.append(
+            f"{left} {connector} {right}: write relationships in approximate left-to-right source order"
+        )
+
+    if businesses:
+        first_business = min(node_index[node] for node in businesses)
+        last_business = max(node_index[node] for node in businesses)
+        outer_relations = [
+            (left, right)
+            for left, right, _directed in edges
+            if left in node_index and right in node_index
+            and (left.startswith("b_") != right.startswith("b_"))
+        ]
+        left_nodes = {
+            left for left, right in outer_relations
+            if node_index[left] < first_business and right.startswith("b_")
+        }
+        right_nodes = {
+            right for left, right in outer_relations
+            if left.startswith("b_") and node_index[right] > last_business
+        }
         if not left_nodes:
-            errors.append("place at least one executor/provider/input on the left of the Business")
+            errors.append("place at least one executor/provider/input before the Business backbone")
         if not right_nodes:
-            errors.append("place at least one recipient/output on the right of the Business")
-        misplaced_left = sorted(node for node in left_nodes if nodes.index(node) > business_index)
-        misplaced_right = sorted(node for node in right_nodes if nodes.index(node) < business_index)
-        if misplaced_left:
+            errors.append("place at least one recipient/output after the Business backbone")
+
+    if len(businesses) > 1:
+        backbone: dict[str, set[str]] = defaultdict(set)
+        information_neighbors: dict[str, set[str]] = defaultdict(set)
+        for left, right, _directed in edges:
+            if left.startswith("b_") and right.startswith("b_"):
+                backbone[left].add(right)
+                backbone[right].add(left)
+            elif left.startswith("b_") and right.startswith("i_"):
+                information_neighbors[right].add(left)
+            elif left.startswith("i_") and right.startswith("b_"):
+                information_neighbors[left].add(right)
+        for neighbors in information_neighbors.values():
+            for business in neighbors:
+                backbone[business].update(neighbors - {business})
+        seen = {businesses[0]}
+        queue = deque(seen)
+        while queue:
+            for neighbor in backbone[queue.popleft()]:
+                if neighbor not in seen:
+                    seen.add(neighbor)
+                    queue.append(neighbor)
+        if seen != set(businesses):
+            missing = ", ".join(sorted(set(businesses) - seen))
             errors.append(
-                "define left-side executor/provider/input nodes before the Business: "
-                + ", ".join(misplaced_left)
+                "connect the Business backbone with observed Information bridges or direct "
+                f"Business relationships; disconnected: {missing}"
             )
-        if misplaced_right:
-            errors.append(
-                "define right-side recipient/output nodes after the Business: "
-                + ", ".join(misplaced_right)
-            )
+
+    if businesses and not any(
+        left.startswith("b_") != right.startswith("b_")
+        for left, right, _directed in edges
+    ):
+        errors.append(
+            "relate the Business backbone to at least one Actor, Information item, or External System"
+        )
 
     seen_labels: dict[tuple[str, str], str] = {}
     for node_id, label in labels.items():
@@ -130,7 +174,7 @@ def main() -> int:
         print(f"ERROR: {message}")
     if errors:
         return 1
-    print(f"OK: {args.input} — left/center/right business-context semantics")
+    print(f"OK: {args.input} — {len(businesses)} Business node(s) in one use-case context")
     return 0
 
 

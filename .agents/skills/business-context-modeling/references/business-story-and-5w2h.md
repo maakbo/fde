@@ -6,18 +6,22 @@ analysis format.
 
 ## Start with a Business Story
 
-Write two or three ordinary sentences that answer:
+Write a short account of one Business Use Case / scene that answers:
 
 - Who provides value or Information?
-- What does the Business use or change?
-- What Information or value does it create, update, or make usable?
+- Which sibling Business activities make the scene work?
+- What does each activity use or change?
+- What Information or value does each create, update, or make usable?
 - Who receives, operates, changes, or grows the result?
 
 Describe relationships first. Do not force a chronological route; sequence,
 decisions, and rework belong in a Business Flow only when they matter.
 
 Keep the user's nouns and verbs as evidence. After the story is coherent,
-extract candidates and name the Business with `modeling-rules.md`.
+extract candidates and name the peer Business activities with
+`modeling-rules.md`. Cut a sibling scene when participants, Information,
+External Systems, value recipients, or responsibility boundaries change enough
+that the current account no longer reads as one situation.
 
 ## Use 5W2H as an analysis lens
 

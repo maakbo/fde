@@ -1,6 +1,6 @@
 # アイデアを表現にする — 業務フロー
 
-The third rung expands `b_shape_expression` only far enough to show the
+This Business Flow expands `b_shape_expression` only far enough to show the
 production loop and its one meaningful rework decision.
 
 ```mermaid

@@ -11,17 +11,19 @@ a_customer@{ label: "依頼者", img: "https://raw.githubusercontent.com/maakbo/
 ## Scope and direction
 
 - Keep one subject and one relationship meaning.
-- Start focused views with 3–7 nodes and up to 9 relationships.
-- Use `--allow-complexity` only after recognizing a larger view as intentional observation.
+- Begin focused review around 5–12 nodes and up to 16 relationships. These are
+  review signals, not semantic limits.
+- Use `--allow-complexity` only after rendering a larger coherent scene and
+  deciding that it remains readable.
 - Use `flowchart TB` or `flowchart LR` for layout, independently of line direction.
-- In a Business Context, place executors, providers, and inputs left; one
-  Business Use Case at center; and recipients and outputs right.
+- In a Business Context, place executors, providers, and inputs left; the
+  scene's Business backbone at center; and recipients and outputs right.
 - Use `---` for ordinary Business Context relationships. Input, output,
   provider, and recipient direction comes from placement, not arrowheads.
 - Use `-->` only when direction itself is essential and placement cannot
   express it. Record the reason and validate with `--allow-arrow-exception`.
 
-## Context ladder profiles
+## Context profiles
 
 Use the profile that matches the question; do not make one figure carry every
 level at once.
@@ -29,12 +31,13 @@ level at once.
 | Profile | Center | Include |
 | --- | --- | --- |
 | Overall context | A title-level business area or outcome as a `b_` anchor | Major actor subjects; keep detailed information and systems for child views |
-| Use-case / scene context | One outcome-sized `b_` activity | The `a_`, `x_`, and `i_` elements whose responsibility, boundary, handoff, or value changes in that scene |
+| Use-case / scene context | Multiple sibling `b_` activities forming one Business Use Case backbone | The `a_`, `x_`, and `i_` elements whose responsibility, boundary, handoff, or value matters in that scene |
 | Complexity observation | The current same-level backbone | All useful candidates when the density itself needs to be seen; acknowledge it with `--allow-complexity` |
 
-The next rung after a use-case context is a business flow, which belongs to the
-business-flow profile and uses arrows for order. When several scene contexts are
-needed, link each one to its single parent overview node in the model-set index.
+Each Business node is a detail expansion point. Expand it as a Business Flow
+when order matters, or as a recursive Detailed Business Context when its
+sub-Businesses and boundaries matter. Keep the parent View and expanded
+Business ID in the authoring trace.
 
 ## Node IDs and icons
 
@@ -88,27 +91,29 @@ token; if the background changes, change both together.
 
 ## Relationships and style
 
-For a Business Context, use a semantic left-to-right source pattern with
-undirected relationships:
+For a Business Context, use a semantic left-to-right source pattern with a
+multi-Business backbone and undirected relationships:
 
 ```mermaid
 flowchart LR
   a_requester
   i_request
-  b_receive
+  b_understand
   i_record
+  b_fulfill
   a_recipient
 
-  a_requester --- b_receive
-  i_request --- b_receive
-  b_receive --- i_record
-  b_receive --- a_recipient
+  a_requester --- b_understand
+  i_request --- b_understand
+  b_understand --- i_record
+  i_record --- b_fulfill
+  b_fulfill --- a_recipient
 ```
 
 Node declarations use the full canonical image-node properties; they are
-abbreviated above only to show order. Defining left nodes before the Business
-and right nodes after it helps Mermaid's native layout without fake semantics.
-The relation endpoint order carries the same authoring intent.
+abbreviated above only to show order. Define left nodes first, then interleave
+Business nodes and genuine Information bridges, then define right nodes. The
+relation endpoint order carries the same authoring intent.
 
 Do not use arrows, edge labels, multiple weights, visible node boxes, or color
 hierarchy between equivalent nodes. Replace one `---` with `-->` only when the
@@ -116,9 +121,12 @@ direction itself changes the View's answer and position cannot express it.
 Do not write both `node_a --- node_b` and `node_b --- node_a`; an undirected
 line already represents both directions.
 
-Keep one Business activity at the center. Every edge should join it to an
-Actor, Information item, or External System. Do not duplicate one identity on
-both sides to force layout. If provider and recipient roles are equally
+Keep the connected Business backbone at the center. An observed Information
+concept may bridge two Businesses. A direct `Business --- Business` relation is
+allowed when continuity matters and no mediator is observed; it never asserts
+exact sequence. Other Context relations require at least one Business
+endpoint. Do not invent nodes or relations to shape the layout, or duplicate
+one identity on both sides. If provider and recipient roles are equally
 important, revisit the View question, boundary, or grain.
 
 ## Master map exception
@@ -134,7 +142,8 @@ business-centered context view.
 
 Use the template colors, 14px font, `diagramPadding: 40`, and a `0.75px` relation line or arrow. The outer padding prevents labels on edge nodes from being clipped without enlarging the icons. Keep source order: frontmatter, flowchart declaration, nodes, relationships, classes, class definitions, link style.
 
-Before completion, inspect the preview: the Business should be central;
+Before completion, inspect the preview: the Business backbone should be central
+and traceable;
 executors/providers should read left; recipients should read right; Information
 should sit on the side matching its meaning; all nodes should not collapse to
 one side; arrows should be absent unless justified; and line gaps, arrowhead

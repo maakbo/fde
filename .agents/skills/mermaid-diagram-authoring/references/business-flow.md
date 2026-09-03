@@ -32,9 +32,10 @@ token; if the background changes, change both together.
 
 ## Scope and direction
 
-In a business model set, this is the third rung: it expands one activity from a
-use-case / scene context. Record that parent diagram and node ID in the model-set
-index. Do not use the flow to replace the context relationship view.
+In a business model set, a Flow expands one selected activity from a Business
+Context at any depth. Record the parent View and Business node ID. Do not use a
+Flow to replace the Context's multi-Business relationship view; use it only
+when exact order, decision, branch, loop, or rework is the question.
 
 - Omit start and end symbols by default.
 - Start with 2–5 activities; allow no more than 8 nodes and 10 arrows.

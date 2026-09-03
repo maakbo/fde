@@ -1,8 +1,8 @@
 # アイデアを表現にする — ユースケース・シーンコンテキスト
 
-The second rung cuts the scene in which a loose idea becomes a reviewable first
-expression through dialogue. All non-business nodes are selected from the
-canonical master maps.
+This Business Context cuts the scene in which a loose idea becomes a reviewable
+first expression through dialogue. All non-business nodes are selected from
+the canonical master maps.
 
 ```mermaid
 ---

@@ -8,18 +8,19 @@ State the shared discussion or decision this set supports.
 
 | View | Role | Level | Parent / expanded node | Child views | Focus | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| `overview` | overall context | rung 1 / business area | — | `use-case-a`, `observation` | Title-level business area and major actor subjects | working hypothesis |
+| `overview` | overall context | business area | — | `use-case-a`, `observation` | Title-level business area and major actor subjects | working hypothesis |
 | `observation` | complexity observation | activity | `overview.md / b_area_a` | — | Preserve full same-level backbone | working hypothesis |
-| `use-case-a` | use-case / scene context | rung 2 / outcome activity | `overview.md / b_area_a` | `use-case-a-flow` | One changing scene around a business outcome | working hypothesis |
-| `use-case-a-flow` | business flow | rung 3 / task | `use-case-a.md / b_activity` | — | Order, decisions, and essential rework | working hypothesis |
+| `use-case-a` | Business Context | Business Use Case / scene | `overview.md / b_area_a` | `activity-a-detail`, `activity-b-flow` | Multiple sibling Businesses and their participants | working hypothesis |
+| `activity-a-detail` | Detailed Business Context | sub-Business | `use-case-a.md / b_activity_a` | — | Sub-Businesses, responsibilities, and boundaries | working hypothesis |
+| `activity-b-flow` | Business Flow | task | `use-case-a.md / b_activity_b` | — | Order, decisions, and essential rework | working hypothesis |
 
 Replace placeholders with relative links and stable Mermaid node IDs.
 
-The normal path is `overall context` → `use-case / scene context` → `business
-flow`. A flow is a separate sequence diagram, not a more detailed relationship
-context. If several scenes are needed, add sibling use-case rows under the same
-overview node. If the overview becomes dense, add one higher overview rung
-instead of making another overview at the same level.
+The normal path is `Overall / Business Map` → `Business Context` → one selected
+Business node → `Business Flow` or `Detailed Business Context`. A Detailed
+Business Context may repeat this pattern recursively. Keep every child's parent
+View and expanded Business ID reciprocal. Return detail discoveries upward
+when they change a parent name, split, merge, responsibility, or boundary.
 
 ## Master layer
 

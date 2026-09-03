@@ -32,10 +32,10 @@ published model quiet enough for a reader who wants to understand the business.
 - Reuse the structure of a reader-facing page, not the semantic structure of
   its diagram. Re-derive Actors, Information, relationships, and the Context
   variant from each Business Story.
-- Put the Business Use Case at the visual center of a Business Context. Place
-  executors, providers, and inputs on the left; place value recipients and
-  outputs on the right. Express ordinary direction through position and
-  `---`, not arrows.
+- Define a Business Context by one Business Use Case or coherent business
+  scene, not by one activity. Put the sibling Business activities that make
+  the scene work in a central backbone. Place executors, providers, and inputs
+  on the left; place value recipients and outputs on the right.
 - Treat `-->` as a semantic exception. Use it only when direction itself
   changes the answer and left/right placement is insufficient. Record the
   reason in the authoring workspace and use the explicit checker flag.
@@ -97,7 +97,8 @@ reader's question, such as:
 - Purpose / Outcome: what state the work seeks;
 - System Context: who participates around the whole Business;
 - Business Map: which peer Business capabilities constitute the whole;
-- Business Context: who and what relate around one Business outcome;
+- Business Context: how multiple Business activities, participants, and
+  Information make one Business Use Case work;
 - Business Flow: what order, decision, or rework occurs inside one Context.
 
 Do not make one diagram answer all levels.
@@ -116,16 +117,23 @@ meaning, and main abstraction level per diagram. Run the matching source-only
 checker. Let density or awkward layout send the work back to boundary, grain,
 or naming before adding layout machinery.
 
-For a Business Context, define left-side nodes first, the one `b_` Business
-next, and right-side nodes last. Write provider relations as
-`left_node --- b_business` and recipient relations as
-`b_business --- right_node`. Do not duplicate one Actor identity on both sides;
-revisit the boundary, question, or grain when both roles are equally essential.
+For a Business Context, define left-side nodes first, then interleave the
+sibling Business activities and observed Information that connects them, then
+define right-side nodes. Write every relation in approximate left-to-right
+source order. A direct `Business --- Business` relation may express continuity
+when no meaningful Information bridge is observed; it never means a precise
+procedure sequence. Do not invent an Information node or relation to force the
+backbone.
+
+Split by a genuine scene change in participants, Information, External System,
+value recipient, or responsibility boundary, or when visual/cognitive density
+makes the backbone hard to discuss. Business count and node thresholds are
+review signals, not automatic boundaries.
 
 Source validation does not finish the View. Inspect the preview and confirm
-that the Business is central, providers read on the left, recipients read on
-the right, Information is on the side matching its meaning, and no unnecessary
-arrow or endpoint clipping remains.
+that the Business backbone is central and traceable, providers read on the
+left, recipients read on the right, Information bridges are meaningful, and no
+unnecessary arrow, crossing, or endpoint clipping remains.
 
 Before copying a previous Context pattern, hide the existing diagram and audit
 the Business Story, Why, input, transformation, output, and each participant's
@@ -179,18 +187,19 @@ review state, unresolved items, next action, and stopping point.
 
 The Skill is ready for a first field use when this chain works end to end:
 
-1. conversation becomes one outcome-sized Business Use Case (`Workflow 1–3`);
+1. conversation becomes one coherent Business Use Case / scene (`Workflow 1–3`);
 2. the workspace states who provides what, what changes, what is produced, and
    who receives value (`business-story-and-5w2h.md`);
 3. Actors, Information, and External Systems come from observed meaning
    (`modeling-rules.md`);
-4. the Business is the single center (`check_business_context.py`);
+4. sibling Business activities form a readable central backbone
+   (`check_business_context.py`);
 5. executor/provider/input nodes are left and recipient/output nodes are right
    (template plus business checker);
 6. ordinary relations use spatial reading and `---` (context checker default);
 7. arrows require semantic justification and `--allow-arrow-exception`;
-8. disagreement between story and diagram returns the work to conversation
-   (`Workflow 6`);
+8. each Business can expand into a Flow or recursive Detailed Business Context,
+   and discoveries return to the parent (`multi-view-modeling.md`);
 9. the public page stays short (`reader-facing-artifacts.md`);
 10. source checks are followed by visual review, including endpoint markers
     (`mermaid-diagram-authoring` fixture and checklist).

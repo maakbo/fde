@@ -64,13 +64,10 @@ REQUIRED = [
     "examples/maakbo-fde/business-map.md",
     "examples/maakbo-fde/system-context.md",
     "examples/maakbo-fde/actor-requirement.md",
-    "examples/maakbo-fde/context-understanding.md",
-    "examples/maakbo-fde/business-context.md",
-    "examples/maakbo-fde/change-design.md",
-    "examples/maakbo-fde/collaboration-design.md",
-    "examples/maakbo-fde/system-building.md",
-    "examples/maakbo-fde/context-fit.md",
-    "examples/maakbo-fde/autonomy-transition.md",
+    "examples/maakbo-fde/shape-change-context.md",
+    "examples/maakbo-fde/build-collaboration-context.md",
+    "examples/maakbo-fde/establish-work-context.md",
+    "examples/maakbo-fde/change-design-flow.md",
 ]
 SKILLS = [
     "business-context-modeling",
@@ -167,13 +164,10 @@ FDE_READER_MODEL_FILES = (
     "system-context.md",
     "actor-requirement.md",
     "business-map.md",
-    "context-understanding.md",
-    "business-context.md",
-    "change-design.md",
-    "collaboration-design.md",
-    "system-building.md",
-    "context-fit.md",
-    "autonomy-transition.md",
+    "shape-change-context.md",
+    "build-collaboration-context.md",
+    "establish-work-context.md",
+    "change-design-flow.md",
 )
 
 
@@ -472,19 +466,13 @@ def main() -> int:
         "--strict",
         "--allow-complexity",
     ])
-    for relative, allow_complexity in (
-        ("examples/maakbo-fde/context-understanding.md", False),
-        ("examples/maakbo-fde/business-context.md", False),
-        ("examples/maakbo-fde/change-design.md", True),
-        ("examples/maakbo-fde/collaboration-design.md", True),
-        ("examples/maakbo-fde/system-building.md", False),
-        ("examples/maakbo-fde/context-fit.md", True),
-        ("examples/maakbo-fde/autonomy-transition.md", False),
+    for relative in (
+        "examples/maakbo-fde/shape-change-context.md",
+        "examples/maakbo-fde/build-collaboration-context.md",
+        "examples/maakbo-fde/establish-work-context.md",
     ):
-        command = [sys.executable, business, relative]
-        if allow_complexity:
-            command.append("--allow-complexity")
-        run(command)
+        run([sys.executable, business, relative])
+    run([sys.executable, flow, "examples/maakbo-fde/change-design-flow.md", "--strict"])
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")
     return 0
 

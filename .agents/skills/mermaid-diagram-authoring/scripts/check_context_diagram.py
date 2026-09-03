@@ -52,6 +52,8 @@ CANONICAL_LINK_STYLE = (
 )
 CANONICAL_NODE_SPACING = 64
 CANONICAL_RANK_SPACING = 80
+FOCUSED_NODE_GUIDELINE = 12
+FOCUSED_RELATION_GUIDELINE = 16
 CANONICAL_CLASS_STYLES = {
     "actor": "fill:none,stroke:none,color:#25231F",
     "business": "fill:none,stroke:none,color:#25231F",
@@ -198,11 +200,17 @@ def main() -> int:
         errors.append(f"use `{CANONICAL_LINK_STYLE}` exactly once")
     if len(nodes) < 3 and not args.allow_sparse:
         errors.append(f"use at least 3 semantic nodes; found {len(nodes)}")
-    if len(nodes) > 7:
-        message = f"complexity signal: {len(nodes)} nodes exceed the focused-view guideline"
+    if len(nodes) > FOCUSED_NODE_GUIDELINE:
+        message = (
+            f"complexity signal: {len(nodes)} nodes exceed the "
+            f"{FOCUSED_NODE_GUIDELINE}-node review guideline"
+        )
         (observations if args.allow_complexity else warnings).append(message)
-    if len(edges) > 9:
-        message = f"complexity signal: {len(edges)} relationships exceed the focused-view guideline"
+    if len(edges) > FOCUSED_RELATION_GUIDELINE:
+        message = (
+            f"complexity signal: {len(edges)} relationships exceed the "
+            f"{FOCUSED_RELATION_GUIDELINE}-relation review guideline"
+        )
         (observations if args.allow_complexity else warnings).append(message)
     if node_lines and edge_lines and max(node_lines) > min(edge_lines):
         errors.append("place all node definitions before relationships")

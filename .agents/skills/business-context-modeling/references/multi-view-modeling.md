@@ -1,127 +1,101 @@
 # Multi-view business modeling
 
-Use a model set when one diagram can no longer answer every useful question at
-one abstraction level, or when the complexity itself is worth observing.
+Use a model set when one diagram cannot answer every useful question at one
+abstraction level. Views are projections of maintained meaning, not isolated
+pictures.
 
 ## Model and View
 
-A **Model** is the maintained meaning: purpose, desired outcomes, Business
-activities, participants, Information, systems, flows, implementation choices,
-and their relationships. It may include prose, inventories, decisions, and
-uncertainty in the authoring workspace.
+A **Model** maintains purpose, desired outcomes, Business activities,
+participants, Information, systems, flows, implementation choices, and their
+relationships. A **View** selects only what answers one reader question at one
+boundary, state, and abstraction level.
 
-A **View** selects only the part needed to answer one reader question at one
-boundary, state, and abstraction level. Purpose / Outcome, System Context,
-Business Map, Business Context, and Business Flow are different Views of a
-larger Model. Do not put every level into one diagram or publish the entire
-authoring workspace as one model note.
+Keep the Why-to-How trace in `business-story-and-5w2h.md`. Move downward to
+make meaning concrete and upward when detail reveals a wrong name, split,
+merge, responsibility, Information concept, or Context boundary.
 
-Keep the Why-to-How trace described in `business-story-and-5w2h.md`. The trace
-is bidirectional: descend to concretize, and revise an upper Model when a lower
-View reveals a wrong purpose, boundary, activity, or responsibility.
+## Recursive View hierarchy
 
-## Business Map and Business Flow
+Use this as the default shape, not a fixed number of levels:
 
-A Business Map answers which peer capabilities or Business areas constitute a
-larger Business. Use relationship lines; their placement does not express
-time. A Business Flow answers what happens next, where decisions occur, and
-where work returns. Keep these as separate Views even when they share names.
+```text
+Overall / Business Map
+  -> Business Context: one Business Use Case / scene
+       -> Business activity: a detail expansion point
+            -> Business Flow
+            or Detailed Business Context
+                 -> another Business activity
+                      -> further detail when useful
+```
 
-Master element maps are a parallel canonical layer, not another abstraction
-rung: actor, external-system, and information views hold same-type identities
-and relationships. Context and overview views select those IDs and record the
-links in the model-set index. If a detail changes the meaning of an element,
-revise the master first, then propagate the canonical label and ID to consumers.
+An Overall Context or Business Map names the whole and its major capabilities.
+A Business Context selects one coherent scene and shows its Business backbone,
+Actors, Information, and External Systems. Each Business node can expand in one
+of two ways:
 
-## The three-rung context ladder
+- **Business Flow** when the question is sequence, decision, branch, loop, or
+  rework inside that Business;
+- **Detailed Business Context** when the question is which sub-Businesses,
+  responsibilities, Information changes, or External System boundaries make
+  that Business work.
 
-The following is a reusable path, not a requirement to create three diagrams
-every time. Add only the rungs that help the current discussion.
+A Detailed Business Context follows the same Business Use Case rule and may be
+expanded recursively. Do not assume that every Context must have a child or
+that the next child must be a Flow.
 
-| Rung | Artifact | Center and scope | Relationship meaning |
-| --- | --- | --- | --- |
-| 1 | Overall context | The title-level business area or outcome as one `b_` anchor, with major actor subjects around it | `---` means the overall business relationship; no sequence |
-| 2 | Use-case / scene context | One scene where responsibility, system boundary, information handoff, or value recipient changes; one outcome-sized `b_` activity plus selected master elements | left = provider, center = Business, right = recipient; `---` by default; arrow only when direction itself cannot be expressed by placement |
-| 3 | Business flow | One selected use-case activity decomposed into actions, decisions, and essential rework | `-->` means order; use the flow Skill |
+## Business Map, Context, and Flow
 
-The first rung's `b_` node is a title anchor for the business area or outcome,
-not a small task. The second rung is the business-centered discussion surface:
-it selects canonical `a_`, `x_`, and `i_` nodes rather than inventing local
-identities. The third rung is deliberately not a context diagram; it answers
-what happens next inside the selected scene.
-
-### Choosing and splitting a scene
-
-Choose a use-case context when one of these changes the reading:
-
-- who provides, owns, or receives the value;
-- which external system crosses the boundary;
-- which information is created, changed, or handed off; or
-- where responsibility moves between participants.
-
-If one scene becomes crowded, first preserve it as a complexity observation,
-then split it into sibling use-case contexts by scene, question, or relationship
-kind. Do not shrink labels or hide elements solely to fit Mermaid. Each sibling
-keeps the same overall parent and its own focused question.
-
-## View roles
-
-| View | Purpose | Typical level |
+| View | Question | Relationship meaning |
 | --- | --- | --- |
-| Complexity observation | Preserve the full same-level backbone for discussion | Activity or capability |
-| Overall context | Name the whole business area and its major actor subjects | Rung 1 |
-| Use-case context | Explain one changing scene around a business outcome | Rung 2 |
-| Overview flow | Show high-level handoffs or order across several views | One level above children, only when order is the question |
-| Business flow | Explain order, decisions, or rework inside one use-case activity | Rung 3 |
+| Overall / Business Map | What whole or peer capabilities exist? | composition or business relation; no order |
+| Business Context | What activities and participants make one scene work? | approximate value progression through a central backbone; no exact order |
+| Detailed Business Context | What sub-Businesses and boundaries make one parent Business work? | the same Context rule, one level deeper |
+| Business Flow | What happens next inside one selected Business? | arrows mean sequence, decisions, branches, loops, or rework |
 
-Observation and overview are different. Observation preserves complexity at the
-current level; an overall or higher overview deliberately summarizes it.
+Do not turn a Context backbone into a detailed route. Its left-to-right reading
+helps people follow value across a scene, but exact order belongs to Flow.
 
-Move upward one rung at a time:
+Master element maps remain a parallel canonical layer. They maintain reusable
+Actor, External System, and Information identities and relationships. A
+Context selects those IDs; detail findings that change their meaning return to
+the master.
 
-| Child | Parent overview |
-| --- | --- |
-| Operation or task | Activity or outcome unit |
-| Activity or use-case scene | Capability or business area |
-| Capability or business area | Purpose or value concept |
+## Choosing and splitting a scene
 
-Do not add another overview at the same level merely to reduce node count.
+Begin with the Business Story and place all plausible sibling activities on one
+observation surface. Split into sibling Business Contexts when participant or
+stakeholder composition, provider/recipient, Information, External System, or
+responsibility boundary changes enough that the scene no longer reads as one.
+Also split when density, crossings, or backbone shape prevents a reader from
+seeing what to discuss.
 
-## Concrete to abstract
+Business count and node thresholds are review signals, not mechanical split
+rules. Do not shrink labels, invent bridge Information, or add fake relations
+to keep a scene on one page.
 
-1. Preserve the candidate inventory and useful dense observation view.
-2. Group details that share an outcome, responsibility, or boundary.
-3. Name each group as one next-higher concept.
-4. Choose relationship or handoff semantics and assign stable IDs.
-5. Record which detailed views and concrete nodes each overview node summarizes.
+## Parent / child trace
 
-Do not group items merely because Mermaid placed them near each other.
+For every detail View, retain at least this table in the authoring workspace or
+model-set index:
 
-## Abstract to concrete
+| Parent View | Expanded Business ID | Child View type | Child View | Status |
+| --- | --- | --- | --- | --- |
+| `scene-context.md` | `b_selected_business` | Business Flow or Detailed Business Context | `child-view.md` | draft / review / accepted |
 
-1. Select one overall or higher-overview node whose meaning needs discussion.
-2. State a narrower scene question and boundary.
-3. Expand it into one use-case context, selecting canonical master IDs.
-4. Add a business flow only when internal order or decisions matter.
-5. Link every child to its parent diagram and exact parent node ID.
+The child must name the same parent View and Business ID. Reader-facing pages
+need only natural links between the relevant Views.
 
-## Bidirectional trace
+## Bidirectional refinement loop
 
-For every view, record rung/level, role, parent and expanded node ID, children,
-one-sentence focus, selected master IDs, and status. A use-case context expands
-exactly one overall node; a business flow expands exactly one use-case activity.
-Keep the observation view while it remains meaningful evidence. Revise upward
-when detail changes a shared concept or master identity; descend when an
-overview hides a disputed distinction.
+1. Inspect the Overall Context or Business Map.
+2. Cut one Business Use Case as a Context.
+3. Model its sibling Businesses, Actors, Information, and External Systems.
+4. Expand one Business into a Flow or Detailed Business Context.
+5. Use detail to test the parent meaning.
+6. Return upward to rename, split, or merge Business nodes; revise Information,
+   Actor responsibility, master identity, or Context boundary.
+7. Re-enter detail from the corrected parent.
 
-## Round-trip loop
-
-1. Start at the overall context and choose one scene that needs detail.
-2. Expand that node into a use-case context and reconcile its actor, system,
-   and information selections with the masters.
-3. Add a business flow only for the selected activity's internal order.
-4. Bring discoveries back upward: update the master or parent overview when the
-   meaning, boundary, or value recipient changes.
-5. If the detail reveals another distinct scene, add a sibling context and keep
-   both children linked to the same parent. If several siblings change the
-   overall reading, add one higher overview rung.
+Concrete-to-abstract correction is as important as abstract-to-concrete
+expansion. A child View is evidence about its parent, not a terminal artifact.
