@@ -8,15 +8,21 @@
 
 FDEが何を目指し、誰と実現し、どんな業務で成り立っているのかを、MermaidのModelで見られます。
 
+### [Human–Agent Workspaceを見る](examples/human-agent-workspace/)
+
+人、AI collaborator、private control plane、public reuse surfaceの関係とhandoffを、
+Architecture OverviewとInteraction Flowで見られます。
+
 ## モデルを作る
 
 整理されていない事業や業務の話から、目的、業務、関わる人、情報、システムの関係をModelへ外に出します。Howだけでなく、その背景にあるWhyも残すことで、状況が変わったあとも新しいHowを考え直せるようにします。
 
 - [AGENTS.md](AGENTS.md): このリポジトリで共有する作業原則
 - [business-context-modeling Skill](.agents/skills/business-context-modeling/SKILL.md): 対話から業務Modelをつくる手順
+- [architecture-modeling Skill](.agents/skills/architecture-modeling/SKILL.md): 人、AI agent、system、repository、service、boundaryの関係をArchitecture Viewにする手順
 - [mermaid-diagram-authoring Skill](.agents/skills/mermaid-diagram-authoring/SKILL.md): Markdown内でMermaidを作る手順
 - [mermaid-diagram-export Skill](.agents/skills/mermaid-diagram-export/SKILL.md): 明示的にSVG / PNGが必要な場合のexport手順
-- [templates](templates/): Context、Flow、master mapの開始点
+- [templates](templates/): Business Context、Architecture Context、Flow、master mapの開始点
 - [validator](scripts/validate_repository.py): public bundleとMermaid sourceの検証
 
 ### Quick start
@@ -57,6 +63,7 @@ loose conversation
 
 - [maakbo FDE](examples/maakbo-fde/): FDEの目的、関わる人、七つの業務と各Business Context
 - [maakbo expression loop](examples/maakbo-expression-loop/): overall context、use-case context、business flowをつないだ例
+- [Human–Agent Workspace](examples/human-agent-workspace/): private handoffとpublic reuseを分けたAI collaborator環境のarchitecture example
 - [repair intake](examples/repair-intake/): 記法を検証するためのsynthetic example
 
 ## Working source and export

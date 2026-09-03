@@ -1,6 +1,6 @@
 ---
 name: mermaid-diagram-export
-description: Explicitly export an existing Mermaid block or standalone .mmd source to self-contained SVG and PNG assets, validate the selected diagram profile, and inspect publication output. Use only when the user asks to render, export, publish, generate an image, create SVG or PNG, or perform visual artifact review; do not invoke for ordinary Mermaid authoring or Markdown preview.
+description: Explicitly export an existing Mermaid block or standalone .mmd source to self-contained SVG and PNG assets, validate the selected business-context, architecture-context, or flow profile, and inspect publication output. Use only when the user asks to render, export, publish, generate an image, create SVG or PNG, or perform visual artifact review; do not invoke for ordinary Mermaid authoring or Markdown preview.
 ---
 
 # Mermaid Diagram Export
@@ -30,6 +30,7 @@ npm ci
 
 ```bash
 python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py path/to/context.md --type context
+python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py path/to/architecture.md --type architecture
 python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py path/to/flow.md --type flow --format svg
 ```
 

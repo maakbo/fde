@@ -4,7 +4,8 @@ The thin SVG assets used by Mermaid working sources are generated from the publi
 
 ## Lucide
 
-- Used icons: `user`, `ellipse`, `file`, `server`, `diamond`, `tablet`, `smartphone`, and `laptop`.
+- Used icons: `user`, `bot`, `ellipse`, `file`, `folder-git-2`, `server`, `cloud`,
+  `message-square`, `diamond`, `tablet`, `smartphone`, and `laptop`.
 - Source: <https://github.com/lucide-icons/lucide>
 - The SVG geometry is unchanged from Lucide; only the shared `stroke-width` is normalized to `1.35` for this repository's thin visual language.
 
@@ -26,7 +27,8 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ```
 
-Lucide's `server`, `smartphone`, and `tablet` icons are derived from the Feather project and carry the following MIT notice:
+Lucide's `server`, `cloud`, `message-square`, `smartphone`, and `tablet` icons are
+derived from the Feather project and carry the following MIT notice:
 
 ```text
 The MIT License (MIT)

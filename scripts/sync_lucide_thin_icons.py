@@ -19,9 +19,13 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "assets/icons/lucide-thin"
 ICON_NAMES = (
     "user",
+    "bot",
     "ellipse",
     "file",
+    "folder-git-2",
     "server",
+    "cloud",
+    "message-square",
     "diamond",
     "tablet",
     "smartphone",

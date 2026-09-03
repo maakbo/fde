@@ -1,6 +1,6 @@
 # Lucide thin icon assets
 
-These eight SVGs use the original Lucide geometry retrieved through Iconify.
+These twelve SVGs use the original Lucide geometry retrieved through Iconify.
 Only the shared stroke width is normalized to `1.35` so the icon set stays
 light and consistent in Mermaid image nodes.
 

@@ -3,6 +3,8 @@
 Read and follow `/AGENTS.md` before changing artifacts.
 
 - Route loose business descriptions through `.agents/skills/business-context-modeling/SKILL.md`.
+- Route human, AI-agent, system, repository, service, channel, artifact, and
+  boundary descriptions through `.agents/skills/architecture-modeling/SKILL.md`.
 - If actors, external systems, or information need their own relationships,
   update the matching master map first and record `Master references` in each
   context source.
@@ -19,4 +21,7 @@ Read and follow `/AGENTS.md` before changing artifacts.
   (title-level business area and major actors) → use-case / scene context (one
   changing business outcome with canonical master elements) → business flow
   (order, decisions, and rework). Trace each child to one parent node.
+- For architecture, treat Overview / System Context, Architecture Context,
+  Detailed Architecture Context, and Interaction Flow as optional recursive
+  View roles rather than a fixed mandatory ladder.
 - Run `python3 scripts/validate_repository.py` before reporting completion.

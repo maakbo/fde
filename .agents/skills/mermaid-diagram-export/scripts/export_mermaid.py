@@ -20,11 +20,12 @@ sys.dont_write_bytecode = True
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
-    parser.add_argument("--type", choices=("context", "flow"), required=True)
+    parser.add_argument("--type", choices=("context", "architecture", "flow"), required=True)
     parser.add_argument("--format", choices=("svg", "png", "both"), default="both")
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--allow-complexity", action="store_true")
     parser.add_argument("--allow-arrow-exception", action="store_true")
+    parser.add_argument("--allow-directed", action="store_true")
     parser.add_argument("--config", type=Path)
     return parser.parse_args()
 
@@ -98,14 +99,19 @@ def main() -> int:
         print(f"ERROR: {error}", file=sys.stderr)
         return 2
 
-    checker = authoring_scripts / (
-        "check_context_diagram.py" if args.type == "context" else "check_business_flow.py"
-    )
+    if args.type == "architecture":
+        checker = root / ".agents/skills/architecture-modeling/scripts/check_architecture_context.py"
+    elif args.type == "context":
+        checker = authoring_scripts / "check_context_diagram.py"
+    else:
+        checker = authoring_scripts / "check_business_flow.py"
     lint = [sys.executable, str(checker), str(input_path), "--strict"]
-    if args.type == "context" and args.allow_complexity:
+    if args.type in {"context", "architecture"} and args.allow_complexity:
         lint.append("--allow-complexity")
     if args.type == "context" and args.allow_arrow_exception:
         lint.append("--allow-arrow-exception")
+    if args.type == "architecture" and args.allow_directed:
+        lint.append("--allow-directed")
     if subprocess.run(lint, cwd=root, check=False).returncode != 0:
         return 1
 

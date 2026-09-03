@@ -23,6 +23,7 @@ REQUIRED = [
     ".github/agents/diagram-exporter.agent.md",
     ".github/agents/diagram-reviewer.agent.md",
     "templates/icon-context.md",
+    "templates/architecture-context.md",
     "templates/business-flow.md",
     "templates/master-actor-map.md",
     "templates/master-system-map.md",
@@ -33,6 +34,9 @@ REQUIRED = [
     ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py",
     ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py",
     ".agents/skills/mermaid-diagram-authoring/fixtures/context-arrow-visual-regression.md",
+    ".agents/skills/architecture-modeling/scripts/check_architecture_context.py",
+    ".agents/skills/architecture-modeling/references/modeling-rules.md",
+    ".agents/skills/architecture-modeling/references/reader-facing-artifacts.md",
     ".agents/skills/business-context-modeling/scripts/check_master_map.py",
     ".agents/skills/business-context-modeling/scripts/check_master_references.py",
     ".agents/skills/business-context-modeling/references/business-story-and-5w2h.md",
@@ -68,17 +72,25 @@ REQUIRED = [
     "examples/maakbo-fde/build-collaboration-context.md",
     "examples/maakbo-fde/establish-work-context.md",
     "examples/maakbo-fde/change-design-flow.md",
+    "examples/human-agent-workspace/README.md",
+    "examples/human-agent-workspace/architecture-overview.md",
+    "examples/human-agent-workspace/handoff-review-flow.md",
 ]
 SKILLS = [
+    "architecture-modeling",
     "business-context-modeling",
     "mermaid-diagram-authoring",
     "mermaid-diagram-export",
 ]
 THIN_LUCIDE_ICONS = (
     "user",
+    "bot",
     "ellipse",
     "file",
+    "folder-git-2",
     "server",
+    "cloud",
+    "message-square",
     "diamond",
     "tablet",
     "smartphone",
@@ -171,6 +183,19 @@ FDE_READER_MODEL_FILES = (
 )
 
 
+def _validate_sample_links(sample: Path) -> None:
+    for artifact in sample.glob("*.md"):
+        text = artifact.read_text(encoding="utf-8")
+        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
+            if "://" in target or target.startswith("#"):
+                continue
+            linked = (artifact.parent / target.split("#", 1)[0]).resolve()
+            if not linked.exists():
+                raise ValueError(
+                    f"{artifact.relative_to(ROOT)}: broken sample link: {target}"
+                )
+
+
 def validate_fde_reader_surface() -> None:
     """Keep the public FDE sample focused on business understanding."""
 
@@ -202,17 +227,60 @@ def validate_fde_reader_surface() -> None:
                     f"{artifact.relative_to(ROOT)}: authoring section leaked into reader surface: "
                     f"{heading}"
                 )
+    _validate_sample_links(sample)
 
+
+def validate_architecture_reader_surface() -> None:
+    """Keep the public architecture sample small and free of authoring history."""
+
+    sample = ROOT / "examples/human-agent-workspace"
+    model_files = ("architecture-overview.md", "handoff-review-flow.md")
+    forbidden_sections = (
+        "## Candidate inventory",
+        "## Relationship model",
+        "## Boundary reasoning",
+        "## Naming candidates",
+        "## Validation",
+        "## Unresolved",
+    )
+    private_only_tokens = (
+        "90_system/",
+        "agent-handoff/",
+        "matti-to-kubox.md",
+        "kubox-to-matti.md",
+        "kubox-role.md",
+        "kubox-reviewer-role.md",
+        "request_id:",
+        "status:",
+        "owner:",
+        "updated:",
+        "sprint-briefs/",
+    )
+    for name in model_files:
+        artifact = sample / name
+        text = artifact.read_text(encoding="utf-8")
+        if text.count("```mermaid") != 1:
+            raise ValueError(f"{artifact.relative_to(ROOT)}: expected one Mermaid model")
+        if "## モデル" not in text or "## このモデルが表していること" not in text:
+            raise ValueError(
+                f"{artifact.relative_to(ROOT)}: missing reader-facing page structure"
+            )
+        for heading in forbidden_sections:
+            if heading in text:
+                raise ValueError(
+                    f"{artifact.relative_to(ROOT)}: authoring section leaked into reader surface: "
+                    f"{heading}"
+                )
     for artifact in sample.glob("*.md"):
         text = artifact.read_text(encoding="utf-8")
-        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
-            if "://" in target or target.startswith("#"):
-                continue
-            linked = (artifact.parent / target.split("#", 1)[0]).resolve()
-            if not linked.exists():
+        for token in private_only_tokens:
+            if token in text:
                 raise ValueError(
-                    f"{artifact.relative_to(ROOT)}: broken sample link: {target}"
+                    f"{artifact.relative_to(ROOT)}: private-only operational token leaked: "
+                    f"{token}"
                 )
+
+    _validate_sample_links(sample)
 
 
 MODEL_SET_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -355,6 +423,7 @@ def main() -> int:
     scan_public_text()
     validate_thin_icons()
     validate_fde_reader_surface()
+    validate_architecture_reader_surface()
     validate_model_set_index("examples/repair-intake/model-set-index.md")
     validate_model_set_index("examples/maakbo-expression-loop/model-set-index.md")
 
@@ -363,9 +432,17 @@ def main() -> int:
         compile(path.read_text(encoding="utf-8"), str(path), "exec")
 
     context = ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py"
+    architecture = ".agents/skills/architecture-modeling/scripts/check_architecture_context.py"
     business = ".agents/skills/business-context-modeling/scripts/check_business_context.py"
     flow = ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py"
     run([sys.executable, business, "templates/icon-context.md"])
+    run([sys.executable, architecture, "templates/architecture-context.md", "--strict"])
+    run([
+        sys.executable,
+        architecture,
+        "examples/human-agent-workspace/architecture-overview.md",
+        "--strict",
+    ])
     regression_fixture = (
         ".agents/skills/mermaid-diagram-authoring/fixtures/"
         "context-arrow-visual-regression.md"
@@ -476,6 +553,12 @@ def main() -> int:
             command.append("--allow-complexity")
         run(command)
     run([sys.executable, flow, "examples/maakbo-fde/change-design-flow.md", "--strict"])
+    run([
+        sys.executable,
+        flow,
+        "examples/human-agent-workspace/handoff-review-flow.md",
+        "--strict",
+    ])
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")
     return 0
 

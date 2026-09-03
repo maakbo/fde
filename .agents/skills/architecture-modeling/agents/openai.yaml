@@ -1,0 +1,4 @@
+interface:
+  display_name: "Architecture Modeling"
+  short_description: "Model readable human, agent, system, and repository architecture"
+  default_prompt: "Use $architecture-modeling to turn this environment description into a small architecture view and an optional interaction flow."

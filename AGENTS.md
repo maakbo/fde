@@ -18,9 +18,12 @@ This repository is a portable environment for forward-deployed business modeling
    relationships are part of the question, update the corresponding master maps
    before assembling a business context. Reuse their stable IDs and record
    `Master references` in the context Markdown.
-3. Use `mermaid-diagram-authoring` for Mermaid source in Markdown, whether the request begins with a business model or a direct diagram task.
-4. Use `mermaid-diagram-export` only when the user explicitly asks for SVG, PNG, rendering, image generation, publishing assets, or visual artifact review.
-5. Read only the references directly required by the selected Skill.
+3. Use `architecture-modeling` for human, AI-agent, system, repository, service,
+   channel, artifact, or technical-boundary relationships. Keep structural
+   Context separate from Interaction Flow.
+4. Use `mermaid-diagram-authoring` for Mermaid source in Markdown, whether the request begins with a model or a direct diagram task.
+5. Use `mermaid-diagram-export` only when the user explicitly asks for SVG, PNG, rendering, image generation, publishing assets, or visual artifact review.
+6. Read only the references directly required by the selected Skill.
 
 ## Working principles
 
@@ -33,6 +36,9 @@ This repository is a portable environment for forward-deployed business modeling
   add an edge just to make the map look connected.
 - Keep one modeling question, boundary, state, and main abstraction level per diagram.
 - Center foundation context models on business activities.
+- In architecture Contexts, use semantic left / center / right placement and
+  named subgraphs only for real repository, product, runtime, ownership, or
+  trust boundaries.
 - Keep the three master views distinct from the business-centered context:
   actor hierarchy/relations, external-system relations, and conceptual
   information relations may connect same-type nodes; context edges still join
@@ -79,6 +85,6 @@ For an authoring workspace or private checkpoint, return or record:
 6. One focused question that can improve the shared model.
 7. Source-validation results, plus export results only when explicitly requested.
 
-For a reader-facing sample, keep only the title, short business description,
+For a reader-facing sample, keep only the title, short subject description,
 Mermaid diagram, short reading, and links to related Models / Views. Do not copy
 the authoring checklist into the published page.
