@@ -84,6 +84,7 @@ def main() -> int:
         str(args.input),
         "--strict",
         "--allow-sparse",
+        "--allow-arrow-exception",
     ]
     if args.allow_complexity:
         command.append("--allow-complexity")

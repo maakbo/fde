@@ -45,7 +45,7 @@ CANONICAL_THEME_CSS = (
     '.image-shape .labelBkg { background-color:#FFFFFF !important; } '
     '.image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } '
     ".image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } "
-    '.image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:10px !important; }\"'
+    '.image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }\"'
 )
 CANONICAL_LINK_STYLE = (
     "linkStyle default stroke:#9E988E,stroke-width:0.75px;"
@@ -98,6 +98,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("input", type=Path)
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--allow-complexity", action="store_true")
+    parser.add_argument(
+        "--allow-arrow-exception",
+        action="store_true",
+        help="allow directed relations whose direction is essential to the view",
+    )
     parser.add_argument(
         "--allow-sparse",
         action="store_true",
@@ -201,6 +206,17 @@ def main() -> int:
         (observations if args.allow_complexity else warnings).append(message)
     if node_lines and edge_lines and max(node_lines) > min(edge_lines):
         errors.append("place all node definitions before relationships")
+    directed_count = sum(directed for _left, _right, directed in edges)
+    if directed_count and not args.allow_arrow_exception:
+        errors.append(
+            "Business Context arrows require explicit --allow-arrow-exception; "
+            "express ordinary provider/recipient direction with left/center/right layout and `---`"
+        )
+    elif directed_count:
+        observations.append(
+            f"arrow exception enabled for {directed_count} directed relationship(s); "
+            "retain the semantic reason in the authoring workspace"
+        )
 
     for node_id, data in nodes.items():
         if "_" not in node_id:

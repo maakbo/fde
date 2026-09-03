@@ -66,8 +66,8 @@ State the meaning in the `Reading` sentence below the diagram.
 | External system | related or cooperating systems | integration or dependency direction | a business activity |
 | Information | conceptual association | derivation, containment, or another explicitly directional relation | a detailed data schema |
 
-The directed edge in a master map is a structural relation, not the value-flow
-or process arrow used by a context or flow view. Use it only when direction
+The directed edge in a master map is a structural relation, not a Business
+Context value relation or Business Flow sequence. Use it only when direction
 changes the discussion. Keep relationship labels out of the icon diagram; put
 cardinality, evidence, and uncertainty in companion prose or a small table.
 

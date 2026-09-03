@@ -65,11 +65,31 @@ Merge nodes with the same actor, outcome, and discussion consequence. Split node
 
 ## Relationship rules
 
-Foundation context lines mean relevant business relationships, not time order. Every line joins exactly one business activity and one actor, information item, or external system.
+Foundation Business Context lines mean relevant business relationships, not
+time order. Every line joins exactly one Business Use Case and one Actor,
+Information item, or External System.
 
-Describe providers, recipients, and Information relationships in companion prose. Keep the Business Context's ordinary lines as relationships, not a one-way route; detailed sequence belongs in a Business Flow.
+Use spatial meaning before arrow direction:
 
-When direction of value or Information handoff is itself the modeling question, use a value-flow context as a separate View variant: use `flowchart LR` with solid `-->` arrows, keep one Business activity as the hub, and include each provider, recipient, or External System only when observed. Its arrows mean handoff direction, not chronological order; detailed sequence, decisions, and rework belong in a Business Flow. State that reading in companion prose.
+- left: the Actor executing the Business, or an Actor / External System /
+  Information item providing value or input;
+- center: one outcome-sized Business Use Case;
+- right: an Actor or External System receiving value, or Information created,
+  updated, or provided by the Business.
+
+Use `flowchart LR` and `---` for ordinary relations. List left nodes, then the
+Business, then right nodes; write relation source as `left --- business` and
+`business --- right`. This gives Mermaid a meaningful layout signal without
+fake edges. Companion prose may clarify value, but it must not compensate for
+a diagram whose placement says nothing.
+
+Input/output or provider/recipient meaning alone never justifies an arrow. Use
+`-->` only when direction is essential to the modeling question and placement
+cannot carry it, such as a strong one-way dependency or derivation. Record why
+placement is insufficient in the authoring workspace and use the explicit
+checker exception. The former arrow-based “value-flow context” profile is
+retired; its useful value reading is now the canonical spatial Business
+Context. Sequence, decisions, and rework remain Business Flow concerns.
 
 Diagnostic smells:
 
@@ -91,14 +111,17 @@ each participant's responsibility. For every Actor or External System, ask
 what it provides, what it receives, and whether it participates directly in
 this Business.
 
-Then choose the Context variant from the meaning:
+Then choose the Context contents from the meaning:
 
-- use value-flow only when the direction of a value or Information handoff is
-  central to the question;
-- use an ordinary Context when participation, comparison, feedback, or a set
-  of mutually relevant relationships is central;
+- use the canonical left/center/right Business Context for ordinary value,
+  participation, comparison, and feedback relationships;
+- use an arrow exception only when direction itself changes the answer and
+  spatial placement is insufficient;
 - do not draw every Actor as both provider and recipient merely because an
   earlier page did;
+- do not duplicate one Actor identity on both sides as a layout workaround;
+  revisit the boundary, modeling question, or grain when both roles are equally
+  important;
 - do not reduce a transfer of capability, responsibility, or ownership to an
   Information handoff;
 - distinguish a Context of the work that designs collaboration from a Context
@@ -106,8 +129,8 @@ Then choose the Context variant from the meaning:
   concrete responsibilities and boundaries are observed.
 
 Uniformity belongs to the reader-facing page pattern. Differences in Actor
-count, Information count, relationship direction, and Context variant are
-expected when the Businesses mean different things.
+count, Information count, relations, and semantic emphasis are expected when
+the Businesses mean different things.
 
 ## Mermaid pressure
 

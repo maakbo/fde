@@ -29,7 +29,9 @@ Write the smallest diagram people can inspect while the conversation is still ch
 1. Identify the diagram's purpose, reader, subject, and one-sentence reading.
 2. Reuse an existing Markdown file when one already carries the discussion. Otherwise copy `/templates/icon-context.md` or `/templates/business-flow.md`.
 3. Choose the smallest suitable profile:
-   - Read [references/icon-context.md](references/icon-context.md) for actors, activities, information, systems, undirected relationships, and value-flow context views.
+   - Read [references/icon-context.md](references/icon-context.md) for actors,
+     activities, information, systems, semantic left/center/right layout, and
+     context relationships.
    - For an actor, external-system, or information master map, read
      `../business-context-modeling/references/master-elements.md`, copy the
      matching template, and run `check_master_map.py` with its `--kind`.
@@ -43,7 +45,20 @@ python3 .agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.p
 python3 .agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py path/to/flow.md --strict
 ```
 
-6. Stop after source validation. Let the user preview the Markdown immediately in GitHub or VS Code.
+For Business Context semantics, also run:
+
+```bash
+python3 .agents/skills/business-context-modeling/scripts/check_business_context.py path/to/context.md
+```
+
+The context checker rejects arrows by default. If direction itself is a
+documented semantic exception, opt in with `--allow-arrow-exception`; ordinary
+provider, recipient, input, and output relations do not need it.
+
+6. Inspect the native or rendered preview after source validation. For a
+   Business Context, confirm the Business is centered, both semantic sides are
+   legible, and relation endpoints are intact. Then let the user inspect the
+   Markdown in GitHub or VS Code.
 
 ## Modeling relationship
 
@@ -56,6 +71,13 @@ conversation -> tentative model -> Mermaid -> inspect density and relationships
 
 Layout pressure is evidence for modeling, not permission to silently change meaning.
 
+Use source order as a semantic layout hint: provider/executor/input nodes,
+then the Business, then recipient/output nodes. Write each relation in that
+same endpoint order. Never add a fake edge to force coordinates.
+
 ## Output contract
 
-Return the Markdown working source, the Mermaid block, a compact text alternative, source-validation results when applicable, and one unresolved semantic or visual question. Do not list image artifacts that were not explicitly requested.
+Return the Markdown working source, the Mermaid block, a compact text
+alternative, source-validation and visual-review results when applicable, and
+one unresolved semantic or visual question. Do not list image artifacts that
+were not explicitly requested.

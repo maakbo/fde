@@ -32,6 +32,13 @@ published model quiet enough for a reader who wants to understand the business.
 - Reuse the structure of a reader-facing page, not the semantic structure of
   its diagram. Re-derive Actors, Information, relationships, and the Context
   variant from each Business Story.
+- Put the Business Use Case at the visual center of a Business Context. Place
+  executors, providers, and inputs on the left; place value recipients and
+  outputs on the right. Express ordinary direction through position and
+  `---`, not arrows.
+- Treat `-->` as a semantic exception. Use it only when direction itself
+  changes the answer and left/right placement is insufficient. Record the
+  reason in the authoring workspace and use the explicit checker flag.
 - Do not invent Actors, Information, External Systems, exchanges, or
   responsibilities to fill a notation.
 - Keep Markdown Mermaid as the editable source. Do not create `.mmd`, SVG, or
@@ -109,6 +116,17 @@ meaning, and main abstraction level per diagram. Run the matching source-only
 checker. Let density or awkward layout send the work back to boundary, grain,
 or naming before adding layout machinery.
 
+For a Business Context, define left-side nodes first, the one `b_` Business
+next, and right-side nodes last. Write provider relations as
+`left_node --- b_business` and recipient relations as
+`b_business --- right_node`. Do not duplicate one Actor identity on both sides;
+revisit the boundary, question, or grain when both roles are equally essential.
+
+Source validation does not finish the View. Inspect the preview and confirm
+that the Business is central, providers read on the left, recipients read on
+the right, Information is on the side matching its meaning, and no unnecessary
+arrow or endpoint clipping remains.
+
 Before copying a previous Context pattern, hide the existing diagram and audit
 the Business Story, Why, input, transformation, output, and each participant's
 responsibility. Follow `modeling-rules.md`.
@@ -156,3 +174,23 @@ method.
 
 Project-specific decisions, alternatives, rename / split / merge candidates,
 review state, unresolved items, next action, and stopping point.
+
+## Field-use readiness
+
+The Skill is ready for a first field use when this chain works end to end:
+
+1. conversation becomes one outcome-sized Business Use Case (`Workflow 1–3`);
+2. the workspace states who provides what, what changes, what is produced, and
+   who receives value (`business-story-and-5w2h.md`);
+3. Actors, Information, and External Systems come from observed meaning
+   (`modeling-rules.md`);
+4. the Business is the single center (`check_business_context.py`);
+5. executor/provider/input nodes are left and recipient/output nodes are right
+   (template plus business checker);
+6. ordinary relations use spatial reading and `---` (context checker default);
+7. arrows require semantic justification and `--allow-arrow-exception`;
+8. disagreement between story and diagram returns the work to conversation
+   (`Workflow 6`);
+9. the public page stays short (`reader-facing-artifacts.md`);
+10. source checks are followed by visual review, including endpoint markers
+    (`mermaid-diagram-authoring` fixture and checklist).

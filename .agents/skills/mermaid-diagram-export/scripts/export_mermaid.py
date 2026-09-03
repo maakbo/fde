@@ -24,6 +24,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--format", choices=("svg", "png", "both"), default="both")
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--allow-complexity", action="store_true")
+    parser.add_argument("--allow-arrow-exception", action="store_true")
     parser.add_argument("--config", type=Path)
     return parser.parse_args()
 
@@ -103,6 +104,8 @@ def main() -> int:
     lint = [sys.executable, str(checker), str(input_path), "--strict"]
     if args.type == "context" and args.allow_complexity:
         lint.append("--allow-complexity")
+    if args.type == "context" and args.allow_arrow_exception:
+        lint.append("--allow-arrow-exception")
     if subprocess.run(lint, cwd=root, check=False).returncode != 0:
         return 1
 

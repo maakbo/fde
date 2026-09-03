@@ -32,6 +32,7 @@ REQUIRED = [
     ".agents/skills/mermaid-diagram-authoring/scripts/source_loader.py",
     ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py",
     ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py",
+    ".agents/skills/mermaid-diagram-authoring/fixtures/context-arrow-visual-regression.md",
     ".agents/skills/business-context-modeling/scripts/check_master_map.py",
     ".agents/skills/business-context-modeling/scripts/check_master_references.py",
     ".agents/skills/business-context-modeling/references/business-story-and-5w2h.md",
@@ -97,6 +98,22 @@ def run(command: list[str]) -> None:
     environment = os.environ.copy()
     environment["PYTHONDONTWRITEBYTECODE"] = "1"
     subprocess.run(command, cwd=ROOT, check=True, env=environment)
+
+
+def run_expect_failure(command: list[str]) -> None:
+    print("+ EXPECT FAILURE:", " ".join(command))
+    environment = os.environ.copy()
+    environment["PYTHONDONTWRITEBYTECODE"] = "1"
+    result = subprocess.run(
+        command,
+        cwd=ROOT,
+        check=False,
+        env=environment,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode == 0:
+        raise ValueError(f"command unexpectedly passed: {' '.join(command)}")
 
 
 def validate_skill(skill: str) -> None:
@@ -354,7 +371,20 @@ def main() -> int:
     context = ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py"
     business = ".agents/skills/business-context-modeling/scripts/check_business_context.py"
     flow = ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py"
-    run([sys.executable, context, "templates/icon-context.md", "--strict"])
+    run([sys.executable, business, "templates/icon-context.md"])
+    regression_fixture = (
+        ".agents/skills/mermaid-diagram-authoring/fixtures/"
+        "context-arrow-visual-regression.md"
+    )
+    run_expect_failure([sys.executable, context, regression_fixture, "--strict", "--allow-complexity"])
+    run([
+        sys.executable,
+        context,
+        regression_fixture,
+        "--strict",
+        "--allow-complexity",
+        "--allow-arrow-exception",
+    ])
     master = ".agents/skills/business-context-modeling/scripts/check_master_map.py"
     run([sys.executable, master, "templates/master-actor-map.md", "--kind", "actor", "--strict"])
     run([sys.executable, master, "templates/master-system-map.md", "--kind", "system", "--strict"])
@@ -432,7 +462,7 @@ def main() -> int:
         "examples/maakbo-expression-loop/master-information-model.md",
         "--allow-sparse",
     ])
-    run([sys.executable, business, "examples/maakbo-expression-loop/overview.md"])
+    run([sys.executable, context, "examples/maakbo-expression-loop/overview.md", "--strict"])
     run([sys.executable, business, "examples/maakbo-expression-loop/context.md"])
     run([sys.executable, flow, "examples/maakbo-expression-loop/flow.md", "--strict"])
     run([

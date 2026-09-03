@@ -41,7 +41,7 @@ every time. Add only the rungs that help the current discussion.
 | Rung | Artifact | Center and scope | Relationship meaning |
 | --- | --- | --- | --- |
 | 1 | Overall context | The title-level business area or outcome as one `b_` anchor, with major actor subjects around it | `---` means the overall business relationship; no sequence |
-| 2 | Use-case / scene context | One scene where responsibility, system boundary, information handoff, or value recipient changes; one outcome-sized `b_` activity plus selected master elements | `---` by default; use an arrow only for an explicitly strong dependency or value handoff |
+| 2 | Use-case / scene context | One scene where responsibility, system boundary, information handoff, or value recipient changes; one outcome-sized `b_` activity plus selected master elements | left = provider, center = Business, right = recipient; `---` by default; arrow only when direction itself cannot be expressed by placement |
 | 3 | Business flow | One selected use-case activity decomposed into actions, decisions, and essential rework | `-->` means order; use the flow Skill |
 
 The first rung's `b_` node is a title anchor for the business area or outcome,
