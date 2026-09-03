@@ -12,15 +12,7 @@ Natural-language source phrases are evidence, not automatic model labels. After 
 
 A **rename** refines the expression of the same concept: retain its stable ID and record the previous label as an alias. A **split** marks a newly discovered difference in meaning: create new stable IDs and record their relationship to the former concept. A **merge** is allowed only when evidence shows candidates describe one concept at the same responsibility, state, boundary, and abstraction level; preserve the decision and absorbed identities instead of silently collapsing them.
 
-## Meaning trace and Business naming
-
-Preserve `Why / Purpose → Desired State / Outcome → Business / Activity → Actor
-/ Information / System relationships → How / Flow / Implementation` when the
-decision depends on more than procedure. This trace is not a waterfall. A
-detailed How may reveal that the purpose is unmet, the Business boundary is
-wrong, or an Actor means something different; return upward and revise the
-nearest shared model. Treat the model as a meaning axis people can return to
-after technology, systems, or conditions change.
+## Business naming from transformation
 
 Before naming a Business, state its input, the transformation it performs, and
 its observable output. Compress the transformation into a short natural
@@ -30,9 +22,10 @@ itself the responsibility and outcome being modeled. Externalizing meaning as
 a model may support every Business; it does not by itself define a separate
 Business.
 
-A Business Map answers which peer capabilities constitute a larger Business.
-Its relationships do not express time order. Keep it separate from a Business
-Flow, which answers sequence, decisions, and rework.
+Keep the source phrase, input, transformation, output, proposed name, verb
+reading, and confidence in the authoring workspace. Keep rename / split / merge
+history there or in a private checkpoint. A reader-facing page normally needs
+only the selected name and a short description of the transformation.
 
 ## Element types
 

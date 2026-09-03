@@ -34,7 +34,9 @@ REQUIRED = [
     ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py",
     ".agents/skills/business-context-modeling/scripts/check_master_map.py",
     ".agents/skills/business-context-modeling/scripts/check_master_references.py",
+    ".agents/skills/business-context-modeling/references/business-story-and-5w2h.md",
     ".agents/skills/business-context-modeling/references/master-elements.md",
+    ".agents/skills/business-context-modeling/references/reader-facing-artifacts.md",
     ".agents/skills/mermaid-diagram-export/scripts/export_mermaid.py",
     "examples/repair-intake/model.md",
     "examples/repair-intake/model-set-index.md",
@@ -57,14 +59,17 @@ REQUIRED = [
     "examples/maakbo-expression-loop/context.md",
     "examples/maakbo-expression-loop/flow.md",
     "examples/maakbo-fde/README.md",
-    "examples/maakbo-fde/model.md",
-    "examples/maakbo-fde/business-story.md",
     "examples/maakbo-fde/purpose-outcome.md",
-    "examples/maakbo-fde/model-axis.md",
     "examples/maakbo-fde/business-map.md",
     "examples/maakbo-fde/system-context.md",
     "examples/maakbo-fde/actor-requirement.md",
+    "examples/maakbo-fde/context-understanding.md",
     "examples/maakbo-fde/business-context.md",
+    "examples/maakbo-fde/change-design.md",
+    "examples/maakbo-fde/collaboration-design.md",
+    "examples/maakbo-fde/system-building.md",
+    "examples/maakbo-fde/context-fit.md",
+    "examples/maakbo-fde/autonomy-transition.md",
 ]
 SKILLS = [
     "business-context-modeling",
@@ -138,6 +143,65 @@ def validate_thin_icons() -> None:
             raise ValueError(f"thin Lucide icon has the wrong stroke width: {path.relative_to(ROOT)}")
         if 'stroke-width="2"' in text:
             raise ValueError(f"standard Lucide stroke width remains: {path.relative_to(ROOT)}")
+
+
+FDE_READER_MODEL_FILES = (
+    "purpose-outcome.md",
+    "system-context.md",
+    "actor-requirement.md",
+    "business-map.md",
+    "context-understanding.md",
+    "business-context.md",
+    "change-design.md",
+    "collaboration-design.md",
+    "system-building.md",
+    "context-fit.md",
+    "autonomy-transition.md",
+)
+
+
+def validate_fde_reader_surface() -> None:
+    """Keep the public FDE sample focused on business understanding."""
+
+    sample = ROOT / "examples/maakbo-fde"
+    forbidden_sections = (
+        "## Modeling question",
+        "## Candidate inventory",
+        "## ASCII options",
+        "## Boundary",
+        "## Unresolved",
+        "## Next review question",
+        "## Status",
+        "## Complexity note",
+    )
+
+    for name in FDE_READER_MODEL_FILES:
+        relative = Path(name)
+        artifact = sample / relative
+        text = artifact.read_text(encoding="utf-8")
+        if text.count("```mermaid") != 1:
+            raise ValueError(f"{artifact.relative_to(ROOT)}: expected one Mermaid model")
+        if "## モデル" not in text or "## このモデルが表していること" not in text:
+            raise ValueError(
+                f"{artifact.relative_to(ROOT)}: missing reader-facing page structure"
+            )
+        for heading in forbidden_sections:
+            if heading in text:
+                raise ValueError(
+                    f"{artifact.relative_to(ROOT)}: authoring section leaked into reader surface: "
+                    f"{heading}"
+                )
+
+    for artifact in sample.glob("*.md"):
+        text = artifact.read_text(encoding="utf-8")
+        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
+            if "://" in target or target.startswith("#"):
+                continue
+            linked = (artifact.parent / target.split("#", 1)[0]).resolve()
+            if not linked.exists():
+                raise ValueError(
+                    f"{artifact.relative_to(ROOT)}: broken sample link: {target}"
+                )
 
 
 MODEL_SET_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -279,6 +343,7 @@ def main() -> int:
     json.loads((ROOT / "config/puppeteer.json").read_text(encoding="utf-8"))
     scan_public_text()
     validate_thin_icons()
+    validate_fde_reader_surface()
     validate_model_set_index("examples/repair-intake/model-set-index.md")
     validate_model_set_index("examples/maakbo-expression-loop/model-set-index.md")
 
@@ -377,7 +442,16 @@ def main() -> int:
         "--strict",
         "--allow-complexity",
     ])
-    run([sys.executable, business, "examples/maakbo-fde/business-context.md"])
+    for relative in (
+        "examples/maakbo-fde/context-understanding.md",
+        "examples/maakbo-fde/business-context.md",
+        "examples/maakbo-fde/change-design.md",
+        "examples/maakbo-fde/collaboration-design.md",
+        "examples/maakbo-fde/system-building.md",
+        "examples/maakbo-fde/context-fit.md",
+        "examples/maakbo-fde/autonomy-transition.md",
+    ):
+        run([sys.executable, business, relative])
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")
     return 0
 

@@ -1,16 +1,12 @@
-# FDE System Context
+# FDEを誰と実現するか
 
-## Modeling question
+主体者と仲間、fde、fdeAIが、それぞれの役割を持ってFDEを育てます。
 
-誰が `FDE` を担い、誰と価値を育て、どのUltimate Purposeへつなぐか。
-
-## Reading
-
-左のActor群が中央の `FDE` を担い、右の `主体者` と `主体者の仲間` とともに価値を育てる関係を表す。上の注釈はFDEのUltimate Purposeである。線は時間順序や情報フローを表さない。
+## モデル
 
 ```mermaid
 ---
-title: FDE System Context
+title: FDEを誰と実現するか
 config:
   layout: elk
   theme: neutral
@@ -52,8 +48,12 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## Boundary
+## このモデルが表していること
 
-表示するのは、FDEを担うActor、FDEというBusiness、価値をともに育てるActor、Ultimate Purposeの補助注釈だけである。InformationとExternal Systemは、この最上位Viewでは表示しない。
+fdeとfdeAIだけで仕組みを作るのではありません。主体者と仲間も、現場を知り、選び、使いながら、一緒に仕組みを育てます。
 
-`見えるから、自分で選べる`は削除したのではなく、可視化・モデリングによるEnabling Outcomeとして[Purpose / Outcome](purpose-outcome.md)へ移した。
+業務の中で役割を持つAIやシステムは、それぞれの業務を詳しく見るときに加えていきます。
+
+← [FDEの全体へ](README.md)
+
+[主体者が必要とする状態を見る](actor-requirement.md) →

@@ -1,12 +1,12 @@
-# 業務構造化
+# 仕組み化
 
-複雑な業務にある、人、情報、システムの関係を整理します。みんなで見ながら考え、変えていける業務モデルにします。
+設計した協働を、実際の仕事で使える形にします。人の動きと技術をつなぎ、業務の仕組みにします。
 
 ## モデル
 
 ```mermaid
 ---
-title: 業務構造化
+title: 仕組み化
 config:
   layout: elk
   theme: neutral
@@ -29,22 +29,22 @@ flowchart LR
   a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_subject@{ label: "主体者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_companions@{ label: "主体者の仲間", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_business_modeling@{ label: "業務構造化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_business_information@{ label: "業務情報", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  i_business_model@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  b_realization@{ label: "仕組み化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_collaboration_design@{ label: "協働の設計", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_work_system@{ label: "業務の仕組み", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  a_fde --> b_business_modeling
-  a_fde_ai --> b_business_modeling
-  a_subject --> b_business_modeling
-  a_companions --> b_business_modeling
-  i_business_information --> b_business_modeling
-  b_business_modeling --> i_business_model
-  b_business_modeling --> a_subject
-  b_business_modeling --> a_companions
+  a_fde --> b_realization
+  a_fde_ai --> b_realization
+  a_subject --> b_realization
+  a_companions --> b_realization
+  i_collaboration_design --> b_realization
+  b_realization --> i_work_system
+  b_realization --> a_subject
+  b_realization --> a_companions
 
   class a_fde,a_fde_ai,a_subject,a_companions actor;
-  class b_business_modeling business;
-  class i_business_information,i_business_model information;
+  class b_realization business;
+  class i_collaboration_design,i_work_system information;
 
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
@@ -54,8 +54,6 @@ flowchart LR
 
 ## このモデルが表していること
 
-主体者と仲間から、業務についての情報を受け取ります。fdeとfdeAIも一緒に、業務の意味と関係を整理します。
-
-できた業務モデルは、主体者たち自身が理解し、考え、変えていくために使います。
+協働の設計を、現場で使える仕事の流れや道具へ落とし込みます。主体者と仲間も使い手として関わり、動く仕組みを一緒につくります。
 
 ← [FDEの業務全体へ](business-map.md)

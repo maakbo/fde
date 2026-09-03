@@ -1,12 +1,12 @@
-# 業務構造化
+# 自律移行
 
-複雑な業務にある、人、情報、システムの関係を整理します。みんなで見ながら考え、変えていける業務モデルにします。
+業務の理解と、仕組みを変える力を、使う人たちの手元に残します。fdeがいなくても育てていける状態へつなぎます。
 
 ## モデル
 
 ```mermaid
 ---
-title: 業務構造化
+title: 自律移行
 config:
   layout: elk
   theme: neutral
@@ -29,22 +29,22 @@ flowchart LR
   a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_subject@{ label: "主体者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_companions@{ label: "主体者の仲間", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_business_modeling@{ label: "業務構造化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_business_information@{ label: "業務情報", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  b_autonomy_transition@{ label: "自律移行", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_business_model@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_work_system@{ label: "業務の仕組み", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  a_fde --> b_business_modeling
-  a_fde_ai --> b_business_modeling
-  a_subject --> b_business_modeling
-  a_companions --> b_business_modeling
-  i_business_information --> b_business_modeling
-  b_business_modeling --> i_business_model
-  b_business_modeling --> a_subject
-  b_business_modeling --> a_companions
+  a_fde --> b_autonomy_transition
+  a_fde_ai --> b_autonomy_transition
+  a_subject --> b_autonomy_transition
+  a_companions --> b_autonomy_transition
+  i_business_model --> b_autonomy_transition
+  i_work_system --> b_autonomy_transition
+  b_autonomy_transition --> a_subject
+  b_autonomy_transition --> a_companions
 
   class a_fde,a_fde_ai,a_subject,a_companions actor;
-  class b_business_modeling business;
-  class i_business_information,i_business_model information;
+  class b_autonomy_transition business;
+  class i_business_model,i_work_system information;
 
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
@@ -54,8 +54,6 @@ flowchart LR
 
 ## このモデルが表していること
 
-主体者と仲間から、業務についての情報を受け取ります。fdeとfdeAIも一緒に、業務の意味と関係を整理します。
-
-できた業務モデルは、主体者たち自身が理解し、考え、変えていくために使います。
+主体者と仲間が、業務モデルと実際の仕組みを自分たちで扱えるようにします。理解、運営、変更を少しずつ手渡し、使いながら育てられる状態へ移ります。
 
 ← [FDEの業務全体へ](business-map.md)

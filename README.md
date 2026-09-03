@@ -1,31 +1,27 @@
 # fde
 
-対話から現場の構造と目指す意味を捉え、人・AI Agent・Systemが協働する業務の仕組みを一緒にデザインし、形にする、maakboなりの Forward Deployed Engineering。
+人、AI、システムが、それぞれの強みを活かして協働できる業務の仕組みをつくる。maakboなりの Forward Deployed Engineering を、Modelと実践知の両方から育てる公開リポジトリです。
 
-`fde` は、まだ整理されていない事業や業務の話を、AIエージェントと一緒に素早くModelへ外在化するための公開実験です。Why / Purpose、目指す状態、Business、Actor・Information・Systemの関係、Howをつないで残し、必要な部分をMermaidのContextやFlowとして確かめます。
+## モデルを見る
 
-図をきれいにすることだけが目的ではありません。自動配置に収まりにくい複雑さも観察しながら、具体と抽象を行き来し、粒度・境界・関係性を議論できる状態をつくります。
+### [FDEの業務モデルを見る](examples/maakbo-fde/)
 
-Howだけを固定するのではなく、何を守り、何を変えてよいかを判断できる意味の軸を残します。Modelは固定された正解ではなく、現場や技術が変化したときに戻り、再設計するためのdiscussion surfaceです。
+FDEが何を目指し、誰と実現し、どんな業務で成り立っているのかを、MermaidのModelで見られます。
 
-## What is included
+## モデルを作る
 
-- `AGENTS.md`: every agent should share these working principles.
-- `.github/copilot-instructions.md`: a small GitHub Copilot adapter.
-- `.github/agents/`: business modeler, Markdown diagram author, explicit exporter, and read-only reviewer agents.
-- `.agents/skills/`: business modeling, Mermaid authoring, and explicit media-export Skills.
-- `templates/`: Markdown-first Mermaid starting points, including actor, external-system, and information master maps.
-- `templates/github-actions-validate.yml`: optional CI workflow; copy it to `.github/workflows/validate.yml` when the publishing credential allows workflow files.
-- `examples/maakbo-expression-loop/`: a maakbo-shaped three-rung example linking overall context, use-case context, and business flow.
-- `examples/maakbo-fde/`: FDEのUltimate Purpose、Desired State、5W2H Business Story、Business Mapを扱うworking sample。
-- `examples/repair-intake/`: a separate synthetic regression fixture for the same notation.
-- `examples/repair-intake/previews/`: explicit PNG review artifacts with tap-friendly links for mobile clients.
-- `scripts/validate_repository.py`: one command to validate the public bundle,
-  including master references and model-set parent/child traces.
+整理されていない事業や業務の話から、目的、業務、関わる人、情報、システムの関係をModelへ外に出します。Howだけでなく、その背景にあるWhyも残すことで、状況が変わったあとも新しいHowを考え直せるようにします。
 
-## Quick start
+- [AGENTS.md](AGENTS.md): このリポジトリで共有する作業原則
+- [business-context-modeling Skill](.agents/skills/business-context-modeling/SKILL.md): 対話から業務Modelをつくる手順
+- [mermaid-diagram-authoring Skill](.agents/skills/mermaid-diagram-authoring/SKILL.md): Markdown内でMermaidを作る手順
+- [mermaid-diagram-export Skill](.agents/skills/mermaid-diagram-export/SKILL.md): 明示的にSVG / PNGが必要な場合のexport手順
+- [templates](templates/): Context、Flow、master mapの開始点
+- [validator](scripts/validate_repository.py): public bundleとMermaid sourceの検証
 
-Requirements for normal modeling and authoring: Python 3.9+.
+### Quick start
+
+通常のモデリングとauthoringにはPython 3.9以上を使います。
 
 ```bash
 git clone https://github.com/maakbo/fde.git
@@ -33,52 +29,41 @@ cd fde
 python3 scripts/validate_repository.py
 ```
 
-Open the cloned repository in an AI agent environment and start with loose language:
+AI Agentへは、整っていない言葉のまま渡せます。
 
 ```text
 Use the business-modeler agent.
 
-I have a loose idea and want to turn it into words, a diagram, or a presentation.
-Start from the overall business context, cut one use-case scene, and add a flow
-only if order or decisions need to be discussed. Keep assumptions visible.
-Write the diagram inside Markdown for immediate preview. Do not export images.
+この業務を一緒に整理してください。
+まず普通の文章で捉え、関わる人・業務・情報・外部システムを見つけ、
+必要なModelをMarkdown内のMermaidで作ってください。
 ```
 
-In GitHub Copilot, repository instructions, custom agents, and project Agent Skills are loaded from the standard locations included here. Other compatible agents can begin with `AGENTS.md` and `.agents/skills/`.
-
-## Modeling loop
+## モデリングの流れ
 
 ```text
 loose conversation
+  -> Business Story and 5W2H
   -> concrete candidates
-  -> reconcile actor / system / information master maps
-  -> select canonical elements around an activity
-  -> first Mermaid model in Markdown
-  -> preview and inspect density / relationships
-  -> discuss boundary, grain, and assumptions
-  -> move upward or downward in abstraction
+  -> input / transformation / output
+  -> Purpose, Map, Context, or Flow View
+  -> Markdown Mermaid
+  -> reader-facing model
 ```
 
-A focused diagram normally begins with 3–7 semantic nodes. More than seven is not an automatic failure. First preserve and inspect the complexity. Then decide whether to keep it, refine the subject or grain, or add focused diagrams and a one-level-higher overview. The [maakbo expression loop example](examples/maakbo-expression-loop/) demonstrates the overall → use-case → flow path; the repair-intake fixture remains available as a neutral regression example.
+裏側では、候補、境界、命名、比較、未解決事項を厳密に扱います。公開するsampleには、業務を理解するためのModel、短い説明、関連するViewへの導線だけを残します。詳しくは[Reader-facing model artifacts](.agents/skills/business-context-modeling/references/reader-facing-artifacts.md)を参照してください。
 
-Master maps are the reusable semantic layer: the actor map captures participants
-and hierarchy, the external-system map captures integrations and dependencies,
-and the information model captures conceptual relationships. A context view
-copies their stable IDs, canonical labels, icons, and sizes and records the
-selection in `Master references`. The index that links these files is only a
-navigation aid; the master Mermaid node remains canonical. When candidates are
-known but a same-type relationship is not evidenced, keep them disconnected and
-validate with `--allow-sparse` rather than inventing a link.
+## Examples
 
-Context views use undirected lines for ordinary business relationships. Use an arrow only to emphasize an explicitly strong dependency. When the question is specifically how value or information enters and leaves an activity, use the explicit left-to-right value-flow variant so the provider, output recipient, and supporting system remain visible.
+- [maakbo FDE](examples/maakbo-fde/): FDEの目的、関わる人、七つの業務と各Business Context
+- [maakbo expression loop](examples/maakbo-expression-loop/): overall context、use-case context、business flowをつないだ例
+- [repair intake](examples/repair-intake/): 記法を検証するためのsynthetic example
 
 ## Working source and export
 
-The default artifact is a Markdown file containing one `mermaid` code block. That same file carries its reading, assumptions, and next question, and is the single editable source and working visual-review surface for the diagram.
+通常は、Markdown内のMermaid blockが唯一の編集sourceです。`.mmd`、SVG、PNGは自動で作りません。
 
-Ordinary modeling and diagram requests stop after source validation. They do not generate `.mmd`, SVG, or PNG files. This keeps the conversation fast in GitHub Copilot and lets VS Code preview the working file directly.
-
-Media export is a separate, explicit action. When stable assets are needed for publication or a fixed public asset, install the optional renderer and invoke the export Skill:
+固定assetが明示的に必要な場合だけ、export Skillを使います。
 
 ```bash
 npm ci
@@ -86,28 +71,13 @@ python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py \
   examples/repair-intake/context.md --type context --output-dir /tmp/fde-export
 ```
 
-The exporter reads the Mermaid block without changing the Markdown source. Its SVG and PNG are direct derivatives: do not add post-export position or typography adjustments. A standalone `.mmd` remains supported when a user or integration explicitly requires it.
-
-The example's [review previews](examples/repair-intake/previews/) are tracked only because they are public, synthetic visual-review artifacts. New diagrams should remain Markdown-only unless media export is explicitly requested.
-
 ## Visual language
 
-The visual object is an icon, not a text box. Labels sit below fixed-size icons, so longer wording does not change visual weight.
-
-| Meaning | Thin Lucide asset | Mermaid size |
-| --- | --- | --- |
-| Actor | `lucide-thin/user.svg` | `38 x 38` |
-| Business activity | `lucide-thin/ellipse.svg` | `30 x 30` |
-| Information | `lucide-thin/file.svg` | `32 x 32` |
-| External system | `lucide-thin/server.svg` | `32 x 32` |
-| Decision | `lucide-thin/diamond.svg` | `38 x 38` |
-| iPad / iPhone / laptop | `lucide-thin/tablet.svg`, `smartphone.svg`, `laptop.svg` | `38 x 38` |
-
-Working Markdown blocks reference the repository's thin Lucide SVGs through stable raw URLs for portability and immediate preview where Mermaid v11 image nodes are supported. The shapes remain Lucide; only the shared stroke width is normalized to `1.35`. The shared Mermaid CSS paints a small white halo over only the first, icon-sized transparent image boundary so relation paths stop with a consistent visual gap without covering the label boundary. This selector follows Mermaid v11.16's image-node structure; re-render and inspect all previews when upgrading Mermaid. Explicit export embeds the retrieved SVG data into generated assets so those assets remain self-contained.
+Actor、Business、Information、External Systemには、リポジトリ内のthin Lucide iconを使います。白背景、固定icon size、0.75pxのneutral lineを保ち、arrowは関係の向きが必要な場合だけ使います。
 
 ## Project status
 
-This is an early public practice, not a universal definition of FDE. The first release intentionally stays small: business structure, context, and flow. New patterns should be added only after real use shows that they are reusable.
+これはFDEと業務モデリングを育てる初期の公開実践です。新しい型は、実際の利用から再利用性が見えたものだけをSkillとreferenceへ戻します。
 
 ## License
 

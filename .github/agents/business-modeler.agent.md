@@ -31,3 +31,9 @@ when order, decisions, or rework matter. Keep each child linked to exactly one
 parent node and revise upward when the detail changes the shared meaning.
 
 End with one specific question about boundary, grain, classification, or a relationship. Do not ask only whether the diagram looks good.
+
+When publishing a reader-facing sample, follow
+`.agents/skills/business-context-modeling/references/reader-facing-artifacts.md`.
+Keep the detailed modeling record in the authoring workspace or private
+checkpoint, and publish only the diagram, a short business explanation, a short
+reading, and natural links to related Views.

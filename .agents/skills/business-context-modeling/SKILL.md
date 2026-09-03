@@ -1,222 +1,151 @@
 ---
 name: business-context-modeling
-description: Extract actors, business activities, information, and external systems from loose business descriptions; maintain reusable actor, external-system, and information master maps; align abstraction and grain; connect canonical elements into discussion-ready Mermaid models; and move through overall, use-case, and flow views while navigating between dense observation, focused details, and one-level-higher overviews. Use when visualizing or organizing a business or operation, clarifying a current or future boundary, aligning stakeholder understanding, or moving repeatedly between concrete and abstract business views.
+description: Turn loose business or operational language into purpose, business, actor, information, system, context, and flow models; name Business activities from their transformations; connect Why to How; and publish reader-facing model sets without exposing the authoring workspace.
 ---
 
 # Business Context Modeling
 
-Turn an ordinary conversation about a business or operation into a small model that people can inspect, question, and refine together. Treat the Mermaid diagram as a discussion surface, not final truth.
+Turn an ordinary conversation about work into a model people can inspect,
+question, and refine. Keep the analysis rigorous behind the scenes and make the
+published model quiet enough for a reader who wants to understand the business.
 
 ## Core contract
 
-- Start from loose language; do not require a form before producing a first model.
-- Before listing candidates, describe the business in two or three natural-language sentences: who (Actors and External Systems) provides which Information, how the Business uses it, which Information it creates or updates, and who receives it.
-- Extract four default types: actor, business activity, information, and external system from that description.
-- Treat naming after extraction as semantic compression: ask what each candidate essentially is, propose a short business name, reread the business description with it, and keep the source wording as evidence rather than automatically using it as the model label.
-- At the Business boundary, Actor and External System are peer kinds of participant: either may provide value or Information to the Business and either may receive value or Information from it. Distinguish them by purposeful action and responsibility (Actor) versus a technical system outside the selected boundary (External System).
-- Peer participation does not require both types to appear in every Business Context. Include an External System only when the described business shows its provider or recipient relationship; otherwise record `none observed` and keep genuinely possible systems as unresolved, outside the candidate inventory.
-- When participants, systems, or information relationships matter, maintain three
-  canonical master views: an actor map, an external-system map, and an
-  information model. These maps may connect same-type nodes; they are not
-  substitutes for the business-centered context view.
-- Give master elements stable IDs and reuse those IDs, labels, icons, and sizes
-  when selecting them in a context view. Record the selection in a `Master
-  references` section because Mermaid cannot import another Markdown diagram.
-- Connect non-business elements through business activities in the foundation context view.
-- Keep one modeling question, boundary, state, and main abstraction level per diagram.
-- Do not model only `How`. Preserve the trace from Why / Purpose through the
-  desired outcome, Business, and Actor / Information / System relationships to
-  Flow or implementation, so a changed How can be evaluated against its meaning.
-- Treat a model as a returnable meaning axis rather than a fixed answer: move
-  downward to concretize and return upward whenever detail changes the purpose,
-  business boundary, actor meaning, or responsibility.
-- Name a Business from its input-to-output transformation, not from a modeling,
-  prototyping, tuning, or other method merely used to perform it. Modeling is a
-  basic action across Business activities whenever important meaning can be
-  externalized.
+- Start from the user's language. Do not require a form before producing a
+  first model.
+- Work in two surfaces: an **authoring workspace** for evidence, candidates,
+  classifications, comparisons, and unresolved questions; and a
+  **reader-facing artifact** for the model, a short explanation, and links to
+  related views.
+- Keep project-specific decisions and open questions in the project's private
+  checkpoint when one exists. Do not hide them inside a public sample.
+- Preserve the trace from Why / Purpose through the desired outcome, Business,
+  and Actor / Information / System relationships to How / Flow /
+  implementation. Move both downward and upward as the model changes.
+- Describe a Business's input, transformation, and output before naming it.
+  Name the transformation, not a method merely used to perform the work.
+- Treat modeling as a basic action across Business activities whenever meaning
+  can be externalized. Do not confine it to one activity called modeling.
 - Keep a Business Map of constituent capabilities separate from a Business
-  Flow. Map relationships do not imply order; use a Flow only when sequence,
-  decisions, or rework are the question.
-- Use a three-rung model set when the work needs more than one context: overall
-  context (title-level business area and major actors), use-case context (one
-  changing scene around one business outcome), then business flow (order,
-  decisions, or rework inside that scene). The flow is a separate diagram, not
-  another relationship context.
-- Start a focused view with 3–7 semantic nodes. Treat growth beyond seven as a signal to observe, not an automatic deletion rule.
-- Preserve a dense observation view when seeing the complexity supports the discussion.
-- When focused diagrams multiply, add or update a one-level-higher overview and trace each detail to one expanded overview node.
-- Keep uncertainty, omitted details, and open questions in companion Markdown.
-- Use `mermaid-diagram-authoring` inside the modeling loop; let diagram density and layout pressure inform the next abstraction decision.
-- When writing Mermaid image nodes, keep properties in the exact order
-  `label`, `img`, `pos`, `w`, `h`, `constraint` so stable English IDs and
-  Japanese labels can be compared at a glance.
-- Default to one Mermaid block inside a Markdown working file. Do not create `.mmd`, SVG, or PNG unless the user explicitly asks for standalone source or export.
+  Flow. A map shows composition or relationships; a flow shows order,
+  decisions, and rework.
+- Do not invent Actors, Information, External Systems, exchanges, or
+  responsibilities to fill a notation.
+- Keep Markdown Mermaid as the editable source. Do not create `.mmd`, SVG, or
+  PNG unless the user explicitly requests standalone source or export.
 
-Read [references/modeling-rules.md](references/modeling-rules.md) before classifying or connecting elements. Read [references/master-elements.md](references/master-elements.md) when the task asks for actor, system, or information inventories, same-type relationships, or reusable elements. Read [references/multi-view-modeling.md](references/multi-view-modeling.md) when a view grows beyond seven nodes or needs decomposition.
+## Reference routing
+
+Read only the references needed for the task:
+
+- [business-story-and-5w2h.md](references/business-story-and-5w2h.md): build a
+  Business Story, use 5W2H as an analysis lens, and preserve the Why-to-How
+  meaning trace.
+- [modeling-rules.md](references/modeling-rules.md): extract candidates,
+  classify Actor / Business / Information / External System, align grain, and
+  name Business activities through semantic compression and transformation.
+- [master-elements.md](references/master-elements.md): maintain canonical
+  actor, external-system, and information maps when reusable identities or
+  same-type relationships matter.
+- [multi-view-modeling.md](references/multi-view-modeling.md): distinguish Model
+  from View, choose Purpose / Map / Context / Flow views, and keep upward and
+  downward trace.
+- [reader-facing-artifacts.md](references/reader-facing-artifacts.md): separate
+  the modeling workspace from a public sample and edit for business readers.
+
+Use [mermaid-diagram-authoring](../mermaid-diagram-authoring/SKILL.md) for the
+notation and source-only validation of each diagram.
 
 ## Workflow
 
-### 1. State the question
+### 1. Frame the work
 
-Infer, when possible:
+Infer the purpose, first reader, business boundary, state, and the one question
+the current View should answer. Ask at most one blocking question; make a
+reviewable version zero when the language already supports one.
 
-- Purpose: which shared understanding or decision the model supports.
-- Reader: who will discuss it.
-- Boundary: what business or responsibility is inside.
-- State: current, future, or comparison. Do not mix current and future.
-- Reading: one sentence explaining what the relationships mean.
+### 2. Build the Business Story in the workspace
 
-Ask at most one blocking question. Build version zero when the input supports a plausible first pass and expose assumptions instead.
+Write a short natural-language account of who provides which Information, what
+the Business changes, what it produces, and who receives or uses the result.
+Use 5W2H to find missing meaning, not as a required public-page format. Follow
+`business-story-and-5w2h.md`.
 
-### 2. Describe the business, then preserve concrete candidates
+### 3. Extract and name
 
-Write a two- or three-sentence natural-language description before making an inventory. State who provides which Information, what the Business does with it, which Information it creates or updates, and who receives it. Here, `who` can include both Actors and External Systems; do not invent an External System to fill the type when none appears in the description. This description expresses relevant relationships, not a fixed chronological flow.
+Preserve concrete source words, then classify the observed Actor, Business,
+Information, and External System candidates. For each Business, state input,
+transformation, and output; compress the transformation into a short natural
+name; and test it as a verb. Record rename / split / merge decisions in the
+workspace or private checkpoint, not in the reader-facing page.
 
-Collect the nouns, verbs, and Information objects that actually occur in that description before abstracting. Classify each as actor, business activity, information, external system, implementation detail, or unresolved. Do not carry a candidate forward merely because it appeared in an earlier inventory or because it belongs to the modeling method itself.
+### 4. Connect Why to How and choose Views
 
-Always return four compact candidate groups for actor, activity, information, and external system. Write `none observed` or `unresolved` rather than silently omitting a type. Keep omitted implementation details and unresolved items in prose.
+Keep the meaning chain behind the model. Publish only the Views that answer a
+reader's question, such as:
 
-When a master layer already exists, reconcile each actor, external-system, and
-information candidate against its canonical ID before creating a new one. Keep
-source wording and possible aliases in the companion Markdown. Do not silently
-merge two candidates that differ by responsibility, abstraction, state, or
-boundary.
+- Purpose / Outcome: what state the work seeks;
+- System Context: who participates around the whole Business;
+- Business Map: which peer Business capabilities constitute the whole;
+- Business Context: who and what relate around one Business outcome;
+- Business Flow: what order, decision, or rework occurs inside one Context.
 
-### 2.5 Compress names before confirming the inventory
+Do not make one diagram answer all levels.
 
-For each extracted candidate, ask “what is this, in essence?” Propose a short, simple, meaningful business name that a first reader can broadly understand without the source sentence. This is semantic compression, not label formatting: prefer a name that can be concretized later, but do not shorten until it becomes vague.
+### 5. Reconcile reusable elements
 
-Reread the natural-language business description with each proposed name. Keep the source phrase, alias, confidence, and naming rationale in companion Markdown. Confirm the candidate inventory only after that reading.
+When actor, external-system, or information identities recur across Contexts,
+reconcile them with the corresponding master map. Reuse stable IDs, labels,
+icons, and sizes. If a relationship is not observed, keep it unresolved in the
+workspace rather than drawing it.
 
-A refined expression for the same concept is a **rename**: keep its stable ID and record the former label. A newly discovered difference in meaning is a **split**: create new stable IDs and trace their origin to the prior concept. A confirmed shared concept may be a **merge**: retain or choose one canonical identity, record the absorbed IDs and evidence, and do not silently collapse different responsibilities, states, boundaries, or abstraction levels.
+### 6. Author and validate the working model
 
-### 3. Align abstraction and grain
+Use Mermaid as a discussion surface. Keep one subject, state, relationship
+meaning, and main abstraction level per diagram. Run the matching source-only
+checker. Let density or awkward layout send the work back to boundary, grain,
+or naming before adding layout machinery.
 
-Use the abstraction ladder in `modeling-rules.md`. Choose capability or outcome-sized activity for a context model. Choose outcome-sized activities or tasks for a flow. Do not mix a broad capability such as `sell products` with an operation such as `export CSV` in one foundation view.
+### 7. Publish for the reader
 
-Name actors, information, and systems with short nouns. Name activities with one outcome-oriented verb phrase. Split or rename labels that contain two predicates.
+Edit the agreed meaning into the reader-facing pattern:
 
-If the request includes same-type relationships, update the relevant master map
-before composing the context. Use the master templates and run
-`check_master_map.py` with `--kind actor`, `--kind system`, or `--kind
-information`.
+1. a title that names the business question;
+2. one or two short sentences;
+3. the Mermaid diagram;
+4. only the explanation the diagram cannot carry;
+5. natural links to its parent, child, or supporting View.
 
-Choose the context rung before writing Mermaid:
+Remove authoring history, candidate tables, method explanations, validation
+notes, and private uncertainty from that surface. Follow
+`reader-facing-artifacts.md`.
 
-- **Overall context**: center a title-level business area or outcome as a
-  `b_` node and place the major actor subjects around it. This is a relationship
-  view, not a process route; keep detailed information and systems for a child
-  view unless they are essential to the overall boundary.
-- **Use-case context**: cut one scene where an actor responsibility, external
-  system boundary, information handoff, or value recipient changes. Center one
-  outcome-sized `b_` activity and select the surrounding `a_`, `x_`, and `i_`
-  nodes from the masters. If the scene becomes crowded, split by scene or
-  discussion question and trace each child to the same parent node.
-- **Business flow**: only after a use-case context shows that order, decisions,
-  or rework matter. Expand one activity from that context and use the
-  `mermaid-business-flow-diagram` Skill for directional arrows.
+### 8. Garden knowledge and close
 
-### 4. Build the foundation backbone
-
-Use ordinary relationship lines by default:
-
-```text
-actor --- business activity
-input information --- business activity
-business activity --- output information
-external system --- business activity
-```
-
-Use only relationships stated by the user or explicitly marked as hypotheses. Reserve external system for software or technical systems outside the chosen boundary; outside people and organizations remain actors.
-
-Use `-->` only when a strong dependency is an intentional part of the question. Do not use arrows for every ordinary relationship.
-
-Describe the provider, recipient, and Information relationship in companion prose. Keep the Business Context's ordinary lines as relationships, not a one-way route; move time, order, decisions, and detailed handoffs to a Business Flow.
-
-When the modeling question is specifically the direction of value or Information handoff, use an explicit value-flow context as a separate View variant:
-
-```text
-actor --> business activity <-- input information
-business activity --> output information
-business activity --> external system --> business activity
-business activity --> recipient
-```
-
-Use `flowchart LR` and solid `-->` edges only when that direction is the question. Keep the Business activity as the hub and include an External System only when one is observed. In this variant, arrows mean value or Information handoff, not chronology; move detailed order, decisions, and rework to a Business Flow. State this reading in the companion prose.
-
-For every selected `a_`, `x_`, or `i_` node, copy the canonical master node
-definition and add a `## Master references` table with the master path, ID,
-canonical label, and reason for selection. The context may use a different
-layout or a narrower reading, but it must not invent a second identity.
-Use a path that resolves from the context file to the exact master source, not
-only a same-named file in another model set.
-Run `check_master_references.py` when the master paths are available; it compares
-the selected node's ID, label, icon, size, and class against the canonical map.
-Add `--allow-sparse` when a supplied master intentionally contains multiple
-candidate nodes whose same-type relationships have not been observed yet.
-
-Use a separate general context view when ownership, storage, access, delivery, or technical integration is itself the question.
-
-### 5. Observe complexity
-
-When the backbone exceeds seven nodes or renders awkwardly, consider preserving the full same-level view as a complexity observation artifact. Inspect:
-
-1. mixed subject;
-2. mixed abstraction;
-3. mixed boundary;
-4. repeated outcomes;
-5. missing focused or overview views.
-
-Do not simplify automatically. Choose deliberately among keeping the view, refining its grain or boundary, and adding diagrams.
-
-### 6. Build a navigable model set
-
-When adding use-case / scene diagrams, create or update an overall (or
-one-level-higher) overview exactly one abstraction level above them. Decide
-whether the overview shows undirected relationships or directional handoffs.
-Let each detail expand one stable overview node ID and record the trace in the
-repository-root template `/templates/model-set-index.md`.
-
-Move upward by grouping details around shared outcomes or responsibilities. Move downward by expanding one overview node into a focused context and, only when order matters, a focused flow. Record the three master views in the model-set index with role `master`, then link context views to the exact master IDs they select. Treat the index as navigation and trace, not as a second canonical registry.
-
-For a three-rung set, record the chain explicitly: `overall context` → `use-case
-context` → `business flow`. A use-case context has one overview parent and a flow
-has one use-case parent. If several use-case scenes emerge, keep sibling views
-separate and let the overview remain one level higher. If the overview itself
-becomes dense, add one more higher overview rather than flattening the set.
-
-### 7. Author, preview, and revise
-
-- Follow `mermaid-diagram-authoring` for both relationships and flows.
-- Use its icon-context profile for relationships.
-- Use its business-flow profile for order, decisions, and rework.
-- Keep the diagram in Markdown so the user can preview it immediately in GitHub or VS Code.
-
-For a foundation context:
-
-```bash
-python3 .agents/skills/business-context-modeling/scripts/check_business_context.py path/to/context.md
-```
-
-The business-context checker includes the authoring profile's strict source validation. Add `--allow-complexity` for an intentionally dense observation view. Inspect the Markdown preview and the relationships it exposes; do not export images as part of the normal modeling loop.
-
-Return to steps 3–6 when the diagram reveals mixed grain, boundary pressure, repeated outcomes, or an unstable parent-child trace.
-
-### 8. Open the discussion
-
-Ask one specific question about boundary, grain, classification, or a relationship. Do not ask only whether the picture looks good.
+- Move reusable methods to this Skill or its nearest reference.
+- Move project-specific decisions, unresolved items, and review state to the
+  private checkpoint.
+- Delete obsolete or duplicated public explanations instead of hiding them.
+- Validate the repository, run `git diff --check`, and report exports only when
+  they were explicitly requested.
 
 ## Output contract
 
-Return:
+Maintain three different outputs when the project needs them:
 
-1. Modeling question, boundary, and reading sentence.
-2. Four-part candidate inventory and nodes selected for the first view.
-3. Markdown working source with one previewable Mermaid block.
-4. Compact text alternative of the relationship backbone.
-5. Assumptions, omitted details, and unresolved classifications.
-6. Model-set trace when multiple diagrams exist, including each view's rung,
-   parent, expanded node, and child views.
-7. Master views and `Master references` when actor, system, or information maps are in scope.
-8. One focused discussion question.
-9. Source-validation result, including the matching master-map checks when used. Include export results only when the user explicitly requested `mermaid-diagram-export`.
+### Authoring workspace
+
+Business Story, 5W2H notes, source evidence, candidate inventory, input /
+transformation / output, naming decisions, boundary, assumptions, omissions,
+unresolved questions, view trace, and validation results.
+
+### Reader-facing artifact
+
+The model diagram, a short business explanation, a short reading, and links to
+related Models / Views. Do not require the reader to understand the modeling
+method.
+
+### Private checkpoint
+
+Project-specific decisions, alternatives, rename / split / merge candidates,
+review state, unresolved items, next action, and stopping point.

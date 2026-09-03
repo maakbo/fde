@@ -1,16 +1,12 @@
-# FDE Actor Requirement
+# 主体者が必要とする状態
 
-## Modeling question
+主体者が業務を理解し、自分で選び、改善できるように、FDEが何を支えるかを示します。
 
-Desired Stateのうち、主体者がFDEによって何をできる状態を必要とし、そのためにどのような対策を置くか。
-
-## Reading
-
-左からActor、要求、対策を読む。要求は角丸四角、対策は角のある四角で表す。線は対応関係であり、Business Flowではない。
+## モデル
 
 ```mermaid
 ---
-title: FDE Actor Requirement
+title: 主体者が必要とする状態
 config:
   layout: dagre
   theme: neutral
@@ -76,6 +72,8 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## Boundary
+## このモデルが表していること
 
-主体者の三つの要求を中心に、FDEを担うActor側の役割上の前提と対策を最小限に置く。これは[Purpose / Outcome](purpose-outcome.md)のDesired Stateを主体者から見たfocused Viewであり、Ultimate Purposeそのものではない。主体者の仲間に固有の要求、個別の実装、業務手順、AIの内部構成は扱わない。
+見えるようにするだけでなく、選択肢と影響を考え、自分で改善できるところまでを支えます。
+
+← [誰と実現するかへ](system-context.md)

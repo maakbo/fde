@@ -44,6 +44,10 @@ This repository is a portable environment for forward-deployed business modeling
   scene, and business flow for order or decisions inside that scene. Keep the
   parent/expanded-node chain explicit.
 - Keep important meaning in companion Markdown; a diagram alone is not the model.
+- Separate the modeling workspace from the reader-facing artifact. Keep
+  evidence, candidates, comparisons, boundary decisions, and unresolved items
+  in the workspace or private checkpoint; publish the diagram, a short business
+  explanation, and natural links between Views.
 - Use synthetic examples. Never add personal, customer, credential, or confidential data.
 
 ## Artifact rules
@@ -65,7 +69,7 @@ This repository is a portable environment for forward-deployed business modeling
 
 ## Completion
 
-Return or record:
+For an authoring workspace or private checkpoint, return or record:
 
 1. The modeling question, boundary, and reading sentence.
 2. Candidate actors, activities, information, and external systems.
@@ -74,3 +78,7 @@ Return or record:
 5. Assumptions, omitted details, and unresolved classifications.
 6. One focused question that can improve the shared model.
 7. Source-validation results, plus export results only when explicitly requested.
+
+For a reader-facing sample, keep only the title, short business description,
+Mermaid diagram, short reading, and links to related Models / Views. Do not copy
+the authoring checklist into the published page.

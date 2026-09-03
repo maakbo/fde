@@ -3,6 +3,30 @@
 Use a model set when one diagram can no longer answer every useful question at
 one abstraction level, or when the complexity itself is worth observing.
 
+## Model and View
+
+A **Model** is the maintained meaning: purpose, desired outcomes, Business
+activities, participants, Information, systems, flows, implementation choices,
+and their relationships. It may include prose, inventories, decisions, and
+uncertainty in the authoring workspace.
+
+A **View** selects only the part needed to answer one reader question at one
+boundary, state, and abstraction level. Purpose / Outcome, System Context,
+Business Map, Business Context, and Business Flow are different Views of a
+larger Model. Do not put every level into one diagram or publish the entire
+authoring workspace as one model note.
+
+Keep the Why-to-How trace described in `business-story-and-5w2h.md`. The trace
+is bidirectional: descend to concretize, and revise an upper Model when a lower
+View reveals a wrong purpose, boundary, activity, or responsibility.
+
+## Business Map and Business Flow
+
+A Business Map answers which peer capabilities or Business areas constitute a
+larger Business. Use relationship lines; their placement does not express
+time. A Business Flow answers what happens next, where decisions occur, and
+where work returns. Keep these as separate Views even when they share names.
+
 Master element maps are a parallel canonical layer, not another abstraction
 rung: actor, external-system, and information views hold same-type identities
 and relationships. Context and overview views select those IDs and record the
