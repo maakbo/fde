@@ -29,6 +29,9 @@ published model quiet enough for a reader who wants to understand the business.
 - Keep a Business Map of constituent capabilities separate from a Business
   Flow. A map shows composition or relationships; a flow shows order,
   decisions, and rework.
+- Reuse the structure of a reader-facing page, not the semantic structure of
+  its diagram. Re-derive Actors, Information, relationships, and the Context
+  variant from each Business Story.
 - Do not invent Actors, Information, External Systems, exchanges, or
   responsibilities to fill a notation.
 - Keep Markdown Mermaid as the editable source. Do not create `.mmd`, SVG, or
@@ -105,6 +108,10 @@ Use Mermaid as a discussion surface. Keep one subject, state, relationship
 meaning, and main abstraction level per diagram. Run the matching source-only
 checker. Let density or awkward layout send the work back to boundary, grain,
 or naming before adding layout machinery.
+
+Before copying a previous Context pattern, hide the existing diagram and audit
+the Business Story, Why, input, transformation, output, and each participant's
+responsibility. Follow `modeling-rules.md`.
 
 ### 7. Publish for the reader
 

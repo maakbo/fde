@@ -31,20 +31,20 @@ flowchart LR
   a_companions@{ label: "主体者の仲間", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   b_collaboration_design@{ label: "協働設計", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_change_plan@{ label: "変化案", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  i_collaboration_design@{ label: "協働の設計", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_roles_constraints@{ label: "役割と制約", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_collaboration_model@{ label: "協働モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  a_fde --> b_collaboration_design
-  a_fde_ai --> b_collaboration_design
-  a_subject --> b_collaboration_design
-  a_companions --> b_collaboration_design
-  i_change_plan --> b_collaboration_design
-  b_collaboration_design --> i_collaboration_design
-  b_collaboration_design --> a_subject
-  b_collaboration_design --> a_companions
+  a_fde --- b_collaboration_design
+  a_fde_ai --- b_collaboration_design
+  a_subject --- b_collaboration_design
+  a_companions --- b_collaboration_design
+  i_change_plan --- b_collaboration_design
+  i_roles_constraints --- b_collaboration_design
+  i_collaboration_model --- b_collaboration_design
 
   class a_fde,a_fde_ai,a_subject,a_companions actor;
   class b_collaboration_design business;
-  class i_change_plan,i_collaboration_design information;
+  class i_change_plan,i_roles_constraints,i_collaboration_model information;
 
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
@@ -54,6 +54,6 @@ flowchart LR
 
 ## このモデルが表していること
 
-主体者と仲間が選んだ変化をもとに、役割、責任、情報の受け渡しを組み立てます。AIやシステムが加わるときも、それぞれの強みを生かせる関係を考えます。
+主体者と仲間が選んだ変化をもとに、役割、責任、情報の受け渡しを組み立てます。具体的なAIやシステムは、担う役割と境界が分かったときに協働モデルへ加えます。
 
 ← [FDEの業務全体へ](business-map.md)

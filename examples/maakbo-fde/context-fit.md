@@ -31,20 +31,20 @@ flowchart LR
   a_companions@{ label: "主体者の仲間", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   b_context_fit@{ label: "現場適合", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_usage_result@{ label: "利用結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  i_fitted_system@{ label: "整えた仕組み", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_mismatch@{ label: "現場とのズレ", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_system_model@{ label: "仕組みとモデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  a_fde --> b_context_fit
-  a_fde_ai --> b_context_fit
-  a_subject --> b_context_fit
-  a_companions --> b_context_fit
-  i_usage_result --> b_context_fit
-  b_context_fit --> i_fitted_system
-  b_context_fit --> a_subject
-  b_context_fit --> a_companions
+  a_fde --- b_context_fit
+  a_fde_ai --- b_context_fit
+  a_subject --- b_context_fit
+  a_companions --- b_context_fit
+  i_usage_result --- b_context_fit
+  i_mismatch --- b_context_fit
+  i_system_model --- b_context_fit
 
   class a_fde,a_fde_ai,a_subject,a_companions actor;
   class b_context_fit business;
-  class i_usage_result,i_fitted_system information;
+  class i_usage_result,i_mismatch,i_system_model information;
 
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
@@ -54,6 +54,6 @@ flowchart LR
 
 ## このモデルが表していること
 
-主体者と仲間が使って分かったことを、fdeとfdeAIも一緒に確かめます。役割の無理や情報の不足を見つけ、仕組みとモデルを現場に合うように整えます。
+主体者と仲間が使って分かったことを、fdeとfdeAIも一緒に確かめます。利用結果と仕組みやモデルを照らし、見つけたズレを両方へ戻して整えます。
 
 ← [FDEの業務全体へ](business-map.md)

@@ -82,6 +82,33 @@ Diagnostic smells:
 
 Use another general context view when information ownership, storage, access, or integration is the actual subject.
 
+## Semantic audit before reusing a Context pattern
+
+A common page structure helps readers navigate, but it does not justify a
+common diagram structure. Before reusing an existing Context, set its diagram
+aside and restate the Business Story, Why, input, transformation, output, and
+each participant's responsibility. For every Actor or External System, ask
+what it provides, what it receives, and whether it participates directly in
+this Business.
+
+Then choose the Context variant from the meaning:
+
+- use value-flow only when the direction of a value or Information handoff is
+  central to the question;
+- use an ordinary Context when participation, comparison, feedback, or a set
+  of mutually relevant relationships is central;
+- do not draw every Actor as both provider and recipient merely because an
+  earlier page did;
+- do not reduce a transfer of capability, responsibility, or ownership to an
+  Information handoff;
+- distinguish a Context of the work that designs collaboration from a Context
+  of the resulting Actor / System topology. Do not invent the latter before
+  concrete responsibilities and boundaries are observed.
+
+Uniformity belongs to the reader-facing page pattern. Differences in Actor
+count, Information count, relationship direction, and Context variant are
+expected when the Businesses mean different things.
+
 ## Mermaid pressure
 
 Accept Mermaid automatic layout as a modeling constraint. A crowded result can reveal hubs, clusters, crossings, and mixed concerns.

@@ -35,8 +35,6 @@ flowchart LR
 
   a_fde --> b_autonomy_transition
   a_fde_ai --> b_autonomy_transition
-  a_subject --> b_autonomy_transition
-  a_companions --> b_autonomy_transition
   i_business_model --> b_autonomy_transition
   i_work_system --> b_autonomy_transition
   b_autonomy_transition --> a_subject
@@ -54,6 +52,6 @@ flowchart LR
 
 ## このモデルが表していること
 
-主体者と仲間が、業務モデルと実際の仕組みを自分たちで扱えるようにします。理解、運営、変更を少しずつ手渡し、使いながら育てられる状態へ移ります。
+業務モデルと実際の仕組みを使いながら、理解、判断、変更する力と責任を主体者と仲間へ移します。fdeに任せきりにせず、自分たちで育てられる状態へつなぎます。
 
 ← [FDEの業務全体へ](business-map.md)

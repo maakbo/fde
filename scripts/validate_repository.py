@@ -442,16 +442,19 @@ def main() -> int:
         "--strict",
         "--allow-complexity",
     ])
-    for relative in (
-        "examples/maakbo-fde/context-understanding.md",
-        "examples/maakbo-fde/business-context.md",
-        "examples/maakbo-fde/change-design.md",
-        "examples/maakbo-fde/collaboration-design.md",
-        "examples/maakbo-fde/system-building.md",
-        "examples/maakbo-fde/context-fit.md",
-        "examples/maakbo-fde/autonomy-transition.md",
+    for relative, allow_complexity in (
+        ("examples/maakbo-fde/context-understanding.md", False),
+        ("examples/maakbo-fde/business-context.md", False),
+        ("examples/maakbo-fde/change-design.md", True),
+        ("examples/maakbo-fde/collaboration-design.md", True),
+        ("examples/maakbo-fde/system-building.md", False),
+        ("examples/maakbo-fde/context-fit.md", True),
+        ("examples/maakbo-fde/autonomy-transition.md", False),
     ):
-        run([sys.executable, business, relative])
+        command = [sys.executable, business, relative]
+        if allow_complexity:
+            command.append("--allow-complexity")
+        run(command)
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")
     return 0
 

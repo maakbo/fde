@@ -30,21 +30,23 @@ flowchart LR
   a_subject@{ label: "主体者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_companions@{ label: "主体者の仲間", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   b_change_design@{ label: "変化設計", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_state_gap@{ label: "現状と理想", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_current_model@{ label: "現状モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_desired_state@{ label: "ありたい状態", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_change_plan@{ label: "変化案", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
   a_fde --> b_change_design
   a_fde_ai --> b_change_design
   a_subject --> b_change_design
   a_companions --> b_change_design
-  i_state_gap --> b_change_design
+  i_current_model --> b_change_design
+  i_desired_state --> b_change_design
   b_change_design --> i_change_plan
   b_change_design --> a_subject
   b_change_design --> a_companions
 
   class a_fde,a_fde_ai,a_subject,a_companions actor;
   class b_change_design business;
-  class i_state_gap,i_change_plan information;
+  class i_current_model,i_desired_state,i_change_plan information;
 
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
