@@ -56,6 +56,29 @@ The model-set index is a navigation and trace aid, not a second semantic
 registry. The Mermaid node in the master remains the source for its canonical
 identity.
 
+## Information dictionary companion
+
+The Information model owns canonical Information identity. Keep a small
+dictionary beside it when creation, update, reference, and provision semantics
+matter. This is companion knowledge for the same `i_` identities, not a second
+registry or a new element type.
+
+| Field | Purpose |
+| --- | --- |
+| Stable ID | Reuse the same `i_` identity in every View |
+| Business term | The noun people use in the work |
+| Plain definition | What the term includes at this boundary |
+| Source evidence / observed phrase | Why the concept exists in the Model |
+| Created by | Businesses that first make it available |
+| Updated by | Businesses that change it |
+| Referenced by | Businesses that use it without necessarily changing it |
+| Provided to | Actors or External Systems receiving it |
+| Confidence | Observed, working, or unresolved strength |
+
+Use the dictionary to build the Information × Business matrix before selecting
+a Business Context. A Context may omit an identity that is irrelevant to its
+question, but it must not redefine the identity locally.
+
 ## Relationship semantics
 
 Use unlabelled lines so the diagrams remain quick to edit and redraw by hand.

@@ -1,6 +1,6 @@
 # 業務の変化を描く
 
-現場にある情報をつなぎ、今の業務を見える形にします。その姿とありたい状態から、次に選べる変化案をつくります。
+主体者と仲間、fde、fdeAIが、業務の現状とありたい状態を一緒に確かめます。業務モデルを見ながら、守るものと変えるものを選び、変化案へまとめます。
 
 ## モデル
 
@@ -27,10 +27,10 @@ config:
 flowchart LR
   a_fde@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  i_context_information@{ label: "現場の情報", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_context_information@{ label: "業務の現状", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_mismatch@{ label: "現場とのズレ", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_desired_state@{ label: "ありたい状態", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_context_understanding@{ label: "現場理解", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_context_picture@{ label: "現場像", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_business_structuring@{ label: "業務構造化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_business_model@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_change_design@{ label: "変化設計", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
@@ -39,20 +39,29 @@ flowchart LR
   a_companions@{ label: "主体者の仲間", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
   a_fde --- b_context_understanding
+  a_fde --- b_business_structuring
+  a_fde --- b_change_design
   a_fde_ai --- b_context_understanding
+  a_fde_ai --- b_business_structuring
+  a_fde_ai --- b_change_design
   i_context_information --- b_context_understanding
-  b_context_understanding --- i_context_picture
-  i_context_picture --- b_business_structuring
+  i_context_information --- b_business_structuring
+  i_mismatch --- b_change_design
+  i_desired_state --- b_change_design
+  b_context_understanding --- i_business_model
   b_business_structuring --- i_business_model
   i_business_model --- b_change_design
-  i_desired_state --- b_change_design
   b_change_design --- i_change_plan
+  b_context_understanding --- a_subject
+  b_business_structuring --- a_subject
   b_change_design --- a_subject
+  b_context_understanding --- a_companions
+  b_business_structuring --- a_companions
   b_change_design --- a_companions
 
   class a_fde,a_fde_ai,a_subject,a_companions actor;
   class b_context_understanding,b_business_structuring,b_change_design business;
-  class i_context_information,i_desired_state,i_context_picture,i_business_model,i_change_plan information;
+  class i_context_information,i_mismatch,i_desired_state,i_business_model,i_change_plan information;
 
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
@@ -62,7 +71,7 @@ flowchart LR
 
 ## このモデルが表していること
 
-fdeとfdeAIが、現場の情報を現場像へまとめ、業務モデルとして整理します。主体者と仲間が描くありたい状態を重ね、次に試す変化案へつなぎます。
+四者は三つの業務すべてに関わります。業務の現状と現場とのズレを確かめ、同じ業務モデルを見ながら、ありたい状態へ近づく変化を選びます。
 
 [変化設計の流れを見る](change-design-flow.md) →
 

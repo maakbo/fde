@@ -1,6 +1,6 @@
 # 協働の仕組みをつくる
 
-選んだ変化を、人、AI、システムが担える役割へ組み立てます。その設計を、現場で使える業務の仕組みにします。
+主体者と仲間、fde、fdeAIが、選んだ変化を誰が担うか一緒に決めます。役割と責任を業務モデルへ戻し、現場で使える業務の仕組みにします。
 
 ## モデル
 
@@ -28,27 +28,34 @@ flowchart LR
   a_fde@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   i_change_plan@{ label: "変化案", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  i_roles_constraints@{ label: "役割と制約", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_roles_constraints@{ label: "役割と責任", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_business_model@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_collaboration_design@{ label: "協働設計", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_collaboration_model@{ label: "協働モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_realization@{ label: "仕組み化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_work_system@{ label: "業務の仕組み", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   a_subject@{ label: "主体者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_companions@{ label: "主体者の仲間", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
   a_fde --- b_collaboration_design
+  a_fde --- b_realization
   a_fde_ai --- b_collaboration_design
+  a_fde_ai --- b_realization
   i_change_plan --- b_collaboration_design
+  i_change_plan --- b_realization
   i_roles_constraints --- b_collaboration_design
-  b_collaboration_design --- i_collaboration_model
-  i_collaboration_model --- b_realization
+  i_roles_constraints --- b_realization
+  i_business_model --- b_collaboration_design
+  i_business_model --- b_realization
+  b_collaboration_design --- b_realization
   b_realization --- i_work_system
+  b_collaboration_design --- a_subject
   b_realization --- a_subject
+  b_collaboration_design --- a_companions
   b_realization --- a_companions
 
   class a_fde,a_fde_ai,a_subject,a_companions actor;
   class b_collaboration_design,b_realization business;
-  class i_change_plan,i_roles_constraints,i_collaboration_model,i_work_system information;
+  class i_change_plan,i_roles_constraints,i_business_model,i_work_system information;
 
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
@@ -58,6 +65,6 @@ flowchart LR
 
 ## このモデルが表していること
 
-fdeとfdeAIが、変化案と役割や制約から協働モデルをつくります。主体者と仲間も役割を確かめ、実際に使える業務の仕組みへつなぎます。
+四者が協働設計と仕組み化の両方に関わります。変化案、役割と責任、業務モデルを一緒に確かめ、実際に使える業務の仕組みへ具体化します。
 
 ← [FDEの業務全体へ](business-map.md)

@@ -34,6 +34,7 @@ flowchart LR
 
   %% 左に提供側、中央にBusiness backbone、右に受領側を置く。通常relationは---。
   a_creator --- b_shape_expression
+  a_creator --- b_share_expression
   i_idea_seed --- b_shape_expression
   b_shape_expression --- i_expression_draft
   i_expression_draft --- b_share_expression
@@ -54,5 +55,6 @@ flowchart LR
 
 ## 読み方
 
-アイデアを形にする仕事と届ける仕事が、表現の初稿を介してつながる。
+つくる人は、アイデアを形にする仕事と届ける仕事の両方に参加する。表現の初稿は、
+現場で名前を付けて確認・更新・共有するInformationとして二つの仕事から扱う。
 正確な手順や判断は、このContextではなく各BusinessのFlowで見る。

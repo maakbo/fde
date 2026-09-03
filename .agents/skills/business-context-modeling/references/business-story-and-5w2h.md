@@ -23,6 +23,11 @@ extract candidates and name the peer Business activities with
 External Systems, value recipients, or responsibility boundaries change enough
 that the current account no longer reads as one situation.
 
+Before drawing, turn the story into two relationship matrices: Actor /
+External System × Business participation, and Information × Business creation,
+update, reference, or provision. The diagram is a View of those relationships;
+do not discover a convenient relation only while arranging Mermaid.
+
 ## Use 5W2H as an analysis lens
 
 5W2H checks whether the story carries enough meaning. It is not a mandatory

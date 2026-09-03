@@ -72,6 +72,7 @@ def main() -> int:
             flow_lines.append(line.strip())
 
     errors: list[str] = []
+    observations: list[str] = []
     if flow_lines != ["flowchart LR"]:
         errors.append("Business Context uses exactly one flowchart LR declaration")
     unsupported = sorted({node.split("_", 1)[0] for node in nodes} - {"a", "b", "i", "x"})
@@ -160,6 +161,60 @@ def main() -> int:
             "relate the Business backbone to at least one Actor, Information item, or External System"
         )
 
+    neighbors: dict[str, set[str]] = defaultdict(set)
+    for left, right, _directed in edges:
+        neighbors[left].add(right)
+        neighbors[right].add(left)
+
+    if len(businesses) > 1:
+        first_business = businesses[0]
+        last_business = businesses[-1]
+        for actor in (node for node in nodes if node.startswith("a_")):
+            actor_businesses = {
+                neighbor for neighbor in neighbors[actor] if neighbor.startswith("b_")
+            }
+            if actor_businesses in ({first_business}, {last_business}):
+                endpoint = "first" if first_business in actor_businesses else "last"
+                observations.append(
+                    f"{actor} (`{labels[actor]}`) participates only in the {endpoint} "
+                    "Business; confirm this is not endpoint-layout bias"
+                )
+
+        information_nodes = [node for node in nodes if node.startswith("i_")]
+        for information in information_nodes:
+            information_businesses = {
+                neighbor
+                for neighbor in neighbors[information]
+                if neighbor.startswith("b_")
+            }
+            if len(neighbors[information]) == 2 and len(information_businesses) == 2:
+                observations.append(
+                    f"{information} (`{labels[information]}`) is a two-Business bridge; "
+                    "confirm it is business vocabulary rather than layout glue"
+                )
+
+        if information_nodes and all(
+            len(neighbors[information]) == 2
+            and all(neighbor.startswith("b_") for neighbor in neighbors[information])
+            for information in information_nodes
+        ):
+            observations.append(
+                "every Information node has degree two between Businesses; review for a pipeline-shaped vocabulary"
+            )
+
+        central_nodes = [
+            node
+            for node in nodes[node_index[first_business] : node_index[last_business] + 1]
+            if node.startswith(("b_", "i_"))
+        ]
+        if len(central_nodes) >= 3 and all(
+            central_nodes[index].startswith("b_" if index % 2 == 0 else "i_")
+            for index in range(len(central_nodes))
+        ):
+            observations.append(
+                "the central source order alternates mechanically between Business and Information; confirm the Model did not come from the diagram pattern"
+            )
+
     seen_labels: dict[tuple[str, str], str] = {}
     for node_id, label in labels.items():
         key = (node_id.split("_", 1)[0], label)
@@ -174,6 +229,8 @@ def main() -> int:
         print(f"ERROR: {message}")
     if errors:
         return 1
+    for message in observations:
+        print(f"OBSERVE: {message}")
     print(f"OK: {args.input} — {len(businesses)} Business node(s) in one use-case context")
     return 0
 

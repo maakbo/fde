@@ -72,9 +72,10 @@ conversation -> tentative model -> Mermaid -> inspect density and relationships
 Layout pressure is evidence for modeling, not permission to silently change meaning.
 
 Use source order as a semantic layout hint: provider/executor/input nodes,
-then Business activities interleaved with observed Information bridges, then
-recipient/output nodes. Write each relation in approximate left-to-right
-endpoint order. Never add a fake node or edge to force coordinates.
+then Business activities and genuine shared Information in positions matching
+their roles, then recipient/output nodes. Do not force a Business / Information
+alternation. Write each relation in approximate left-to-right endpoint order.
+Never add a fake node or edge to force coordinates.
 
 ## Output contract
 

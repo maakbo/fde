@@ -111,9 +111,10 @@ flowchart LR
 ```
 
 Node declarations use the full canonical image-node properties; they are
-abbreviated above only to show order. Define left nodes first, then interleave
-Business nodes and genuine Information bridges, then define right nodes. The
-relation endpoint order carries the same authoring intent.
+abbreviated above only to show order. Define left nodes first, then place
+Business nodes and genuine shared Information according to their semantic
+roles, then define right nodes. Do not alternate Business and Information
+mechanically. The relation endpoint order carries the same authoring intent.
 
 Do not use arrows, edge labels, multiple weights, visible node boxes, or color
 hierarchy between equivalent nodes. Replace one `---` with `-->` only when the

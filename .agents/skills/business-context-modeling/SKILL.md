@@ -41,6 +41,16 @@ published model quiet enough for a reader who wants to understand the business.
   reason in the authoring workspace and use the explicit checker flag.
 - Do not invent Actors, Information, External Systems, exchanges, or
   responsibilities to fill a notation.
+- Treat Information as business vocabulary: a named domain concept that people
+  can reference, check, update, or share and that affects judgment,
+  responsibility, or value. Never create Information only to join two nodes.
+- Build the Actor / External System × Business participation matrix and the
+  Information × Business create / update / reference / provide matrix before
+  editing a Business Context. Project the View from that relationship Model.
+- Separate an Actor's position from its relations. Position expresses the
+  Actor's main value role across the Use Case; each relation expresses direct
+  participation in one Business. A left or right Actor may relate to several
+  Businesses.
 - Keep Markdown Mermaid as the editable source. Do not create `.mmd`, SVG, or
   PNG unless the user explicitly requests standalone source or export.
 
@@ -89,6 +99,12 @@ transformation, and output; compress the transformation into a short natural
 name; and test it as a verb. Record rename / split / merge decisions in the
 workspace or private checkpoint, not in the reader-facing page.
 
+For Information candidates, test whether people doing the work can use the
+term as a noun with verbs such as reference, check, update, or share. Maintain
+the observed phrase, plain definition, stable ID, creating/updating/referencing
+Businesses, recipients, and confidence in the Information master companion.
+Reuse one identity across Businesses and Contexts when the meaning is the same.
+
 ### 4. Connect Why to How and choose Views
 
 Keep the meaning chain behind the model. Publish only the Views that answer a
@@ -110,6 +126,16 @@ reconcile them with the corresponding master map. Reuse stable IDs, labels,
 icons, and sizes. If a relationship is not observed, keep it unresolved in the
 workspace rather than drawing it.
 
+Before selecting Context relations, write two compact matrices in the
+workspace:
+
+- Actor / External System × Business: executes, provides, participates,
+  decides, receives value, or none;
+- Information × Business: create, update, reference, provide, or none.
+
+Use these matrices as the relationship Model. Do not infer participation from
+where Mermaid places a node.
+
 ### 6. Author and validate the working model
 
 Use Mermaid as a discussion surface. Keep one subject, state, relationship
@@ -117,13 +143,14 @@ meaning, and main abstraction level per diagram. Run the matching source-only
 checker. Let density or awkward layout send the work back to boundary, grain,
 or naming before adding layout machinery.
 
-For a Business Context, define left-side nodes first, then interleave the
-sibling Business activities and observed Information that connects them, then
-define right-side nodes. Write every relation in approximate left-to-right
-source order. A direct `Business --- Business` relation may express continuity
-when no meaningful Information bridge is observed; it never means a precise
-procedure sequence. Do not invent an Information node or relation to force the
-backbone.
+For a Business Context, define left-side nodes first, then the sibling Business
+activities and any genuine shared Information in a source order that supports
+their semantic roles, then right-side nodes. Write every relation in
+approximate left-to-right source order. Do not force a mechanical
+`Business - Information - Business` alternation. A direct
+`Business --- Business` relation may express continuity when no meaningful
+Information bridge is observed; it never means a precise procedure sequence.
+Do not invent an Information node or relation to force the backbone.
 
 Split by a genuine scene change in participants, Information, External System,
 value recipient, or responsibility boundary, or when visual/cognitive density
@@ -134,6 +161,13 @@ Source validation does not finish the View. Inspect the preview and confirm
 that the Business backbone is central and traceable, providers read on the
 left, recipients read on the right, Information bridges are meaningful, and no
 unnecessary arrow, crossing, or endpoint clipping remains.
+
+Treat these checker observations as prompts for semantic review, not automatic
+deletion: an Information node used only as a two-Business bridge; an Actor
+connected only to the first or last Business in a multi-Business Context; every
+Information node having degree two on one path; or a perfectly alternating
+Business / Information backbone. Confirm each against the dictionary and
+matrices.
 
 Before copying a previous Context pattern, hide the existing diagram and audit
 the Business Story, Why, input, transformation, output, and each participant's
@@ -169,8 +203,9 @@ Maintain three different outputs when the project needs them:
 ### Authoring workspace
 
 Business Story, 5W2H notes, source evidence, candidate inventory, input /
-transformation / output, naming decisions, boundary, assumptions, omissions,
-unresolved questions, view trace, and validation results.
+transformation / output, naming decisions, Information dictionary, Actor ×
+Business and Information × Business matrices, boundary, assumptions,
+omissions, unresolved questions, view trace, and validation results.
 
 ### Reader-facing artifact
 
@@ -190,9 +225,11 @@ The Skill is ready for a first field use when this chain works end to end:
 1. conversation becomes one coherent Business Use Case / scene (`Workflow 1–3`);
 2. the workspace states who provides what, what changes, what is produced, and
    who receives value (`business-story-and-5w2h.md`);
-3. Actors, Information, and External Systems come from observed meaning
-   (`modeling-rules.md`);
-4. sibling Business activities form a readable central backbone
+3. Actors, Information, and External Systems come from observed meaning, with
+   Information maintained as business vocabulary (`modeling-rules.md` and
+   `master-elements.md`);
+4. Actor and Information relationships are stated in matrices before sibling
+   Business activities are projected as a readable central backbone
    (`check_business_context.py`);
 5. executor/provider/input nodes are left and recipient/output nodes are right
    (template plus business checker);
@@ -201,5 +238,6 @@ The Skill is ready for a first field use when this chain works end to end:
 8. each Business can expand into a Flow or recursive Detailed Business Context,
    and discoveries return to the parent (`multi-view-modeling.md`);
 9. the public page stays short (`reader-facing-artifacts.md`);
-10. source checks are followed by visual review, including endpoint markers
-    (`mermaid-diagram-authoring` fixture and checklist).
+10. source checks and semantic-smell observations are followed by visual
+    review, including endpoint markers (`mermaid-diagram-authoring` fixture and
+    checklist).

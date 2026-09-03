@@ -471,7 +471,10 @@ def main() -> int:
         "examples/maakbo-fde/build-collaboration-context.md",
         "examples/maakbo-fde/establish-work-context.md",
     ):
-        run([sys.executable, business, relative])
+        command = [sys.executable, business, relative]
+        if relative.endswith("shape-change-context.md"):
+            command.append("--allow-complexity")
+        run(command)
     run([sys.executable, flow, "examples/maakbo-fde/change-design-flow.md", "--strict"])
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")
     return 0

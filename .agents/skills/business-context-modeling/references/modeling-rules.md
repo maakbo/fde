@@ -6,6 +6,29 @@ Before making an element inventory, describe the chosen Business in two or three
 
 Extract candidates only when they arise naturally from that description. Information should work as the object of a business verb such as receive, use as a basis, reference, create, update, or provide. Do not add `Model`, `View`, or another modeling-method concept merely because the method uses it; include it only when the described Business actually receives, uses, creates, updates, or provides it.
 
+## Information as business vocabulary
+
+Information is a named domain concept used by people doing the work, not an
+intermediate node invented to complete a diagram. For each candidate, ask:
+
+- Can people naturally say they reference, check, update, or share it?
+- Does it affect a judgment, responsibility, or value?
+- Which Businesses create, update, reference, or provide it?
+- Is the term observed in the Business Story, or derived only from the modeling
+  method?
+
+Maintain its stable ID, business term, plain definition, source evidence,
+creating, updating, and referencing Businesses, recipients, and confidence in
+the Information master companion. Reuse the same canonical identity across
+Businesses and Contexts. A Context selects only relations relevant to its Use
+Case; it does not create a local synonym.
+
+An Information node connected only between two Businesses is a review smell,
+not an error. If it is a real term in the work, retain it. If its only purpose
+is to make the backbone continuous, remove it and use an observed direct
+Business relationship instead. A perfectly alternating Business / Information
+backbone deserves the same review.
+
 ## Semantic compression and identity
 
 Natural-language source phrases are evidence, not automatic model labels. After extraction, ask what each candidate essentially is and propose a short, simple business name that remains meaningful at the view's abstraction level and can be concretized later. Reread the business description with the proposed name before confirming the inventory. Do not shorten a name until it becomes unclear.
@@ -80,11 +103,12 @@ Use spatial meaning before arrow direction:
 - right: an Actor or External System receiving value, or Information created,
   updated, or provided by the Business.
 
-Use `flowchart LR` and `---` for ordinary relations. List left-side nodes,
-interleave Business activities with genuine Information bridges in their
-approximate value progression, then list right-side nodes. Write relations in
-the same approximate left-to-right source order. This gives Mermaid a
-meaningful layout signal without fake edges; it does not assert exact sequence.
+Use `flowchart LR` and `---` for ordinary relations. List left-side nodes, then
+Business activities and genuine shared Information according to their semantic
+roles, then right-side nodes. Do not force a Business / Information
+alternation. Write relations in the same approximate left-to-right source
+order. This gives Mermaid a meaningful layout signal without fake edges; it
+does not assert exact sequence.
 
 When one Business creates or updates Information used by another, use
 `Business A --- Information X --- Business B` if that Information is a real
@@ -126,6 +150,13 @@ Diagnostic smells:
 - An activity with no visible value recipient may explain the work but hide why it matters; add the actor or business area receiving its output.
 - Many edge labels may indicate vague nodes or mixed relationship meanings.
 - One node connected to everything may make the subject too broad for discussion.
+- A two-Business bridge used nowhere else may be diagram glue rather than
+  business vocabulary.
+- An Actor connected only to the first or last Business may reflect endpoint
+  layout rather than actual participation.
+- If every Information has degree two on one path, or the backbone alternates
+  mechanically between Business and Information, the diagram may be dictating
+  the Model.
 
 Use another general context view when information ownership, storage, access, or integration is the actual subject.
 
@@ -138,6 +169,20 @@ inputs, transformations, outputs, and each participant's responsibility. For
 every Actor or External System, ask
 what it provides, what it receives, and whether it participates directly in
 this Business.
+
+Create these matrices before Mermaid:
+
+| Relationship model | Allowed values |
+| --- | --- |
+| Actor / External System × Business | executes, provides, participates, decides, receives value, none |
+| Information × Business | create, update, reference, provide, none |
+
+An Actor's left or right position expresses its primary value role across the
+whole Use Case. Its individual Business relations express direct participation
+and may span the backbone. Do not infer that a left Actor participates only in
+the first Business or a right Actor only in the last. In a multi-Business
+Context, an Actor attached only to one endpoint is a review smell that must be
+checked against the participation matrix.
 
 Then choose the Context contents from the meaning:
 
