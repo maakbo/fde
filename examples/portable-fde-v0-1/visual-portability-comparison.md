@@ -7,14 +7,6 @@ This is a synthetic visual-regression surface. It does not replace canonical tem
 ```mermaid
 ---
 config:
-  theme: neutral
-  flowchart:
-    htmlLabels: false
-  themeVariables:
-    background: "#FFFFFF"
-    lineColor: "#8A847A"
-    fontFamily: "Inter, Hiragino Sans, sans-serif"
-    fontSize: "14px"
   themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
 ---
 flowchart LR
@@ -32,14 +24,6 @@ This changes only the image source from the baseline. The source is the upstream
 ```mermaid
 ---
 config:
-  theme: neutral
-  flowchart:
-    htmlLabels: false
-  themeVariables:
-    background: "#FFFFFF"
-    lineColor: "#8A847A"
-    fontFamily: "Inter, Hiragino Sans, sans-serif"
-    fontSize: "14px"
   themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
 ---
 flowchart LR
@@ -57,14 +41,8 @@ This keeps the MDI source and changes only the font stack.
 ```mermaid
 ---
 config:
-  theme: neutral
-  flowchart:
-    htmlLabels: false
   themeVariables:
-    background: "#FFFFFF"
-    lineColor: "#8A847A"
     fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Yu Gothic UI, Hiragino Sans, Meiryo, sans-serif"
-    fontSize: "14px"
   themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
 ---
 flowchart LR
@@ -90,13 +68,15 @@ flowchart LR
 
 ## GitHub observation
 
-On 2026-09-05, GitHub preview rendered the original raw-GitHub baseline but filled the image-node backing path with Mermaid's default `#eee`. Its long CSS overrode only the stroke, so the grey fill remained. Both original `api.iconify.design/mdi/*.svg` candidates failed with GitHub's `The source image cannot be decoded`, with and without frontmatter. A jsDelivr `@mdi/svg` URL produced the same error. The same image-node syntax therefore works; frontmatter is not the loading-error cause. HTTP 200 from a CDN is not a GitHub preview pass.
+On 2026-09-05, GitHub preview rendered the original raw-GitHub baseline but filled the image-node backing path with Mermaid's default `#eee`. Its long CSS overrode only the stroke, so the grey fill remained. Both original `api.iconify.design/mdi/*.svg` candidates failed with GitHub's `The source image cannot be decoded`, with and without frontmatter. A jsDelivr `@mdi/svg` URL produced the same error. By contrast, the fixed-tag upstream MDI raw-GitHub source rendered in all three MDI blocks. The same image-node syntax therefore works; frontmatter is not the loading-error cause. HTTP 200 from a CDN is not a GitHub preview pass.
+
+The only configuration retained for the baseline and MDI-source comparison is the CSS that clears Mermaid's image-node backing paths. `title`, `layout`, `curve`, spacing, padding, explicit theme, explicit background, line color, and font size were removed without causing a GitHub loading error. The system-font block adds only `fontFamily`. The no-frontmatter block also renders, but retains Mermaid's default image-node backing fill and border; it is a syntax/source check, not the visual baseline.
 
 ## Review record
 
 | Surface | Renderer/version | Existing-source baseline | MDI source only | System font only | Frontmatter removed | Difference / decision |
 | --- | --- | --- | --- | --- | --- | --- |
-| GitHub preview | GitHub Mermaid viewscreen, 2026-09-05 | Original rendered; backing fill was `#eee` | pending branch preview | pending branch preview | Original Iconify failure was independent of frontmatter | Do not call an external SVG portable until this surface renders it. |
+| GitHub preview | GitHub Mermaid viewscreen, 2026-09-05 | Rendered; backing paths cleared | Rendered with fixed-tag upstream MDI source | Rendered; source and only font stack changed | Rendered; default backing fill/border remains | `api.iconify.design` and jsDelivr MDI SVGs failed decode; upstream raw GitHub MDI source rendered. |
 | macOS VS Code | | | | | | |
 | Windows VS Code + GitHub Copilot | | | | | | Unverified; do not infer from GitHub. |
 
