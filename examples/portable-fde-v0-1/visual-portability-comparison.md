@@ -27,7 +27,7 @@ flowchart LR
 
 ## 2. Candidate: MDI source only
 
-This changes only the image source from the baseline. The source is the published `@mdi/svg` package on jsDelivr, not a maakbo-owned URL.
+This changes only the image source from the baseline. The source is the upstream MaterialDesign-SVG GitHub repository at its `v7.4.47` tag, not a maakbo-owned URL.
 
 ```mermaid
 ---
@@ -43,10 +43,10 @@ config:
   themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
 ---
 flowchart LR
-  a_provider@{ label: "提供者", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_shape@{ label: "形にする", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/circle-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_result@{ label: "結果", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/file-document-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  a_recipient@{ label: "受け手", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_provider@{ label: "提供者", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_shape@{ label: "形にする", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/circle-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_result@{ label: "結果", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-document-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  a_recipient@{ label: "受け手", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_provider --- b_shape --- i_result --- a_recipient
 ```
 
@@ -68,10 +68,10 @@ config:
   themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
 ---
 flowchart LR
-  a_provider@{ label: "提供者", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_shape@{ label: "形にする", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/circle-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_result@{ label: "結果", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/file-document-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  a_recipient@{ label: "受け手", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_provider@{ label: "提供者", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_shape@{ label: "形にする", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/circle-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_result@{ label: "結果", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-document-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  a_recipient@{ label: "受け手", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_provider --- b_shape --- i_result --- a_recipient
 ```
 
@@ -81,16 +81,16 @@ This keeps the MDI source and removes frontmatter/config. It is intentionally ba
 
 ```mermaid
 flowchart LR
-  a_provider@{ label: "提供者", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_shape@{ label: "形にする", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/circle-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_result@{ label: "結果", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/file-document-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  a_recipient@{ label: "受け手", img: "https://cdn.jsdelivr.net/npm/@mdi/svg@7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_provider@{ label: "提供者", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_shape@{ label: "形にする", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/circle-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_result@{ label: "結果", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-document-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  a_recipient@{ label: "受け手", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_provider --- b_shape --- i_result --- a_recipient
 ```
 
 ## GitHub observation
 
-On 2026-09-05, GitHub preview rendered the original raw-GitHub baseline but filled the image-node backing path with Mermaid's default `#eee`. Its long CSS overrode only the stroke, so the grey fill remained. Both original `api.iconify.design/mdi/*.svg` candidates failed with GitHub's `The source image cannot be decoded`, with and without frontmatter. The same image-node syntax therefore works; frontmatter is not the loading-error cause. HTTP 200 from Iconify is not a GitHub preview pass.
+On 2026-09-05, GitHub preview rendered the original raw-GitHub baseline but filled the image-node backing path with Mermaid's default `#eee`. Its long CSS overrode only the stroke, so the grey fill remained. Both original `api.iconify.design/mdi/*.svg` candidates failed with GitHub's `The source image cannot be decoded`, with and without frontmatter. A jsDelivr `@mdi/svg` URL produced the same error. The same image-node syntax therefore works; frontmatter is not the loading-error cause. HTTP 200 from a CDN is not a GitHub preview pass.
 
 ## Review record
 
