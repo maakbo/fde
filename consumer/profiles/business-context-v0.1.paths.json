@@ -1,0 +1,29 @@
+{
+  "profile": "business-context-v0.1",
+  "paths": [
+    ".agents/skills/business-context-modeling/SKILL.md",
+    ".agents/skills/business-context-modeling/references/business-story-and-5w2h.md",
+    ".agents/skills/business-context-modeling/references/master-elements.md",
+    ".agents/skills/business-context-modeling/references/modeling-rules.md",
+    ".agents/skills/business-context-modeling/references/multi-view-modeling.md",
+    ".agents/skills/business-context-modeling/references/reader-facing-artifacts.md",
+    ".agents/skills/business-context-modeling/scripts/check_business_context.py",
+    ".agents/skills/business-context-modeling/scripts/check_master_map.py",
+    ".agents/skills/business-context-modeling/scripts/check_master_references.py",
+    ".agents/skills/mermaid-diagram-authoring/SKILL.md",
+    ".agents/skills/mermaid-diagram-authoring/references/icon-context.md",
+    ".agents/skills/mermaid-diagram-authoring/references/business-flow.md",
+    ".agents/skills/mermaid-diagram-authoring/scripts/source_loader.py",
+    ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py",
+    ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py",
+    "templates/icon-context.md",
+    "templates/business-flow.md",
+    "templates/master-actor-map.md",
+    "templates/master-system-map.md",
+    "templates/master-information-model.md",
+    "consumer/fde-instructions.md",
+    "scripts/fde_consumer.py",
+    "scripts/fde",
+    "scripts/fde.ps1"
+  ]
+}

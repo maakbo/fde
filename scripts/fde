@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+set -eu
+
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+manager="$script_dir/fde-manage.py"
+if [ ! -f "$manager" ]; then
+  manager="$script_dir/fde_consumer.py"
+fi
+if command -v python3 >/dev/null 2>&1; then
+  exec python3 "$manager" "$@"
+fi
+if command -v python >/dev/null 2>&1 && python -c 'import sys; raise SystemExit(sys.version_info < (3, 9))'; then
+  exec python "$manager" "$@"
+fi
+echo "Portable FDE requires Python 3.9+ (python3 or python)." >&2
+exit 127
