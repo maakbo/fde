@@ -85,9 +85,9 @@ All candidate URLs use the upstream MaterialDesign-SVG `v7.4.47` tag at `https:/
 
 ## Maakbo-owned dependency audit
 
-Runtime visual-language references to `raw.githubusercontent.com/maakbo/fde/.../assets/icons/lucide-thin/` occur in the canonical Mermaid authoring reference, its context/flow checkers, reusable templates, and public examples. The `business-context-v0.1` consumer profile distributes the Mermaid authoring reference, `check_context_diagram.py`, `check_business_flow.py`, and five templates; those are the consumer-side replacement points if a later review adopts a portable vocabulary. The profile does not distribute public examples, architecture template, fixtures, or local asset files.
+Runtime visual-language references to `raw.githubusercontent.com/maakbo/fde/.../assets/icons/lucide-thin/` occur in the two canonical Mermaid authoring references, their context/flow checkers, reusable templates, and public examples. The `business-context-v0.1` consumer profile distributes `references/icon-context.md`, `references/business-flow.md`, `check_context_diagram.py`, `check_business_flow.py`, and five templates: these nine files are the consumer-side replacement points if a later review adopts a portable vocabulary. The profile does not distribute public examples, architecture template, fixtures, or local asset files.
 
-The current baseline remains intentionally maakbo-owned so the comparison exposes the dependency. No canonical reference, template, checker, consumer profile, or example is changed by this review.
+The current baseline remains intentionally maakbo-owned so the comparison exposes the dependency. No canonical reference, template, checker, consumer profile, or other example is changed by this review.
 
 ## Review record
 
