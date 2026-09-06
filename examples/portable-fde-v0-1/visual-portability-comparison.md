@@ -69,14 +69,14 @@ All candidate URLs use the upstream MaterialDesign-SVG `v7.4.47` tag at `https:/
 
 | Current role / asset | Portable MDI candidate | Hand-drawable recognition note | GitHub result | macOS / Windows |
 | --- | --- | --- | --- | --- |
-| Actor / `user.svg` | `account-outline.svg` | Head-and-shoulders keeps “person” immediate. | pending preview | unverified |
-| Business / `ellipse.svg` | `ellipse-outline.svg` | An ellipse remains a use-case-like mark when hand-drawn. | pending preview | unverified |
-| Information / `file.svg` | `file-outline.svg` | Outer paper and folded corner communicate file without text lines. | pending preview | unverified |
-| External System / `server.svg` | `application-outline.svg` (first candidate) | A generic application avoids calling every external system infrastructure. | pending preview | unverified |
-| External System / `server.svg` | `server-outline.svg` (alternative) | Keeps the current server continuity, but can read as infrastructure. | pending preview | unverified |
-| Tablet / `tablet.svg` | `tablet.svg` | Plain large rectangle is device-generic and drawable. | pending preview | unverified |
-| Smartphone / `smartphone.svg` | `cellphone.svg` | Plain narrow rectangle is device-generic and drawable. | pending preview | unverified |
-| Laptop / `laptop.svg` | `laptop.svg` | Screen and base remain legible with few strokes. | pending preview | unverified |
+| Actor / `user.svg` | `account-outline.svg` | Head-and-shoulders keeps “person” immediate. | rendered | unverified |
+| Business / `ellipse.svg` | `ellipse-outline.svg` | An ellipse remains a use-case-like mark when hand-drawn. | rendered | unverified |
+| Information / `file.svg` | `file-outline.svg` | Outer paper and folded corner communicate file without text lines. | rendered | unverified |
+| External System / `server.svg` | `application-outline.svg` (first candidate) | A generic application avoids calling every external system infrastructure. | rendered | unverified |
+| External System / `server.svg` | `server-outline.svg` (alternative) | Keeps the current server continuity, but can read as infrastructure. | rendered | unverified |
+| Tablet / `tablet.svg` | `tablet.svg` | Plain large rectangle is device-generic and drawable. | rendered | unverified |
+| Smartphone / `smartphone.svg` | `cellphone.svg` | Plain narrow rectangle is device-generic and drawable. | rendered | unverified |
+| Laptop / `laptop.svg` | `laptop.svg` | Screen and base remain legible with few strokes. | rendered | unverified |
 | AI collaborator / `bot.svg` | `robot-outline.svg` | Robot outline stays distinct from a human actor. | URL checked; not in surface | unverified |
 | External service / `cloud.svg` | `cloud-outline.svg` | Cloud keeps a broad external-service reading. | URL checked; not in surface | unverified |
 | Repository / `folder-git-2.svg` | `source-repository.svg` | Repository meaning is explicit; this is less folder-like than the current mark. | URL checked; not in surface | unverified |
@@ -93,7 +93,7 @@ The current baseline remains intentionally maakbo-owned so the comparison expose
 
 | Surface | Renderer/version | Core application candidate | External server alternative | Devices | Difference / decision |
 | --- | --- | --- | --- | --- | --- |
-| GitHub preview | pending | pending | pending | pending | Actual preview, not HTTP status, decides portability. |
+| GitHub preview | GitHub Mermaid viewscreen, 2026-09-06 | rendered | rendered | rendered | All four blocks rendered with fixed-tag raw-GitHub sources and cleared backing paths. |
 | macOS VS Code | | | | | |
 | Windows VS Code + GitHub Copilot | | | | | Unverified; do not infer from GitHub. |
 
