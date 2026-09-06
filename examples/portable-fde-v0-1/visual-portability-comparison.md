@@ -1,25 +1,8 @@
 # Portable FDE v0.1 visual portability comparison
 
-This is a synthetic visual-regression surface. It does not replace canonical templates or change the FDE business model. The four blocks intentionally change one portability concern at a time. Open the same Markdown in GitHub preview, macOS VS Code, and Windows VS Code + GitHub Copilot; record the renderer/version and any label, endpoint, spacing, image, or font difference.
+This is a synthetic icon-vocabulary review surface. It does not replace canonical templates or change the FDE business model. The question is whether each mark keeps its meaning when redrawn by hand: a person, an ellipse-shaped use case, a simple file, a generic external application, and ordinary contact devices should be recognizable without product-specific detail.
 
-## 1. GitHub baseline: existing image syntax
-
-```mermaid
----
-config:
-  themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
----
-flowchart LR
-  a_provider@{ label: "提供者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_shape@{ label: "形にする", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_result@{ label: "結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  a_recipient@{ label: "受け手", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  a_provider --- b_shape --- i_result --- a_recipient
-```
-
-## 2. Candidate: MDI source only
-
-This changes only the image source from the baseline. The source is the upstream MaterialDesign-SVG GitHub repository at its `v7.4.47` tag, not a maakbo-owned URL.
+## 1. Current maakbo-owned baseline
 
 ```mermaid
 ---
@@ -27,57 +10,91 @@ config:
   themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
 ---
 flowchart LR
-  a_provider@{ label: "提供者", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_shape@{ label: "形にする", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/circle-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_result@{ label: "結果", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-document-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  a_recipient@{ label: "受け手", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  a_provider --- b_shape --- i_result --- a_recipient
+  a_actor@{ label: "人", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_business@{ label: "業務", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_information@{ label: "情報", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_system@{ label: "外部システム", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 ```
 
-## 3. Candidate: system font only
+## 2. Portable core: application interpretation
 
-This keeps the MDI source and changes only the font stack.
+The same four roles use fixed-tag upstream MDI assets. `application-outline` is the first External System candidate because an external business system need not be infrastructure.
 
 ```mermaid
 ---
 config:
-  themeVariables:
-    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Yu Gothic UI, Hiragino Sans, Meiryo, sans-serif"
   themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
 ---
 flowchart LR
-  a_provider@{ label: "提供者", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_shape@{ label: "形にする", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/circle-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_result@{ label: "結果", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-document-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  a_recipient@{ label: "受け手", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  a_provider --- b_shape --- i_result --- a_recipient
+  a_actor@{ label: "人", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_business@{ label: "業務", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/ellipse-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_information@{ label: "情報", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_system@{ label: "外部システム", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/application-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 ```
 
-## 4. Candidate: frontmatter removed
+## 3. External System alternative: server interpretation
 
-This keeps the MDI source and removes frontmatter/config. It is intentionally bare so that GitHub compatibility of image syntax and source is observable independently from configuration.
+`server-outline` preserves continuity with the current server symbol, but can imply infrastructure. It is an alternative, not a mechanical replacement.
 
 ```mermaid
+---
+config:
+  themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
+---
 flowchart LR
-  a_provider@{ label: "提供者", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_shape@{ label: "形にする", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/circle-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_result@{ label: "結果", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-document-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  a_recipient@{ label: "受け手", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  a_provider --- b_shape --- i_result --- a_recipient
+  a_actor@{ label: "人", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_business@{ label: "業務", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/ellipse-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_information@{ label: "情報", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_system@{ label: "外部システム", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/server-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 ```
 
-## GitHub observation
+## 4. Portable contact surfaces
 
-On 2026-09-05, GitHub preview rendered the original raw-GitHub baseline but filled the image-node backing path with Mermaid's default `#eee`. Its long CSS overrode only the stroke, so the grey fill remained. Both original `api.iconify.design/mdi/*.svg` candidates failed with GitHub's `The source image cannot be decoded`, with and without frontmatter. A jsDelivr `@mdi/svg` URL produced the same error. By contrast, the fixed-tag upstream MDI raw-GitHub source rendered in all three MDI blocks. The same image-node syntax therefore works; frontmatter is not the loading-error cause. HTTP 200 from a CDN is not a GitHub preview pass.
+These are generic devices, not Apple-specific product marks. The nodes are intentionally unconnected: this is an icon comparison, not a relationship model.
 
-The only configuration retained for the baseline and MDI-source comparison is the CSS that clears Mermaid's image-node backing paths. `title`, `layout`, `curve`, spacing, padding, explicit theme, explicit background, line color, and font size were removed without causing a GitHub loading error. The system-font block adds only `fontFamily`. The no-frontmatter block also renders, but retains Mermaid's default image-node backing fill and border; it is a syntax/source check, not the visual baseline.
+```mermaid
+---
+config:
+  themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
+---
+flowchart LR
+  v_tablet@{ label: "タブレット", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/tablet.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  v_phone@{ label: "スマートフォン", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/cellphone.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  v_laptop@{ label: "ラップトップ", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/laptop.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+```
+
+## Portable mapping inventory
+
+All candidate URLs use the upstream MaterialDesign-SVG `v7.4.47` tag at `https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/`. “GitHub result” is completed only after actual preview confirmation.
+
+| Current role / asset | Portable MDI candidate | Hand-drawable recognition note | GitHub result | macOS / Windows |
+| --- | --- | --- | --- | --- |
+| Actor / `user.svg` | `account-outline.svg` | Head-and-shoulders keeps “person” immediate. | pending preview | unverified |
+| Business / `ellipse.svg` | `ellipse-outline.svg` | An ellipse remains a use-case-like mark when hand-drawn. | pending preview | unverified |
+| Information / `file.svg` | `file-outline.svg` | Outer paper and folded corner communicate file without text lines. | pending preview | unverified |
+| External System / `server.svg` | `application-outline.svg` (first candidate) | A generic application avoids calling every external system infrastructure. | pending preview | unverified |
+| External System / `server.svg` | `server-outline.svg` (alternative) | Keeps the current server continuity, but can read as infrastructure. | pending preview | unverified |
+| Tablet / `tablet.svg` | `tablet.svg` | Plain large rectangle is device-generic and drawable. | pending preview | unverified |
+| Smartphone / `smartphone.svg` | `cellphone.svg` | Plain narrow rectangle is device-generic and drawable. | pending preview | unverified |
+| Laptop / `laptop.svg` | `laptop.svg` | Screen and base remain legible with few strokes. | pending preview | unverified |
+| AI collaborator / `bot.svg` | `robot-outline.svg` | Robot outline stays distinct from a human actor. | URL checked; not in surface | unverified |
+| External service / `cloud.svg` | `cloud-outline.svg` | Cloud keeps a broad external-service reading. | URL checked; not in surface | unverified |
+| Repository / `folder-git-2.svg` | `source-repository.svg` | Repository meaning is explicit; this is less folder-like than the current mark. | URL checked; not in surface | unverified |
+| Conversation / `message-square.svg` | `message-outline.svg` | Speech outline remains readable with few strokes. | URL checked; not in surface | unverified |
+| Decision / `diamond.svg` | `rhombus-outline.svg` | Diamond remains a conventional decision mark. | URL checked; not in surface | unverified |
+
+## Maakbo-owned dependency audit
+
+Runtime visual-language references to `raw.githubusercontent.com/maakbo/fde/.../assets/icons/lucide-thin/` occur in the canonical Mermaid authoring reference, its context/flow checkers, reusable templates, and public examples. The `business-context-v0.1` consumer profile distributes the Mermaid authoring reference, `check_context_diagram.py`, `check_business_flow.py`, and five templates; those are the consumer-side replacement points if a later review adopts a portable vocabulary. The profile does not distribute public examples, architecture template, fixtures, or local asset files.
+
+The current baseline remains intentionally maakbo-owned so the comparison exposes the dependency. No canonical reference, template, checker, consumer profile, or example is changed by this review.
 
 ## Review record
 
-| Surface | Renderer/version | Existing-source baseline | MDI source only | System font only | Frontmatter removed | Difference / decision |
-| --- | --- | --- | --- | --- | --- | --- |
-| GitHub preview | GitHub Mermaid viewscreen, 2026-09-05 | Rendered; backing paths cleared | Rendered with fixed-tag upstream MDI source | Rendered; source and only font stack changed | Rendered; default backing fill/border remains | `api.iconify.design` and jsDelivr MDI SVGs failed decode; upstream raw GitHub MDI source rendered. |
-| macOS VS Code | | | | | | |
-| Windows VS Code + GitHub Copilot | | | | | | Unverified; do not infer from GitHub. |
+| Surface | Renderer/version | Core application candidate | External server alternative | Devices | Difference / decision |
+| --- | --- | --- | --- | --- | --- |
+| GitHub preview | pending | pending | pending | pending | Actual preview, not HTTP status, decides portability. |
+| macOS VS Code | | | | | |
+| Windows VS Code + GitHub Copilot | | | | | Unverified; do not infer from GitHub. |
 
-Do not change a canonical icon, font, or Mermaid configuration until this table contains concrete cross-environment observations.
+Do not adopt a canonical icon mapping until this review record and the hand-drawable reading have been accepted by maakbo / matti.
