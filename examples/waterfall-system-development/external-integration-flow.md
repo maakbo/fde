@@ -1,10 +1,14 @@
-# 外部連携障害を切り分ける — Business Flow
+# 原因特定
 
-親 View: `external-integration-context.md` / expanded node: `b_isolate_boundary`
+外部連携で問題が起きたとき、双方の証跡から責任境界を突き止める流れです。
+
+← [外部結合テスト](external-integration-context.md)
+
+## フロー
 
 ```mermaid
 ---
-title: 外部連携障害を切り分ける
+title: 原因特定
 config:
   layout: dagre
   theme: neutral
@@ -23,11 +27,11 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart TB
-  b_collect_evidence@{ label: "証跡を揃える", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_compare_exchange@{ label: "送受信を照合", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_collect_evidence@{ label: "証跡収集", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_compare_exchange@{ label: "送受信照合", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   d_boundary_known@{ label: "所在が分かる？", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/diamond.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_add_observation@{ label: "観測を増やす", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_assign_owner@{ label: "修正先を定める", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_add_observation@{ label: "観測追加", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_assign_owner@{ label: "担当確定", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
 
   b_collect_evidence --> b_compare_exchange
   b_compare_exchange --> d_boundary_known
@@ -42,6 +46,13 @@ flowchart TB
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## 読み方
+## 図の業務
 
-双方のログ・電文・時刻を照合し、問題の所在を判断できなければ観測情報を増やして再度突き合わせます。所在が分かった時点で、初めて修正責任を割り当てます。
+- **証跡収集** — 双方のログ、電文、時刻、実行条件を揃える。
+- **送受信照合** — 送った内容と受け取った内容を時間軸で突き合わせる。
+- **観測追加** — 判断材料が足りない場合に、ログや計測点を増やす。
+- **担当確定** — 原因の責任境界を特定し、修正主体を決める。
+
+## この図が表していること
+
+問題の所在を推測で決めず、双方が同じ証跡を見ながら切り分けます。判断できなければ観測を増やし、所在が分かった時点で修正責任を確定します。
