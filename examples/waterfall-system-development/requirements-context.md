@@ -1,12 +1,14 @@
-# 要件を合意可能な形にする — Business Use Case Context
+# 要件定義
 
-要件定義を、現行理解から業務要件化、システム責務化、合意までの一つの scene として見ます。
+業務の期待を、人とシステムの責務が分かる要件へ整える場面です。
 
-親 View: `business-map.md` / expanded node: `b_requirements`
+← [システム開発](business-map.md)
+
+## モデル
 
 ```mermaid
 ---
-title: 要件を合意可能な形にする
+title: 要件定義
 config:
   layout: dagre
   theme: neutral
@@ -29,12 +31,12 @@ flowchart LR
   a_ba@{ label: "要件担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   i_current_business@{ label: "現行業務", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  b_understand_current@{ label: "現行を捉える", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_shape_requirements@{ label: "業務要件化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_understand_current@{ label: "現行理解", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_shape_requirements@{ label: "要件化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_business_requirement@{ label: "業務要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  b_define_system@{ label: "責務を分ける", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_define_system@{ label: "責務設計", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_system_requirement@{ label: "システム要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  b_align_requirements@{ label: "要件を整合", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_align_requirements@{ label: "要件合意", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
 
   x_requirements_management@{ label: "要件管理", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   a_business_owner@{ label: "業務責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
@@ -56,6 +58,8 @@ flowchart LR
   b_align_requirements --- a_business_owner
   b_align_requirements --- i_acceptance_criteria
 
+  click b_align_requirements href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/requirements-alignment-flow.md" "要件合意の流れを見る"
+
   class a_business_user,a_ba,a_business_owner actor;
   class b_understand_current,b_shape_requirements,b_define_system,b_align_requirements business;
   class i_current_business,i_business_requirement,i_system_requirement,i_acceptance_criteria information;
@@ -68,24 +72,24 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## 読み方
+## 図の業務
 
-業務担当が提供する現行業務を、要件担当が業務要件として構造化し、人とシステムの責務を分けてシステム要件へ変換します。業務責任者は業務要件の形成と最終整合に参加し、合意された要件から受入条件が定まります。
+| 業務 | 何をしているか |
+| --- | --- |
+| **現行理解** | 現在の業務・ルール・例外・制約を、関係者が同じ前提で話せる状態にする。 |
+| **要件化** | 業務で実現したい変化を、業務要件として整理する。 |
+| **責務設計** | 人が担うこととシステムが担うことを分け、システム要件へ落とす。 |
+| [**要件合意**](requirements-alignment-flow.md) | 抜けや矛盾を解き、受入条件まで含めて合意できる要件にする。 |
 
-この Context は正確な手順を表しません。レビュー差戻しと再合意の順序は [要件合意 Flow](requirements-alignment-flow.md) で扱います。
+## この図が表していること
 
-## Master references
+業務担当が提供する現行業務を、要件担当が業務要件として構造化します。そのうえで人とシステムの責務を分け、業務責任者と要件を合意します。
 
-- Actors: `a_business_user`, `a_ba`, `a_business_owner`
-- Information: `i_current_business`, `i_business_requirement`, `i_system_requirement`, `i_acceptance_criteria`
-- External System: `x_requirements_management`
+線は厳密な手順ではなく、この場面を成立させる関係です。差戻しや再確認の順序は [要件合意の流れ](requirements-alignment-flow.md) で見ます。
 
-## あえて省いたもの
+## 関連
 
-- アーキテクト、システム企画、PM、運用担当などの参加。要件定義全体では重要だが、この scene で Business backbone を読めなくするほど詰め込まない。
-- 非機能・移行・運用・セキュリティ要件。次の Detailed Context 候補として分ける。
-- 議事録やレビュー記録。合意そのものと保存形式を混同しないため、この View の中心から外した。
-
-## 次の問い
-
-「責務を分ける」は要件定義の一 Business として十分に具体か、それとも「システム化範囲を定める」「機能要件化する」「外部IF要件化する」へさらに分ける方が実務感に合うか？
+- [要件合意の流れ](requirements-alignment-flow.md) →
+- [Actor](master-actor-map.md)
+- [Information](master-information-model.md)
+- [External System](master-system-map.md)
