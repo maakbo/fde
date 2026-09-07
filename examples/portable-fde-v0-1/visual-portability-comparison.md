@@ -83,9 +83,9 @@ flowchart LR
 
 ## 6. Frontmatter / label background probes
 
-The five probes below use the same three MDI nodes. Only frontmatter changes, so the comparison
+The six probes below use the same three MDI nodes. Only frontmatter changes, so the comparison
 isolates the default label surface, the current path-only guard, the smallest label-background
-guard, a minimal combined guard, and the existing canonical guard.
+guard, two minimal combined guards, and the existing canonical guard.
 
 ### 6.1 Current baseline: no frontmatter
 
@@ -141,6 +141,19 @@ flowchart LR
 ---
 config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
+---
+flowchart LR
+  a_actor@{ label: "人", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_business@{ label: "業務", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/ellipse-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_information@{ label: "情報", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+```
+
+### 6.6 Minimal surface + icon guard
+
+```mermaid
+---
+config:
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape g:first-child path { fill: none !important; stroke: none !important; }"
 ---
 flowchart LR
   a_actor@{ label: "人", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
