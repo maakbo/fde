@@ -161,6 +161,24 @@ flowchart LR
   i_information@{ label: "情報", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 ```
 
+## 7. Visual-weight follow-up
+
+This scoped probe keeps the 6.6 label/background treatment and reduces only the Business and
+Information image boxes. Actor remains the reference at `38 × 38`; the two wider/taller MDI paths
+use `30 × 30` so their visible bounds can be compared on the same surface without changing the
+icon mapping or any canonical rule.
+
+```mermaid
+---
+config:
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape g:first-child path { fill: none !important; stroke: none !important; }"
+---
+flowchart LR
+  a_actor@{ label: "人 (Actor · 38×38)", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_business@{ label: "業務 (Business · 30×30)", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/ellipse-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_information@{ label: "情報 (Information · 30×30)", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+```
+
 ## Visual finding — GitHub light theme, 2026-09-07
 
 All five remaining MDI candidates and all six probes render in the GitHub Mermaid viewscreen. The
