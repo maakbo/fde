@@ -161,6 +161,16 @@ flowchart LR
   i_information@{ label: "情報", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 ```
 
+## Visual finding — GitHub light theme, 2026-09-07
+
+All five remaining MDI candidates and all six probes render in the GitHub Mermaid viewscreen. The
+gray strip under a label is not caused by the MDI SVG path: the path-only guard removes the image
+backing but leaves the Mermaid label surface unchanged. In this probe, the label-background-only
+and label-background-plus-path guards also leave that strip visible. The smallest variant that
+clears both symptoms is 6.6: it resets `.image-shape p`, `.labelBkg`, and `.label rect`, then clears
+the image backing path. `foreignObject` overflow and the flow-specific margin rule remain outside
+this minimal probe; the existing canonical guard keeps them for broader context/flow surfaces.
+
 ## Portable mapping inventory
 
 All candidate URLs use the upstream MaterialDesign-SVG `v7.4.47` tag at `https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/`. “GitHub result” is completed only after actual preview confirmation.
@@ -175,11 +185,11 @@ All candidate URLs use the upstream MaterialDesign-SVG `v7.4.47` tag at `https:/
 | Tablet / `tablet.svg` | `tablet.svg` | Plain large rectangle is device-generic and drawable. | rendered | unverified |
 | Smartphone / `smartphone.svg` | `cellphone.svg` | Plain narrow rectangle is device-generic and drawable. | rendered | unverified |
 | Laptop / `laptop.svg` | `laptop.svg` | Screen and base remain legible with few strokes. | rendered | unverified |
-| AI collaborator / `bot.svg` | `robot-outline.svg` | Robot outline stays distinct from a human actor. | pending preview | unverified |
-| External service / `cloud.svg` | `cloud-outline.svg` | Cloud keeps a broad external-service reading. | pending preview | unverified |
-| Repository / `folder-git-2.svg` | `source-repository.svg` | Repository meaning is explicit; this is less folder-like than the current mark. | pending preview | unverified |
-| Conversation / `message-square.svg` | `message-outline.svg` | Speech outline remains readable with few strokes. | pending preview | unverified |
-| Decision / `diamond.svg` | `rhombus-outline.svg` | Diamond remains a conventional decision mark. | pending preview | unverified |
+| AI collaborator / `bot.svg` | `robot-outline.svg` | Robot outline stays distinct from a human actor. | rendered | unverified |
+| External service / `cloud.svg` | `cloud-outline.svg` | Cloud keeps a broad external-service reading. | rendered | unverified |
+| Repository / `folder-git-2.svg` | `source-repository.svg` | Repository meaning is explicit; this is less folder-like than the current mark. | rendered | unverified |
+| Conversation / `message-square.svg` | `message-outline.svg` | Speech outline remains readable with few strokes. | rendered | unverified |
+| Decision / `diamond.svg` | `rhombus-outline.svg` | Diamond remains a conventional decision mark. | rendered | unverified |
 
 ## Maakbo-owned dependency audit
 
@@ -192,8 +202,8 @@ The current baseline remains intentionally maakbo-owned so the comparison expose
 | Surface | Renderer/version | Core application candidate | External server alternative | Devices | Difference / decision |
 | --- | --- | --- | --- | --- | --- |
 | GitHub preview | GitHub Mermaid viewscreen, 2026-09-06 | rendered | rendered | rendered | All four original blocks rendered with fixed-tag raw-GitHub sources and cleared backing paths. |
-| GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | pending | — | — | Five remaining MDI candidates added; actual preview check follows the pushed comparison. |
-| GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | pending | — | — | Five frontmatter / label-background probes added; actual preview check follows the pushed comparison. |
+| GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | rendered | — | — | Five remaining MDI candidates rendered; all 13 inventory candidates now have GitHub results. |
+| GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | rendered | — | — | Six frontmatter / label-background probes rendered; 6.6 is the smallest observed guard without gray label strips or image backing. |
 | macOS VS Code | | | | | |
 | Windows VS Code + GitHub Copilot | | | | | Unverified; do not infer from GitHub. |
 
