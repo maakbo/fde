@@ -1,12 +1,14 @@
-# 外部連携の契約成立を確かめる — Business Use Case Context
+# 外部結合テスト
 
-外部結合テストを、自システムだけの試験ではなく、接続先との契約・責任境界・異常時動作を共同で確認する scene として捉えます。
+外部システムとの接続・契約・異常時の責任境界が成立するかを、双方で確かめる場面です。
 
-親 View: `business-map.md` / expanded node: `b_external_test`
+← [システム開発](business-map.md)
+
+## モデル
 
 ```mermaid
 ---
-title: 外部連携の契約成立を確かめる
+title: 外部結合テスト
 config:
   layout: dagre
   theme: neutral
@@ -30,11 +32,11 @@ flowchart LR
   i_external_test_specification@{ label: "外結仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_connection_condition@{ label: "接続条件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  b_establish_connection@{ label: "接続を成立", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_verify_contract@{ label: "契約を確かめる", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_establish_connection@{ label: "接続確認", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_verify_contract@{ label: "契約検証", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_exchange_evidence@{ label: "送受信証跡", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  b_isolate_boundary@{ label: "境界を切り分け", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_confirm_recovery@{ label: "復旧を確かめる", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_isolate_boundary@{ label: "原因特定", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_confirm_recovery@{ label: "復旧確認", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
 
   x_external_integration_env@{ label: "外結環境", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   x_external_business_system@{ label: "外部システム", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
@@ -57,6 +59,8 @@ flowchart LR
   x_external_business_system --- b_confirm_recovery
   b_confirm_recovery --- i_external_test_result
 
+  click b_isolate_boundary href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/external-integration-flow.md" "原因特定の流れを見る"
+
   class a_tester,a_external_system_owner actor;
   class b_establish_connection,b_verify_contract,b_isolate_boundary,b_confirm_recovery business;
   class i_external_test_specification,i_connection_condition,i_exchange_evidence,i_external_test_result information;
@@ -69,16 +73,22 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## 読み方
+## 図の業務
 
-外部結合では、接続そのものを成立させたうえで、送受信契約と異常時動作を双方で確認します。問題が起きたときは自システム・接続基盤・相手システムの境界を証跡から共同で切り分け、修正後の復旧まで確認して結果を確定します。
+| 業務 | 何をしているか |
+| --- | --- |
+| **接続確認** | ネットワーク・認証・基本疎通を揃え、双方が試験できる状態にする。 |
+| **契約検証** | データ、順序、タイミング、異常応答が取り決めどおりか確かめる。 |
+| [**原因特定**](external-integration-flow.md) | 問題が起きたとき、双方の証跡からどの責任境界に原因があるか突き止める。 |
+| **復旧確認** | 修正後に再接続し、連携とデータ整合が回復したことを確かめる。 |
 
-## Master references
+## この図が表していること
 
-- Actors: `a_tester`, `a_external_system_owner`
-- Information: `i_external_test_specification`, `i_connection_condition`, `i_exchange_evidence`, `i_external_test_result`
-- External Systems: `x_external_integration_env`, `x_external_business_system`
+外部結合は、自システムだけの試験ではありません。外部担当と同じ証跡を見ながら接続条件と連携契約を確かめ、問題時には責任境界を共同で切り分けます。
 
-## 次の問い
+## 関連
 
-「境界を切り分ける」は外部結合テストの中核 Business として置くべきか、それとも不具合管理の横断 Business へ分離した方がモデルとして自然か？
+- [原因特定の流れ](external-integration-flow.md) →
+- [Actor](master-actor-map.md)
+- [Information](master-information-model.md)
+- [External System](master-system-map.md)
