@@ -57,15 +57,30 @@ Layer 2 は以下を基準線として固定し、まずこの順で全体を眺
 
 | View | Role | Level | Parent / expanded node | Child views | Status |
 | --- | --- | --- | --- | --- | --- |
-| `business-map.md` | 全体業務マップ | Layer 1→2 | — | 各工程 Context | planned |
-| `decomposition-catalog.md` | 13工程の分解辞書 | Layer 2→4 | `business-map.md` の各工程 | 各工程 Context / Flow | initial hypothesis |
-| `master-actor-map.md` | Actor master | reusable | — | 各 Context | initial hypothesis |
-| `master-information-model.md` | Information master | reusable | — | 各 Context | initial hypothesis |
-| `master-system-map.md` | External System master | reusable | — | 各 Context | initial hypothesis |
-| 要件定義 Context | focused context | Layer 3→4 | 要件定義 | 要件合意 Flow | next |
-| 実装・単体テスト Context | focused context | Layer 3→4 | 実装・単体テスト | 実装〜単体確認 Flow | next |
-| 外部結合テスト Context | focused context | Layer 3→4 | 外部結合テスト | 障害切り分け Flow | next |
-| 導入 Context | focused context | Layer 3→4 | 導入 | Go/No-Go〜切替 Flow | next |
+| [システム開発の業務](business-map.md) | 全体業務マップ | Layer 1→2 | — | 各工程 Context | working hypothesis |
+| [13工程の分解](decomposition-catalog.md) | 業務分解辞書 | Layer 2→4 | `business-map.md` の各工程 | 各工程 Context / Flow | working hypothesis |
+| [Actor master](master-actor-map.md) | Actor master | reusable | — | 各 Context | working hypothesis |
+| [Information master](master-information-model.md) | Information master | reusable | — | 各 Context | working hypothesis |
+| [External System master](master-system-map.md) | External System master | reusable | — | 各 Context | working hypothesis |
+| [要件定義 Context](requirements-context.md) | focused context | Layer 3→4 | `b_requirements` | [要件合意 Flow](requirements-alignment-flow.md) | working hypothesis |
+| [実装・単体 Context](implementation-unit-context.md) | focused context | Layer 3→4 | `b_implementation_unit` | [単体検証 Flow](implementation-unit-flow.md) | working hypothesis |
+| [外部結合 Context](external-integration-context.md) | focused context | Layer 3→4 | `b_external_test` | [障害切り分け Flow](external-integration-flow.md) | working hypothesis |
+| [導入 Context](deployment-context.md) | focused context | Layer 3→4 | `b_deployment` | [切替判断 Flow](deployment-flow.md) | working hypothesis |
+| [評価メモ](evaluation-notes.md) | Skill feedback | cross-cutting | — | Skill improvement | working |
+
+## 代表 Context で試していること
+
+### 要件定義
+現行業務 → 業務要件 → システム要件 → 受入条件という意味の変換を中心に置き、レビュー差戻しを Flow として分離します。
+
+### 実装・単体テスト
+内部仕様をソースコードへ変換するだけでなく、単体検証・静的解析・コードレビューを通じて「統合可能な変更」にすることを Business Use Case として捉えます。
+
+### 外部結合テスト
+テストケース消化ではなく、外部担当と証跡を突き合わせながら接続契約と責任境界を共同確認する場面として捉えます。
+
+### 導入
+本番配備を終点にせず、Go / No-Go、本番確認、必要時のロールバック、運用責任移管までを一つの導入 scene として捉えます。
 
 ## 重点評価ポイント
 
@@ -79,6 +94,6 @@ Layer 2 は以下を基準線として固定し、まずこの順で全体を眺
 
 ## 読み方
 
-最初に `decomposition-catalog.md` をレビューし、粒度と名前の違和感を見つけます。その後、Actor / Information / External System の master と照合しながら、代表工程から Context と Flow を作ります。
+最初に [13工程の分解](decomposition-catalog.md) をレビューし、粒度と名前の違和感を見つけます。次に4つの代表 Context / Flow を見て、「誰・何・どの業務・どのシステムの関係が変か」を具体的に指摘します。その指摘を master と上位分解へ戻します。
 
 このモデルは「正しいウォーターフォール標準」を定義するものではありません。実務経験から具体的に違和感を指摘できる評価面をつくることが目的です。
