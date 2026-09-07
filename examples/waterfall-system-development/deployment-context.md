@@ -1,12 +1,14 @@
-# 本番変更を安全に業務へ渡す — Business Use Case Context
+# 導入
 
-導入を、単なる本番配備ではなく、Go / No-Go 判断から切替、確認、必要時の復旧、運用責任移管までを含む scene として捉えます。
+本番へ安全に切り替え、業務利用を確認して運用へ責任を渡す場面です。
 
-親 View: `business-map.md` / expanded node: `b_deployment`
+← [システム開発](business-map.md)
+
+## モデル
 
 ```mermaid
 ---
-title: 本番変更を安全に業務へ渡す
+title: 導入
 config:
   layout: dagre
   theme: neutral
@@ -31,11 +33,11 @@ flowchart LR
   i_release_plan@{ label: "リリース計画", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_known_issue@{ label: "既知問題", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  b_decide_release@{ label: "実施を判断", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_apply_production@{ label: "本番へ反映", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_verify_production@{ label: "本番を確かめる", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_recover_safe_state@{ label: "安全状態へ戻す", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_transfer_operation@{ label: "運用へ渡す", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_decide_release@{ label: "実施判断", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_apply_production@{ label: "本番反映", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_verify_production@{ label: "本番確認", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_recover_safe_state@{ label: "切戻し", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_transfer_operation@{ label: "運用移管", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
 
   x_cicd@{ label: "CI/CD", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   x_production_env@{ label: "本番環境", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
@@ -62,6 +64,8 @@ flowchart LR
   b_recover_safe_state --- a_release_manager
   b_transfer_operation --- a_ops
 
+  click b_verify_production href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/deployment-flow.md" "本番確認の流れを見る"
+
   class a_release_manager,a_ops actor;
   class b_decide_release,b_apply_production,b_verify_production,b_recover_safe_state,b_transfer_operation business;
   class i_release_scope,i_release_plan,i_known_issue,i_business_validation_result,i_runbook information;
@@ -74,16 +78,23 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## 読み方
+## 図の業務
 
-リリース責任者と運用担当が、対象範囲・計画・既知問題から実施可否を判断し、本番反映後は監視と重要業務確認によって継続可否を判断します。異常時は安全な状態へ戻し、正常に利用可能と確認できた変更だけを運用責任へ移します。
+| 業務 | 何をしているか |
+| --- | --- |
+| **実施判断** | 対象範囲・計画・既知問題を見て、本番変更を始めてよいか判断する。 |
+| **本番反映** | 合意した版・設定・移行内容を本番環境へ反映する。 |
+| [**本番確認**](deployment-flow.md) | 技術疎通と重要業務を確かめ、切替を継続できるか判断する。 |
+| **切戻し** | 継続できないとき、旧状態へ戻して安全性とデータ整合を回復する。 |
+| **運用移管** | 利用可能と確認した変更を、既知問題と運用手順ごと運用へ渡す。 |
 
-## Master references
+## この図が表していること
 
-- Actors: `a_release_manager`, `a_ops`
-- Information: `i_release_scope`, `i_release_plan`, `i_known_issue`, `i_business_validation_result`, `i_runbook`
-- External Systems: `x_cicd`, `x_production_env`, `x_monitoring`
+導入は「デプロイが成功したら終わり」ではありません。実施判断、本番反映、業務利用確認、必要なら切戻し、最後に運用責任を移すところまでを一つの場面として見ています。
 
-## 次の問い
+## 関連
 
-導入の完了点は「業務確認成功」か「運用責任移管」か、それとも初期流動監視の終了まで含めるべきか？
+- [本番確認の流れ](deployment-flow.md) →
+- [Actor](master-actor-map.md)
+- [Information](master-information-model.md)
+- [External System](master-system-map.md)
