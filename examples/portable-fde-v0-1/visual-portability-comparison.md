@@ -83,9 +83,9 @@ flowchart LR
 
 ## 6. Frontmatter / label background probes
 
-The four probes below use the same three MDI nodes. Only frontmatter changes, so the comparison
+The five probes below use the same three MDI nodes. Only frontmatter changes, so the comparison
 isolates the default label surface, the current path-only guard, the smallest label-background
-guard, and the existing canonical guard.
+guard, a minimal combined guard, and the existing canonical guard.
 
 ### 6.1 Current baseline: no frontmatter
 
@@ -122,7 +122,20 @@ flowchart LR
   i_information@{ label: "情報", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 ```
 
-### 6.4 Existing canonical guard
+### 6.4 Minimal combined guard
+
+```mermaid
+---
+config:
+  themeCSS: ".image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape g:first-child path { fill: none !important; stroke: none !important; }"
+---
+flowchart LR
+  a_actor@{ label: "人", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_business@{ label: "業務", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/ellipse-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_information@{ label: "情報", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+```
+
+### 6.5 Existing canonical guard
 
 ```mermaid
 ---
@@ -167,7 +180,7 @@ The current baseline remains intentionally maakbo-owned so the comparison expose
 | --- | --- | --- | --- | --- | --- |
 | GitHub preview | GitHub Mermaid viewscreen, 2026-09-06 | rendered | rendered | rendered | All four original blocks rendered with fixed-tag raw-GitHub sources and cleared backing paths. |
 | GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | pending | — | — | Five remaining MDI candidates added; actual preview check follows the pushed comparison. |
-| GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | pending | — | — | Four frontmatter / label-background probes added; actual preview check follows the pushed comparison. |
+| GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | pending | — | — | Five frontmatter / label-background probes added; actual preview check follows the pushed comparison. |
 | macOS VS Code | | | | | |
 | Windows VS Code + GitHub Copilot | | | | | Unverified; do not infer from GitHub. |
 
