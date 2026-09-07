@@ -189,6 +189,12 @@ clears both symptoms is 6.6: it resets `.image-shape p`, `.labelBkg`, and `.labe
 the image backing path. `foreignObject` overflow and the flow-specific margin rule remain outside
 this minimal probe; the existing canonical guard keeps them for broader context/flow surfaces.
 
+The follow-up probe keeps 6.6's white label/background treatment and shows the intended visual-weight
+shift on GitHub light theme: `30 × 30` makes the ellipse's visible width and the file's visible
+height close to the Actor's restrained `38 × 38` reference, without making Actor larger. This is a
+comparison result only; it does not adopt a canonical size or roll the adjustment across the icon
+vocabulary.
+
 ## Portable mapping inventory
 
 All candidate URLs use the upstream MaterialDesign-SVG `v7.4.47` tag at `https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/`. “GitHub result” is completed only after actual preview confirmation.
@@ -222,6 +228,7 @@ The current baseline remains intentionally maakbo-owned so the comparison expose
 | GitHub preview | GitHub Mermaid viewscreen, 2026-09-06 | rendered | rendered | rendered | All four original blocks rendered with fixed-tag raw-GitHub sources and cleared backing paths. |
 | GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | rendered | — | — | Five remaining MDI candidates rendered; all 13 inventory candidates now have GitHub results. |
 | GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | rendered | — | — | Six frontmatter / label-background probes rendered; 6.6 is the smallest observed guard without gray label strips or image backing. |
+| GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | rendered | — | — | Visual-weight follow-up rendered; `30 × 30` Business / Information keeps the 6.6 label treatment and reads close to Actor's restrained `38 × 38` reference. |
 | macOS VS Code | | | | | |
 | Windows VS Code + GitHub Copilot | | | | | Unverified; do not infer from GitHub. |
 
