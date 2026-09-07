@@ -1,12 +1,14 @@
-# 実装を統合可能な変更にする — Business Use Case Context
+# 実装・単体
 
-詳細設計を、レビュー可能かつ単体検証済みの変更へ変換し、構成管理へ取り込める状態にする scene です。
+内部仕様をコードへ変え、単体で成立する変更として確かめる場面です。
 
-親 View: `business-map.md` / expanded node: `b_implementation_unit`
+← [システム開発](business-map.md)
+
+## モデル
 
 ```mermaid
 ---
-title: 実装を統合可能な変更にする
+title: 実装・単体
 config:
   layout: dagre
   theme: neutral
@@ -30,12 +32,12 @@ flowchart LR
   i_internal_specification@{ label: "内部仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_unit_test_viewpoint@{ label: "単体観点", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  b_implement_change@{ label: "コード化する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_implement_change@{ label: "実装", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_source_code@{ label: "ソースコード", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  b_verify_unit@{ label: "単体で確かめる", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_verify_unit@{ label: "単体検証", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_unit_test_result@{ label: "単体結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  b_review_change@{ label: "変更を検証", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_integrate_change@{ label: "統合可能にする", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_review_change@{ label: "品質確認", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_integrate_change@{ label: "統合", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
 
   x_dev_environment@{ label: "開発環境", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   x_static_analysis@{ label: "静的解析", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
@@ -61,6 +63,8 @@ flowchart LR
   x_scm --- b_integrate_change
   b_integrate_change --- i_build_artifact
 
+  click b_verify_unit href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/implementation-unit-flow.md" "単体検証の流れを見る"
+
   class a_developer,a_dev_lead actor;
   class b_implement_change,b_verify_unit,b_review_change,b_integrate_change business;
   class i_internal_specification,i_unit_test_viewpoint,i_source_code,i_unit_test_result,i_build_artifact information;
@@ -73,16 +77,22 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## 読み方
+## 図の業務
 
-内部仕様と単体テスト観点をもとに開発者がコード化し、単体検証と機械検査・他者レビューを通じて、次の統合検証へ渡せる変更へ整えます。コードレビューは単独の承認行為ではなく、単体結果や静的解析結果を含む変更全体の検証として扱います。
+| 業務 | 何をしているか |
+| --- | --- |
+| **実装** | 内部仕様を、実行可能なソースコードへ変える。 |
+| [**単体検証**](implementation-unit-flow.md) | 実装単位で期待どおりに動くかを確かめ、差異があれば修正へ戻す。 |
+| **品質確認** | 単体結果、静的解析、他者レビューから、変更を次へ渡せる品質か確かめる。 |
+| **統合** | 確認済みの変更を構成管理へ取り込み、次の結合検証で扱える版にする。 |
 
-## Master references
+## この図が表していること
 
-- Actors: `a_developer`, `a_dev_lead`
-- Information: `i_internal_specification`, `i_unit_test_viewpoint`, `i_source_code`, `i_unit_test_result`, `i_build_artifact`
-- External Systems: `x_dev_environment`, `x_static_analysis`, `x_code_review`, `x_scm`
+内部仕様と単体観点をもとに開発者が実装し、単体検証と品質確認を経て統合可能な変更へ整えます。ツールは仕事の主体ではなく、それぞれの業務を支える外部システムとして置いています。
 
-## 次の問い
+## 関連
 
-`i_build_artifact` はこの scene の直接出力か、それとも CI/CD によるビルドを別 Business Context として切り出すべきか？
+- [単体検証の流れ](implementation-unit-flow.md) →
+- [Actor](master-actor-map.md)
+- [Information](master-information-model.md)
+- [External System](master-system-map.md)
