@@ -63,6 +63,78 @@ flowchart LR
   v_laptop@{ label: "ラップトップ", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/laptop.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 ```
 
+## 5. Remaining portable candidates
+
+These five candidates complete the runtime vocabulary inventory. The nodes stay unconnected so
+this remains an icon comparison, not a relationship model.
+
+```mermaid
+---
+config:
+  themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
+---
+flowchart LR
+  a_ai_collaborator@{ label: "AI協働者", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/robot-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  x_external_service@{ label: "外部サービス", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/cloud-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  x_repository@{ label: "リポジトリ", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/source-repository.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_conversation@{ label: "対話", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/message-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_decision@{ label: "判断", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/rhombus-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+```
+
+## 6. Frontmatter / label background probes
+
+The four probes below use the same three MDI nodes. Only frontmatter changes, so the comparison
+isolates the default label surface, the current path-only guard, the smallest label-background
+guard, and the existing canonical guard.
+
+### 6.1 Current baseline: no frontmatter
+
+```mermaid
+flowchart LR
+  a_actor@{ label: "人", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_business@{ label: "業務", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/ellipse-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_information@{ label: "情報", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+```
+
+### 6.2 Current MDI comparison: path-only guard
+
+```mermaid
+---
+config:
+  themeCSS: ".image-shape g:first-child path { fill: none !important; stroke: none !important; }"
+---
+flowchart LR
+  a_actor@{ label: "人", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_business@{ label: "業務", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/ellipse-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_information@{ label: "情報", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+```
+
+### 6.3 Minimal label-background guard
+
+```mermaid
+---
+config:
+  themeCSS: ".image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; }"
+---
+flowchart LR
+  a_actor@{ label: "人", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_business@{ label: "業務", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/ellipse-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_information@{ label: "情報", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+```
+
+### 6.4 Existing canonical guard
+
+```mermaid
+---
+config:
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
+---
+flowchart LR
+  a_actor@{ label: "人", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  b_business@{ label: "業務", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/ellipse-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_information@{ label: "情報", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+```
+
 ## Portable mapping inventory
 
 All candidate URLs use the upstream MaterialDesign-SVG `v7.4.47` tag at `https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/`. “GitHub result” is completed only after actual preview confirmation.
@@ -77,11 +149,11 @@ All candidate URLs use the upstream MaterialDesign-SVG `v7.4.47` tag at `https:/
 | Tablet / `tablet.svg` | `tablet.svg` | Plain large rectangle is device-generic and drawable. | rendered | unverified |
 | Smartphone / `smartphone.svg` | `cellphone.svg` | Plain narrow rectangle is device-generic and drawable. | rendered | unverified |
 | Laptop / `laptop.svg` | `laptop.svg` | Screen and base remain legible with few strokes. | rendered | unverified |
-| AI collaborator / `bot.svg` | `robot-outline.svg` | Robot outline stays distinct from a human actor. | URL checked; not in surface | unverified |
-| External service / `cloud.svg` | `cloud-outline.svg` | Cloud keeps a broad external-service reading. | URL checked; not in surface | unverified |
-| Repository / `folder-git-2.svg` | `source-repository.svg` | Repository meaning is explicit; this is less folder-like than the current mark. | URL checked; not in surface | unverified |
-| Conversation / `message-square.svg` | `message-outline.svg` | Speech outline remains readable with few strokes. | URL checked; not in surface | unverified |
-| Decision / `diamond.svg` | `rhombus-outline.svg` | Diamond remains a conventional decision mark. | URL checked; not in surface | unverified |
+| AI collaborator / `bot.svg` | `robot-outline.svg` | Robot outline stays distinct from a human actor. | pending preview | unverified |
+| External service / `cloud.svg` | `cloud-outline.svg` | Cloud keeps a broad external-service reading. | pending preview | unverified |
+| Repository / `folder-git-2.svg` | `source-repository.svg` | Repository meaning is explicit; this is less folder-like than the current mark. | pending preview | unverified |
+| Conversation / `message-square.svg` | `message-outline.svg` | Speech outline remains readable with few strokes. | pending preview | unverified |
+| Decision / `diamond.svg` | `rhombus-outline.svg` | Diamond remains a conventional decision mark. | pending preview | unverified |
 
 ## Maakbo-owned dependency audit
 
@@ -93,7 +165,9 @@ The current baseline remains intentionally maakbo-owned so the comparison expose
 
 | Surface | Renderer/version | Core application candidate | External server alternative | Devices | Difference / decision |
 | --- | --- | --- | --- | --- | --- |
-| GitHub preview | GitHub Mermaid viewscreen, 2026-09-06 | rendered | rendered | rendered | All four blocks rendered with fixed-tag raw-GitHub sources and cleared backing paths. |
+| GitHub preview | GitHub Mermaid viewscreen, 2026-09-06 | rendered | rendered | rendered | All four original blocks rendered with fixed-tag raw-GitHub sources and cleared backing paths. |
+| GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | pending | — | — | Five remaining MDI candidates added; actual preview check follows the pushed comparison. |
+| GitHub preview | GitHub Mermaid viewscreen, 2026-09-07 | pending | — | — | Four frontmatter / label-background probes added; actual preview check follows the pushed comparison. |
 | macOS VS Code | | | | | |
 | Windows VS Code + GitHub Copilot | | | | | Unverified; do not infer from GitHub. |
 
