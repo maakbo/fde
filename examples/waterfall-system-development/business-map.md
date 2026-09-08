@@ -56,19 +56,19 @@ flowchart TB
   b_system_development --- b_uat
   b_system_development --- b_deployment
 
-  click b_estimation href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/decomposition-catalog.md#1-%E8%A6%8B%E7%A9%8D" "見積の分解を見る"
-  click b_requirements href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/requirements-context.md" "要件定義を詳しく見る"
-  click b_basic_design href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/decomposition-catalog.md#3-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E8%A8%88" "基本設計の分解を見る"
-  click b_detailed_design href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/decomposition-catalog.md#4-%E8%A9%B3%E7%B4%B0%E8%A8%AD%E8%A8%88" "詳細設計の分解を見る"
-  click b_implementation_unit href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/implementation-unit-context.md" "実装・単体を詳しく見る"
-  click b_internal_test_design href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/decomposition-catalog.md#6-%E5%86%85%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "内部結合テスト設計の分解を見る"
-  click b_internal_test href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/decomposition-catalog.md#7-%E5%86%85%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88" "内部結合テストの分解を見る"
-  click b_external_test_design href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/decomposition-catalog.md#8-%E5%A4%96%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "外部結合テスト設計の分解を見る"
-  click b_external_test href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/external-integration-context.md" "外部結合テストを詳しく見る"
-  click b_system_test_design href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/decomposition-catalog.md#10-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "システムテスト設計の分解を見る"
-  click b_system_test href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/decomposition-catalog.md#11-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%86%E3%82%B9%E3%83%88" "システムテストの分解を見る"
-  click b_uat href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/decomposition-catalog.md#12-%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%8F%97%E5%85%A5%E3%83%86%E3%82%B9%E3%83%88" "UATの分解を見る"
-  click b_deployment href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/deployment-context.md" "導入を詳しく見る"
+  click b_estimation href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#1-%E8%A6%8B%E7%A9%8D" "見積の分解を見る"
+  click b_requirements href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/requirements-context.md" "要件定義を詳しく見る"
+  click b_basic_design href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#3-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E8%A8%88" "基本設計の分解を見る"
+  click b_detailed_design href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#4-%E8%A9%B3%E7%B4%B0%E8%A8%AD%E8%A8%88" "詳細設計の分解を見る"
+  click b_implementation_unit href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/implementation-unit-context.md" "実装・単体を詳しく見る"
+  click b_internal_test_design href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#6-%E5%86%85%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "内部結合テスト設計の分解を見る"
+  click b_internal_test href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#7-%E5%86%85%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88" "内部結合テストの分解を見る"
+  click b_external_test_design href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#8-%E5%A4%96%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "外部結合テスト設計の分解を見る"
+  click b_external_test href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/external-integration-context.md" "外部結合テストを詳しく見る"
+  click b_system_test_design href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#10-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "システムテスト設計の分解を見る"
+  click b_system_test href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#11-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%86%E3%82%B9%E3%83%88" "システムテストの分解を見る"
+  click b_uat href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#12-%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%8F%97%E5%85%A5%E3%83%86%E3%82%B9%E3%83%88" "UATの分解を見る"
+  click b_deployment href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/deployment-context.md" "導入を詳しく見る"
 
   class b_system_development,b_estimation,b_requirements,b_basic_design,b_detailed_design,b_implementation_unit,b_internal_test_design,b_internal_test,b_external_test_design,b_external_test,b_system_test_design,b_system_test,b_uat,b_deployment business;
   classDef business fill:none,stroke:none,color:#25231F;

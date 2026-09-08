@@ -63,7 +63,7 @@ flowchart LR
   b_integrate_change --- x_scm
   b_integrate_change --- i_build_artifact
 
-  click b_verify_unit href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/implementation-unit-flow.md" "単体検証の流れを見る"
+  click b_verify_unit href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/implementation-unit-flow.md" "単体検証の流れを見る"
 
   class a_developer,a_dev_lead actor;
   class b_implement_change,b_verify_unit,b_review_change,b_integrate_change business;

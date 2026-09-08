@@ -58,7 +58,7 @@ flowchart LR
   b_align_requirements --- a_business_owner
   b_align_requirements --- i_acceptance_criteria
 
-  click b_align_requirements href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/requirements-alignment-flow.md" "要件合意の流れを見る"
+  click b_align_requirements href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/requirements-alignment-flow.md" "要件合意の流れを見る"
 
   class a_business_user,a_ba,a_business_owner actor;
   class b_understand_current,b_shape_requirements,b_define_system,b_align_requirements business;

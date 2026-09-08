@@ -59,8 +59,8 @@ flowchart LR
   b_confirm_recovery --- x_external_business_system
   b_confirm_recovery --- i_external_test_result
 
-  click b_isolate_boundary href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/external-integration-flow.md" "原因特定の流れを見る"
-  click b_verify_contract href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/interface-specification-detail.md" "外部IF仕様の設計観点を見る"
+  click b_isolate_boundary href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/external-integration-flow.md" "原因特定の流れを見る"
+  click b_verify_contract href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/interface-specification-detail.md" "外部IF仕様の設計観点を見る"
 
   class a_tester,a_external_system_owner actor;
   class b_establish_connection,b_verify_contract,b_isolate_boundary,b_confirm_recovery business;

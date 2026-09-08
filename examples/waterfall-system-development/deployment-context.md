@@ -63,7 +63,7 @@ flowchart LR
   a_ops --- b_transfer_operation
   a_release_manager --- b_recover_safe_state
 
-  click b_verify_production href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/deployment-flow.md" "本番確認の流れを見る"
+  click b_verify_production href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/deployment-flow.md" "本番確認の流れを見る"
 
   class a_release_manager,a_ops actor;
   class b_decide_release,b_apply_production,b_verify_production,b_recover_safe_state,b_transfer_operation business;
