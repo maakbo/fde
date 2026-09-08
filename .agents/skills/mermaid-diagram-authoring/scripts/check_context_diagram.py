@@ -106,6 +106,11 @@ def parse_args() -> argparse.Namespace:
         help="allow directed relations whose direction is essential to the view",
     )
     parser.add_argument(
+        "--allow-reverse-arrow-exception",
+        action="store_true",
+        help="allow an explicitly directed feedback relation to point back to an earlier node",
+    )
+    parser.add_argument(
         "--allow-sparse",
         action="store_true",
         help="allow a sparse inventory or master map with missing/isolated relationships",
