@@ -6,7 +6,7 @@
 
 ## この評価で使う Information
 
-Contextで選択した候補だけを、図で確認しやすい短いlabelで並べています。関係がまだ確定していないため、線は引いていません。
+Contextと今回のpilotで選択した候補を、図で確認しやすい短いlabelで並べています。関係がまだ確定していないため、線は引いていません。
 
 ```mermaid
 ---
@@ -32,6 +32,7 @@ flowchart TB
   i_current_business@{ label: "現行業務", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_business_requirement@{ label: "業務要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_system_requirement@{ label: "システム要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_external_interface_requirement@{ label: "外部IF要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_acceptance_criteria@{ label: "受入条件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_internal_specification@{ label: "内部仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_unit_test_viewpoint@{ label: "単体観点", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
@@ -39,6 +40,7 @@ flowchart TB
   i_unit_test_result@{ label: "単体結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_build_artifact@{ label: "ビルド成果物", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_external_test_specification@{ label: "外結仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_interface_specification@{ label: "外部IF仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_connection_condition@{ label: "接続条件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_exchange_evidence@{ label: "送受信証跡", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_external_test_result@{ label: "外結結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
@@ -48,12 +50,12 @@ flowchart TB
   i_business_validation_result@{ label: "業務確認結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_runbook@{ label: "運用手順", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  class i_current_business,i_business_requirement,i_system_requirement,i_acceptance_criteria,i_internal_specification,i_unit_test_viewpoint,i_source_code,i_unit_test_result,i_build_artifact,i_external_test_specification,i_connection_condition,i_exchange_evidence,i_external_test_result,i_release_scope,i_release_plan,i_known_issue,i_business_validation_result,i_runbook information;
+  class i_current_business,i_business_requirement,i_system_requirement,i_external_interface_requirement,i_acceptance_criteria,i_internal_specification,i_unit_test_viewpoint,i_source_code,i_unit_test_result,i_build_artifact,i_external_test_specification,i_interface_specification,i_connection_condition,i_exchange_evidence,i_external_test_result,i_release_scope,i_release_plan,i_known_issue,i_business_validation_result,i_runbook information;
   classDef information fill:none,stroke:none,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-この短いlabelはこの評価での表示名です。意味の定義と作成・更新・参照の候補は下の辞書で確認し、Contextでは同じIDで再利用します。
+この短いlabelはこの評価での表示名です。意味の定義と作成・更新・参照の候補は下の辞書で確認し、Contextとpilotでは同じIDで再利用します。
 
 ## 1. 見積・計画
 

@@ -60,6 +60,7 @@ flowchart LR
   b_confirm_recovery --- i_external_test_result
 
   click b_isolate_boundary href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/external-integration-flow.md" "原因特定の流れを見る"
+  click b_verify_contract href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/interface-specification-detail.md" "外部IF仕様の設計観点を見る"
 
   class a_tester,a_external_system_owner actor;
   class b_establish_connection,b_verify_contract,b_isolate_boundary,b_confirm_recovery business;
@@ -78,7 +79,7 @@ flowchart LR
 | 業務 | 何をしているか |
 | --- | --- |
 | **接続確認** | ネットワーク・認証・基本疎通を揃え、双方が試験できる状態にする。 |
-| **契約検証** | データ、順序、タイミング、異常応答が取り決めどおりか確かめる。 |
+| [**契約検証**](interface-specification-detail.md) | データ、順序、タイミング、異常応答が取り決めどおりか確かめる。 |
 | [**原因特定**](external-integration-flow.md) | 問題が起きたとき、双方の証跡からどの責任境界に原因があるか突き止める。 |
 | **復旧確認** | 修正後に再接続し、連携とデータ整合が回復したことを確かめる。 |
 
@@ -104,6 +105,7 @@ flowchart LR
 ## 関連
 
 - [原因特定の流れ](external-integration-flow.md) →
+- [外部IF仕様の設計観点](interface-specification-detail.md) →
 - [Actor](master-actor-map.md)
 - [Information](master-information-model.md)
 - [External System](master-system-map.md)
