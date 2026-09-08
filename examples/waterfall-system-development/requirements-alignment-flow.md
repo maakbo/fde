@@ -41,11 +41,11 @@ flowchart TB
   b_resolve_gap --> b_update_requirements
   b_update_requirements --> b_review_requirements
 
-  class b_prepare_review,b_review_requirements,b_resolve_gap,b_update_requirements,b_baseline_requirements business;
+  class b_prepare_review,b_review_requirements,b_resolve_gap,b_update_requirements,b_baseline_requirements activity;
   class d_requirements_agreed decision;
-  classDef business fill:none,stroke:none,color:#25231F;
+  classDef activity fill:none,stroke:none,color:#25231F;
   classDef decision fill:none,stroke:none,color:#25231F;
-  linkStyle default stroke:#9E988E,stroke-width:0.75px;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
 ## 図の業務

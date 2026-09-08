@@ -48,13 +48,13 @@ flowchart LR
   b_understand_current --- b_shape_requirements
   a_ba --- b_shape_requirements
   b_shape_requirements --- i_business_requirement
-  a_business_owner --- b_shape_requirements
+  b_shape_requirements --- a_business_owner
   i_business_requirement --- b_define_system
   a_ba --- b_define_system
   b_define_system --- i_system_requirement
   i_system_requirement --- b_align_requirements
   a_ba --- b_align_requirements
-  x_requirements_management --- b_align_requirements
+  b_align_requirements --- x_requirements_management
   b_align_requirements --- a_business_owner
   b_align_requirements --- i_acceptance_criteria
 
@@ -86,6 +86,21 @@ flowchart LR
 業務担当が提供する現行業務を、要件担当が業務要件として構造化します。そのうえで人とシステムの責務を分け、業務責任者と要件を合意します。
 
 線は厳密な手順ではなく、この場面を成立させる関係です。差戻しや再確認の順序は [要件合意の流れ](requirements-alignment-flow.md) で見ます。
+
+## Master references
+
+この図で使う Actor / Information / External System は、次のマスタで同じIDを管理しています。
+
+| Master | ID | Canonical label | Use in this view |
+| --- | --- | --- | --- |
+| [Actor master](master-actor-map.md) | `a_business_user` | 業務担当 | 現行業務を提供する主体 |
+| [Actor master](master-actor-map.md) | `a_ba` | 要件担当 | 要件を構造化する主体 |
+| [Actor master](master-actor-map.md) | `a_business_owner` | 業務責任者 | 要件を合意する責任者 |
+| [Information master](master-information-model.md) | `i_current_business` | 現行業務 | 要件化の入力 |
+| [Information master](master-information-model.md) | `i_business_requirement` | 業務要件 | 責務設計の入力・成果 |
+| [Information master](master-information-model.md) | `i_system_requirement` | システム要件 | 責務設計の成果 |
+| [Information master](master-information-model.md) | `i_acceptance_criteria` | 受入条件 | 合意の判断材料 |
+| [External-system master](master-system-map.md) | `x_requirements_management` | 要件管理 | 要件の追跡と状態管理を支えるシステム |
 
 ## 関連
 

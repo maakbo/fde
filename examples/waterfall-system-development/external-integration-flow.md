@@ -39,11 +39,11 @@ flowchart TB
   d_boundary_known -->|未判明| b_add_observation
   b_add_observation --> b_compare_exchange
 
-  class b_collect_evidence,b_compare_exchange,b_add_observation,b_assign_owner business;
+  class b_collect_evidence,b_compare_exchange,b_add_observation,b_assign_owner activity;
   class d_boundary_known decision;
-  classDef business fill:none,stroke:none,color:#25231F;
+  classDef activity fill:none,stroke:none,color:#25231F;
   classDef decision fill:none,stroke:none,color:#25231F;
-  linkStyle default stroke:#9E988E,stroke-width:0.75px;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
 ## 図の業務

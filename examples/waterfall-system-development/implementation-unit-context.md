@@ -47,7 +47,7 @@ flowchart LR
 
   a_developer --- b_implement_change
   i_internal_specification --- b_implement_change
-  x_dev_environment --- b_implement_change
+  b_implement_change --- x_dev_environment
   b_implement_change --- i_source_code
   i_unit_test_viewpoint --- b_verify_unit
   i_source_code --- b_verify_unit
@@ -55,12 +55,12 @@ flowchart LR
   b_verify_unit --- i_unit_test_result
   i_source_code --- b_review_change
   i_unit_test_result --- b_review_change
-  x_static_analysis --- b_review_change
-  x_code_review --- b_review_change
+  b_review_change --- x_static_analysis
+  b_review_change --- x_code_review
   a_dev_lead --- b_review_change
   b_review_change --- b_integrate_change
   a_developer --- b_integrate_change
-  x_scm --- b_integrate_change
+  b_integrate_change --- x_scm
   b_integrate_change --- i_build_artifact
 
   click b_verify_unit href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/implementation-unit-flow.md" "単体検証の流れを見る"
@@ -89,6 +89,24 @@ flowchart LR
 ## この図が表していること
 
 内部仕様と単体観点をもとに開発者が実装し、単体検証と品質確認を経て統合可能な変更へ整えます。ツールは仕事の主体ではなく、それぞれの業務を支える外部システムとして置いています。
+
+## Master references
+
+この図で使う Actor / Information / External System は、次のマスタで同じIDを管理しています。
+
+| Master | ID | Canonical label | Use in this view |
+| --- | --- | --- | --- |
+| [Actor master](master-actor-map.md) | `a_developer` | 開発者 | 実装と単体検証を担う主体 |
+| [Actor master](master-actor-map.md) | `a_dev_lead` | 開発PL | 品質確認を担う責任者 |
+| [Information master](master-information-model.md) | `i_internal_specification` | 内部仕様 | 実装の入力 |
+| [Information master](master-information-model.md) | `i_unit_test_viewpoint` | 単体観点 | 単体検証の観点 |
+| [Information master](master-information-model.md) | `i_source_code` | ソースコード | 実装の成果・検証対象 |
+| [Information master](master-information-model.md) | `i_unit_test_result` | 単体結果 | 品質確認の判断材料 |
+| [Information master](master-information-model.md) | `i_build_artifact` | ビルド成果物 | 統合後に扱う成果 |
+| [External-system master](master-system-map.md) | `x_dev_environment` | 開発環境 | 実装を支える環境 |
+| [External-system master](master-system-map.md) | `x_static_analysis` | 静的解析 | 品質確認を支える検査 |
+| [External-system master](master-system-map.md) | `x_code_review` | コードレビュー | 品質確認を支えるレビュー基盤 |
+| [External-system master](master-system-map.md) | `x_scm` | 構成管理 | 統合版を管理するシステム |
 
 ## 関連
 

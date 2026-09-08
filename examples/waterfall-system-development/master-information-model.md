@@ -4,6 +4,57 @@
 
 ここでは「ファイル」「チケット」「画面」といった保存形式ではなく、業務上の意味を stable ID にします。同じ概念が要件、設計、テスト、導入で姿を変えても、意味が同じなら一つの Information として追跡します。
 
+## この評価で使う Information
+
+Contextで選択した候補だけを、図で確認しやすい短いlabelで並べています。関係がまだ確定していないため、線は引いていません。
+
+```mermaid
+---
+title: この評価で使う Information
+config:
+  layout: dagre
+  theme: neutral
+  flowchart:
+    curve: basis
+    diagramPadding: 40
+    htmlLabels: false
+    nodeSpacing: 64
+    rankSpacing: 80
+    padding: 8
+  themeVariables:
+    background: "#FFFFFF"
+    lineColor: "#8A847A"
+    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontSize: "14px"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
+---
+flowchart TB
+  i_current_business@{ label: "現行業務", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_business_requirement@{ label: "業務要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_system_requirement@{ label: "システム要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_acceptance_criteria@{ label: "受入条件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_internal_specification@{ label: "内部仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_unit_test_viewpoint@{ label: "単体観点", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_source_code@{ label: "ソースコード", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_unit_test_result@{ label: "単体結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_build_artifact@{ label: "ビルド成果物", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_external_test_specification@{ label: "外結仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_connection_condition@{ label: "接続条件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_exchange_evidence@{ label: "送受信証跡", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_external_test_result@{ label: "外結結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_release_scope@{ label: "リリース範囲", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_release_plan@{ label: "リリース計画", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_known_issue@{ label: "既知問題", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_business_validation_result@{ label: "業務確認結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_runbook@{ label: "運用手順", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+
+  class i_current_business,i_business_requirement,i_system_requirement,i_acceptance_criteria,i_internal_specification,i_unit_test_viewpoint,i_source_code,i_unit_test_result,i_build_artifact,i_external_test_specification,i_connection_condition,i_exchange_evidence,i_external_test_result,i_release_scope,i_release_plan,i_known_issue,i_business_validation_result,i_runbook information;
+  classDef information fill:none,stroke:none,color:#5F5A52;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px;
+```
+
+この短いlabelはこの評価での表示名です。意味の定義と作成・更新・参照の候補は下の辞書で確認し、Contextでは同じIDで再利用します。
+
 ## 1. 見積・計画
 
 | ID | Information | 意味 |

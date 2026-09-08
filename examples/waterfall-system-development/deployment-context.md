@@ -51,18 +51,17 @@ flowchart LR
   i_release_plan --- b_decide_release
   i_known_issue --- b_decide_release
   b_decide_release --- b_apply_production
-  x_cicd --- b_apply_production
-  x_production_env --- b_apply_production
+  b_apply_production --- x_cicd
+  b_apply_production --- x_production_env
   b_apply_production --- b_verify_production
-  x_monitoring --- b_verify_production
+  b_verify_production --- x_monitoring
   a_ops --- b_verify_production
   b_verify_production --- i_business_validation_result
   b_verify_production --- b_recover_safe_state
-  i_business_validation_result --- b_transfer_operation
-  i_runbook --- b_transfer_operation
+  b_transfer_operation --- i_business_validation_result
+  b_transfer_operation --- i_runbook
   a_ops --- b_transfer_operation
-  b_recover_safe_state --- a_release_manager
-  b_transfer_operation --- a_ops
+  a_release_manager --- b_recover_safe_state
 
   click b_verify_production href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/deployment-flow.md" "本番確認の流れを見る"
 
@@ -91,6 +90,23 @@ flowchart LR
 ## この図が表していること
 
 導入は「デプロイが成功したら終わり」ではありません。実施判断、本番反映、業務利用確認、必要なら切戻し、最後に運用責任を移すところまでを一つの場面として見ています。
+
+## Master references
+
+この図で使う Actor / Information / External System は、次のマスタで同じIDを管理しています。
+
+| Master | ID | Canonical label | Use in this view |
+| --- | --- | --- | --- |
+| [Actor master](master-actor-map.md) | `a_release_manager` | リリース責任者 | 実施判断と切替を統制する主体 |
+| [Actor master](master-actor-map.md) | `a_ops` | 運用担当 | 本番確認と運用移管を担う主体 |
+| [Information master](master-information-model.md) | `i_release_scope` | リリース範囲 | 実施判断の入力 |
+| [Information master](master-information-model.md) | `i_release_plan` | リリース計画 | 実施判断の入力 |
+| [Information master](master-information-model.md) | `i_known_issue` | 既知問題 | 実施判断のリスク材料 |
+| [Information master](master-information-model.md) | `i_business_validation_result` | 業務確認結果 | 運用移管の判断材料 |
+| [Information master](master-information-model.md) | `i_runbook` | 運用手順 | 運用移管で引き渡す手順 |
+| [External-system master](master-system-map.md) | `x_cicd` | CI/CD | 本番反映を支えるシステム |
+| [External-system master](master-system-map.md) | `x_production_env` | 本番環境 | 反映先の環境 |
+| [External-system master](master-system-map.md) | `x_monitoring` | 監視基盤 | 本番確認を支えるシステム |
 
 ## 関連
 

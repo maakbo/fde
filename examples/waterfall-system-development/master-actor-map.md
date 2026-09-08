@@ -2,6 +2,48 @@
 
 ウォーターフォール型システム開発に登場しうる Actor の初期候補です。肩書きの一覧を完成形とはせず、各 Context で「その Business に直接参加しているか」を確認して採用します。
 
+## この評価で使う Actor
+
+Contextで選択した候補だけを、reader-facingな短いlabelで並べています。詳しい責任範囲と境界の候補は下の辞書で確認します。関係がまだ確定していないため、線は引いていません。
+
+```mermaid
+---
+title: この評価で使う Actor
+config:
+  layout: dagre
+  theme: neutral
+  flowchart:
+    curve: basis
+    diagramPadding: 40
+    htmlLabels: false
+    nodeSpacing: 64
+    rankSpacing: 80
+    padding: 8
+  themeVariables:
+    background: "#FFFFFF"
+    lineColor: "#8A847A"
+    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontSize: "14px"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
+---
+flowchart TB
+  a_business_user@{ label: "業務担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_ba@{ label: "要件担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_business_owner@{ label: "業務責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_developer@{ label: "開発者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_dev_lead@{ label: "開発PL", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_tester@{ label: "テスター", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_external_system_owner@{ label: "外部担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_release_manager@{ label: "リリース責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_ops@{ label: "運用担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+
+  class a_business_user,a_ba,a_business_owner,a_developer,a_dev_lead,a_tester,a_external_system_owner,a_release_manager,a_ops actor;
+  classDef actor fill:none,stroke:none,color:#25231F;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px;
+```
+
+この短いlabelはこの評価での表示名です。辞書の役割説明を置き換えず、Contextでは同じIDで再利用します。
+
 ## Actor dictionary
 
 | ID | Actor | 主な価値 / 責任 | 境界上の注意 |

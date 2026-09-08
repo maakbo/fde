@@ -39,11 +39,11 @@ flowchart TB
   d_continue_release -->|中止| b_rollback_release
   b_rollback_release --> b_check_technical
 
-  class b_check_technical,b_check_business,b_rollback_release,b_handover_operation business;
+  class b_check_technical,b_check_business,b_rollback_release,b_handover_operation activity;
   class d_continue_release decision;
-  classDef business fill:none,stroke:none,color:#25231F;
+  classDef activity fill:none,stroke:none,color:#25231F;
   classDef decision fill:none,stroke:none,color:#25231F;
-  linkStyle default stroke:#9E988E,stroke-width:0.75px;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
 ## 図の業務

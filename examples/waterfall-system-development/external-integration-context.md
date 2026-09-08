@@ -45,8 +45,8 @@ flowchart LR
   a_tester --- b_establish_connection
   a_external_system_owner --- b_establish_connection
   i_connection_condition --- b_establish_connection
-  x_external_integration_env --- b_establish_connection
-  x_external_business_system --- b_establish_connection
+  b_establish_connection --- x_external_integration_env
+  b_establish_connection --- x_external_business_system
   i_external_test_specification --- b_verify_contract
   a_tester --- b_verify_contract
   a_external_system_owner --- b_verify_contract
@@ -56,7 +56,7 @@ flowchart LR
   a_tester --- b_isolate_boundary
   a_external_system_owner --- b_isolate_boundary
   b_isolate_boundary --- b_confirm_recovery
-  x_external_business_system --- b_confirm_recovery
+  b_confirm_recovery --- x_external_business_system
   b_confirm_recovery --- i_external_test_result
 
   click b_isolate_boundary href "https://github.com/maakbo/fde/blob/eval/waterfall-system-development-modeling/examples/waterfall-system-development/external-integration-flow.md" "原因特定の流れを見る"
@@ -85,6 +85,21 @@ flowchart LR
 ## この図が表していること
 
 外部結合は、自システムだけの試験ではありません。外部担当と同じ証跡を見ながら接続条件と連携契約を確かめ、問題時には責任境界を共同で切り分けます。
+
+## Master references
+
+この図で使う Actor / Information / External System は、次のマスタで同じIDを管理しています。
+
+| Master | ID | Canonical label | Use in this view |
+| --- | --- | --- | --- |
+| [Actor master](master-actor-map.md) | `a_tester` | テスター | 外部結合を検証する主体 |
+| [Actor master](master-actor-map.md) | `a_external_system_owner` | 外部担当 | 接続先を代表する主体 |
+| [Information master](master-information-model.md) | `i_external_test_specification` | 外結仕様 | 契約検証の入力 |
+| [Information master](master-information-model.md) | `i_connection_condition` | 接続条件 | 接続確認の入力 |
+| [Information master](master-information-model.md) | `i_exchange_evidence` | 送受信証跡 | 原因特定の判断材料 |
+| [Information master](master-information-model.md) | `i_external_test_result` | 外結結果 | 外部結合の成果 |
+| [External-system master](master-system-map.md) | `x_external_integration_env` | 外結環境 | 接続確認を行う環境 |
+| [External-system master](master-system-map.md) | `x_external_business_system` | 外部システム | 契約の相手となるシステム |
 
 ## 関連
 

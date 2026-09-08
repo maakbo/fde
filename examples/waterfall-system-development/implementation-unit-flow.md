@@ -39,11 +39,11 @@ flowchart TB
   d_unit_passed -->|差異| b_fix_change
   b_fix_change --> b_run_unit
 
-  class b_prepare_case,b_run_unit,b_fix_change,b_record_result business;
+  class b_prepare_case,b_run_unit,b_fix_change,b_record_result activity;
   class d_unit_passed decision;
-  classDef business fill:none,stroke:none,color:#25231F;
+  classDef activity fill:none,stroke:none,color:#25231F;
   classDef decision fill:none,stroke:none,color:#25231F;
-  linkStyle default stroke:#9E988E,stroke-width:0.75px;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
 ## 図の業務

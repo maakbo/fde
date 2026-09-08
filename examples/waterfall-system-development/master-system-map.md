@@ -4,6 +4,49 @@
 
 ここでは「開発支援ツール」「対象システムを動かす環境」「対象システムが接続する外部システム」を同じものとして扱いません。Context では Business が実際に利用・更新・参照するものだけを採用します。
 
+## この評価で使う External System
+
+Contextで選択した候補だけを、図で確認しやすい短いlabelで並べています。関係がまだ確定していないため、線は引いていません。
+
+```mermaid
+---
+title: この評価で使う External System
+config:
+  layout: dagre
+  theme: neutral
+  flowchart:
+    curve: basis
+    diagramPadding: 40
+    htmlLabels: false
+    nodeSpacing: 64
+    rankSpacing: 80
+    padding: 8
+  themeVariables:
+    background: "#FFFFFF"
+    lineColor: "#8A847A"
+    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontSize: "14px"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
+---
+flowchart TB
+  x_requirements_management@{ label: "要件管理", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_dev_environment@{ label: "開発環境", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_static_analysis@{ label: "静的解析", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_code_review@{ label: "コードレビュー", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_scm@{ label: "構成管理", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_external_integration_env@{ label: "外結環境", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_external_business_system@{ label: "外部システム", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_cicd@{ label: "CI/CD", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_production_env@{ label: "本番環境", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_monitoring@{ label: "監視基盤", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+
+  class x_requirements_management,x_dev_environment,x_static_analysis,x_code_review,x_scm,x_external_integration_env,x_external_business_system,x_cicd,x_production_env,x_monitoring external;
+  classDef external fill:none,stroke:none,color:#5F5A52;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px;
+```
+
+この短いlabelはこの評価での表示名です。候補辞書の分類・注意点を置き換えず、Contextでは同じIDで再利用します。
+
 ## 1. 開発管理・コミュニケーション
 
 | ID | External System | 主な役割 | 注意 |
