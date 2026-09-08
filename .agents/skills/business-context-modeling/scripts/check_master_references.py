@@ -142,6 +142,11 @@ def parse_args() -> argparse.Namespace:
         help="allow directed relations when the context uses arrows for essential feedback direction",
     )
     parser.add_argument(
+        "--allow-reverse-arrow-exception",
+        action="store_true",
+        help="allow an explicitly directed feedback relation to point back to an earlier node",
+    )
+    parser.add_argument(
         "--allow-sparse",
         action="store_true",
         help="allow a supplied master to contain multiple candidates without observed same-type edges",
@@ -197,6 +202,8 @@ def main() -> int:
         context_command.append("--allow-complexity")
     if args.allow_arrow_exception:
         context_command.append("--allow-arrow-exception")
+    if args.allow_reverse_arrow_exception:
+        context_command.append("--allow-reverse-arrow-exception")
     if subprocess.run(context_command, check=False).returncode != 0:
         return 1
 

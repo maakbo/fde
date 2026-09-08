@@ -31,6 +31,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("input", type=Path)
     parser.add_argument("--allow-complexity", action="store_true")
     parser.add_argument("--allow-arrow-exception", action="store_true")
+    parser.add_argument("--allow-reverse-arrow-exception", action="store_true")
     return parser.parse_args()
 
 
@@ -47,6 +48,8 @@ def main() -> int:
         command.append("--allow-complexity")
     if args.allow_arrow_exception:
         command.append("--allow-arrow-exception")
+    if args.allow_reverse_arrow_exception:
+        command.append("--allow-reverse-arrow-exception")
     if subprocess.run(command, check=False).returncode != 0:
         return 1
 
@@ -98,6 +101,11 @@ def main() -> int:
         if left in node_index and right in node_index and node_index[left] >= node_index[right]
     ]
     for left, right, directed in reverse_edges:
+        if directed and args.allow_reverse_arrow_exception:
+            observations.append(
+                f"reverse directed feedback {left} --> {right}; retain the semantic reason in the authoring workspace"
+            )
+            continue
         connector = "-->" if directed else "---"
         errors.append(
             f"{left} {connector} {right}: write relationships in approximate left-to-right source order"

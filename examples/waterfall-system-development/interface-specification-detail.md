@@ -34,23 +34,24 @@ flowchart LR
   i_interface_specification@{ label: "外部IF仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_rehearse_contract@{ label: "試行", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_exchange_evidence@{ label: "送受信証跡", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  b_validate_contract@{ label: "外結テスト", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_external_test_result@{ label: "外結結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_align_interface@{ label: "整合", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_baseline_interface@{ label: "工程内baseline", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_external_test_specification@{ label: "外結仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  b_validate_contract@{ label: "外結テスト", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_external_test_result@{ label: "外結結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
   i_external_interface_requirement --- b_shape_interface
   b_shape_interface --- i_interface_specification
   i_interface_specification --- b_rehearse_contract
   b_rehearse_contract --- i_exchange_evidence
-  i_interface_specification --- b_validate_contract
-  b_validate_contract --- i_external_test_result
-  i_exchange_evidence --> b_align_interface
-  i_external_test_result --> b_align_interface
   i_interface_specification --- b_align_interface
+  i_exchange_evidence --> b_align_interface
   b_align_interface --- b_baseline_interface
   b_baseline_interface --- i_external_test_specification
+  i_external_test_specification --- b_validate_contract
+  i_interface_specification --- b_validate_contract
+  b_validate_contract --- i_external_test_result
+  i_external_test_result --> b_align_interface
 
   class b_shape_interface,b_rehearse_contract,b_validate_contract,b_align_interface,b_baseline_interface business;
   class i_external_interface_requirement,i_interface_specification,i_exchange_evidence,i_external_test_specification,i_external_test_result information;
@@ -72,7 +73,7 @@ flowchart LR
 
 ## この図が表していること
 
-外部IF仕様は、IF設計で書いて終わる成果物ではありません。外結仕様を使う外結テストへ入力され、送受信証跡と外結結果が整合へfeedbackします。図の矢印は、この後続の証跡・結果から設計へ戻る関係だけを示しています。`工程内baseline`はその工程で次へ渡せる十分な成熟度であり、後続の結果で再検討され得ます。ここではその設計観点を既存Informationの詳細Viewとして表し、新しい`Design Concern` node typeは追加していません。
+外部IF仕様は、IF設計で書いて終わる成果物ではありません。`工程内baseline`から外結仕様を次の外結テストへ渡し、送受信証跡と外結結果を整合へ戻す循環として成熟します。図の矢印は、この後続の証跡・結果から設計へfeedbackする関係だけを示しています。`工程内baseline`はその工程で次へ渡せる十分な成熟度であり、後続の結果で再検討され得ます。ここではその設計観点を既存Informationの詳細Viewとして表し、新しい`Design Concern` node typeは追加していません。
 
 ## Master references
 
@@ -83,7 +84,7 @@ flowchart LR
 | [Information master](master-information-model.md) | `i_external_interface_requirement` | 外部IF要件 | IF設計の根拠 |
 | [Information master](master-information-model.md) | `i_interface_specification` | 外部IF仕様 | このpilotの中心となる設計Information |
 | [Information master](master-information-model.md) | `i_exchange_evidence` | 送受信証跡 | 試行結果を照合する根拠 |
-| [Information master](master-information-model.md) | `i_external_test_specification` | 外結仕様 | 工程内baseline後に外部結合で使う仕様 |
+| [Information master](master-information-model.md) | `i_external_test_specification` | 外結仕様 | 工程内baselineから外部結合へ渡す入力 |
 | [Information master](master-information-model.md) | `i_external_test_result` | 外結結果 | 後続で返る結果・成熟の根拠 |
 
 ## 関連
