@@ -65,6 +65,7 @@ loose conversation
 - [maakbo expression loop](examples/maakbo-expression-loop/): overall context、use-case context、business flowをつないだ例
 - [Human–Agent Workspace](examples/human-agent-workspace/): private handoffとpublic reuseを分けたAI collaborator環境のarchitecture example
 - [repair intake](examples/repair-intake/): 記法を検証するためのsynthetic example
+- [PDF帳票作成システムの開発](examples/waterfall-system-development/): RDRA top layerから開発業務へ降りるevaluation sample
 
 ## Working source and export
 

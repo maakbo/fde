@@ -1,14 +1,20 @@
-# システム開発
+# PDF帳票作成システムの開発
 
-ウォーターフォール型システム開発を、13の大きな業務で俯瞰します。
+PDF帳票作成システムを開発する業務を、13の大きな工程で俯瞰します。
+一般的な全ソフトウェア開発を網羅する図ではなく、今回のevaluation sampleの
+開発業務を話すための骨格です。
 
-このページを認識合わせの入口にします。図の業務を選ぶと、その業務の詳細へ進めます。図の直下には、各業務が何を整えるのかを日本語で並べています。
+このページを認識合わせの入口にします。先に[RDRA System Context](rdra-system-context.md)と
+[Requirement Model](rdra-requirement-model.md)で対象システムと要求を確認し、図の業務を選んで
+詳細へ進みます。図の直下には、各工程が何を整えるのかを日本語で並べています。
+
+← [Requirement Model](rdra-requirement-model.md)
 
 ## モデル
 
 ```mermaid
 ---
-title: システム開発
+title: PDF帳票作成システムの開発
 config:
   layout: elk
   theme: neutral
@@ -27,7 +33,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart TB
-  b_system_development@{ label: "システム開発", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_system_development@{ label: "PDF帳票開発", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_estimation@{ label: "見積", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_requirements@{ label: "要件定義", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_basic_design@{ label: "基本設計", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
@@ -97,7 +103,7 @@ flowchart TB
 
 ## この図が表していること
 
-13工程は、システム開発を話すための最初の共通言語です。工程間の厳密な順番を示す図ではありません。実務にある変更、差戻し、再試験、再合意は、各業務の Context / Flow で見ます。
+13工程は、PDF帳票作成システムの開発を話すための最初の共通言語です。工程間の厳密な順番を示す図ではありません。実務にある変更、差戻し、再試験、再合意は、各業務の Context / Flow で見ます。
 
 ## 支えるモデル
 

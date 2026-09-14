@@ -31,6 +31,7 @@ config:
 flowchart TB
   i_current_business@{ label: "現行業務", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_business_requirement@{ label: "業務要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_report_specification@{ label: "帳票仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_system_requirement@{ label: "システム要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_external_interface_requirement@{ label: "外部IF要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_acceptance_criteria@{ label: "受入条件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
@@ -50,7 +51,7 @@ flowchart TB
   i_business_validation_result@{ label: "業務確認結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_runbook@{ label: "運用手順", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  class i_current_business,i_business_requirement,i_system_requirement,i_external_interface_requirement,i_acceptance_criteria,i_internal_specification,i_unit_test_viewpoint,i_source_code,i_unit_test_result,i_build_artifact,i_external_test_specification,i_interface_specification,i_connection_condition,i_exchange_evidence,i_external_test_result,i_release_scope,i_release_plan,i_known_issue,i_business_validation_result,i_runbook information;
+  class i_current_business,i_business_requirement,i_report_specification,i_system_requirement,i_external_interface_requirement,i_acceptance_criteria,i_internal_specification,i_unit_test_viewpoint,i_source_code,i_unit_test_result,i_build_artifact,i_external_test_specification,i_interface_specification,i_connection_condition,i_exchange_evidence,i_external_test_result,i_release_scope,i_release_plan,i_known_issue,i_business_validation_result,i_runbook information;
   classDef information fill:none,stroke:none,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
