@@ -1,13 +1,13 @@
-# PDF帳票作成システム — RDRA Requirement Model
+# Legacy evaluation — PDF帳票作成システム Requirement Model
 
-System Contextで置いた境界に対して、評価用sampleで会話したい重要要求を
-まとめます。ここでいう要求は機能・非機能の分類ではなく、Actorが実現したい
-価値を短い自然言語で置いたものです。詳細や優先度を確定するページではなく、
-開発業務へ降りるためのtop-layer Viewです。
+このページは過去のevaluation orientationを残したlegacy Viewです。current RDRA domain modelと
+そのBusiness / BUC / Activity / UCの関係は[PDF帳票システム sample](../pdf-report-system/)で確認します。
+ここで示す要求は、このdevelopment-work evaluationの会話用に置いたもので、13工程の開発業務へ
+降りるためのtop-layerとして扱います。current RDRAの標準階層を確定するページではありません。
 
 図中のfile iconは共有する要求文（knowledge artifact）を表し、下位の仕様分類そのものではありません。
 
-← [RDRA System Context](rdra-system-context.md)
+← [Legacy RDRA System Context](rdra-system-context.md)
 
 ## モデル
 
@@ -85,7 +85,7 @@ flowchart LR
 このtraceはrequirements Contextでの代表的な具体化を示すもので、PDF固有の詳細分解を
 全体canonicalへ確定するものではありません。
 
-## 次のView
+## Legacy navigation
 
-- [システム開発 Business Map](business-map.md) — 上位要求から開発業務の入口へ →
-- [PDF帳票システムの要件定義](requirements-context.md) — 要求を開発業務へ降ろすpilot →
+- [PDF帳票システムのcurrent RDRA domain model](../pdf-report-system/) →
+- [システム開発 Business Map](business-map.md) — 開発業務の入口 →

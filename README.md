@@ -13,6 +13,11 @@ FDEが何を目指し、誰と実現し、どんな業務で成り立ってい�
 人、AI collaborator、private control plane、public reuse surfaceの関係とhandoffを、
 Architecture OverviewとInteraction Flowで見られます。
 
+### [PDF帳票システムのRDRA domain modelを見る](examples/pdf-report-system/)
+
+現行RDRAのBusiness / BUC / Activity / UCと、Actor・External System・Informationの関係を、
+syntheticなPDF帳票システムで小さく確認できます。システム開発の13工程とは別sampleです。
+
 ## モデルを作る
 
 整理されていない事業や業務の話から、目的、業務、関わる人、情報、システムの関係をModelへ外に出します。Howだけでなく、その背景にあるWhyも残すことで、状況が変わったあとも新しいHowを考え直せるようにします。
@@ -65,7 +70,7 @@ loose conversation
 - [maakbo expression loop](examples/maakbo-expression-loop/): overall context、use-case context、business flowをつないだ例
 - [Human–Agent Workspace](examples/human-agent-workspace/): private handoffとpublic reuseを分けたAI collaborator環境のarchitecture example
 - [repair intake](examples/repair-intake/): 記法を検証するためのsynthetic example
-- [PDF帳票作成システムの開発](examples/waterfall-system-development/): RDRA top layerから開発業務へ降りるevaluation sample
+- [PDF帳票作成システムの開発](examples/waterfall-system-development/): 13工程を扱うdevelopment-work evaluation sample（RDRA domain modelとは分離）
 
 ## Working source and export
 

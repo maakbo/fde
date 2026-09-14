@@ -1,9 +1,10 @@
-# PDF帳票システムの要件定義
+# Legacy evaluation — PDF帳票システムの要件定義
 
 PDF帳票作成システムの開発で、帳票業務の期待を人とシステムの責務が分かる
-要件へ整えるpilotです。
+要件へ整えるpilotです。これはdevelopment-work evaluationのContextであり、current RDRA domain
+modelそのものではありません。current domain modelは[別sample](../pdf-report-system/)で確認します。
 
-← [システム開発](business-map.md) ／ [RDRA Requirement Model](rdra-requirement-model.md)
+← [システム開発](business-map.md) ／ [Legacy RDRA Requirement Model](rdra-requirement-model.md)
 
 ## モデル
 

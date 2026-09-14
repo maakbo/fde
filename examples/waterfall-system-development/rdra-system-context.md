@@ -1,9 +1,8 @@
-# PDF帳票作成システム — RDRA System Context
+# Legacy evaluation — PDF帳票作成システム System Context
 
-このevaluation sampleでは、業務担当が業務データをもとにPDF帳票を作成し、
-利用できるシステムを対象に置きます。このViewはシステムが使われる文脈を示すため、
-そのシステムを開発するチームは含めません。実案件の事実ではなく、上位の境界から
-開発業務へ降りるためのsyntheticな前提です。
+このページは過去のevaluation orientationを残したlegacy Viewです。current RDRA domain modelは
+[PDF帳票システム sample](../pdf-report-system/)で確認してください。ここで示す開発業務や13工程は
+このViewの下位RDRA階層ではありません。
 
 ## モデル
 
@@ -59,7 +58,7 @@ flowchart LR
 扱います。PDF帳票の仕様・品質・保管などは、ここで示す利用文脈から下位の要求・設計へ
 具体化します。
 
-## 次のView
+## Legacy navigation
 
-- [RDRA Requirement Model](rdra-requirement-model.md) →
-- [システム開発 Business Map](business-map.md) →
+- [PDF帳票システムのcurrent RDRA domain model](../pdf-report-system/) →
+- [development-work model（13工程）](business-map.md) →

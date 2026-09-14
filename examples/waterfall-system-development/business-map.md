@@ -1,14 +1,15 @@
-# PDF帳票作成システムの開発
+# PDF帳票作成システムの開発 — 13工程のdevelopment-work model
 
 PDF帳票作成システムを開発する業務を、13の大きな工程で俯瞰します。
 一般的な全ソフトウェア開発を網羅する図ではなく、今回のevaluation sampleの
-開発業務を話すための骨格です。
+開発業務を話すための骨格です。13工程はRDRA domain modelの下位階層ではありません。
 
-このページを認識合わせの入口にします。先に[RDRA System Context](rdra-system-context.md)と
-[Requirement Model](rdra-requirement-model.md)で対象システムと要求を確認し、図の業務を選んで
-詳細へ進みます。図の直下には、各工程が何を整えるのかを日本語で並べています。
+対象システムのcurrent RDRA domain modelは、独立した[PDF帳票システム sample](../pdf-report-system/)で確認します。
 
-← [Requirement Model](rdra-requirement-model.md)
+このページを開発業務の認識合わせの入口にします。図の業務を選んで詳細へ進み、各工程が
+何を整えるのかを日本語で確認します。
+
+← [PDF帳票システムの開発 — development-work evaluation](README.md)
 
 ## モデル
 

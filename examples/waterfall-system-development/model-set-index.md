@@ -1,7 +1,9 @@
-# PDF帳票作成システム開発 — モデル索引
+# PDF帳票作成システム開発 — legacy model index
 
-このファイルはモデル作成・評価のための索引です。**読者は [RDRA System Context](rdra-system-context.md) から始め、
-要求を確認してから [PDF帳票作成システムの開発](business-map.md) へ降ります。**
+このファイルはdevelopment-work evaluationのモデル作成・評価のための索引です。current RDRA domain
+modelは独立した[PDF帳票システム sample](../pdf-report-system/)にあります。
+
+**このlegacy sampleの読者は [システム開発 Business Map](business-map.md) から始めます。**
 
 読者にこの索引を順番に読ませません。図から必要な詳細へ掘り、各図の直下で日本語の意味を確認できる構成を優先します。
 
@@ -9,9 +11,9 @@
 
 | View | 役割 | Focus | Parent / expanded node | Child Views |
 | --- | --- | --- | --- | --- |
-| [RDRA System Context](rdra-system-context.md) | 対象システムの境界 | PDF帳票システムと周囲のActor / System | — | [RDRA Requirement Model](rdra-requirement-model.md) |
-| [RDRA Requirement Model](rdra-requirement-model.md) | 主要要求のまとまり | Actorが求める帳票業務の価値 | rdra-system-context.md / s_pdf_report_system | [システム開発](business-map.md) |
-| [システム開発](business-map.md) | 開発業務の入口 | 13工程の骨格 | rdra-requirement-model.md / s_pdf_report_system | [要件定義](requirements-context.md) |
+| [Legacy RDRA System Context](rdra-system-context.md) | legacy orientation | PDF帳票システムと周囲のActor / System | — | [Legacy RDRA Requirement Model](rdra-requirement-model.md) |
+| [Legacy RDRA Requirement Model](rdra-requirement-model.md) | legacy orientation | Actorが求める帳票業務の価値 | rdra-system-context.md / s_pdf_report_system | — |
+| [システム開発](business-map.md) | development-work入口 | 13工程の骨格 | — | [要件定義](requirements-context.md) |
 | [要件定義](requirements-context.md) | 代表Business Context | PDF帳票の要求を開発可能な要件へ整える | business-map.md / b_requirements | [PDF要件合意](requirements-alignment-flow.md) |
 | [PDF要件合意](requirements-alignment-flow.md) | Business Flow | 要件差異を解消して基準化する | requirements-context.md / b_align_requirements | — |
 
@@ -19,8 +21,8 @@
 
 | View | 役割 | 詳細 |
 | --- | --- | --- |
-| [RDRA System Context](rdra-system-context.md) | top layer | 対象システムの境界と主要な参加者を確認する |
-| [RDRA Requirement Model](rdra-requirement-model.md) | top layer | Actorの価値から下位の開発業務へ降りる |
+| [Legacy RDRA System Context](rdra-system-context.md) | legacy orientation | 過去の対象システム境界を参照する |
+| [Legacy RDRA Requirement Model](rdra-requirement-model.md) | legacy orientation | 過去の要求候補を参照する |
 | [システム開発](business-map.md) | 認識合わせの入口 | 13工程を俯瞰し、図から各詳細へ移動する |
 | [業務分解カタログ](decomposition-catalog.md) | 分解辞書 | 13工程の Layer 3〜4 候補をまとめて比較する |
 | [要件定義](requirements-context.md) | Context | 現行理解・要件化・責務設計・要件合意 |
