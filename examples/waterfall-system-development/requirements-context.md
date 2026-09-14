@@ -99,6 +99,20 @@ flowchart LR
 線は厳密な手順ではなく、この場面を成立させる関係です。差戻しや再確認の順序は
 [PDF要件合意の流れ](requirements-alignment-flow.md) で見ます。
 
+## 上位要求とのtrace
+
+このContextでは、Requirement Modelで置いた価値を、要件定義で扱えるInformationへ具体化します。
+
+| 上位の重要要求 | このContextで見るInformation | 具体化の焦点 |
+| --- | --- | --- |
+| 帳票を正確に得る | `i_report_specification` / `i_system_requirement` / `i_acceptance_criteria` | 内容・形式・出力条件と受入可能性 |
+| 同じ帳票を再現する | `i_report_specification` / `i_system_requirement` / `i_acceptance_criteria` | 同一入力、再生成、期待結果 |
+| 帳票を後から取得する | `i_report_specification` / `i_external_interface_requirement` / `i_acceptance_criteria` | 保管・取得境界、外部連携、確認条件 |
+| 安全に業務を続ける | `i_system_requirement` / `i_external_interface_requirement` / `i_acceptance_criteria` | 責務境界、異常時、運用上の判断 |
+
+要求モデルの価値と下位Informationの対応はこのsampleでのtrace候補です。詳細な帳票要件や
+保管方式を実案件の事実として確定するものではありません。
+
 ## Master references
 
 この図で使う Actor / Information / External System は、次のマスタで同じIDを管理しています。

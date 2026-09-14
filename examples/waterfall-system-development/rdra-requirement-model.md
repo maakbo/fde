@@ -1,8 +1,11 @@
 # PDF帳票作成システム — RDRA Requirement Model
 
-System Contextで置いた境界に対して、評価用sampleで会話したい主要要求を
-まとめます。要求の詳細や優先度を確定するページではなく、開発業務へ降りる
-ためのtop-layer Viewです。
+System Contextで置いた境界に対して、評価用sampleで会話したい重要要求を
+まとめます。ここでいう要求は機能・非機能の分類ではなく、Actorが実現したい
+価値を短い自然言語で置いたものです。詳細や優先度を確定するページではなく、
+開発業務へ降りるためのtop-layer Viewです。
+
+図中のfile iconは共有する要求文（knowledge artifact）を表し、下位の仕様分類そのものではありません。
 
 ← [RDRA System Context](rdra-system-context.md)
 
@@ -31,31 +34,28 @@ config:
 flowchart LR
   h_business_owner@{ label: "業務責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   h_business_user@{ label: "帳票利用者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  x_business_data@{ label: "業務データ源", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/cloud.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   subgraph bd_pdf_system["PDF帳票システム"]
     direction LR
     s_pdf_report_system@{ label: "PDF帳票作成", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   end
-  k_report_specification@{ label: "帳票仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  k_data_contract@{ label: "データ契約", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  k_report_quality@{ label: "帳票品質", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  k_operation_safety@{ label: "運用安全", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  k_acceptance_condition@{ label: "受入条件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  k_accurate_report@{ label: "帳票を正確に得る", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  k_reproducible_report@{ label: "同じ帳票を再現する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  k_retrievable_report@{ label: "帳票を後から取得する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  k_safe_report_operation@{ label: "安全に業務を続ける", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  h_business_owner --- s_pdf_report_system
-  h_business_user --- s_pdf_report_system
-  x_business_data --- s_pdf_report_system
-  h_business_owner --- k_acceptance_condition
-  s_pdf_report_system --- k_report_specification
-  s_pdf_report_system --- k_data_contract
-  s_pdf_report_system --- k_report_quality
-  s_pdf_report_system --- k_operation_safety
-  s_pdf_report_system --- k_acceptance_condition
+  h_business_user --- k_accurate_report
+  h_business_user --- k_reproducible_report
+  h_business_user --- k_retrievable_report
+  h_business_owner --- k_reproducible_report
+  h_business_owner --- k_safe_report_operation
+  s_pdf_report_system --- k_accurate_report
+  s_pdf_report_system --- k_reproducible_report
+  s_pdf_report_system --- k_retrievable_report
+  s_pdf_report_system --- k_safe_report_operation
 
   class h_business_owner,h_business_user human;
   class s_pdf_report_system system;
-  class k_report_specification,k_data_contract,k_report_quality,k_operation_safety,k_acceptance_condition artifact;
-  class x_business_data external;
+  class k_accurate_report,k_reproducible_report,k_retrievable_report,k_safe_report_operation artifact;
 
   classDef human fill:none,stroke:none,color:#25231F;
   classDef system fill:none,stroke:none,color:#5F5A52;
@@ -67,10 +67,25 @@ flowchart LR
 
 ## このモデルが表していること
 
-主要要求は、帳票の内容・形式を定める帳票仕様、入力を保証するデータ契約、
-正確性や再現性を含む帳票品質、保管や再実行を含む運用安全、そして業務側が
-受け入れられる条件に分けて会話できます。
+帳票利用者が「必要な帳票を正確に得る」「同じ帳票を再現する」「後から取得する」ことを
+求め、業務責任者は再現性と安全な継続を重視します。これらの価値を実現するために、
+下位の開発業務で帳票仕様・データ要件・品質条件・運用条件・受入条件へ具体化します。
+
+## 下位へのtrace
+
+要求の文言をそのまま仕様へ置き換えず、下位のInformationが何を具体化するかを追跡します。
+
+| 上位の重要要求 | 下位で具体化するInformation | 開発業務への導線 |
+| --- | --- | --- |
+| 帳票を正確に得る | `i_report_specification` / `i_system_requirement` / `i_acceptance_criteria` | [PDF帳票システムの要件定義](requirements-context.md) |
+| 同じ帳票を再現する | `i_report_specification` / `i_system_requirement` / `i_acceptance_criteria` | [PDF帳票システムの要件定義](requirements-context.md) |
+| 帳票を後から取得する | `i_report_specification` / `i_external_interface_requirement` / `i_acceptance_criteria` | [PDF帳票システムの要件定義](requirements-context.md) |
+| 安全に業務を続ける | `i_system_requirement` / `i_external_interface_requirement` / `i_acceptance_criteria` | [PDF帳票システムの要件定義](requirements-context.md) |
+
+このtraceはrequirements Contextでの代表的な具体化を示すもので、PDF固有の詳細分解を
+全体canonicalへ確定するものではありません。
 
 ## 次のView
 
+- [システム開発 Business Map](business-map.md) — 上位要求から開発業務の入口へ →
 - [PDF帳票システムの要件定義](requirements-context.md) — 要求を開発業務へ降ろすpilot →

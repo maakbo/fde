@@ -10,7 +10,7 @@
 | View | 役割 | Focus | Parent / expanded node | Child Views |
 | --- | --- | --- | --- | --- |
 | [RDRA System Context](rdra-system-context.md) | 対象システムの境界 | PDF帳票システムと周囲のActor / System | — | [RDRA Requirement Model](rdra-requirement-model.md) |
-| [RDRA Requirement Model](rdra-requirement-model.md) | 主要要求のまとまり | 帳票仕様・データ契約・品質・運用・受入 | rdra-system-context.md / s_pdf_report_system | [システム開発](business-map.md) |
+| [RDRA Requirement Model](rdra-requirement-model.md) | 主要要求のまとまり | Actorが求める帳票業務の価値 | rdra-system-context.md / s_pdf_report_system | [システム開発](business-map.md) |
 | [システム開発](business-map.md) | 開発業務の入口 | 13工程の骨格 | rdra-requirement-model.md / s_pdf_report_system | [要件定義](requirements-context.md) |
 | [要件定義](requirements-context.md) | 代表Business Context | PDF帳票の要求を開発可能な要件へ整える | business-map.md / b_requirements | [PDF要件合意](requirements-alignment-flow.md) |
 | [PDF要件合意](requirements-alignment-flow.md) | Business Flow | 要件差異を解消して基準化する | requirements-context.md / b_align_requirements | — |
@@ -20,7 +20,7 @@
 | View | 役割 | 詳細 |
 | --- | --- | --- |
 | [RDRA System Context](rdra-system-context.md) | top layer | 対象システムの境界と主要な参加者を確認する |
-| [RDRA Requirement Model](rdra-requirement-model.md) | top layer | 主要要求から下位の開発業務へ降りる |
+| [RDRA Requirement Model](rdra-requirement-model.md) | top layer | Actorの価値から下位の開発業務へ降りる |
 | [システム開発](business-map.md) | 認識合わせの入口 | 13工程を俯瞰し、図から各詳細へ移動する |
 | [業務分解カタログ](decomposition-catalog.md) | 分解辞書 | 13工程の Layer 3〜4 候補をまとめて比較する |
 | [要件定義](requirements-context.md) | Context | 現行理解・要件化・責務設計・要件合意 |

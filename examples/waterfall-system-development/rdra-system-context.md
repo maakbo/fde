@@ -1,8 +1,9 @@
 # PDF帳票作成システム — RDRA System Context
 
 このevaluation sampleでは、業務担当が業務データをもとにPDF帳票を作成し、
-利用・保管できるシステムを開発対象として置きます。実案件の事実ではなく、
-上位の境界から開発業務へ降りるためのsyntheticな前提です。
+利用できるシステムを対象に置きます。このViewはシステムが使われる文脈を示すため、
+そのシステムを開発するチームは含めません。実案件の事実ではなく、上位の境界から
+開発業務へ降りるためのsyntheticな前提です。
 
 ## モデル
 
@@ -29,26 +30,19 @@ config:
 flowchart LR
   h_business_user@{ label: "帳票利用者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   h_business_owner@{ label: "業務責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  h_development_team@{ label: "開発チーム", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   x_business_data@{ label: "業務データ源", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/cloud.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   subgraph bd_pdf_system["PDF帳票システム"]
     direction LR
     s_pdf_report_system@{ label: "PDF帳票作成", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-    k_pdf_document@{ label: "PDF帳票", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   end
-  x_document_storage@{ label: "帳票保管先", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/cloud.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
   h_business_user --- s_pdf_report_system
   h_business_owner --- s_pdf_report_system
-  h_development_team --- s_pdf_report_system
   x_business_data --- s_pdf_report_system
-  s_pdf_report_system --- k_pdf_document
-  k_pdf_document --- x_document_storage
 
-  class h_business_user,h_business_owner,h_development_team human;
+  class h_business_user,h_business_owner human;
   class s_pdf_report_system system;
-  class k_pdf_document artifact;
-  class x_business_data,x_document_storage external;
+  class x_business_data external;
 
   classDef human fill:none,stroke:none,color:#25231F;
   classDef system fill:none,stroke:none,color:#5F5A52;
@@ -60,9 +54,10 @@ flowchart LR
 
 ## このモデルが表していること
 
-左側の業務担当・業務責任者・開発チームと業務データ源を、中央の
-PDF帳票システムが受け止めます。生成されたPDF帳票は、利用されるだけでなく、
-帳票保管先へ置ける成果物として扱います。
+左側の帳票利用者・業務責任者と業務データ源を、中央のPDF帳票システムが受け止めます。
+開発チームや開発工程はこのViewの対象ではなく、下位の「システム開発 Business Map」で
+扱います。PDF帳票の仕様・品質・保管などは、ここで示す利用文脈から下位の要求・設計へ
+具体化します。
 
 ## 次のView
 
