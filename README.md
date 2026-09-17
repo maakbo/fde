@@ -13,10 +13,10 @@ FDEが何を目指し、誰と実現し、どんな業務で成り立ってい�
 人、AI collaborator、private control plane、public reuse surfaceの関係とhandoffを、
 Architecture OverviewとInteraction Flowで見られます。
 
-### [PDF帳票システムのRDRA domain modelを見る](examples/pdf-report-system/)
+### [PDF帳票の仕事を見る](examples/pdf-report-system/)
 
-現行RDRAのBusiness / BUC / Activity / UCと、Actor・External System・Informationの関係を、
-syntheticなPDF帳票システムで小さく確認できます。システム開発の13工程とは別sampleです。
+業務データからPDF帳票を用意し、必要な人が内容を確認できる仕事を、
+会話を始めるための小さな例で確認できます。システム開発の13工程とは別sampleです。
 
 ## モデルを作る
 

@@ -39,4 +39,4 @@ flowchart TB
 ## 読み方
 
 このmasterはシステム間の構造を決めるものではありません。どのBusinessで使われるかは
-[代表BUC「帳票を用意する」](report-creation-context.md)で確認します。
+[帳票を用意する場面](report-creation-context.md)で確認します。

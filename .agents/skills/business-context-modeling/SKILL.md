@@ -175,16 +175,20 @@ responsibility. Follow `modeling-rules.md`.
 
 ### 7. Publish for the reader
 
-Edit the agreed meaning into the reader-facing pattern:
+Edit the agreed meaning into the reader-facing contract:
 
-1. a title that names the business question;
-2. one or two short sentences;
-3. the Mermaid diagram;
-4. only the explanation the diagram cannot carry;
+1. an ordinary business name or reader question as the title;
+2. a short natural introduction;
+3. the Mermaid diagram as soon as the reader needs it;
+4. only the 1–3 sentences of explanation the diagram cannot carry;
 5. natural links to its parent, child, or supporting View.
 
-Remove authoring history, candidate tables, method explanations, validation
-notes, and private uncertainty from that surface. Follow
+The default is `business name → diagram → short explanation`. Do not expose
+model types, method-aware headings, inventories, validation notes, or private
+uncertainty on this surface. Before splitting a whole Business into detail,
+show its major child Businesses and their relationships on the parent
+discussion surface. Split only for a genuine scene, boundary, or density
+reason; retain parent/child links and revisit the parent after detail. Follow
 `reader-facing-artifacts.md`.
 
 ### 8. Garden knowledge and close

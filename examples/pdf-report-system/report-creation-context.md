@@ -1,17 +1,13 @@
-# 代表BUC「帳票を用意する」
+# 帳票を用意する場面
 
-`帳票業務`の中から、業務データを受け取り、新規出力や必要時の再取得でPDF帳票を使える状態にする
-代表BUCを展開します。
-このViewでは、Business / BUC / Activity / UCの階層と、UCに関わるActor・External System・
-Informationを同じ場面で確認できます。
+業務データを整え、帳票の内容と出力条件を確認しながらPDFを用意します。
+必要な帳票は、あとから探して再取得できます。
 
-← [PDF帳票業務のDomain Overview](domain-overview.md)
-
-## モデル
+← [帳票業務の全体](domain-overview.md)
 
 ```mermaid
 ---
-title: 代表BUC「帳票を用意する」
+title: 帳票を用意する場面
 config:
   layout: dagre
   theme: neutral
@@ -35,11 +31,11 @@ flowchart LR
   i_report_data@{ label: "業務データ", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_report_definition@{ label: "帳票仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_output_condition@{ label: "出力条件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  b_report_ready@{ label: "帳票を用意", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_report_ready@{ label: "帳票を用意する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_prepare_report@{ label: "データを整える", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_generate_pdf@{ label: "PDFを出力", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_generate_pdf@{ label: "PDFを出力する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_retrieve_report@{ label: "帳票を探す", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_retrieve_pdf@{ label: "帳票を再取得", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_retrieve_pdf@{ label: "帳票を再取得する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_pdf_report@{ label: "PDF帳票", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   a_report_owner@{ label: "業務責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
@@ -71,38 +67,6 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## 図の業務
-
-| RDRA type | 業務 | このViewでの意味 |
-| --- | --- | --- |
-| BUC | **帳票を用意する** | 新しく作る場合と、既存の帳票を再取得する場合を同じ利用場面にまとめる。 |
-| Activity | **データを整える** | 業務システムのデータを帳票に使える状態へ整える。 |
-| UC | **PDFを出力** | 帳票仕様と出力条件を使い、PDF帳票を得られるようにする。 |
-| Activity | **帳票を探す** | 必要な帳票を見つけ、再取得できる状態を確認する。 |
-| UC | **帳票を再取得** | 既に得たPDF帳票を、必要なときに再び使えるようにする。 |
-
-## この図が表していること
-
-線は、このBUCを成立させる関係を表し、実行順を確定しません。`業務担当`と`業務システム`
-はデータ準備に関わり、`帳票仕様`と`出力条件`はPDF出力の判断材料になります。出力した
-`PDF帳票`は業務担当と業務責任者が確認・利用します。
-
-## Master references
-
-このViewのActor / External System / Informationは、次のmaster mapと同じID・label・iconを
-使っています。
-
-| Master | ID | Canonical label | Use in this view |
-| --- | --- | --- | --- |
-| [Actor master](master-actor-map.md) | `a_report_user` | 業務担当 | BUCと各UCに参加する主体 |
-| [Actor master](master-actor-map.md) | `a_report_owner` | 業務責任者 | PDF帳票を確認する主体 |
-| [External-system master](master-system-map.md) | `x_business_system` | 業務システム | 業務データを提供する外部システム |
-| [Information master](master-information-model.md) | `i_report_data` | 業務データ | データ準備の入力 |
-| [Information master](master-information-model.md) | `i_report_definition` | 帳票仕様 | PDF出力の判断材料 |
-| [Information master](master-information-model.md) | `i_output_condition` | 出力条件 | PDF出力の判断材料 |
-| [Information master](master-information-model.md) | `i_pdf_report` | PDF帳票 | 出力・再取得の対象 |
-
-## 次のView
-
-- [モデル索引](model-set-index.md) — Business / BUC / Activity / UCの対応
-- [PDF帳票作成システムの開発](../waterfall-system-development/) — 別空間の13工程
+`データを整える`では業務システムから得た情報を帳票に使える状態にし、`PDFを出力する`では
+帳票仕様と出力条件に沿ってPDF帳票を作ります。必要なときは`帳票を探す`と`帳票を再取得する`
+で、同じPDF帳票をもう一度使えるようにします。

@@ -75,6 +75,14 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
     "examples/human-agent-workspace/architecture-overview.md",
     "examples/human-agent-workspace/handoff-review-flow.md",
+    "examples/pdf-report-system/README.md",
+    "examples/pdf-report-system/domain-overview.md",
+    "examples/pdf-report-system/report-creation-context.md",
+    "examples/pdf-report-system/model-set-index.md",
+    "examples/pdf-report-system/master-model-index.md",
+    "examples/pdf-report-system/master-actor-map.md",
+    "examples/pdf-report-system/master-system-map.md",
+    "examples/pdf-report-system/master-information-model.md",
 ]
 SKILLS = [
     "architecture-modeling",
@@ -283,6 +291,48 @@ def validate_architecture_reader_surface() -> None:
     _validate_sample_links(sample)
 
 
+def validate_pdf_report_reader_surface() -> None:
+    """Keep the PDF sample readable without exposing its authoring method."""
+
+    sample = ROOT / "examples/pdf-report-system"
+    reader_files = ("README.md", "domain-overview.md", "report-creation-context.md")
+    forbidden_tokens = (
+        "RDRA",
+        "BUC",
+        "Activity",
+        "UC",
+        "## モデル",
+        "## 図の業務",
+        "## この図が表していること",
+        "## Master references",
+        "## Supporting model",
+        "model-set-index",
+        "master-model-index",
+        "validation",
+    )
+    for name in reader_files:
+        artifact = sample / name
+        text = artifact.read_text(encoding="utf-8")
+        for token in forbidden_tokens:
+            if token in text:
+                raise ValueError(
+                    f"{artifact.relative_to(ROOT)}: authoring term leaked into reader surface: {token}"
+                )
+
+    overview = (sample / "domain-overview.md").read_text(encoding="utf-8")
+    detail = (sample / "report-creation-context.md").read_text(encoding="utf-8")
+    if overview.count("```mermaid") != 1 or detail.count("```mermaid") != 1:
+        raise ValueError("PDF sample reader pages must contain one Mermaid diagram each")
+    if "b_pdf_reporting --- b_report_ready" not in overview:
+        raise ValueError("PDF overview must show the parent-to-child business relationship")
+    for child in ("b_prepare_report", "b_generate_pdf", "b_retrieve_report", "b_retrieve_pdf"):
+        if child not in overview:
+            raise ValueError(f"PDF overview is missing major child business: {child}")
+    if "[帳票業務の全体](domain-overview.md)" not in detail:
+        raise ValueError("PDF detail page must link back to the parent business")
+    _validate_sample_links(sample)
+
+
 MODEL_SET_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 MODEL_SET_PARENT_RE = re.compile(
     r"^(?P<diagram>[^\s]+\.md)\s*/\s*(?P<node>[a-z][a-z0-9_]*)$"
@@ -424,6 +474,7 @@ def main() -> int:
     validate_thin_icons()
     validate_fde_reader_surface()
     validate_architecture_reader_surface()
+    validate_pdf_report_reader_surface()
     validate_model_set_index("examples/repair-intake/model-set-index.md")
     validate_model_set_index("examples/maakbo-expression-loop/model-set-index.md")
 
@@ -559,6 +610,8 @@ def main() -> int:
         "examples/human-agent-workspace/handoff-review-flow.md",
         "--strict",
     ])
+    run([sys.executable, business, "examples/pdf-report-system/domain-overview.md"])
+    run([sys.executable, business, "examples/pdf-report-system/report-creation-context.md"])
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")
     return 0
 

@@ -41,27 +41,46 @@ Markdown link relative so the source remains portable.
 ## Keep the explanation beside the diagram
 
 Do not force the reader to open a decomposition catalog merely to understand
-what the nodes mean. Immediately below the diagram, add a compact Japanese
-section such as `図の業務` or `この図の業務`.
+what the nodes mean. The default reader-facing contract is:
 
-For each Business node, state one short sentence explaining the transformation
-or outcome. This is where detail belongs; do not push the entire transformation
-into the node label.
+````markdown
+# 普通の業務名
 
-Example:
+短い自然な導入文。
 
-```markdown
-## 図の業務
-
-| 業務 | 何をしているか |
-| --- | --- |
-| **現行理解** | 現在の業務・ルール・例外を、関係者が同じ前提で話せる状態にする。 |
-| [**要件合意**](requirements-flow.md) | 抜けや矛盾を解き、後続が参照できる合意済み要件にする。 |
+```mermaid
+...
 ```
 
-A catalog may still exist as an authoring or reference surface, but the
-reader-facing page must carry enough nearby explanation for a meeting or review
-without switching files.
+この図を読むために必要な1〜3文の説明。
+[親の業務を見る](parent.md) / [詳しい場面を見る](detail.md)
+````
+
+Use the ordinary business name as the page title, show the diagram as soon as
+the reader needs it, and explain only what the diagram cannot carry. A page
+may have several sections and diagrams when each section keeps this same
+contract; do not add method-aware headings, inventories, or tables by default.
+Short lists or tables are fine when they clarify a real relationship that a
+label and a sentence cannot hold.
+
+Keep the compact label and nearby explanation as a pair. Do not push an entire
+transformation into a node label, but do not make a reader open a catalog just
+to learn what a Business node means.
+
+## Parent first, detail second
+
+When a whole Business contains major child Businesses, put the parent, those
+children, and their meaningful relationships on the first discussion surface.
+This gives the reader the semantic center before asking them to open a detail
+View. Link expandable Business nodes to a natural child page and keep a plain
+Markdown link beside or below the diagram as a fallback.
+
+Split into a child View only when the scene changes enough to justify it: the
+participants, provider or recipient, Information, External System,
+responsibility/value boundary, or visual density no longer reads as one
+conversation. Business count alone is not a boundary. A detail View should
+retain a parent link, and discoveries in the detail should be checked back
+against the parent.
 
 ## Reader-facing naming
 
@@ -79,40 +98,6 @@ Prefer a compact semantic name such as:
 The compact label and the adjacent Japanese explanation work as a pair. Do not
 shorten until meaning disappears, but do not make the node carry a sentence.
 Stable IDs retain identity when the public label is refined.
-
-## Reader-facing page pattern
-
-Use this as the default for a published Model / View:
-
-````markdown
-# Business name or reader question
-
-One or two short sentences explaining what this work changes or makes possible.
-
-← [Parent model](...)
-
-## モデル
-
-```mermaid
-...
-```
-
-## 図の業務
-
-A compact table or list that explains each Business in ordinary Japanese.
-Link Business names to child Views when available.
-
-## この図が表していること
-
-Two or three short sentences. Explain only the relationship or reading that
-the diagram and nearby Business descriptions cannot carry.
-
-[Child flow](...) →
-````
-
-The exact Japanese headings may change, but preserve the information order:
-short introduction, parent path, diagram, adjacent business meaning, short
-reading, natural child/supporting links.
 
 ## Sample entry page
 
@@ -146,13 +131,16 @@ changes, and where to go next without reading the authoring history.
 
 Then verify:
 
+- the page starts with an ordinary business name or reader question;
 - the main diagram appears before method or inventory detail;
-- the diagram's Business nodes have compact labels;
-- the meaning of those labels is available immediately below the diagram;
+- the diagram's Business nodes have compact labels and nearby natural
+  explanations;
+- the parent diagram shows major child Businesses and their meaningful
+  relationships before a reader opens detail;
 - expandable Business nodes lead naturally to child Views, with text-link
-  fallbacks;
-- navigation reaches the parent without returning to a separate index;
-- internal analysis lives in the workspace or checkpoint;
+  fallbacks, and detail pages link back to the parent;
+- the page does not require method headings, an index, or authoring history;
+- internal analysis and split reasons live in the workspace or checkpoint;
 - no duplicated `model.md` remains merely as hidden storage;
 - Mermaid visual language and source validation still follow the authoring
   Skill.

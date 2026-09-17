@@ -7,8 +7,8 @@
 
 | View | 役割 | Focus | Parent / expanded node | Child Views |
 | --- | --- | --- | --- | --- |
-| [Domain Overview](domain-overview.md) | Overview | 帳票業務と主要参加者・Information | — | [代表BUC「帳票を用意する」](report-creation-context.md) |
-| [代表BUC「帳票を用意する」](report-creation-context.md) | Detailed Business Context | BUC / Activity / UCと関係要素 | domain-overview.md / b_pdf_reporting | — |
+| [帳票業務の全体](domain-overview.md) | Overview | 帳票業務と主要参加者・Information | — | [帳票を用意する場面](report-creation-context.md) |
+| [帳票を用意する場面](report-creation-context.md) | Detailed Business Context | BUC / Activity / UCと関係要素 | domain-overview.md / b_pdf_reporting | — |
 
 ## Model foundation
 
