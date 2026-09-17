@@ -1,14 +1,15 @@
 # PDF帳票システム — モデル索引
 
 この索引は、current RDRAの小さなdomain modelと、そこから投影したreader-facing Viewをつなぎます。
-最初に図を見る場合は[Domain Overview](domain-overview.md)から始めてください。
+最初に図を見る場合は[PDF帳票システム](README.md)から始めてください。
 
 ## View map
 
 | View | 役割 | Focus | Parent / expanded node | Child Views |
 | --- | --- | --- | --- | --- |
-| [帳票業務の全体](domain-overview.md) | Overview | 帳票業務と主要参加者・Information | — | [帳票を用意する場面](report-creation-context.md) |
-| [帳票を用意する場面](report-creation-context.md) | Detailed Business Context | BUC / Activity / UCと関係要素 | domain-overview.md / b_pdf_reporting | — |
+| [PDF帳票システム](README.md) | Root | 全体図、実現したいこと、業務、情報 | — | [帳票業務の全体](domain-overview.md) |
+| [帳票業務の全体](domain-overview.md) | Business Context | 帳票業務と主要参加者・Information | README.md / b_pdf_reporting | [帳票を用意する場面](report-creation-context.md) |
+| [帳票を用意する場面](report-creation-context.md) | Detailed Business Context | BUC / Activity / UCと関係要素 | domain-overview.md / b_report_ready | — |
 
 ## Model foundation
 

@@ -47,6 +47,11 @@ published model quiet enough for a reader who wants to understand the business.
 - Build the Actor / External System × Business participation matrix and the
   Information × Business create / update / reference / provide matrix before
   editing a Business Context. Project the View from that relationship Model.
+- When a model set has a root page, use it as the canonical upper model set and
+  keep reusable Actor / External System / Information identities aligned with
+  their owning master maps. A detail discovery is a change event: update the
+  root, search the impact surface, propagate to affected Views, and review for
+  stale definitions before closing.
 - Separate an Actor's position from its relations. Position expresses the
   Actor's main value role across the Use Case; each relation expresses direct
   participation in one Business. A left or right Actor may relate to several
@@ -135,6 +140,11 @@ workspace:
 
 Use these matrices as the relationship Model. Do not infer participation from
 where Mermaid places a node.
+
+If a root model set exists, reconcile the root and the master maps before
+projecting detail. Child changes to reusable identity, relation, responsibility,
+or boundary must return to the root and then be propagated to all affected
+Views; record the impact search and review result in the private checkpoint.
 
 ### 6. Author and validate the working model
 

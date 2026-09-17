@@ -108,6 +108,36 @@ A reader should not need to walk through an Actor Requirement, model-set index,
 decomposition catalog, or method page before reaching the main business Views.
 Those supporting artifacts can remain available for modelers and deeper review.
 
+## Root page pattern
+
+A reader-facing root page may gather the upper views that people need to read
+together:
+
+```text
+# Whole-system business name
+[whole-system diagram]
+
+## What it seeks to make possible
+[short natural explanation]
+
+## Business
+### Major business name
+[business diagram]
+[short explanation]
+
+## Information
+[information relationship diagram]
+[short explanation]
+```
+
+Keep the whole-system diagram, business composition, and Information
+relationship diagrams as separate questions on one page. Do not turn them into
+one giant picture or expose model types in the section titles. If the root
+copies reusable Actor, External System, or Information nodes, keep those
+definitions aligned with the owning master maps and use validation to catch
+stale copies. A child discovery that changes an identity or relation returns to
+the root before the child-only edit is considered complete.
+
 ## Editing rules for public prose
 
 - Prefer the reader's language over internal canonical terms. Keep canonical

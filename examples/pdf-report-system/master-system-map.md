@@ -1,6 +1,6 @@
 # PDF帳票システム — External-system master
 
-このsampleのBusiness boundaryの外側にある技術システムを管理します。
+このsampleの業務の外側にある技術システムを管理します。
 
 ```mermaid
 ---
@@ -38,5 +38,5 @@ flowchart TB
 
 ## 読み方
 
-このmasterはシステム間の構造を決めるものではありません。どのBusinessで使われるかは
-[帳票を用意する場面](report-creation-context.md)で確認します。
+このmasterはシステム間の構造を決めるものではありません。PDF帳票システム全体での位置づけは
+[PDF帳票システム](README.md)で、業務での利用場面は[帳票を用意する場面](report-creation-context.md)で確認します。

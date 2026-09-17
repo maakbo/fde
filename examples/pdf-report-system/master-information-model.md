@@ -1,7 +1,7 @@
 # PDF帳票システム — Information master
 
-このsampleで人が参照・確認・共有できるInformationを、stable IDで管理します。Information
-同士の派生・包含関係は今回のscenarioだけでは確定しないため、線は引きません。
+このsampleで人が参照・確認・共有できるInformationを、stable IDで管理します。線は、
+同じ帳票業務で扱う情報の関連を表し、項目や保存方式までは決めません。
 
 ```mermaid
 ---
@@ -29,6 +29,11 @@ flowchart TB
   i_output_condition@{ label: "出力条件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_pdf_report@{ label: "PDF帳票", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
+  i_report_data --- i_report_definition
+  i_report_definition --- i_output_condition
+  i_output_condition --- i_pdf_report
+  i_report_data --- i_pdf_report
+
   class i_report_data,i_report_definition,i_output_condition,i_pdf_report information;
   classDef information fill:none,stroke:none,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
@@ -45,5 +50,6 @@ flowchart TB
 
 ## 読み方
 
-Informationの作成・参照・提供先は、Business Contextの関係として確認します。項目定義や
-保存方式はこのmasterに詰め込みません。
+業務データを帳票仕様と出力条件に合わせ、PDF帳票として確認できるようにします。Informationの
+作成・参照・提供先は、[PDF帳票システム](README.md)と各Business Contextの関係として確認し、
+項目定義や保存方式はこのmasterに詰め込みません。

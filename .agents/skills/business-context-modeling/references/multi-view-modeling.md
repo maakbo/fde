@@ -107,3 +107,22 @@ need only natural links between the relevant Views.
 
 Concrete-to-abstract correction is as important as abstract-to-concrete
 expansion. A child View is evidence about its parent, not a terminal artifact.
+
+## Root as the upper model set
+
+When a model set has a root page, place the whole-system question, major
+Actors, External Systems, Information, and top-level Business composition
+there before opening child Views. Keep one semantic question per diagram, but
+let the root page contain several reader-facing sections when those upper
+views need to be read together.
+
+The root and the reusable element masters have explicit ownership. The root is
+the canonical upper projection; the Actor / External System / Information
+master maps own the exact stable identity definitions. Child Contexts and
+Flows copy those definitions and must not silently create a local synonym.
+
+Treat a child discovery as a change event rather than a local correction. Feed
+the change back to the root and owning master, search all stable-ID and label
+uses, enumerate affected parent / child / sibling Views, update them, and run
+source validation, link/privacy checks, visual review, and a fresh-context
+consistency review before marking the batch complete.

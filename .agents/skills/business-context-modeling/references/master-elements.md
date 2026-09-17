@@ -34,6 +34,23 @@ direct Business-to-Business relation may express observed scene continuity.
 - A **split** discovers concepts that cannot share one meaning: create stable IDs for the new concepts and trace each to the former candidate or ID.
 - A **merge** is valid only when evidence shows the same concept, responsibility, state, boundary, and abstraction level: record the canonical survivor, absorbed identities, and evidence rather than silently collapsing them.
 
+## Root model and ownership
+
+When a model set has a reader-facing root page, treat it as the canonical upper
+model set: it states the whole-system boundary, the major Actors, External
+Systems, Information, and top-level Business questions. The corresponding
+master maps remain the exact identity registry for reusable `a_`, `x_`, and
+`i_` node definitions. The root page is a canonical projection of those maps,
+not a second independent registry; keep its copied IDs, labels, icons, sizes,
+and classes identical and validate the match.
+
+Child Contexts and Flows reuse the root/master identity. They do not redefine a
+reusable element for local layout or wording. If a child discovers a genuinely
+new meaning, rename, split, merge, responsibility, or relationship, treat it
+as a model change event: update the root and owning master map, search the
+affected Views, then update every affected child and sibling before closing
+the work.
+
 Mermaid has no native import for another Markdown diagram. “Reference” means
 copying the canonical node identity and recording the link explicitly:
 
@@ -111,6 +128,28 @@ cardinality, evidence, and uncertainty in companion prose or a small table.
    create a focused child view and trace it back to the master ID.
 6. Record master views alongside overview, observation, focused context, and
    flow views in the model-set index.
+
+## Change propagation and impact analysis
+
+Detail is evidence about the root, not a terminal local artifact. For every
+change event, keep this loop explicit:
+
+```text
+child discovery
+  -> root / owning master update
+  -> stable ID, label, relation, and boundary check
+  -> search IDs, old labels, aliases, links, and view indexes
+  -> enumerate affected root / parent / child / sibling Views
+  -> update diagrams, prose, navigation, and checker expectations
+  -> run source checkers, repository validation, link/privacy checks, and visual review
+  -> fresh-context review for stale definitions or missed propagation
+```
+
+At minimum, search stable IDs, canonical and previous labels, parent/child
+links, context and flow diagrams, information views, optional stakeholder or
+system maps, model-set indexes, and validator fixtures. A clean local diff is
+not evidence that the model is consistent; the result and private checkpoint
+should state the impact search and review outcome.
 
 Do not force a master node merely because a familiar role, product, or data
 object is common elsewhere. Keep `unresolved` candidates visible until the

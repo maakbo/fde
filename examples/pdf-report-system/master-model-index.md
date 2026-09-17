@@ -15,6 +15,9 @@ Actor、External System、Informationは、Business / BUC / Activity / UCとは�
 
 | Context view | Selected IDs | Selection reason |
 | --- | --- | --- |
+| [PDF帳票システム](README.md) | `a_report_user`, `a_report_owner` | システム全体で関わる主要な人 |
+| [PDF帳票システム](README.md) | `x_business_system` | 業務データを提供する主要な外部システム |
+| [PDF帳票システム](README.md) | `i_report_data`, `i_report_definition`, `i_output_condition`, `i_pdf_report` | システム全体で扱う主要な情報 |
 | [Domain Overview](domain-overview.md) | `a_report_user`, `a_report_owner` | 帳票業務の主要な参加者 |
 | [Domain Overview](domain-overview.md) | `x_business_system` | 業務データを提供する外部システム |
 | [Domain Overview](domain-overview.md) | `i_report_data`, `i_pdf_report` | 俯瞰に必要な入力と成果 |
