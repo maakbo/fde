@@ -27,6 +27,7 @@ flowchart LR
   x_business_system@{ label: "業務システム", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_report_data@{ label: "業務データ", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_pdf_reporting@{ label: "帳票業務", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  p_report_purpose(["必要な情報を、確認しやすい帳票にする"])
   i_pdf_report@{ label: "PDF帳票", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   a_report_owner@{ label: "業務責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
@@ -35,14 +36,17 @@ flowchart LR
   i_report_data --- b_pdf_reporting
   b_pdf_reporting --- i_pdf_report
   b_pdf_reporting --- a_report_owner
+  b_pdf_reporting --- p_report_purpose
 
   class a_report_user,a_report_owner actor;
   class b_pdf_reporting business;
+  class p_report_purpose purpose;
   class i_report_data,i_pdf_report information;
   class x_business_system external;
 
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
+  classDef purpose fill:#FFFFFF,stroke:#9E988E,color:#25231F,stroke-width:0.75px;
   classDef information fill:none,stroke:none,color:#5F5A52;
   classDef external fill:none,stroke:none,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
@@ -51,6 +55,46 @@ flowchart LR
 業務担当が業務システムのデータを使って帳票を用意し、業務責任者が内容を確認します。
 
 ## 実現したいこと
+
+```mermaid
+---
+title: 実現したいこと
+config:
+  layout: dagre
+  theme: neutral
+  flowchart:
+    curve: basis
+    diagramPadding: 40
+    htmlLabels: false
+    nodeSpacing: 64
+    rankSpacing: 80
+    padding: 8
+  themeVariables:
+    background: "#FFFFFF"
+    lineColor: "#9E988E"
+    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontSize: "14px"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
+---
+flowchart LR
+  a_report_user@{ label: "業務担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_report_owner@{ label: "業務責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  p_report_user_goal(["必要な情報を、確認しやすく整えたい"])
+  p_report_owner_goal(["帳票の内容を確かめたい"])
+  p_report_shared_outcome(["同じ内容を見ながら進めたい"])
+
+  a_report_user --- p_report_user_goal
+  a_report_owner --- p_report_owner_goal
+  p_report_user_goal --- p_report_shared_outcome
+  p_report_owner_goal --- p_report_shared_outcome
+
+  class a_report_user,a_report_owner actor;
+  class p_report_user_goal,p_report_owner_goal,p_report_shared_outcome purpose;
+
+  classDef actor fill:none,stroke:none,color:#25231F;
+  classDef purpose fill:#FFFFFF,stroke:#9E988E,color:#25231F,stroke-width:0.75px;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px;
+```
 
 業務で必要な情報を、確認しやすいPDF帳票として用意する。業務担当と業務責任者が、
 同じ内容を見ながら仕事を進められる状態をつくります。

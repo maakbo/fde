@@ -39,6 +39,30 @@ when order matters, or as a recursive Detailed Business Context when its
 sub-Businesses and boundaries matter. Keep the parent View and expanded
 Business ID in the authoring trace.
 
+## Purpose and note nodes
+
+Whole-system and Purpose / Outcome Views may use a small `p_` note node when a
+purpose, background, desired state, or actor intention must be visible in the
+diagram itself:
+
+```mermaid
+flowchart LR
+  a_actor@{ label: "担当者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  p_intention(["必要な情報を、確認しやすく整えたい"])
+  a_actor --- p_intention
+
+  class a_actor actor;
+  class p_intention purpose;
+  classDef actor fill:none,stroke:none,color:#25231F;
+  classDef purpose fill:#FFFFFF,stroke:#9E988E,color:#25231F,stroke-width:0.75px;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px;
+```
+
+The note is View-local reader language, not a reusable Actor, Information, or
+Business identity. Keep it short enough to read at a glance, do not use it as
+an invented Information bridge, and keep the purpose / background wording
+grounded in the Business Story.
+
 ## Node IDs and icons
 
 Use stable `prefix_lower_snake_case` IDs.

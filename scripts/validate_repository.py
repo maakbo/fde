@@ -331,8 +331,8 @@ def validate_pdf_report_reader_surface() -> None:
     for heading in required_headings:
         if heading not in root_page:
             raise ValueError(f"PDF root page is missing reader section: {heading}")
-    if root_page.count("```mermaid") != 3:
-        raise ValueError("PDF root page must contain exactly three Mermaid views")
+    if root_page.count("```mermaid") != 4:
+        raise ValueError("PDF root page must contain exactly four Mermaid views")
 
     overview = (sample / "domain-overview.md").read_text(encoding="utf-8")
     detail = (sample / "report-creation-context.md").read_text(encoding="utf-8")
@@ -351,8 +351,45 @@ def validate_pdf_report_reader_surface() -> None:
         root_page,
         flags=re.MULTILINE | re.DOTALL,
     )
-    if len(blocks) != 3:
+    if len(blocks) != 4:
         raise ValueError("PDF root page Mermaid blocks could not be extracted")
+    purpose_block = blocks[1]
+    purpose_nodes = set(
+        re.findall(r"^\s{2}(p_[a-z][a-z0-9_]*)\(\[\"", purpose_block, re.MULTILINE)
+    )
+    if len(purpose_nodes) < 3:
+        raise ValueError("PDF purpose view must include at least three reader-facing notes")
+    for actor_id in ("a_report_user", "a_report_owner"):
+        if actor_id not in purpose_block:
+            raise ValueError(f"PDF purpose view is missing actor intention for {actor_id}")
+    if "p_report_shared_outcome" not in purpose_nodes:
+        raise ValueError("PDF purpose view must show the shared desired outcome")
+    if "p_report_purpose" not in blocks[0]:
+        raise ValueError("PDF whole-system view must show an in-diagram purpose note")
+    purpose_edge_re = re.compile(
+        r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+---\s+"
+        r"(?P<right>[a-z][a-z0-9_]*)\s*$"
+    )
+    purpose_edges = {
+        tuple(sorted((match.group("left"), match.group("right"))))
+        for line in purpose_block.splitlines()
+        if (match := purpose_edge_re.match(line))
+    }
+    required_purpose_edges = {
+        tuple(sorted(edge))
+        for edge in (
+            ("a_report_user", "p_report_user_goal"),
+            ("a_report_owner", "p_report_owner_goal"),
+            ("p_report_user_goal", "p_report_shared_outcome"),
+            ("p_report_owner_goal", "p_report_shared_outcome"),
+        )
+    }
+    if not required_purpose_edges <= purpose_edges:
+        missing = sorted(required_purpose_edges - purpose_edges)
+        raise ValueError(
+            "PDF purpose view is missing intended actor/goal/outcome relationships: "
+            + ", ".join(f"{left} --- {right}" for left, right in missing)
+        )
 
     canonical_node_re = re.compile(
         r'^\s{2}(?P<id>[a-z][a-z0-9_]*)@\{\s*'
@@ -379,7 +416,7 @@ def validate_pdf_report_reader_surface() -> None:
         return definitions
 
     root_nodes = node_definitions(root_page)
-    root_business_nodes = node_definitions(blocks[1])
+    root_business_nodes = node_definitions(blocks[2])
     domain_nodes = node_definitions(overview)
     detail_nodes = node_definitions(detail)
     master_nodes: dict[str, str] = {}
@@ -441,7 +478,7 @@ def validate_pdf_report_reader_surface() -> None:
                 result.add((left, connector, right))
         return result
 
-    root_business_edges = edges(blocks[1])
+    root_business_edges = edges(blocks[2])
     overview_edges = edges(
         re.search(
             r"^```mermaid[ \t]*\r?\n(?P<body>.*?)^```[ \t]*$",
@@ -451,7 +488,7 @@ def validate_pdf_report_reader_surface() -> None:
     )
     if root_business_edges != overview_edges:
         raise ValueError("PDF root business view diverges from domain-overview relationships")
-    root_information_edges = edges(blocks[2])
+    root_information_edges = edges(blocks[3])
     information_master = (sample / "master-information-model.md").read_text(encoding="utf-8")
     information_master_block = re.search(
         r"^```mermaid[ \t]*\r?\n(?P<body>.*?)^```[ \t]*$",
@@ -473,7 +510,7 @@ def validate_pdf_report_reader_surface() -> None:
             temporary_files.append(path)
             run([sys.executable, str(context), str(path), "--strict"])
         run([sys.executable, str(business), str(temporary_files[0])])
-        run([sys.executable, str(business), str(temporary_files[1])])
+        run([sys.executable, str(business), str(temporary_files[2])])
     _validate_sample_links(sample)
 
 

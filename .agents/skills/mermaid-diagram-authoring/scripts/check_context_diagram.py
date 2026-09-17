@@ -23,6 +23,9 @@ NODE_RE = re.compile(
     r'h:\s*(?P<h>\d+),\s*'
     r'constraint:\s*"on"\s*\}\s*$'
 )
+PURPOSE_NODE_RE = re.compile(
+    r'^\s{2}(?P<id>p_[a-z][a-z0-9_]*)\(\["(?P<label>[^"]*)"\]\)\s*$'
+)
 UNDIRECTED_EDGE_RE = re.compile(
     r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+---\s+"
     r"(?P<right>[a-z][a-z0-9_]*)\s*$"
@@ -59,6 +62,7 @@ CANONICAL_CLASS_STYLES = {
     "business": "fill:none,stroke:none,color:#25231F",
     "information": "fill:none,stroke:none,color:#5F5A52",
     "external": "fill:none,stroke:none,color:#5F5A52",
+    "purpose": "fill:#FFFFFF,stroke:#9E988E,color:#25231F,stroke-width:0.75px",
 }
 
 ICON_RULES = {
@@ -146,7 +150,16 @@ def main() -> int:
     for number, line in enumerate(lines, source.start_line):
         if line.strip().startswith("%%"):
             continue
-        if match := NODE_RE.match(line):
+        if match := PURPOSE_NODE_RE.match(line):
+            node_id = match.group("id")
+            if node_id in nodes:
+                errors.append(f"line {number}: duplicate node {node_id}")
+            nodes[node_id] = {
+                "label": match.group("label"),
+                "kind": "purpose",
+            }
+            node_lines.append(number)
+        elif match := NODE_RE.match(line):
             node_id = match.group("id")
             if node_id in nodes:
                 errors.append(f"line {number}: duplicate node {node_id}")
@@ -154,6 +167,7 @@ def main() -> int:
                 "img": match.group("img"),
                 "label": match.group("label"),
                 "size": (int(match.group("w")), int(match.group("h"))),
+                "kind": "image",
             }
             node_lines.append(number)
         elif match := DIRECTED_EDGE_RE.match(line):
@@ -236,10 +250,16 @@ def main() -> int:
             errors.append(f"{node_id}: use prefix_lower_snake_case")
             continue
         prefix = node_id.split("_", 1)[0]
-        image = str(data["img"])
-        size = data["size"]
+        image = str(data.get("img", ""))
+        size = data.get("size")
         expected_class: str | None = None
-        if prefix in ICON_RULES:
+        if prefix == "p":
+            expected_class = "purpose"
+            if data.get("kind") != "purpose":
+                errors.append(
+                    f"{node_id}: purpose nodes use the note form `p_id([\"text\"])`, not an image node"
+                )
+        elif prefix in ICON_RULES:
             expected_icon, expected_size, expected_class = ICON_RULES[prefix]
             if image != expected_icon:
                 errors.append(f"{node_id}: use {expected_icon}")
@@ -256,7 +276,7 @@ def main() -> int:
         label = str(data["label"])
         if not label:
             errors.append(f"{node_id}: label must not be empty")
-        elif label_too_long(label):
+        elif prefix != "p" and label_too_long(label):
             warnings.append(f"{node_id}: shorten label `{label}`")
         if "<br" in label.lower():
             errors.append(f"{node_id}: keep labels on one plain-text line")
