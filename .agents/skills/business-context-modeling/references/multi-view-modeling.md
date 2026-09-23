@@ -37,6 +37,14 @@ Overall / Business Map
                       -> further detail when useful
 ```
 
+When familiar project phases provide an entry point, add a phase index above
+or beside these Views. It maps phases to relevant Business IDs without making
+phases semantic parents. A Business may appear under multiple phases, and its
+child Businesses remain linked to that Business even when they cross a phase
+boundary. Task procedures sit below the selected Business only where real
+execution or teaching needs them; they are not another mandatory diagram
+level. See [work-grain-and-handoffs.md](work-grain-and-handoffs.md).
+
 An Overall Context or Business Map names the whole and its major capabilities.
 A Business Context selects one coherent scene and shows its Business backbone,
 Actors, Information, and External Systems. Each Business node can expand in one
