@@ -107,7 +107,7 @@ flowchart LR
 
 ## 業務
 
-### 開発業務の全体
+### 工程から業務を探す
 
 ```mermaid
 ---
@@ -169,7 +169,7 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-ここでは、13工程の詳細をそのまま標準工程として押し出さず、会話を始めやすい代表的な業務を見せています。全工程の候補と分解は [業務マップ](business-map.md) と [業務分解カタログ](decomposition-catalog.md) で確認します。順番や差戻しを問うときは、各業務の詳細ページや流れのページへ降ります。
+ここでは馴染みのある工程名を、業務を探すための入口として見せています。工程は業務の親ではなく、図の線も順番を表しません。工程ごとの候補は [工程の地図](business-map.md) と [工程ごとの業務候補](decomposition-catalog.md) から見ます。業務を選ぶと、その業務を構成する活動・人・情報・システムへ降り、必要なところだけ作業手順まで具体化します。
 
 ## 情報
 
@@ -222,7 +222,7 @@ flowchart LR
 
 ## 関連するView
 
-- [業務マップ](business-map.md) — 13工程を固定標準ではなく、開発業務を話すための候補として見る
+- [工程の地図](business-map.md) — 13工程を入口に、具体的な業務を探す
 - [要件定義のContext](requirements-context.md) — 業務要件とシステム要件の境界を見る
 - [実装・単体のContext](implementation-unit-context.md) — 設計をコードと単体確認へ変える場面を見る
 - [外部結合のContext](external-integration-context.md) — 外部との契約・検証・責任境界を見る

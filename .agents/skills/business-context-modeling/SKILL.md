@@ -29,6 +29,14 @@ published model quiet enough for a reader who wants to understand the business.
 - Keep a Business Map of constituent capabilities separate from a Business
   Flow. A map shows composition or relationships; a flow shows order,
   decisions, and rework.
+- Distinguish the scope of work (purpose and accountability), phases (when a
+  team commonly encounters the work), Business activities (outcome-producing
+  responsibilities), and tasks (concrete actions). A phase may help readers
+  navigate, but it is not the parent of a Business activity in the semantic
+  model. Decompose a Business into child Businesses as many times as the
+  responsibility and outcome warrant. Read
+  [work-grain-and-handoffs.md](references/work-grain-and-handoffs.md) when
+  phases, tasks, or a transfer of work appear in the request.
 - Reuse the structure of a reader-facing page, not the semantic structure of
   its diagram. Re-derive Actors, Information, relationships, and the Context
   variant from each Business Story.
@@ -75,6 +83,9 @@ Read only the references needed for the task:
 - [multi-view-modeling.md](references/multi-view-modeling.md): distinguish Model
   from View, choose Purpose / Map / Context / Flow views, and keep upward and
   downward trace.
+- [work-grain-and-handoffs.md](references/work-grain-and-handoffs.md): separate
+  work, phases, recursively decomposed Business, and tasks; model responsibility
+  transfer and prepare task-level teaching.
 - [reader-facing-artifacts.md](references/reader-facing-artifacts.md): separate
   the modeling workspace from a public sample and edit for business readers.
 
@@ -88,6 +99,10 @@ notation and source-only validation of each diagram.
 Infer the purpose, first reader, business boundary, state, and the one question
 the current View should answer. Ask at most one blocking question; make a
 reviewable version zero when the language already supports one.
+
+If a phase vocabulary helps readers enter, map observed activities to phases
+as an index, including cross-phase activities and rework. Do not substitute
+phase names for outcome-sized Business names or assume a waterfall sequence.
 
 ### 2. Build the Business Story in the workspace
 
@@ -123,6 +138,12 @@ reader's question, such as:
 - Business Flow: what order, decision, or rework occurs inside one Context.
 
 Do not make one diagram answer all levels.
+
+For a handoff, show why the work exists, what outcome and decision remain
+necessary, the current and receiving responsibilities, and the information
+needed to perform it before listing operations. Only then expand the selected
+Business into demonstrated tasks, exceptions, escalation, and a teach-back
+check. Mark unknown ownership and task details as unconfirmed.
 
 ### 5. Reconcile reusable elements
 
