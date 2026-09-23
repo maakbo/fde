@@ -29,6 +29,7 @@ config:
 flowchart TB
   a_business_user@{ label: "業務担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_ba@{ label: "要件担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_system_engineer@{ label: "システムエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_business_owner@{ label: "業務責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_developer@{ label: "開発者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_dev_lead@{ label: "開発PL", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
@@ -37,7 +38,7 @@ flowchart TB
   a_release_manager@{ label: "リリース責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_ops@{ label: "運用担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
-  class a_business_user,a_ba,a_business_owner,a_developer,a_dev_lead,a_tester,a_external_system_owner,a_release_manager,a_ops actor;
+  class a_business_user,a_ba,a_system_engineer,a_business_owner,a_developer,a_dev_lead,a_tester,a_external_system_owner,a_release_manager,a_ops actor;
   classDef actor fill:none,stroke:none,color:#25231F;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
@@ -54,6 +55,7 @@ flowchart TB
 | `a_business_user` | ユーザー / 業務担当者 | 実業務を実行し、業務適合性を評価する | UATでは中心 Actor になりうる |
 | `a_pm` | PM | 全体計画、進捗、費用、品質、意思決定を統合する | 発注側PMと開発側PMを分ける場合がある |
 | `a_pmo` | PMO | 計画・実績・課題・会議体の統制を支援する | PMの責任そのものとは分ける |
+| `a_system_engineer` | システムエンジニア | 業務の期待を要件・設計・実装・検証のつながった判断へ変換する | synthetic sampleの主要Actor。案件ごとにBA、アーキテクト、開発PLなどへ分担しうる |
 | `a_dev_lead` | 開発PL | 開発チームの設計・実装・試験を統率する | アーキテクトとの責任境界を要確認 |
 | `a_ba` | BA / 要件担当 | 要求を業務・システム要件へ構造化する | システム企画、業務主管との協働が中心 |
 | `a_architect` | アーキテクト | 構造・非機能・技術方式・横断整合を担う | 基本設計だけでなく要件〜導入を横断する |

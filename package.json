@@ -6,9 +6,9 @@
   "license": "MIT",
   "scripts": {
     "validate": "python3 scripts/validate_repository.py",
-    "export:overview": "python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py examples/repair-intake/overview.md --type flow",
-    "export:context": "python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py examples/repair-intake/context.md --type context",
-    "export:flow": "python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py examples/repair-intake/flow.md --type flow",
+    "export:overview": "python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py examples/system-development/business-map.md --type context",
+    "export:context": "python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py examples/system-development/requirements-context.md --type context",
+    "export:flow": "python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py examples/system-development/requirements-alignment-flow.md --type flow",
     "export:examples": "npm run export:overview && npm run export:context && npm run export:flow"
   },
   "devDependencies": {

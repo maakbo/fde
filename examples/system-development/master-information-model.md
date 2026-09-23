@@ -31,7 +31,7 @@ config:
 flowchart TB
   i_current_business@{ label: "現行業務", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_business_requirement@{ label: "業務要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  i_report_specification@{ label: "帳票仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_external_specification@{ label: "外部仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_system_requirement@{ label: "システム要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_external_interface_requirement@{ label: "外部IF要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_acceptance_criteria@{ label: "受入条件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
@@ -51,7 +51,7 @@ flowchart TB
   i_business_validation_result@{ label: "業務確認結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_runbook@{ label: "運用手順", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  class i_current_business,i_business_requirement,i_report_specification,i_system_requirement,i_external_interface_requirement,i_acceptance_criteria,i_internal_specification,i_unit_test_viewpoint,i_source_code,i_unit_test_result,i_build_artifact,i_external_test_specification,i_interface_specification,i_connection_condition,i_exchange_evidence,i_external_test_result,i_release_scope,i_release_plan,i_known_issue,i_business_validation_result,i_runbook information;
+  class i_current_business,i_business_requirement,i_external_specification,i_system_requirement,i_external_interface_requirement,i_acceptance_criteria,i_internal_specification,i_unit_test_viewpoint,i_source_code,i_unit_test_result,i_build_artifact,i_external_test_specification,i_interface_specification,i_connection_condition,i_exchange_evidence,i_external_test_result,i_release_scope,i_release_plan,i_known_issue,i_business_validation_result,i_runbook information;
   classDef information fill:none,stroke:none,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
@@ -103,7 +103,7 @@ flowchart TB
 | --- | --- | --- |
 | `i_external_specification` | 外部仕様 | 利用者・外部システムから見た振る舞い |
 | `i_ui_specification` | UI仕様 | 画面、操作、表示、入力の仕様 |
-| `i_report_specification` | 帳票仕様 | 帳票の内容・形式・出力条件 |
+| `i_report_specification` | 成果物仕様 | 成果物の内容・形式・出力条件 |
 | `i_api_specification` | API仕様 | APIの入出力・契約 |
 | `i_interface_specification` | 外部IF仕様 | ファイル・メッセージ等の連携契約 |
 | `i_logical_data_model` | 論理データモデル | 業務概念をシステム情報へ構造化したモデル |
@@ -244,7 +244,7 @@ flowchart TB
 # 特にレビューしたい Information 境界
 
 1. `i_system_requirement` と `i_functional_requirement` を親子概念として分ける意味があるか。
-2. `i_external_specification` は一つの概念か、UI / API / 帳票 / バッチ等の集合を指すラベルに留めるか。
+2. `i_external_specification` は一つの概念か、UI / API / 成果物 / バッチ等の集合を指すラベルに留めるか。
 3. `i_architecture_design` は Information か、それとも複数 Information の View か。
 4. 「テスト仕様」と「テストケース」「テストシナリオ」を同じ粒度に置いてよいか。
 5. `i_configuration_baseline` は独立 Information か、複数構成情報を束ねる識別概念か。

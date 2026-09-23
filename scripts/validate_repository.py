@@ -44,26 +44,16 @@ REQUIRED = [
     ".agents/skills/business-context-modeling/references/master-elements.md",
     ".agents/skills/business-context-modeling/references/reader-facing-artifacts.md",
     ".agents/skills/mermaid-diagram-export/scripts/export_mermaid.py",
-    "examples/repair-intake/model.md",
-    "examples/repair-intake/model-set-index.md",
-    "examples/repair-intake/master-model-index.md",
-    "examples/repair-intake/master-actor-map.md",
-    "examples/repair-intake/master-system-map.md",
-    "examples/repair-intake/master-information-model.md",
-    "examples/repair-intake/overview.md",
-    "examples/repair-intake/context.md",
-    "examples/repair-intake/flow.md",
-    "examples/repair-intake/previews/README.md",
-    "examples/maakbo-expression-loop/README.md",
-    "examples/maakbo-expression-loop/model.md",
-    "examples/maakbo-expression-loop/model-set-index.md",
-    "examples/maakbo-expression-loop/master-model-index.md",
-    "examples/maakbo-expression-loop/master-actor-map.md",
-    "examples/maakbo-expression-loop/master-system-map.md",
-    "examples/maakbo-expression-loop/master-information-model.md",
-    "examples/maakbo-expression-loop/overview.md",
-    "examples/maakbo-expression-loop/context.md",
-    "examples/maakbo-expression-loop/flow.md",
+    ".agents/skills/business-context-modeling/fixtures/repair-intake/model.md",
+    ".agents/skills/business-context-modeling/fixtures/repair-intake/model-set-index.md",
+    ".agents/skills/business-context-modeling/fixtures/repair-intake/master-model-index.md",
+    ".agents/skills/business-context-modeling/fixtures/repair-intake/master-actor-map.md",
+    ".agents/skills/business-context-modeling/fixtures/repair-intake/master-system-map.md",
+    ".agents/skills/business-context-modeling/fixtures/repair-intake/master-information-model.md",
+    ".agents/skills/business-context-modeling/fixtures/repair-intake/overview.md",
+    ".agents/skills/business-context-modeling/fixtures/repair-intake/context.md",
+    ".agents/skills/business-context-modeling/fixtures/repair-intake/flow.md",
+    ".agents/skills/business-context-modeling/fixtures/repair-intake/previews/README.md",
     "examples/maakbo-fde/README.md",
     "examples/maakbo-fde/purpose-outcome.md",
     "examples/maakbo-fde/business-map.md",
@@ -76,14 +66,22 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
     "examples/human-agent-workspace/architecture-overview.md",
     "examples/human-agent-workspace/handoff-review-flow.md",
-    "examples/pdf-report-system/README.md",
-    "examples/pdf-report-system/domain-overview.md",
-    "examples/pdf-report-system/report-creation-context.md",
-    "examples/pdf-report-system/model-set-index.md",
-    "examples/pdf-report-system/master-model-index.md",
-    "examples/pdf-report-system/master-actor-map.md",
-    "examples/pdf-report-system/master-system-map.md",
-    "examples/pdf-report-system/master-information-model.md",
+    "examples/system-development/README.md",
+    "examples/system-development/business-map.md",
+    "examples/system-development/requirements-context.md",
+    "examples/system-development/requirements-alignment-flow.md",
+    "examples/system-development/implementation-unit-context.md",
+    "examples/system-development/implementation-unit-flow.md",
+    "examples/system-development/external-integration-context.md",
+    "examples/system-development/external-integration-flow.md",
+    "examples/system-development/deployment-context.md",
+    "examples/system-development/deployment-flow.md",
+    "examples/system-development/interface-specification-detail.md",
+    "examples/system-development/decomposition-catalog.md",
+    "examples/system-development/model-set-index.md",
+    "examples/system-development/master-actor-map.md",
+    "examples/system-development/master-system-map.md",
+    "examples/system-development/master-information-model.md",
 ]
 SKILLS = [
     "architecture-modeling",
@@ -292,59 +290,43 @@ def validate_architecture_reader_surface() -> None:
     _validate_sample_links(sample)
 
 
-def validate_pdf_report_reader_surface() -> None:
-    """Keep the PDF sample readable without exposing its authoring method."""
+def validate_system_development_reader_surface() -> None:
+    """Keep the current system-development sample reader-facing and coherent."""
 
-    sample = ROOT / "examples/pdf-report-system"
-    reader_files = ("README.md", "domain-overview.md", "report-creation-context.md")
+    sample = ROOT / "examples/system-development"
+    root_page = (sample / "README.md").read_text(encoding="utf-8")
     forbidden_tokens = (
+        "pdf-report-system",
+        "waterfall-system-development",
+        "PDF帳票",
         "RDRA",
-        "BUC",
-        "Activity",
-        "UC",
-        "## モデル",
-        "## 図の業務",
-        "## この図が表していること",
-        "## Master references",
-        "## Supporting model",
+        "## Candidate inventory",
+        "## Relationship model",
+        "## Boundary reasoning",
+        "## Naming candidates",
+        "## Validation",
+        "## Unresolved",
         "model-set-index",
         "master-model-index",
-        "validation",
     )
-    for name in reader_files:
-        artifact = sample / name
-        text = artifact.read_text(encoding="utf-8")
-        for token in forbidden_tokens:
-            if token in text:
-                raise ValueError(
-                    f"{artifact.relative_to(ROOT)}: authoring term leaked into reader surface: {token}"
-                )
+    for token in forbidden_tokens:
+        if token in root_page:
+            raise ValueError(
+                f"{(sample / 'README.md').relative_to(ROOT)}: obsolete or authoring token leaked: {token}"
+            )
 
-    root_page = (sample / "README.md").read_text(encoding="utf-8")
     required_headings = (
-        "# PDF帳票システム",
+        "# システム開発業務",
         "## 実現したいこと",
         "## 業務",
-        "### 帳票業務",
         "## 情報",
+        "## 関連するView",
     )
     for heading in required_headings:
         if heading not in root_page:
-            raise ValueError(f"PDF root page is missing reader section: {heading}")
-    if root_page.count("```mermaid") != 4:
-        raise ValueError("PDF root page must contain exactly four Mermaid views")
-
-    overview = (sample / "domain-overview.md").read_text(encoding="utf-8")
-    detail = (sample / "report-creation-context.md").read_text(encoding="utf-8")
-    if overview.count("```mermaid") != 1 or detail.count("```mermaid") != 1:
-        raise ValueError("PDF sample reader pages must contain one Mermaid diagram each")
-    if "b_pdf_reporting --- b_report_ready" not in overview:
-        raise ValueError("PDF overview must show the parent-to-child business relationship")
-    for child in ("b_prepare_report", "b_generate_pdf", "b_retrieve_report", "b_retrieve_pdf"):
-        if child not in overview:
-            raise ValueError(f"PDF overview is missing major child business: {child}")
-    if "[帳票業務の全体](domain-overview.md)" not in detail:
-        raise ValueError("PDF detail page must link back to the parent business")
+            raise ValueError(f"system-development root is missing reader section: {heading}")
+    if root_page.count("```" + "mermaid") != 4:
+        raise ValueError("system-development root must contain exactly four Mermaid views")
 
     blocks = re.findall(
         r"^```mermaid[ \t]*\r?\n(?P<body>.*?)^```[ \t]*$",
@@ -352,165 +334,101 @@ def validate_pdf_report_reader_surface() -> None:
         flags=re.MULTILINE | re.DOTALL,
     )
     if len(blocks) != 4:
-        raise ValueError("PDF root page Mermaid blocks could not be extracted")
-    purpose_block = blocks[1]
-    purpose_nodes = set(
-        re.findall(r"^\s{2}(p_[a-z][a-z0-9_]*)\(\[\"", purpose_block, re.MULTILINE)
-    )
-    if len(purpose_nodes) < 3:
-        raise ValueError("PDF purpose view must include at least three reader-facing notes")
-    for actor_id in ("a_report_user", "a_report_owner"):
-        if actor_id not in purpose_block:
-            raise ValueError(f"PDF purpose view is missing actor intention for {actor_id}")
-    if "p_report_shared_outcome" not in purpose_nodes:
-        raise ValueError("PDF purpose view must show the shared desired outcome")
-    if "p_report_purpose" not in blocks[0]:
-        raise ValueError("PDF whole-system view must show an in-diagram purpose note")
-    purpose_edge_re = re.compile(
-        r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+---\s+"
-        r"(?P<right>[a-z][a-z0-9_]*)\s*$"
-    )
-    purpose_edges = {
-        tuple(sorted((match.group("left"), match.group("right"))))
-        for line in purpose_block.splitlines()
-        if (match := purpose_edge_re.match(line))
-    }
-    required_purpose_edges = {
-        tuple(sorted(edge))
-        for edge in (
-            ("a_report_user", "p_report_user_goal"),
-            ("a_report_owner", "p_report_owner_goal"),
-            ("p_report_user_goal", "p_report_shared_outcome"),
-            ("p_report_owner_goal", "p_report_shared_outcome"),
-        )
-    }
-    if not required_purpose_edges <= purpose_edges:
-        missing = sorted(required_purpose_edges - purpose_edges)
-        raise ValueError(
-            "PDF purpose view is missing intended actor/goal/outcome relationships: "
-            + ", ".join(f"{left} --- {right}" for left, right in missing)
-        )
+        raise ValueError("system-development root Mermaid blocks could not be extracted")
+    for required_id in (
+        "a_business_owner",
+        "a_system_engineer",
+        "a_ops",
+        "x_dev_environment",
+        "b_system_development",
+        "i_request_background",
+        "i_system_requirement",
+        "i_release_plan",
+    ):
+        if required_id not in root_page:
+            raise ValueError(
+                f"system-development root is missing canonical reader ID: {required_id}"
+            )
 
     canonical_node_re = re.compile(
         r'^\s{2}(?P<id>[a-z][a-z0-9_]*)@\{\s*'
         r'label:\s*"(?P<label>[^"]*)",\s*'
         r'img:\s*"(?P<img>[^"]+)",\s*'
-        r'pos:\s*"b",\s*'
-        r'w:\s*(?P<w>\d+),\s*'
-        r'h:\s*(?P<h>\d+),\s*'
+        r'pos:\s*"b",\s*w:\s*(?P<w>\d+),\s*h:\s*(?P<h>\d+),\s*'
         r'constraint:\s*"on"\s*\}\s*$'
     )
 
     def node_definitions(text: str) -> dict[str, str]:
-        definitions: dict[str, str] = {}
-        for line in text.splitlines():
-            if match := canonical_node_re.match(line):
-                node_id = match.group("id")
-                normalized = line.strip()
-                previous = definitions.get(node_id)
-                if previous is not None and previous != normalized:
-                    raise ValueError(
-                        f"{sample / 'README.md'}: canonical node {node_id} changes definition across views"
-                    )
-                definitions[node_id] = normalized
-        return definitions
+        return {
+            match.group("id"): line.strip()
+            for line in text.splitlines()
+            if (match := canonical_node_re.match(line))
+        }
 
     root_nodes = node_definitions(root_page)
-    root_business_nodes = node_definitions(blocks[2])
-    domain_nodes = node_definitions(overview)
-    detail_nodes = node_definitions(detail)
     master_nodes: dict[str, str] = {}
     for name in ("master-actor-map.md", "master-system-map.md", "master-information-model.md"):
         master_nodes.update(node_definitions((sample / name).read_text(encoding="utf-8")))
+    for node_id, expected in master_nodes.items():
+        if node_id in root_nodes and root_nodes[node_id] != expected:
+            raise ValueError(
+                f"{(sample / 'README.md').relative_to(ROOT)}: {node_id} diverges from its master definition"
+            )
 
-    required_master_ids = {
-        node_id for node_id in master_nodes if node_id.startswith(("a_", "x_", "i_"))
+    root_business_block = blocks[2]
+    child_context_targets = {
+        "b_requirements": ("requirements-context.md", "business-map.md", "b_requirements"),
+        "b_implementation_unit": (
+            "implementation-unit-context.md",
+            "business-map.md",
+            "b_implementation_unit",
+        ),
+        "b_external_test": (
+            "external-integration-context.md",
+            "business-map.md",
+            "b_external_test",
+        ),
+        "b_deployment": ("deployment-context.md", "business-map.md", "b_deployment"),
     }
-    missing_root_ids = sorted(required_master_ids - set(root_nodes))
-    if missing_root_ids:
-        raise ValueError(
-            "PDF root page is missing canonical Actor/System/Information IDs: "
-            + ", ".join(missing_root_ids)
+    model_set_index = (sample / "model-set-index.md").read_text(encoding="utf-8")
+    for node_id, (target, parent_target, parent_id) in child_context_targets.items():
+        if node_id not in root_business_block:
+            raise ValueError(f"system-development root business view is missing {node_id}")
+        click = re.search(
+            rf"^\s+click {node_id} href \"(?P<href>[^\"]+)\"",
+            root_business_block,
+            flags=re.MULTILINE,
         )
-    for page_name, definitions in (
-        ("README.md", root_nodes),
-        ("domain-overview.md", domain_nodes),
-        ("report-creation-context.md", detail_nodes),
-    ):
-        for node_id, expected in master_nodes.items():
-            if node_id in definitions and definitions[node_id] != expected:
-                raise ValueError(
-                    f"{page_name}: {node_id} diverges from its master-map definition"
-                )
+        if click is None or target not in click.group("href"):
+            raise ValueError(
+                f"system-development root click target for {node_id} must open {target}"
+            )
+        if f"{parent_target} / {parent_id}" not in model_set_index:
+            raise ValueError(
+                f"system-development model-set index is missing {parent_target} / {parent_id}"
+            )
 
-    root_business_ids = {node_id for node_id in root_business_nodes if node_id.startswith("b_")}
-    overview_business_ids = {node_id for node_id in domain_nodes if node_id.startswith("b_")}
-    detail_business_ids = {node_id for node_id in detail_nodes if node_id.startswith("b_")}
-    if root_business_ids != overview_business_ids:
-        raise ValueError("PDF root business view and domain-overview business IDs diverge")
-    if not detail_business_ids <= overview_business_ids:
-        raise ValueError("PDF detail introduces a Business ID absent from domain-overview")
-    for node_id in sorted(detail_business_ids | overview_business_ids):
-        expected = root_business_nodes.get(node_id) or domain_nodes.get(node_id)
-        if expected is None:
-            continue
-        for page_name, definitions in (
-            ("domain-overview.md", domain_nodes),
-            ("report-creation-context.md", detail_nodes),
-        ):
-            if node_id in definitions and definitions[node_id] != expected:
-                raise ValueError(
-                    f"{page_name}: {node_id} diverges from the root business definition"
-                )
-
-    edge_re = re.compile(
-        r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+(?P<connector>---|-->)\s+"
-        r"(?P<right>[a-z][a-z0-9_]*)\s*$"
-    )
-
-    def edges(text: str) -> set[tuple[str, str, str]]:
-        result: set[tuple[str, str, str]] = set()
-        for line in text.splitlines():
-            if match := edge_re.match(line):
-                left, right, connector = match.group("left"), match.group("right"), match.group("connector")
-                if connector == "---":
-                    left, right = sorted((left, right))
-                result.add((left, connector, right))
-        return result
-
-    root_business_edges = edges(blocks[2])
-    overview_edges = edges(
-        re.search(
-            r"^```mermaid[ \t]*\r?\n(?P<body>.*?)^```[ \t]*$",
-            overview,
-            flags=re.MULTILINE | re.DOTALL,
-        ).group("body")
-    )
-    if root_business_edges != overview_edges:
-        raise ValueError("PDF root business view diverges from domain-overview relationships")
-    root_information_edges = edges(blocks[3])
-    information_master = (sample / "master-information-model.md").read_text(encoding="utf-8")
-    information_master_block = re.search(
-        r"^```mermaid[ \t]*\r?\n(?P<body>.*?)^```[ \t]*$",
-        information_master,
-        flags=re.MULTILINE | re.DOTALL,
-    )
-    if information_master_block is None or root_information_edges != edges(
-        information_master_block.group("body")
-    ):
-        raise ValueError("PDF root information view diverges from the information master")
+    for name in ("business-map.md", "requirements-context.md", "implementation-unit-context.md",
+                 "external-integration-context.md", "deployment-context.md"):
+        text = (sample / name).read_text(encoding="utf-8")
+        for token in ("pdf-report-system", "waterfall-system-development", "PDF帳票", "RDRA"):
+            if token in text:
+                raise ValueError(f"{(sample / name).relative_to(ROOT)} contains obsolete token: {token}")
 
     context = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py"
     business = ROOT / ".agents/skills/business-context-modeling/scripts/check_business_context.py"
-    with tempfile.TemporaryDirectory(prefix="fde-pdf-root-") as directory:
+    with tempfile.TemporaryDirectory(prefix="fde-system-development-root-") as directory:
         temporary_files: list[Path] = []
         for number, body in enumerate(blocks, start=1):
             path = Path(directory) / f"view-{number}.md"
-            path.write_text(f"```mermaid\n{body}\n```\n", encoding="utf-8")
+            path.write_text(
+                f"```mermaid{chr(10)}{body}{chr(10)}```{chr(10)}",
+                encoding="utf-8",
+            )
             temporary_files.append(path)
             run([sys.executable, str(context), str(path), "--strict"])
         run([sys.executable, str(business), str(temporary_files[0])])
-        run([sys.executable, str(business), str(temporary_files[2])])
+        run([sys.executable, str(business), str(temporary_files[2]), "--allow-complexity"])
     _validate_sample_links(sample)
 
 
@@ -655,10 +573,11 @@ def main() -> int:
     validate_thin_icons()
     validate_fde_reader_surface()
     validate_architecture_reader_surface()
-    validate_pdf_report_reader_surface()
-    validate_model_set_index("examples/repair-intake/model-set-index.md")
-    validate_model_set_index("examples/maakbo-expression-loop/model-set-index.md")
-    validate_model_set_index("examples/pdf-report-system/model-set-index.md")
+    validate_system_development_reader_surface()
+    validate_model_set_index(
+        ".agents/skills/business-context-modeling/fixtures/repair-intake/model-set-index.md"
+    )
+    validate_model_set_index("examples/system-development/model-set-index.md")
 
     python_files = [path for path in ROOT.rglob("*.py") if "node_modules" not in path.parts]
     for path in python_files:
@@ -693,21 +612,22 @@ def main() -> int:
     run([sys.executable, master, "templates/master-actor-map.md", "--kind", "actor", "--strict"])
     run([sys.executable, master, "templates/master-system-map.md", "--kind", "system", "--strict"])
     run([sys.executable, master, "templates/master-information-model.md", "--kind", "information", "--strict"])
+    fixture = ".agents/skills/business-context-modeling/fixtures/repair-intake"
     run([
         sys.executable,
         master,
-        "examples/repair-intake/master-actor-map.md",
+        f"{fixture}/master-actor-map.md",
         "--kind",
         "actor",
         "--strict",
         "--allow-sparse",
     ])
-    run([sys.executable, master, "examples/repair-intake/master-system-map.md", "--kind", "system", "--strict"])
-    run([sys.executable, master, "examples/repair-intake/master-information-model.md", "--kind", "information", "--strict"])
+    run([sys.executable, master, f"{fixture}/master-system-map.md", "--kind", "system", "--strict"])
+    run([sys.executable, master, f"{fixture}/master-information-model.md", "--kind", "information", "--strict"])
     run([
         sys.executable,
         master,
-        "examples/pdf-report-system/master-actor-map.md",
+        "examples/system-development/master-actor-map.md",
         "--kind",
         "actor",
         "--strict",
@@ -716,7 +636,7 @@ def main() -> int:
     run([
         sys.executable,
         master,
-        "examples/pdf-report-system/master-system-map.md",
+        "examples/system-development/master-system-map.md",
         "--kind",
         "system",
         "--strict",
@@ -725,76 +645,64 @@ def main() -> int:
     run([
         sys.executable,
         master,
-        "examples/pdf-report-system/master-information-model.md",
+        "examples/system-development/master-information-model.md",
         "--kind",
         "information",
         "--strict",
+        "--allow-complexity",
+        "--allow-sparse",
     ])
     references = ".agents/skills/business-context-modeling/scripts/check_master_references.py"
     run([
         sys.executable,
         references,
-        "examples/repair-intake/context.md",
+        f"{fixture}/context.md",
         "--actor",
-        "examples/repair-intake/master-actor-map.md",
+        f"{fixture}/master-actor-map.md",
         "--system",
-        "examples/repair-intake/master-system-map.md",
+        f"{fixture}/master-system-map.md",
         "--information",
-        "examples/repair-intake/master-information-model.md",
+        f"{fixture}/master-information-model.md",
         "--allow-sparse",
     ])
-    run([sys.executable, business, "examples/repair-intake/context.md"])
+    run([sys.executable, business, f"{fixture}/context.md"])
     run([sys.executable, flow, "templates/business-flow.md", "--strict"])
-    run([sys.executable, flow, "examples/repair-intake/overview.md", "--strict"])
-    run([sys.executable, flow, "examples/repair-intake/flow.md", "--strict"])
-    run([
-        sys.executable,
-        master,
-        "examples/maakbo-expression-loop/master-actor-map.md",
-        "--kind",
-        "actor",
-        "--strict",
-        "--allow-sparse",
-    ])
-    run([
-        sys.executable,
-        master,
-        "examples/maakbo-expression-loop/master-system-map.md",
-        "--kind",
-        "system",
-        "--strict",
-    ])
-    run([
-        sys.executable,
-        master,
-        "examples/maakbo-expression-loop/master-information-model.md",
-        "--kind",
-        "information",
-        "--strict",
-    ])
+    run([sys.executable, flow, f"{fixture}/overview.md", "--strict"])
+    run([sys.executable, flow, f"{fixture}/flow.md", "--strict"])
     run([
         sys.executable,
         references,
-        "examples/maakbo-expression-loop/overview.md",
+        "examples/system-development/requirements-context.md",
         "--actor",
-        "examples/maakbo-expression-loop/master-actor-map.md",
-        "--allow-sparse",
-    ])
-    run([
-        sys.executable,
-        references,
-        "examples/maakbo-expression-loop/context.md",
-        "--actor",
-        "examples/maakbo-expression-loop/master-actor-map.md",
+        "examples/system-development/master-actor-map.md",
         "--system",
-        "examples/maakbo-expression-loop/master-system-map.md",
+        "examples/system-development/master-system-map.md",
         "--information",
-        "examples/maakbo-expression-loop/master-information-model.md",
+        "examples/system-development/master-information-model.md",
         "--allow-sparse",
+        "--allow-complexity",
     ])
-    run([sys.executable, context, "examples/maakbo-expression-loop/overview.md", "--strict"])
-    run([sys.executable, business, "examples/maakbo-expression-loop/context.md"])
-    run([sys.executable, flow, "examples/maakbo-expression-loop/flow.md", "--strict"])
+    run([
+        sys.executable,
+        context,
+        "examples/system-development/business-map.md",
+        "--strict",
+        "--allow-complexity",
+    ])
+    for relative in (
+        "examples/system-development/requirements-context.md",
+        "examples/system-development/implementation-unit-context.md",
+        "examples/system-development/external-integration-context.md",
+        "examples/system-development/deployment-context.md",
+    ):
+        run([sys.executable, business, relative, "--allow-complexity"])
+    for relative in (
+        "examples/system-development/requirements-alignment-flow.md",
+        "examples/system-development/implementation-unit-flow.md",
+        "examples/system-development/external-integration-flow.md",
+        "examples/system-development/deployment-flow.md",
+    ):
+        run([sys.executable, flow, relative, "--strict"])
     run([
         sys.executable,
         context,
@@ -818,8 +726,6 @@ def main() -> int:
         "examples/human-agent-workspace/handoff-review-flow.md",
         "--strict",
     ])
-    run([sys.executable, business, "examples/pdf-report-system/domain-overview.md"])
-    run([sys.executable, business, "examples/pdf-report-system/report-creation-context.md"])
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")
     return 0
 

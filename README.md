@@ -4,6 +4,10 @@
 
 ## モデルを見る
 
+### [システム開発業務を見る](examples/system-development/)
+
+システムエンジニアを中心に、業務の期待を要件・設計・検証へつなぎ、運用へ渡す仕事を、会話を始めるための小さな例で確認できます。
+
 ### [FDEの業務モデルを見る](examples/maakbo-fde/)
 
 FDEが何を目指し、誰と実現し、どんな業務で成り立っているのかを、MermaidのModelで見られます。
@@ -12,11 +16,6 @@ FDEが何を目指し、誰と実現し、どんな業務で成り立ってい�
 
 人、AI collaborator、private control plane、public reuse surfaceの関係とhandoffを、
 Architecture OverviewとInteraction Flowで見られます。
-
-### [PDF帳票の仕事を見る](examples/pdf-report-system/)
-
-業務データからPDF帳票を用意し、必要な人が内容を確認できる仕事を、
-会話を始めるための小さな例で確認できます。システム開発の13工程とは別sampleです。
 
 ## モデルを作る
 
@@ -64,14 +63,6 @@ loose conversation
 
 裏側では、候補、境界、命名、比較、未解決事項を厳密に扱います。公開するsampleには、業務を理解するためのModel、短い説明、関連するViewへの導線だけを残します。詳しくは[Reader-facing model artifacts](.agents/skills/business-context-modeling/references/reader-facing-artifacts.md)を参照してください。
 
-## Examples
-
-- [maakbo FDE](examples/maakbo-fde/): FDEの目的、関わる人、七つの業務と各Business Context
-- [maakbo expression loop](examples/maakbo-expression-loop/): overall context、use-case context、business flowをつないだ例
-- [Human–Agent Workspace](examples/human-agent-workspace/): private handoffとpublic reuseを分けたAI collaborator環境のarchitecture example
-- [repair intake](examples/repair-intake/): 記法を検証するためのsynthetic example
-- [PDF帳票作成システムの開発](examples/waterfall-system-development/): 13工程を扱うdevelopment-work evaluation sample（RDRA domain modelとは分離）
-
 ## Working source and export
 
 通常は、Markdown内のMermaid blockが唯一の編集sourceです。`.mmd`、SVG、PNGは自動で作りません。
@@ -81,7 +72,7 @@ loose conversation
 ```bash
 npm ci
 python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py \
-  examples/repair-intake/context.md --type context --output-dir /tmp/fde-export
+  examples/system-development/README.md --type context --output-dir /tmp/fde-export
 ```
 
 ## Visual language

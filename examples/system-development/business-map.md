@@ -1,21 +1,19 @@
-# PDF帳票作成システムの開発 — 13工程のdevelopment-work model
+# システム開発業務 — development-work model
 
-PDF帳票作成システムを開発する業務を、13の大きな工程で俯瞰します。
-一般的な全ソフトウェア開発を網羅する図ではなく、今回のevaluation sampleの
-開発業務を話すための骨格です。13工程はRDRA domain modelの下位階層ではありません。
-
-対象システムのcurrent RDRA domain modelは、独立した[PDF帳票システム sample](../pdf-report-system/)で確認します。
+システム開発業務を、13の大きな工程候補で俯瞰します。
+一般的な全ソフトウェア開発を網羅する標準ではなく、このsampleで開発業務を話すための骨格です。
+13工程は固定された標準工程でも、別のdomain modelの下位階層でもありません。
 
 このページを開発業務の認識合わせの入口にします。図の業務を選んで詳細へ進み、各工程が
 何を整えるのかを日本語で確認します。
 
-← [PDF帳票システムの開発 — development-work evaluation](README.md)
+← [システム開発業務](README.md)
 
 ## モデル
 
 ```mermaid
 ---
-title: PDF帳票作成システムの開発
+title: システム開発業務
 config:
   layout: elk
   theme: neutral
@@ -34,7 +32,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart TB
-  b_system_development@{ label: "PDF帳票開発", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_system_development@{ label: "システム開発業務", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_estimation@{ label: "見積", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_requirements@{ label: "要件定義", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_basic_design@{ label: "基本設計", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
@@ -63,19 +61,19 @@ flowchart TB
   b_system_development --- b_uat
   b_system_development --- b_deployment
 
-  click b_estimation href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#1-%E8%A6%8B%E7%A9%8D" "見積の分解を見る"
-  click b_requirements href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/requirements-context.md" "要件定義を詳しく見る"
-  click b_basic_design href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#3-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E8%A8%88" "基本設計の分解を見る"
-  click b_detailed_design href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#4-%E8%A9%B3%E7%B4%B0%E8%A8%AD%E8%A8%88" "詳細設計の分解を見る"
-  click b_implementation_unit href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/implementation-unit-context.md" "実装・単体を詳しく見る"
-  click b_internal_test_design href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#6-%E5%86%85%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "内部結合テスト設計の分解を見る"
-  click b_internal_test href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#7-%E5%86%85%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88" "内部結合テストの分解を見る"
-  click b_external_test_design href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#8-%E5%A4%96%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "外部結合テスト設計の分解を見る"
-  click b_external_test href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/external-integration-context.md" "外部結合テストを詳しく見る"
-  click b_system_test_design href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#10-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "システムテスト設計の分解を見る"
-  click b_system_test href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#11-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%86%E3%82%B9%E3%83%88" "システムテストの分解を見る"
-  click b_uat href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/decomposition-catalog.md#12-%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%8F%97%E5%85%A5%E3%83%86%E3%82%B9%E3%83%88" "UATの分解を見る"
-  click b_deployment href "https://github.com/maakbo/fde/blob/main/examples/waterfall-system-development/deployment-context.md" "導入を詳しく見る"
+  click b_estimation href "https://github.com/maakbo/fde/blob/main/examples/system-development/decomposition-catalog.md#1-%E8%A6%8B%E7%A9%8D" "見積の分解を見る"
+  click b_requirements href "https://github.com/maakbo/fde/blob/main/examples/system-development/requirements-context.md" "要件定義を詳しく見る"
+  click b_basic_design href "https://github.com/maakbo/fde/blob/main/examples/system-development/decomposition-catalog.md#3-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E8%A8%88" "基本設計の分解を見る"
+  click b_detailed_design href "https://github.com/maakbo/fde/blob/main/examples/system-development/decomposition-catalog.md#4-%E8%A9%B3%E7%B4%B0%E8%A8%AD%E8%A8%88" "詳細設計の分解を見る"
+  click b_implementation_unit href "https://github.com/maakbo/fde/blob/main/examples/system-development/implementation-unit-context.md" "実装・単体を詳しく見る"
+  click b_internal_test_design href "https://github.com/maakbo/fde/blob/main/examples/system-development/decomposition-catalog.md#6-%E5%86%85%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "内部結合テスト設計の分解を見る"
+  click b_internal_test href "https://github.com/maakbo/fde/blob/main/examples/system-development/decomposition-catalog.md#7-%E5%86%85%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88" "内部結合テストの分解を見る"
+  click b_external_test_design href "https://github.com/maakbo/fde/blob/main/examples/system-development/decomposition-catalog.md#8-%E5%A4%96%E9%83%A8%E7%B5%90%E5%90%88%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "外部結合テスト設計の分解を見る"
+  click b_external_test href "https://github.com/maakbo/fde/blob/main/examples/system-development/external-integration-context.md" "外部結合テストを詳しく見る"
+  click b_system_test_design href "https://github.com/maakbo/fde/blob/main/examples/system-development/decomposition-catalog.md#10-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%86%E3%82%B9%E3%83%88%E8%A8%AD%E8%A8%88" "システムテスト設計の分解を見る"
+  click b_system_test href "https://github.com/maakbo/fde/blob/main/examples/system-development/decomposition-catalog.md#11-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%83%86%E3%82%B9%E3%83%88" "システムテストの分解を見る"
+  click b_uat href "https://github.com/maakbo/fde/blob/main/examples/system-development/decomposition-catalog.md#12-%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%8F%97%E5%85%A5%E3%83%86%E3%82%B9%E3%83%ト" "UATの分解を見る"
+  click b_deployment href "https://github.com/maakbo/fde/blob/main/examples/system-development/deployment-context.md" "導入を詳しく見る"
 
   class b_system_development,b_estimation,b_requirements,b_basic_design,b_detailed_design,b_implementation_unit,b_internal_test_design,b_internal_test,b_external_test_design,b_external_test,b_system_test_design,b_system_test,b_uat,b_deployment business;
   classDef business fill:none,stroke:none,color:#25231F;
@@ -104,7 +102,7 @@ flowchart TB
 
 ## この図が表していること
 
-13工程は、PDF帳票作成システムの開発を話すための最初の共通言語です。工程間の厳密な順番を示す図ではありません。実務にある変更、差戻し、再試験、再合意は、各業務の Context / Flow で見ます。
+13工程は、システム開発業務を話すための最初の共通言語です。工程間の厳密な順番を示す図ではありません。実務にある変更、差戻し、再試験、再合意は、各業務の Context / Flow で見ます。
 
 ## 支えるモデル
 
