@@ -294,6 +294,9 @@ def validate_system_development_reader_surface() -> None:
     """Keep the current system-development sample reader-facing and coherent."""
 
     sample = ROOT / "examples/system-development"
+    retired_fixtures = ROOT / ".agents/skills/business-context-modeling/fixtures/retired"
+    if retired_fixtures.exists():
+        raise ValueError("obsolete retired fixture hierarchy must be physically absent")
     root_page = (sample / "README.md").read_text(encoding="utf-8")
     forbidden_tokens = (
         "pdf-report-system",
