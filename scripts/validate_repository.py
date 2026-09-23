@@ -415,6 +415,37 @@ def validate_system_development_reader_surface() -> None:
             if token in text:
                 raise ValueError(f"{(sample / name).relative_to(ROOT)} contains obsolete token: {token}")
 
+    reader_detail_files = (
+        "requirements-context.md",
+        "implementation-unit-context.md",
+        "external-integration-context.md",
+        "deployment-context.md",
+        "interface-specification-detail.md",
+    )
+    reader_forbidden_tokens = (
+        "## モデル",
+        "## Master references",
+        "## 上位要求とのtrace",
+        "Requirement Model",
+        "syntheticなBusiness Context",
+        "reader-facing view",
+        "| Master | ID | Canonical label | Use in this view |",
+        "Design Concern",
+    )
+    for name in reader_detail_files:
+        text = (sample / name).read_text(encoding="utf-8")
+        for token in reader_forbidden_tokens:
+            if token in text:
+                raise ValueError(
+                    f"{(sample / name).relative_to(ROOT)} exposes authoring language: {token}"
+                )
+        detail_nodes = node_definitions(text)
+        for node_id in detail_nodes:
+            if node_id.startswith(("a_", "i_", "x_")) and node_id not in master_nodes:
+                raise ValueError(
+                    f"{(sample / name).relative_to(ROOT)} uses an unknown canonical node: {node_id}"
+                )
+
     context = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py"
     business = ROOT / ".agents/skills/business-context-modeling/scripts/check_business_context.py"
     with tempfile.TemporaryDirectory(prefix="fde-system-development-root-") as directory:
@@ -669,19 +700,6 @@ def main() -> int:
     run([sys.executable, flow, "templates/business-flow.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/overview.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/flow.md", "--strict"])
-    run([
-        sys.executable,
-        references,
-        "examples/system-development/requirements-context.md",
-        "--actor",
-        "examples/system-development/master-actor-map.md",
-        "--system",
-        "examples/system-development/master-system-map.md",
-        "--information",
-        "examples/system-development/master-information-model.md",
-        "--allow-sparse",
-        "--allow-complexity",
-    ])
     run([
         sys.executable,
         context,

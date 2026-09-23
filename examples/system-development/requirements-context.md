@@ -1,11 +1,10 @@
 # システム開発業務の要件定義
 
-システム開発業務で、業務の期待を人と対象システムの責務が分かる要件へ整える
-syntheticなBusiness Contextです。実案件の標準や特定製品の要件を確定するものではありません。
+システム開発業務で、業務の期待を人と対象システムの責務が分かる要件へ整える場面です。実案件の標準や特定製品の要件を確定するものではありません。
 
 ← [システム開発業務](README.md) ／ [業務マップ](business-map.md)
 
-## モデル
+## 要件を整える場面
 
 ```mermaid
 ---
@@ -99,37 +98,9 @@ flowchart LR
 線は厳密な手順ではなく、この場面を成立させる関係です。差戻しや再確認の順序は
 [要件合意の流れ](requirements-alignment-flow.md) で見ます。
 
-## 上位要求とのtrace
+## この場面でつながるもの
 
-このContextでは、Requirement Modelで置いた価値を、要件定義で扱えるInformationへ具体化します。
-
-| 上位の重要要求 | このContextで見るInformation | 具体化の焦点 |
-| --- | --- | --- |
-| 業務で必要な結果を得る | `i_external_specification` / `i_system_requirement` / `i_acceptance_criteria` | 外部仕様と受入可能性 |
-| 同じ結果を再現する | `i_external_specification` / `i_system_requirement` / `i_acceptance_criteria` | 入力、期待結果、検証条件 |
-| 安全に業務を続ける | `i_external_specification` / `i_external_interface_requirement` / `i_acceptance_criteria` | 保管・取得境界、外部連携、確認条件 |
-| 安全に業務を続ける | `i_system_requirement` / `i_external_interface_requirement` / `i_acceptance_criteria` | 責務境界、異常時、運用上の判断 |
-
-要求モデルの価値と下位Informationの対応はこのsampleでのtrace候補です。詳細な成果物要件や
-保管方式を実案件の事実として確定するものではありません。
-
-## Master references
-
-この図で使う Actor / Information / External System は、次のマスタで同じIDを管理しています。
-
-| Master | ID | Canonical label | Use in this view |
-| --- | --- | --- | --- |
-| [Actor master](master-actor-map.md) | `a_business_user` | 業務担当 | 現行業務を提供する主体 |
-| [Actor master](master-actor-map.md) | `a_ba` | 要件担当 | 要件を構造化する主体 |
-| [Actor master](master-actor-map.md) | `a_business_owner` | 業務責任者 | 要件を合意する責任者 |
-| [Information master](master-information-model.md) | `i_current_business` | 現行業務 | 要件化の入力 |
-| [Information master](master-information-model.md) | `i_business_requirement` | 業務要件 | 責務設計の入力・成果 |
-| [Information master](master-information-model.md) | `i_external_specification` | 外部仕様 | 利用者・外部システムから見た振る舞い |
-| [Information master](master-information-model.md) | `i_system_requirement` | システム要件 | 責務設計の成果 |
-| [Information master](master-information-model.md) | `i_external_interface_requirement` | 外部IF要件 | 業務データ源との境界条件 |
-| [Information master](master-information-model.md) | `i_acceptance_criteria` | 受入条件 | 合意の判断材料 |
-| [External-system master](master-system-map.md) | `x_requirements_management` | 要件管理 | 要件の追跡と状態管理を支えるシステム |
-| [External-system master](master-system-map.md) | `x_external_business_system` | 外部システム | 業務データ源との境界を確認する相手 |
+現行業務と依頼の背景を出発点に、業務として必要な変化を業務要件へまとめます。そこから人と対象システムの責務を分けてシステム要件と外部仕様を整え、外部IFの条件と受入条件まで関係者が確認します。これらは書類の順番ではなく、同じ仕事を判断するための概念として扱います。
 
 ## 関連
 

@@ -4,7 +4,7 @@
 
 ← [システム開発](business-map.md)
 
-## モデル
+## 外部との接続を確かめる場面
 
 ```mermaid
 ---
@@ -86,21 +86,6 @@ flowchart LR
 ## この図が表していること
 
 外部結合は、自システムだけの試験ではありません。外部担当と同じ証跡を見ながら接続条件と連携契約を確かめ、問題時には責任境界を共同で切り分けます。
-
-## Master references
-
-この図で使う Actor / Information / External System は、次のマスタで同じIDを管理しています。
-
-| Master | ID | Canonical label | Use in this view |
-| --- | --- | --- | --- |
-| [Actor master](master-actor-map.md) | `a_tester` | テスター | 外部結合を検証する主体 |
-| [Actor master](master-actor-map.md) | `a_external_system_owner` | 外部担当 | 接続先を代表する主体 |
-| [Information master](master-information-model.md) | `i_external_test_specification` | 外結仕様 | 契約検証の入力 |
-| [Information master](master-information-model.md) | `i_connection_condition` | 接続条件 | 接続確認の入力 |
-| [Information master](master-information-model.md) | `i_exchange_evidence` | 送受信証跡 | 原因特定の判断材料 |
-| [Information master](master-information-model.md) | `i_external_test_result` | 外結結果 | 外部結合の成果 |
-| [External-system master](master-system-map.md) | `x_external_integration_env` | 外結環境 | 接続確認を行う環境 |
-| [External-system master](master-system-map.md) | `x_external_business_system` | 外部システム | 契約の相手となるシステム |
 
 ## 関連
 
