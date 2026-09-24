@@ -460,7 +460,10 @@ def validate_system_development_reader_surface() -> None:
                 encoding="utf-8",
             )
             temporary_files.append(path)
-            run([sys.executable, str(context), str(path), "--strict"])
+            context_options = ["--strict"]
+            if number == 3:
+                context_options.append("--allow-complexity")
+            run([sys.executable, str(context), str(path), *context_options])
         run([sys.executable, str(business), str(temporary_files[0])])
         run([sys.executable, str(business), str(temporary_files[2]), "--allow-complexity"])
     _validate_sample_links(sample)
