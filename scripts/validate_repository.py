@@ -408,6 +408,19 @@ def validate_system_development_reader_surface() -> None:
         raise ValueError(
             "system-development root business view must include Information participants"
         )
+    required_root_information = {
+        "i_request_background",
+        "i_system_requirement",
+        "i_external_specification",
+        "i_build_artifact",
+        "i_release_plan",
+    }
+    missing_root_information = sorted(required_root_information - root_information_nodes)
+    if missing_root_information:
+        raise ValueError(
+            "system-development root business view is missing required major Information: "
+            + ", ".join(missing_root_information)
+        )
     for information_id in sorted(root_information_nodes):
         information_pattern = (
             rf'^\s+{re.escape(information_id)}\s+---\s+b_[a-z0-9_]+$|'
