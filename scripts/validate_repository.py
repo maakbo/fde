@@ -311,6 +311,11 @@ def validate_system_development_reader_surface() -> None:
         "## Unresolved",
         "model-set-index",
         "master-model-index",
+        "ここでは親業務を重ねず",
+        "情報概念を並べています",
+        "工程の順番を問うときは",
+        "図の作り方",
+        "ノードを",
     )
     for token in forbidden_tokens:
         if token in root_page:
@@ -323,7 +328,7 @@ def validate_system_development_reader_surface() -> None:
         "## 実現したいこと",
         "## 業務",
         "## 情報",
-        "## 関連するView",
+        "## 詳しく見る",
     )
     for heading in required_headings:
         if heading not in root_page:
@@ -342,7 +347,23 @@ def validate_system_development_reader_surface() -> None:
         "a_business_owner",
         "a_system_engineer",
         "a_ops",
+        "a_business_user",
+        "a_ba",
+        "a_developer",
+        "a_dev_lead",
+        "a_tester",
+        "a_external_system_owner",
+        "a_release_manager",
         "x_dev_environment",
+        "x_requirements_management",
+        "x_static_analysis",
+        "x_code_review",
+        "x_scm",
+        "x_external_integration_env",
+        "x_external_business_system",
+        "x_cicd",
+        "x_production_env",
+        "x_monitoring",
         "b_system_development",
         "i_request_background",
         "i_system_requirement",
@@ -379,6 +400,29 @@ def validate_system_development_reader_surface() -> None:
             )
 
     root_business_block = blocks[2]
+    root_business_nodes = {
+        match.group("id")
+        for match in re.finditer(
+            r'^\s{2}(?P<id>b_[a-z][a-z0-9_]*)@\{',
+            root_business_block,
+            flags=re.MULTILINE,
+        )
+    }
+    if not re.search(r'^\s{2}a_[a-z][a-z0-9_]*@\{', root_business_block, flags=re.MULTILINE):
+        raise ValueError("system-development root business view must include Actor participants")
+    if not re.search(r'^\s{2}x_[a-z][a-z0-9_]*@\{', root_business_block, flags=re.MULTILINE):
+        raise ValueError(
+            "system-development root business view must include reviewed External System participants"
+        )
+    for business_id in sorted(root_business_nodes):
+        participant_pattern = (
+            rf'^\s+(?:a_|x_)[a-z0-9_]+\s+---\s+{re.escape(business_id)}$|'
+            rf'^\s+{re.escape(business_id)}\s+---\s+(?:a_|x_)[a-z0-9_]+$'
+        )
+        if not re.search(participant_pattern, root_business_block, flags=re.MULTILINE):
+            raise ValueError(
+                f"system-development root business view is missing an Actor or External System relation for {business_id}"
+            )
     child_context_targets = {
         "b_requirements": ("requirements-context.md", "business-map.md", "b_requirements"),
         "b_implementation_unit": (

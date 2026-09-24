@@ -20,6 +20,10 @@ UNDIRECTED_EDGE_RE = re.compile(
     r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+---\s+"
     r"(?P<right>[a-z][a-z0-9_]*)\s*$"
 )
+DOTTED_EDGE_RE = re.compile(
+    r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+-\.-\s+"
+    r"(?P<right>[a-z][a-z0-9_]*)\s*$"
+)
 DIRECTED_EDGE_RE = re.compile(
     r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+-->\s+"
     r"(?P<right>[a-z][a-z0-9_]*)\s*$"
@@ -70,6 +74,8 @@ def main() -> int:
         elif match := DIRECTED_EDGE_RE.match(line):
             edges.append((match.group("left"), match.group("right"), True))
         elif match := UNDIRECTED_EDGE_RE.match(line):
+            edges.append((match.group("left"), match.group("right"), False))
+        elif match := DOTTED_EDGE_RE.match(line):
             edges.append((match.group("left"), match.group("right"), False))
         elif line.strip().startswith("flowchart "):
             flow_lines.append(line.strip())
@@ -132,6 +138,20 @@ def main() -> int:
             errors.append("place at least one executor/provider/input before the Business backbone")
         if not right_nodes:
             errors.append("place at least one recipient/output after the Business backbone")
+
+    actors = [node for node in nodes if node.startswith("a_")]
+    if not actors:
+        errors.append(
+            "Business Context requires at least one Actor; if the subject is purely technical, "
+            "use an architecture Context instead"
+        )
+
+    external_systems = [node for node in nodes if node.startswith("x_")]
+    if not external_systems:
+        observations.append(
+            "no External System is present; record `none observed` versus an unreviewed omission "
+            "in the authoring workspace"
+        )
 
     if len(businesses) > 1:
         backbone: dict[str, set[str]] = defaultdict(set)

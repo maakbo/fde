@@ -48,8 +48,8 @@ diagram itself:
 ```mermaid
 flowchart LR
   a_actor@{ label: "担当者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  p_intention(["必要な情報を、確認しやすく整えたい"])
-  a_actor --- p_intention
+  p_intention("必要な情報を、確認しやすく整えたい")
+  a_actor -.- p_intention
 
   class a_actor actor;
   class p_intention purpose;
@@ -61,7 +61,9 @@ flowchart LR
 The note is View-local reader language, not a reusable Actor, Information, or
 Business identity. Keep it short enough to read at a glance, do not use it as
 an invented Information bridge, and keep the purpose / background wording
-grounded in the Business Story.
+grounded in the Business Story. Use the same rounded rectangle and dotted
+relation for equivalent purpose, desired-state, or actor-intention callouts in
+the same model set; do not mix the old capsule shape with the rounded note.
 
 ## Node IDs and icons
 

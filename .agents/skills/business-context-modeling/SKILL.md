@@ -47,6 +47,18 @@ published model quiet enough for a reader who wants to understand the business.
 - Build the Actor / External System × Business participation matrix and the
   Information × Business create / update / reference / provide matrix before
   editing a Business Context. Project the View from that relationship Model.
+- Treat completeness as a review gate, not a diagram preference: a Business
+  Context with observed participating people but no Actor is incomplete and
+  blocks review. If no External System is present, record `none observed` in
+  the authoring workspace and distinguish that conclusion from an unreviewed
+  omission. Apply the same gate to root and detail Contexts.
+- Keep reader-facing prose about the work itself: purpose, participants,
+  handled Information, and resulting value. Do not use `図`, `モデル`, `View`,
+  `ノード`, placement, or authoring language as the subject of the explanation.
+- Keep equivalent purpose / desired-state callouts visually consistent across
+  a model set: use the rounded rectangle note and dotted relation established
+  by the current Mermaid visual language. Prefer native source order and
+  layout over positioning hacks.
 - When a model set has a root page, use it as the canonical upper model set and
   keep reusable Actor / External System / Information identities aligned with
   their owning master maps. A detail discovery is a change event: update the
@@ -141,6 +153,14 @@ workspace:
 Use these matrices as the relationship Model. Do not infer participation from
 where Mermaid places a node.
 
+Before calling a Context complete, check the matrices against the View. Actor
+presence is blocking for a Business Context: a people-centered Business Story
+cannot pass with only Business and Information nodes. External Systems may be
+absent, but the workspace must say whether none were observed or the boundary
+has not been checked yet. A root View must project every participant that is
+meaningful at its level; detail-only tools or roles may stay below the root
+only when the omission is explained in the private trace.
+
 If a root model set exists, reconcile the root and the master maps before
 projecting detail. Child changes to reusable identity, relation, responsibility,
 or boundary must return to the root and then be propagated to all affected
@@ -179,6 +199,12 @@ Information node having degree two on one path; or a perfectly alternating
 Business / Information backbone. Confirm each against the dictionary and
 matrices.
 
+For an independent review, ask explicitly: who participates in each Business,
+which External System boundaries were checked, whether Information relations
+come from the matrix, whether the nearby prose explains the work rather than
+the diagram, and whether purpose / Context / Map / Flow callouts use the same
+semantic visual language.
+
 Before copying a previous Context pattern, hide the existing diagram and audit
 the Business Story, Why, input, transformation, output, and each participant's
 responsibility. Follow `modeling-rules.md`.
@@ -200,6 +226,11 @@ show its major child Businesses and their relationships on the parent
 discussion surface. Split only for a genuine scene, boundary, or density
 reason; retain parent/child links and revisit the parent after detail. Follow
 `reader-facing-artifacts.md`.
+
+Before publishing, hide the diagram and read the prose alone. It should still
+identify the work's purpose, participants, handled Information, and result. If
+the explanation instead tells the reader what the diagram contains or how it
+was authored, rewrite it in ordinary business language.
 
 ### 8. Garden knowledge and close
 
@@ -255,3 +286,5 @@ The Skill is ready for a first field use when this chain works end to end:
 10. source checks and semantic-smell observations are followed by visual
     review, including endpoint markers (`mermaid-diagram-authoring` fixture and
     checklist).
+11. completeness review confirms Actor participation, an explicit External
+    System observation, and reader-facing prose before the View is accepted.

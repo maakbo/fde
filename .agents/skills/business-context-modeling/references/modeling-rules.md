@@ -6,6 +6,22 @@ Before making an element inventory, describe the chosen Business in two or three
 
 Extract candidates only when they arise naturally from that description. Information should work as the object of a business verb such as receive, use as a basis, reference, create, update, or provide. Do not add `Model`, `View`, or another modeling-method concept merely because the method uses it; include it only when the described Business actually receives, uses, creates, updates, or provides it.
 
+## Business Context completeness gate
+
+Before a Business Context is accepted, compare the reader-facing projection with
+both relationship matrices. If the Business Story includes people or roles who
+participate, at least one canonical `a_` Actor must appear and connect to the
+relevant Business activities. A Context with only Business and Information
+nodes is incomplete for that story and blocks review; a pure technical system
+view should use an architecture Context instead.
+
+External Systems are not mandatory in every Business Context. When candidates
+could exist, record whether the boundary was checked and the result was
+`none observed`, or whether the candidate remains unresolved. Do not silently
+drop an observed system. In a root View, project the actors and systems that
+are meaningful at that level; keep detail-only tools or roles below the root
+only when the omission and its reason remain in the authoring trace.
+
 ## Information as business vocabulary
 
 Information is a named domain concept used by people doing the work, not an
@@ -176,6 +192,11 @@ Create these matrices before Mermaid:
 | --- | --- |
 | Actor / External System × Business | executes, provides, participates, decides, receives value, none |
 | Information × Business | create, update, reference, provide, none |
+
+Use the matrices as a completeness checklist as well as a relationship Model:
+every selected Business should have a grounded participant relation, every
+published Actor should have a reason to be in the scene, and every omitted
+External System should be classified as `none observed` or unresolved.
 
 An Actor's left or right position expresses its primary value role across the
 whole Use Case. Its individual Business relations express direct participation

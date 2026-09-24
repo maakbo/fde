@@ -54,7 +54,7 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-業務責任者が期待する変化を、システムエンジニアが開発環境と要件・設計・検証の判断材料へつなぎ、運用担当へ渡せるシステムとして整えます。線は厳密な手順ではなく、この業務を成立させる関係です。
+業務責任者が期待する変化を、システムエンジニアが要件・設計・検証へつなぎ、運用担当が使い続けられるシステムとして引き受けます。開発環境は、その仕事を支えます。
 
 ## 実現したいこと
 
@@ -82,17 +82,17 @@ flowchart LR
   a_business_owner@{ label: "業務責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_system_engineer@{ label: "システムエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_ops@{ label: "運用担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  p_owner_goal(["業務で変えたいことを、判断できる形にしたい"])
-  p_engineer_goal(["要求から検証までを、つながった仕事にしたい"])
-  p_ops_goal(["運用へ安心して引き継げる状態にしたい"])
-  p_shared_outcome(["業務で使い続けられるシステムを届ける"])
+  p_owner_goal("業務で変えたいことを、判断できる形にしたい")
+  p_engineer_goal("要求から検証までを、つながった仕事にしたい")
+  p_ops_goal("運用へ安心して引き継げる状態にしたい")
+  p_shared_outcome("業務で使い続けられるシステムを届ける")
 
-  a_business_owner --- p_owner_goal
-  a_system_engineer --- p_engineer_goal
-  a_ops --- p_ops_goal
-  p_owner_goal --- p_shared_outcome
-  p_engineer_goal --- p_shared_outcome
-  p_ops_goal --- p_shared_outcome
+  a_business_owner -.- p_owner_goal
+  a_system_engineer -.- p_engineer_goal
+  a_ops -.- p_ops_goal
+  p_owner_goal -.- p_shared_outcome
+  p_engineer_goal -.- p_shared_outcome
+  p_ops_goal -.- p_shared_outcome
 
   class a_business_owner,a_system_engineer,a_ops actor;
   class p_owner_goal,p_engineer_goal,p_ops_goal,p_shared_outcome purpose;
@@ -128,6 +128,16 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  a_business_user@{ label: "業務担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_ba@{ label: "要件担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_business_owner@{ label: "業務責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_system_engineer@{ label: "システムエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_developer@{ label: "開発者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_dev_lead@{ label: "開発PL", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_tester@{ label: "テスター", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_external_system_owner@{ label: "外部担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_release_manager@{ label: "リリース責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_ops@{ label: "運用担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   i_request_background@{ label: "依頼背景", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_estimation@{ label: "見積", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_requirements@{ label: "要件定義", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
@@ -142,7 +152,32 @@ flowchart LR
   i_external_test_result@{ label: "外結結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_release_plan@{ label: "リリース計画", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_business_validation_result@{ label: "業務確認結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_requirements_management@{ label: "要件管理", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_dev_environment@{ label: "開発環境", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_static_analysis@{ label: "静的解析", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_code_review@{ label: "コードレビュー", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_scm@{ label: "構成管理", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_external_integration_env@{ label: "外結環境", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_external_business_system@{ label: "外部システム", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_cicd@{ label: "CI/CD", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_production_env@{ label: "本番環境", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_monitoring@{ label: "監視基盤", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
+  a_business_owner --- b_estimation
+  a_business_owner --- b_requirements
+  a_business_user --- b_requirements
+  a_ba --- b_requirements
+  a_ba --- b_basic_design
+  a_system_engineer --- b_requirements
+  a_system_engineer --- b_basic_design
+  a_system_engineer --- b_implementation_unit
+  a_system_engineer --- b_external_test
+  a_developer --- b_implementation_unit
+  a_dev_lead --- b_implementation_unit
+  a_tester --- b_external_test
+  a_external_system_owner --- b_external_test
+  a_release_manager --- b_deployment
+  a_ops --- b_deployment
   i_request_background --- b_estimation
   i_request_background --- b_requirements
   b_requirements --- i_business_requirement
@@ -158,20 +193,35 @@ flowchart LR
   b_deployment --- i_external_test_result
   b_deployment --- i_release_plan
   b_deployment --- i_business_validation_result
+  b_requirements --- x_requirements_management
+  b_basic_design --- x_external_business_system
+  b_implementation_unit --- x_dev_environment
+  b_implementation_unit --- x_static_analysis
+  b_implementation_unit --- x_code_review
+  b_implementation_unit --- x_scm
+  b_external_test --- x_external_integration_env
+  b_external_test --- x_external_business_system
+  b_deployment --- x_cicd
+  b_deployment --- x_production_env
+  b_deployment --- x_monitoring
 
   click b_requirements href "https://github.com/maakbo/fde/blob/main/examples/system-development/requirements-context.md" "要件定義の場面を見る"
   click b_implementation_unit href "https://github.com/maakbo/fde/blob/main/examples/system-development/implementation-unit-context.md" "実装・単体の場面を見る"
   click b_external_test href "https://github.com/maakbo/fde/blob/main/examples/system-development/external-integration-context.md" "外部結合の場面を見る"
   click b_deployment href "https://github.com/maakbo/fde/blob/main/examples/system-development/deployment-context.md" "導入の場面を見る"
 
+  class a_business_user,a_ba,a_business_owner,a_system_engineer,a_developer,a_dev_lead,a_tester,a_external_system_owner,a_release_manager,a_ops actor;
   class b_estimation,b_requirements,b_basic_design,b_implementation_unit,b_external_test,b_deployment business;
   class i_request_background,i_business_requirement,i_system_requirement,i_external_specification,i_build_artifact,i_external_test_result,i_release_plan,i_business_validation_result information;
+  class x_requirements_management,x_dev_environment,x_static_analysis,x_code_review,x_scm,x_external_integration_env,x_external_business_system,x_cicd,x_production_env,x_monitoring external;
+  classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
   classDef information fill:none,stroke:none,color:#5F5A52;
+  classDef external fill:none,stroke:none,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-ここでは親業務を重ねず、主要な工程と、それらが参照・作成・更新する業務上の情報概念を並べています。工程の順番や差戻しを問うときは、各業務の詳細ページや流れのページへ降ります。全工程の候補と分解は [業務マップ](business-map.md) と [業務分解カタログ](decomposition-catalog.md) で補足します。
+業務責任者と業務担当が変えたいことを伝え、要件担当とシステムエンジニアが要件・設計へ整えます。開発者とテスター、外部担当、リリース責任者、運用担当が、開発環境や構成管理、外部システム、本番環境の支えを受けながら、使えるシステムと引き継げる状態へつなぎます。詳しい場面は [要件定義](requirements-context.md)、[実装・単体](implementation-unit-context.md)、[外部結合](external-integration-context.md)、[導入](deployment-context.md) で確認できます。
 
 ## 情報
 
@@ -220,14 +270,14 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-依頼背景と業務要件をシステム要件へ具体化し、外部仕様・コード・成果物・受入条件を経て、リリース計画と運用手順へつなぎます。線は情報概念の関係を示し、ファイル形式やツールそのものを正本にはしません。
+依頼の背景と業務要件をシステム要件・外部仕様へ整え、コードと成果物を確認し、リリース計画と運用手順へつなぎます。これらの情報が、関係者の判断と次の仕事を支えます。
 
-## 関連するView
+## 詳しく見る
 
-- [業務マップ](business-map.md) — 13工程を固定標準ではなく、開発業務を話すための候補として見る
-- [要件定義のContext](requirements-context.md) — 業務要件とシステム要件の境界を見る
-- [実装・単体のContext](implementation-unit-context.md) — 設計をコードと単体確認へ変える場面を見る
-- [外部結合のContext](external-integration-context.md) — 外部との契約・検証・責任境界を見る
-- [導入のContext](deployment-context.md) — 本番切替と運用移管を見る
+- [業務マップ](business-map.md) — 主な仕事のつながりを読む
+- [要件定義](requirements-context.md) — 業務要件とシステム要件を整える場面を見る
+- [実装・単体](implementation-unit-context.md) — 設計をコードと単体確認へ変える場面を見る
+- [外部結合](external-integration-context.md) — 外部との契約と検証を確かめる場面を見る
+- [導入](deployment-context.md) — 本番切替と運用移管の場面を見る
 
-このsampleは、まず全体・実現したいこと・業務・情報を読み、必要な業務だけ詳細へ降りるための入口です。現在の境界や命名に確定していない点が出たら、元の会話へ戻って更新します。
+この例では、期待を要件へ落とし、設計・実装・検証を経て、導入と運用へ渡す仕事を、関係者と情報のつながりから読み始められます。気になる場面は、上のリンクから詳しく見られます。

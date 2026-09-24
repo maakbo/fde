@@ -149,6 +149,10 @@ the root before the child-only edit is considered complete.
   meaning.
 - Remove labels such as `working hypothesis`, `candidate`, `boundary`, and
   `unresolved` unless that status is itself necessary for the reader.
+- Explain the work, not the diagram: after hiding the Mermaid block, the prose
+  should still say why the work exists, who participates, what Information is
+  handled, and what result reaches the next person or activity. Rewrite prose
+  whose subject is `図`, `モデル`, `View`, `ノード`, placement, or authoring.
 - Do not explain ASCII alternatives, arrow-selection debates, stable IDs,
   rename / split / merge decisions, or validator behavior on the public page.
 - Do not expose private people, customers, credentials, or confidential facts.
@@ -171,6 +175,8 @@ Then verify:
   fallbacks, and detail pages link back to the parent;
 - the page does not require method headings, an index, or authoring history;
 - internal analysis and split reasons live in the workspace or checkpoint;
+- the prose passes a reader-only review for purpose, participants, Information,
+  and result without relying on the diagram or method vocabulary;
 - no duplicated `model.md` remains merely as hidden storage;
 - Mermaid visual language and source validation still follow the authoring
   Skill.

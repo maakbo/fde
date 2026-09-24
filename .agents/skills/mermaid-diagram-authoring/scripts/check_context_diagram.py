@@ -24,10 +24,15 @@ NODE_RE = re.compile(
     r'constraint:\s*"on"\s*\}\s*$'
 )
 PURPOSE_NODE_RE = re.compile(
-    r'^\s{2}(?P<id>p_[a-z][a-z0-9_]*)\(\["(?P<label>[^"]*)"\]\)\s*$'
+    r'^\s{2}(?P<id>p_[a-z][a-z0-9_]*)'
+    r'(?:\(\["(?P<note_label>[^"]*)"\]\)|\("(?P<rounded_label>[^"]*)"\))\s*$'
 )
 UNDIRECTED_EDGE_RE = re.compile(
     r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+---\s+"
+    r"(?P<right>[a-z][a-z0-9_]*)\s*$"
+)
+DOTTED_EDGE_RE = re.compile(
+    r"^\s{2}(?P<left>[a-z][a-z0-9_]*)\s+-\.-\s+"
     r"(?P<right>[a-z][a-z0-9_]*)\s*$"
 )
 DIRECTED_EDGE_RE = re.compile(
@@ -155,7 +160,7 @@ def main() -> int:
             if node_id in nodes:
                 errors.append(f"line {number}: duplicate node {node_id}")
             nodes[node_id] = {
-                "label": match.group("label"),
+                "label": match.group("note_label") or match.group("rounded_label"),
                 "kind": "purpose",
             }
             node_lines.append(number)
@@ -180,6 +185,18 @@ def main() -> int:
                 errors.append(
                     f"line {number}: duplicate undirected relationship "
                     f"({left} --- {right}); `---` already represents both directions"
+                )
+            else:
+                undirected_edges[edge_key] = number
+            edges.append((left, right, False))
+            edge_lines.append(number)
+        elif match := DOTTED_EDGE_RE.match(line):
+            left, right = match.group("left"), match.group("right")
+            edge_key = tuple(sorted((left, right)))
+            if edge_key in undirected_edges:
+                errors.append(
+                    f"line {number}: duplicate undirected relationship "
+                    f"({left} -.- {right}); an undirected relationship already exists"
                 )
             else:
                 undirected_edges[edge_key] = number
@@ -257,7 +274,8 @@ def main() -> int:
             expected_class = "purpose"
             if data.get("kind") != "purpose":
                 errors.append(
-                    f"{node_id}: purpose nodes use the note form `p_id([\"text\"])`, not an image node"
+                    f"{node_id}: purpose nodes use the note form `p_id([\"text\"])` "
+                    "or rounded form `p_id(\"text\")`, not an image node"
                 )
         elif prefix in ICON_RULES:
             expected_icon, expected_size, expected_class = ICON_RULES[prefix]
