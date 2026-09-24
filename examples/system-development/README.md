@@ -128,7 +128,6 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
-  a_business_user@{ label: "業務担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_business_owner@{ label: "業務責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_system_engineer@{ label: "システムエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_ops@{ label: "運用担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
@@ -138,15 +137,12 @@ flowchart LR
   b_implementation_unit@{ label: "実装・単体", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_external_test@{ label: "外部結合", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_deployment@{ label: "導入", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  x_requirements_management@{ label: "要件管理", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   x_dev_environment@{ label: "開発環境", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   x_external_business_system@{ label: "外部システム", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   x_production_env@{ label: "本番環境", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  x_monitoring@{ label: "監視基盤", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
   a_business_owner --- b_estimation
   a_business_owner --- b_requirements
-  a_business_user --- b_requirements
   a_system_engineer --- b_requirements
   a_system_engineer --- b_basic_design
   a_system_engineer --- b_implementation_unit
@@ -157,21 +153,18 @@ flowchart LR
   b_basic_design --- b_implementation_unit
   b_implementation_unit --- b_external_test
   b_external_test --- b_deployment
-  b_requirements --- x_requirements_management
-  b_basic_design --- x_external_business_system
   b_implementation_unit --- x_dev_environment
   b_external_test --- x_external_business_system
   b_deployment --- x_production_env
-  b_deployment --- x_monitoring
 
   click b_requirements href "https://github.com/maakbo/fde/blob/main/examples/system-development/requirements-context.md" "要件定義の場面を見る"
   click b_implementation_unit href "https://github.com/maakbo/fde/blob/main/examples/system-development/implementation-unit-context.md" "実装・単体の場面を見る"
   click b_external_test href "https://github.com/maakbo/fde/blob/main/examples/system-development/external-integration-context.md" "外部結合の場面を見る"
   click b_deployment href "https://github.com/maakbo/fde/blob/main/examples/system-development/deployment-context.md" "導入の場面を見る"
 
-  class a_business_user,a_business_owner,a_system_engineer,a_ops actor;
+  class a_business_owner,a_system_engineer,a_ops actor;
   class b_estimation,b_requirements,b_basic_design,b_implementation_unit,b_external_test,b_deployment business;
-  class x_requirements_management,x_dev_environment,x_external_business_system,x_production_env,x_monitoring external;
+  class x_dev_environment,x_external_business_system,x_production_env external;
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
   classDef information fill:none,stroke:none,color:#5F5A52;
@@ -179,7 +172,7 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-業務責任者と業務担当が変えたいことを伝え、システムエンジニアが要件・設計・実装・検証へ整え、運用担当が導入を引き受けます。要件管理、開発環境、外部システム、本番環境、監視基盤が各場面を支えます。依頼の背景から業務要件、成果物、リリース計画までの受け渡しは、下の「情報」で確認できます。詳しい役割と場面は [要件定義](requirements-context.md)、[実装・単体](implementation-unit-context.md)、[外部結合](external-integration-context.md)、[導入](deployment-context.md) で確認できます。
+業務責任者が変えたいことを伝え、システムエンジニアが要件・設計・実装・検証へ整え、運用担当が導入を引き受けます。開発環境、外部システム、本番環境が各場面を支えます。依頼の背景から業務要件、成果物、リリース計画までの受け渡しは、下の「情報」で確認できます。詳しい役割と場面は [要件定義](requirements-context.md)、[実装・単体](implementation-unit-context.md)、[外部結合](external-integration-context.md)、[導入](deployment-context.md) で確認できます。
 
 ## 情報
 
