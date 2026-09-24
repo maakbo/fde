@@ -52,6 +52,13 @@ published model quiet enough for a reader who wants to understand the business.
   blocks review. If no External System is present, record `none observed` in
   the authoring workspace and distinguish that conclusion from an unreviewed
   omission. Apply the same gate to root and detail Contexts.
+- When the modeling question explicitly asks how Business activities,
+  participants, and Information make the area work together, project the
+  selected major Information identities into that same root Context with
+  grounded Business relations. A dedicated Information view may elaborate
+  the relationships, but cannot replace this projection; if the integrated
+  view becomes unreadable, stop for a grain or review decision rather than
+  silently separating the meaning.
 - Keep reader-facing prose about the work itself: purpose, participants,
   handled Information, and resulting value. Do not use `図`, `モデル`, `View`,
   `ノード`, placement, or authoring language as the subject of the explanation.
@@ -288,3 +295,6 @@ The Skill is ready for a first field use when this chain works end to end:
     checklist).
 11. completeness review confirms Actor participation, an explicit External
     System observation, and reader-facing prose before the View is accepted.
+    When the reader question includes Business, participants, and Information
+    together, it also confirms that the selected major Information identities
+    are visible in that same root Context.

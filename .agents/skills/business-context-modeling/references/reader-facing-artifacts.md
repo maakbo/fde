@@ -82,6 +82,12 @@ conversation. Business count alone is not a boundary. A detail View should
 retain a parent link, and discoveries in the detail should be checked back
 against the parent.
 
+When the root reader question explicitly includes Business, participants, and
+Information together, a child Information View is supplemental: it must not
+replace the major Information projection on the root page. If that integrated
+projection cannot remain readable at an honest grain, stop at the review
+boundary and record the available grain choices.
+
 ## Reader-facing naming
 
 Derive every Business name from input / transformation / output in the

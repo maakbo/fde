@@ -22,6 +22,14 @@ drop an observed system. In a root View, project the actors and systems that
 are meaningful at that level; keep detail-only tools or roles below the root
 only when the omission and its reason remain in the authoring trace.
 
+When the modeling question explicitly asks how Business activities,
+participants, and Information work together, the selected major Information
+identities must be visible in that same root Context and connect to grounded
+Business activities. A separate Information view may elaborate the
+relationships, but cannot substitute for the integrated projection. If the
+grain makes that view unreadable, retain the question and escalate the grain
+or review decision rather than silently removing Information.
+
 ## Information as business vocabulary
 
 Information is a named domain concept used by people doing the work, not an

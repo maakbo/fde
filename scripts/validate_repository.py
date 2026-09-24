@@ -353,6 +353,8 @@ def validate_system_development_reader_surface() -> None:
         "b_system_development",
         "i_request_background",
         "i_system_requirement",
+        "i_external_specification",
+        "i_build_artifact",
         "i_release_plan",
     ):
         if required_id not in root_page:
@@ -394,6 +396,28 @@ def validate_system_development_reader_surface() -> None:
             flags=re.MULTILINE,
         )
     }
+    root_information_nodes = {
+        match.group("id")
+        for match in re.finditer(
+            r'^\s{2}(?P<id>i_[a-z][a-z0-9_]*)@\{',
+            root_business_block,
+            flags=re.MULTILINE,
+        )
+    }
+    if not root_information_nodes:
+        raise ValueError(
+            "system-development root business view must include Information participants"
+        )
+    for information_id in sorted(root_information_nodes):
+        information_pattern = (
+            rf'^\s+{re.escape(information_id)}\s+---\s+b_[a-z0-9_]+$|'
+            rf'^\s+b_[a-z0-9_]+\s+---\s+{re.escape(information_id)}$'
+        )
+        if not re.search(information_pattern, root_business_block, flags=re.MULTILINE):
+            raise ValueError(
+                "system-development root business view is missing a Business relation "
+                f"for {information_id}"
+            )
     if not re.search(r'^\s{2}a_[a-z][a-z0-9_]*@\{', root_business_block, flags=re.MULTILINE):
         raise ValueError("system-development root business view must include Actor participants")
     if not re.search(r'^\s{2}x_[a-z][a-z0-9_]*@\{', root_business_block, flags=re.MULTILINE):
