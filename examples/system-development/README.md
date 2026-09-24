@@ -54,8 +54,8 @@ flowchart LR
   x_customer_core --- b_design_solution
   i_rfp --- b_shape_needs
   b_shape_needs --- i_business_requirement
+  b_shape_needs --- i_system_requirement
   i_business_requirement --- b_design_solution
-  b_design_solution --- i_system_requirement
   b_design_solution --- i_external_specification
   i_system_requirement --- b_implement_solution
   i_external_specification --- b_implement_solution
