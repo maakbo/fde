@@ -2,7 +2,7 @@
 
 外部連携で問題が起きたとき、双方の証跡から責任境界を突き止める流れです。
 
-← [外部結合テスト](external-integration-context.md)
+← [外部と確かめる](README.md)
 
 ## フロー
 
@@ -59,4 +59,4 @@ flowchart TB
 
 ## 設計観点へ
 
-契約検証で扱う外部IF仕様を、根拠・成熟・差戻しまで含めて読むときは、[外部IF仕様の設計観点](interface-specification-detail.md) を参照します。
+契約検証で扱う外部IF仕様を、根拠・成熟・差戻しまで含めて読むときは、[外部IF仕様の設計観点](../basic-design/interface-specification.md) を参照します。

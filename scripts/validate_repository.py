@@ -67,21 +67,16 @@ REQUIRED = [
     "examples/human-agent-workspace/architecture-overview.md",
     "examples/human-agent-workspace/handoff-review-flow.md",
     "examples/system-development/README.md",
-    "examples/system-development/business-map.md",
-    "examples/system-development/requirements-context.md",
-    "examples/system-development/requirements-alignment-flow.md",
-    "examples/system-development/implementation-unit-context.md",
-    "examples/system-development/implementation-unit-flow.md",
-    "examples/system-development/external-integration-context.md",
-    "examples/system-development/external-integration-flow.md",
-    "examples/system-development/deployment-context.md",
-    "examples/system-development/deployment-flow.md",
-    "examples/system-development/interface-specification-detail.md",
-    "examples/system-development/decomposition-catalog.md",
-    "examples/system-development/model-set-index.md",
-    "examples/system-development/master-actor-map.md",
-    "examples/system-development/master-system-map.md",
-    "examples/system-development/master-information-model.md",
+    "examples/system-development/requirements/README.md",
+    "examples/system-development/requirements/alignment-flow.md",
+    "examples/system-development/basic-design/README.md",
+    "examples/system-development/basic-design/interface-specification.md",
+    "examples/system-development/implementation/README.md",
+    "examples/system-development/implementation/unit-flow.md",
+    "examples/system-development/external-integration/README.md",
+    "examples/system-development/external-integration/integration-flow.md",
+    "examples/system-development/deployment/README.md",
+    "examples/system-development/deployment/cutover-flow.md",
 ]
 SKILLS = [
     "architecture-modeling",
@@ -536,6 +531,206 @@ def validate_system_development_reader_surface() -> None:
     _validate_sample_links(sample)
 
 
+def validate_system_development_reader_surface() -> None:
+    """Keep the system-development sample rooted in Business-owned directories."""
+
+    sample = ROOT / "examples/system-development"
+    root_page = (sample / "README.md").read_text(encoding="utf-8")
+    child_dirs = (
+        "requirements",
+        "basic-design",
+        "implementation",
+        "external-integration",
+        "deployment",
+    )
+    old_flat_files = {
+        "business-map.md",
+        "decomposition-catalog.md",
+        "evaluation-notes.md",
+        "model-set-index.md",
+        "master-actor-map.md",
+        "master-system-map.md",
+        "master-information-model.md",
+        "requirements-context.md",
+        "implementation-unit-context.md",
+        "external-integration-context.md",
+        "deployment-context.md",
+    }
+    unexpected_top_level = {
+        path.name
+        for path in sample.iterdir()
+        if path.is_file() and path.name != "README.md"
+    }
+    if unexpected_top_level & old_flat_files:
+        raise ValueError(
+            "system-development retains obsolete flat artifacts: "
+            + ", ".join(sorted(unexpected_top_level & old_flat_files))
+        )
+    for child in child_dirs:
+        directory = sample / child
+        if not directory.is_dir() or not (directory / "README.md").is_file():
+            raise ValueError(
+                f"system-development Business directory is missing README: {child}"
+            )
+
+    for token in (
+        "pdf-report-system",
+        "waterfall-system-development",
+        "PDF帳票",
+        "RDRA",
+        "model-set-index",
+        "decomposition-catalog",
+        "master-actor-map",
+        "master-system-map",
+        "master-information-model",
+        "## Candidate inventory",
+        "## Relationship model",
+        "## Boundary reasoning",
+        "## Naming candidates",
+        "## Validation",
+        "## Unresolved",
+        "図の作り方",
+        "ノードを",
+    ):
+        if token in root_page:
+            raise ValueError(
+                f"{(sample / 'README.md').relative_to(ROOT)}: obsolete or authoring token leaked: {token}"
+            )
+    for heading in ("# 業務システム開発", "## 仕事へ入る"):
+        if heading not in root_page:
+            raise ValueError(f"system-development root is missing reader section: {heading}")
+    if root_page.count("```mermaid") != 1:
+        raise ValueError("system-development root must contain exactly one Mermaid view")
+
+    blocks = re.findall(
+        r"^```mermaid[ \t]*\r?\n(?P<body>.*?)^```[ \t]*$",
+        root_page,
+        flags=re.MULTILINE | re.DOTALL,
+    )
+    if len(blocks) != 1:
+        raise ValueError("system-development root Mermaid block could not be extracted")
+    root_block = blocks[0]
+    if "flowchart LR" not in root_block:
+        raise ValueError("system-development root must use flowchart LR")
+
+    root_ids = {
+        match.group("id")
+        for match in re.finditer(
+            r'^\s{2}(?P<id>[a-z][a-z0-9_]*)@\{',
+            root_block,
+            flags=re.MULTILINE,
+        )
+    }
+    required_root_ids = {
+        "a_business_user",
+        "a_executive",
+        "a_project_lead",
+        "a_designer",
+        "a_developer",
+        "x_customer_core",
+        "x_dev_environment",
+        "x_staging_environment",
+        "x_production_environment",
+        "i_rfp",
+        "i_business_requirement",
+        "i_system_requirement",
+        "i_external_specification",
+        "i_operation_plan",
+        "b_shape_needs",
+        "b_design_solution",
+        "b_implement_solution",
+        "b_verify_external",
+        "b_transition_operation",
+    }
+    missing = sorted(required_root_ids - root_ids)
+    if missing:
+        raise ValueError(
+            "system-development root is missing observed Version 0 IDs: "
+            + ", ".join(missing)
+        )
+    business_ids = {node for node in root_ids if node.startswith("b_")}
+    information_ids = {node for node in root_ids if node.startswith("i_")}
+    if not business_ids or not information_ids:
+        raise ValueError("system-development root must include Business and Information")
+    if not any(node.startswith("a_") for node in root_ids):
+        raise ValueError("system-development root must include Actor participants")
+    if not any(node.startswith("x_") for node in root_ids):
+        raise ValueError("system-development root must include External System candidates")
+
+    for business_id in sorted(business_ids):
+        participant_pattern = (
+            rf'^\s+(?:a_|x_)[a-z0-9_]+\s+---\s+{re.escape(business_id)}$|'
+            rf'^\s+{re.escape(business_id)}\s+---\s+(?:a_|x_)[a-z0-9_]+$'
+        )
+        if not re.search(participant_pattern, root_block, flags=re.MULTILINE):
+            raise ValueError(
+                f"system-development root is missing a participant relation for {business_id}"
+            )
+    for information_id in sorted(information_ids):
+        information_pattern = (
+            rf'^\s+{re.escape(information_id)}\s+---\s+b_[a-z0-9_]+$|'
+            rf'^\s+b_[a-z0-9_]+\s+---\s+{re.escape(information_id)}$'
+        )
+        if not re.search(information_pattern, root_block, flags=re.MULTILINE):
+            raise ValueError(
+                f"system-development root is missing a Business relation for {information_id}"
+            )
+    for child in child_dirs:
+        if f"({child}/)" not in root_page:
+            raise ValueError(f"system-development root is missing child link: {child}/")
+
+    context_checker = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py"
+    business_checker = ROOT / ".agents/skills/business-context-modeling/scripts/check_business_context.py"
+    flow_checker = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py"
+    with tempfile.TemporaryDirectory(prefix="fde-system-development-hierarchy-") as directory:
+        root_path = Path(directory) / "root.md"
+        root_path.write_text(f"```mermaid\n{root_block}\n```\n", encoding="utf-8")
+        run([sys.executable, str(context_checker), str(root_path), "--strict", "--allow-complexity"])
+        run([sys.executable, str(business_checker), str(root_path), "--allow-complexity"])
+        for child in child_dirs:
+            child_path = sample / child / "README.md"
+            child_text = child_path.read_text(encoding="utf-8")
+            if child_text.count("```mermaid") != 1:
+                raise ValueError(f"{child_path.relative_to(ROOT)}: expected one Mermaid context")
+            if not child_text.startswith("# ") or "← [" not in child_text:
+                raise ValueError(f"{child_path.relative_to(ROOT)}: missing parent or reader section")
+            for token in (
+                "master-actor-map",
+                "master-system-map",
+                "master-information-model",
+                "decomposition-catalog",
+                "## Candidate inventory",
+                "## Relationship model",
+                "## Boundary reasoning",
+                "## Naming candidates",
+                "## Validation",
+                "## Unresolved",
+            ):
+                if token in child_text:
+                    raise ValueError(f"{child_path.relative_to(ROOT)}: authoring or obsolete token leaked: {token}")
+            child_block = re.findall(
+                r"^```mermaid[ \t]*\r?\n(?P<body>.*?)^```[ \t]*$",
+                child_text,
+                flags=re.MULTILINE | re.DOTALL,
+            )[0]
+            child_path_tmp = Path(directory) / f"{child}.md"
+            child_path_tmp.write_text(f"```mermaid\n{child_block}\n```\n", encoding="utf-8")
+            run([sys.executable, str(context_checker), str(child_path_tmp), "--strict", "--allow-complexity"])
+            run([sys.executable, str(business_checker), str(child_path_tmp), "--allow-complexity"])
+
+        for flow in sample.glob("*/**/*-flow.md"):
+            run([sys.executable, str(flow_checker), str(flow), "--strict"])
+
+    for artifact in sample.rglob("*.md"):
+        text = artifact.read_text(encoding="utf-8")
+        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
+            if "://" in target or target.startswith("#"):
+                continue
+            linked = (artifact.parent / target.split("#", 1)[0]).resolve()
+            if not linked.exists():
+                raise ValueError(f"{artifact.relative_to(ROOT)}: broken sample link: {target}")
+
+
 MODEL_SET_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 MODEL_SET_PARENT_RE = re.compile(
     r"^(?P<diagram>[^\s]+\.md)\s*/\s*(?P<node>[a-z][a-z0-9_]*)$"
@@ -681,7 +876,6 @@ def main() -> int:
     validate_model_set_index(
         ".agents/skills/business-context-modeling/fixtures/repair-intake/model-set-index.md"
     )
-    validate_model_set_index("examples/system-development/model-set-index.md")
 
     python_files = [path for path in ROOT.rglob("*.py") if "node_modules" not in path.parts]
     for path in python_files:
@@ -728,34 +922,6 @@ def main() -> int:
     ])
     run([sys.executable, master, f"{fixture}/master-system-map.md", "--kind", "system", "--strict"])
     run([sys.executable, master, f"{fixture}/master-information-model.md", "--kind", "information", "--strict"])
-    run([
-        sys.executable,
-        master,
-        "examples/system-development/master-actor-map.md",
-        "--kind",
-        "actor",
-        "--strict",
-        "--allow-sparse",
-    ])
-    run([
-        sys.executable,
-        master,
-        "examples/system-development/master-system-map.md",
-        "--kind",
-        "system",
-        "--strict",
-        "--allow-sparse",
-    ])
-    run([
-        sys.executable,
-        master,
-        "examples/system-development/master-information-model.md",
-        "--kind",
-        "information",
-        "--strict",
-        "--allow-complexity",
-        "--allow-sparse",
-    ])
     references = ".agents/skills/business-context-modeling/scripts/check_master_references.py"
     run([
         sys.executable,
@@ -773,27 +939,6 @@ def main() -> int:
     run([sys.executable, flow, "templates/business-flow.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/overview.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/flow.md", "--strict"])
-    run([
-        sys.executable,
-        context,
-        "examples/system-development/business-map.md",
-        "--strict",
-        "--allow-complexity",
-    ])
-    for relative in (
-        "examples/system-development/requirements-context.md",
-        "examples/system-development/implementation-unit-context.md",
-        "examples/system-development/external-integration-context.md",
-        "examples/system-development/deployment-context.md",
-    ):
-        run([sys.executable, business, relative, "--allow-complexity"])
-    for relative in (
-        "examples/system-development/requirements-alignment-flow.md",
-        "examples/system-development/implementation-unit-flow.md",
-        "examples/system-development/external-integration-flow.md",
-        "examples/system-development/deployment-flow.md",
-    ):
-        run([sys.executable, flow, relative, "--strict"])
     run([
         sys.executable,
         context,

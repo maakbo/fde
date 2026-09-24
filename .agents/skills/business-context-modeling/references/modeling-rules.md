@@ -6,6 +6,24 @@ Before making an element inventory, describe the chosen Business in two or three
 
 Extract candidates only when they arise naturally from that description. Information should work as the object of a business verb such as receive, use as a basis, reference, create, update, or provide. Do not add `Model`, `View`, or another modeling-method concept merely because the method uses it; include it only when the described Business actually receives, uses, creates, updates, or provides it.
 
+## Observed vocabulary before classification
+
+Keep the words people actually use before normalizing them. A phase label such as
+"基本設計" or "システムテスト" may be a Business candidate, a scene, a
+milestone, or only a local process label; do not turn a list of phases into an
+equal-sized Business Map mechanically. Preserve the phrase, then describe its
+input, transformation, output, participants, and handled Information before
+proposing a compact Business name. Likewise, keep environments, source code,
+containers, and similar technical words as observed candidates until the
+selected boundary makes their classification clear.
+
+Version zero may have low or medium confidence. Its purpose is to give the
+people doing the work a concrete surface for correction, not to present a
+generic standard. Move from a root to a focused Business directory and back to
+the root as new responsibilities or vocabulary are discovered; keep the
+confidence and unresolved classification in the authoring workspace or private
+checkpoint, not in reader-facing prose.
+
 ## Business Context completeness gate
 
 Before a Business Context is accepted, compare the reader-facing projection with

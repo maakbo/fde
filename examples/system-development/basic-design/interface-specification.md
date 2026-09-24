@@ -4,7 +4,7 @@
 
 外部IF仕様がどのように整っていくかを、一つの連携の例で示します。他の設計へ広げるルールは、ここでは決めません。
 
-← [基本設計の分解](decomposition-catalog.md#3-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E8%A8%88) / [外部結合テスト](external-integration-context.md) / [原因特定](external-integration-flow.md)
+← [仕組みを設計する](README.md) / [外部と確かめる](../external-integration/) / [境界を切り分ける](../external-integration/integration-flow.md)
 
 ## 外部IF仕様を整える流れ
 
@@ -77,7 +77,6 @@ flowchart LR
 
 ## 関連
 
-- [外部結合テスト](external-integration-context.md) — 親Context
-- [原因特定](external-integration-flow.md) — 証跡から責任境界を確認するFlow
-- [基本設計の分解](decomposition-catalog.md#3-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E8%A8%88) — 設計側の親導線
-- [Information](master-information-model.md)
+- [外部と確かめる](../external-integration/) — 親の仕事へ戻る
+- [境界を切り分ける](../external-integration/integration-flow.md) — 証跡から責任境界を確認する
+- [仕組みを設計する](README.md) — 設計側の入口へ戻る

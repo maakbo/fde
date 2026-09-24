@@ -88,6 +88,18 @@ replace the major Information projection on the root page. If that integrated
 projection cannot remain readable at an honest grain, stop at the review
 boundary and record the available grain choices.
 
+## Business-owned working directories
+
+When a reader needs to go one level deeper, link to the Business's directory
+and its `README.md`, not to a flat collection of context files. The directory
+is a working boundary for that Business: its README explains the scene, and
+only the intermediate or final artifacts, tasks, records, supporting material,
+or child Businesses that the work actually needs belong beside it. Do not
+create empty `flows/`, `models/`, or `tasks/` buckets for appearance, and do
+not make the reader pass through a catalog or index before reaching the child.
+Keep the root-to-child link natural and return to the parent when a child
+discovery changes the meaning.
+
 ## Reader-facing naming
 
 Derive every Business name from input / transformation / output in the

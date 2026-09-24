@@ -71,12 +71,32 @@ published model quiet enough for a reader who wants to understand the business.
   their owning master maps. A detail discovery is a change event: update the
   root, search the impact surface, propagate to affected Views, and review for
   stale definitions before closing.
+- Make the filesystem reflect the Business hierarchy when a model set is also
+  a working sample: the root `README.md` is the canonical entry point, and a
+  Business that needs concrete work gets its own directory with a `README.md`.
+  That directory is a focused working context which may own the Business's
+  intermediate or final artifacts, tasks, records, supporting material, and
+  child Businesses. Recurse only when the meaning needs another boundary.
+  Do not create artifact-type buckets or empty directories before the work
+  needs them, and do not keep obsolete public artifacts merely for URL
+  compatibility; Git history is the archive.
 - Separate an Actor's position from its relations. Position expresses the
   Actor's main value role across the Use Case; each relation expresses direct
   participation in one Business. A left or right Actor may relate to several
   Businesses.
 - Keep Markdown Mermaid as the editable source. Do not create `.mmd`, SVG, or
   PNG unless the user explicitly requests standalone source or export.
+- Preserve the user's observed words before classifying them. A phase or process
+  label is evidence, not automatically a Business; derive a Business candidate
+  from its input, transformation, and output. A low- or medium-confidence
+  version zero is valid when it gives people a concrete surface to question.
+- Treat concrete-to-abstract movement as a normal loop: enter a focused child
+  Business, learn a responsibility or vocabulary distinction, return to the
+  root, and revise the parent before continuing downward. Do not freeze a
+  version zero as a finished standard.
+- The model should help the people doing the work update it themselves. Do not
+  replace local language or responsibility boundaries with a generic framework;
+  retain unresolved classification and let the participants refine it.
 
 ## Reference routing
 
