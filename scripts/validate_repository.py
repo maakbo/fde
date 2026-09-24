@@ -679,6 +679,26 @@ def validate_system_development_reader_surface() -> None:
         if f"({child}/)" not in root_page:
             raise ValueError(f"system-development root is missing child link: {child}/")
 
+    # Keep the root projection and the focused requirements context aligned for
+    # the Version 0 ownership that was reviewed together.  Independent page
+    # checks cannot catch a parent/child Information handoff drifting apart.
+    if not re.search(
+        r"^\s+b_shape_needs\s+---\s+i_system_requirement$",
+        root_block,
+        flags=re.MULTILINE,
+    ):
+        raise ValueError(
+            "system-development root must show 要求を整える producing システム要件"
+        )
+    if re.search(
+        r"^\s+b_design_solution\s+---\s+i_system_requirement$",
+        root_block,
+        flags=re.MULTILINE,
+    ):
+        raise ValueError(
+            "system-development root must not assign システム要件 to 仕組みを設計する"
+        )
+
     context_checker = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py"
     business_checker = ROOT / ".agents/skills/business-context-modeling/scripts/check_business_context.py"
     flow_checker = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py"
@@ -713,6 +733,14 @@ def validate_system_development_reader_surface() -> None:
                 child_text,
                 flags=re.MULTILINE | re.DOTALL,
             )[0]
+            if child == "requirements" and not re.search(
+                r"^\s+b_agree_scope\s+---\s+i_system_requirement$",
+                child_block,
+                flags=re.MULTILINE,
+            ):
+                raise ValueError(
+                    "system-development requirements child must show 対象を合意する producing システム要件"
+                )
             child_path_tmp = Path(directory) / f"{child}.md"
             child_path_tmp.write_text(f"```mermaid\n{child_block}\n```\n", encoding="utf-8")
             run([sys.executable, str(context_checker), str(child_path_tmp), "--strict", "--allow-complexity"])
