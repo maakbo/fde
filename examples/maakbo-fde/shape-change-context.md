@@ -1,6 +1,6 @@
 # 業務の変化を描く
 
-主体者と仲間が、現場の実態や暗黙知を伝えます。fdeとfdeAIが素早く言葉と絵にし、四者で業務モデルを見ながら認識を合わせ、ありたい状態と次に試す変化を考えます。
+主体者と仲間が、現場の実態、困りごと、暗黙知を持ち寄ります。fdeとfdeAIが言葉と絵にし、四者で業務を確かめながら、不要な仕事、ボトルネック、変える価値のある対象を見極め、設計へ渡せる要件の叩き台までつくります。
 
 ## モデル
 
@@ -28,13 +28,14 @@ flowchart LR
   a_fde@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   i_context_information@{ label: "業務の現状", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  i_mismatch@{ label: "現場とのズレ", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_business_issue@{ label: "業務課題", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   i_desired_state@{ label: "ありたい状態", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_context_understanding@{ label: "現場理解", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_business_structuring@{ label: "業務構造化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   i_business_model@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_change_design@{ label: "変化設計", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_change_plan@{ label: "変化案", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_target_priority@{ label: "対象と優先順位", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  i_requirement_basis@{ label: "要件の叩き台", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   a_subject@{ label: "主体者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_companions@{ label: "主体者の仲間", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
@@ -46,12 +47,14 @@ flowchart LR
   a_fde_ai --- b_change_design
   i_context_information --- b_context_understanding
   i_context_information --- b_business_structuring
-  i_mismatch --- b_change_design
+  i_business_issue --- b_context_understanding
+  i_business_issue --- b_change_design
   i_desired_state --- b_change_design
   b_context_understanding --- i_business_model
   b_business_structuring --- i_business_model
   i_business_model --- b_change_design
-  b_change_design --- i_change_plan
+  b_change_design --- i_target_priority
+  b_change_design --- i_requirement_basis
   b_context_understanding --- a_subject
   b_business_structuring --- a_subject
   b_change_design --- a_subject
@@ -61,7 +64,7 @@ flowchart LR
 
   class a_fde,a_fde_ai,a_subject,a_companions actor;
   class b_context_understanding,b_business_structuring,b_change_design business;
-  class i_context_information,i_mismatch,i_desired_state,i_business_model,i_change_plan information;
+  class i_context_information,i_business_issue,i_desired_state,i_business_model,i_target_priority,i_requirement_basis information;
 
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
@@ -69,10 +72,12 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## このモデルが表していること
+## この場面で行うこと
 
-現場理解では実態を持ち寄り、業務構造化では人・情報・システムの関係を見える形にします。四者で図を確かめ、現場とのズレ、ありたい状態、変化案を話せる土台にします。
+現場理解と業務構造化では、流れだけでなく、判断、例外、暗黙知、前提、制約まで話せる業務モデルへ近づけます。
 
-[変化設計の流れを見る](change-design-flow.md) →
+変化設計では、まず不要な業務を減らし、残った課題のボトルネックを絞ります。人、ルール、RPA、AIエージェントなどの手段を比べ、効果、実現可能性、リスクから対象と優先順位を選びます。その対象について、範囲、対象外、前提、制約、機能・非機能要件、合格基準の叩き台を残します。
 
-← [FDEの業務全体へ](business-map.md)
+[対象を見極め、業務を定義する流れを見る](change-design-flow.md) →
+
+← [FDEの進め方へ](delivery-process.md)
