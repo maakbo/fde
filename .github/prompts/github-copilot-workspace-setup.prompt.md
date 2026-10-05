@@ -88,6 +88,73 @@ GitHub CopilotのCustomization機能は更新されるため、実行時点のGi
 
 ---
 
+
+## AIモデルとAI Creditsの運用方針
+
+AI Creditsを節約しながら品質を保つため、すべての作業を同じモデルで実行しないでください。
+
+実行時点で利用可能なモデル、価格、AI Creditsの計算方法をGitHub公式情報または現在の組織設定で確認してください。以下のモデル名が利用できない場合は、同等の「低コスト高速モデル」と「高精度推論モデル」に読み替えてください。
+
+基本方針:
+
+- 通常作業は **GPT-6 Luna相当の低コストモデル**
+- 設計判断・複雑な分析・難しいレビューは **GPT-6 Sol相当の高精度モデル**
+- Astra等の高コスト・長時間自律モデルは、長時間の自律実装が本当に必要で、人間が明示的に了承した場合だけ検討
+- high reasoning / large contextも常用せず、必要な時だけ使う
+- 高精度モデルで方針が決まったら、その後の定型実装・ファイル編集・検査は低コストモデルへ戻す
+
+推奨パターン:
+
+> Lunaで調べる → Solで決める → Lunaで作る・検査する
+
+### Luna相当で進める作業
+
+- repository構造の調査
+- 既存Instructions / Agents / Skills / Promptsの棚卸し
+- file検索
+- GitHub Issues / Projectsの状態取得
+- 定型的なfile作成・編集
+- 既に決まった設計に沿った実装
+- 単純なJUnit / Playwright追加
+- README / Context / Report更新
+- build / test実行
+- 機械的なvalidation
+
+### Sol相当へエスカレーションする条件
+
+次のいずれかに該当したら、Lunaのまま押し切らないでください。
+
+- 複数の設計案から重要な選択を行う
+- Agent / Skill / Instructionsの責務境界を決める
+- architectureやmodule境界を横断する変更
+- 既存仕様が曖昧で、複数file・複数layerを横断して推論する必要がある
+- 同じfailureが2回以上続き、原因が特定できない
+- transaction、concurrency、security、data consistency等の高リスク判断
+- code reviewで設計上の妥当性を評価する
+- Skillの採否やScrum Harness全体の構造を決定する
+- 低コストモデルの回答に矛盾、根拠不足、過剰な推測が見られる
+
+エスカレーション時は、可能ならモデルを切り替えてください。環境上自動切替できない場合は、
+
+「ここからはSol相当を推奨: <理由>」
+
+と明示してください。
+
+高精度モデルを使った後は、判断結果を短くArtifactへ残し、その判断に従う作業はLuna相当へ戻してください。
+
+### Credits最適化のためのContext管理
+
+- repository全体を毎回Contextへ投入しない
+- まず検索し、必要なfileだけ読む
+- 安定した事実はInstructions / Contextへ残し、毎回再推論しない
+- 長いChat履歴よりrepositoryの正本を優先する
+- 同じ調査を繰り返さない
+- 大context / high reasoningの利用理由を説明できる場合だけ有効化する
+
+モデル選択も今回構築するWorkspaceの一部です。Custom Agentがモデル指定をサポートする場合は、役割と作業特性に合わせて適切なモデルを設定してください。未対応なら、各Agent / Promptにエスカレーション基準を記載してください。
+
+---
+
 ## 3. 変更の境界を決める
 
 最初に短い作業計画を示したら、対象プロジェクト内の可逆的な設定作業を進めてください。
