@@ -72,7 +72,7 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## この場面で行うこと
+## このモデルが表していること
 
 協働設計では、人に残す判断、AIに任せる処理、ルールやRPAで扱う処理、既存システムが担う処理を分けます。AIを使う場合は、目的、前提、制約、参照情報、入出力形式、Validation、権限、Human-in-the-Loop、Guardrailsまで設計します。
 
