@@ -30,6 +30,81 @@ description: 既存のGitHub Copilot Skillを優先利用し、Scrum Master / De
 
 ---
 
+
+## AIモデルとAI Creditsの運用方針
+
+Human–AI Teamでは、AI Creditsを節約するために全Agentを高コストモデルへ固定しません。一方で、難しい判断を低コストモデルだけで押し切ることもしません。
+
+実行時点で利用可能なモデルとAI Creditsの料金体系をGitHub公式情報または組織設定で確認してください。以下のモデルが存在しない場合は、同等の低コストモデル / 高精度モデルへ読み替えてください。
+
+基本原則:
+
+> **Lunaで掘る → Solで決める → Lunaで作る**
+
+- **GPT-6 Luna相当**: 日常的な探索、実装、更新、テスト、定型作業
+- **GPT-6 Sol相当**: 設計判断、難しいdebug、Tech Lead review、Sprintの重要な計画判断
+- **Astra等の高コストモデル**: 長時間の自律開発が必要で、人間が明示的に了承した場合だけ
+- high reasoning / large contextも常用しない
+
+### Agentごとの基本モデル
+
+**Scrum Master**
+- Daily、Kanban更新、状態整理: Luna相当
+- Sprint Planningで複数の優先度・依存関係・リスクを統合する判断: 必要に応じてSol相当
+- Retrospectiveで単純な整理: Luna相当
+- Team Workflow自体を再設計する場合: Sol相当
+
+**Developer**
+- repository探索、通常実装、TDD、JUnit / Playwright、既知パターンの変更: Luna相当
+- 原因不明のfailureが2回以上継続: Sol相当へエスカレーション
+- 複数layerを横断する不可解なFramework挙動: Sol相当
+- 方針確定後の実装: Luna相当へ戻す
+
+**Tech Lead**
+- 単純な規約確認や既知patternのreview: Luna相当でも可
+- architecture、責務分割、transaction、data model、重要な設計review: 原則Sol相当
+- 判断結果を記録した後の修正実装はDeveloper + Luna相当へ戻す
+
+**QA**
+- Acceptance Criteria整理、既知patternのtest scenario、regression実行: Luna相当
+- 曖昧な品質リスク、複雑な境界条件、test strategy設計: 必要に応じてSol相当
+
+### 必ずSol相当を検討するエスカレーション条件
+
+- Sprint Goalや実装方針に影響する重要な技術判断
+- 複数案のtrade-off評価
+- architecture / module境界を横断する変更
+- 同じfailureを2回以上解消できない
+- security / concurrency / transaction / data consistency
+- Skillの採否やAgent責務設計
+- Framework内部の処理を複数file・layerから推論する必要がある
+- Luna相当の回答に矛盾・根拠不足・推測が多い
+
+環境上モデルを自動変更できる場合は切り替えてください。
+
+自動変更できない場合は、人間へ簡潔に、
+
+「Sol推奨: <理由>」
+
+と示してください。
+
+重要なのは、Solへ切り替えたまま残らないことです。高精度モデルで判断・難所突破が終わったら、その判断をArtifactへ残し、定型実装や更新はLuna相当へ戻してください。
+
+### Context使用量も抑える
+
+- 毎回repository全体を読まない
+- 検索して関連fileだけ読む
+- Sprint Goal / Product Goal / Decisionsの正本を参照する
+- 同じFramework知識を毎回再調査せず、確認済み事項をKnowledgeへ昇格する
+- large contextはコードベース横断分析が本当に必要な時だけ
+- long-running Agentに漫然と作業を続けさせず、小さなTask単位で完了・handoffする
+
+AI Credits効率もRetrospective対象にしてください。
+
+「高価なモデルを使ったことで価値があったか」「Lunaで十分だった作業は何か」を振り返り、次Sprintのモデル運用を調整してください。
+
+---
+
 # 1. 最初に現状を調査する
 
 変更前に、プロジェクトルートと現在利用可能なGitHub Copilot環境を確認してください。
