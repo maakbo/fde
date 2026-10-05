@@ -63,6 +63,9 @@ REQUIRED = [
     "examples/maakbo-fde/build-collaboration-context.md",
     "examples/maakbo-fde/establish-work-context.md",
     "examples/maakbo-fde/change-design-flow.md",
+    "examples/maakbo-fde/delivery-process.md",
+    "examples/maakbo-fde/design-and-poc-flow.md",
+    "examples/maakbo-fde/deployment-learning-flow.md",
     "examples/human-agent-workspace/README.md",
     "examples/human-agent-workspace/architecture-overview.md",
     "examples/human-agent-workspace/handoff-review-flow.md",
@@ -182,6 +185,9 @@ FDE_READER_MODEL_FILES = (
     "build-collaboration-context.md",
     "establish-work-context.md",
     "change-design-flow.md",
+    "delivery-process.md",
+    "design-and-poc-flow.md",
+    "deployment-learning-flow.md",
 )
 
 
