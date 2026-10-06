@@ -13,17 +13,18 @@ This repository is a portable environment for forward-deployed business modeling
 ## Start here
 
 1. If a request clearly matches a Skill under `.agents/skills/`, read that `SKILL.md` completely and follow it.
-2. Use `business-context-modeling` for loose business or operational descriptions.
+2. Use `discovery-facilitation` when the user wants to improve real work, identify what should change first, judge whether AI / automation fits, or move from a field description toward a Discovery decision and Definition handoff.
+3. Use `business-context-modeling` for loose business or operational descriptions, especially when the work itself is not yet visible enough to discuss purpose, actors, activities, information, systems, decisions, or boundaries. Discovery may invoke it as a supporting Skill.
    When actor, external-system, or information inventories and their same-type
    relationships are part of the question, update the corresponding master maps
    before assembling a business context. Reuse their stable IDs and record
    `Master references` in the context Markdown.
-3. Use `architecture-modeling` for human, AI-agent, system, repository, service,
+4. Use `architecture-modeling` for human, AI-agent, system, repository, service,
    channel, artifact, or technical-boundary relationships. Keep structural
    Context separate from Interaction Flow.
-4. Use `mermaid-diagram-authoring` for Mermaid source in Markdown, whether the request begins with a model or a direct diagram task.
-5. Use `mermaid-diagram-export` only when the user explicitly asks for SVG, PNG, rendering, image generation, publishing assets, or visual artifact review.
-6. Read only the references directly required by the selected Skill.
+5. Use `mermaid-diagram-authoring` for Mermaid source in Markdown, whether the request begins with a model or a direct diagram task.
+6. Use `mermaid-diagram-export` only when the user explicitly asks for SVG, PNG, rendering, image generation, publishing assets, or visual artifact review.
+7. Read only the references directly required by the selected Skill.
 
 ## Working principles
 
