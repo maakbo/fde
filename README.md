@@ -22,6 +22,7 @@ Architecture OverviewとInteraction Flowで見られます。
 整理されていない事業や業務の話から、目的、業務、関わる人、情報、システムの関係をModelへ外に出します。Howだけでなく、その背景にあるWhyも残すことで、状況が変わったあとも新しいHowを考え直せるようにします。
 
 - [AGENTS.md](AGENTS.md): このリポジトリで共有する作業原則
+- [discovery-facilitation Skill](.agents/skills/discovery-facilitation/SKILL.md): 現場の話から、何を変えるべきか・AIが適切か・次に何を定義するかを見極める手順
 - [business-context-modeling Skill](.agents/skills/business-context-modeling/SKILL.md): 対話から業務Modelをつくる手順
 - [architecture-modeling Skill](.agents/skills/architecture-modeling/SKILL.md): 人、AI agent、system、repository、service、boundaryの関係をArchitecture Viewにする手順
 - [mermaid-diagram-authoring Skill](.agents/skills/mermaid-diagram-authoring/SKILL.md): Markdown内でMermaidを作る手順
@@ -40,6 +41,18 @@ python3 scripts/validate_repository.py
 ```
 
 AI Agentへは、整っていない言葉のまま渡せます。
+
+何を変えるべきかから考えたい場合:
+
+```text
+Use $discovery-facilitation.
+
+この仕事で困っていることを話すので、
+まず仕事そのものを見直し、ボトルネックを見つけ、
+人・ルール・RPA・AI・既存システムのどれで変えるのがよいか一緒に考えてください。
+```
+
+業務そのものを可視化したい場合:
 
 ```text
 Use the business-modeler agent.
