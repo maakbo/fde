@@ -26,6 +26,7 @@ REQUIRED = [
     "templates/icon-context.md",
     "templates/architecture-context.md",
     "templates/business-flow.md",
+    "templates/discovery-brief.md",
     "templates/master-actor-map.md",
     "templates/master-system-map.md",
     "templates/master-information-model.md",
@@ -54,6 +55,8 @@ REQUIRED = [
     ".agents/skills/business-context-modeling/fixtures/repair-intake/context.md",
     ".agents/skills/business-context-modeling/fixtures/repair-intake/flow.md",
     ".agents/skills/business-context-modeling/fixtures/repair-intake/previews/README.md",
+    ".agents/skills/discovery-facilitation/fixtures/system-development-intake.md",
+    ".agents/skills/discovery-facilitation/fixtures/system-development-brief.md",
     "examples/maakbo-fde/README.md",
     "examples/maakbo-fde/purpose-outcome.md",
     "examples/maakbo-fde/business-map.md",
@@ -84,6 +87,7 @@ REQUIRED = [
 SKILLS = [
     "architecture-modeling",
     "business-context-modeling",
+    "discovery-facilitation",
     "mermaid-diagram-authoring",
     "mermaid-diagram-export",
 ]
