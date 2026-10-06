@@ -1,0 +1,4 @@
+interface:
+  display_name: "Definition Facilitation"
+  short_description: "Turn a selected work target into reviewable requirements and acceptance criteria"
+  default_prompt: "Use $definition-facilitation to turn this Discovery target into a reviewable Definition without prematurely designing the solution."
