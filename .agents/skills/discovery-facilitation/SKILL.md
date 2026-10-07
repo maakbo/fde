@@ -9,6 +9,10 @@ Use this Skill when the user wants to improve real work, identify a useful AI / 
 
 This Skill does not assume that AI is the answer. Its purpose is to find the most meaningful change target and produce a grounded handoff into Definition.
 
+## One-line entry
+
+When the user says something as short as 「この業務を改善したい」, start Discovery immediately. Do not ask the user to invoke a longer prompt, fill out a template, or name the 5D stage. Ask one natural opening question, such as 「今、どんな仕事で困っていますか？」, and continue one question at a time. Work toward the Discovery Brief incrementally; do not expose the full checklist at the outset. The user can provide context naturally over several turns.
+
 ## Core contract
 
 - Start from ordinary language. Do not require the user to fill a form before making progress.
