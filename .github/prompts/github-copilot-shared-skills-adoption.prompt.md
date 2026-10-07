@@ -346,7 +346,53 @@ Skillが一般論をProject固有仕様へ上書きしないようにしてく�
 
 ---
 
-# 10. Project固有Skillは急いで作らない
+
+# 10. Human Maintainability / 共通理解を品質要件にする
+
+AI Agentが生成したprogramは、最終的にTeam Memberが保守していきます。
+
+したがって、成功条件は「動く」「Testが通る」だけではありません。
+
+**人間のメンバーが理解し、説明し、変更できること**を品質の一部として扱ってください。
+
+Senior Pair Developerは重要な変更ごとに、必要な範囲で次をHuman Developerへ丁寧に説明してください。
+
+- 何を変更したか
+- なぜその変更が必要か
+- どの仕様を満たしているか
+- Framework ProviderのSampleのどこを参考にしたか
+- Java一般の仕組みか、Framework固有の仕組みか
+- 処理がどのclass / methodを通るか
+- どのTestが何を守っているか
+- 将来変更するとき、どこを見ればよいか
+
+説明は優しく丁寧にしてください。
+
+ただし、簡単な変更に長い講義を付けて開発速度を落とさないでください。
+
+重要なのは、変更量ではなく **保守する人が迷いそうな箇所を先回りして共通理解にすること** です。
+
+Knowledgeへ残すべき内容は、個人向けの詳細な解説ではなく、Teamで再利用価値のあるものに限定してください。
+
+Reviewでも、次を確認してください。
+
+- 実装が既存patternから不必要に外れていないか
+- 命名や責務がTeam Memberに理解可能か
+- AIにしか分からない過剰な抽象化になっていないか
+- Testが仕様と意図を説明するDocumentationとしても機能しているか
+- 次のDeveloperが同種機能を追加するとき参考にできるか
+
+**AIが書いたからAIにしか保守できないcodeを作らないでください。**
+
+目標は、
+
+> Agentが実装速度を上げながら、Team Member間の共通理解も一緒に育てる
+
+ことです。
+
+---
+
+# 11. Project固有Skillは急いで作らない
 
 Framework固有Knowledgeが増えても、すぐ独自Skill化しないでください。
 
@@ -373,7 +419,7 @@ Skillは「繰り返し実行するprocedure」に限定してください。
 
 ---
 
-# 11. Claude Code依存を作らない
+# 12. Claude Code依存を作らない
 
 Claude Codeは、
 
@@ -403,7 +449,7 @@ Claude側で有効だった方法を採用する場合は、GitHub Copilot側の
 
 ---
 
-# 12. Skillの正本と由来を残す
+# 13. Skillの正本と由来を残す
 
 外部Skillをrepositoryへ取り込む場合、由来が分からなくならないようにしてください。
 
@@ -423,7 +469,7 @@ upstream更新のたびに自動追従する仕組みも、必要性が確認さ
 
 ---
 
-# 13. Security / Permission
+# 14. Security / Permission
 
 外部Skillの内容を信頼しすぎないでください。
 
@@ -453,7 +499,7 @@ Skillから、
 
 ---
 
-# 14. 初期選定表をHumanへ出す
+# 15. 初期選定表をHumanへ出す
 
 導入前に次を提示してください。
 
@@ -479,7 +525,7 @@ Code Review SkillはIndependent Reviewerとの重複を確認してから判断�
 
 ---
 
-# 15. Pilotで効果を検証する
+# 16. Pilotで効果を検証する
 
 Skillを導入したら、小さな実Taskで確認してください。
 
@@ -515,7 +561,7 @@ Skillを導入したら、小さな実Taskで確認してください。
 
 ---
 
-# 16. Skillを減らせる状態も成功
+# 17. Skillを減らせる状態も成功
 
 TrialしたSkillが、
 
@@ -531,7 +577,7 @@ TrialしたSkillが、
 
 ---
 
-# 17. 最終的な共有Developer Experience
+# 18. 最終的な共有Developer Experience
 
 チームのDeveloperがrepositoryを開いた時、理想的には次だけ意識すればよい状態にしてください。
 
@@ -546,7 +592,7 @@ SkillやAgentの内部構成を、全Developerが暗記する必要はありま�
 
 ---
 
-# 18. 最終報告
+# 19. 最終報告
 
 最後に日本語で以下を報告してください。
 
@@ -580,6 +626,8 @@ SkillやAgentの内部構成を、全Developerが暗記する必要はありま�
 - TDD / Debug / Verificationが一般Skillとして再利用される
 - Framework固有Knowledgeはprojectの正本に残る
 - Task分解・Debug・ReviewのHuman負荷が減る
+- Team MemberがAgent生成codeを理解し、説明し、保守できる
+- 重要な設計意図とTest意図がTeamで共有される
 - 品質が落ちない
 - AI Creditsを無駄に増やさない
 - 不要なSkillを増やさない
