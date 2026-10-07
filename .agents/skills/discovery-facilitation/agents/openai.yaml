@@ -1,4 +1,4 @@
 interface:
   display_name: "Discovery Facilitation"
   short_description: "Find the right work to change before designing an AI solution"
-  default_prompt: "Use $discovery-facilitation to turn this field description into a grounded Discovery decision and Definition handoff."
+  default_prompt: "Use $discovery-facilitation. この業務を改善したい。まず一つだけ質問して。"
