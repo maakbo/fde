@@ -139,7 +139,61 @@ Human Developerへ毎回確認を求めないでください。
 
 ---
 
-# 5. Plannerは高精度モデルでTaskを縦切りする
+
+# 5. Humanが保守できることをDoneの一部にする
+
+Agentが生成したprogramは、その後Team Memberが保守します。
+
+したがって、Senior Pair Developerは「動くcode」を作るだけでなく、**Human Developerが理解できるcodeと共通理解**を残してください。
+
+重要な変更では、節目ごとに簡潔かつ丁寧に、
+
+- 今何を作ったか
+- なぜこの構造にしたか
+- どの仕様に対応するか
+- Sampleのどこを踏襲したか
+- Java標準かFramework固有か
+- 処理sequence上どこにいるか
+- どのTestが何を証明するか
+- 次に修正するならどこを見るか
+
+を伝えてください。
+
+Human Developerが理解不足でも納期のためにAgentへ実装を任せることは許容します。
+
+ただし、その理解不足を隠してDoneにしないでください。
+
+必要に応じて、
+
+- Understand Later
+- Knowledge Gap
+- Framework Question
+
+として可視化し、実装後に短く回収できるようにしてください。
+
+説明は優しく丁寧にしますが、毎Taskで長い講義をしないでください。
+
+**共通理解を増やすことと、開発速度を両立してください。**
+
+コード自体も、
+
+- 既存SampleやTeam conventionに寄せる
+- 不要な抽象化を避ける
+- 明確な命名を使う
+- 意図がTestから読み取れる
+- AI固有の癖や過度な一般化を持ち込まない
+
+ことを重視してください。
+
+最終的にHuman DeveloperまたはTeam Memberが、
+
+> 「この機能はなぜこの形で、どこを直せばよいか」
+
+を説明できる状態を目指してください。
+
+---
+
+# 6. Plannerは高精度モデルでTaskを縦切りする
 
 実装開始前に、原則として1回Plannerを呼び出します。
 
@@ -179,7 +233,7 @@ Task数は必要最小限にし、過剰分解しないでください。
 
 ---
 
-# 6. Plannerはコードを書かない
+# 7. Plannerはコードを書かない
 
 Plannerの役割は計画だけです。
 
@@ -198,7 +252,7 @@ Plannerが返した判断はSenior Pair Developerが保持し、その後の定�
 
 ---
 
-# 7. Senior Pair DeveloperはBounded Autopilotで自律実行する
+# 8. Senior Pair DeveloperはBounded Autopilotで自律実行する
 
 Human Developerが毎Taskへ介入しなくて済むようにしてください。
 
@@ -222,7 +276,7 @@ Human Developerへの途中確認は、停止条件に該当する場合だけ�
 
 ---
 
-# 8. Autopilotの停止条件
+# 9. Autopilotの停止条件
 
 次の場合は、Luna相当モデルのまま試行を続けないでください。
 
@@ -241,7 +295,7 @@ Human Developerへの途中確認は、停止条件に該当する場合だけ�
 
 ---
 
-# 9. Tech Advisorへ高精度モデルで委譲する
+# 10. Tech Advisorへ高精度モデルで委譲する
 
 停止条件に該当し、技術的判断で解決できそうな場合だけTech Advisorを呼びます。
 
@@ -275,7 +329,7 @@ Tech Advisorは、
 
 ---
 
-# 10. Humanへ確認する条件
+# 11. Humanへ確認する条件
 
 Human Developerへ確認するのは、主に次の場合です。
 
@@ -292,7 +346,7 @@ Human Developerへ確認するのは、主に次の場合です。
 
 ---
 
-# 11. Independent Reviewer / Challengerは実装担当から独立させる
+# 12. Independent Reviewer / Challengerは実装担当から独立させる
 
 全Taskまたは代表機能がDone候補になったら、Independent Reviewer / Challengerを呼びます。
 
@@ -332,7 +386,7 @@ Findingは、
 
 ---
 
-# 12. Review後はLunaへ戻す
+# 13. Review後はLunaへ戻す
 
 Reviewer自身にそのまま大量修正させないでください。
 
@@ -353,7 +407,7 @@ Reviewを無限に繰り返さないでください。
 
 ---
 
-# 13. 高コストモデルの利用回数を制御する
+# 14. 高コストモデルの利用回数を制御する
 
 AI Credits上限が厳しいことを前提にしてください。
 
@@ -372,7 +426,7 @@ AI Credits上限が厳しいことを前提にしてください。
 
 ---
 
-# 14. 低コストモデルを主戦力にする
+# 15. 低コストモデルを主戦力にする
 
 大半の作業はLuna相当モデルで行ってください。
 
@@ -402,7 +456,7 @@ AI Credits上限が厳しいことを前提にしてください。
 
 ---
 
-# 15. モデル設定は実仕様に合わせて行う
+# 16. モデル設定は実仕様に合わせて行う
 
 GitHub Copilot Custom Agent / Sub-agentにmodel指定が可能なら、実行時点の公式仕様に従って設定してください。
 
@@ -440,7 +494,7 @@ Independent Reviewer:
 
 ---
 
-# 16. Claude Code自身はこのHarnessを作る
+# 17. Claude Code自身はこのHarnessを作る
 
 今回のあなた（Claude Code）の役割は、この開発を直接完遂することではなく、GitHub Copilot側に上記Harnessを安全に構築することです。
 
@@ -459,7 +513,7 @@ Independent Reviewer:
 
 ---
 
-# 17. 最初に設計案を提示する
+# 18. 最初に設計案を提示する
 
 大きな変更前に、次をHuman Developerへ提示してください。
 
@@ -480,7 +534,7 @@ Independent Reviewer:
 
 ---
 
-# 18. validationする
+# 19. validationする
 
 作成後に最低限確認してください。
 
@@ -502,7 +556,7 @@ IDE / CLIでしか確認できないものは、Human Developerが確認する�
 
 ---
 
-# 19. Pilotで試す
+# 20. Pilotで試す
 
 Harness完成後、いきなり大規模開発へ広げないでください。
 
@@ -522,7 +576,7 @@ Harness完成後、いきなり大規模開発へ広げないでください。
 
 ---
 
-# 20. 最終的に目指すHumanの関わり方
+# 21. 最終的に目指すHumanの関わり方
 
 Human Developerが担当するのは主に、
 
@@ -572,6 +626,8 @@ Senior Pair Developerは節目で短く、
 さらに、
 
 - Senior Pair DeveloperがHumanを育てる
+- Team MemberがAgent生成codeを理解し、説明し、保守できる
+- Agentの実装を通じてTeamの共通理解が増える
 - Plannerが良い縦切りを作る
 - Tech Advisorが難所だけ突破する
 - Independent Reviewerが別視点から反証する
