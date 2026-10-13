@@ -1,8 +1,8 @@
 # 作業環境とAIエージェント
 
-maakboがiPad・iPhone・MacBookからChatGPTやCodexと対話し、GitHubのリポジトリへ記憶と成果を残す作業環境です。
+家ではiPad＋iPadトレイ＋Elimkeys Elytraを中心に、平日の外出先ではiPhone、必要に応じてMacBookを使います。これらの端末からChatGPTやCodexと対話し、学びや考えを整理して作業します。
 
-## モデル
+活動記録はmaakboリポジトリに、公開するノウハウやスキルはfdeリポジトリに残します。fdeをクローンまたはフォークした個別プロジェクトで、それぞれの作業を進めます。
 
 ```mermaid
 ---
@@ -64,12 +64,4 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## このモデルが表していること
-
-家ではiPad＋iPadトレイ＋Elimkeys Elytraを中心に、平日の外出先ではiPhone、必要なときにはMacBookを使います。ChatGPTとCodexは、どちらも一緒に考え、作業へつながる接点です。
-
-非公開のmaakboには共通記憶と活動記録、公開のfdeにはノウハウとスキルを残します。個別プロジェクトでは作業と成果物を育て、fdeのクローン／フォークで始めるものも含みます。線は利用・参照・再利用の関係を表し、自動同期や同じ権限を保証するものではありません。
-
-[PNGプレビュー](previews/architecture-overview.png) · [SVGプレビュー](previews/architecture-overview.svg)
-
-← [作業環境とAIエージェント](README.md)
+[画像を開く](previews/architecture-overview.png) · [作業環境とAIエージェント](README.md)

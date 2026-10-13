@@ -273,9 +273,9 @@ def validate_architecture_reader_surface() -> None:
         text = artifact.read_text(encoding="utf-8")
         if text.count("```mermaid") != 1:
             raise ValueError(f"{artifact.relative_to(ROOT)}: expected one Mermaid model")
-        if "## モデル" not in text or "## このモデルが表していること" not in text:
+        if not text.startswith("# "):
             raise ValueError(
-                f"{artifact.relative_to(ROOT)}: missing reader-facing page structure"
+                f"{artifact.relative_to(ROOT)}: missing reader-facing page title"
             )
         for heading in forbidden_sections:
             if heading in text:
