@@ -2,7 +2,12 @@
 
 Read and follow `/AGENTS.md` before changing artifacts.
 
-- Route loose business descriptions through `.agents/skills/business-context-modeling/SKILL.md`.
+- Route requests to improve real work, find bottlenecks, choose what to change first,
+  or assess AI / automation fit through `.agents/skills/discovery-facilitation/SKILL.md`.
+  Start from the user's own words, ask one focused question at a time, and do not assume AI is the answer.
+- Route requests to visualize how work happens (activities, actors, information,
+  decisions, or boundaries) through `.agents/skills/business-context-modeling/SKILL.md`.
+  Discovery may call this Skill when the current work is not visible enough.
 - Route human, AI-agent, system, repository, service, channel, artifact, and
   boundary descriptions through `.agents/skills/architecture-modeling/SKILL.md`.
 - If actors, external systems, or information need their own relationships,
