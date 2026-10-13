@@ -70,7 +70,6 @@ REQUIRED = [
     "examples/maakbo-fde/design-and-poc-flow.md",
     "examples/maakbo-fde/deployment-learning-flow.md",
     "examples/human-agent-workspace/README.md",
-    "examples/human-agent-workspace/architecture-overview.md",
     "examples/human-agent-workspace/handoff-review-flow.md",
     "examples/system-development/README.md",
     "examples/system-development/requirements/README.md",
@@ -246,7 +245,7 @@ def validate_architecture_reader_surface() -> None:
     """Keep the public architecture sample small and free of authoring history."""
 
     sample = ROOT / "examples/human-agent-workspace"
-    model_files = ("architecture-overview.md", "handoff-review-flow.md")
+    model_files = ("README.md", "handoff-review-flow.md")
     forbidden_sections = (
         "## Candidate inventory",
         "## Relationship model",
@@ -928,7 +927,7 @@ def main() -> int:
     run([
         sys.executable,
         architecture,
-        "examples/human-agent-workspace/architecture-overview.md",
+        "examples/human-agent-workspace/README.md",
         "--strict",
     ])
     regression_fixture = (
