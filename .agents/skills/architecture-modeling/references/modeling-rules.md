@@ -12,12 +12,16 @@ Use these rules after writing the architecture story and before editing Mermaid.
 | Repository | `r_` | Versioned repository whose storage or ownership matters | `folder-git-2.svg` | 32 x 32 | Repository role or public name |
 | Knowledge / artifact | `k_` | Durable object people or systems read, change, or return | `file.svg` | 32 x 32 | Concrete artifact noun |
 | External service | `x_` | Technical service outside the selected responsibility boundary | `cloud.svg` | 32 x 32 | Service role or public name |
+| Device / contact surface | `v_` | Human-facing device used to access the workspace | `tablet.svg`, `smartphone.svg`, or `laptop.svg` | 38 x 38 | Device noun |
 | Communication channel | `c_` | Channel whose communication mode or access matters | `message-square.svg` | 32 x 32 | Channel noun |
 | Boundary | `bd_` | Repository, product, runtime, ownership, or trust boundary | subgraph | — | Enclosed responsibility |
 
 Use stable `prefix_lower_snake_case` IDs. Keep labels to 1–4 words or no more than 12 Japanese
 characters. Reuse one identity across sibling Views. Do not create a new type merely because an
 icon would look distinctive.
+
+Device / contact surfaces reuse the fixed-size `v_` profile from
+`mermaid-diagram-authoring/references/icon-context.md`; do not classify a tablet or laptop as a server.
 
 Classify from the selected boundary. A hosted service may be internal in a product View and
 external in an ownership View. A repository is not an artifact when its version history,
@@ -111,3 +115,7 @@ Do not preserve a clean parent diagram whose meaning the detail has disproved.
 - Sequence is in an Interaction Flow.
 - The public sample contains no private operational history.
 - Parent and detail remain traceable in both directions.
+
+Preserve the canonical architecture themeCSS prefix. A source may append only the font fallback rule
+`text, .nodeLabel, .image-shape p { font-family: 'Font name', sans-serif !important; }`
+for its rendering environment without replacing the label-background or line-gap rules.

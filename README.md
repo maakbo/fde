@@ -12,10 +12,9 @@
 
 FDEが何を目指し、誰と実現し、どんな業務で成り立っているのかを、MermaidのModelで見られます。
 
-### [Human–Agent Workspaceを見る](examples/human-agent-workspace/)
+### [作業環境とAIエージェントを見る](examples/human-agent-workspace/)
 
-人、AI collaborator、private control plane、public reuse surfaceの関係とhandoffを、
-Architecture OverviewとInteraction Flowで見られます。
+iPad・iPhone・MacBookからChatGPTやCodexを使い、GitHubへ記憶と成果を残す作業環境を、1枚のアーキテクチャ図で見られます。
 
 ## モデルを作る
 

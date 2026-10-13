@@ -56,6 +56,7 @@ NODE_RULES = {
     "k": ("file.svg", (32, 32), "artifact"),
     "x": ("cloud.svg", (32, 32), "external"),
     "c": ("message-square.svg", (32, 32), "channel"),
+    "v": (("tablet.svg", "smartphone.svg", "laptop.svg"), (38, 38), "device"),
 }
 CLASS_STYLES = {
     "human": "fill:none,stroke:none,color:#25231F",
@@ -65,6 +66,7 @@ CLASS_STYLES = {
     "artifact": "fill:none,stroke:none,color:#5F5A52",
     "external": "fill:none,stroke:none,color:#5F5A52",
     "channel": "fill:none,stroke:none,color:#5F5A52",
+    "device": "fill:none,stroke:none,color:#25231F",
 }
 BOUNDARY_STYLE = (
     "fill:#FAF8F2,stroke:#C8C1B6,stroke-width:0.75px,color:#5F5A52"
@@ -190,7 +192,14 @@ def main() -> int:
         warnings.append("use nodeSpacing: 64")
     if not any(line.strip() == "rankSpacing: 80" for line in lines):
         warnings.append("use rankSpacing: 80")
-    if not any(line.strip() == THEME_CSS for line in lines):
+    font_fallback = re.compile(
+        re.escape(THEME_CSS[:-1])
+        + r" text, \.nodeLabel, \.image-shape p \{ font-family: '[^'{};\n]+', sans-serif !important; \}\""
+    )
+    if not any(
+        line.strip() == THEME_CSS or font_fallback.fullmatch(line.strip())
+        for line in lines
+    ):
         warnings.append("use the canonical architecture themeCSS")
     if link_styles != [LINK_STYLE]:
         errors.append(f"use `{LINK_STYLE}` exactly once")
@@ -225,8 +234,10 @@ def main() -> int:
             errors.append(f"{node_id}: unsupported architecture prefix {prefix}_")
             continue
         icon, size, expected_class = NODE_RULES[prefix]
-        if data["img"] != RAW + icon:
-            errors.append(f"{node_id}: use {RAW + icon}")
+        icons = icon if isinstance(icon, tuple) else (icon,)
+        allowed_urls = tuple(RAW + asset for asset in icons)
+        if data["img"] not in allowed_urls:
+            errors.append(f"{node_id}: use one of {allowed_urls}")
         if data["size"] != size:
             errors.append(f"{node_id}: use size {size[0]}x{size[1]}")
         if classes.get(node_id, []) != [expected_class]:

@@ -1,13 +1,12 @@
-# Human–Agent Workspace — Architecture Overview
+# 作業環境とAIエージェント
 
-maakbo, matti, and kubox cooperate through a private control plane while keeping reusable public
-work on a separate surface.
+maakboがiPad・iPhone・MacBookからChatGPTやCodexと対話し、GitHubのリポジトリへ記憶と成果を残す作業環境です。
 
 ## モデル
 
 ```mermaid
 ---
-title: Human–Agent Workspace
+title: 私の作業環境とAIエージェント
 config:
   layout: dagre
   theme: neutral
@@ -21,45 +20,56 @@ config:
   themeVariables:
     background: "#FFFFFF"
     lineColor: "#8A847A"
-    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontFamily: "Noto Sans Mono CJK JP, Hiragino Sans, sans-serif"
     fontSize: "14px"
-  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; } text, .nodeLabel, .image-shape p { font-family: 'Noto Sans Mono CJK JP', sans-serif !important; }"
 ---
 flowchart LR
-  h_maakbo@{ label: "maakbo", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  g_matti@{ label: "matti", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/bot.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  subgraph bd_private["Private on GitHub"]
-    r_private_repo@{ label: "private repo", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/folder-git-2.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  end
-  g_kubox@{ label: "kubox", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/bot.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  subgraph bd_public["Public on GitHub"]
-    r_public_fde@{ label: "public fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/folder-git-2.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  end
+  %% View: personal workspace architecture. Relations describe use and shared work, not sequence.
+  %% Device notation follows mermaid-diagram-authoring; AI/repository notation follows architecture-modeling.
+  h_me@{ label: "maakbo", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  v_ipad@{ label: "iPad", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/tablet.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  v_phone@{ label: "iPhone", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/smartphone.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  v_mac@{ label: "MacBook", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/laptop.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  g_matti@{ label: "ChatGPT", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/bot.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  g_codex@{ label: "Codex", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/bot.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  r_memory@{ label: "maakbo", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/folder-git-2.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  r_skills@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/folder-git-2.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  r_projects@{ label: "プロジェクト", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/folder-git-2.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
-  h_maakbo --- g_matti
-  h_maakbo --- r_private_repo
-  g_matti --- r_private_repo
-  r_private_repo --- g_kubox
-  g_kubox --- r_public_fde
+  h_me --- v_ipad
+  h_me --- v_phone
+  h_me --- v_mac
+  v_ipad --- g_matti
+  v_ipad --- g_codex
+  v_phone --- g_matti
+  v_phone --- g_codex
+  v_mac --- g_matti
+  v_mac --- g_codex
+  g_matti --- r_memory
+  g_codex --- r_memory
+  g_codex --- r_skills
+  g_codex --- r_projects
+  r_skills --- r_projects
 
-  class h_maakbo human;
-  class g_matti,g_kubox agent;
-  class r_private_repo,r_public_fde repository;
+  class h_me human;
+  class v_ipad,v_phone,v_mac device;
+  class g_matti,g_codex agent;
+  class r_memory,r_skills,r_projects repository;
 
   classDef human fill:none,stroke:none,color:#25231F;
+  classDef device fill:none,stroke:none,color:#25231F;
   classDef agent fill:none,stroke:none,color:#25231F;
   classDef repository fill:none,stroke:none,color:#5F5A52;
-  style bd_private fill:#FAF8F2,stroke:#C8C1B6,stroke-width:0.75px,color:#5F5A52;
-  style bd_public fill:#FAF8F2,stroke:#C8C1B6,stroke-width:0.75px,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
 ## このモデルが表していること
 
-maakbo is the decision maker, not the message carrier. matti shapes intent through the private
-shared post, and kubox performs repository work from that control plane. Only reusable skills and
-examples move to the public FDE surface; private reasoning stays private.
+家ではiPad＋iPadトレイ＋Elimkeys Elytraを中心に、平日の外出先ではiPhone、必要なときにはMacBookを使います。ChatGPTとCodexは、どちらも一緒に考え、作業へつながる接点です。
 
-← [Human–Agent Workspace](README.md)
+非公開のmaakboには共通記憶と活動記録、公開のfdeにはノウハウとスキルを残します。個別プロジェクトでは作業と成果物を育て、fdeのクローン／フォークで始めるものも含みます。線は利用・参照・再利用の関係を表し、自動同期や同じ権限を保証するものではありません。
 
-[Handoff and Review Flow](handoff-review-flow.md) →
+[PNGプレビュー](previews/architecture-overview.png) · [SVGプレビュー](previews/architecture-overview.svg)
+
+← [作業環境とAIエージェント](README.md)

@@ -1,18 +1,11 @@
-# Human–Agent Workspace
+# 作業環境とAIエージェント
 
-This example shows one way to separate human judgment, conversational sense-making, repository
-work, and public reuse without making the human carry every agent-to-agent message.
+maakboの手元の端末、ChatGPT・Codex、GitHubリポジトリのつながりを、1枚のアーキテクチャ図で見るサンプルです。
 
-- **maakbo**: the human decision maker.
-- **matti**: the ChatGPT-side thought partner who clarifies intent and reviews meaning.
-- **kubox**: the Codex-side repository operator who works within the agreed intent.
+[作業環境のアーキテクチャを見る](architecture-overview.md)
 
-## Views
+![作業環境とAIエージェント](previews/architecture-overview.png)
 
-1. [Architecture Overview](architecture-overview.md) — the private control plane and public reuse
-   surface.
-2. [Handoff and Review Flow](handoff-review-flow.md) — the request, independent review, response,
-   and human-decision loop.
+Mermaidの編集原本はアーキテクチャページ内にあります。PNGとSVGはその原本から生成したプレビューです。
 
-The pages show only the reusable architecture. Private decisions and operational history remain in
-the private repository.
+[依頼・レビュー・引き継ぎの別サンプル](handoff-review-flow.md)も参照できます。これは引き継ぎ手順の例で、上の環境図が自動連携を実証した意味ではありません。

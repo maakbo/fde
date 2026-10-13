@@ -1,7 +1,8 @@
 # Human–Agent Workspace — Handoff and Review Flow
 
-This View follows one request from matti's handoff through kubox's repository work and back to the
-next conversation.
+This is a separate procedural example of one request passing from matti (the ChatGPT-side
+collaborator) to kubox (the Codex-side collaborator) and back to the next conversation.
+It does not claim that the personal workspace overview implements an automatic handoff.
 
 ## モデル
 
@@ -60,4 +61,4 @@ matti writes the intent; kubox works, validates, obtains an independent review, 
 returns the result. matti reads the response and prepares the next handoff. maakbo steps in only
 when the unresolved meaning or priority needs a human decision.
 
-← [Architecture Overview](architecture-overview.md)
+← [作業環境とAIエージェントのサンプル一覧](README.md)
