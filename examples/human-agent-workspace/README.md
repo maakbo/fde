@@ -66,4 +66,4 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-[画像を開く](previews/architecture-overview.png) · [引き継ぎ手順の例](handoff-review-flow.md)
+[画像を開く](previews/architecture-overview.png)

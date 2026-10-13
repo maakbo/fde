@@ -70,7 +70,6 @@ REQUIRED = [
     "examples/maakbo-fde/design-and-poc-flow.md",
     "examples/maakbo-fde/deployment-learning-flow.md",
     "examples/human-agent-workspace/README.md",
-    "examples/human-agent-workspace/handoff-review-flow.md",
     "examples/system-development/README.md",
     "examples/system-development/requirements/README.md",
     "examples/system-development/requirements/alignment-flow.md",
@@ -245,7 +244,7 @@ def validate_architecture_reader_surface() -> None:
     """Keep the public architecture sample small and free of authoring history."""
 
     sample = ROOT / "examples/human-agent-workspace"
-    model_files = ("README.md", "handoff-review-flow.md")
+    model_files = ("README.md",)
     forbidden_sections = (
         "## Candidate inventory",
         "## Relationship model",
@@ -993,12 +992,6 @@ def main() -> int:
             command.append("--allow-complexity")
         run(command)
     run([sys.executable, flow, "examples/maakbo-fde/change-design-flow.md", "--strict"])
-    run([
-        sys.executable,
-        flow,
-        "examples/human-agent-workspace/handoff-review-flow.md",
-        "--strict",
-    ])
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")
     return 0
 
