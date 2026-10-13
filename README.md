@@ -23,6 +23,7 @@ Architecture OverviewとInteraction Flowで見られます。
 
 - [AGENTS.md](AGENTS.md): このリポジトリで共有する作業原則
 - [discovery-facilitation Skill](.agents/skills/discovery-facilitation/SKILL.md): 現場の話から、何を変えるべきか・AIが適切か・次に何を定義するかを見極める手順
+- [現場の協力から始めるDiscovery Prompt](.github/prompts/field-discovery-collaboration.prompt.md): ベテランなど実務担当者と、1案件の小さな対話から共通理解を育てる声かけと進め方
 - [business-context-modeling Skill](.agents/skills/business-context-modeling/SKILL.md): 対話から業務Modelをつくる手順
 - [architecture-modeling Skill](.agents/skills/architecture-modeling/SKILL.md): 人、AI agent、system、repository、service、boundaryの関係をArchitecture Viewにする手順
 - [mermaid-diagram-authoring Skill](.agents/skills/mermaid-diagram-authoring/SKILL.md): Markdown内でMermaidを作る手順
