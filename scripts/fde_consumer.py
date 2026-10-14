@@ -35,6 +35,8 @@ def read_manifest(root: Path) -> dict:
 def verify_source(root: Path, manifest: dict) -> list[str]:
     errors = []
     for item in manifest["managed"]:
+        if item["path"] == ".fde/config.json":
+            errors.append("consumer-owned .fde/config.json must not be a managed file")
         path = root / item["path"]
         if not path.is_file():
             errors.append(f"missing artifact file: {item['path']}")
@@ -82,7 +84,7 @@ def profiles_match(installed: dict, candidate: dict) -> bool:
     return installed["profile"] == candidate["profile"] and installed["upstream"]["repository"] == candidate["upstream"]["repository"]
 
 
-def install(source: Path, target: Path, manifest: dict) -> int:
+def install(source: Path, target: Path, manifest: dict, icon_set: str | None = None) -> int:
     collisions = [item["path"] for item in manifest["managed"] if destination(target, item["path"]).exists()]
     if (target / MANIFEST_PATH).exists():
         collisions.append(MANIFEST_PATH.as_posix())
@@ -90,6 +92,19 @@ def install(source: Path, target: Path, manifest: dict) -> int:
         print("STOP: install would collide with existing files")
         print("\n".join(collisions))
         return 2
+    # This preference belongs to the project, never to the managed profile.
+    config_path = target / ".fde/config.json"
+    write_config = not config_path.exists()
+    if config_path.exists():
+        config = json.loads(config_path.read_text())
+        if (not isinstance(config, dict) or not isinstance(config.get("icon_set", "mdi"), str)
+                or config.get("icon_set", "mdi") not in {"mdi", "maakbo"}):
+            raise ValueError("invalid consumer-owned .fde/config.json icon_set")
+        if "icon_set" not in config and icon_set:
+            config["icon_set"] = icon_set
+            write_config = True
+    else:
+        config = {"icon_set": icon_set or "mdi"}
     for item in manifest["managed"]:
         source_file = source / item["path"]
         target_file = destination(target, item["path"])
@@ -100,6 +115,8 @@ def install(source: Path, target: Path, manifest: dict) -> int:
     manifest_file = target / MANIFEST_PATH
     manifest_file.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source / MANIFEST_PATH, manifest_file)
+    if write_config:
+        config_path.write_text(json.dumps(config, indent=2) + "\n")
     print(f"OK: installed {manifest['profile']} {manifest['upstream']['version']}")
     print("NEXT: add the optional integration snippet from .fde/fde-instructions.md to your own routing surface.")
     return 0
@@ -161,7 +178,10 @@ def main() -> int:
     parser.add_argument("--source", help="extracted profile artifact directory")
     parser.add_argument("--artifact-url", help="profile zip URL")
     parser.add_argument("--target", default=".", help="consumer repository root")
+    parser.add_argument("--icon-set", choices=("maakbo", "mdi"), help="initial install preference; existing project config is preserved")
     args = parser.parse_args()
+    if args.icon_set and args.command != "install":
+        parser.error("--icon-set applies to install; use icon_registry.py configure to change project preference")
     target = Path(args.target).resolve()
     try:
         source, temporary = source_root(args)
@@ -172,7 +192,7 @@ def main() -> int:
             print("\n".join(errors))
             return 2
         if args.command == "install":
-            return install(source, target, manifest)
+            return install(source, target, manifest, args.icon_set)
         if args.command == "check":
             return check(source, target, manifest)
         return update(source, target, manifest)

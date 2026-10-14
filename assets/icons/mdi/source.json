@@ -1,0 +1,116 @@
+{
+  "icon_set": "mdi",
+  "name": "Material Design Icons",
+  "author": {
+    "name": "Pictogrammers",
+    "url": "https://github.com/Templarian/MaterialDesign"
+  },
+  "package": {
+    "name": "@iconify-json/mdi",
+    "version": "1.2.3",
+    "tarball": "https://registry.npmjs.org/@iconify-json/mdi/-/mdi-1.2.3.tgz",
+    "sha1": "5e4ee9d8c8aaad04381c8cc6c6edbe3327f031b5",
+    "integrity": "sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==",
+    "tarball_sha256": "ddd817a7213f91de51147943915c0cda8c8b818a53c92b5c068cfa9883c6d7ac",
+    "icons_json_sha256": "f38bcea6e945f01004384c1dbb66ddb2a538d81b7f6af3cf6b95fc603603833a",
+    "last_modified": 1737398331
+  },
+  "license": {
+    "spdx": "Apache-2.0",
+    "package_declared": "Apache-2.0",
+    "icon_set_declared": {
+      "title": "Apache 2.0",
+      "spdx": "Apache-2.0",
+      "url": "https://github.com/Templarian/MaterialDesign/blob/master/LICENSE"
+    },
+    "upstream_text_url": "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/LICENSE",
+    "upstream_text_sha256": "f3bc8715bad84b26396bb42d2abd11f919cf58163be158eab79ecbaabf84cdf2",
+    "apache_text_url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "apache_text_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "upstream_notice_url_checked": "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/NOTICE",
+    "upstream_notice_status": 404
+  },
+  "rendering": {
+    "viewBox": "0 0 24 24",
+    "color": "#25231F",
+    "background": "transparent",
+    "body_changes": "none; source body preserved exactly",
+    "geometry": "upstream filled outlines; no stroke normalization"
+  },
+  "mapping_from_maakbo_filenames": {
+    "user": "account-outline",
+    "ellipse": "ellipse-outline",
+    "file": "file-outline",
+    "server": "application-outline",
+    "diamond": "rhombus-outline",
+    "bot": "robot-outline",
+    "folder-git-2": "source-repository",
+    "cloud": "cloud-outline",
+    "message-square": "message-outline",
+    "tablet": "tablet",
+    "smartphone": "cellphone",
+    "laptop": "laptop"
+  },
+  "icons": {
+    "account-outline": {
+      "filename": "account-outline.svg",
+      "body_sha256": "396ca81e8866385f6aa4285705d791552ac6bc30fe36994b06980f44ddeedb6e",
+      "svg_sha256": "b07c43aa064c3cecc44675d63d5d8dc9e97add03932437801f820377e3e757e0"
+    },
+    "ellipse-outline": {
+      "filename": "ellipse-outline.svg",
+      "body_sha256": "ad737cd5cd254d94de18f6e9be3a89a0516ff42eba1aa146027baa73ce88da6d",
+      "svg_sha256": "0b01b72965f1accd6eed9dfc47cdea713d4504544ced9574cdc55e51751963da"
+    },
+    "file-outline": {
+      "filename": "file-outline.svg",
+      "body_sha256": "2247b2ab55f4ab9c70a3066ff3dd6a785587e9fe9622ad12ece4a9fc48cf0c2b",
+      "svg_sha256": "ce9140c2ad5a57e27fbf23a5928f982e1288d0b47b5ed451ee2b0c4d12fb2a3c"
+    },
+    "application-outline": {
+      "filename": "application-outline.svg",
+      "body_sha256": "9548f97a8e4ffe688d53ee7c87b38aad244d60bd686f5847aa968c8666004274",
+      "svg_sha256": "93e16d945a3b9b76840a1e183d53e25fe376bd9c95bd369b4d6aa932873d2f11"
+    },
+    "rhombus-outline": {
+      "filename": "rhombus-outline.svg",
+      "body_sha256": "6f30a5c153710f73ec2fd621369735dd5c72555e03786b6afb57faa97c23d528",
+      "svg_sha256": "ca79627681ed7ad4a14d1193f7563156b9ed589d615c7102e38fcc79dc16528e"
+    },
+    "robot-outline": {
+      "filename": "robot-outline.svg",
+      "body_sha256": "8d806fbf09adfdabfe8c29f14cac9e2119504f332b43a2c679ff9bb47aaa5f2d",
+      "svg_sha256": "19ca20e0955c78dfea37bb3f22c2b68d5725d865824a6e3e827f2761d4475d42"
+    },
+    "source-repository": {
+      "filename": "source-repository.svg",
+      "body_sha256": "89cf7c55bd3783ffe358ebeaa81b729ec32a5056725ad97c80a5befb0637059e",
+      "svg_sha256": "fde389ec51984924463ca27413c94f06c7fbbe150889b169a1b7b2b08ae2c40e"
+    },
+    "cloud-outline": {
+      "filename": "cloud-outline.svg",
+      "body_sha256": "51c4d687a78e697d3cab8d289c69c71a1e11ff69ade524bfb6226191ba320587",
+      "svg_sha256": "2eda7c0241f4bf4e8e9c211f0c89fc2d5784827ceaddcbf77632a4cf27349ccc"
+    },
+    "message-outline": {
+      "filename": "message-outline.svg",
+      "body_sha256": "08ff66dc9e377d4a0bd9048b42064e5e6f74de20c89f54cf35732be1406ce8f6",
+      "svg_sha256": "c025fddc3100f9638c2f1fd15c9f1e576828bdcd32b865c05e8e0cab2cedd9b5"
+    },
+    "tablet": {
+      "filename": "tablet.svg",
+      "body_sha256": "6ee0c55cab0c5e1351cc0c0e1d2ebbfa1f892f3c63c084871d2ba7b575e2915d",
+      "svg_sha256": "3ffaef65477b768a50e58407ed6cc8e731c16d874feda900be983ea4f9089f7f"
+    },
+    "cellphone": {
+      "filename": "cellphone.svg",
+      "body_sha256": "f132599036c1ec8847e0256b0db1282993879f90067c4692aee0d4f1ad8a51c9",
+      "svg_sha256": "df346d06b5aaf62b238b1c0cf5b92ad56ee8fdea2a42a2059294b68656ea1cfd"
+    },
+    "laptop": {
+      "filename": "laptop.svg",
+      "body_sha256": "97b067b34964951ff413c28aeb4635df1e628c3744513d2b84990bfff97ba663",
+      "svg_sha256": "84d5d8d7291a6d121057478fdc5dc8dafb07f0fc29a04b24aa092d12d39a26f3"
+    }
+  }
+}

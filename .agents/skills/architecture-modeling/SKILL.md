@@ -9,6 +9,11 @@ Turn an ordinary description of a technical or human-agent environment into a sm
 people can inspect, question, and refine together. Treat the diagram as a discussion surface, not
 as infrastructure truth.
 
+Before creating a Context or Flow, read the Mermaid authoring Skill's
+`references/icon-selection.md` and resolve semantic assets through the shared
+registry. Instantiate templates with `icon_registry.py create` rather than
+copying this repository's literal maakbo choice into a consumer project.
+
 ## Core contract
 
 - Write a two- or three-sentence architecture story before listing nodes. Say who initiates or
@@ -83,7 +88,7 @@ relation. If a node crosses a boundary in reality, do not place it inside merely
 
 ### 5. Author and validate the context
 
-Copy [`templates/architecture-context.md`](../../../templates/architecture-context.md), then use
+Instantiate [`templates/architecture-context.md`](../../../templates/architecture-context.md) with `icon_registry.py create`, then use
 the existing `mermaid-diagram-authoring` Skill for notation. Validate the source:
 
 ```bash

@@ -37,3 +37,11 @@
 - GitHub側の表示も目視確認。人・AI・端末・リポジトリが採用した形で描画され、欠けなし。
 
 公開先は [アイコンと利用方法](https://github.com/maakbo/fde/tree/main/assets/icons/maakbo)、[Mermaid使用例](https://github.com/maakbo/fde/blob/main/examples/human-agent-workspace/README.md)。GitHub Pagesは使用していません。
+
+## Subsequent cleanup
+
+The user subsequently requested removal of Lucide compatibility assets.
+The old `assets/icons/lucide-thin/` directory and mirror script were removed.
+New sources use the shared maakbo/MDI registry. The root third-party notice was
+removed after preserving the historical notices with the native-diagram archive;
+MDI carries its own license and upstream information under `assets/icons/mdi/`.

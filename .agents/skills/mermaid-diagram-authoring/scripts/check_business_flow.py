@@ -12,6 +12,7 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 
 from source_loader import SourceError, load_mermaid_source
+from icon_registry import canonical_url, icon_rules, icon_set_for_source
 
 
 NODE_RE = re.compile(
@@ -44,23 +45,13 @@ CANONICAL_CLASS_STYLES = {
     "decision": "fill:none,stroke:none,color:#25231F",
 }
 
-RULES = {
-    "b": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg",
-        (30, 30),
-        "activity",
-    ),
-    "d": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/diamond.svg",
-        (38, 38),
-        "decision",
-    ),
-}
+ICON_MEANINGS = {"b": ("activity", "activity"), "d": ("decision", "decision")}
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
+    parser.add_argument("--icon-set", choices=("maakbo", "mdi"))
     parser.add_argument("--strict", action="store_true")
     return parser.parse_args()
 
@@ -91,7 +82,8 @@ def main() -> int:
 
     try:
         source = load_mermaid_source(args.input)
-    except SourceError as error:
+        rules = icon_rules(icon_set_for_source(source.text, args.input, args.icon_set), ICON_MEANINGS)
+    except (SourceError, ValueError) as error:
         print(f"ERROR: {error}", file=sys.stderr)
         return 2
 
@@ -108,7 +100,7 @@ def main() -> int:
         if match := NODE_RE.match(line):
             node_id = match.group("id")
             nodes[node_id] = {
-                "img": match.group("img"),
+                "img": canonical_url(match.group("img")),
                 "label": match.group("label"),
                 "size": (int(match.group("w")), int(match.group("h"))),
             }
@@ -157,10 +149,10 @@ def main() -> int:
             errors.append(f"{node_id}: use prefix_lower_snake_case")
             continue
         prefix = node_id.split("_", 1)[0]
-        if prefix not in RULES:
+        if prefix not in rules:
             errors.append(f"{node_id}: use only b_ activity or d_ decision")
             continue
-        expected_icon, expected_size, expected_class = RULES[prefix]
+        expected_icon, expected_size, expected_class = rules[prefix]
         if data["img"] != expected_icon:
             errors.append(f"{node_id}: use {expected_icon}")
         if data["size"] != expected_size:

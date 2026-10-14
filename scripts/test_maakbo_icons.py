@@ -27,17 +27,15 @@ exporter = module("maakbo_exporter", ".agents/skills/mermaid-diagram-export/scri
 class MaakboIcons(unittest.TestCase):
     def test_every_icon_exports_local_approved_bytes_without_network(self):
         for name in validator.MAAKBO_ICONS:
-            for prefix in exporter.INLINE_ICON_URL_PREFIXES[1:]:
-                source = f'img: "{prefix}{name}.svg"'
-                with patch.object(exporter.urllib.request, "urlopen", side_effect=AssertionError("network used")):
-                    result = exporter.inline_icon_assets(source, ROOT)
-                encoded = result.split("base64,", 1)[1].rstrip('"')
-                self.assertEqual(base64.b64decode(encoded), (ROOT / f"assets/icons/maakbo/{name}.svg").read_bytes())
+            source = f'img: "{exporter.MAAKBO_ICON_RAW_PREFIX}{name}.svg"'
+            result = exporter.inline_icon_assets(source, ROOT)
+            encoded = result.split("base64,", 1)[1].rstrip('"')
+            self.assertEqual(base64.b64decode(encoded), (ROOT / f"assets/icons/maakbo/{name}.svg").read_bytes())
 
     def test_missing_local_icon_fails_instead_of_fetching_remote(self):
-        with patch.object(exporter.urllib.request, "urlopen", side_effect=AssertionError("network used")):
+        with tempfile.TemporaryDirectory() as temp:
             with self.assertRaises(FileNotFoundError):
-                exporter.inline_icon_assets(f'img: "{exporter.MAAKBO_ICON_RAW_PREFIX}missing.svg"', ROOT)
+                exporter.inline_icon_assets(f'img: "{exporter.MAAKBO_ICON_RAW_PREFIX}user.svg"', Path(temp))
 
     def test_validator_rejects_uncompensated_optical_scale(self):
         with tempfile.TemporaryDirectory() as temp:

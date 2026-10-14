@@ -38,7 +38,7 @@ def main():
             if len(blocks) != 1:
                 raise ValueError(f'{path.name}: expected one Mermaid block')
             def embed(match):
-                icon = ROOT / 'assets/icons/lucide-thin' / match[1]
+                icon = ROOT / 'assets/icons/maakbo' / match[1]
                 return 'img: "data:image/svg+xml;base64,' + base64.b64encode(icon.read_bytes()).decode() + '"'
             source = re.sub(r'img: "' + re.escape(prefix) + r'([^"/]+)"', embed, blocks[0])
             input_path = Path(temp) / (name + '.mmd')

@@ -16,6 +16,7 @@ AUTHORING_SCRIPTS = (
 sys.path.insert(0, str(AUTHORING_SCRIPTS))
 
 from source_loader import SourceError, load_mermaid_source  # noqa: E402
+from icon_registry import asset, canonical_url, icon_rules, icon_set_for_source  # noqa: E402
 
 
 NODE_RE = re.compile(
@@ -47,16 +48,11 @@ STYLE_RE = re.compile(
     r"^\s{2}style\s+(?P<id>bd_[a-z0-9_]+)\s+(?P<style>.+);\s*$"
 )
 
-RAW = "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/"
-NODE_RULES = {
-    "h": ("user.svg", (38, 38), "human"),
-    "g": ("bot.svg", (38, 38), "agent"),
-    "s": ("server.svg", (32, 32), "system"),
-    "r": ("folder-git-2.svg", (32, 32), "repository"),
-    "k": ("file.svg", (32, 32), "artifact"),
-    "x": ("cloud.svg", (32, 32), "external"),
-    "c": ("message-square.svg", (32, 32), "channel"),
-    "v": (("tablet.svg", "smartphone.svg", "laptop.svg"), (38, 38), "device"),
+ICON_MEANINGS = {
+    "h": ("actor", "human"), "g": ("agent", "agent"),
+    "s": ("system", "system"), "r": ("repository", "repository"),
+    "k": ("information", "artifact"), "x": ("external_service", "external"),
+    "c": ("channel", "channel"),
 }
 CLASS_STYLES = {
     "human": "fill:none,stroke:none,color:#25231F",
@@ -86,6 +82,7 @@ FOCUSED_RELATIONS = 16
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
+    parser.add_argument("--icon-set", choices=("maakbo", "mdi"))
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--allow-complexity", action="store_true")
     parser.add_argument("--allow-directed", action="store_true")
@@ -105,7 +102,10 @@ def main() -> int:
         return 2
     try:
         source = load_mermaid_source(args.input)
-    except SourceError as error:
+        selected = icon_set_for_source(source.text, args.input, args.icon_set)
+        rules = icon_rules(selected, ICON_MEANINGS)
+        rules["v"] = (tuple(asset(selected, role)["url"] for role in ("tablet", "smartphone", "laptop")), asset(selected, "tablet")["size"], "device")
+    except (SourceError, ValueError) as error:
         print(f"ERROR: {error}", file=sys.stderr)
         return 2
 
@@ -142,7 +142,7 @@ def main() -> int:
                 errors.append(f"line {number}: duplicate node {node_id}")
             nodes[node_id] = {
                 "label": match.group("label"),
-                "img": match.group("img"),
+                "img": canonical_url(match.group("img")),
                 "size": (int(match.group("w")), int(match.group("h"))),
             }
             node_lines.append(number)
@@ -230,12 +230,12 @@ def main() -> int:
             errors.append(f"{node_id}: use prefix_lower_snake_case")
             continue
         prefix = node_id.split("_", 1)[0]
-        if prefix not in NODE_RULES:
+        if prefix not in rules:
             errors.append(f"{node_id}: unsupported architecture prefix {prefix}_")
             continue
-        icon, size, expected_class = NODE_RULES[prefix]
+        icon, size, expected_class = rules[prefix]
         icons = icon if isinstance(icon, tuple) else (icon,)
-        allowed_urls = tuple(RAW + asset for asset in icons)
+        allowed_urls = icons
         if data["img"] not in allowed_urls:
             errors.append(f"{node_id}: use one of {allowed_urls}")
         if data["size"] != size:

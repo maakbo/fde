@@ -67,6 +67,8 @@ def main() -> int:
     targets: set[str] = set()
     for source in source_files:
         target = artifact_path(source)
+        if target == ".fde/config.json":
+            raise ValueError("consumer-owned .fde/config.json must not be packaged")
         if target in targets:
             raise ValueError(f"duplicate artifact path: {target}")
         targets.add(target)

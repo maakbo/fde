@@ -23,3 +23,15 @@ selection for macOS/Linux and Windows respectively.
 The consumer's root `AGENTS.md` and Copilot instructions remain untouched.
 Read `.fde/fde-instructions.md` and decide locally whether to add its short
 integration snippet.
+
+## Icon preference
+
+The profile includes both SVG families, licenses, and the shared registry.
+Initial installation defaults to MDI; add `--icon-set maakbo` when desired.
+An existing `.fde/config.json` is consumer-owned and takes precedence. It is
+excluded from the managed manifest and is never overwritten on updates.
+
+Use `icon_registry.py configure` to change the preference, `show` for semantic
+URLs and dimensions, and `create` to instantiate a template for that project.
+Existing diagrams keep their explicit URLs; use `migrate --write` only for an
+intentional source migration. See the authoring Skill's icon-selection reference.

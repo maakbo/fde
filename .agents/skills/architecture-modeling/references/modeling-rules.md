@@ -2,6 +2,10 @@
 
 Use these rules after writing the architecture story and before editing Mermaid.
 
+Resolve icon URLs and sizes through the common project icon registry. The
+maakbo filenames in the table illustrate this repository's choice; consumers
+may select MDI without changing the semantic types or prefixes.
+
 ## Element types and names
 
 | Type | Prefix | Meaning | Default icon | Size | Naming |

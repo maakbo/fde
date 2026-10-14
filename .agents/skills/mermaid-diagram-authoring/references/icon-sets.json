@@ -1,0 +1,142 @@
+{
+  "schema": "fde-icon-sets/v1",
+  "default": "mdi",
+  "sets": {
+    "maakbo": {
+      "license": "MIT",
+      "icons": {
+        "actor": "user.svg",
+        "activity": "ellipse.svg",
+        "information": "file.svg",
+        "system": "server.svg",
+        "decision": "diamond.svg",
+        "agent": "bot.svg",
+        "repository": "folder-git-2.svg",
+        "external_service": "cloud.svg",
+        "channel": "message-square.svg",
+        "tablet": "tablet.svg",
+        "smartphone": "smartphone.svg",
+        "laptop": "laptop.svg"
+      },
+      "sizes": {
+        "actor": [
+          38,
+          38
+        ],
+        "activity": [
+          30,
+          30
+        ],
+        "information": [
+          32,
+          32
+        ],
+        "system": [
+          32,
+          32
+        ],
+        "decision": [
+          38,
+          38
+        ],
+        "agent": [
+          38,
+          38
+        ],
+        "repository": [
+          32,
+          32
+        ],
+        "external_service": [
+          32,
+          32
+        ],
+        "channel": [
+          32,
+          32
+        ],
+        "tablet": [
+          38,
+          38
+        ],
+        "smartphone": [
+          38,
+          38
+        ],
+        "laptop": [
+          38,
+          38
+        ]
+      }
+    },
+    "mdi": {
+      "license": "Apache-2.0",
+      "package": "@iconify-json/mdi",
+      "version": "1.2.3",
+      "icons": {
+        "actor": "account-outline.svg",
+        "activity": "ellipse-outline.svg",
+        "information": "file-outline.svg",
+        "system": "application-outline.svg",
+        "decision": "rhombus-outline.svg",
+        "agent": "robot-outline.svg",
+        "repository": "source-repository.svg",
+        "external_service": "cloud-outline.svg",
+        "channel": "message-outline.svg",
+        "tablet": "tablet.svg",
+        "smartphone": "cellphone.svg",
+        "laptop": "laptop.svg"
+      },
+      "sizes": {
+        "actor": [
+          38,
+          38
+        ],
+        "activity": [
+          30,
+          30
+        ],
+        "information": [
+          32,
+          32
+        ],
+        "system": [
+          32,
+          32
+        ],
+        "decision": [
+          38,
+          38
+        ],
+        "agent": [
+          38,
+          38
+        ],
+        "repository": [
+          32,
+          32
+        ],
+        "external_service": [
+          32,
+          32
+        ],
+        "channel": [
+          32,
+          32
+        ],
+        "tablet": [
+          38,
+          38
+        ],
+        "smartphone": [
+          38,
+          38
+        ],
+        "laptop": [
+          38,
+          38
+        ]
+      }
+    }
+  }
+}

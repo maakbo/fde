@@ -1,0 +1,13 @@
+Material Design Icons
+Author: Pictogrammers
+Source package: @iconify-json/mdi 1.2.3
+Icon data license: Apache-2.0 (as declared by package and icon-set metadata).
+
+The exact upstream Pictogrammers Free License text is retained in UPSTREAM-LICENSE.
+Apache License Version 2.0 is retained in LICENSE.
+No geometry or source SVG body was changed. The SVG document wrapper, title,
+and default neutral color are supplied by fde.
+
+Source and license URLs, fixed versions, and checksums are recorded in source.json.
+This NOTICE is a local provenance statement; no upstream NOTICE was found at
+the fixed MaterialDesign-SVG v7.4.47 NOTICE path (HTTP 404).

@@ -1,8 +1,8 @@
-# Third-party notices
+# Historical third-party notices
 
-Current Mermaid working sources use the original maakbo icons in `assets/icons/maakbo/`, distributed under their MIT LICENSE. The legacy `assets/icons/lucide-thin/` URLs now serve identical maakbo compatibility copies.
+This notice accompanies the archived comparison previews in this directory. The five `previews/baseline-*.svg` files retain a total of 42 embedded Lucide-derived SVGs with the original attribution and normalized 1.35 stroke. These are historical comparison artifacts, not the active maakbo or MDI icon sets.
 
-The following notices are retained for historical Lucide-derived comparison images and repository history. They do not describe the new maakbo SVG family. Earlier exports embedded retrieved SVG bytes, so these notices remain with those archived artifacts.
+The following license texts are retained from the previous root notice without changes.
 
 ## Lucide
 

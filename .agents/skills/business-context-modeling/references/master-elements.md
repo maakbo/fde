@@ -160,7 +160,7 @@ boundary and responsibility are clear.
 - One master file contains one kind only: actors, external systems, or
   information.
 - Do not place `b_` activities in a master map.
-- Use the same maakbo icon profile as the public context convention:
+- Use the same selected icon profile as the public context convention:
   `a_` uses `user.svg` at `38 x 38`, `x_` uses `server.svg` at `32 x 32`, and
   `i_` uses `file.svg` at `32 x 32`.
 - Keep one short reading sentence, fixed-size icon nodes, and ordinary

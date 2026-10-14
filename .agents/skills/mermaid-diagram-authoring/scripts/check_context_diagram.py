@@ -12,6 +12,7 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 
 from source_loader import SourceError, load_mermaid_source
+from icon_registry import asset, canonical_url, icon_rules, icon_set_for_source
 
 
 NODE_RE = re.compile(
@@ -70,32 +71,9 @@ CANONICAL_CLASS_STYLES = {
     "purpose": "fill:#FFFFFF,stroke:#9E988E,color:#25231F,stroke-width:0.75px",
 }
 
-ICON_RULES = {
-    "a": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg",
-        (38, 38),
-        "actor",
-    ),
-    "b": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg",
-        (30, 30),
-        "business",
-    ),
-    "i": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg",
-        (32, 32),
-        "information",
-    ),
-    "x": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg",
-        (32, 32),
-        "external",
-    ),
-}
-DEVICE_ICONS = {
-    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/tablet.svg",
-    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/smartphone.svg",
-    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/laptop.svg",
+ICON_MEANINGS = {
+    "a": ("actor", "actor"), "b": ("activity", "business"),
+    "i": ("information", "information"), "x": ("system", "external"),
 }
 
 
@@ -107,6 +85,7 @@ def label_too_long(label: str) -> bool:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
+    parser.add_argument("--icon-set", choices=("maakbo", "mdi"))
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--allow-complexity", action="store_true")
     parser.add_argument(
@@ -138,7 +117,10 @@ def main() -> int:
         return 2
     try:
         source = load_mermaid_source(args.input)
-    except SourceError as error:
+        selected_set = icon_set_for_source(source.text, args.input, args.icon_set)
+        icon_ruleset = icon_rules(selected_set, ICON_MEANINGS)
+        device_icons = {asset(selected_set, role)["url"] for role in ("tablet", "smartphone", "laptop")}
+    except (SourceError, ValueError) as error:
         print(f"ERROR: {error}", file=sys.stderr)
         return 2
 
@@ -169,7 +151,7 @@ def main() -> int:
             if node_id in nodes:
                 errors.append(f"line {number}: duplicate node {node_id}")
             nodes[node_id] = {
-                "img": match.group("img"),
+                "img": canonical_url(match.group("img")),
                 "label": match.group("label"),
                 "size": (int(match.group("w")), int(match.group("h"))),
                 "kind": "image",
@@ -277,15 +259,15 @@ def main() -> int:
                     f"{node_id}: purpose nodes use the note form `p_id([\"text\"])` "
                     "or rounded form `p_id(\"text\")`, not an image node"
                 )
-        elif prefix in ICON_RULES:
-            expected_icon, expected_size, expected_class = ICON_RULES[prefix]
+        elif prefix in icon_ruleset:
+            expected_icon, expected_size, expected_class = icon_ruleset[prefix]
             if image != expected_icon:
                 errors.append(f"{node_id}: use {expected_icon}")
             if size != expected_size:
                 errors.append(f"{node_id}: use size {expected_size[0]}x{expected_size[1]}")
         elif prefix == "v":
-            if image not in DEVICE_ICONS:
-                errors.append(f"{node_id}: use a supported maakbo device icon")
+            if image not in device_icons:
+                errors.append(f"{node_id}: use a supported {selected_set} device icon")
             if size != (38, 38):
                 errors.append(f"{node_id}: devices use size 38x38")
         else:

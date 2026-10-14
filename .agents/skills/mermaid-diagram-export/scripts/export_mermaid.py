@@ -11,15 +11,17 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import urllib.request
 from pathlib import Path
 
 sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / ".agents/skills/mermaid-diagram-authoring/scripts"))
+from icon_registry import RAW_BASE, asset, asset_for_url, icon_set_for_source
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
+    parser.add_argument("--icon-set", choices=("maakbo", "mdi"))
     parser.add_argument("--type", choices=("context", "architecture", "flow"), required=True)
     parser.add_argument("--format", choices=("svg", "png", "both"), default="both")
     parser.add_argument("--output-dir", type=Path)
@@ -54,11 +56,11 @@ def browser_environment() -> dict[str, str]:
 
 
 INLINE_ICON_URL_PREFIXES = (
-    "https://api.iconify.design/",
-    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/",
-    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/",
+    RAW_BASE + "maakbo/",
+    RAW_BASE + "mdi/",
+    "https://api.iconify.design/mdi/",
 )
-MAAKBO_ICON_RAW_PREFIX = INLINE_ICON_URL_PREFIXES[1]
+MAAKBO_ICON_RAW_PREFIX = INLINE_ICON_URL_PREFIXES[0]
 
 
 def inline_icon_assets(source: str, root: Path) -> str:
@@ -69,23 +71,12 @@ def inline_icon_assets(source: str, root: Path) -> str:
         if not any(url.startswith(prefix) for prefix in INLINE_ICON_URL_PREFIXES):
             return match.group(0)
         if url not in cache:
-            local_path: Path | None = None
-            repository_prefix = next(
-                (prefix for prefix in INLINE_ICON_URL_PREFIXES[1:] if url.startswith(prefix)), None
-            )
-            if repository_prefix:
-                filename = url[len(repository_prefix) :]
-                if filename != Path(filename).name or not filename.endswith(".svg"):
-                    raise ValueError(f"invalid repository icon filename: {filename}")
-                local_path = root / "assets/icons/maakbo" / filename
-                if not local_path.is_file():
-                    raise FileNotFoundError(local_path)
-            if local_path:
-                cache[url] = base64.b64encode(local_path.read_bytes()).decode("ascii")
-            else:
-                request = urllib.request.Request(url, headers={"User-Agent": "maakbo-fde-exporter/0.2"})
-                with urllib.request.urlopen(request, timeout=20) as response:
-                    cache[url] = base64.b64encode(response.read()).decode("ascii")
+            found = asset_for_url(url)
+            if found is None:
+                raise ValueError(f"unregistered icon URL: {url}")
+            family, role = found
+            local_path = root / "assets/icons" / family / asset(family, role)["filename"]
+            cache[url] = base64.b64encode(local_path.read_bytes()).decode("ascii")
         return f'{match.group("prefix")}data:image/svg+xml;base64,{cache[url]}{match.group("suffix")}'
 
     return re.sub(r'(?P<prefix>img:\s*")(?P<url>[^"]+)(?P<suffix>")', replace, source)
@@ -104,7 +95,8 @@ def main() -> int:
         return 2
     try:
         source = load_mermaid_source(input_path).text
-    except SourceError as error:
+        icon_set_for_source(source, input_path, args.icon_set)
+    except (SourceError, ValueError) as error:
         print(f"ERROR: {error}", file=sys.stderr)
         return 2
 
@@ -115,6 +107,8 @@ def main() -> int:
     else:
         checker = authoring_scripts / "check_business_flow.py"
     lint = [sys.executable, str(checker), str(input_path), "--strict"]
+    if args.icon_set:
+        lint.extend(["--icon-set", args.icon_set])
     if args.type in {"context", "architecture"} and args.allow_complexity:
         lint.append("--allow-complexity")
     if args.type == "context" and args.allow_arrow_exception:

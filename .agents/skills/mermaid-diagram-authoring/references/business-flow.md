@@ -1,5 +1,10 @@
 # Mermaid business flow conventions
 
+Use [project icon selection](icon-selection.md) and `icon-sets.json` for the
+selected family. The literal maakbo URLs below are examples for this repository;
+instantiate templates with `icon_registry.py create` for consumer projects.
+MDI uses its pinned filled-outline geometry rather than a forced thin stroke.
+
 ## Visual invariant
 
 Activity and decision symbols keep fixed canvases independent of labels.
@@ -67,4 +72,4 @@ Use template colors, 14px font, `diagramPadding: 40`, and `0.75px` arrows. The o
 
 ## Working-source compatibility
 
-Keep the repository's maakbo raw URLs in the Mermaid block. Default to a Markdown working file for immediate preview. If a preview engine cannot display Mermaid v11 image nodes, do not silently replace the visual language; use `mermaid-diagram-export` only after the user requests stable SVG or PNG assets.
+Keep the selected family's registered raw URLs in the Mermaid block. Default to a Markdown working file for immediate preview. If a preview engine cannot display Mermaid v11 image nodes, do not silently replace the visual language; use `mermaid-diagram-export` only after the user requests stable SVG or PNG assets.

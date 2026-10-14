@@ -132,6 +132,7 @@ def master_cell_matches_path(master_cell: str, supplied_path: Path, context_path
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("context", type=Path)
+    parser.add_argument("--icon-set", choices=("maakbo", "mdi"))
     parser.add_argument("--actor", type=Path)
     parser.add_argument("--system", type=Path)
     parser.add_argument("--information", type=Path)
@@ -159,6 +160,7 @@ def load_nodes(path: Path) -> tuple[dict[str, dict[str, object]], dict[str, list
     loader_dir = root / ".agents/skills/mermaid-diagram-authoring/scripts"
     sys.path.insert(0, str(loader_dir))
     from source_loader import SourceError, load_mermaid_source
+    from icon_registry import canonical_url
 
     try:
         source = load_mermaid_source(path).text
@@ -170,7 +172,7 @@ def load_nodes(path: Path) -> tuple[dict[str, dict[str, object]], dict[str, list
     for line in source.splitlines():
         if match := NODE_RE.match(line):
             nodes[match.group("id")] = {
-                "img": match.group("img"),
+                "img": canonical_url(match.group("img")),
                 "label": match.group("label"),
                 "pos": "b",
                 "w": int(match.group("w")),
@@ -198,6 +200,8 @@ def main() -> int:
     root = Path(__file__).resolve().parents[4]
     context_linter = root / ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py"
     context_command = [sys.executable, str(context_linter), str(args.context), "--strict"]
+    if args.icon_set:
+        context_command.extend(["--icon-set", args.icon_set])
     if args.allow_complexity:
         context_command.append("--allow-complexity")
     if args.allow_arrow_exception:
@@ -237,6 +241,8 @@ def main() -> int:
             errors.append(f"{option}: file not found: {path}")
             continue
         command = [sys.executable, str(checker.parent / "check_master_map.py"), str(path), "--kind", kind, "--strict"]
+        if args.icon_set:
+            command.extend(["--icon-set", args.icon_set])
         if args.allow_complexity:
             command.append("--allow-complexity")
         if args.allow_sparse:

@@ -33,6 +33,7 @@ DIRECTED_EDGE_RE = re.compile(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
+    parser.add_argument("--icon-set", choices=("maakbo", "mdi"))
     parser.add_argument("--allow-complexity", action="store_true")
     parser.add_argument("--allow-arrow-exception", action="store_true")
     parser.add_argument("--allow-reverse-arrow-exception", action="store_true")
@@ -48,6 +49,8 @@ def main() -> int:
 
     context_linter = authoring_scripts / "check_context_diagram.py"
     command = [sys.executable, str(context_linter), str(args.input), "--strict"]
+    if args.icon_set:
+        command.extend(["--icon-set", args.icon_set])
     if args.allow_complexity:
         command.append("--allow-complexity")
     if args.allow_arrow_exception:

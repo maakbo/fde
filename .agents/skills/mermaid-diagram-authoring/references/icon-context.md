@@ -1,5 +1,10 @@
 # Mermaid icon context conventions
 
+Use [project icon selection](icon-selection.md) and `icon-sets.json` for the
+selected family. The literal maakbo URLs below are examples for this repository;
+instantiate templates with `icon_registry.py create` for consumer projects.
+MDI uses its pinned filled-outline geometry rather than a forced thin stroke.
+
 ## Visual invariant
 
 The icon is the visual object. Its size does not depend on its label.
@@ -179,4 +184,4 @@ triangles, and labels should remain intact. Use
 
 ## Working-source compatibility
 
-Keep the repository's maakbo raw URLs in the Mermaid block. These original assets use an effective viewBox stroke width of `1.15`. Default to a Markdown working file so GitHub or VS Code can preview the same source being discussed. A preview engine must support Mermaid v11 image nodes and remote SVG URLs; if it does not, keep editing the source and use `mermaid-diagram-export` only when the user explicitly needs stable media assets.
+Keep the selected family's registered raw URLs in the Mermaid block. These original assets use an effective viewBox stroke width of `1.15`. Default to a Markdown working file so GitHub or VS Code can preview the same source being discussed. A preview engine must support Mermaid v11 image nodes and remote SVG URLs; if it does not, keep editing the source and use `mermaid-diagram-export` only when the user explicitly needs stable media assets.

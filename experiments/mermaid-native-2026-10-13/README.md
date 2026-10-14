@@ -120,3 +120,5 @@ Node >=22.13.0。ChromeまたはPuppeteerのbrowserが必要。MacのChromeが�
 成果は比較ディレクトリ内だけ。元のexamples、Skill、既存runtimeの設定は変更していない。次の判断は、この見た目で併用したいか、静かな固定アイコンを優先したいかの本人レビュー。
 
 公開時の初回pushはHTTP 400 / RPC failedで失敗し、remote mainが基準commitのままであることを確認した。コマンド単位のHTTP/1.1・送信buffer指定で再試行して成功し、remote mainのcommit一致を確認した。恒久的なGit設定変更は行っていない。
+
+この比較で保存した旧Lucide由来の埋込SVGには、[履歴素材の第三者ライセンス表示](THIRD_PARTY_NOTICES.md)が付属します。現行のmaakbo／MDIセットとは別の比較履歴です。

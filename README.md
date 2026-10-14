@@ -94,7 +94,9 @@ python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py \
 
 ## Visual language
 
-Actor、Business、Information、External Systemには、[maakboオリジナルアイコン](assets/icons/maakbo/README.md)を使います。白背景、固定icon size、0.75pxのneutral lineを保ち、arrowは関係の向きが必要な場合だけ使います。
+アイコンはプロジェクトの `.fde/config.json` で `maakbo`／`mdi` を選びます。このfdeは[maakboオリジナル](assets/icons/maakbo/README.md)、未設定の配布先は[Iconify MDI](assets/icons/mdi/README.md)です。Actor、Business、Information、External Systemなどの対応は共通レジストリで解決します。白背景、固定icon size、0.75pxのneutral lineを保ち、arrowは関係の向きが必要な場合だけ使います。
+
+[アイコンの選び方と切り替え](.agents/skills/mermaid-diagram-authoring/references/icon-selection.md)と[両セットの図解例](examples/icon-sets/README.md)を参照してください。設定変更だけでは既存の図を書き換えません。
 
 ## Project status
 
@@ -102,4 +104,4 @@ Actor、Business、Information、External Systemには、[maakboオリジナル�
 
 ## License
 
-Repository code, original documentation, and the [maakbo icon family](assets/icons/maakbo/README.md) are MIT licensed. Historical third-party comparison assets retain their original notices; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Repository code, original documentation, and the [maakbo icon family](assets/icons/maakbo/README.md) are MIT licensed. MDI icons are Apache-2.0 licensed with [local upstream notices](assets/icons/mdi/README.md). Historical comparison assets retain [their archived third-party notices](experiments/mermaid-native-2026-10-13/THIRD_PARTY_NOTICES.md).

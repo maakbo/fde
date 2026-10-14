@@ -2,6 +2,8 @@
 
 図解の人・業務・情報・システムなどを、手で描き直せる少ない線で表す12種類のオリジナルSVGです。ユーザーが選択した形と大きさの調整を反映し、fdeの図解用素材として採用しています。
 
+配布先では `.fde/config.json` の `icon_set` を `maakbo` にすると、新しい図でこのセットを使用できます。未設定の配布先はMDIです。[共通の選択・切り替え方法](../../../.agents/skills/mermaid-diagram-authoring/references/icon-selection.md)を参照してください。
+
 ## アイコンと使用寸法
 
 Mermaidの正方形ノード枠の寸法です。SVG原本はすべて24×24 viewBoxで、下ラベルと組み合わせます。

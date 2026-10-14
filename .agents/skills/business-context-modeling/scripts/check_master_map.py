@@ -33,20 +33,17 @@ CLASS_RE = re.compile(
 KINDS = {
     "actor": {
         "prefix": "a",
-        "icon": "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg",
-        "size": (38, 38),
+        "role": "actor",
         "class": "actor",
     },
     "system": {
         "prefix": "x",
-        "icon": "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg",
-        "size": (32, 32),
+        "role": "system",
         "class": "external",
     },
     "information": {
         "prefix": "i",
-        "icon": "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg",
-        "size": (32, 32),
+        "role": "information",
         "class": "information",
     },
 }
@@ -55,6 +52,7 @@ KINDS = {
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
+    parser.add_argument("--icon-set", choices=("maakbo", "mdi"))
     parser.add_argument("--kind", choices=sorted(KINDS), required=True)
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--allow-complexity", action="store_true")
@@ -76,6 +74,7 @@ def main() -> int:
     authoring_scripts = root / ".agents/skills/mermaid-diagram-authoring/scripts"
     sys.path.insert(0, str(authoring_scripts))
     from source_loader import SourceError, load_mermaid_source
+    from icon_registry import asset, canonical_url, icon_set_for_source
 
     context_linter = authoring_scripts / "check_context_diagram.py"
     command = [
@@ -86,6 +85,8 @@ def main() -> int:
         "--allow-sparse",
         "--allow-arrow-exception",
     ]
+    if args.icon_set:
+        command.extend(["--icon-set", args.icon_set])
     if args.allow_complexity:
         command.append("--allow-complexity")
     if subprocess.run(command, check=False).returncode != 0:
@@ -93,7 +94,8 @@ def main() -> int:
 
     try:
         source = load_mermaid_source(args.input).text
-    except SourceError as error:
+        selected = icon_set_for_source(source, args.input, args.icon_set)
+    except (SourceError, ValueError) as error:
         print(f"ERROR: {error}", file=sys.stderr)
         return 2
 
@@ -109,7 +111,7 @@ def main() -> int:
                 print(f"ERROR: duplicate node {node_id}")
                 return 1
             nodes[node_id] = {
-                "img": match.group("img"),
+                "img": canonical_url(match.group("img")),
                 "size": (int(match.group("w")), int(match.group("h"))),
             }
         elif match := EDGE_RE.match(line):
@@ -118,7 +120,9 @@ def main() -> int:
             for node_id in match.group("ids").split(","):
                 classes.setdefault(node_id, []).append(match.group("class_name"))
 
-    spec = KINDS[args.kind]
+    spec = dict(KINDS[args.kind])
+    icon = asset(selected, spec["role"])
+    spec.update(icon=icon["url"], size=icon["size"])
     errors: list[str] = []
     if not nodes:
         errors.append("master map requires at least one image node")

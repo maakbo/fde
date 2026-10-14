@@ -26,8 +26,13 @@ Write the smallest diagram people can inspect while the conversation is still ch
 
 ## Workflow
 
+Before creating a diagram, read [icon-selection.md](references/icon-selection.md).
+Resolve the project's `icon_set` and semantic icons through the common registry.
+Instantiate templates with `icon_registry.py create` so the destination's
+preference is applied. Existing diagrams keep their explicit icon URLs.
+
 1. Identify the diagram's purpose, reader, subject, and one-sentence reading.
-2. Reuse an existing Markdown file when one already carries the discussion. Otherwise copy `/templates/icon-context.md` or `/templates/business-flow.md`.
+2. Reuse an existing Markdown file when one already carries the discussion. Otherwise instantiate `/templates/icon-context.md` or `/templates/business-flow.md` with `icon_registry.py create`.
 3. Choose the smallest suitable profile:
    - Read [references/icon-context.md](references/icon-context.md) for actors,
      activities, information, systems, semantic left/center/right layout, and

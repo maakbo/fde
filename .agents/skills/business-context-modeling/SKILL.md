@@ -9,6 +9,11 @@ Turn an ordinary conversation about work into a model people can inspect,
 question, and refine. Keep the analysis rigorous behind the scenes and make the
 published model quiet enough for a reader who wants to understand the business.
 
+Before authoring diagram nodes, read the Mermaid authoring Skill's
+`references/icon-selection.md`. Use the project preference and shared semantic
+registry; instantiate templates with `icon_registry.py create`. Existing
+master/context URLs remain authoritative until explicitly migrated.
+
 ## Core contract
 
 - Start from the user's language. Do not require a form before producing a

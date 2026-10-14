@@ -65,7 +65,7 @@ This repository is a portable environment for forward-deployed business modeling
 - In image nodes, keep properties in the exact order `label`, `img`, `pos`,
   `w`, `h`, `constraint`; keeping the English ID next to the Japanese label
   makes renaming consistency easy to inspect.
-- Use the maakbo original icon assets defined by the selected diagram Skill; do not introduce a new icon merely for decoration.
+- Use the project's `maakbo` or `mdi` icon family through the authoring Skill's common icon registry. New diagrams follow `.fde/config.json` (unconfigured consumers default to MDI); existing diagrams keep their explicit URLs. Do not introduce a new icon merely for decoration.
 - Do not create SVG or PNG during ordinary modeling or diagram authoring.
 - When export is explicitly requested, generate SVG / PNG directly from the unchanged Markdown source. Do not apply position or typography adjustments to derived assets; working layout decisions return to the Markdown Mermaid.
 - When a PNG is explicitly requested, surface the image in the final response. For public synthetic examples, also provide a tap-friendly raw URL; never publish a private diagram as a fallback.
