@@ -15,7 +15,16 @@ Read and follow `/AGENTS.md` before changing artifacts.
 - Write image nodes as `label`, `img`, `pos`, `w`, `h`, `constraint` in that
   order so the English ID and Japanese label stay adjacent while editing.
 - Do not generate `.mmd`, SVG, or PNG during ordinary modeling or authoring.
-- Use `.agents/skills/mermaid-diagram-export/SKILL.md` only after an explicit export or image request.
+- Use `.agents/skills/mermaid-diagram-export/SKILL.md` after an explicit export,
+  image, preview, or visual-review request; temporary review is separate from
+  publishing fixed assets.
+- Route proofreading, page consolidation, and reader-facing finishing through
+  `.agents/skills/reader-facing-artifact-review/SKILL.md`. When authorized and
+  available, use a read-only independent reviewer before completion.
+- Use a business/theme heading, diagram, then supplement. Omit duplicate Mermaid
+  titles and author-facing headings; maintenance intent belongs in `%%` comments.
+- New reader diagrams default to Dagre/basis. Compare actual previews for routing
+  changes; equal curve settings do not make ELK and Dagre lines look alike.
 - Do not copy private or identifying data into examples; use synthetic fixtures.
 - When the work needs several levels, use the model ladder: overall context
   (title-level business area and major actors) → use-case / scene context (one

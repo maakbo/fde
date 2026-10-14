@@ -7,23 +7,14 @@ Keep model-making history separate from the page used to understand the architec
 Use this order:
 
 ````markdown
-# Reader question or architecture name
-
-One or two short sentences that state what environment this View shows.
-
-## モデル
+# Architecture or responsibility name
 
 ```mermaid
 ...
 ```
 
-## このモデルが表していること
-
-Two or three short sentences explaining the responsibility or boundary the diagram cannot carry.
-
-← [Parent or sample entry](...)
-
-[Related context or interaction flow](...) →
+Two or three sentences about who acts, where responsibility lies, and what reaches
+another person or system. Add related-work links when useful.
 ````
 
 Keep the architecture story, candidate inventory, relationship evidence, naming alternatives,
@@ -39,3 +30,13 @@ checkpoint.
 - Private decisions, unpublished intent, credentials, local paths, and operational mailbox content
   are absent.
 - Markdown contains one Mermaid block and no committed derived image unless explicitly requested.
+
+The heading owns the title; omit Mermaid frontmatter `title` for embedded
+reader diagrams. Omit author-facing headings such as `モデル` and
+`このモデルが表していること`. Put concise scope, parent-node traces, and
+maintenance rationale in Mermaid `%%` comments. Keep reader-relevant decisions
+and uncertainty in the prose; private history stays private.
+
+Use `reader-facing-artifact-review` for the final reader/independent review when
+requested or authorized. Use the authoring layout reference when line shapes
+are inconsistent; matching `curve` alone does not make ELK and Dagre equivalent.

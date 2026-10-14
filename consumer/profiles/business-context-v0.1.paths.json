@@ -29,6 +29,8 @@
     ".agents/skills/mermaid-diagram-authoring/scripts/icon_registry.py",
     ".agents/skills/mermaid-diagram-authoring/references/icon-sets.json",
     ".agents/skills/mermaid-diagram-authoring/references/icon-selection.md",
-    ".agents/skills/mermaid-diagram-authoring/references/mdi-license"
+    ".agents/skills/mermaid-diagram-authoring/references/mdi-license",
+    ".agents/skills/reader-facing-artifact-review",
+    ".agents/skills/mermaid-diagram-authoring/references/layout-and-curves.md"
   ]
 }

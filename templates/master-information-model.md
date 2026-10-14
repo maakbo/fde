@@ -7,7 +7,6 @@ schema or a detailed data-flow sequence.
 
 ```mermaid
 ---
-title: 情報マスタ
 config:
   layout: dagre
   theme: neutral

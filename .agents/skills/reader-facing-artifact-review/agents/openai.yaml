@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reader-facing Artifact Review"
+  short_description: "Finish business prose and diagrams with independent review"
+  default_prompt: "Use $reader-facing-artifact-review to review and finish these business pages for their readers."

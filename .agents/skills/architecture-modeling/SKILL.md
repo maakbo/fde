@@ -33,8 +33,9 @@ copying this repository's literal maakbo choice into a consumer project.
   part of the question. Never group nodes only to force layout.
 - Separate the authoring workspace from the reader-facing sample. Keep evidence, candidate
   inventory, relationship model, boundary reasoning, naming candidates, checks, and unresolved
-  items private or in Skill references. Publish only a short introduction, the diagram, a short
-  reading, and natural links.
+  items private or in Skill references. Publish a business/responsibility heading, the diagram, a short
+  reading, and natural links. Omit duplicate Mermaid titles and author-facing
+  headings; keep maintenance intent in `%%` comments.
 - Keep Markdown Mermaid as the editable source. Do not create committed SVG or PNG unless the user
   explicitly requests fixed assets.
 - Move down to detail and back up to the parent whenever detail changes a node's responsibility,
@@ -134,4 +135,5 @@ For an authoring workspace or private checkpoint, return:
 7. Assumptions, omitted details, and unresolved items.
 
 For a public sample, follow [reader-facing-artifacts.md](references/reader-facing-artifacts.md) and
-omit the authoring material above.
+omit the authoring material above. Use `reader-facing-artifact-review` when
+finishing or independently reviewing reader-facing architecture pages.

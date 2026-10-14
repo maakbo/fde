@@ -184,8 +184,6 @@ def main() -> int:
     flow_lines = [line.strip() for line in lines if line.strip().startswith("flowchart ")]
     if flow_lines != ["flowchart LR"]:
         errors.append("use exactly one flowchart LR declaration for architecture context")
-    if not any(line.startswith("title:") for line in lines):
-        warnings.append("frontmatter title is missing")
     if not any(line.strip() == "diagramPadding: 40" for line in lines):
         warnings.append("use diagramPadding: 40")
     if not any(line.strip() == "nodeSpacing: 64" for line in lines):

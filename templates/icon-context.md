@@ -1,11 +1,7 @@
-# maakboの表現制作 — Business Use Case Context
-
-This View shows one business scene. Its Business backbone contains sibling
-activities; it is not a detailed procedure or flow.
+# maakboの表現制作
 
 ```mermaid
 ---
-title: アイデアを表現にする
 config:
   layout: dagre
   theme: neutral
@@ -24,6 +20,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  %% 一つの業務場面の関係図。作業の順序は業務フローで扱う。
   a_creator@{ label: "つくる人", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   i_idea_seed@{ label: "アイデアの種", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   b_shape_expression@{ label: "形にする", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
@@ -53,8 +50,4 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## 読み方
-
-つくる人は、アイデアを形にする仕事と届ける仕事の両方に参加する。表現の初稿は、
-現場で名前を付けて確認・更新・共有するInformationとして二つの仕事から扱う。
-正確な手順や判断は、このContextではなく各BusinessのFlowで見る。
+つくる人がアイデアを形にし、初稿をもとに表現を届けます。初稿は、形にする仕事と届ける仕事の両方で確認・更新・共有します。

@@ -24,7 +24,13 @@ This repository is a portable environment for forward-deployed business modeling
    Context separate from Interaction Flow.
 5. Use `mermaid-diagram-authoring` for Mermaid source in Markdown, whether the request begins with a model or a direct diagram task.
 6. Use `mermaid-diagram-export` only when the user explicitly asks for SVG, PNG, rendering, image generation, publishing assets, or visual artifact review.
-7. Read only the references directly required by the selected Skill.
+7. Use `reader-facing-artifact-review` for proofreading, consolidating, or
+   finishing reader-facing business/architecture pages, and for independent
+   third-party review. For final reader-facing finishing, delegate one read-only review to a
+   separate sub-agent when the host supports it and permits delegation. This
+   repository requests that review; the reviewer does not edit or publish.
+   Do not call self-review independent review.
+8. Read only the references directly required by the selected Skill.
 
 ## Working principles
 
@@ -86,6 +92,8 @@ For an authoring workspace or private checkpoint, return or record:
 6. One focused question that can improve the shared model.
 7. Source-validation results, plus export results only when explicitly requested.
 
-For a reader-facing sample, keep only the title, short subject description,
-Mermaid diagram, short reading, and links to related Models / Views. Do not copy
-the authoring checklist into the published page.
+For a reader-facing sample, use a business/theme heading, the Mermaid diagram,
+and the necessary business supplement with natural related-work links. Omit
+Mermaid frontmatter titles and author-facing section headings. Put concise
+maintenance intent in Mermaid `%%` comments; keep private history and review
+logs out of the reader surface. Do not copy the authoring checklist into it.

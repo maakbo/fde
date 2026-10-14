@@ -27,3 +27,12 @@ MDI image URLs default to official MDI GitHub (v7.4.47), independent of this
 repository. Set `"mdi_source": "iconify"` for Iconify API in supported environments;
 GitHub Mermaid blocks that API. MDI exports
 fetch and embed the SVGs; they require network access at export time.
+
+For proofreading, consolidating, or finishing business model pages, use
+`.agents/skills/reader-facing-artifact-review/SKILL.md`. It checks reader
+structure and routes natural-language and authorized independent review.
+Embedded diagrams use their Markdown business heading, without an extra
+Mermaid `title`; maintenance notes use `%%` comments. Layout/curve checks do not
+prove visual readability. A visual-review request permits temporary rendering
+when a native preview or exporter is available; source-only installations need
+no Node/browser dependencies merely for prose review.

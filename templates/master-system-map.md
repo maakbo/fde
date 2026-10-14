@@ -6,7 +6,6 @@ an explicit integration or dependency direction.
 
 ```mermaid
 ---
-title: 外部システムマスタ
 config:
   layout: dagre
   theme: neutral

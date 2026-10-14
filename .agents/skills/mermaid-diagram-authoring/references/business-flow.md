@@ -72,4 +72,16 @@ Use template colors, 14px font, `diagramPadding: 40`, and `0.75px` arrows. The o
 
 ## Working-source compatibility
 
-Keep the selected family's registered raw URLs in the Mermaid block. Default to a Markdown working file for immediate preview. If a preview engine cannot display Mermaid v11 image nodes, do not silently replace the visual language; use `mermaid-diagram-export` only after the user requests stable SVG or PNG assets.
+Keep the selected family's registered raw URLs in the Mermaid block. Default to a Markdown working file for immediate preview. If a preview engine cannot display Mermaid v11 image nodes, do not silently replace the visual language; use `mermaid-diagram-export` after an explicit fixed-asset, render, preview, or visual-review request; keep review output temporary.
+
+## Reader presentation and routing
+
+Use the Markdown business/theme heading as the visible title; omit Mermaid
+frontmatter `title` in embedded reader diagrams. Put the diagram directly below
+that heading and follow it with a short explanation of the work. Keep parent
+traces, scope, and maintenance instructions in `%%` comments.
+
+New reader-facing diagrams default to `dagre` with `basis`. Read
+[layout-and-curves.md](layout-and-curves.md) when changing the engine or curve:
+ELK rounds orthogonal routes and does not produce Dagre's smooth route merely
+because both configurations say `basis`. Preview requested routing changes.

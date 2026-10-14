@@ -2,7 +2,6 @@
 
 ```mermaid
 ---
-title: FDEの進め方
 config:
   layout: dagre
   theme: neutral

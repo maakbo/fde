@@ -28,7 +28,10 @@ def files_for(profile_path: Path) -> list[Path]:
     for relative in definition["paths"]:
         source = ROOT / relative
         if source.is_dir():
-            files.extend(sorted(path for path in source.rglob("*") if path.is_file()))
+            files.extend(sorted(
+                path for path in source.rglob("*")
+                if path.is_file() and "__pycache__" not in path.parts and path.suffix != ".pyc"
+            ))
         elif source.is_file():
             files.append(source)
         else:

@@ -24,7 +24,8 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
     parser.add_argument("--icon-set", choices=("maakbo", "mdi"))
-    parser.add_argument("--type", choices=("context", "architecture", "flow"), required=True)
+    parser.add_argument("--diagram", type=int, help="one-based Mermaid block in a multi-diagram Markdown page")
+    parser.add_argument("--type", choices=("context", "architecture", "flow", "mermaid"), required=True)
     parser.add_argument("--format", choices=("svg", "png", "both"), default="both")
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--allow-complexity", action="store_true")
@@ -32,11 +33,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--allow-directed", action="store_true")
     parser.add_argument("--config", type=Path)
     return parser.parse_args()
-
-
-def find_mmdc(root: Path) -> str | None:
-    local = root / "node_modules/.bin/mmdc"
-    return str(local) if local.is_file() else shutil.which("mmdc")
 
 
 def browser_environment() -> dict[str, str]:
@@ -107,34 +103,48 @@ def main() -> int:
         print(f"ERROR: file not found: {input_path}", file=sys.stderr)
         return 2
     try:
-        source = load_mermaid_source(input_path).text
+        source = load_mermaid_source(input_path, diagram_index=args.diagram).text
         icon_set_for_source(source, input_path, args.icon_set)
     except (SourceError, ValueError) as error:
         print(f"ERROR: {error}", file=sys.stderr)
         return 2
 
-    if args.type == "architecture":
-        checker = root / ".agents/skills/architecture-modeling/scripts/check_architecture_context.py"
-    elif args.type == "context":
-        checker = authoring_scripts / "check_context_diagram.py"
+    if args.type == "mermaid":
+        print("Native Mermaid render: syntax is checked by Mermaid; no governed modeling profile is claimed")
     else:
-        checker = authoring_scripts / "check_business_flow.py"
-    lint = [sys.executable, str(checker), str(input_path), "--strict"]
-    if args.icon_set:
-        lint.extend(["--icon-set", args.icon_set])
-    if args.type in {"context", "architecture"} and args.allow_complexity:
-        lint.append("--allow-complexity")
-    if args.type == "context" and args.allow_arrow_exception:
-        lint.append("--allow-arrow-exception")
-    if args.type == "architecture" and args.allow_directed:
-        lint.append("--allow-directed")
-    if subprocess.run(lint, cwd=root, check=False).returncode != 0:
-        return 1
+        if args.type == "architecture":
+            checker = root / ".agents/skills/architecture-modeling/scripts/check_architecture_context.py"
+        elif args.type == "context":
+            checker = authoring_scripts / "check_context_diagram.py"
+        else:
+            checker = authoring_scripts / "check_business_flow.py"
+        lint = [sys.executable, str(checker), str(input_path), "--strict"]
+        if args.icon_set:
+            lint.extend(["--icon-set", args.icon_set])
+        if args.type in {"context", "architecture"} and args.allow_complexity:
+            lint.append("--allow-complexity")
+        if args.type == "context" and args.allow_arrow_exception:
+            lint.append("--allow-arrow-exception")
+        if args.type == "architecture" and args.allow_directed:
+            lint.append("--allow-directed")
+        if args.diagram is None:
+            lint_result = subprocess.run(lint, cwd=root, check=False)
+        else:
+            # The checker consumes one block. Validate an unchanged temporary snapshot,
+            # keeping the multi-diagram page as the only editable working source.
+            with tempfile.TemporaryDirectory(prefix="fde-diagram-check-") as temporary:
+                selected = Path(temporary) / "selected.md"
+                selected.write_text(f"```mermaid\n{source}\n```\n", encoding="utf-8")
+                lint[2] = str(selected)
+                lint_result = subprocess.run(lint, cwd=root, check=False)
+        if lint_result.returncode != 0:
+            return 1
 
-    mmdc = find_mmdc(root)
+    node = shutil.which("node")
+    renderer = Path(__file__).with_name("render_mermaid.mjs")
     config = args.config.resolve() if args.config else root / "config/puppeteer.json"
-    if not mmdc:
-        print("ERROR: mmdc not found; run npm ci before explicit export", file=sys.stderr)
+    if not node or not (root / "node_modules/mermaid").is_dir():
+        print("ERROR: Node/rendering dependencies missing; run npm ci before requested rendering", file=sys.stderr)
         return 2
     if not config.is_file():
         print(f"ERROR: Puppeteer config not found: {config}", file=sys.stderr)
@@ -143,34 +153,20 @@ def main() -> int:
     output_dir = args.output_dir.resolve() if args.output_dir else input_path.parent
     output_dir.mkdir(parents=True, exist_ok=True)
     formats = ("svg", "png") if args.format == "both" else (args.format,)
+    output_stem = input_path.stem if args.diagram is None else f"{input_path.stem}-diagram-{args.diagram}"
     try:
         rendered = inline_icon_assets(source, root)
     except (OSError, ValueError, ET.ParseError) as error:
         print(f"ERROR: unable to embed selected icons: {error}", file=sys.stderr)
         return 2
-    with tempfile.NamedTemporaryFile("w", suffix=".mmd", encoding="utf-8", delete=False) as handle:
-        handle.write(rendered)
-        temporary = Path(handle.name)
-    try:
-        outputs: list[Path] = []
-        for suffix in formats:
-            output = output_dir / f"{input_path.stem}.{suffix}"
-            command = [
-                mmdc,
-                "-p",
-                str(config),
-                "-i",
-                str(temporary),
-                "-o",
-                str(output),
-                "-b",
-                "#FFFFFF",
-            ]
-            print("+", " ".join(command))
-            subprocess.run(command, check=True, env=browser_environment())
-            outputs.append(output)
-    finally:
-        temporary.unlink(missing_ok=True)
+    outputs: list[Path] = []
+    for suffix in formats:
+        output = output_dir / f"{output_stem}.{suffix}"
+        command = [node, str(renderer), "--puppeteer-config", str(config),
+                   "--output", str(output), "--format", suffix]
+        print("+", " ".join(command))
+        subprocess.run(command, input=rendered, text=True, check=True, env=browser_environment())
+        outputs.append(output)
 
     print("Exported:", ", ".join(str(path) for path in outputs))
     return 0

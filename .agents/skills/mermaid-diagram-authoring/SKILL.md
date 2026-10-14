@@ -10,19 +10,31 @@ Write the smallest diagram people can inspect while the conversation is still ch
 ## Core contract
 
 - Default to one `mermaid` code block inside a Markdown file.
-- Keep one diagram and one main question per working file.
+- Keep one main question per diagram. A reader page may contain several subject sections and diagrams; validate each block separately rather than splitting the page solely for a one-block checker.
 - Keep the Markdown file as the single editable source and working visual-review surface; do not duplicate it into `.mmd` automatically.
 - Use a standalone `.mmd` only when the user explicitly asks for one or an integration requires it.
 - Preserve business meaning while improving notation and visual consistency. Treat the established icon stroke width and size, spacing, relation line, arrow usage, color, and typography as visual-language assets; do not change them without explicit agreement.
 - In a business model set, keep the profiles separate: Overall / Business Map,
   Business Context for one scene with a multi-Business backbone, and a Flow or
   recursive Detailed Business Context expanding one selected Business. Record
-  the parent/expanded-node trace outside the Mermaid block.
+  the parent/expanded-node trace in Mermaid `%%` comments or an existing model-set
+  index; keep it out of reader prose.
 - Keep image-node properties in the exact order `label`, `img`, `pos`, `w`,
   `h`, `constraint`, so the stable English ID and Japanese label remain easy
   to compare while editing.
 - Before adding layout machinery, try the semantic relationships, node and relationship source order, and Mermaid's native layout. Do not use dummy nodes, meaningless transparent relations, or derived-asset adjustments to force an arrangement.
-- Never create SVG or PNG, invoke a renderer, or install rendering dependencies unless the user explicitly asks to export.
+- In reader-facing Markdown, use a business/theme heading, the diagram, then a
+  short business explanation. Omit Mermaid frontmatter `title` so the heading
+  is not repeated in the picture. Standalone exports may have a title when needed.
+- Keep scope, relation meaning, parent/expanded IDs, omissions, and layout notes
+  needed for maintenance in `%%` comments. Comments do not replace facts readers
+  need to understand or decide; sensitive project history stays private.
+- Default to `layout: dagre` with `curve: basis` for smooth connected curves.
+  Read [layout-and-curves.md](references/layout-and-curves.md) before changing
+  routing or comparing mixed engines. Do not silently migrate existing layouts.
+- Do not generate images during ordinary authoring. An explicit request to
+  preview, render, or visually review authorizes temporary rendering via
+  `mermaid-diagram-export`; publishing or committing fixed assets is separate.
 
 ## Workflow
 
@@ -63,7 +75,10 @@ provider, recipient, input, and output relations do not need it.
 6. Inspect the native or rendered preview after source validation. For a
    Business Context, confirm the Business backbone is traceable, both semantic
    sides are legible, crossings do not hide the scene, and relation endpoints
-   are intact. Then let the user inspect the Markdown in GitHub or VS Code.
+   are intact. Then let the user inspect the Markdown in GitHub or VS Code. When the user asks
+   for independent review or a finished reader-facing artifact, use
+   `reader-facing-artifact-review` to check prose, presentation, and meaning.
+   Source validation alone is not evidence that a rendered layout is readable.
 
 ## Modeling relationship
 

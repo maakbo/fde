@@ -24,6 +24,7 @@ REQUIRED = [
     "assets/icons/maakbo/PROVENANCE.md",
     "scripts/test_maakbo_icons.py",
     "scripts/test_icon_sets.py",
+    "scripts/test_review_profile.py",
     ".agents/skills/mermaid-diagram-authoring/scripts/icon_registry.py",
     ".agents/skills/mermaid-diagram-authoring/references/icon-sets.json",
     ".agents/skills/mermaid-diagram-authoring/references/mdi-license/README.md",
@@ -56,6 +57,9 @@ REQUIRED = [
     ".agents/skills/business-context-modeling/references/master-elements.md",
     ".agents/skills/business-context-modeling/references/reader-facing-artifacts.md",
     ".agents/skills/mermaid-diagram-export/scripts/export_mermaid.py",
+    ".agents/skills/mermaid-diagram-export/scripts/test_diagram_selection.py",
+    ".agents/skills/mermaid-diagram-export/scripts/render_mermaid.mjs",
+    ".agents/skills/mermaid-diagram-authoring/references/layout-and-curves.md",
     ".agents/skills/business-context-modeling/fixtures/repair-intake/model.md",
     ".agents/skills/business-context-modeling/fixtures/repair-intake/model-set-index.md",
     ".agents/skills/business-context-modeling/fixtures/repair-intake/master-model-index.md",
@@ -89,6 +93,7 @@ SKILLS = [
     "discovery-facilitation",
     "mermaid-diagram-authoring",
     "mermaid-diagram-export",
+    "reader-facing-artifact-review",
 ]
 MAAKBO_ICONS = (
     "user",
@@ -990,6 +995,13 @@ def main() -> int:
     validate_mdi_icons()
     run([sys.executable, "scripts/test_maakbo_icons.py"])
     run([sys.executable, "scripts/test_icon_sets.py"])
+    run([sys.executable, "scripts/test_review_profile.py"])
+    reader_checker = ".agents/skills/reader-facing-artifact-review/scripts/check_reader_artifact.py"
+    run([sys.executable, ".agents/skills/reader-facing-artifact-review/scripts/test_reader_artifact.py"])
+    run([sys.executable, ".agents/skills/mermaid-diagram-export/scripts/test_diagram_selection.py"])
+    run([sys.executable, reader_checker,
+         "examples/maakbo-fde/README.md", "examples/maakbo-fde/delivery-process.md",
+         "templates/icon-context.md", "templates/business-flow.md", "templates/architecture-context.md"])
     validate_fde_reader_surface()
     validate_architecture_reader_surface()
     validate_system_development_reader_surface()

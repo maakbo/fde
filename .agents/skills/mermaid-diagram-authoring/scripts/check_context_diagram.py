@@ -204,8 +204,6 @@ def main() -> int:
     flow_lines = [line.strip() for line in lines if line.strip().startswith("flowchart ")]
     if len(flow_lines) != 1 or flow_lines[0] not in {"flowchart TB", "flowchart LR"}:
         errors.append("use exactly one flowchart TB or flowchart LR declaration")
-    if not any(line.startswith("title:") for line in lines):
-        warnings.append("frontmatter title is missing")
     if not any(line.strip() == "diagramPadding: 40" for line in lines):
         warnings.append("use diagramPadding: 40 to protect edge-node labels")
     if not any(line.strip() == f"nodeSpacing: {CANONICAL_NODE_SPACING}" for line in lines):

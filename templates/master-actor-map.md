@@ -7,7 +7,6 @@ sequence.
 
 ```mermaid
 ---
-title: アクターマスタ
 config:
   layout: dagre
   theme: neutral

@@ -27,6 +27,7 @@ iPad・iPhone・MacBookからChatGPTやCodexを使い、GitHubへ記憶と成果
 - [architecture-modeling Skill](.agents/skills/architecture-modeling/SKILL.md): 人、AI agent、system、repository、service、boundaryの関係をArchitecture Viewにする手順
 - [mermaid-diagram-authoring Skill](.agents/skills/mermaid-diagram-authoring/SKILL.md): Markdown内でMermaidを作る手順
 - [mermaid-diagram-export Skill](.agents/skills/mermaid-diagram-export/SKILL.md): 明示的にSVG / PNGが必要な場合のexport手順
+- [reader-facing-artifact-review Skill](.agents/skills/reader-facing-artifact-review/SKILL.md): 業務主体者に向けた文章・構成・図を、第三者レビューで仕上げる手順
 - [templates](templates/): Business Context、Architecture Context、Flow、master mapの開始点
 - [validator](scripts/validate_repository.py): public bundleとMermaid sourceの検証
 
@@ -84,7 +85,7 @@ loose conversation
 
 通常は、Markdown内のMermaid blockが唯一の編集sourceです。`.mmd`、SVG、PNGは自動で作りません。
 
-固定assetが明示的に必要な場合だけ、export Skillを使います。
+固定assetや、実際の描画によるプレビュー・視覚レビューを依頼された場合は、export Skillを使います。確認用の画像は一時出力にし、公開するassetとは分けます。
 
 ```bash
 npm ci

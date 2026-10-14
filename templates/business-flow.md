@@ -1,12 +1,7 @@
-# maakboの表現制作 — 業務フロー
-
-This Flow expands one Business node from a parent Context. Edit the Mermaid
-block directly and record the parent View and expanded Business ID in the
-authoring workspace.
+# アイデアを形にする
 
 ```mermaid
 ---
-title: アイデアを表現にするフロー
 config:
   layout: dagre
   theme: neutral
@@ -27,6 +22,8 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart TB
+  %% 親Contextの一つの業務を詳しくしたフロー。親図と展開対象のIDを記録する。
+  %% 要確認: 「芯が見える？」を誰と確認し、どこまでを一周とするか。
   b_receive_seed@{ label: "種を受け取る", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_find_core@{ label: "芯を見つける", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_make_draft@{ label: "初稿をつくる", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
@@ -47,6 +44,6 @@ flowchart TB
   linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
-## 未解決の問い
+受け取ったアイデアから芯を見つけ、初稿をつくります。芯が見えているかを確認し、まだ明確でなければ考え直します。確認できたら、対話しながら表現を磨きます。
 
-「芯が見える？」を誰と確認して、どこまでを一周とするか？
+芯を確認する相手と、一周の作業範囲はまだ決まっていません。

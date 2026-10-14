@@ -11,4 +11,8 @@ For architecture relationships, also follow
 `.agents/skills/architecture-modeling/SKILL.md`. Use the icon-context profile
 for relationships and business-flow profile for sequence, decisions, or rework.
 
-Do not change the business meaning merely to improve layout. Keep icon sizes fixed, labels short, and the Markdown Mermaid source compact. Run the relevant source-only checker and stop. Do not create `.mmd`, SVG, or PNG unless the user explicitly invokes export.
+Do not change the business meaning merely to improve layout. Keep icon sizes fixed, labels short, and the Markdown Mermaid source compact. Run the relevant source checker. For a requested preview or visual review,
+route temporary rendering to the export Skill and inspect the result. Do not
+create fixed assets during ordinary authoring. Use subject headings without
+embedded Mermaid titles and put maintenance intent in `%%` comments. Use
+`reader-facing-artifact-review` for requested reader-facing finishing.

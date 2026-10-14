@@ -46,18 +46,16 @@ what the nodes mean. The default reader-facing contract is:
 ````markdown
 # 普通の業務名
 
-短い自然な導入文。
-
 ```mermaid
 ...
 ```
 
-この図を読むために必要な1〜3文の説明。
+業務の目的、関わる人、扱う情報、次の仕事に渡る結果について必要な補足。
 [親の業務を見る](parent.md) / [詳しい場面を見る](detail.md)
 ````
 
-Use the ordinary business name as the page title, show the diagram as soon as
-the reader needs it, and explain only what the diagram cannot carry. A page
+Use the ordinary business name or theme as the heading, put the diagram
+directly below it, and explain only what the diagram cannot carry afterward. A page
 may have several sections and diagrams when each section keeps this same
 contract; do not add method-aware headings, inventories, or tables by default.
 Short lists or tables are fine when they clarify a real relationship that a
@@ -198,3 +196,32 @@ Then verify:
 - no duplicated `model.md` remains merely as hidden storage;
 - Mermaid visual language and source validation still follow the authoring
   Skill.
+
+## Editorial and independent review
+
+The visible pattern is `business/theme heading → diagram → necessary supplement`.
+Do not add headings such as `モデル`, `このモデルが表していること`, `読み方`,
+or `このページの構成`. Do not repeat the heading in Mermaid frontmatter `title`.
+Use business names for real sections; substantive lists remain useful when
+readers need to compare criteria or conditions.
+
+Remove sentences that announce what the author will show, how the page is
+organized, or which view comes next. Use natural Japanese about what participants
+confirm, decide, do, and pass on. Avoid repeated introductions, rhetorical
+contrasts, abstract promises, and restating every diagram relation in prose.
+A relation view explains participants and information; its neighboring flow
+explains order and decisions. Read adjacent sections together for duplication.
+
+Maintenance intent such as scope, parent/expanded IDs, relation semantics,
+omissions, and native layout constraints belongs in Mermaid `%%` comments.
+Do not hide reader-relevant uncertainty or criteria in comments. Private
+history and review logs stay outside the published page.
+
+When pages are consolidated, preserve separate questions and make the business
+context continuous. Update links and validation/packaging assumptions rather
+than retaining redundant pages solely because a checker expects them.
+
+Use `reader-facing-artifact-review` when proofreading, consolidating, or finishing
+reader pages. Resolve independent reviewer findings before closing when delegation
+is authorized and available. A source checker cannot establish natural prose,
+semantic preservation, or visual readability; report the evidence actually used.

@@ -4,7 +4,6 @@
 
 ```mermaid
 ---
-title: FDEの目的
 config:
   layout: dagre
   theme: neutral
@@ -43,7 +42,6 @@ flowchart BT
 
 ```mermaid
 ---
-title: FDEを担う人とAI
 config:
   layout: dagre
   theme: neutral
@@ -92,7 +90,6 @@ flowchart LR
 
 ```mermaid
 ---
-title: 主体者の判断と改善
 config:
   layout: dagre
   theme: neutral
@@ -167,7 +164,6 @@ fdeとfdeAIが支援する範囲や制約も明らかにします。判断の根
 
 ```mermaid
 ---
-title: FDEの業務
 config:
   layout: dagre
   theme: neutral
@@ -217,7 +213,6 @@ flowchart TB
 
 ```mermaid
 ---
-title: 業務の変化を描く
 config:
   layout: dagre
   theme: neutral
@@ -294,7 +289,6 @@ flowchart LR
 
 ```mermaid
 ---
-title: 対象を見極め、業務を定義する
 config:
   layout: dagre
   theme: neutral
@@ -346,7 +340,6 @@ flowchart TB
 
 ```mermaid
 ---
-title: 協働の仕組みをつくる
 config:
   layout: dagre
   theme: neutral
@@ -423,7 +416,6 @@ AIに渡す目的、前提、制約、参照情報をそろえ、入出力や権
 
 ```mermaid
 ---
-title: 協働を設計し、小さく確かめる
 config:
   layout: dagre
   theme: neutral
@@ -481,7 +473,6 @@ flowchart TB
 
 ```mermaid
 ---
-title: 仕組みを現場へ根づかせる
 config:
   layout: dagre
   theme: neutral
@@ -553,13 +544,12 @@ flowchart LR
 
 担当者が使う中で得た感覚や判断を言葉にし、業務モデル、プロンプト、ルール、共有知識を更新します。改善した仕組みを使うことで、担当者の判断にも新しい知見が加わります。
 
-運営、判断、変更の責任を主体者と仲間へ移し、自分たちで改善を続けられるようにします。
+運用、判断、変更の責任を主体者と仲間へ移し、自分たちで改善を続けられるようにします。
 
 ## 現場で使い、学びながら広げる
 
 ```mermaid
 ---
-title: 現場で使い、学びながら広げる
 config:
   layout: dagre
   theme: neutral

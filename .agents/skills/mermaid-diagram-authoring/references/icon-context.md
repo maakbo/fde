@@ -184,4 +184,16 @@ triangles, and labels should remain intact. Use
 
 ## Working-source compatibility
 
-Keep the selected family's registered raw URLs in the Mermaid block. These original assets use an effective viewBox stroke width of `1.15`. Default to a Markdown working file so GitHub or VS Code can preview the same source being discussed. A preview engine must support Mermaid v11 image nodes and remote SVG URLs; if it does not, keep editing the source and use `mermaid-diagram-export` only when the user explicitly needs stable media assets.
+Keep the selected family's registered raw URLs in the Mermaid block. These original assets use an effective viewBox stroke width of `1.15`. Default to a Markdown working file so GitHub or VS Code can preview the same source being discussed. A preview engine must support Mermaid v11 image nodes and remote SVG URLs; if it does not, keep editing the source and use `mermaid-diagram-export` when the user explicitly requests fixed assets, rendering, preview, or visual review; keep review output temporary.
+
+## Reader presentation and routing
+
+Use the Markdown business/theme heading as the visible title; omit Mermaid
+frontmatter `title` in embedded reader diagrams. Put the diagram directly below
+that heading and follow it with a short explanation of the work. Keep parent
+traces, scope, and maintenance instructions in `%%` comments.
+
+New reader-facing diagrams default to `dagre` with `basis`. Read
+[layout-and-curves.md](layout-and-curves.md) when changing the engine or curve:
+ELK rounds orthogonal routes and does not produce Dagre's smooth route merely
+because both configurations say `basis`. Preview requested routing changes.

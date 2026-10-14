@@ -1,12 +1,7 @@
-# Human–Agent Workspace — Architecture Context
-
-An operator and an AI collaborator use a repository-centered workspace with one external service.
-
-## モデル
+# Human–Agent Workspace
 
 ```mermaid
 ---
-title: Human–Agent Workspace
 config:
   layout: dagre
   theme: neutral
@@ -25,6 +20,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  %% 人とAIが協働する作業環境の責任範囲。構造上の関係を扱い、処理の順序は別のFlowで扱う。
   h_operator@{ label: "operator", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   c_conversation@{ label: "conversation", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/message-square.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   subgraph bd_workspace["Workspace boundary"]
@@ -54,7 +50,4 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-## このモデルが表していること
-
-The repository is a durable part of the workspace boundary. The external service participates
-without moving inside that responsibility boundary.
+The operator and AI collaborator work through a repository-centered workspace. The repository keeps the work available for later use; the external service participates outside the workspace responsibility boundary.

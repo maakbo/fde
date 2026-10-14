@@ -2,7 +2,7 @@
 
 `business-context-v0.1.paths.json` is the profile build input. It selects a
 verbatim closure of the Business Context and Mermaid authoring Skills, their
-direct checks/references and the root `templates/` paths those Skills already
+reader-facing review Skill, direct checks/references and the root `templates/` paths those Skills already
 reference. No Skill path is rewritten during packaging.
 
 Build a reviewable artifact locally:
@@ -38,3 +38,13 @@ Use `icon_registry.py configure` to change the preference, `show` for semantic
 URLs and dimensions, and `create` to instantiate a template for that project.
 Existing diagrams keep their explicit URLs; use `migrate --write` only for an
 intentional source migration. See the authoring Skill's icon-selection reference.
+
+## Reader review
+
+The profile includes `reader-facing-artifact-review` and its structural checker.
+Use it to finish subject headings, diagrams, and business prose together, then
+request a separate reviewer when the host supports authorized sub-agents.
+Packaging a Skill does not create a sub-agent facility or publish a new release;
+the host provides delegation and the existing update mechanism installs tagged
+artifacts. Prose/source review needs only Python. Rendering remains optional and
+requires a supported native preview or the upstream export Skill and renderer.

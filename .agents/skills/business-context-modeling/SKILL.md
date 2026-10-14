@@ -245,11 +245,10 @@ responsibility. Follow `modeling-rules.md`.
 
 Edit the agreed meaning into the reader-facing contract:
 
-1. an ordinary business name or reader question as the title;
-2. a short natural introduction;
-3. the Mermaid diagram as soon as the reader needs it;
-4. only the 1–3 sentences of explanation the diagram cannot carry;
-5. natural links to its parent, child, or supporting View.
+1. an ordinary business name or theme as the heading;
+2. the Mermaid diagram directly below it, without a duplicate frontmatter title;
+3. a short business explanation of what the diagram cannot carry;
+4. natural links to related work when useful.
 
 The default is `business name → diagram → short explanation`. Do not expose
 model types, method-aware headings, inventories, validation notes, or private
@@ -263,6 +262,10 @@ Before publishing, hide the diagram and read the prose alone. It should still
 identify the work's purpose, participants, handled Information, and result. If
 the explanation instead tells the reader what the diagram contains or how it
 was authored, rewrite it in ordinary business language.
+
+Use `reader-facing-artifact-review` for proofreading, consolidation, or a final
+reader review. Keep maintenance intent in Mermaid `%%` comments, substantive
+business facts in the supplement, and private history in the checkpoint.
 
 ### 8. Garden knowledge and close
 
