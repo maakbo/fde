@@ -38,7 +38,7 @@ Mermaidの正方形ノード枠の寸法です。SVG原本はすべて24×24 vie
 
 ## Mermaidで利用するURL形式
 
-このリポジトリのmainへ反映した後に使用するraw URLの基底は次の形式です。
+このリポジトリのmainで公開しているraw URLの基底は次の形式です。全12 SVGの取得とGitHubのMermaid実表示を確認しています。
 
 ```text
 https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/

@@ -28,4 +28,12 @@
 
 以前からの2つの大きな業務Contextが複雑度警告で全体検証を止めていました。既存のノードと関係は保持し、対象3つの同階層Contextだけ `--allow-complexity` で検証しました。意味のチェックや新アイコンの検証を無効化していません。
 
-公開対象はfdeのmain。GitHubへの反映後、12 SVGのraw URLと互換URL、Mermaidの実表示を確認します。GitHub Pagesは使用しません。
+## 公開確認
+
+実装commit `0e2253f` をfdeのmainへpushし、remote mainとの一致を確認しました。
+
+- 正式12 SVG、互換12 SVG、MIT LICENSEのraw URLはすべてHTTP 200。取得した内容はcommit済みファイルとバイト単位で一致。
+- GitHub上の `examples/human-agent-workspace/README.md` をブラウザーで開き、Mermaidの実描画を確認。全9画像ノードが新しい `assets/icons/maakbo/` のURLを使用。
+- GitHub側の表示も目視確認。人・AI・端末・リポジトリが採用した形で描画され、欠けなし。
+
+公開先は [アイコンと利用方法](https://github.com/maakbo/fde/tree/main/assets/icons/maakbo)、[Mermaid使用例](https://github.com/maakbo/fde/blob/main/examples/human-agent-workspace/README.md)。GitHub Pagesは使用していません。
