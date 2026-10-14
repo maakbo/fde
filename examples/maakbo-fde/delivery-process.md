@@ -238,8 +238,8 @@ PoCで成立した仕組みも、一気に全社展開しません。
 
 さらに個々の場面を図として確認したいときだけ、以下の補助Viewを使います。
 
-- [業務の変化を描く](shape-change-context.md)
-- [協働の仕組みをつくる](build-collaboration-context.md)
-- [仕組みを現場へ根づかせる](establish-work-context.md)
+- [業務の変化を描く](README.md#業務の変化を描く)
+- [協働の仕組みをつくる](README.md#協働の仕組みをつくる)
+- [仕組みを現場へ根づかせる](README.md#仕組みを現場へ根づかせる)
 
 ← [FDEの全体へ](README.md)

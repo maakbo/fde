@@ -65,17 +65,7 @@ REQUIRED = [
     ".agents/skills/discovery-facilitation/fixtures/system-development-intake.md",
     ".agents/skills/discovery-facilitation/fixtures/system-development-brief.md",
     "examples/maakbo-fde/README.md",
-    "examples/maakbo-fde/purpose-outcome.md",
-    "examples/maakbo-fde/business-map.md",
-    "examples/maakbo-fde/system-context.md",
-    "examples/maakbo-fde/actor-requirement.md",
-    "examples/maakbo-fde/shape-change-context.md",
-    "examples/maakbo-fde/build-collaboration-context.md",
-    "examples/maakbo-fde/establish-work-context.md",
-    "examples/maakbo-fde/change-design-flow.md",
     "examples/maakbo-fde/delivery-process.md",
-    "examples/maakbo-fde/design-and-poc-flow.md",
-    "examples/maakbo-fde/deployment-learning-flow.md",
     "examples/human-agent-workspace/README.md",
     "examples/system-development/README.md",
     "examples/system-development/requirements/README.md",
@@ -218,19 +208,33 @@ def validate_maakbo_icons() -> None:
                 raise ValueError(f"legacy icon URL in active source: {path.relative_to(ROOT)}")
 
 
-FDE_READER_MODEL_FILES = (
-    "purpose-outcome.md",
-    "system-context.md",
-    "actor-requirement.md",
-    "business-map.md",
-    "shape-change-context.md",
-    "build-collaboration-context.md",
-    "establish-work-context.md",
-    "change-design-flow.md",
-    "delivery-process.md",
-    "design-and-poc-flow.md",
-    "deployment-learning-flow.md",
+FDE_READER_MODEL_FILES = ("README.md", "delivery-process.md")
+FDE_READER_SECTIONS = (
+    "FDEが目指すこと",
+    "FDEを誰と実現するか",
+    "主体者が必要とする状態",
+    "FDEの業務",
+    "業務の変化を描く",
+    "対象を見極め、業務を定義する",
+    "協働の仕組みをつくる",
+    "協働を設計し、小さく確かめる",
+    "仕組みを現場へ根づかせる",
+    "現場で使い、学びながら広げる",
 )
+
+
+def fde_reader_sections() -> dict[str, str]:
+    text = (ROOT / "examples/maakbo-fde/README.md").read_text(encoding="utf-8")
+    sections = {}
+    for section in re.split(r"^## ", text, flags=re.MULTILINE)[1:]:
+        title, _, body = section.partition("\n")
+        if title in FDE_READER_SECTIONS:
+            if title in sections:
+                raise ValueError(f"duplicate FDE section: {title}")
+            sections[title] = body
+    if tuple(sections) != FDE_READER_SECTIONS:
+        raise ValueError("FDE reader sections are missing or out of order")
+    return sections
 
 
 def _validate_sample_links(sample: Path) -> None:
@@ -265,12 +269,22 @@ def validate_fde_reader_surface() -> None:
         relative = Path(name)
         artifact = sample / relative
         text = artifact.read_text(encoding="utf-8")
-        if text.count("```mermaid") != 1:
-            raise ValueError(f"{artifact.relative_to(ROOT)}: expected one Mermaid model")
-        if "## モデル" not in text or "## このモデルが表していること" not in text:
-            raise ValueError(
-                f"{artifact.relative_to(ROOT)}: missing reader-facing page structure"
-            )
+        if name == "README.md":
+            sections = fde_reader_sections()
+            if text.count("```mermaid") != len(FDE_READER_SECTIONS):
+                raise ValueError(f"{artifact.relative_to(ROOT)}: unexpected Mermaid count")
+            heading_level = "###"
+        else:
+            sections = {"FDEの進め方": text}
+            heading_level = "##"
+        for title, body in sections.items():
+            if body.count("```mermaid") != 1:
+                raise ValueError(f"{artifact.relative_to(ROOT)} / {title}: expected one Mermaid model")
+            if (f"{heading_level} モデル" not in body
+                    or f"{heading_level} このモデルが表していること" not in body):
+                raise ValueError(
+                    f"{artifact.relative_to(ROOT)} / {title}: missing reader-facing structure"
+                )
         for heading in forbidden_sections:
             if heading in text:
                 raise ValueError(
@@ -1016,24 +1030,24 @@ def main() -> int:
     run([sys.executable, flow, "templates/business-flow.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/overview.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/flow.md", "--strict"])
-    run([
-        sys.executable,
-        context,
-        "examples/maakbo-fde/business-map.md",
-        "--strict",
-        "--allow-complexity",
-    ])
-    for relative in (
-        "examples/maakbo-fde/shape-change-context.md",
-        "examples/maakbo-fde/build-collaboration-context.md",
-        "examples/maakbo-fde/establish-work-context.md",
-    ):
-        command = [sys.executable, business, relative]
-        # These existing, intentionally dense scenes retain their nodes and edges.
-        # A complexity observation must not hide subsequent icon/semantic checks.
-        command.append("--allow-complexity")
-        run(command)
-    run([sys.executable, flow, "examples/maakbo-fde/change-design-flow.md", "--strict"])
+    # Existing checkers accept one model per input. Extract the consolidated
+    # sections only into a temporary directory, keeping README as the sole source.
+    sections = fde_reader_sections()
+    checks = (
+        ("FDEの業務", context, ["--strict", "--allow-complexity"]),
+        ("業務の変化を描く", business, ["--allow-complexity"]),
+        ("協働の仕組みをつくる", business, ["--allow-complexity"]),
+        ("仕組みを現場へ根づかせる", business, ["--allow-complexity"]),
+        ("対象を見極め、業務を定義する", flow, ["--strict"]),
+        ("協働を設計し、小さく確かめる", flow, ["--strict"]),
+        ("現場で使い、学びながら広げる", flow, ["--strict"]),
+    )
+    with tempfile.TemporaryDirectory(prefix="fde-reader-") as temporary:
+        for index, (title, checker, options) in enumerate(checks):
+            artifact = Path(temporary) / f"section-{index}.md"
+            artifact.write_text(f"# {title}\n\n{sections[title]}", encoding="utf-8")
+            print(f"FDE reader section: {title}")
+            run([sys.executable, checker, str(artifact), *options])
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")
     return 0
 
