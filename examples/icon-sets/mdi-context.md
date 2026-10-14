@@ -24,13 +24,13 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
-  a_creator@{ label: "つくる人", img: "https://api.iconify.design/mdi/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  i_idea_seed@{ label: "アイデアの種", img: "https://api.iconify.design/mdi/file-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  b_shape_expression@{ label: "形にする", img: "https://api.iconify.design/mdi/ellipse-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  i_expression_draft@{ label: "表現の初稿", img: "https://api.iconify.design/mdi/file-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  b_share_expression@{ label: "届ける", img: "https://api.iconify.design/mdi/ellipse-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  x_github@{ label: "GitHub", img: "https://api.iconify.design/mdi/application-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  a_reader@{ label: "読み手", img: "https://api.iconify.design/mdi/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_creator@{ label: "つくる人", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  i_idea_seed@{ label: "アイデアの種", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  b_shape_expression@{ label: "形にする", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/ellipse-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  i_expression_draft@{ label: "表現の初稿", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/file-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  b_share_expression@{ label: "届ける", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/ellipse-outline.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  x_github@{ label: "GitHub", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/application-outline.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  a_reader@{ label: "読み手", img: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/account-outline.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
   %% 左に提供側、中央にBusiness backbone、右に受領側を置く。通常relationは---。
   a_creator --- b_shape_expression

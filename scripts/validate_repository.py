@@ -216,8 +216,14 @@ def validate_mdi_icons() -> None:
     license_path = ROOT / ".agents/skills/mermaid-diagram-authoring/references/mdi-license/LICENSE"
     if "Apache License" not in license_path.read_text():
         raise ValueError("MDI Apache license is missing")
-    if registry["default"] != "mdi" or registry["sets"]["mdi"]["base_url"] != "https://api.iconify.design/mdi/":
-        raise ValueError("MDI must default to direct Iconify URLs")
+    mdi = registry["sets"]["mdi"]
+    if registry["default"] != "mdi" or mdi["default_source"] != "upstream":
+        raise ValueError("MDI must default to external upstream SVGs")
+    if mdi["sources"] != {
+        "upstream": "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/",
+        "iconify": "https://api.iconify.design/mdi/",
+    }:
+        raise ValueError("MDI sources must not depend on hosted fde images")
 
 
 FDE_READER_MODEL_FILES = ("README.md", "delivery-process.md")

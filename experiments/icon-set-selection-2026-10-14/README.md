@@ -51,3 +51,17 @@ maakbo／MDIの選択、既存図の扱い、プロジェクト設定の所有�
 以前の固定版のライセンス・出典・SHAは `mdi-distribution-archive/` に履歴保存。
 今のAPI応答の版や図形が旧固定版と一致するという説明はしません。現行ライセンス
 情報はauthoring Skillの `references/mdi-license/` に置き、画像は含めません。
+
+## 外部参照先の選択とGitHub対応
+
+GitHubのMermaid実表示で、Iconify APIへの画像リクエストがCSPの
+`img-src` により拒否されることを確認しました。ユーザーの選択に従い、
+MDI公式GitHub（MaterialDesign-SVG v7.4.47）を既定とし、
+`.fde/config.json` の `mdi_source: "iconify"` でAPIも選択可能にしています。
+両方ともfdeのアイコン保存先に依存しません。既存図の明示URLは保持します。
+
+全repository validator、11件のセット選択・export回帰はPASS。
+45 managed filesの配布ZIPにMDI画像とプロジェクトconfigがないことを確認。
+そのZIPから新規consumerへインストールし、両外部参照先で新規作成・厳密検証に成功。
+比較図のMDI原本を公式GitHub参照へ更新し、SVGを原本から再出力しました。
+mainの業務参加者向け説明更新（`562b6d0`）も保持しています。

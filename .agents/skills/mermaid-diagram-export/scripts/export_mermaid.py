@@ -17,7 +17,7 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / ".agents/skills/mermaid-diagram-authoring/scripts"))
-from icon_registry import RAW_BASE, ICONIFY_MDI_BASE, asset, asset_for_url, icon_set_for_source
+from icon_registry import RAW_BASE, ICONIFY_MDI_BASE, UPSTREAM_MDI_BASE, asset, asset_for_url, icon_set_for_source
 
 
 def parse_args() -> argparse.Namespace:
@@ -61,6 +61,7 @@ INLINE_ICON_URL_PREFIXES = (
     RAW_BASE + "maakbo/",
     RAW_BASE + "mdi/",
     ICONIFY_MDI_BASE,
+    UPSTREAM_MDI_BASE,
 )
 MAAKBO_ICON_RAW_PREFIX = INLINE_ICON_URL_PREFIXES[0]
 
@@ -78,7 +79,8 @@ def inline_icon_assets(source: str, root: Path) -> str:
                 raise ValueError(f"unregistered icon URL: {url}")
             family, role = found
             if family == "mdi":
-                request = urllib.request.Request(asset(family, role)["url"], headers={"User-Agent": "maakbo-fde-exporter/0.2"})
+                external_url = url if url.startswith((ICONIFY_MDI_BASE, UPSTREAM_MDI_BASE)) else asset(family, role)["url"]
+                request = urllib.request.Request(external_url, headers={"User-Agent": "maakbo-fde-exporter/0.2"})
                 with urllib.request.urlopen(request, timeout=20) as response:
                     data = response.read()
                 svg = ET.fromstring(data)

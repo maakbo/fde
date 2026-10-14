@@ -23,5 +23,7 @@ For new diagrams, use the authoring Skill's `icon_registry.py create` command
 or resolve semantic URLs with `show`. Read its `references/icon-selection.md`
 for changing the preference and explicitly migrating an existing diagram.
 
-MDI image URLs point directly to Iconify, not to this repository. MDI exports
+MDI image URLs default to official MDI GitHub (v7.4.47), independent of this
+repository. Set `"mdi_source": "iconify"` for Iconify API in supported environments;
+GitHub Mermaid blocks that API. MDI exports
 fetch and embed the SVGs; they require network access at export time.

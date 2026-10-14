@@ -135,7 +135,11 @@
           38
         ]
       },
-      "base_url": "https://api.iconify.design/mdi/"
+      "default_source": "upstream",
+      "sources": {
+        "upstream": "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/v7.4.47/svg/",
+        "iconify": "https://api.iconify.design/mdi/"
+      }
     }
   }
 }

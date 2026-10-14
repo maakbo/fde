@@ -101,7 +101,7 @@ class IconSets(unittest.TestCase):
 
     def test_mdi_export_fetches_iconify_without_repository_assets_and_caches(self):
         for role in icons.registry()["sets"]["mdi"]["icons"]:
-            icon = icons.asset("mdi", role)
+            icon = icons.asset("mdi", role, "iconify")
             self.assertEqual(icon["url"], icons.ICONIFY_MDI_BASE + icon["filename"])
             svg = b'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h1"/></svg>'
             with tempfile.TemporaryDirectory() as temp:
@@ -118,6 +118,24 @@ class IconSets(unittest.TestCase):
         with patch.object(exporter.urllib.request, "urlopen", return_value=io.BytesIO(b'<html/>')):
             with self.assertRaisesRegex(ValueError, "unexpected MDI SVG"):
                 exporter.inline_icon_assets(f'img: "{icons.asset("mdi", "actor")["url"]}"', ROOT)
+
+    def test_mdi_sources_use_external_hosts_and_preserve_existing_choice(self):
+        self.assertTrue(icons.asset("mdi", "actor")["url"].startswith(icons.UPSTREAM_MDI_BASE))
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            icons.configure(root, "mdi", "iconify")
+            self.assertEqual(icons.configured_mdi_source(root), "iconify")
+            api_source = icons.rewrite_icons((ROOT / "templates/icon-context.md").read_text(), "mdi", "iconify")
+            upstream_source = icons.rewrite_icons(api_source, "mdi", "upstream")
+            self.assertIn(icons.ICONIFY_MDI_BASE, api_source)
+            self.assertIn(icons.UPSTREAM_MDI_BASE, upstream_source)
+            self.assertNotIn("assets/icons/mdi/", api_source + upstream_source)
+            self.assertEqual(icons.icon_set_for_source(api_source, root / "old.md"), "mdi")
+        svg = b'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"/>'
+        url = icons.asset("mdi", "actor", "upstream")["url"]
+        with patch.object(exporter.urllib.request, "urlopen", return_value=io.BytesIO(svg)) as fetch:
+            exporter.inline_icon_assets(f'img: "{url}"', ROOT)
+            self.assertEqual(fetch.call_args[0][0].full_url, url)
 
     def test_installer_seeds_choice_but_update_preserves_owned_config_and_models(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -180,6 +198,14 @@ class IconSets(unittest.TestCase):
             second = subprocess.run(command, capture_output=True, text=True)
             self.assertNotEqual(second.returncode, 0)
             self.assertEqual(output.read_bytes(), before)
+            self.assertIn(icons.UPSTREAM_MDI_BASE, output.read_text())
+            icons.configure(root, "mdi", "iconify")
+            api_output = root / "api-model.md"
+            api_command = command[:-1] + [str(api_output)]
+            api_result = subprocess.run(api_command, capture_output=True, text=True)
+            self.assertEqual(api_result.returncode, 0, api_result.stdout)
+            self.assertIn(icons.ICONIFY_MDI_BASE, api_output.read_text())
+            self.run_check(".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py", api_output, "--strict")
 
 
 if __name__ == "__main__":

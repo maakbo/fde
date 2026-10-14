@@ -1,6 +1,6 @@
 # 図解のアイコンを選ぶ
 
-同じ業務コンテキストを、maakboオリジナルとIconify MDIで描きます。ラベル・関係・ノードの寸法は同じです。
+同じ業務コンテキストを、maakboオリジナルとMDIで描きます。ラベル・関係・ノードの寸法は同じです。
 
 | maakbo | MDI |
 | --- | --- |
@@ -11,7 +11,8 @@
 
 ```json
 {
-  "icon_set": "mdi"
+  "icon_set": "mdi",
+  "mdi_source": "upstream"
 }
 ```
 
@@ -21,4 +22,4 @@
 
 [設定・新規作成・既存図の移行方法](../../.agents/skills/mermaid-diagram-authoring/references/icon-selection.md)
 
-maakboは[MIT](../../assets/icons/maakbo/LICENSE)、MDIは[Apache-2.0と上流の表示](../../.agents/skills/mermaid-diagram-authoring/references/mdi-license/README.md)に従います。MDIはIconifyのAPIを直接参照するため、細線のmaakboとは線の重みが異なります。MDIを使う図はfdeのアイコン保存先に依存しません。
+maakboは[MIT](../../assets/icons/maakbo/LICENSE)、MDIは[Apache-2.0と上流の表示](../../.agents/skills/mermaid-diagram-authoring/references/mdi-license/README.md)に従います。MDIは公式GitHubのSVG（v7.4.47）を直接参照します。`mdi_source` を `iconify` にするとIconify APIも選べます。GitHubのMermaidはAPIをブロックするため、GitHubでは既定の `upstream` を使います。MDIは細線のmaakboとは線の重みが異なります。MDIを使う図はfdeのアイコン保存先に依存しません。

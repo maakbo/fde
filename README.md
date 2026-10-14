@@ -94,7 +94,7 @@ python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py \
 
 ## Visual language
 
-アイコンはプロジェクトの `.fde/config.json` で `maakbo`／`mdi` を選びます。このfdeは[maakboオリジナル](assets/icons/maakbo/README.md)、未設定の配布先は[Iconify MDI](https://iconify.design/icon-sets/mdi/)です。MDIはIconifyのURLを直接参照し、このリポジトリのアイコン保存先に依存しません。Actor、Business、Information、External Systemなどの対応は共通レジストリで解決します。白背景、固定icon size、0.75pxのneutral lineを保ち、arrowは関係の向きが必要な場合だけ使います。
+アイコンはプロジェクトの `.fde/config.json` で `maakbo`／`mdi` を選びます。このfdeは[maakboオリジナル](assets/icons/maakbo/README.md)、未設定の配布先は[MDI](https://iconify.design/icon-sets/mdi/)です。MDIは公式GitHubのSVGを既定で参照し、`mdi_source: "iconify"` でIconify APIも選べます。どちらもこのリポジトリのアイコン保存先に依存しません。Actor、Business、Information、External Systemなどの対応は共通レジストリで解決します。白背景、固定icon size、0.75pxのneutral lineを保ち、arrowは関係の向きが必要な場合だけ使います。
 
 [アイコンの選び方と切り替え](.agents/skills/mermaid-diagram-authoring/references/icon-selection.md)と[両セットの図解例](examples/icon-sets/README.md)を参照してください。設定変更だけでは既存の図を書き換えません。
 

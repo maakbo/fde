@@ -3,7 +3,7 @@
 Use [project icon selection](icon-selection.md) and `icon-sets.json` for the
 selected family. The literal maakbo URLs below are examples for this repository;
 instantiate templates with `icon_registry.py create` for consumer projects.
-MDI directly uses Iconify's filled-outline geometry rather than a forced thin stroke.
+MDI uses the selected external source’s filled-outline geometry rather than a forced thin stroke.
 
 ## Visual invariant
 

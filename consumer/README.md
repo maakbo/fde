@@ -27,7 +27,9 @@ integration snippet.
 ## Icon preference
 
 The profile includes maakbo SVGs, the shared registry, and MDI license information.
-MDI diagrams refer directly to Iconify; no MDI image data or package is included.
+MDI diagrams default to official MDI GitHub SVGs (v7.4.47); set
+`"mdi_source": "iconify"` to use Iconify API instead. No MDI image data or package
+is included. GitHub Mermaid blocks the Iconify API; use the default there.
 Initial installation defaults to MDI; add `--icon-set maakbo` when desired.
 An existing `.fde/config.json` is consumer-owned and takes precedence. It is
 excluded from the managed manifest and is never overwritten on updates.
