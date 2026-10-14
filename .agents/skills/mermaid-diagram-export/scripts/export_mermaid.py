@@ -11,11 +11,13 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import urllib.request
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / ".agents/skills/mermaid-diagram-authoring/scripts"))
-from icon_registry import RAW_BASE, asset, asset_for_url, icon_set_for_source
+from icon_registry import RAW_BASE, ICONIFY_MDI_BASE, asset, asset_for_url, icon_set_for_source
 
 
 def parse_args() -> argparse.Namespace:
@@ -58,7 +60,7 @@ def browser_environment() -> dict[str, str]:
 INLINE_ICON_URL_PREFIXES = (
     RAW_BASE + "maakbo/",
     RAW_BASE + "mdi/",
-    "https://api.iconify.design/mdi/",
+    ICONIFY_MDI_BASE,
 )
 MAAKBO_ICON_RAW_PREFIX = INLINE_ICON_URL_PREFIXES[0]
 
@@ -75,8 +77,17 @@ def inline_icon_assets(source: str, root: Path) -> str:
             if found is None:
                 raise ValueError(f"unregistered icon URL: {url}")
             family, role = found
-            local_path = root / "assets/icons" / family / asset(family, role)["filename"]
-            cache[url] = base64.b64encode(local_path.read_bytes()).decode("ascii")
+            if family == "mdi":
+                request = urllib.request.Request(asset(family, role)["url"], headers={"User-Agent": "maakbo-fde-exporter/0.2"})
+                with urllib.request.urlopen(request, timeout=20) as response:
+                    data = response.read()
+                svg = ET.fromstring(data)
+                if svg.tag != "{http://www.w3.org/2000/svg}svg" or svg.get("viewBox") != "0 0 24 24":
+                    raise ValueError("Iconify returned an unexpected MDI SVG")
+            else:
+                local_path = root / "assets/icons/maakbo" / asset(family, role)["filename"]
+                data = local_path.read_bytes()
+            cache[url] = base64.b64encode(data).decode("ascii")
         return f'{match.group("prefix")}data:image/svg+xml;base64,{cache[url]}{match.group("suffix")}'
 
     return re.sub(r'(?P<prefix>img:\s*")(?P<url>[^"]+)(?P<suffix>")', replace, source)
@@ -130,7 +141,11 @@ def main() -> int:
     output_dir = args.output_dir.resolve() if args.output_dir else input_path.parent
     output_dir.mkdir(parents=True, exist_ok=True)
     formats = ("svg", "png") if args.format == "both" else (args.format,)
-    rendered = inline_icon_assets(source, root)
+    try:
+        rendered = inline_icon_assets(source, root)
+    except (OSError, ValueError, ET.ParseError) as error:
+        print(f"ERROR: unable to embed selected icons: {error}", file=sys.stderr)
+        return 2
     with tempfile.NamedTemporaryFile("w", suffix=".mmd", encoding="utf-8", delete=False) as handle:
         handle.write(rendered)
         temporary = Path(handle.name)

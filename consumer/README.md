@@ -26,7 +26,8 @@ integration snippet.
 
 ## Icon preference
 
-The profile includes both SVG families, licenses, and the shared registry.
+The profile includes maakbo SVGs, the shared registry, and MDI license information.
+MDI diagrams refer directly to Iconify; no MDI image data or package is included.
 Initial installation defaults to MDI; add `--icon-set maakbo` when desired.
 An existing `.fde/config.json` is consumer-owned and takes precedence. It is
 excluded from the managed manifest and is never overwritten on updates.

@@ -28,7 +28,7 @@
     "assets/icons/maakbo",
     ".agents/skills/mermaid-diagram-authoring/scripts/icon_registry.py",
     ".agents/skills/mermaid-diagram-authoring/references/icon-sets.json",
-    "assets/icons/mdi",
-    ".agents/skills/mermaid-diagram-authoring/references/icon-selection.md"
+    ".agents/skills/mermaid-diagram-authoring/references/icon-selection.md",
+    ".agents/skills/mermaid-diagram-authoring/references/mdi-license"
   ]
 }

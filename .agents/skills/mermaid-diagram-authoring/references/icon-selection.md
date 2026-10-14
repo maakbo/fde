@@ -11,10 +11,10 @@ consumer-owned and is never part of the managed profile.
 ```
 
 Allowed values are `mdi` and `maakbo`. Unconfigured consumer projects default
-to `mdi`; this fde repository selects `maakbo` in its own config. Both families
-and their licenses are included in the consumer profile. MDI is pinned to
-Iconify's `@iconify-json/mdi@1.2.3`, with unmodified filled-outline geometry;
-maakbo keeps its approved effective 1.15 viewBox stroke. Do not try to make
+to `mdi`; this fde repository selects `maakbo` in its own config. The consumer profile includes
+maakbo SVGs and the registry, plus MDI license information without MDI image
+data. MDI directly references Iconify's API; maakbo keeps its approved effective
+1.15 viewBox stroke. Do not try to make
 MDI thin by adding a stroke-width style.
 
 ## New diagrams
@@ -69,12 +69,20 @@ master and its dependent context together and recheck master references.
 
 ## Distribution and export
 
-Use canonical raw URLs under `assets/icons/maakbo/` or `assets/icons/mdi/`
-for GitHub preview. The export tool embeds matching local SVG bytes, so neither
-family requires network access during export. Known `api.iconify.design/mdi/`
-URLs also resolve to the pinned local copy; author with canonical raw URLs to
-keep live previews and exports on the same data.
+Maakbo uses raw URLs under `assets/icons/maakbo/`. MDI uses
+`https://api.iconify.design/mdi/{icon-name}.svg` directly, so its diagrams do not
+depend on icons stored in this fde repository. The registry provides all twelve
+MDI names; no MDI SVGs or icon package data are shipped in the consumer profile.
 
-Keep MIT metadata with maakbo and Apache-2.0/upstream notices with MDI. Lucide
-runtime assets and the old compatibility URLs are retired. Historical
-third-party comparison images keep notices inside their own archive folder.
+For export, maakbo is embedded from local files. MDI is fetched from Iconify
+and embedded, with duplicate URLs cached within that export. This requires
+network access for MDI export; afterward, the output does not need remote icons.
+API URLs do not pin a particular package version. No fde-hosted fallback is used.
+
+Earlier fde-hosted MDI URLs remain recognizable for migration. Run
+`icon_registry.py migrate model.md --icon-set mdi --write` to replace them with
+Iconify URLs explicitly. The host change does not alter labels or relationships.
+
+Keep MIT metadata with maakbo and the [MDI license information](mdi-license/README.md)
+with redistributed MDI exports. Lucide runtime assets and old compatibility URLs
+are retired. Historical comparisons retain notices in their archive folder.

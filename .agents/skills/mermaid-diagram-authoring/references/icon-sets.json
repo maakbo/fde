@@ -71,8 +71,6 @@
     },
     "mdi": {
       "license": "Apache-2.0",
-      "package": "@iconify-json/mdi",
-      "version": "1.2.3",
       "icons": {
         "actor": "account-outline.svg",
         "activity": "ellipse-outline.svg",
@@ -136,7 +134,8 @@
           38,
           38
         ]
-      }
+      },
+      "base_url": "https://api.iconify.design/mdi/"
     }
   }
 }

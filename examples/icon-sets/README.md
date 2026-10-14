@@ -21,4 +21,4 @@
 
 [設定・新規作成・既存図の移行方法](../../.agents/skills/mermaid-diagram-authoring/references/icon-selection.md)
 
-maakboは[MIT](../../assets/icons/maakbo/LICENSE)、MDIは[Apache-2.0と上流の表示](../../assets/icons/mdi/README.md)に従います。MDIは固定版の図形をそのまま使用しているため、細線のmaakboとは線の重みが異なります。
+maakboは[MIT](../../assets/icons/maakbo/LICENSE)、MDIは[Apache-2.0と上流の表示](../../.agents/skills/mermaid-diagram-authoring/references/mdi-license/README.md)に従います。MDIはIconifyのAPIを直接参照するため、細線のmaakboとは線の重みが異なります。MDIを使う図はfdeのアイコン保存先に依存しません。

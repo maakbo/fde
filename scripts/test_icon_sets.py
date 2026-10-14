@@ -12,6 +12,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -98,17 +99,25 @@ class IconSets(unittest.TestCase):
                            "--actor", str(root / "master-actor-map.md"), "--system", str(root / "master-system-map.md"),
                            "--information", str(root / "master-information-model.md"), "--allow-sparse", "--icon-set", "mdi")
 
-    def test_all_registered_assets_export_pinned_local_bytes(self):
-        for family, spec in icons.registry()["sets"].items():
-            for role in spec["icons"]:
-                icon = icons.asset(family, role)
-                urls = [icon["url"]]
-                if family == "mdi":
-                    urls.append("https://api.iconify.design/mdi/" + icon["filename"])
-                for url in urls:
-                    result = exporter.inline_icon_assets(f'img: "{url}"', ROOT)
-                    data = base64.b64decode(result.split("base64,", 1)[1].rstrip('"'))
-                    self.assertEqual(data, (ROOT / "assets/icons" / family / icon["filename"]).read_bytes())
+    def test_mdi_export_fetches_iconify_without_repository_assets_and_caches(self):
+        for role in icons.registry()["sets"]["mdi"]["icons"]:
+            icon = icons.asset("mdi", role)
+            self.assertEqual(icon["url"], icons.ICONIFY_MDI_BASE + icon["filename"])
+            svg = b'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h1"/></svg>'
+            with tempfile.TemporaryDirectory() as temp:
+                with patch.object(exporter.urllib.request, "urlopen", return_value=io.BytesIO(svg)) as fetch:
+                    source = f'img: "{icon["url"]}"\nimg: "{icon["url"]}"'
+                    result = exporter.inline_icon_assets(source, Path(temp))
+                    self.assertEqual(fetch.call_count, 1)
+                    self.assertEqual(fetch.call_args[0][0].full_url, icon["url"])
+                    self.assertEqual(result.count("data:image/svg+xml;base64,"), 2)
+                    encoded = result.split("base64,", 1)[1].split('"', 1)[0]
+                    self.assertEqual(base64.b64decode(encoded), svg)
+
+    def test_mdi_export_rejects_non_svg_response(self):
+        with patch.object(exporter.urllib.request, "urlopen", return_value=io.BytesIO(b'<html/>')):
+            with self.assertRaisesRegex(ValueError, "unexpected MDI SVG"):
+                exporter.inline_icon_assets(f'img: "{icons.asset("mdi", "actor")["url"]}"', ROOT)
 
     def test_installer_seeds_choice_but_update_preserves_owned_config_and_models(self):
         with tempfile.TemporaryDirectory() as temp:

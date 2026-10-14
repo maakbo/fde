@@ -13,7 +13,7 @@ Convert an agreed Mermaid source into stable media assets. Treat export as an ex
 - Never rewrite the working source during export. SVG and PNG must be direct derivatives of that source; do not apply position or typography adjustments after export.
 - Validate the requested context or flow profile before rendering.
 - Infer the existing diagram's `maakbo` or `mdi` family from its explicit URLs. The project preference must not rewrite a source during export.
-- Embed matching local SVG data through the common icon registry so generated outputs do not depend on remote icons afterward.
+- Embed local maakbo SVGs or SVGs fetched directly from Iconify for MDI. MDI export requires network access; generated outputs are self-contained afterward. Never fall back to fde-hosted MDI assets.
 - Generate only the formats the user requests; default to both SVG and PNG when they ask generally for image export.
 - Inspect generated assets for clipping or export failure, while keeping working visual judgment in the Markdown Mermaid source.
 - Surface the PNG as an image attachment in the final response. For public synthetic examples, include a tap-friendly raw URL as a fallback; never upload private diagrams merely to make a preview visible.

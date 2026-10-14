@@ -11,6 +11,7 @@ import re
 
 REGISTRY_PATH = Path(__file__).resolve().parents[1] / "references/icon-sets.json"
 RAW_BASE = "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/"
+ICONIFY_MDI_BASE = "https://api.iconify.design/mdi/"
 CONFIG_PATH = Path(".fde/config.json")
 IMAGE_RE = re.compile(r'(?P<prefix>img:\s*")(?P<url>[^"]+)(?P<suffix>")')
 
@@ -50,8 +51,9 @@ def asset(icon_set: str, role: str) -> dict:
     family = data["sets"][checked_set(icon_set)]
     if role not in family["icons"]:
         raise ValueError(f"unknown semantic icon role: {role}")
+    base = ICONIFY_MDI_BASE if icon_set == "mdi" else RAW_BASE + "maakbo/"
     return {"filename": family["icons"][role], "size": tuple(family["sizes"][role]),
-            "url": RAW_BASE + icon_set + "/" + family["icons"][role]}
+            "url": base + family["icons"][role]}
 
 
 def asset_for_url(url: str) -> tuple[str, str] | None:
@@ -59,8 +61,8 @@ def asset_for_url(url: str) -> tuple[str, str] | None:
         for role, filename in spec["icons"].items():
             if url == RAW_BASE + family + "/" + filename:
                 return family, role
-            # Known Iconify MDI names can also be exported from the pinned local copy.
-            if family == "mdi" and url == "https://api.iconify.design/mdi/" + filename:
+            # The former hosted MDI URLs above remain recognizable for explicit migration.
+            if family == "mdi" and url == ICONIFY_MDI_BASE + filename:
                 return family, role
     return None
 

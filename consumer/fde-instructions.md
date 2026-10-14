@@ -22,3 +22,6 @@ The consumer-owned `.fde/config.json` selects `"icon_set": "mdi"` or
 For new diagrams, use the authoring Skill's `icon_registry.py create` command
 or resolve semantic URLs with `show`. Read its `references/icon-selection.md`
 for changing the preference and explicitly migrating an existing diagram.
+
+MDI image URLs point directly to Iconify, not to this repository. MDI exports
+fetch and embed the SVGs; they require network access at export time.

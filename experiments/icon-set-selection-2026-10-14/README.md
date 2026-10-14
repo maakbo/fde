@@ -39,3 +39,15 @@ MDIは固定版 `@iconify-json/mdi@1.2.3` の12種類を変更せず使用。元
 - GitHubのMermaidでmaakboとMDIの両使用例を確認。各7画像ノードが選んだfamilyのURLを使い、図形も正しく表示。
 
 [切り替え方法](https://github.com/maakbo/fde/blob/main/.agents/skills/mermaid-diagram-authoring/references/icon-selection.md)・[比較と使用例](https://github.com/maakbo/fde/tree/main/examples/icon-sets)
+
+## Iconify直接参照への修正
+
+ユーザーの主目的は、MDIを選ぶ図がfdeのアイコン保存先へ依存しないことでした。
+MDIのcanonical URLを `https://api.iconify.design/mdi/{name}.svg` へ変更し、
+`assets/icons/mdi/` と配布プロファイル内のMDI画像を削除しました。
+exportはIconifyへアクセスしてSVGを埋め込み、その出力内で同じURLを再利用します。
+maakbo／MDIの選択、既存図の扱い、プロジェクト設定の所有は維持しています。
+
+以前の固定版のライセンス・出典・SHAは `mdi-distribution-archive/` に履歴保存。
+今のAPI応答の版や図形が旧固定版と一致するという説明はしません。現行ライセンス
+情報はauthoring Skillの `references/mdi-license/` に置き、画像は含めません。

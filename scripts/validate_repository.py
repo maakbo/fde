@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import json
-import hashlib
 import math
 import os
 import re
@@ -27,11 +26,9 @@ REQUIRED = [
     "scripts/test_icon_sets.py",
     ".agents/skills/mermaid-diagram-authoring/scripts/icon_registry.py",
     ".agents/skills/mermaid-diagram-authoring/references/icon-sets.json",
-    "assets/icons/mdi/README.md",
-    "assets/icons/mdi/LICENSE",
-    "assets/icons/mdi/UPSTREAM-LICENSE",
-    "assets/icons/mdi/NOTICE",
-    "assets/icons/mdi/source.json",
+    ".agents/skills/mermaid-diagram-authoring/references/mdi-license/README.md",
+    ".agents/skills/mermaid-diagram-authoring/references/mdi-license/LICENSE",
+    ".agents/skills/mermaid-diagram-authoring/references/mdi-license/UPSTREAM-LICENSE",
     ".github/copilot-instructions.md",
     ".github/agents/business-modeler.agent.md",
     ".github/agents/diagram-author.agent.md",
@@ -213,21 +210,14 @@ def validate_maakbo_icons() -> None:
 
 
 def validate_mdi_icons() -> None:
-    icon_dir = ROOT / "assets/icons/mdi"
-    source = json.loads((icon_dir / "source.json").read_text())
+    if (ROOT / "assets/icons/mdi").exists():
+        raise ValueError("MDI must refer directly to Iconify, not hosted repository assets")
     registry = json.loads((ROOT / ".agents/skills/mermaid-diagram-authoring/references/icon-sets.json").read_text())
-    expected = set(registry["sets"]["mdi"]["icons"].values())
-    if {path.name for path in icon_dir.glob("*.svg")} != expected:
-        raise ValueError("MDI must contain the registered twelve icons")
-    if "Apache License" not in (icon_dir / "LICENSE").read_text():
+    license_path = ROOT / ".agents/skills/mermaid-diagram-authoring/references/mdi-license/LICENSE"
+    if "Apache License" not in license_path.read_text():
         raise ValueError("MDI Apache license is missing")
-    for path in icon_dir.glob("*.svg"):
-        if ET.parse(path).getroot().get("viewBox") != "0 0 24 24":
-            raise ValueError(f"wrong MDI canvas: {path.name}")
-        if hashlib.sha256(path.read_bytes()).hexdigest() != source["icons"][path.stem]["svg_sha256"]:
-            raise ValueError(f"MDI differs from pinned Iconify data: {path.name}")
-    if registry["default"] != "mdi" or registry["sets"]["mdi"]["version"] != source["package"]["version"]:
-        raise ValueError("MDI registry default or pinned version diverges")
+    if registry["default"] != "mdi" or registry["sets"]["mdi"]["base_url"] != "https://api.iconify.design/mdi/":
+        raise ValueError("MDI must default to direct Iconify URLs")
 
 
 FDE_READER_MODEL_FILES = ("README.md", "delivery-process.md")
