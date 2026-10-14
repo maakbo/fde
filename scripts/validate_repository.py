@@ -222,9 +222,9 @@ def validate_mdi_icons() -> None:
 
 FDE_READER_MODEL_FILES = ("README.md", "delivery-process.md")
 FDE_READER_SECTIONS = (
-    "FDEが目指すこと",
-    "FDEを誰と実現するか",
-    "主体者が必要とする状態",
+    "FDEの目的",
+    "FDEを担う人とAI",
+    "主体者の判断と改善",
     "FDEの業務",
     "業務の変化を描く",
     "対象を見極め、業務を定義する",
@@ -275,6 +275,12 @@ def validate_fde_reader_surface() -> None:
         "## Next review question",
         "## Status",
         "## Complexity note",
+        "## モデル",
+        "### モデル",
+        "## このモデルが表していること",
+        "### このモデルが表していること",
+        "### この段階で残すもの",
+        "## このページの構成",
     )
 
     for name in FDE_READER_MODEL_FILES:
@@ -285,17 +291,20 @@ def validate_fde_reader_surface() -> None:
             sections = fde_reader_sections()
             if text.count("```mermaid") != len(FDE_READER_SECTIONS):
                 raise ValueError(f"{artifact.relative_to(ROOT)}: unexpected Mermaid count")
-            heading_level = "###"
         else:
             sections = {"FDEの進め方": text}
-            heading_level = "##"
         for title, body in sections.items():
             if body.count("```mermaid") != 1:
                 raise ValueError(f"{artifact.relative_to(ROOT)} / {title}: expected one Mermaid model")
-            if (f"{heading_level} モデル" not in body
-                    or f"{heading_level} このモデルが表していること" not in body):
+            # A subject heading leads directly to its diagram and business reading.
+            # The page title is already outside README sections; strip it for delivery.
+            reading = body.strip()
+            if name == "delivery-process.md":
+                reading = reading.removeprefix("# FDEの進め方").lstrip()
+            match = re.match(r"```mermaid\n.*?\n```\n\n(.+)", reading, re.DOTALL)
+            if not match:
                 raise ValueError(
-                    f"{artifact.relative_to(ROOT)} / {title}: missing reader-facing structure"
+                    f"{artifact.relative_to(ROOT)} / {title}: expected diagram then business reading"
                 )
         for heading in forbidden_sections:
             if heading in text:

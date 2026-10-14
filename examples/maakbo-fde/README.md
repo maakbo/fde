@@ -1,35 +1,10 @@
 # FDE
 
-人、AI、システムが、それぞれの強みを活かして自然に協働できる。FDEは、そんな業務の仕組みを一緒につくります。
-
-仕組みを誰かに任せきりにはしません。使う人たち自身が理解し、選び、変え、育てていけるところまでを仕事に含めます。
-
-このページでは、FDEの目的、関わる人、必要な状態、業務全体、三つの場面とその流れを順につなげて読めます。
-
-案件の進め方を最初から最後まで読む場合は、[FDEの進め方](delivery-process.md)を参照してください。
-
-## このページの構成
-
-- [FDEが目指すこと](#fdeが目指すこと)
-- [FDEを誰と実現するか](#fdeを誰と実現するか)
-- [主体者が必要とする状態](#主体者が必要とする状態)
-- [FDEの業務](#fdeの業務)
-- [業務の変化を描く](#業務の変化を描く)
-- [対象を見極め、業務を定義する](#対象を見極め業務を定義する)
-- [協働の仕組みをつくる](#協働の仕組みをつくる)
-- [協働を設計し、小さく確かめる](#協働を設計し小さく確かめる)
-- [仕組みを現場へ根づかせる](#仕組みを現場へ根づかせる)
-- [現場で使い、学びながら広げる](#現場で使い学びながら広げる)
-
-## FDEが目指すこと
-
-見えることは、ゴールではありません。自分たちで理解し、選び、変え、育てられる状態を支えます。
-
-### モデル
+## FDEの目的
 
 ```mermaid
 ---
-title: FDEが目指すこと
+title: FDEの目的
 config:
   layout: dagre
   theme: neutral
@@ -47,6 +22,7 @@ config:
     fontSize: "14px"
 ---
 flowchart BT
+  %% 矢印は作業の順序ではなく、業務の理解から判断・改善、目的へ至るつながり。
   o_enabling(["見えるから、自分で選べる"])
   s_desired(["自分たちで理解し、選び、変え、育てられる"])
   p_ultimate(["個も仲間も、自然と自分たちらしく居られる"])
@@ -59,23 +35,15 @@ flowchart BT
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-### このモデルが表していること
+業務の全体像や、人・情報・システムの関係を共有し、どこを変えるか、その影響は何かを話し合います。使う人たちが自分で判断し、仕組みを変えながら使い続けられることを目指します。
 
-業務が見えると、自分たちで選べるようになります。その理解を手元に残すことで、仕組みを自分たちで変え、育てていけます。
+一人ひとりの違いを活かし、自分たちらしく働けることが、その先にある目的です。
 
-その先に、個も仲間も、それぞれの違いを失わず、自然と自分たちらしく居られる状態を目指します。
-
-## FDEを誰と実現するか
-
-この目的を実現するために、誰が一緒に仕組みを育てるのかを見ます。
-
-主体者と仲間、fde、fdeAIが、それぞれの役割を持ってFDEを育てます。
-
-### モデル
+## FDEを担う人とAI
 
 ```mermaid
 ---
-title: FDEを誰と実現するか
+title: FDEを担う人とAI
 config:
   layout: dagre
   theme: neutral
@@ -94,6 +62,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  %% 全体に関わる主体を扱う図。個々の業務で使うAIやシステムは、該当する業務の図で扱う。
   a_maakbo_fde@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   b_fde@{ label: "FDE", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
@@ -117,23 +86,13 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-### このモデルが表していること
+主体者と仲間が、現場の実態や困りごと、日々の判断を持ち寄ります。fdeとfdeAIは、それらを言葉や図にまとめます。何を変えるか、どんな仕組みにするかを一緒に考え、使いながら改善します。
 
-fdeとfdeAIだけで仕組みを作るのではありません。主体者と仲間も、現場を知り、選び、使いながら、一緒に仕組みを育てます。
-
-業務の中で役割を持つAIやシステムは、それぞれの業務を詳しく見るときに加えていきます。
-
-## 主体者が必要とする状態
-
-関わる人を確認したうえで、主体者が理解し、選び、改善するために必要な状態を整理します。
-
-主体者が業務を理解し、自分で選び、改善できるように、FDEが何を支えるかを示します。
-
-### モデル
+## 主体者の判断と改善
 
 ```mermaid
 ---
-title: 主体者が必要とする状態
+title: 主体者の判断と改善
 config:
   layout: dagre
   theme: neutral
@@ -152,6 +111,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  %% 左から主体、必要な状態、そのための支援。線は対応関係であり、処理の順序ではない。
   subgraph actor_lane[" "]
     direction TB
     a_maakbo_fde@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
@@ -199,17 +159,11 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-### このモデルが表していること
+主体者が判断するには、業務の全体像を理解し、選択肢とその影響を比べられる必要があります。業務の関係を見える形にし、判断に必要な情報をそろえます。
 
-見えるようにするだけでなく、選択肢と影響を考え、自分で改善できるところまでを支えます。
+fdeとfdeAIが支援する範囲や制約も明らかにします。判断の根拠や変更の方法を共有し、主体者が自分で選び、改善できるようにします。
 
 ## FDEの業務
-
-その状態を支える仕事を、七つの業務として捉えます。
-
-FDEは、七つの業務を行き来しながら、現場で使い続けられる仕組みをつくります。
-
-### モデル
 
 ```mermaid
 ---
@@ -232,6 +186,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart TB
+  %% 七つの業務の分類。工程の順序は delivery-process.md の図で扱う。
   b_fde@{ label: "FDE", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_context_understanding@{ label: "現場理解", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_business_structuring@{ label: "業務構造化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
@@ -254,23 +209,11 @@ flowchart TB
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-### このモデルが表していること
+七つの業務を、状況に応じて行き来します。検証や利用で分かったことをもとに、業務の理解や設計を見直します。
 
-七つは工程の順番ではありません。同じ業務が複数の段階で現れ、試して分かったズレから現場理解へ戻るなど、必要な仕事を行き来します。
-
-案件をどんな順番で進めるかは、[FDEの進め方](delivery-process.md)で見られます。
-
-- [業務の変化を描く](#業務の変化を描く): 現場理解、業務構造化、変化設計を使って、対象選定と要件の叩き台まで進める
-- [協働の仕組みをつくる](#協働の仕組みをつくる): 協働設計、仕組み化、現場適合を使って、設計と小さな検証まで進める
-- [仕組みを現場へ根づかせる](#仕組みを現場へ根づかせる): 現場適合と自律移行を使って、限定導入、Outcome観測、知識循環、段階展開を進める
+対象選定から導入・改善までの流れは、[FDEの進め方](delivery-process.md)に沿って具体化します。
 
 ## 業務の変化を描く
-
-ここからは、七つの業務を三つの場面に分けて見ます。最初は、現場の理解から対象選定と業務定義までの場面です。
-
-主体者と仲間が、現場の実態、困りごと、暗黙知を持ち寄ります。fdeとfdeAIが言葉と絵にし、四者で業務を確かめながら、不要な仕事、ボトルネック、変える価値のある対象を見極め、設計へ渡せる要件の叩き台までつくります。
-
-### モデル
 
 ```mermaid
 ---
@@ -293,6 +236,9 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  %% 親図: FDEの業務。b_context_understanding、b_business_structuring、b_change_design の詳細。
+  %% 線の記述順はDagreの配置に影響する。関係の編集後は全体をプレビューする。
+  %% 関連線は参加や情報の関係。業務の順序は「対象を見極め、業務を定義する」の図で扱う。
   a_fde@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   i_context_information@{ label: "業務の現状", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
@@ -340,19 +286,11 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-### このモデルが表していること
+主体者と仲間が、現場の実態や困りごと、経験から得た判断を持ち寄ります。fdeとfdeAIが業務の流れや関係をまとめ、関わる人たちで確かめます。判断基準、例外、前提、制約も共有します。
 
-現場理解と業務構造化では、流れだけでなく、判断、例外、暗黙知、前提、制約まで話せる業務モデルへ近づけます。
-
-変化設計では、まず不要な業務を減らし、残った課題のボトルネックを絞ります。人、ルール、RPA、AIエージェントなどの手段を比べ、効果、実現可能性、リスクから対象と優先順位を選びます。その対象について、範囲、対象外、前提、制約、機能・非機能要件、合格基準の叩き台を残します。
+そのうえで、減らせる仕事と、改善が必要な箇所を見つけます。ありたい状態と現状を比べ、効果、実現可能性、リスクから対象と優先順位を決めます。設計に進めるよう、対象範囲、要件、合格基準をまとめます。
 
 ## 対象を見極め、業務を定義する
-
-この場面で対象と要件をどう絞るかを、具体的な順序で見ます。
-
-現場を見えるようにしたら、すぐにAI化へ進むのではなく、そもそも必要な業務かを問い直します。残った課題からボトルネックを絞り、最も意味のある対象を選び、次に設計できる要件の叩き台へ変えます。
-
-### モデル
 
 ```mermaid
 ---
@@ -377,6 +315,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart TB
+  %% 親図: 業務の変化を描く。対象選定と要件の具体化までの作業順序。
   b_overview@{ label: "業務を見渡す", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_simplify@{ label: "不要を減らす", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_bottleneck@{ label: "ボトルネックを絞る", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
@@ -397,21 +336,13 @@ flowchart TB
   linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
-### このモデルが表していること
+業務の流れに加え、判断、例外、待ち、手戻り、ミス、特定の人に頼っている仕事、使っている情報を確認します。なくせる作業、まとめられる作業、順番を変えられる作業、単純にできる作業を先に整理します。
 
-業務を見渡すときは、流れだけでなく、判断、例外、待ち、手戻り、ミス、属人化、使う情報を確認します。不要、統合可能、順序変更可能、単純化可能な作業は、AIを使う前に減らします。
+残った課題のうち、生産性や価値への影響が大きい箇所を絞ります。人が担うか、ルールやRPAで処理するか、AIを使うかを比較し、効果、実現可能性、リスクを踏まえて対象を選びます。
 
-残った課題から生産性や価値を最も阻害している部分を絞り、人が担う方がよいか、ルールやRPAで扱えるか、AIエージェントが向くかを見極めます。効果の大きさ、実現可能性、リスクを合わせて、優先して試す対象を選びます。
-
-対象を選んだら、対象業務と対象外、前提、制約、合格基準を明らかにします。機能要件だけでなく、速度、可用性、品質などの非機能要件も、実装担当者と具体化できる叩き台として言葉にします。
+対象と対象外、前提、制約、合格基準を関係者で確認します。必要な機能に加え、速度、可用性、品質などの条件も、実装担当者と具体化できる形にまとめます。
 
 ## 協働の仕組みをつくる
-
-対象と要件の叩き台ができたら、関わる人と情報をもとに協働の仕組みをつくります。
-
-対象と要件の叩き台をもとに、主体者と仲間、fde、fdeAIが、人、AI、RPA、既存システムの役割を分けます。文脈、入出力、権限、安全策を設計し、まずは安全な範囲で試せる仕組みにして、業務として成立するかを確かめます。
-
-### モデル
 
 ```mermaid
 ---
@@ -434,6 +365,9 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  %% 親図: FDEの業務。b_collaboration_design、b_realization、b_context_fit の詳細。
+  %% 線の記述順はDagreの配置に影響する。関係の編集後は全体をプレビューする。
+  %% 関連線は参加や情報の関係。設計・検証の順序は「協働を設計し、小さく確かめる」の図で扱う。
   a_fde@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   i_business_model@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
@@ -481,19 +415,11 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-### このモデルが表していること
+主体者と仲間、fde、fdeAIが、対象業務と要件をもとに役割を分担します。人が判断すること、AIに任せる処理、ルールやRPAで処理すること、既存システムが担うことを決めます。
 
-協働設計では、人に残す判断、AIに任せる処理、ルールやRPAで扱う処理、既存システムが担う処理を分けます。AIを使う場合は、目的、前提、制約、参照情報、入出力形式、Validation、権限、Human-in-the-Loop、Guardrailsまで設計します。
-
-仕組み化では、まず試せる小さな形をつくります。現場適合では、本番へ一気に出さず、安全な環境で精度、速度、安全性、コスト、再現性、現場利用性を確認し、進める、見直す、やめるを判断します。
+AIに渡す目的、前提、制約、参照情報をそろえ、入出力や権限、人が確認する箇所を設計します。まず試せる小さな仕組みをつくり、安全な環境で業務に使えるかを確かめます。
 
 ## 協働を設計し、小さく確かめる
-
-この場面の設計と検証を、具体的な順序と見直しの判断で見ます。
-
-定義した業務を、実際に試せる仕組みへ変えます。人とAIの責任を分け、AIへ渡す文脈、入出力、安全策を設計し、限られた環境で成立するかを確かめます。
-
-### モデル
 
 ```mermaid
 ---
@@ -518,6 +444,8 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart TB
+  %% 親図: 協働の仕組みをつくる。設計から検証、導入可否の判断までの作業順序。
+  %% 導入中止や手段変更の判断は本文に残す。分岐を増やす場合は、この判断との対応を確認する。
   b_split_roles@{ label: "役割を分ける", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_design_context@{ label: "文脈を設計する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_design_io@{ label: "入出力と安全を決める", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
@@ -543,21 +471,13 @@ flowchart TB
   linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
-### このモデルが表していること
+人とAIの責任を分け、AIに渡す目的、前提、制約、参照情報、判断例をそろえます。入力データと出力形式を決め、JSONなどの構造や内容をどう検証するかも具体化します。
 
-役割分担では、人に残す判断、AIに任せる処理、ルールやRPAで扱う処理、既存システムが担う処理を明らかにします。文脈設計では、目的、前提、制約、参照情報、判断例を揃えます。
+利用できる情報と権限、人が確認・承認・介入する箇所、禁止する操作を決めます。セキュリティや法務に関わる事項は、実装担当者と必要な専門家で確認します。
 
-入出力と安全の設計では、入力データ、JSONなどの出力形式、Schema、Validation、権限、機密性、Human-in-the-Loop、Guardrailsを決めます。必要な論点は、実装担当者だけでなく情報セキュリティや法務とも具体化します。
-
-試作後はSandboxなどの安全な環境で、精度、速度、安全性、再現性、コスト、現場での使いやすさを確認します。合格基準を満たさないときは、設計を見直して再検証するか、方法を変えるか、導入をやめるかを判断します。
+試作品を安全な環境で動かし、精度、速度、安全性、再現性、コスト、現場での使いやすさを確かめます。合格基準を満たすかどうかをもとに、導入に進むか、設計や方法を見直すか、導入をやめるかを判断します。
 
 ## 仕組みを現場へ根づかせる
-
-小さな検証で成立した仕組みを、次は現場で使い、主体者と仲間が育てられる状態へつなげます。
-
-検証で成立した仕組みを、主体者と仲間が限定した範囲から使います。fdeとfdeAIは、利用結果だけでなく業務や人に起きた変化を一緒に確かめ、現場の判断や知見を仕組みへ戻します。使う人たちが自分で理解し、変え、育てられる状態へ移していきます。
-
-### モデル
 
 ```mermaid
 ---
@@ -580,6 +500,9 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  %% 親図: FDEの業務。b_context_fit、b_autonomy_transition の詳細。
+  %% 線の記述順はDagreの配置に影響する。関係の編集後は全体をプレビューする。
+  %% 関連線は参加や情報の関係。導入・改善・展開の順序は「現場で使い、学びながら広げる」の図で扱う。
   a_fde@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   i_poc_result@{ label: "検証結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 32, h: 32, constraint: "on" }
@@ -626,21 +549,13 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-### このモデルが表していること
+検証を通った仕組みを、主体者と仲間が限られた範囲で使い始めます。fdeとfdeAIも利用結果を確認し、業務や人に起きた変化を一緒に確かめます。
 
-現場適合では、限定した範囲で利用を始め、利用件数などのOutputだけでなく、処理時間、手戻り、判断の一致、利用者への価値などのOutcomeを追います。短期で分かる変化と、時間をかけて追う変化を分けます。
+担当者が使う中で得た感覚や判断を言葉にし、業務モデル、プロンプト、ルール、共有知識を更新します。改善した仕組みを使うことで、担当者の判断にも新しい知見が加わります。
 
-使う中で担当者が得た感覚や判断を現場の知見として言葉にし、業務モデル、プロンプト、ルール、ナレッジへ戻します。改善された仕組みを使うことで人側の判断も育ち、人とAIの知識が循環する状態をつくります。
-
-自律移行では、運営、判断、変更の責任を主体者と仲間へ移します。同じ仕組みを広げるときは段階的に利用者を増やし、新しい機能や別業務へ広げる場合は改めて対象と価値を見極めます。
+運営、判断、変更の責任を主体者と仲間へ移し、自分たちで改善を続けられるようにします。
 
 ## 現場で使い、学びながら広げる
-
-この場面の導入、観測、改善、展開を、具体的な順序で見ます。
-
-検証で成立した仕組みを、限定した範囲から使い始めます。使った量だけでなく、業務や人にどんな変化が起きたかを確かめ、現場の知見を仕組みへ戻しながら育てます。
-
-### モデル
 
 ```mermaid
 ---
@@ -665,6 +580,8 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart TB
+  %% 親図: 仕組みを現場へ根づかせる。同じ仕組みの利用範囲を広げる判断を扱う。
+  %% 新機能、処理能力、別業務への拡張は、この図の「利用を広げる」と分けて扱う。
   b_limited_rollout@{ label: "限定導入する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_observe_use@{ label: "利用を観測する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
   b_measure_outcome@{ label: "成果を測る", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
@@ -690,10 +607,8 @@ flowchart TB
   linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
-### このモデルが表していること
+限られた利用者や範囲で使い、現場の仕事とのずれを確かめます。利用件数に加え、処理時間、手戻り、担当者間の判断の一致、顧客や利用者に届いた価値を確認します。短期間で分かる変化と、時間をかけて追う成果は分けて評価します。
 
-最初は同じ仕組みを限られた利用者や範囲で使い、現場とのズレを集めます。利用件数などのOutputだけでなく、処理時間、手戻り、判定の一致、顧客や利用者への価値などのOutcomeを見ます。短期で分かる変化と、時間をかけて追う変化は分けて扱います。
+現場で得た判断や知見を、プロンプト、ルール、業務モデル、ナレッジベースに反映し、仕組みを改善します。改善後も利用と評価を続け、同じ仕組みを使う人や範囲を段階的に広げます。
 
-担当者が使う中で得た感覚や判断は、言葉にしてプロンプト、ルール、業務モデル、ナレッジベースへ戻します。改善された仕組みから人も新しい判断を学び、人とAIの両方が育つ循環をつくります。
-
-同じ機能をより多くの利用者へ届けるときは段階的に広げます。処理能力を高める、新しい機能を追加する、別の業務へ適用する場合は、単なる利用者拡大とは分けて考え、必要なら再び対象の見極めから始めます。
+処理能力を高める、新しい機能を加える、別の業務に適用するといった変更は、利用者を増やすこととは分けて検討します。必要に応じて、対象と価値の確認からやり直します。
