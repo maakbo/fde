@@ -31,7 +31,7 @@ def main():
     chrome = Path('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome')
     if chrome.is_file():
         env.setdefault('PUPPETEER_EXECUTABLE_PATH', str(chrome))
-    prefix = 'https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/'
+    prefix = 'https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/'
     with tempfile.TemporaryDirectory(prefix='fde-mermaid-') as temp:
         for name, path in sorted(sources.items()):
             blocks = re.findall(r'^```mermaid\s*\n(.*?)^```', path.read_text(), re.M | re.S)

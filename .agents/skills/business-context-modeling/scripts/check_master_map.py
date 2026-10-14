@@ -33,19 +33,19 @@ CLASS_RE = re.compile(
 KINDS = {
     "actor": {
         "prefix": "a",
-        "icon": "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg",
+        "icon": "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg",
         "size": (38, 38),
         "class": "actor",
     },
     "system": {
         "prefix": "x",
-        "icon": "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg",
+        "icon": "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg",
         "size": (32, 32),
         "class": "external",
     },
     "information": {
         "prefix": "i",
-        "icon": "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg",
+        "icon": "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg",
         "size": (32, 32),
         "class": "information",
     },

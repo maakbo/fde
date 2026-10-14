@@ -4,11 +4,13 @@
 from __future__ import annotations
 
 import json
+import math
 import os
 import re
 import subprocess
 import sys
 import tempfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
@@ -18,6 +20,11 @@ REQUIRED = [
     "README.md",
     "LICENSE",
     "THIRD_PARTY_NOTICES.md",
+    "assets/icons/maakbo/README.md",
+    "assets/icons/maakbo/LICENSE",
+    "assets/icons/maakbo/PROVENANCE.md",
+    "scripts/sync_icon_aliases.py",
+    "scripts/test_maakbo_icons.py",
     ".github/copilot-instructions.md",
     ".github/agents/business-modeler.agent.md",
     ".github/agents/diagram-author.agent.md",
@@ -89,7 +96,7 @@ SKILLS = [
     "mermaid-diagram-authoring",
     "mermaid-diagram-export",
 ]
-THIN_LUCIDE_ICONS = (
+MAAKBO_ICONS = (
     "user",
     "bot",
     "ellipse",
@@ -165,17 +172,50 @@ def scan_public_text() -> None:
                 raise ValueError(f"private-path token `{token}` found in {path.relative_to(ROOT)}")
 
 
-def validate_thin_icons() -> None:
-    icon_dir = ROOT / "assets/icons/lucide-thin"
-    for name in THIN_LUCIDE_ICONS:
+def validate_maakbo_icons() -> None:
+    icon_dir = ROOT / "assets/icons/maakbo"
+    expected = {f"{name}.svg" for name in MAAKBO_ICONS}
+    if {path.name for path in icon_dir.glob("*.svg")} != expected:
+        raise ValueError("maakbo must contain exactly the twelve approved icons")
+    if "MIT License" not in (icon_dir / "LICENSE").read_text():
+        raise ValueError("maakbo icons must include their MIT license")
+    legacy = ROOT / "assets/icons/lucide-thin"
+    for name in MAAKBO_ICONS:
         path = icon_dir / f"{name}.svg"
-        if not path.is_file():
-            raise FileNotFoundError(path.relative_to(ROOT))
-        text = path.read_text(encoding="utf-8")
-        if 'stroke-width="1.35"' not in text:
-            raise ValueError(f"thin Lucide icon has the wrong stroke width: {path.relative_to(ROOT)}")
-        if 'stroke-width="2"' in text:
-            raise ValueError(f"standard Lucide stroke width remains: {path.relative_to(ROOT)}")
+        svg = ET.parse(path).getroot()
+        if svg.get("viewBox") != "0 0 24 24" or svg.get("style") != "color:#25231F":
+            raise ValueError(f"wrong maakbo canvas or ink: {path.relative_to(ROOT)}")
+        groups = svg.findall("{http://www.w3.org/2000/svg}g")
+        if len(groups) != 1:
+            raise ValueError(f"expected one maakbo geometry group: {path.name}")
+        group = groups[0]
+        transform = group.get("transform", "")
+        scale = 1.0
+        if transform:
+            match = re.fullmatch(
+                r"translate\((-?[\d.]+) (-?[\d.]+)\) scale\(([\d.]+)\)", transform
+            )
+            if not match:
+                raise ValueError(f"unsupported maakbo optical transform: {path.name}")
+            scale = float(match[3])
+        if not math.isclose(float(group.get("stroke-width", "0")) * scale, 1.15, abs_tol=1e-7):
+            raise ValueError(f"wrong effective maakbo stroke width: {path.name}")
+        if group.get("fill") != "none" or group.get("stroke") != "currentColor":
+            raise ValueError(f"wrong maakbo fill or stroke: {path.name}")
+        if group.get("stroke-linecap") != "round" or group.get("stroke-linejoin") != "round":
+            raise ValueError(f"wrong maakbo line endings: {path.name}")
+        for child in group:
+            if child.tag.rsplit("}", 1)[-1] not in {"path", "rect", "ellipse", "circle"}:
+                raise ValueError(f"unsupported maakbo geometry: {path.name}")
+        if path.read_bytes() != (legacy / path.name).read_bytes():
+            raise ValueError(f"stale legacy icon; run scripts/sync_icon_aliases.py: {path.name}")
+    if (icon_dir / "LICENSE").read_bytes() != (legacy / "LICENSE").read_bytes():
+        raise ValueError("legacy icon license must match the canonical MIT license")
+    # Historical comparisons keep their source; active authoring must use the new URLs.
+    for folder in (".agents", "templates", "examples", "consumer"):
+        for path in (ROOT / folder).rglob("*.md"):
+            if "assets/icons/lucide-thin/" in path.read_text():
+                raise ValueError(f"legacy icon URL in active source: {path.relative_to(ROOT)}")
 
 
 FDE_READER_MODEL_FILES = (
@@ -905,7 +945,8 @@ def main() -> int:
     json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
     json.loads((ROOT / "config/puppeteer.json").read_text(encoding="utf-8"))
     scan_public_text()
-    validate_thin_icons()
+    validate_maakbo_icons()
+    run([sys.executable, "scripts/test_maakbo_icons.py"])
     validate_fde_reader_surface()
     validate_architecture_reader_surface()
     validate_system_development_reader_surface()
@@ -988,8 +1029,9 @@ def main() -> int:
         "examples/maakbo-fde/establish-work-context.md",
     ):
         command = [sys.executable, business, relative]
-        if relative.endswith("shape-change-context.md"):
-            command.append("--allow-complexity")
+        # These existing, intentionally dense scenes retain their nodes and edges.
+        # A complexity observation must not hide subsequent icon/semantic checks.
+        command.append("--allow-complexity")
         run(command)
     run([sys.executable, flow, "examples/maakbo-fde/change-design-flow.md", "--strict"])
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")

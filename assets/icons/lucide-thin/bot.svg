@@ -1,2 +1,2 @@
-<!-- Derived from Lucide via Iconify; stroke width normalized for fde. -->
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2m16 0h2m-7-1v2m-6-2v2"/></g></svg>
+<!-- Original maakbo geometry. Review-ready maakbo hand-drawable family. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="color:#25231F"><title>AI</title><g fill="none" stroke="currentColor" stroke-width="1.197916667" stroke-linecap="round" stroke-linejoin="round" transform="translate(0.48000 0.63000) scale(0.96000)"><rect x="4.3" y="7.2" width="15.4" height="12.7" rx="1.7"/><path d="M12 7.2V3.5h2.5"/><path d="M8.7 12.4v2.3m6.6-2.3v2.3"/></g></svg>

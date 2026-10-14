@@ -5,7 +5,7 @@
 The icon is the visual object. Its size does not depend on its label.
 
 ```mermaid
-a_customer@{ label: "依頼者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+a_customer@{ label: "依頼者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 ```
 
 ## Scope and direction
@@ -47,7 +47,7 @@ diagram itself:
 
 ```mermaid
 flowchart LR
-  a_actor@{ label: "担当者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_actor@{ label: "担当者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   p_intention("必要な情報を、確認しやすく整えたい")
   a_actor -.- p_intention
 
@@ -69,33 +69,33 @@ the same model set; do not mix the old capsule shape with the rounded note.
 
 Use stable `prefix_lower_snake_case` IDs.
 
-| Prefix | Meaning | Thin Lucide asset | Size |
+| Prefix | Meaning | maakbo asset | Size |
 | --- | --- | --- | --- |
-| `a_` | actor | `lucide-thin/user.svg` | `38 x 38` |
-| `b_` | business activity | `lucide-thin/ellipse.svg` | `30 x 30` |
-| `i_` | information | `lucide-thin/file.svg` | `32 x 32` |
-| `x_` | external system | `lucide-thin/server.svg` | `32 x 32` |
-| `v_` | device or contact surface | Thin Lucide device asset | `38 x 38` |
+| `a_` | actor | `maakbo/user.svg` | `38 x 38` |
+| `b_` | business activity | `maakbo/ellipse.svg` | `30 x 30` |
+| `i_` | information | `maakbo/file.svg` | `32 x 32` |
+| `x_` | external system | `maakbo/server.svg` | `32 x 32` |
+| `v_` | device or contact surface | maakbo device asset | `38 x 38` |
 
 Use this raw asset base in Mermaid nodes:
-`https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/`
+`https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/`
 
-The assets preserve Lucide geometry and normalize the shared stroke width to
-`1.35`. Do not switch back to standard Iconify Lucide URLs: their embedded
-`stroke-width` is `2`, so a Mermaid stylesheet cannot make the external SVG
-thinner consistently.
+These are maakbo original SVGs with an effective viewBox stroke width of
+`1.15`. Their approved optical-size adjustments compensate group scaling so
+line weight stays consistent. Use these assets rather than upstream icon sets;
+an external image cannot reliably inherit Mermaid stroke styles.
 
 Device URLs:
 
-- iPad: `lucide-thin/tablet.svg`
-- iPhone: `lucide-thin/smartphone.svg`
-- laptop: `lucide-thin/laptop.svg`
+- iPad: `maakbo/tablet.svg`
+- iPhone: `maakbo/smartphone.svg`
+- laptop: `maakbo/laptop.svg`
 
 Keep node properties in this exact order: `label`, `img`, `pos`, `w`, `h`,
 `constraint`. Keeping the English ID immediately next to the Japanese label
 makes renaming and consistency checks easier. Keep one node per line.
 
-The source canvas is square because Mermaid v11 sizes image nodes from the height property. The business ellipse stays at `30 x 30`; information and external-system icons use `32 x 32` so their visible geometry stays close to the actor and business marks without overpowering them. Actors and devices remain `38 x 38` because their Lucide geometry needs the taller canvas. Use `nodeSpacing: 64` and `rankSpacing: 80` so relationship paths have roughly one-character breathing room around the icon field.
+The source canvas is square because Mermaid v11 sizes image nodes from the height property. The business ellipse stays at `30 x 30`; information and external-system icons use `32 x 32` so their visible geometry stays close to the actor and business marks without overpowering them. Actors and devices retain the established `38 x 38` node canvas; approved visual-size adjustments live inside the SVG. Use `nodeSpacing: 64` and `rankSpacing: 80` so relationship paths have roughly one-character breathing room around the icon field.
 
 Lift only the business label by `6px` with `margin-top` to compensate for the ellipse icon's transparent lower canvas. Avoid CSS transforms on the HTML label inside Mermaid's SVG `foreignObject`: some GitHub/browser combinations can move that label outside its node. The canonical CSS selects Mermaid image-node IDs containing the stable `-flowchart-b_` prefix because Mermaid does not preserve `class` statement names on image-node DOM elements. Do not shift labels for actors, information, systems, or devices.
 
@@ -179,4 +179,4 @@ triangles, and labels should remain intact. Use
 
 ## Working-source compatibility
 
-Keep the repository's thin Lucide raw URLs in the Mermaid block. The geometry remains Lucide and the shared stroke width is `1.35`. Default to a Markdown working file so GitHub or VS Code can preview the same source being discussed. A preview engine must support Mermaid v11 image nodes and remote SVG URLs; if it does not, keep editing the source and use `mermaid-diagram-export` only when the user explicitly needs stable media assets.
+Keep the repository's maakbo raw URLs in the Mermaid block. These original assets use an effective viewBox stroke width of `1.15`. Default to a Markdown working file so GitHub or VS Code can preview the same source being discussed. A preview engine must support Mermaid v11 image nodes and remote SVG URLs; if it does not, keep editing the source and use `mermaid-diagram-export` only when the user explicitly needs stable media assets.

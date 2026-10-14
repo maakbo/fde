@@ -46,12 +46,12 @@ CANONICAL_CLASS_STYLES = {
 
 RULES = {
     "b": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg",
+        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg",
         (30, 30),
         "activity",
     ),
     "d": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/diamond.svg",
+        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/diamond.svg",
         (38, 38),
         "decision",
     ),

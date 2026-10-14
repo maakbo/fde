@@ -4,21 +4,22 @@
 
 Activity and decision symbols keep fixed canvases independent of labels.
 
-| Prefix | Meaning | Thin Lucide asset | Size |
+| Prefix | Meaning | maakbo asset | Size |
 | --- | --- | --- | --- |
-| `b_` | business activity | `lucide-thin/ellipse.svg` | `30 x 30` |
-| `d_` | decision | `lucide-thin/diamond.svg` | `38 x 38` |
+| `b_` | business activity | `maakbo/ellipse.svg` | `30 x 30` |
+| `d_` | decision | `maakbo/diamond.svg` | `38 x 38` |
 
 Use the raw asset base
-`https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/`.
-These are Lucide geometries with the shared `stroke-width` normalized to
-`1.35`; keep the same thin assets in context diagrams and flows.
+`https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/`.
+These are maakbo original SVGs with an effective viewBox stroke width of
+`1.15`; keep the same assets and approved optical-size adjustments in context
+diagrams and flows.
 
 Keep property order `label`, `img`, `pos`, `w`, `h`, `constraint` and one node
 per line. Keeping the English ID immediately next to the Japanese label makes
 renaming and consistency checks easier.
 
-The square source canvas matches Mermaid v11's rendered image bounds. At `30 x 30`, the Lucide path remains a horizontal ellipse, keeps the label close, and no longer reads as a minor marker beside the `38 x 38` decision symbol.
+The square source canvas matches Mermaid v11's rendered image bounds. At `30 x 30`, the maakbo symbol remains a horizontal ellipse, keeps the label close, and no longer reads as a minor marker beside the `38 x 38` decision symbol.
 
 Lift only the activity label by `6px` with `margin-top` to compensate for the ellipse icon's transparent lower canvas. Avoid CSS transforms on the HTML label inside Mermaid's SVG `foreignObject`: some GitHub/browser combinations can move that label outside its node. The canonical CSS selects Mermaid image-node IDs containing the stable `-flowchart-b_` prefix because Mermaid does not preserve `class` statement names on image-node DOM elements. Do not shift decision labels.
 
@@ -66,4 +67,4 @@ Use template colors, 14px font, `diagramPadding: 40`, and `0.75px` arrows. The o
 
 ## Working-source compatibility
 
-Keep the repository's thin Lucide raw URLs in the Mermaid block. Default to a Markdown working file for immediate preview. If a preview engine cannot display Mermaid v11 image nodes, do not silently replace the visual language; use `mermaid-diagram-export` only after the user requests stable SVG or PNG assets.
+Keep the repository's maakbo raw URLs in the Mermaid block. Default to a Markdown working file for immediate preview. If a preview engine cannot display Mermaid v11 image nodes, do not silently replace the visual language; use `mermaid-diagram-export` only after the user requests stable SVG or PNG assets.

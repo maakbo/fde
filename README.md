@@ -94,7 +94,7 @@ python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py \
 
 ## Visual language
 
-Actor、Business、Information、External Systemには、リポジトリ内のthin Lucide iconを使います。白背景、固定icon size、0.75pxのneutral lineを保ち、arrowは関係の向きが必要な場合だけ使います。
+Actor、Business、Information、External Systemには、[maakboオリジナルアイコン](assets/icons/maakbo/README.md)を使います。白背景、固定icon size、0.75pxのneutral lineを保ち、arrowは関係の向きが必要な場合だけ使います。
 
 ## Project status
 
@@ -102,4 +102,4 @@ Actor、Business、Information、External Systemには、リポジトリ内のth
 
 ## License
 
-Repository code and original documentation are MIT licensed. Icons remain under their upstream licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Repository code, original documentation, and the [maakbo icon family](assets/icons/maakbo/README.md) are MIT licensed. Historical third-party comparison assets retain their original notices; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

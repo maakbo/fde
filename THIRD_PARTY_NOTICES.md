@@ -1,6 +1,8 @@
 # Third-party notices
 
-The thin SVG assets used by Mermaid working sources are generated from the public Iconify API. Explicit export embeds retrieved SVG bytes into generated artifacts. The repository does not claim ownership of those icons, and the following notices accompany their redistribution.
+Current Mermaid working sources use the original maakbo icons in `assets/icons/maakbo/`, distributed under their MIT LICENSE. The legacy `assets/icons/lucide-thin/` URLs now serve identical maakbo compatibility copies.
+
+The following notices are retained for historical Lucide-derived comparison images and repository history. They do not describe the new maakbo SVG family. Earlier exports embedded retrieved SVG bytes, so these notices remain with those archived artifacts.
 
 ## Lucide
 

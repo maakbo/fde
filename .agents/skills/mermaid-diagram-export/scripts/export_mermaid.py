@@ -55,9 +55,10 @@ def browser_environment() -> dict[str, str]:
 
 INLINE_ICON_URL_PREFIXES = (
     "https://api.iconify.design/",
+    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/",
     "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/",
 )
-THIN_ICON_RAW_PREFIX = INLINE_ICON_URL_PREFIXES[1]
+MAAKBO_ICON_RAW_PREFIX = INLINE_ICON_URL_PREFIXES[1]
 
 
 def inline_icon_assets(source: str, root: Path) -> str:
@@ -69,9 +70,17 @@ def inline_icon_assets(source: str, root: Path) -> str:
             return match.group(0)
         if url not in cache:
             local_path: Path | None = None
-            if url.startswith(THIN_ICON_RAW_PREFIX):
-                local_path = root / "assets/icons/lucide-thin" / url[len(THIN_ICON_RAW_PREFIX) :]
-            if local_path and local_path.is_file():
+            repository_prefix = next(
+                (prefix for prefix in INLINE_ICON_URL_PREFIXES[1:] if url.startswith(prefix)), None
+            )
+            if repository_prefix:
+                filename = url[len(repository_prefix) :]
+                if filename != Path(filename).name or not filename.endswith(".svg"):
+                    raise ValueError(f"invalid repository icon filename: {filename}")
+                local_path = root / "assets/icons/maakbo" / filename
+                if not local_path.is_file():
+                    raise FileNotFoundError(local_path)
+            if local_path:
                 cache[url] = base64.b64encode(local_path.read_bytes()).decode("ascii")
             else:
                 request = urllib.request.Request(url, headers={"User-Agent": "maakbo-fde-exporter/0.2"})

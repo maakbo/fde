@@ -1,14 +1,9 @@
-# Lucide thin icon assets
+# Legacy icon URL compatibility
 
-These twelve SVGs use the original Lucide geometry retrieved through Iconify.
-Only the shared stroke width is normalized to `1.35` so the icon set stays
-light and consistent in Mermaid image nodes.
+These twelve SVGs are byte-identical copies of the approved MIT-licensed
+[maakbo originals](../maakbo/README.md). This path is kept so previously shared
+Mermaid raw URLs continue to display the new icons. They are no longer Lucide
+geometries. New diagrams must use `assets/icons/maakbo/`.
 
-Regenerate them after an intentional upstream refresh with:
-
-```bash
-python3 scripts/sync_lucide_thin_icons.py
-```
-
-They are not new glyphs or a private icon family. The upstream Lucide license
-and source links are recorded in [`THIRD_PARTY_NOTICES.md`](../../../THIRD_PARTY_NOTICES.md).
+Edit only the canonical SVGs, then run `python3 scripts/sync_icon_aliases.py`
+to refresh these compatibility copies.

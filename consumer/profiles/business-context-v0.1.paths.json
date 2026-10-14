@@ -24,6 +24,7 @@
     "consumer/fde-instructions.md",
     "scripts/fde_consumer.py",
     "scripts/fde",
-    "scripts/fde.ps1"
+    "scripts/fde.ps1",
+    "assets/icons/maakbo"
   ]
 }

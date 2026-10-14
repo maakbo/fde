@@ -47,7 +47,7 @@ STYLE_RE = re.compile(
     r"^\s{2}style\s+(?P<id>bd_[a-z0-9_]+)\s+(?P<style>.+);\s*$"
 )
 
-RAW = "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/"
+RAW = "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/"
 NODE_RULES = {
     "h": ("user.svg", (38, 38), "human"),
     "g": ("bot.svg", (38, 38), "agent"),

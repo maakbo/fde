@@ -25,14 +25,14 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
-  h_operator@{ label: "operator", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  c_conversation@{ label: "conversation", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/message-square.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  h_operator@{ label: "operator", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  c_conversation@{ label: "conversation", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/message-square.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   subgraph bd_workspace["Workspace boundary"]
     direction LR
-    g_collaborator@{ label: "AI collaborator", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/bot.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-    r_repository@{ label: "repository", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/folder-git-2.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+    g_collaborator@{ label: "AI collaborator", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+    r_repository@{ label: "repository", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/folder-git-2.svg", pos: "b", w: 32, h: 32, constraint: "on" }
   end
-  x_external_service@{ label: "external service", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/cloud.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  x_external_service@{ label: "external service", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/cloud.svg", pos: "b", w: 32, h: 32, constraint: "on" }
 
   h_operator --- c_conversation
   c_conversation --- g_collaborator

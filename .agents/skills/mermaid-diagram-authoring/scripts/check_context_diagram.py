@@ -72,30 +72,30 @@ CANONICAL_CLASS_STYLES = {
 
 ICON_RULES = {
     "a": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/user.svg",
+        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg",
         (38, 38),
         "actor",
     ),
     "b": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/ellipse.svg",
+        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg",
         (30, 30),
         "business",
     ),
     "i": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/file.svg",
+        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg",
         (32, 32),
         "information",
     ),
     "x": (
-        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/server.svg",
+        "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg",
         (32, 32),
         "external",
     ),
 }
 DEVICE_ICONS = {
-    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/tablet.svg",
-    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/smartphone.svg",
-    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/lucide-thin/laptop.svg",
+    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/tablet.svg",
+    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/smartphone.svg",
+    "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/laptop.svg",
 }
 
 
@@ -285,7 +285,7 @@ def main() -> int:
                 errors.append(f"{node_id}: use size {expected_size[0]}x{expected_size[1]}")
         elif prefix == "v":
             if image not in DEVICE_ICONS:
-                errors.append(f"{node_id}: use a supported Lucide device icon")
+                errors.append(f"{node_id}: use a supported maakbo device icon")
             if size != (38, 38):
                 errors.append(f"{node_id}: devices use size 38x38")
         else:
