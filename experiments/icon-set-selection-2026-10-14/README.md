@@ -29,3 +29,13 @@ MDIは固定版 `@iconify-json/mdi@1.2.3` の12種類を変更せず使用。元
 - `git diff --check`：PASS。
 
 公開用の利用例は `examples/icon-sets/README.md`、共通手順はauthoring Skillの `references/icon-selection.md` です。
+
+## 公開確認
+
+実装commit `8497896` をmainへ反映しました。途中でmainへ入ったFDE例の1ページ統合（`ba960eb`）を保持し、検証スクリプトの競合は新しいセクション検証とMDI検証の両方を残して解消しています。統合後の全validatorもPASSです。
+
+- 公開した24 SVGと両LICENSEのraw URLはHTTP 200で、ローカルファイルと完全一致。
+- 公開revisionで旧Lucide SVGとルート第三者通知が存在しないことをHTTP 404で確認。
+- GitHubのMermaidでmaakboとMDIの両使用例を確認。各7画像ノードが選んだfamilyのURLを使い、図形も正しく表示。
+
+[切り替え方法](https://github.com/maakbo/fde/blob/main/.agents/skills/mermaid-diagram-authoring/references/icon-selection.md)・[比較と使用例](https://github.com/maakbo/fde/tree/main/examples/icon-sets)

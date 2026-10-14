@@ -25,7 +25,7 @@ Iconify形式のMaterial Design Iconsから、図解用12種類を取り出し�
 
 [source.json](source.json) にpackage名・版・tarball integrity・SHA、入力icons.jsonのSHA-256、全12bodyとSVGのSHA-256、対応表を記録しています。再現するときは `@iconify-json/mdi@1.2.3` の `icons.json` から指定名のbodyを取り出し、各SVGのtitle以降に同じbodyを保持します。ライセンス文の取得先も固定URLとSHAで記録しています。
 
-Mermaidの使用URL形式は次の基底へSVG名を加えます（main反映後）。
+Mermaidの使用URLは次の公開済み基底へSVG名を加えます。全12 SVGの取得とGitHubでのMermaid実表示を確認しています。
 
 ```text
 https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/mdi/
