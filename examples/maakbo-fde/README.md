@@ -31,7 +31,7 @@
 ---
 title: FDEが目指すこと
 config:
-  layout: elk
+  layout: dagre
   theme: neutral
   flowchart:
     curve: basis
@@ -276,10 +276,7 @@ flowchart TB
 ---
 title: 業務の変化を描く
 config:
-  layout: elk
-  elk:
-    nodePlacementStrategy: NETWORK_SIMPLEX
-    considerModelOrder: NODES_AND_EDGES
+  layout: dagre
   theme: neutral
   flowchart:
     curve: basis
@@ -310,29 +307,12 @@ flowchart LR
   a_subject@{ label: "主体者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_companions@{ label: "主体者の仲間", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
-  subgraph support["支援する側"]
-    direction TB
-    a_fde
-    a_fde_ai
-  end
-  subgraph scene["業務と情報"]
-    direction TB
-    i_context_information
-    i_business_issue
-    i_desired_state
-    b_context_understanding
-    b_business_structuring
-    i_business_model
-    b_change_design
-    i_target_priority
-    i_requirement_basis
-  end
-  subgraph participants["主体者と仲間"]
-    direction TB
-    a_subject
-    a_companions
-  end
-
+  a_fde --- b_context_understanding
+  a_fde --- b_business_structuring
+  a_fde --- b_change_design
+  a_fde_ai --- b_context_understanding
+  a_fde_ai --- b_business_structuring
+  a_fde_ai --- b_change_design
   i_context_information --- b_context_understanding
   i_context_information --- b_business_structuring
   i_business_issue --- b_context_understanding
@@ -343,12 +323,6 @@ flowchart LR
   i_business_model --- b_change_design
   b_change_design --- i_target_priority
   b_change_design --- i_requirement_basis
-  a_fde --- b_context_understanding
-  a_fde --- b_business_structuring
-  a_fde --- b_change_design
-  a_fde_ai --- b_context_understanding
-  a_fde_ai --- b_business_structuring
-  a_fde_ai --- b_change_design
   b_context_understanding --- a_subject
   b_business_structuring --- a_subject
   b_change_design --- a_subject
@@ -363,9 +337,6 @@ flowchart LR
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
   classDef information fill:none,stroke:none,color:#5F5A52;
-  style support fill:none,stroke:none;
-  style scene fill:none,stroke:none;
-  style participants fill:none,stroke:none;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
@@ -446,10 +417,7 @@ flowchart TB
 ---
 title: 協働の仕組みをつくる
 config:
-  layout: elk
-  elk:
-    nodePlacementStrategy: NETWORK_SIMPLEX
-    considerModelOrder: NODES_AND_EDGES
+  layout: dagre
   theme: neutral
   flowchart:
     curve: basis
@@ -481,30 +449,6 @@ flowchart LR
   a_subject@{ label: "主体者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_companions@{ label: "主体者の仲間", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
-  subgraph support["支援する側"]
-    direction TB
-    a_fde
-    a_fde_ai
-  end
-  subgraph scene["業務と情報"]
-    direction TB
-    i_business_model
-    i_target_priority
-    i_requirement_basis
-    b_collaboration_design
-    i_roles_constraints
-    i_solution_design
-    b_realization
-    i_prototype
-    b_context_fit
-    i_poc_result
-  end
-  subgraph participants["主体者と仲間"]
-    direction TB
-    a_subject
-    a_companions
-  end
-
   i_business_model --- b_collaboration_design
   i_target_priority --- b_collaboration_design
   i_requirement_basis --- b_collaboration_design
@@ -515,12 +459,12 @@ flowchart LR
   b_realization --- i_prototype
   i_prototype --- b_context_fit
   b_context_fit --- i_poc_result
-  a_fde --- b_collaboration_design
-  a_fde --- b_realization
-  a_fde --- b_context_fit
-  a_fde_ai --- b_collaboration_design
-  a_fde_ai --- b_realization
   a_fde_ai --- b_context_fit
+  a_fde_ai --- b_realization
+  a_fde_ai --- b_collaboration_design
+  a_fde --- b_context_fit
+  a_fde --- b_realization
+  a_fde --- b_collaboration_design
   b_collaboration_design --- a_subject
   b_realization --- a_subject
   b_context_fit --- a_subject
@@ -534,9 +478,6 @@ flowchart LR
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
   classDef information fill:none,stroke:none,color:#5F5A52;
-  style support fill:none,stroke:none;
-  style scene fill:none,stroke:none;
-  style participants fill:none,stroke:none;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
@@ -622,10 +563,7 @@ flowchart TB
 ---
 title: 仕組みを現場へ根づかせる
 config:
-  layout: elk
-  elk:
-    nodePlacementStrategy: NETWORK_SIMPLEX
-    considerModelOrder: NODES_AND_EDGES
+  layout: dagre
   theme: neutral
   flowchart:
     curve: basis
@@ -657,46 +595,22 @@ flowchart LR
   a_subject@{ label: "主体者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
   a_companions@{ label: "主体者の仲間", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
 
-  subgraph support["支援する側"]
-    direction TB
-    a_fde
-    a_fde_ai
-  end
-  subgraph scene["業務と情報"]
-    direction TB
-    i_poc_result
-    i_roles_constraints
-    i_usage_result
-    i_outcome
-    i_feedback
-    b_context_fit
-    i_business_model
-    i_work_system
-    i_knowledge
-    b_autonomy_transition
-  end
-  subgraph participants["主体者と仲間"]
-    direction TB
-    a_subject
-    a_companions
-  end
-
-  i_poc_result --- b_context_fit
-  i_roles_constraints --- b_context_fit
-  i_roles_constraints --- b_autonomy_transition
-  i_usage_result --- b_context_fit
-  i_outcome --- b_context_fit
-  i_feedback --- b_context_fit
-  b_context_fit --- i_business_model
-  b_context_fit --- i_work_system
-  b_context_fit --- i_knowledge
-  i_business_model --- b_autonomy_transition
-  i_work_system --- b_autonomy_transition
-  i_knowledge --- b_autonomy_transition
-  a_fde --- b_context_fit
-  a_fde --- b_autonomy_transition
-  a_fde_ai --- b_context_fit
   a_fde_ai --- b_autonomy_transition
+  a_fde_ai --- b_context_fit
+  a_fde --- b_autonomy_transition
+  a_fde --- b_context_fit
+  i_knowledge --- b_autonomy_transition
+  i_work_system --- b_autonomy_transition
+  i_business_model --- b_autonomy_transition
+  b_context_fit --- i_knowledge
+  b_context_fit --- i_work_system
+  b_context_fit --- i_business_model
+  i_feedback --- b_context_fit
+  i_outcome --- b_context_fit
+  i_usage_result --- b_context_fit
+  i_roles_constraints --- b_autonomy_transition
+  i_roles_constraints --- b_context_fit
+  i_poc_result --- b_context_fit
   b_context_fit --- a_subject
   b_autonomy_transition --- a_subject
   b_context_fit --- a_companions
@@ -709,9 +623,6 @@ flowchart LR
   classDef actor fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
   classDef information fill:none,stroke:none,color:#5F5A52;
-  style support fill:none,stroke:none;
-  style scene fill:none,stroke:none;
-  style participants fill:none,stroke:none;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
