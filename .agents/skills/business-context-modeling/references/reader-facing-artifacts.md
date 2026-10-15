@@ -158,6 +158,12 @@ the root before the child-only edit is considered complete.
 
 - Prefer the reader's language over internal canonical terms. Keep canonical
   terminology in IDs, checkers, and the workspace.
+- Before compressing or rewriting a purpose, distinguish the desired lived
+  state from enabling capabilities and delivery methods. Keep the user's
+  reason for changing the work, including organizational aims and participants'
+  own intentions and circumstances. Do not silently replace it with efficiency,
+  automation, visibility, or autonomous improvement. Carry the agreed purpose
+  into target selection and outcome evaluation, not only the opening paragraph.
 - Use short sentences with the subject close to the verb.
 - Prefer concrete verbs over strings of abstract nouns.
 - Do not repeat every relationship from the diagram in prose.

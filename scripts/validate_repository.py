@@ -233,16 +233,10 @@ def validate_mdi_icons() -> None:
 
 FDE_READER_MODEL_FILES = ("README.md", "delivery-process.md")
 FDE_READER_SECTIONS = (
-    "FDEの目的",
     "FDEを担う人とAI",
-    "主体者の判断と改善",
-    "FDEの業務",
-    "業務の変化を描く",
-    "対象を見極め、業務を定義する",
-    "協働の仕組みをつくる",
-    "協働を設計し、小さく確かめる",
-    "仕組みを現場へ根づかせる",
-    "現場で使い、学びながら広げる",
+    "業務を理解し、変化を決める",
+    "人とAIの協働をつくり、試す",
+    "現場で使い、ともに育てる",
 )
 
 
@@ -1075,13 +1069,10 @@ def main() -> int:
     # sections only into a temporary directory, keeping README as the sole source.
     sections = fde_reader_sections()
     checks = (
-        ("FDEの業務", context, ["--strict", "--allow-complexity"]),
-        ("業務の変化を描く", business, ["--allow-complexity"]),
-        ("協働の仕組みをつくる", business, ["--allow-complexity"]),
-        ("仕組みを現場へ根づかせる", business, ["--allow-complexity"]),
-        ("対象を見極め、業務を定義する", flow, ["--strict"]),
-        ("協働を設計し、小さく確かめる", flow, ["--strict"]),
-        ("現場で使い、学びながら広げる", flow, ["--strict"]),
+        ("FDEを担う人とAI", context, ["--strict"]),
+        ("業務を理解し、変化を決める", business, []),
+        ("人とAIの協働をつくり、試す", business, []),
+        ("現場で使い、ともに育てる", business, []),
     )
     with tempfile.TemporaryDirectory(prefix="fde-reader-") as temporary:
         for index, (title, checker, options) in enumerate(checks):
