@@ -59,6 +59,18 @@ intermediate node invented to complete a diagram. For each candidate, ask:
 - Is the term observed in the Business Story, or derived only from the modeling
   method?
 
+Name Information with a concrete domain noun that identifies what people
+reference or update. Phrases such as `変えたいこと`, `仕事のつながり`, and
+`使える仕組み` describe an intention, relationship, or state; derive an actual
+information concept such as `業務変更方針`, `業務構造図`, or `協働仕様` from the
+story and define its contents nearby. A provisional name can be precise without
+claiming a finalized schema. Do not append `資料`, `情報`, or `一覧` merely to
+make a vague label look like a noun, or require a document format the work does
+not need. Distinguish an executable system or prototype from the specification
+or evaluation information about it. Split a label that bundles distinct
+concepts when the distinction matters; preserve context that the shorter noun
+would otherwise omit.
+
 Maintain its stable ID, business term, plain definition, source evidence,
 creating, updating, and referencing Businesses, recipients, and confidence in
 the Information master companion. Reuse the same canonical identity across
@@ -86,6 +98,13 @@ after a method such as modeling, prototyping, or tuning unless that method is
 itself the responsibility and outcome being modeled. Externalizing meaning as
 a model may support every Business; it does not by itself define a separate
 Business.
+
+For a compact business label, an action noun such as `協働設計` or
+`対象業務選定` is valid when it has a clear verb reading (`協働を設計する`,
+`対象業務を選定する`). Name the target and transformation; avoid generic
+`理解する`, `試す`, or `育てる` without an identifiable business outcome.
+Do not mechanically nominalize reader prose or hide several different
+responsibilities behind a pleasant but indefinite phrase.
 
 Keep the source phrase, input, transformation, output, proposed name, verb
 reading, and confidence in the authoring workspace. Keep rename / split / merge

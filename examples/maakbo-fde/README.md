@@ -33,7 +33,7 @@ flowchart LR
   %% 主体者も仕事をつくる参加者。左右は指示・従属や判断権の移譲を表さない。
   a_fde@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_fde_ai@{ label: "fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_fde@{ label: "仕事をともにつくる", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_fde@{ label: "業務設計・改善", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_subject@{ label: "主体者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_companions@{ label: "仲間・関係者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 
@@ -78,36 +78,41 @@ flowchart LR
   %% 親: b_fde。対象の見極めと業務の定義を、一つの話し合いの場面としてまとめる。
   %% a_participants は主体者と仲間・関係者、a_support は fde と fdeAI の集約。各場面で同じ意味。
   %% 関連線は参加・情報の参照や共有。作業順序は delivery-process.md に分ける。
-  %% i_business_model は作業だけでなく、目的、関係者、情報、判断のつながりを含む。
-  a_participants@{ label: "主体者と関係者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  %% 主体者は業務理解と方針策定の参加者であり、その成果を使う受け手として右に置く。
+  %% 組織方針と関係者背景・意向は別の情報。両者の一致を前提にせず、各人の事情や経緯も残す。
+  %% 業務構造図は目的、関係者、作業、情報、判断を扱う。業務変更方針は変更範囲・理由・期待する変化を含む。
+  i_organization_policy@{ label: "組織方針", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_participant_context@{ label: "関係者背景・意向", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_support@{ label: "fde・fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_background@{ label: "使命と各人の背景", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_understand@{ label: "仕事を理解する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_business_model@{ label: "仕事のつながり", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_select@{ label: "変化を決める", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_change@{ label: "変えたいこと", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_understand@{ label: "現行業務理解", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_business_model@{ label: "業務構造図", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_select@{ label: "業務変更方針策定", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_change@{ label: "業務変更方針", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  a_participants@{ label: "主体者と関係者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 
-  a_participants --- b_understand
+  b_understand --- a_participants
+  b_select --- a_participants
+  i_organization_policy --- b_understand
+  i_participant_context --- b_understand
   a_support --- b_understand
-  i_background --- b_understand
+  a_support --- b_select
   b_understand --- i_business_model
   i_business_model --- b_select
-  a_participants --- b_select
-  a_support --- b_select
   b_select --- i_change
 
   class a_participants,a_support actor;
   classDef actor fill:none,stroke:none,color:#25231F;
   class b_understand,b_select business;
   classDef business fill:none,stroke:none,color:#25231F;
-  class i_background,i_business_model,i_change information;
+  class i_organization_policy,i_participant_context,i_business_model,i_change information;
   classDef information fill:none,stroke:none,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-組織が何を目指しているか、その仕事が誰に何を届けているかを確かめます。関わる人の思い、得意なこと、困りごと、これまでの経緯を聴き、普段の作業や情報、判断がどうつながっているかを共有します。
+使命やビジョンを含む組織方針を確かめ、その仕事が誰に何を届けているかを話し合います。関係者の背景や意向として、思い、得意なこと、困りごと、これまでの経緯を聴き、共有します。目的、関係者、作業、情報、判断のつながりを、業務構造図にまとめます。
 
-続けたいことと変えたいことを話し合い、最初に取り組む範囲と理由を決めます。期待する変化に加え、守りたい関係や仕事の良さも言葉にして、協働の設計へつなぎます。
+続けたいことと変えたいことを話し合い、変更する範囲と理由、期待する変化、守りたい関係や仕事の良さを業務変更方針にまとめます。この方針をもとに、協働の設計を進めます。
+
 
 ## 人とAIの協働をつくり、試す
 
@@ -132,21 +137,22 @@ config:
 ---
 flowchart LR
   %% 親: b_fde。人とAIの協働設計から小さな検証まで。
-  %% i_change は前の場面で合意した変化。i_work_system は次の場面でも同じ仕組みを指す。
+  %% i_change は前の場面の業務変更方針。i_collaboration_spec は人・AI・システムの役割、入出力、権限、介入条件を定める情報。
+  %% 協働仕様は動作する試作品そのものではない。仕様に基づく試作・実装を協働設計に含め、実際の動作を検証する。
   %% AI導入を前提にしない。検証後の見直し・中止の判断は本文と delivery-process.md に残す。
   a_participants@{ label: "主体者と関係者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_support@{ label: "fde・fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_change@{ label: "変えたいこと", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_design@{ label: "役割を設計する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_work_system@{ label: "試せる仕組み", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_verify@{ label: "小さく試す", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_poc_result@{ label: "検証結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_change@{ label: "業務変更方針", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_design@{ label: "協働設計", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_collaboration_spec@{ label: "協働仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_verify@{ label: "協働検証", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_poc_result@{ label: "協働検証結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 
   a_participants --- b_design
   a_support --- b_design
   i_change --- b_design
-  b_design --- i_work_system
-  i_work_system --- b_verify
+  b_design --- i_collaboration_spec
+  i_collaboration_spec --- b_verify
   a_participants --- b_verify
   a_support --- b_verify
   b_verify --- i_poc_result
@@ -155,14 +161,14 @@ flowchart LR
   classDef actor fill:none,stroke:none,color:#25231F;
   class b_design,b_verify business;
   classDef business fill:none,stroke:none,color:#25231F;
-  class i_change,i_work_system,i_poc_result information;
+  class i_change,i_collaboration_spec,i_poc_result information;
   classDef information fill:none,stroke:none,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-変えたいことに合わせ、人が担うこと、AIやシステムに任せること、互いに確かめることを決めます。必要な情報や権限、判断の根拠、人に戻す条件をそろえ、小さく動く仕組みをつくります。
+業務変更方針をもとに、人が担うこと、AIやシステムに任せること、互いに確かめることを決めます。役割、入出力、権限、判断の根拠、人に戻す条件を協働仕様にまとめ、その仕様に沿って小さく動く仕組みをつくります。
 
-実際の仕事に近い場面で使い、役に立つか、無理なく使えるか、大切にしたいことを守れているかを確かめます。精度や時間、コストも確認し、関係者が納得して使えるかをもとに、導入、見直し、中止を決めます。AIを使わない方法も含めて選びます。
+実際の仕事に近い場面で使い、役に立つか、無理なく使えるか、大切にしたいことを守れているかを確かめます。精度や時間、コスト、使う人の実感を協働検証結果にまとめ、導入、見直し、中止を決めます。AIを使わない方法も含めて選びます。
 
 ## 現場で使い、ともに育てる
 
@@ -187,23 +193,24 @@ config:
 ---
 flowchart LR
   %% 親: b_fde。限定導入、現場での調整、継続的な改善を扱う。
-  %% i_work_system は前の場面の試作品を現場に合わせたもの。同一の仕組みを段階ごとに呼び分ける。
-  %% 知識を現場への調整に戻す関連を残す。関連線は時系列や自動実行を表さない。
+  %% i_collaboration_spec は前の場面と同じ協働仕様。現場での実際の動作に合わせて更新する。
+  %% 業務運用基準は、現場の判断基準、例外対応、変更手順をまとめた情報。情報名は文書形式を指定しない。
+  %% 業務運用基準を現場への調整に活用する関係を残す。関連線は時系列や自動実行を表さない。
   %% 主体者は参加者かつ価値の受け手として右に置く。線の順序を変えたら交差を再確認する。
   %% 主体者と関係者が運用・判断・変更を担えることは、目的を育て続けるための条件。
-  i_poc_result@{ label: "検証結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_poc_result@{ label: "協働検証結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_support@{ label: "fde・fdeAI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_context_fit@{ label: "現場に合わせる", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_work_system@{ label: "使える仕組み", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_knowledge@{ label: "判断と変更の知識", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_improve@{ label: "改善を続ける", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_context_fit@{ label: "現場導入・調整", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_collaboration_spec@{ label: "協働仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_knowledge@{ label: "業務運用基準", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_improve@{ label: "業務運用改善", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_participants@{ label: "主体者と関係者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 
   b_context_fit --- a_participants
   i_poc_result --- b_context_fit
   a_support --- b_context_fit
-  b_context_fit --- i_work_system
-  i_work_system --- b_improve
+  b_context_fit --- i_collaboration_spec
+  i_collaboration_spec --- b_improve
   b_improve --- a_participants
   a_support --- b_improve
   i_knowledge --- b_improve
@@ -213,13 +220,13 @@ flowchart LR
   classDef actor fill:none,stroke:none,color:#25231F;
   class b_context_fit,b_improve business;
   classDef business fill:none,stroke:none,color:#25231F;
-  class i_poc_result,i_work_system,i_knowledge information;
+  class i_poc_result,i_collaboration_spec,i_knowledge information;
   classDef information fill:none,stroke:none,color:#5F5A52;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
 限られた範囲で使い始め、仕事や関係者にどんな変化があったかを確かめます。仕事が進みやすくなったか、やりたいことに時間を使えるか、誰かに負担が偏っていないか。本人たちの実感と、業務や事業の成果を照らし合わせます。
 
-使う中で得た経験を、業務の進め方、ルール、プロンプト、共有知識へ反映します。主体者と関係者が運用や判断、変更を担えるよう、担当と変更手順もそろえます。使える仕組みと判断の根拠を残し、状況や思いの変化に合わせて、自分たちの仕事を育てていきます。
+使う中で得た経験をもとに協働仕様を更新し、実際の仕組みやプロンプトにも反映します。現場の判断基準、例外への対応、変更手順を業務運用基準として共有し、運用や変更の担当を決めます。使える仕組みと判断の根拠を残し、主体者と関係者が、状況や思いの変化に合わせて自分たちの仕事を育てていきます。
 
 具体的な手順と各段階の判断条件は、[FDEの進め方](delivery-process.md)で確認できます。
