@@ -29,15 +29,15 @@ config:
 flowchart LR
   %% View: personal workspace architecture. Relations describe use and shared work, not sequence.
   %% Device notation follows mermaid-diagram-authoring; AI/repository notation follows architecture-modeling.
-  h_me@{ label: "maakbo", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  v_ipad@{ label: "iPad", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/tablet.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  v_phone@{ label: "iPhone", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/smartphone.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  v_mac@{ label: "MacBook", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/laptop.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  g_matti@{ label: "ChatGPT", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  g_codex@{ label: "Codex", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  r_memory@{ label: "maakbo", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/folder-git-2.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  r_skills@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/folder-git-2.svg", pos: "b", w: 32, h: 32, constraint: "on" }
-  r_projects@{ label: "プロジェクト", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/folder-git-2.svg", pos: "b", w: 32, h: 32, constraint: "on" }
+  h_me@{ label: "maakbo", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  v_ipad@{ label: "iPad", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/tablet.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  v_phone@{ label: "iPhone", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/smartphone.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  v_mac@{ label: "MacBook", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/laptop.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  g_matti@{ label: "ChatGPT", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  g_codex@{ label: "Codex", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  r_memory@{ label: "maakbo", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/folder-git-2.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  r_skills@{ label: "fde", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/folder-git-2.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  r_projects@{ label: "プロジェクト", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/folder-git-2.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 
   h_me --- v_ipad
   h_me --- v_phone

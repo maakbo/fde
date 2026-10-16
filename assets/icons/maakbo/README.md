@@ -10,20 +10,20 @@ Mermaidの正方形ノード枠の寸法です。SVG原本はすべて24×24 vie
 
 | 意味 | SVG | 使用枠 | 形全体の倍率 |
 | --- | --- | --- | --- |
-| 人 | [user.svg](user.svg) | 38×38 | 1.05 |
-| AI | [bot.svg](bot.svg) | 38×38 | 0.96 |
-| 業務 | [ellipse.svg](ellipse.svg) | 30×30 | 1.03 |
-| 判断 | [diamond.svg](diamond.svg) | 38×38 | 0.93 |
-| 情報 | [file.svg](file.svg) | 32×32 | 1.00 |
-| システム | [server.svg](server.svg) | 32×32 | 1.00 |
-| リポジトリ | [folder-git-2.svg](folder-git-2.svg) | 32×32 | 1.08 |
-| 外部サービス | [cloud.svg](cloud.svg) | 32×32 | 1.00 |
-| 会話 | [message-square.svg](message-square.svg) | 32×32 | 1.00 |
-| PC | [laptop.svg](laptop.svg) | 38×38 | 1.00 |
-| スマホ | [smartphone.svg](smartphone.svg) | 38×38 | 1.00 |
-| タブレット | [tablet.svg](tablet.svg) | 38×38 | 1.00 |
+| 人 | [user.svg](user.svg) | 28×28 | 1.05 |
+| AI | [bot.svg](bot.svg) | 28×28 | 0.96 |
+| 業務 | [ellipse.svg](ellipse.svg) | 28×28 | 1.03 |
+| 判断 | [diamond.svg](diamond.svg) | 28×28 | 0.93 |
+| 情報 | [file.svg](file.svg) | 28×28 | 1.00 |
+| システム | [server.svg](server.svg) | 28×28 | 1.00 |
+| リポジトリ | [folder-git-2.svg](folder-git-2.svg) | 28×28 | 1.08 |
+| 外部サービス | [cloud.svg](cloud.svg) | 28×28 | 1.00 |
+| 会話 | [message-square.svg](message-square.svg) | 28×28 | 1.00 |
+| PC | [laptop.svg](laptop.svg) | 28×28 | 1.00 |
+| スマホ | [smartphone.svg](smartphone.svg) | 28×28 | 1.00 |
+| タブレット | [tablet.svg](tablet.svg) | 28×28 | 1.00 |
 
-制作比較では端末を32pxで確認しました。図解での使用は既存の端末ノード規約を維持し、38×38です。[制作比較の一覧](../../../experiments/maakbo-original-icons-2026-10-13/full-set.png)はこの寸法の差を踏まえて参照してください。
+全12種類の使用枠を28×28pxに統一しています。見た目のバランスはSVG内部の倍率と重心補正で保ち、種類ごとのノード寸法は変えません。[制作比較の一覧](../../../experiments/maakbo-original-icons-2026-10-13/full-set.png)は採用前の寸法による履歴です。
 
 ## 採用した形
 
@@ -49,7 +49,7 @@ https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/
 ノードの指定例：
 
 ```text
-a_requester@{ label: "依頼者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+a_requester@{ label: "依頼者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 ```
 
 既存のラベル・関係線・間隔の規約は、図解スキルのテンプレートを参照してください。

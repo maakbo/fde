@@ -10,7 +10,7 @@ MDI uses the selected external source’s filled-outline geometry rather than a 
 The icon is the visual object. Its size does not depend on its label.
 
 ```mermaid
-a_customer@{ label: "依頼者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+a_customer@{ label: "依頼者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 ```
 
 ## Scope and direction
@@ -52,7 +52,7 @@ diagram itself:
 
 ```mermaid
 flowchart LR
-  a_actor@{ label: "担当者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 38, h: 38, constraint: "on" }
+  a_actor@{ label: "担当者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   p_intention("必要な情報を、確認しやすく整えたい")
   a_actor -.- p_intention
 
@@ -76,11 +76,11 @@ Use stable `prefix_lower_snake_case` IDs.
 
 | Prefix | Meaning | maakbo asset | Size |
 | --- | --- | --- | --- |
-| `a_` | actor | `maakbo/user.svg` | `38 x 38` |
-| `b_` | business activity | `maakbo/ellipse.svg` | `30 x 30` |
-| `i_` | information | `maakbo/file.svg` | `32 x 32` |
-| `x_` | external system | `maakbo/server.svg` | `32 x 32` |
-| `v_` | device or contact surface | maakbo device asset | `38 x 38` |
+| `a_` | actor | `maakbo/user.svg` | `28 x 28` |
+| `b_` | business activity | `maakbo/ellipse.svg` | `28 x 28` |
+| `i_` | information | `maakbo/file.svg` | `28 x 28` |
+| `x_` | external system | `maakbo/server.svg` | `28 x 28` |
+| `v_` | device or contact surface | maakbo device asset | `28 x 28` |
 
 Use this raw asset base in Mermaid nodes:
 `https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/`
@@ -100,7 +100,7 @@ Keep node properties in this exact order: `label`, `img`, `pos`, `w`, `h`,
 `constraint`. Keeping the English ID immediately next to the Japanese label
 makes renaming and consistency checks easier. Keep one node per line.
 
-The source canvas is square because Mermaid v11 sizes image nodes from the height property. The business ellipse stays at `30 x 30`; information and external-system icons use `32 x 32` so their visible geometry stays close to the actor and business marks without overpowering them. Actors and devices retain the established `38 x 38` node canvas; approved visual-size adjustments live inside the SVG. Use `nodeSpacing: 64` and `rankSpacing: 80` so relationship paths have roughly one-character breathing room around the icon field.
+All image nodes use a uniform `28 x 28` canvas, including actors, activities, information, systems, and devices in both icon families. The square canvas matches Mermaid v11's image sizing. Approved optical-size adjustments remain inside the maakbo SVGs; do not compensate with different node sizes. Keep labels at `14px`, `nodeSpacing: 64`, and `rankSpacing: 80`.
 
 Lift only the business label by `6px` with `margin-top` to compensate for the ellipse icon's transparent lower canvas. Avoid CSS transforms on the HTML label inside Mermaid's SVG `foreignObject`: some GitHub/browser combinations can move that label outside its node. The canonical CSS selects Mermaid image-node IDs containing the stable `-flowchart-b_` prefix because Mermaid does not preserve `class` statement names on image-node DOM elements. Do not shift labels for actors, information, systems, or devices.
 

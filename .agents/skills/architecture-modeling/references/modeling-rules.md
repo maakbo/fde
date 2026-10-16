@@ -10,14 +10,14 @@ may select MDI without changing the semantic types or prefixes.
 
 | Type | Prefix | Meaning | Default icon | Size | Naming |
 | --- | --- | --- | --- | --- | --- |
-| Human | `h_` | Person or accountable human role | `user.svg` | 38 x 38 | Short role or public name |
-| AI agent | `g_` | AI collaborator acting within an assigned responsibility | `bot.svg` | 38 x 38 | Role or agent name |
-| Application / system | `s_` | In-boundary runtime or technical system | `server.svg` | 32 x 32 | Short system noun |
-| Repository | `r_` | Versioned repository whose storage or ownership matters | `folder-git-2.svg` | 32 x 32 | Repository role or public name |
-| Knowledge / artifact | `k_` | Durable object people or systems read, change, or return | `file.svg` | 32 x 32 | Concrete artifact noun |
-| External service | `x_` | Technical service outside the selected responsibility boundary | `cloud.svg` | 32 x 32 | Service role or public name |
-| Device / contact surface | `v_` | Human-facing device used to access the workspace | `tablet.svg`, `smartphone.svg`, or `laptop.svg` | 38 x 38 | Device noun |
-| Communication channel | `c_` | Channel whose communication mode or access matters | `message-square.svg` | 32 x 32 | Channel noun |
+| Human | `h_` | Person or accountable human role | `user.svg` | 28 x 28 | Short role or public name |
+| AI agent | `g_` | AI collaborator acting within an assigned responsibility | `bot.svg` | 28 x 28 | Role or agent name |
+| Application / system | `s_` | In-boundary runtime or technical system | `server.svg` | 28 x 28 | Short system noun |
+| Repository | `r_` | Versioned repository whose storage or ownership matters | `folder-git-2.svg` | 28 x 28 | Repository role or public name |
+| Knowledge / artifact | `k_` | Durable object people or systems read, change, or return | `file.svg` | 28 x 28 | Concrete artifact noun |
+| External service | `x_` | Technical service outside the selected responsibility boundary | `cloud.svg` | 28 x 28 | Service role or public name |
+| Device / contact surface | `v_` | Human-facing device used to access the workspace | `tablet.svg`, `smartphone.svg`, or `laptop.svg` | 28 x 28 | Device noun |
+| Communication channel | `c_` | Channel whose communication mode or access matters | `message-square.svg` | 28 x 28 | Channel noun |
 | Boundary | `bd_` | Repository, product, runtime, ownership, or trust boundary | subgraph | — | Enclosed responsibility |
 
 Use stable `prefix_lower_snake_case` IDs. Keep labels to 1–4 words or no more than 12 Japanese

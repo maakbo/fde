@@ -161,8 +161,8 @@ boundary and responsibility are clear.
   information.
 - Do not place `b_` activities in a master map.
 - Use the same selected icon profile as the public context convention:
-  `a_` uses `user.svg` at `38 x 38`, `x_` uses `server.svg` at `32 x 32`, and
-  `i_` uses `file.svg` at `32 x 32`.
+  `a_` uses `user.svg` at `28 x 28`, `x_` uses `server.svg` at `28 x 28`, and
+  `i_` uses `file.svg` at `28 x 28`.
 - Keep one short reading sentence, fixed-size icon nodes, and ordinary
   `---` lines unless a structural direction is material.
 - A map may be larger than seven nodes when that density is intentional. Run

@@ -11,8 +11,8 @@ Activity and decision symbols keep fixed canvases independent of labels.
 
 | Prefix | Meaning | maakbo asset | Size |
 | --- | --- | --- | --- |
-| `b_` | business activity | `maakbo/ellipse.svg` | `30 x 30` |
-| `d_` | decision | `maakbo/diamond.svg` | `38 x 38` |
+| `b_` | business activity | `maakbo/ellipse.svg` | `28 x 28` |
+| `d_` | decision | `maakbo/diamond.svg` | `28 x 28` |
 
 Use the raw asset base
 `https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/`.
@@ -24,7 +24,7 @@ Keep property order `label`, `img`, `pos`, `w`, `h`, `constraint` and one node
 per line. Keeping the English ID immediately next to the Japanese label makes
 renaming and consistency checks easier.
 
-The square source canvas matches Mermaid v11's rendered image bounds. At `30 x 30`, the maakbo symbol remains a horizontal ellipse, keeps the label close, and no longer reads as a minor marker beside the `38 x 38` decision symbol.
+Activity and decision nodes both use `28 x 28`, matching every other icon role in both families. The maakbo SVG retains its horizontal ellipse and internal optical-size adjustments. Keep label text at `14px`; do not enlarge individual node canvases.
 
 Lift only the activity label by `6px` with `margin-top` to compensate for the ellipse icon's transparent lower canvas. Avoid CSS transforms on the HTML label inside Mermaid's SVG `foreignObject`: some GitHub/browser combinations can move that label outside its node. The canonical CSS selects Mermaid image-node IDs containing the stable `-flowchart-b_` prefix because Mermaid does not preserve `class` statement names on image-node DOM elements. Do not shift decision labels.
 

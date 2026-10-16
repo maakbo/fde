@@ -266,8 +266,9 @@ def main() -> int:
         elif prefix == "v":
             if image not in device_icons:
                 errors.append(f"{node_id}: use a supported {selected_set} device icon")
-            if size != (38, 38):
-                errors.append(f"{node_id}: devices use size 38x38")
+            expected_size = asset(selected_set, "tablet")["size"]
+            if size != expected_size:
+                errors.append(f"{node_id}: devices use size {expected_size[0]}x{expected_size[1]}")
         else:
             errors.append(f"{node_id}: unsupported node prefix {prefix}_")
 

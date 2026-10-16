@@ -20,6 +20,9 @@ Maakbo keeps its approved effective
 1.15 viewBox stroke. Do not try to make
 MDI thin by adding a stroke-width style.
 
+All twelve roles in both families use `28 x 28` Mermaid image nodes.
+Keep labels at `14px` and preserve the SVGs’ internal optical adjustments.
+
 ## New diagrams
 
 Resolve meaning to a URL and size through `icon-sets.json`, not a copied

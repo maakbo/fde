@@ -231,6 +231,22 @@ def validate_mdi_icons() -> None:
         raise ValueError("MDI sources must not depend on hosted fde images")
 
 
+def validate_icon_sizes() -> None:
+    registry = json.loads((ROOT / ".agents/skills/mermaid-diagram-authoring/references/icon-sets.json").read_text())
+    for name, family in registry["sets"].items():
+        if any(size != [28, 28] for size in family["sizes"].values()):
+            raise ValueError(f"{name}: all icon roles must use 28x28")
+    # Historical experiments retain the dimensions used to make each decision.
+    for folder in (".agents", "templates", "examples", "consumer", "assets"):
+        for path in (ROOT / folder).rglob("*.md"):
+            for line in path.read_text().splitlines():
+                if "img:" not in line:
+                    continue
+                size = re.search(r"w:\s*(\d+),\s*h:\s*(\d+)", line)
+                if size and size.groups() != ("28", "28"):
+                    raise ValueError(f"{path.relative_to(ROOT)}: image nodes must use 28x28")
+
+
 FDE_READER_MODEL_FILES = ("README.md", "delivery-process.md")
 FDE_READER_SECTIONS = (
     "FDEを担う人とAI",
@@ -987,6 +1003,7 @@ def main() -> int:
     scan_public_text()
     validate_maakbo_icons()
     validate_mdi_icons()
+    validate_icon_sizes()
     run([sys.executable, "scripts/test_maakbo_icons.py"])
     run([sys.executable, "scripts/test_icon_sets.py"])
     run([sys.executable, "scripts/test_review_profile.py"])

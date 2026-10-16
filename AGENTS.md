@@ -67,7 +67,7 @@ This repository is a portable environment for forward-deployed business modeling
 
 - Treat the Mermaid block inside Markdown as the single editable source and the working visual-review surface in GitHub or VS Code.
 - Keep one editable source per diagram. Do not create a duplicate `.mmd` automatically.
-- Keep labels short and place them below fixed-size icons.
+- Keep labels short and place them below uniform 28×28px icons in both icon families. Preserve optical-size adjustments inside the SVGs.
 - In image nodes, keep properties in the exact order `label`, `img`, `pos`,
   `w`, `h`, `constraint`; keeping the English ID next to the Japanese label
   makes renaming consistency easy to inspect.

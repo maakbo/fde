@@ -88,6 +88,27 @@ class IconSets(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "mixed"):
             icons.icon_set_for_source(mixed, ROOT / "templates/icon-context.md")
 
+    def test_context_devices_use_uniform_size_and_reject_previous_size(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "device-context.md"
+            for family in ("maakbo", "mdi"):
+                source = icons.rewrite_icons((ROOT / "templates/icon-context.md").read_text(), family)
+                source = source.replace("a_creator", "v_creator").replace(
+                    icons.asset(family, "actor")["url"], icons.asset(family, "tablet")["url"], 1
+                )
+                path.write_text(source)
+                self.run_check(".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py", path, "--strict")
+                legacy = source.replace(
+                    f'img: "{icons.asset(family, "tablet")["url"]}", pos: "b", w: 28, h: 28',
+                    f'img: "{icons.asset(family, "tablet")["url"]}", pos: "b", w: 38, h: 38'
+                )
+                self.assertNotEqual(legacy, source)
+                path.write_text(legacy)
+                result = subprocess.run([sys.executable, str(AUTHORING / "check_context_diagram.py"), str(path)],
+                                        capture_output=True, text=True)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("devices use size 28x28", result.stdout)
+
     def test_mdi_business_context_keeps_master_reference_identity(self):
         fixture = ROOT / ".agents/skills/business-context-modeling/fixtures/repair-intake"
         with tempfile.TemporaryDirectory() as temp:

@@ -24,11 +24,11 @@ config:
 flowchart TB
   %% 親Contextの一つの業務を詳しくしたフロー。親図と展開対象のIDを記録する。
   %% 要確認: 「芯が見える？」を誰と確認し、どこまでを一周とするか。
-  b_receive_seed@{ label: "種を受け取る", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_find_core@{ label: "芯を見つける", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  b_make_draft@{ label: "初稿をつくる", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
-  d_core_clear@{ label: "芯は見える？", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/diamond.svg", pos: "b", w: 38, h: 38, constraint: "on" }
-  b_refine@{ label: "対話で磨く", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 30, h: 30, constraint: "on" }
+  b_receive_seed@{ label: "種を受け取る", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_find_core@{ label: "芯を見つける", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_make_draft@{ label: "初稿をつくる", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  d_core_clear@{ label: "芯は見える？", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/diamond.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_refine@{ label: "対話で磨く", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 
   b_receive_seed --> b_find_core
   b_find_core --> b_make_draft

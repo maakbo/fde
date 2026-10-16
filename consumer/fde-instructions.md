@@ -19,6 +19,7 @@ overwriting a locally changed managed file.
 The consumer-owned `.fde/config.json` selects `"icon_set": "mdi"` or
 `"icon_set": "maakbo"`. Initial installation defaults to MDI and accepts
 `--icon-set`; updates never replace the config or rewrite existing diagrams.
+Both families use uniform 28 x 28 image nodes, with label text kept at 14px.
 For new diagrams, use the authoring Skill's `icon_registry.py create` command
 or resolve semantic URLs with `show`. Read its `references/icon-selection.md`
 for changing the preference and explicitly migrating an existing diagram.
