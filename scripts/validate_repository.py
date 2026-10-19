@@ -73,7 +73,6 @@ REQUIRED = [
     ".agents/skills/discovery-facilitation/fixtures/system-development-intake.md",
     ".agents/skills/discovery-facilitation/fixtures/system-development-brief.md",
     "examples/maakbo-fde/README.md",
-    "examples/maakbo-fde/delivery-process.md",
     "examples/human-agent-workspace/README.md",
     "examples/system-development/README.md",
     "examples/system-development/requirements/README.md",
@@ -247,13 +246,20 @@ def validate_icon_sizes() -> None:
                     raise ValueError(f"{path.relative_to(ROOT)}: image nodes must use 28x28")
 
 
-FDE_READER_MODEL_FILES = ("README.md", "delivery-process.md")
+FDE_READER_MODEL_FILES = ("README.md",)
 FDE_READER_SECTIONS = (
     "FDEを担う人とAI",
     "業務を理解し、変化を決める",
     "人とAIの協働をつくり、試す",
     "現場で使い、ともに育てる",
 )
+
+FDE_READER_BUSINESSES = {
+    "FDEを担う人とAI": (),
+    "業務を理解し、変化を決める": ("対象業務選定", "業務定義"),
+    "人とAIの協働をつくり、試す": ("協働設計", "協働検証"),
+    "現場で使い、ともに育てる": ("現場導入・改善",),
+}
 
 
 def fde_reader_sections() -> dict[str, str]:
@@ -308,20 +314,21 @@ def validate_fde_reader_surface() -> None:
         relative = Path(name)
         artifact = sample / relative
         text = artifact.read_text(encoding="utf-8")
-        if name == "README.md":
-            sections = fde_reader_sections()
-            if text.count("```mermaid") != len(FDE_READER_SECTIONS):
-                raise ValueError(f"{artifact.relative_to(ROOT)}: unexpected Mermaid count")
-        else:
-            sections = {"FDEの進め方": text}
+        sections = fde_reader_sections()
+        if text.count("```mermaid") != len(FDE_READER_SECTIONS):
+            raise ValueError(f"{artifact.relative_to(ROOT)}: unexpected Mermaid count")
         for title, body in sections.items():
             if body.count("```mermaid") != 1:
                 raise ValueError(f"{artifact.relative_to(ROOT)} / {title}: expected one Mermaid model")
+            # Retain all five businesses under the three scenes after removing
+            # the separate delivery flow. Headings alone do not validate meaning.
+            businesses = tuple(re.findall(r"^### (.+)$", body, re.MULTILINE))
+            if businesses != FDE_READER_BUSINESSES[title]:
+                raise ValueError(
+                    f"{artifact.relative_to(ROOT)} / {title}: missing or misplaced business"
+                )
             # A subject heading leads directly to its diagram and business reading.
-            # The page title is already outside README sections; strip it for delivery.
             reading = body.strip()
-            if name == "delivery-process.md":
-                reading = reading.removeprefix("# FDEの進め方").lstrip()
             match = re.match(r"```mermaid\n.*?\n```\n\n(.+)", reading, re.DOTALL)
             if not match:
                 raise ValueError(
@@ -1011,7 +1018,7 @@ def main() -> int:
     run([sys.executable, ".agents/skills/reader-facing-artifact-review/scripts/test_reader_artifact.py"])
     run([sys.executable, ".agents/skills/mermaid-diagram-export/scripts/test_diagram_selection.py"])
     run([sys.executable, reader_checker,
-         "examples/maakbo-fde/README.md", "examples/maakbo-fde/delivery-process.md",
+         "examples/maakbo-fde/README.md",
          "templates/icon-context.md", "templates/business-flow.md", "templates/architecture-context.md"])
     validate_fde_reader_surface()
     validate_architecture_reader_surface()

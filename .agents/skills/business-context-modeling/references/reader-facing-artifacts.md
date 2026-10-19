@@ -224,7 +224,11 @@ Do not hide reader-relevant uncertainty or criteria in comments. Private
 history and review logs stay outside the published page.
 
 When pages are consolidated, preserve separate questions and make the business
-context continuous. Update links and validation/packaging assumptions rather
+context continuous. Removing a flow diagram does not remove the Businesses it
+represents. Map each retained Business into the consolidated sections, keeping
+its responsibility, handled Information, acceptance decisions, and rework.
+Use real business subheadings when several Businesses belong to one scene;
+do not collapse distinct work just to match the number of diagrams. Update links and validation/packaging assumptions rather
 than retaining redundant pages solely because a checker expects them.
 
 Use `reader-facing-artifact-review` when proofreading, consolidating, or finishing
