@@ -12,6 +12,8 @@ This repository is a portable environment for forward-deployed business modeling
 
 ## Start here
 
+0. Before creating commits, verify GitHub authentication and Git author identity separately. For the upstream `maakbo/fde` repository, `gh api user --jq .login` must be `maakbo`; obtain its verified primary email with `gh api user/emails --jq '.[] | select(.primary and .verified) | .email'`. Set repository-local `user.name` to that login, `user.email` to that verified email, and `user.useConfigOnly` to `true`. Check both `git var GIT_AUTHOR_IDENT` and `git var GIT_COMMITTER_IDENT`; stop on mismatches or failed verification. Repeat for every new cloud environment. When the owner's private workbench is available, use its `configure-git-identity.sh` for this checkout to also install the pre-commit guard. Fork contributors should use their own verified identity instead of the upstream owner's. Never infer commit attribution from successful push authentication alone.
+
 1. If a request clearly matches a Skill under `.agents/skills/`, read that `SKILL.md` completely and follow it.
 2. Use `discovery-facilitation` when the user wants to improve real work, identify what should change first, judge whether AI / automation fits, or move from a field description toward a Discovery decision and Definition handoff.
 3. Use `business-context-modeling` for loose business or operational descriptions, especially when the work itself is not yet visible enough to discuss purpose, actors, activities, information, systems, decisions, or boundaries. Discovery may invoke it as a supporting Skill.
