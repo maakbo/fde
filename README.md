@@ -16,12 +16,17 @@ FDEが何を目指し、誰と実現し、どんな業務で成り立ってい�
 
 iPad・iPhone・MacBookからChatGPTやCodexを使い、GitHubへ記憶と成果を残す作業環境を、1枚のアーキテクチャ図で見られます。
 
+## 実務で試す
+
+[AIと一件の改修を進める](examples/system-development/ai-assisted-change.md): 既存画面の小さな改修を題材に、AIの仕組み・役割分担・情報・道具・検証・価値を、実際の判断へつなげます。
+
 ## モデルを作る
 
 整理されていない事業や業務の話から、目的、業務、関わる人、情報、システムの関係をModelへ外に出します。Howだけでなく、その背景にあるWhyも残すことで、状況が変わったあとも新しいHowを考え直せるようにします。
 
 - [AGENTS.md](AGENTS.md): このリポジトリで共有する作業原則
 - [discovery-facilitation Skill](.agents/skills/discovery-facilitation/SKILL.md): 現場の話から、何を変えるべきか・AIが適切か・次に何を定義するかを見極める手順
+- [AIへ任せる仕事の見立て](.agents/skills/discovery-facilitation/references/agent-feasibility.md): 作業・起動・委任・接続・効果・運用リスクを確かめる手順と記入欄
 - [現場の協力から始めるDiscovery Prompt](.github/prompts/field-discovery-collaboration.prompt.md): ベテランなど実務担当者と、1案件の小さな対話から共通理解を育てる声かけと進め方
 - [business-context-modeling Skill](.agents/skills/business-context-modeling/SKILL.md): 対話から業務Modelをつくる手順
 - [architecture-modeling Skill](.agents/skills/architecture-modeling/SKILL.md): 人、AI agent、system、repository、service、boundaryの関係をArchitecture Viewにする手順

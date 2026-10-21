@@ -39,6 +39,11 @@ REQUIRED = [
     "templates/architecture-context.md",
     "templates/business-flow.md",
     "templates/discovery-brief.md",
+    "templates/agent-feasibility.md",
+    ".agents/skills/architecture-modeling/references/ai-agent-foundations.md",
+    "examples/system-development/ai-assisted-change.md",
+    ".agents/skills/discovery-facilitation/references/agent-feasibility.md",
+    "examples/request-triage/README.md",
     "templates/master-actor-map.md",
     "templates/master-system-map.md",
     "templates/master-information-model.md",
@@ -1019,6 +1024,8 @@ def main() -> int:
     run([sys.executable, ".agents/skills/mermaid-diagram-export/scripts/test_diagram_selection.py"])
     run([sys.executable, reader_checker,
          "examples/maakbo-fde/README.md",
+         "examples/request-triage/README.md",
+         "examples/system-development/ai-assisted-change.md",
          "templates/icon-context.md", "templates/business-flow.md", "templates/architecture-context.md"])
     validate_fde_reader_surface()
     validate_architecture_reader_surface()
@@ -1035,6 +1042,7 @@ def main() -> int:
     architecture = ".agents/skills/architecture-modeling/scripts/check_architecture_context.py"
     business = ".agents/skills/business-context-modeling/scripts/check_business_context.py"
     flow = ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py"
+    run([sys.executable, flow, "examples/request-triage/README.md", "--strict"])
     run([sys.executable, business, "templates/icon-context.md"])
     run([sys.executable, architecture, "templates/architecture-context.md", "--strict"])
     run([

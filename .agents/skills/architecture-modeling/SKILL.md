@@ -41,6 +41,15 @@ copying this repository's literal maakbo choice into a consumer project.
 - Move down to detail and back up to the parent whenever detail changes a node's responsibility,
   boundary, name, or relationship.
 
+## AI-agent collaboration knowledge
+
+When the architecture includes AI agents, read the relevant parts of
+[ai-agent-foundations.md](references/ai-agent-foundations.md) for model limits,
+context, role decomposition, tool connections, delegation, value, and operating
+risks. For a concrete system-development scene, use the linked one-change
+walkthrough. Preserve the explanatory knowledge as well as the action checklist;
+ordinary modeling does not require reading every topic or adopting its example.
+
 ## Workflow
 
 ### 1. Choose the View question

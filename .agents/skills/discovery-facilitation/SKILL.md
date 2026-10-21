@@ -1,6 +1,6 @@
 ---
 name: discovery-facilitation
-description: Turn loose descriptions of real work into a grounded Discovery decision: what problem matters, what work should be removed or changed first, whether AI is appropriate, and what should move into Definition.
+description: "Turn loose descriptions of real work into a grounded Discovery decision: what problem matters, what work should be removed or changed first, whether AI is appropriate, and what should move into Definition."
 ---
 
 # Discovery Facilitation
@@ -114,6 +114,14 @@ For AI fit, explicitly look for reasons not to use an AI agent, such as:
 - cost or risk exceeding likely benefit.
 
 Do not calculate a numeric score unless the underlying measurements are available and meaningful. Prefer High / Medium / Low with a short evidence statement.
+
+When an AI / automation candidate needs a more concrete feasibility check, use
+[agent-feasibility.md](references/agent-feasibility.md). Capture task-level
+inputs, decisions, exceptions, trigger versus delegation scope, connection
+requirements, benefit/cost evidence, and operating risks. Use
+`templates/agent-feasibility.md` only for the candidate that needs it; do not
+turn this optional worksheet into a mandatory intake form. Keep detailed
+architecture choices for Definition / Design after the business target is grounded.
 
 ### 6. Select the first target
 
