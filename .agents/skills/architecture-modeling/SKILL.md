@@ -50,6 +50,13 @@ risks. For a concrete system-development scene, use the linked one-change
 walkthrough. Preserve the explanatory knowledge as well as the action checklist;
 ordinary modeling does not require reading every topic or adopting its example.
 
+For knowledge access, source preparation, RAG, and retrieval-versus-generation
+failures, use [knowledge-stewardship](../knowledge-stewardship/SKILL.md).
+For a bounded trial and the evidence required before operations, use
+[ai-pilot-evaluation](../ai-pilot-evaluation/SKILL.md). Keep data and permission
+boundaries explicit in the architecture; do not equate a knowledge store with
+correct or authorized answers.
+
 ## Workflow
 
 ### 1. Choose the View question

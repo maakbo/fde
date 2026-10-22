@@ -1,0 +1,4 @@
+interface:
+  display_name: "Knowledge Stewardship"
+  short_description: "Turn expertise into maintained knowledge people can apply"
+  default_prompt: "Use $knowledge-stewardship to prepare and exercise knowledge for this work."

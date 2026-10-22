@@ -189,6 +189,11 @@ The brief should contain:
 
 Keep the main brief readable without requiring the user to understand 5D terminology.
 
+When the selected target is ready for a bounded test, use
+[ai-pilot-evaluation](../ai-pilot-evaluation/SKILL.md) to define quality, adoption,
+and effect evidence, baseline, exceptions, and the continue/revise/stop decision.
+Do not invent target values or treat a prototype as deployment approval.
+
 ## Field-use loop
 
 field story -> visible work -> reconsider work -> find bottleneck -> compare interventions -> choose first target -> Definition -> field evidence -> revise

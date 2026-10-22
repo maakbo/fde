@@ -39,3 +39,8 @@ Mermaid `title`; maintenance notes use `%%` comments. Layout/curve checks do not
 prove visual readability. A visual-review request permits temporary rendering
 when a native preview or exporter is available; source-only installations need
 no Node/browser dependencies merely for prose review.
+
+Use `.agents/skills/knowledge-stewardship/SKILL.md` for tacit judgments, sources,
+retrieval and maintenance. Use `.agents/skills/ai-pilot-evaluation/SKILL.md` for
+quality, adoption and effect trials. Their templates support existing work
+records; they do not grant permission to upload data or deploy a service.

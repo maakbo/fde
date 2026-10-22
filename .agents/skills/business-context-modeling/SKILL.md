@@ -152,6 +152,11 @@ Return a tentative interpretation and one focused question; do not merely keep
 5W1H as background knowledge. Retain task details under their owning Business
 instead of crowding the Context backbone.
 
+When the participant's tacit judgment needs to become reusable knowledge, use
+[knowledge-stewardship](../knowledge-stewardship/SKILL.md): return a bounded record,
+confirm it with the owner, exercise another case, and keep its update path. A
+completed interview or summary alone is not a verified reusable rule.
+
 ### 3. Extract and name
 
 Preserve concrete source words, then classify the observed Actor, Business,

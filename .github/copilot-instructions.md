@@ -5,6 +5,9 @@ Read and follow `/AGENTS.md` before changing artifacts.
 - Route sequence, handoff, decision, and rework dialogue through
   `.agents/skills/business-flow-facilitation/SKILL.md`; retain a parent Business
   and separate current from proposed flows.
+- Route knowledge capture, authorized sources and retrieval failures through
+  `.agents/skills/knowledge-stewardship/SKILL.md`; use
+  `.agents/skills/ai-pilot-evaluation/SKILL.md` for bounded trial decisions.
 - Route loose business descriptions through `.agents/skills/business-context-modeling/SKILL.md`.
 - Route human, AI-agent, system, repository, service, channel, artifact, and
   boundary descriptions through `.agents/skills/architecture-modeling/SKILL.md`.

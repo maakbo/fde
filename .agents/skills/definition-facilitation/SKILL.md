@@ -1,6 +1,6 @@
 ---
 name: definition-facilitation
-description: Turn a selected Discovery target into a reviewable Definition: scope, observable behavior, quality expectations, constraints, assumptions, acceptance criteria, and unresolved responsibility boundaries before solution design.
+description: "Turn a selected Discovery target into a reviewable Definition: scope, observable behavior, quality expectations, constraints, assumptions, acceptance criteria, and unresolved responsibility boundaries before solution design."
 ---
 
 # Definition Facilitation
@@ -141,6 +141,11 @@ Definition is ready enough when the team can review:
 Create a compact Definition Brief using templates/definition-brief.md.
 
 Keep it reviewable by field participants. The brief is a shared decision surface, not a specification dump.
+
+When data provenance, freshness, or tacit decisions affect acceptance, use
+[knowledge-stewardship](../knowledge-stewardship/SKILL.md). For concrete evidence
+and a bounded trial decision, use [ai-pilot-evaluation](../ai-pilot-evaluation/SKILL.md).
+Keep implementation choices separate from the required behavior.
 
 ## Field-use loop
 

@@ -24,6 +24,9 @@ This repository is a portable environment for forward-deployed business modeling
 Use `business-flow-facilitation` to turn a selected Business into a conversational
    current/proposed Flow with order, owners, conditions, handoffs, and returns.
    Keep task detail below the parent Business Context.
+Use `knowledge-stewardship` for tacit judgment, source preparation, retrieval
+   diagnosis, and maintained knowledge. Use `ai-pilot-evaluation` for bounded
+   quality/adoption/effect trials and operational handoff.
 4. Use `architecture-modeling` for human, AI-agent, system, repository, service,
    channel, artifact, or technical-boundary relationships. Keep structural
    Context separate from Interaction Flow.

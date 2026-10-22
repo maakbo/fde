@@ -18,6 +18,8 @@ iPad・iPhone・MacBookからChatGPTやCodexを使い、GitHubへ記憶と成果
 
 ## 実務で試す
 
+[設計書を根拠に改修を調査する](examples/system-development/knowledge-assisted-investigation.md): 暗黙の判断、資料の版、検索と回答の失敗、試行の評価と更新を一件でたどります。
+
 [業務フローで対話する](.agents/skills/business-flow-facilitation/SKILL.md): コンテキストの一つの業務から、現行・変更案・判断・差戻しを具体化します。
 
 [改修の相談から、仕事の変え方を考える](examples/system-development/work-improvement.md): 一件の実務をたどり、暗黙の判断・引継ぎ・変える範囲を確かめます。

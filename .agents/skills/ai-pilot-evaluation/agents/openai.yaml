@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Pilot Evaluation"
+  short_description: "Test quality, adoption and effect before expanding AI work"
+  default_prompt: "Use $ai-pilot-evaluation to design a bounded trial and review its evidence."

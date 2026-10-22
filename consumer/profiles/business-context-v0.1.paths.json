@@ -34,6 +34,10 @@
     ".agents/skills/mermaid-diagram-authoring/references/layout-and-curves.md",
     ".agents/skills/business-flow-facilitation",
     ".agents/skills/business-context-modeling/references/field-interview-and-grain.md",
-    ".agents/skills/business-context-modeling/references/work-understanding-and-redesign.md"
+    ".agents/skills/business-context-modeling/references/work-understanding-and-redesign.md",
+    ".agents/skills/knowledge-stewardship",
+    ".agents/skills/ai-pilot-evaluation",
+    "templates/knowledge-use-brief.md",
+    "templates/ai-trial-brief.md"
   ]
 }

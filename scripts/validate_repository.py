@@ -39,6 +39,11 @@ REQUIRED = [
     "templates/architecture-context.md",
     "templates/business-flow.md",
     "templates/discovery-brief.md",
+    "templates/knowledge-use-brief.md",
+    "templates/ai-trial-brief.md",
+    ".agents/skills/knowledge-stewardship/references/knowledge-and-retrieval.md",
+    ".agents/skills/ai-pilot-evaluation/references/governance-and-use.md",
+    "examples/system-development/knowledge-assisted-investigation.md",
     ".agents/skills/business-context-modeling/references/field-interview-and-grain.md",
     "examples/system-development/requirements/change-intake-current.md",
     "examples/system-development/requirements/change-intake-proposed.md",
@@ -97,6 +102,8 @@ REQUIRED = [
     "examples/system-development/deployment/cutover-flow.md",
 ]
 SKILLS = [
+    "knowledge-stewardship",
+    "ai-pilot-evaluation",
     "business-flow-facilitation",
     "architecture-modeling",
     "business-context-modeling",
@@ -1033,6 +1040,7 @@ def main() -> int:
          "examples/request-triage/README.md",
          "examples/system-development/ai-assisted-change.md",
          "examples/system-development/work-improvement.md",
+         "examples/system-development/knowledge-assisted-investigation.md",
          "examples/system-development/requirements/change-intake-current.md",
          "examples/system-development/requirements/change-intake-proposed.md",
          "templates/icon-context.md", "templates/business-flow.md", "templates/architecture-context.md"])
