@@ -18,6 +18,8 @@ iPad・iPhone・MacBookからChatGPTやCodexを使い、GitHubへ記憶と成果
 
 ## 実務で試す
 
+[業務フローで対話する](.agents/skills/business-flow-facilitation/SKILL.md): コンテキストの一つの業務から、現行・変更案・判断・差戻しを具体化します。
+
 [改修の相談から、仕事の変え方を考える](examples/system-development/work-improvement.md): 一件の実務をたどり、暗黙の判断・引継ぎ・変える範囲を確かめます。
 
 [AIと一件の改修を進める](examples/system-development/ai-assisted-change.md): 既存画面の小さな改修を題材に、AIの仕組み・役割分担・情報・道具・検証・価値を、実際の判断へつなげます。

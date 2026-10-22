@@ -19,6 +19,11 @@ view selects those elements, copy the canonical node definitions and add a
 same-type relationship is not evidenced, keep it disconnected and use the
 master checker's `--allow-sparse` option instead of fabricating an edge.
 
+For concrete-case interviewing and mixed grain, use the modeling Skill's
+`references/field-interview-and-grain.md`. When the user needs sequence or
+handoff dialogue, run `.agents/skills/business-flow-facilitation/SKILL.md` and
+produce a linked Flow; do not stop at a Context or reference explanation.
+
 Choose context versus flow by meaning, not appearance. Use `.agents/skills/mermaid-diagram-authoring/SKILL.md` as the notation discipline inside the modeling loop. Default to one Mermaid block in a Markdown working file so the user can preview and revise it immediately. Do not create `.mmd`, SVG, or PNG unless the user explicitly requests standalone source or export.
 
 When Mermaid exposes density or awkward relationships, return to the model's grain or boundary before changing notation merely for layout. When a model grows, observe the complexity before splitting it; if focused views are added, create a one-level-higher overview and record bidirectional trace.

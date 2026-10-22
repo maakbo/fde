@@ -1,0 +1,4 @@
+interface:
+  display_name: "Business Flow Facilitation"
+  short_description: "Turn business stories into flows people can question together"
+  default_prompt: "Use $business-flow-facilitation to turn this business into a flow we can discuss."

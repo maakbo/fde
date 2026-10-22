@@ -9,7 +9,9 @@ do not replace that surface with this file:
 
 > Route loose business or operational descriptions through
 > `.agents/skills/business-context-modeling/SKILL.md`; use its Mermaid authoring
-> dependency for source-only diagrams and checks.
+> dependency for source-only diagrams and checks. For sequence, handoff, or
+> decision dialogue, use `.agents/skills/business-flow-facilitation/SKILL.md`
+> to expand one Business into separate current and proposed flows.
 
 Use `.fde/fde check --artifact-url <tagged-profile-zip-url>` before accepting an
 upstream profile update. Once a published profile manifest records that URL,

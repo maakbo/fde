@@ -46,6 +46,13 @@ Extract only what is actually present:
 
 If the work is still hard to see, use business-context-modeling to create the smallest useful Business Story / Context / Flow before continuing.
 
+When current work is unclear, run the concrete-case and 5W1H interview in
+[business-context-modeling's field guide](../business-context-modeling/references/field-interview-and-grain.md).
+If order, handoffs, or returns are the question, use
+[business-flow-facilitation](../business-flow-facilitation/SKILL.md) to make a
+current Flow participants can correct, then explore a separate proposed state.
+Do not stop at reading a reference when a discussion artifact is needed.
+
 ### 2. Reconsider the work before automating it
 
 For each meaningful activity or friction point, ask whether the work can be:

@@ -39,6 +39,9 @@ REQUIRED = [
     "templates/architecture-context.md",
     "templates/business-flow.md",
     "templates/discovery-brief.md",
+    ".agents/skills/business-context-modeling/references/field-interview-and-grain.md",
+    "examples/system-development/requirements/change-intake-current.md",
+    "examples/system-development/requirements/change-intake-proposed.md",
     "templates/agent-feasibility.md",
     ".agents/skills/architecture-modeling/references/ai-agent-foundations.md",
     "examples/system-development/ai-assisted-change.md",
@@ -94,6 +97,7 @@ REQUIRED = [
     "examples/system-development/deployment/cutover-flow.md",
 ]
 SKILLS = [
+    "business-flow-facilitation",
     "architecture-modeling",
     "business-context-modeling",
     "discovery-facilitation",
@@ -1029,6 +1033,8 @@ def main() -> int:
          "examples/request-triage/README.md",
          "examples/system-development/ai-assisted-change.md",
          "examples/system-development/work-improvement.md",
+         "examples/system-development/requirements/change-intake-current.md",
+         "examples/system-development/requirements/change-intake-proposed.md",
          "templates/icon-context.md", "templates/business-flow.md", "templates/architecture-context.md"])
     validate_fde_reader_surface()
     validate_architecture_reader_surface()
@@ -1098,6 +1104,9 @@ def main() -> int:
     ])
     run([sys.executable, business, f"{fixture}/context.md"])
     run([sys.executable, flow, "templates/business-flow.md", "--strict"])
+    for state in ("current", "proposed"):
+        run([sys.executable, flow,
+             f"examples/system-development/requirements/change-intake-{state}.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/overview.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/flow.md", "--strict"])
     # Existing checkers accept one model per input. Extract the consolidated

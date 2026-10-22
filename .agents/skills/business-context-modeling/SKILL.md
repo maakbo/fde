@@ -110,6 +110,9 @@ Read only the references needed for the task:
 - [business-story-and-5w2h.md](references/business-story-and-5w2h.md): build a
   Business Story, use 5W2H as an analysis lens, and preserve the Why-to-How
   meaning trace.
+- [field-interview-and-grain.md](references/field-interview-and-grain.md):
+  run a concrete-case interview, separate purpose / Business / task grain,
+  elicit 5W1H and tacit decisions, and maintain distinct As-Is / To-Be states.
 - [work-understanding-and-redesign.md](references/work-understanding-and-redesign.md):
   observe one case, elicit tacit decisions, reconsider the work, and choose
   IPO / SIPOC / HTA / handoff views without forcing a complete set.
@@ -143,6 +146,12 @@ the Business changes, what it produces, and who receives or uses the result.
 Use 5W2H to find missing meaning, not as a required public-page format. Follow
 `business-story-and-5w2h.md`.
 
+Before extracting diagram nodes, follow `field-interview-and-grain.md` when the
+story mixes Business outcomes and operations or lacks observed current behavior.
+Return a tentative interpretation and one focused question; do not merely keep
+5W1H as background knowledge. Retain task details under their owning Business
+instead of crowding the Context backbone.
+
 ### 3. Extract and name
 
 Preserve concrete source words, then classify the observed Actor, Business,
@@ -169,7 +178,10 @@ reader's question, such as:
   Information make one Business Use Case work;
 - Business Flow: what order, decision, or rework occurs inside one Context.
 
-Do not make one diagram answer all levels.
+Do not make one diagram answer all levels. When sequence, handoffs, judgments,
+or rework are requested, invoke [business-flow-facilitation](../business-flow-facilitation/SKILL.md)
+and produce a linked, conversational Flow. Listing it as an optional view is not
+completion of a flow request. Keep current evidence and future proposals separate.
 
 ### 5. Reconcile reusable elements
 

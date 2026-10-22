@@ -1,6 +1,6 @@
 # 一件の仕事から、変え方を考える
 
-「AIを入れると速くなりそう」から一歩戻り、誰の何を良くするのかを確かめる。[システム改修の相談から試す](../../../../examples/system-development/work-improvement.md)。
+「AIを入れると速くなりそう」から一歩戻り、誰の何を良くするのかを確かめる。[システム改修の相談から試す](https://github.com/maakbo/fde/blob/main/examples/system-development/work-improvement.md)。
 
 ## 仕事の意味と、作業の手順を行き来する
 

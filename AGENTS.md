@@ -21,6 +21,9 @@ This repository is a portable environment for forward-deployed business modeling
    relationships are part of the question, update the corresponding master maps
    before assembling a business context. Reuse their stable IDs and record
    `Master references` in the context Markdown.
+Use `business-flow-facilitation` to turn a selected Business into a conversational
+   current/proposed Flow with order, owners, conditions, handoffs, and returns.
+   Keep task detail below the parent Business Context.
 4. Use `architecture-modeling` for human, AI-agent, system, repository, service,
    channel, artifact, or technical-boundary relationships. Keep structural
    Context separate from Interaction Flow.

@@ -50,6 +50,7 @@ flowchart LR
   i_project_plan --- b_agree_scope
   b_agree_scope --- i_system_requirement
 
+  click b_interpret_request href "https://github.com/maakbo/fde/blob/main/examples/system-development/requirements/change-intake-current.md" "改修条件を整える流れを見る"
   click b_agree_scope href "https://github.com/maakbo/fde/blob/main/examples/system-development/requirements/alignment-flow.md" "対象を合意する流れを見る"
 
   class a_business_user,a_executive,a_project_lead actor;
@@ -65,5 +66,6 @@ flowchart LR
 
 RFPや現場の話をそのまま工程名へ置き換えず、何を変えたいのか、どこまでを対象にするのかを関係者で確かめます。ここで整えた業務要件と対象範囲が、次の設計の出発点になります。
 
+- [改修条件を整える現行の進め方](change-intake-current.md) / [不足を先に確かめる案](change-intake-proposed.md) — 架空の改修受付を一件たどり、確認する時期と戻り先を話す
 - [対象を合意する流れ](alignment-flow.md) — 差異を解消し、次へ渡す判断を見る
 - [仕組みを設計する](../basic-design/) — 要件から責務と仕様を組み立てる
