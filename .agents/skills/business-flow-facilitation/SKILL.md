@@ -83,7 +83,7 @@ actual previews when rendering/review is authorized; do not claim visual review
 from lint alone. Follow `reader-facing-artifact-review` for independent finishing.
 Do not create fixed images during ordinary source authoring.
 
-See the linked fictional [current](https://github.com/maakbo/fde/blob/main/examples/system-development/requirements/change-intake-current.md)
-and [proposed](https://github.com/maakbo/fde/blob/main/examples/system-development/requirements/change-intake-proposed.md)
-change-intake flows. They expand the request-interpretation activity of the
-requirements Context; their conditions are example assumptions, not defaults.
+See the linked fictional [current](https://github.com/maakbo/fde/blob/main/examples/system-development/implementation/development-flow.md)
+and [proposed](https://github.com/maakbo/fde/blob/main/examples/system-development/implementation/agent-assisted-flow.md)
+development flows. They expand the implementation/unit-test Business of the
+root Context; their responsibilities are example assumptions, not defaults.

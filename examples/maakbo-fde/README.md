@@ -203,7 +203,7 @@ flowchart LR
 
 JSONなどの出力形式や、RAG・MCP・APIなどの接続方法は、必要に応じて選びます。複雑な判断は抽出、照合、評価などに分け、判断の根拠や人に戻す条件を明確にします。専門的な条件は、必要な専門家と確認します。
 
-[根拠を揃えて調査し、小さく試す実践](../system-development/knowledge-assisted-investigation.md)では、参照知識の更新と、品質・利用・効果を分けた確認を一件でたどれます。
+[AIエージェントと実装・テストを進める例](../system-development/implementation/agent-assisted-flow.md)では、開発チームへどう導入するかを検討します。
 
 ### 協働検証
 

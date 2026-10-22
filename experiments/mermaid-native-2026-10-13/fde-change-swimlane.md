@@ -1,6 +1,6 @@
 # 対象を見極め、業務を定義する — スイムレーン試作
 
-[現行図](../../examples/maakbo-fde/change-design-flow.md) · [比較へ戻る](README.md)
+[現行図](baselines/fde-change-flow.md) · [比較へ戻る](README.md)
 
 矢印で順序・分岐・戻りを読み、レーンで試作上の担当案を読む。
 

@@ -77,7 +77,8 @@ and one specific question that improves the next use. Place each result in the
 nearest existing reference, Skill, template, or case; do not duplicate a second
 canonical source. Preserve rationale and alternatives alongside procedure.
 
-Use [the fictional development walkthrough](https://github.com/maakbo/fde/blob/main/examples/system-development/knowledge-assisted-investigation.md)
-for source conflict, retrieval diagnosis, evaluation and revision. Follow the
+Use [the fictional development walkthrough](https://github.com/maakbo/fde/blob/main/examples/system-development/implementation/agent-assisted-flow.md)
+for an agent-assisted implementation and test scene. Apply the knowledge
+procedure to the sources and decisions needed by the selected work. Follow the
 host's validation and reader-review procedures before publishing reusable work.
 This Skill grants no upload, training, external publication or production rights.

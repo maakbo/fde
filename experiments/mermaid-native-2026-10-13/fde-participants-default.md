@@ -1,6 +1,6 @@
 # FDEを誰と実現するか — Mermaid既定の外観
 
-[現行図](../../examples/maakbo-fde/system-context.md) · [比較へ戻る](README.md)
+[現行図](baselines/fde-participants.md) · [比較へ戻る](README.md)
 
 アクターがどの業務に関わるかを、線に沿って読む。順序・指揮命令・担当責任を示す線ではない。
 

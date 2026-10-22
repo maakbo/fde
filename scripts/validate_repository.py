@@ -16,6 +16,18 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
+    "examples/system-development/README.md",
+    "examples/system-development/deliverables.md",
+    "examples/system-development/design/README.md",
+    "examples/system-development/environments.md",
+    "examples/system-development/implementation/README.md",
+    "examples/system-development/implementation/agent-assisted-flow.md",
+    "examples/system-development/implementation/development-flow.md",
+    "examples/system-development/people.md",
+    "examples/system-development/release-and-operations/README.md",
+    "examples/system-development/requirements/README.md",
+    "examples/system-development/testing/README.md",
+
     "AGENTS.md",
     "README.md",
     "LICENSE",
@@ -43,14 +55,9 @@ REQUIRED = [
     "templates/ai-trial-brief.md",
     ".agents/skills/knowledge-stewardship/references/knowledge-and-retrieval.md",
     ".agents/skills/ai-pilot-evaluation/references/governance-and-use.md",
-    "examples/system-development/knowledge-assisted-investigation.md",
     ".agents/skills/business-context-modeling/references/field-interview-and-grain.md",
-    "examples/system-development/requirements/change-intake-current.md",
-    "examples/system-development/requirements/change-intake-proposed.md",
     "templates/agent-feasibility.md",
     ".agents/skills/architecture-modeling/references/ai-agent-foundations.md",
-    "examples/system-development/ai-assisted-change.md",
-    "examples/system-development/work-improvement.md",
     ".agents/skills/business-context-modeling/references/work-understanding-and-redesign.md",
     ".agents/skills/discovery-facilitation/references/agent-feasibility.md",
     "examples/request-triage/README.md",
@@ -89,17 +96,6 @@ REQUIRED = [
     ".agents/skills/discovery-facilitation/fixtures/system-development-brief.md",
     "examples/maakbo-fde/README.md",
     "examples/human-agent-workspace/README.md",
-    "examples/system-development/README.md",
-    "examples/system-development/requirements/README.md",
-    "examples/system-development/requirements/alignment-flow.md",
-    "examples/system-development/basic-design/README.md",
-    "examples/system-development/basic-design/interface-specification.md",
-    "examples/system-development/implementation/README.md",
-    "examples/system-development/implementation/unit-flow.md",
-    "examples/system-development/external-integration/README.md",
-    "examples/system-development/external-integration/integration-flow.md",
-    "examples/system-development/deployment/README.md",
-    "examples/system-development/deployment/cutover-flow.md",
 ]
 SKILLS = [
     "knowledge-stewardship",
@@ -415,477 +411,47 @@ def validate_architecture_reader_surface() -> None:
 
 
 def validate_system_development_reader_surface() -> None:
-    """Keep the current system-development sample reader-facing and coherent."""
-
+    """Validate linked reader pages, semantic profiles and shared identities."""
     sample = ROOT / "examples/system-development"
-    retired_fixtures = ROOT / ".agents/skills/business-context-modeling/fixtures/retired"
-    if retired_fixtures.exists():
-        raise ValueError("obsolete retired fixture hierarchy must be physically absent")
-    root_page = (sample / "README.md").read_text(encoding="utf-8")
-    forbidden_tokens = (
-        "pdf-report-system",
-        "waterfall-system-development",
-        "PDF帳票",
-        "RDRA",
-        "## Candidate inventory",
-        "## Relationship model",
-        "## Boundary reasoning",
-        "## Naming candidates",
-        "## Validation",
-        "## Unresolved",
-        "model-set-index",
-        "master-model-index",
-        "ここでは親業務を重ねず",
-        "情報概念を並べています",
-        "工程の順番を問うときは",
-        "図の作り方",
-        "ノードを",
-    )
-    for token in forbidden_tokens:
-        if token in root_page:
-            raise ValueError(
-                f"{(sample / 'README.md').relative_to(ROOT)}: obsolete or authoring token leaked: {token}"
-            )
-
-    required_headings = (
-        "# システム開発業務",
-        "## 実現したいこと",
-        "## 業務",
-        "## 情報",
-        "## 詳しく見る",
-    )
-    for heading in required_headings:
-        if heading not in root_page:
-            raise ValueError(f"system-development root is missing reader section: {heading}")
-    if root_page.count("```" + "mermaid") != 4:
-        raise ValueError("system-development root must contain exactly four Mermaid views")
-
-    blocks = re.findall(
-        r"^```mermaid[ \t]*\r?\n(?P<body>.*?)^```[ \t]*$",
-        root_page,
-        flags=re.MULTILINE | re.DOTALL,
-    )
-    if len(blocks) != 4:
-        raise ValueError("system-development root Mermaid blocks could not be extracted")
-    for required_id in (
-        "a_business_owner",
-        "a_system_engineer",
-        "a_ops",
-        "x_dev_environment",
-        "x_external_business_system",
-        "x_production_env",
-        "b_system_development",
-        "i_request_background",
-        "i_system_requirement",
-        "i_external_specification",
-        "i_build_artifact",
-        "i_release_plan",
-    ):
-        if required_id not in root_page:
-            raise ValueError(
-                f"system-development root is missing canonical reader ID: {required_id}"
-            )
-
-    canonical_node_re = re.compile(
-        r'^\s{2}(?P<id>[a-z][a-z0-9_]*)@\{\s*'
-        r'label:\s*"(?P<label>[^"]*)",\s*'
-        r'img:\s*"(?P<img>[^"]+)",\s*'
-        r'pos:\s*"b",\s*w:\s*(?P<w>\d+),\s*h:\s*(?P<h>\d+),\s*'
-        r'constraint:\s*"on"\s*\}\s*$'
-    )
-
-    def node_definitions(text: str) -> dict[str, str]:
-        return {
-            match.group("id"): line.strip()
-            for line in text.splitlines()
-            if (match := canonical_node_re.match(line))
-        }
-
-    root_nodes = node_definitions(root_page)
-    master_nodes: dict[str, str] = {}
-    for name in ("master-actor-map.md", "master-system-map.md", "master-information-model.md"):
-        master_nodes.update(node_definitions((sample / name).read_text(encoding="utf-8")))
-    for node_id, expected in master_nodes.items():
-        if node_id in root_nodes and root_nodes[node_id] != expected:
-            raise ValueError(
-                f"{(sample / 'README.md').relative_to(ROOT)}: {node_id} diverges from its master definition"
-            )
-
-    root_business_block = blocks[2]
-    root_business_nodes = {
-        match.group("id")
-        for match in re.finditer(
-            r'^\s{2}(?P<id>b_[a-z][a-z0-9_]*)@\{',
-            root_business_block,
-            flags=re.MULTILINE,
-        )
-    }
-    root_information_nodes = {
-        match.group("id")
-        for match in re.finditer(
-            r'^\s{2}(?P<id>i_[a-z][a-z0-9_]*)@\{',
-            root_business_block,
-            flags=re.MULTILINE,
-        )
-    }
-    if not root_information_nodes:
-        raise ValueError(
-            "system-development root business view must include Information participants"
-        )
-    required_root_information = {
-        "i_request_background",
-        "i_system_requirement",
-        "i_external_specification",
-        "i_build_artifact",
-        "i_release_plan",
-    }
-    missing_root_information = sorted(required_root_information - root_information_nodes)
-    if missing_root_information:
-        raise ValueError(
-            "system-development root business view is missing required major Information: "
-            + ", ".join(missing_root_information)
-        )
-    for information_id in sorted(root_information_nodes):
-        information_pattern = (
-            rf'^\s+{re.escape(information_id)}\s+---\s+b_[a-z0-9_]+$|'
-            rf'^\s+b_[a-z0-9_]+\s+---\s+{re.escape(information_id)}$'
-        )
-        if not re.search(information_pattern, root_business_block, flags=re.MULTILINE):
-            raise ValueError(
-                "system-development root business view is missing a Business relation "
-                f"for {information_id}"
-            )
-    if not re.search(r'^\s{2}a_[a-z][a-z0-9_]*@\{', root_business_block, flags=re.MULTILINE):
-        raise ValueError("system-development root business view must include Actor participants")
-    if not re.search(r'^\s{2}x_[a-z][a-z0-9_]*@\{', root_business_block, flags=re.MULTILINE):
-        raise ValueError(
-            "system-development root business view must include reviewed External System participants"
-        )
-    for business_id in sorted(root_business_nodes):
-        participant_pattern = (
-            rf'^\s+(?:a_|x_)[a-z0-9_]+\s+---\s+{re.escape(business_id)}$|'
-            rf'^\s+{re.escape(business_id)}\s+---\s+(?:a_|x_)[a-z0-9_]+$'
-        )
-        if not re.search(participant_pattern, root_business_block, flags=re.MULTILINE):
-            raise ValueError(
-                f"system-development root business view is missing an Actor or External System relation for {business_id}"
-            )
-    child_context_targets = {
-        "b_requirements": ("requirements-context.md", "business-map.md", "b_requirements"),
-        "b_implementation_unit": (
-            "implementation-unit-context.md",
-            "business-map.md",
-            "b_implementation_unit",
-        ),
-        "b_external_test": (
-            "external-integration-context.md",
-            "business-map.md",
-            "b_external_test",
-        ),
-        "b_deployment": ("deployment-context.md", "business-map.md", "b_deployment"),
-    }
-    model_set_index = (sample / "model-set-index.md").read_text(encoding="utf-8")
-    for node_id, (target, parent_target, parent_id) in child_context_targets.items():
-        if node_id not in root_business_block:
-            raise ValueError(f"system-development root business view is missing {node_id}")
-        click = re.search(
-            rf"^\s+click {node_id} href \"(?P<href>[^\"]+)\"",
-            root_business_block,
-            flags=re.MULTILINE,
-        )
-        if click is None or target not in click.group("href"):
-            raise ValueError(
-                f"system-development root click target for {node_id} must open {target}"
-            )
-        if f"{parent_target} / {parent_id}" not in model_set_index:
-            raise ValueError(
-                f"system-development model-set index is missing {parent_target} / {parent_id}"
-            )
-
-    for name in ("business-map.md", "requirements-context.md", "implementation-unit-context.md",
-                 "external-integration-context.md", "deployment-context.md"):
-        text = (sample / name).read_text(encoding="utf-8")
-        for token in ("pdf-report-system", "waterfall-system-development", "PDF帳票", "RDRA"):
-            if token in text:
-                raise ValueError(f"{(sample / name).relative_to(ROOT)} contains obsolete token: {token}")
-
-    reader_detail_files = (
-        "requirements-context.md",
-        "implementation-unit-context.md",
-        "external-integration-context.md",
-        "deployment-context.md",
-        "interface-specification-detail.md",
-    )
-    reader_forbidden_tokens = (
-        "## モデル",
-        "## Master references",
-        "## 上位要求とのtrace",
-        "Requirement Model",
-        "syntheticなBusiness Context",
-        "reader-facing view",
-        "| Master | ID | Canonical label | Use in this view |",
-        "Design Concern",
-    )
-    for name in reader_detail_files:
-        text = (sample / name).read_text(encoding="utf-8")
-        for token in reader_forbidden_tokens:
-            if token in text:
-                raise ValueError(
-                    f"{(sample / name).relative_to(ROOT)} exposes authoring language: {token}"
-                )
-        detail_nodes = node_definitions(text)
-        for node_id in detail_nodes:
-            if node_id.startswith(("a_", "i_", "x_")) and node_id not in master_nodes:
-                raise ValueError(
-                    f"{(sample / name).relative_to(ROOT)} uses an unknown canonical node: {node_id}"
-                )
-
     context = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py"
     business = ROOT / ".agents/skills/business-context-modeling/scripts/check_business_context.py"
-    with tempfile.TemporaryDirectory(prefix="fde-system-development-root-") as directory:
-        temporary_files: list[Path] = []
-        for number, body in enumerate(blocks, start=1):
-            path = Path(directory) / f"view-{number}.md"
-            path.write_text(
-                f"```mermaid{chr(10)}{body}{chr(10)}```{chr(10)}",
-                encoding="utf-8",
-            )
-            temporary_files.append(path)
-            context_options = ["--strict"]
-            if number == 3:
-                context_options.append("--allow-complexity")
-            run([sys.executable, str(context), str(path), *context_options])
-        run([sys.executable, str(business), str(temporary_files[0])])
-        run([sys.executable, str(business), str(temporary_files[2]), "--allow-complexity"])
-    _validate_sample_links(sample)
-
-
-def validate_system_development_reader_surface() -> None:
-    """Keep the system-development sample rooted in Business-owned directories."""
-
-    sample = ROOT / "examples/system-development"
-    root_page = (sample / "README.md").read_text(encoding="utf-8")
-    child_dirs = (
-        "requirements",
-        "basic-design",
-        "implementation",
-        "external-integration",
-        "deployment",
-    )
-    old_flat_files = {
-        "business-map.md",
-        "decomposition-catalog.md",
-        "evaluation-notes.md",
-        "model-set-index.md",
-        "master-actor-map.md",
-        "master-system-map.md",
-        "master-information-model.md",
-        "requirements-context.md",
-        "implementation-unit-context.md",
-        "external-integration-context.md",
-        "deployment-context.md",
-    }
-    unexpected_top_level = {
-        path.name
-        for path in sample.iterdir()
-        if path.is_file() and path.name != "README.md"
-    }
-    if unexpected_top_level & old_flat_files:
-        raise ValueError(
-            "system-development retains obsolete flat artifacts: "
-            + ", ".join(sorted(unexpected_top_level & old_flat_files))
-        )
-    for child in child_dirs:
-        directory = sample / child
-        if not directory.is_dir() or not (directory / "README.md").is_file():
-            raise ValueError(
-                f"system-development Business directory is missing README: {child}"
-            )
-
-    for token in (
-        "pdf-report-system",
-        "waterfall-system-development",
-        "PDF帳票",
-        "RDRA",
-        "model-set-index",
-        "decomposition-catalog",
-        "master-actor-map",
-        "master-system-map",
-        "master-information-model",
-        "## Candidate inventory",
-        "## Relationship model",
-        "## Boundary reasoning",
-        "## Naming candidates",
-        "## Validation",
-        "## Unresolved",
-        "図の作り方",
-        "ノードを",
-    ):
-        if token in root_page:
-            raise ValueError(
-                f"{(sample / 'README.md').relative_to(ROOT)}: obsolete or authoring token leaked: {token}"
-            )
-    for heading in ("# 業務システム開発", "## 仕事へ入る"):
-        if heading not in root_page:
-            raise ValueError(f"system-development root is missing reader section: {heading}")
-    if root_page.count("```mermaid") != 1:
-        raise ValueError("system-development root must contain exactly one Mermaid view")
-
-    blocks = re.findall(
-        r"^```mermaid[ \t]*\r?\n(?P<body>.*?)^```[ \t]*$",
-        root_page,
-        flags=re.MULTILINE | re.DOTALL,
-    )
-    if len(blocks) != 1:
-        raise ValueError("system-development root Mermaid block could not be extracted")
-    root_block = blocks[0]
-    if "flowchart LR" not in root_block:
-        raise ValueError("system-development root must use flowchart LR")
-
-    root_ids = {
-        match.group("id")
-        for match in re.finditer(
-            r'^\s{2}(?P<id>[a-z][a-z0-9_]*)@\{',
-            root_block,
-            flags=re.MULTILINE,
-        )
-    }
-    required_root_ids = {
-        "a_business_user",
-        "a_executive",
-        "a_project_lead",
-        "a_designer",
-        "a_developer",
-        "x_customer_core",
-        "x_dev_environment",
-        "x_staging_environment",
-        "x_production_environment",
-        "i_rfp",
-        "i_business_requirement",
-        "i_system_requirement",
-        "i_external_specification",
-        "i_operation_plan",
-        "b_shape_needs",
-        "b_design_solution",
-        "b_implement_solution",
-        "b_verify_external",
-        "b_transition_operation",
-    }
-    missing = sorted(required_root_ids - root_ids)
-    if missing:
-        raise ValueError(
-            "system-development root is missing observed Version 0 IDs: "
-            + ", ".join(missing)
-        )
-    business_ids = {node for node in root_ids if node.startswith("b_")}
-    information_ids = {node for node in root_ids if node.startswith("i_")}
-    if not business_ids or not information_ids:
-        raise ValueError("system-development root must include Business and Information")
-    if not any(node.startswith("a_") for node in root_ids):
-        raise ValueError("system-development root must include Actor participants")
-    if not any(node.startswith("x_") for node in root_ids):
-        raise ValueError("system-development root must include External System candidates")
-
-    for business_id in sorted(business_ids):
-        participant_pattern = (
-            rf'^\s+(?:a_|x_)[a-z0-9_]+\s+---\s+{re.escape(business_id)}$|'
-            rf'^\s+{re.escape(business_id)}\s+---\s+(?:a_|x_)[a-z0-9_]+$'
-        )
-        if not re.search(participant_pattern, root_block, flags=re.MULTILINE):
-            raise ValueError(
-                f"system-development root is missing a participant relation for {business_id}"
-            )
-    for information_id in sorted(information_ids):
-        information_pattern = (
-            rf'^\s+{re.escape(information_id)}\s+---\s+b_[a-z0-9_]+$|'
-            rf'^\s+b_[a-z0-9_]+\s+---\s+{re.escape(information_id)}$'
-        )
-        if not re.search(information_pattern, root_block, flags=re.MULTILINE):
-            raise ValueError(
-                f"system-development root is missing a Business relation for {information_id}"
-            )
-    for child in child_dirs:
-        if f"({child}/)" not in root_page:
-            raise ValueError(f"system-development root is missing child link: {child}/")
-
-    # Keep the root projection and the focused requirements context aligned for
-    # the Version 0 ownership that was reviewed together.  Independent page
-    # checks cannot catch a parent/child Information handoff drifting apart.
-    if not re.search(
-        r"^\s+b_shape_needs\s+---\s+i_system_requirement$",
-        root_block,
-        flags=re.MULTILINE,
-    ):
-        raise ValueError(
-            "system-development root must show 要求を整える producing システム要件"
-        )
-    if re.search(
-        r"^\s+b_design_solution\s+---\s+i_system_requirement$",
-        root_block,
-        flags=re.MULTILINE,
-    ):
-        raise ValueError(
-            "system-development root must not assign システム要件 to 仕組みを設計する"
-        )
-
-    context_checker = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py"
-    business_checker = ROOT / ".agents/skills/business-context-modeling/scripts/check_business_context.py"
-    flow_checker = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py"
-    with tempfile.TemporaryDirectory(prefix="fde-system-development-hierarchy-") as directory:
-        root_path = Path(directory) / "root.md"
-        root_path.write_text(f"```mermaid\n{root_block}\n```\n", encoding="utf-8")
-        run([sys.executable, str(context_checker), str(root_path), "--strict", "--allow-complexity"])
-        run([sys.executable, str(business_checker), str(root_path), "--allow-complexity"])
-        for child in child_dirs:
-            child_path = sample / child / "README.md"
-            child_text = child_path.read_text(encoding="utf-8")
-            if child_text.count("```mermaid") != 1:
-                raise ValueError(f"{child_path.relative_to(ROOT)}: expected one Mermaid context")
-            if not child_text.startswith("# ") or "← [" not in child_text:
-                raise ValueError(f"{child_path.relative_to(ROOT)}: missing parent or reader section")
-            for token in (
-                "master-actor-map",
-                "master-system-map",
-                "master-information-model",
-                "decomposition-catalog",
-                "## Candidate inventory",
-                "## Relationship model",
-                "## Boundary reasoning",
-                "## Naming candidates",
-                "## Validation",
-                "## Unresolved",
-            ):
-                if token in child_text:
-                    raise ValueError(f"{child_path.relative_to(ROOT)}: authoring or obsolete token leaked: {token}")
-            child_block = re.findall(
-                r"^```mermaid[ \t]*\r?\n(?P<body>.*?)^```[ \t]*$",
-                child_text,
-                flags=re.MULTILINE | re.DOTALL,
-            )[0]
-            if child == "requirements" and not re.search(
-                r"^\s+b_agree_scope\s+---\s+i_system_requirement$",
-                child_block,
-                flags=re.MULTILINE,
-            ):
-                raise ValueError(
-                    "system-development requirements child must show 対象を合意する producing システム要件"
-                )
-            child_path_tmp = Path(directory) / f"{child}.md"
-            child_path_tmp.write_text(f"```mermaid\n{child_block}\n```\n", encoding="utf-8")
-            run([sys.executable, str(context_checker), str(child_path_tmp), "--strict", "--allow-complexity"])
-            run([sys.executable, str(business_checker), str(child_path_tmp), "--allow-complexity"])
-
-        for flow in sample.glob("*/**/*-flow.md"):
-            run([sys.executable, str(flow_checker), str(flow), "--strict"])
-
-    for artifact in sample.rglob("*.md"):
-        text = artifact.read_text(encoding="utf-8")
-        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
-            if "://" in target or target.startswith("#"):
+    flow = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py"
+    master = ROOT / ".agents/skills/business-context-modeling/scripts/check_master_map.py"
+    refs = ROOT / ".agents/skills/business-context-modeling/scripts/check_master_references.py"
+    reader = ROOT / ".agents/skills/reader-facing-artifact-review/scripts/check_reader_artifact.py"
+    masters = {"people.md": "actor", "deliverables.md": "information", "environments.md": "system"}
+    root_text = (sample / "README.md").read_text()
+    for child in ("requirements", "design", "implementation", "testing", "release-and-operations"):
+        if f"({child}/)" not in root_text:
+            raise ValueError(f"sample root missing business link: {child}")
+    for artifact in sorted(sample.rglob("*.md")):
+        text = artifact.read_text()
+        run([sys.executable, str(reader), str(artifact)])
+        if artifact.name in masters and artifact.parent == sample:
+            run([sys.executable, str(master), str(artifact), "--kind", masters[artifact.name],
+                 "--strict", "--allow-complexity", "--allow-sparse"])
+        elif artifact.name.endswith("-flow.md"):
+            run([sys.executable, str(flow), str(artifact), "--strict"])
+        else:
+            run([sys.executable, str(context), str(artifact), "--strict", "--allow-complexity"])
+            run([sys.executable, str(business), str(artifact), "--allow-complexity"])
+            run([sys.executable, str(refs), str(artifact),
+                 "--actor", str(sample / "people.md"),
+                 "--information", str(sample / "deliverables.md"),
+                 "--system", str(sample / "environments.md"),
+                 "--allow-complexity", "--allow-sparse"])
+        parent = re.search(r"%% parent: ([^ ;]+) / (b_[a-z0-9_]+)", text)
+        if artifact != sample / "README.md" and artifact.name not in masters and not parent:
+            raise ValueError(f"{artifact}: missing parent Business trace")
+        if parent:
+            target = (artifact.parent / parent[1]).resolve()
+            if not target.is_file() or not re.search(rf"^\s+{re.escape(parent[2])}@", target.read_text(), re.M):
+                raise ValueError(f"{artifact}: missing parent Business {parent[1]} / {parent[2]}")
+        for link in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
+            if "://" in link or link.startswith("#"):
                 continue
-            linked = (artifact.parent / target.split("#", 1)[0]).resolve()
-            if not linked.exists():
-                raise ValueError(f"{artifact.relative_to(ROOT)}: broken sample link: {target}")
+            if not (artifact.parent / link.split("#", 1)[0]).resolve().exists():
+                raise ValueError(f"{artifact}: broken sample link: {link}")
 
 
 MODEL_SET_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -1038,11 +604,6 @@ def main() -> int:
     run([sys.executable, reader_checker,
          "examples/maakbo-fde/README.md",
          "examples/request-triage/README.md",
-         "examples/system-development/ai-assisted-change.md",
-         "examples/system-development/work-improvement.md",
-         "examples/system-development/knowledge-assisted-investigation.md",
-         "examples/system-development/requirements/change-intake-current.md",
-         "examples/system-development/requirements/change-intake-proposed.md",
          "templates/icon-context.md", "templates/business-flow.md", "templates/architecture-context.md"])
     validate_fde_reader_surface()
     validate_architecture_reader_surface()
@@ -1112,9 +673,6 @@ def main() -> int:
     ])
     run([sys.executable, business, f"{fixture}/context.md"])
     run([sys.executable, flow, "templates/business-flow.md", "--strict"])
-    for state in ("current", "proposed"):
-        run([sys.executable, flow,
-             f"examples/system-development/requirements/change-intake-{state}.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/overview.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/flow.md", "--strict"])
     # Existing checkers accept one model per input. Extract the consolidated

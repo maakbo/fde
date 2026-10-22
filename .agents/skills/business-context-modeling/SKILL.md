@@ -91,6 +91,11 @@ master/context URLs remain authoritative until explicitly migrated.
   Businesses.
 - Keep Markdown Mermaid as the editable source. Do not create `.mmd`, SVG, or
   PNG unless the user explicitly requests standalone source or export.
+- Use the participants' established business names in reader prose and diagram
+  labels. For engineers, keep terms such as 要件定義, 基本設計, 単体テスト when
+  they carry the intended meaning; do not replace them with vague expressions
+  such as 仕組みを整える merely to look domain-independent. Explain the actual
+  input, transformation, output and responsibility behind the familiar name.
 - Preserve the user's observed words before classifying them. A phase or process
   label is evidence, not automatically a Business; derive a Business candidate
   from its input, transformation, and output. A low- or medium-confidence

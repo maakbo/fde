@@ -1,6 +1,6 @@
 # AIエージェントを仕事に入れるための基礎知識
 
-[一件のシステム改修で試す](../../../../examples/system-development/ai-assisted-change.md)。仕組みを理解し、選択肢を比較し、人とAIの分担を説明するための知識。具体的な作業例や確認方法と結びつけて、実務の判断に使う。
+[実装・テストの協働で試す](../../../../examples/system-development/implementation/agent-assisted-flow.md)。仕組みを理解し、選択肢を比較し、人とAIの分担を説明するための知識。具体的な作業例や確認方法と結びつけて、実務の判断に使う。
 
 ## 1. 生成AIの得意さと、確かめる必要がある理由
 

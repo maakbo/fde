@@ -18,13 +18,9 @@ iPad・iPhone・MacBookからChatGPTやCodexを使い、GitHubへ記憶と成果
 
 ## 実務で試す
 
-[設計書を根拠に改修を調査する](examples/system-development/knowledge-assisted-investigation.md): 暗黙の判断、資料の版、検索と回答の失敗、試行の評価と更新を一件でたどります。
-
 [業務フローで対話する](.agents/skills/business-flow-facilitation/SKILL.md): コンテキストの一つの業務から、現行・変更案・判断・差戻しを具体化します。
 
-[改修の相談から、仕事の変え方を考える](examples/system-development/work-improvement.md): 一件の実務をたどり、暗黙の判断・引継ぎ・変える範囲を確かめます。
-
-[AIと一件の改修を進める](examples/system-development/ai-assisted-change.md): 既存画面の小さな改修を題材に、AIの仕組み・役割分担・情報・道具・検証・価値を、実際の判断へつなげます。
+[AIエージェントと実装・テストを進める](examples/system-development/implementation/agent-assisted-flow.md): 調査から実装・テスト・修正を任せ、差分と結果をレビューする導入案。
 
 ## モデルを作る
 
@@ -101,7 +97,7 @@ loose conversation
 ```bash
 npm ci
 python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py \
-  examples/system-development/README.md --type context --output-dir /tmp/fde-export
+  examples/system-development/README.md --type context --allow-complexity --output-dir /tmp/fde-export
 ```
 
 ## Visual language

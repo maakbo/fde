@@ -46,7 +46,7 @@ copying this repository's literal maakbo choice into a consumer project.
 When the architecture includes AI agents, read the relevant parts of
 [ai-agent-foundations.md](references/ai-agent-foundations.md) for model limits,
 context, role decomposition, tool connections, delegation, value, and operating
-risks. For a concrete system-development scene, use the linked one-change
+risks. For a concrete system-development scene, use the linked implementation/test
 walkthrough. Preserve the explanatory knowledge as well as the action checklist;
 ordinary modeling does not require reading every topic or adopting its example.
 

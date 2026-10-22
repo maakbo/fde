@@ -11,11 +11,11 @@ import tempfile
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 BASELINES = {
-    'baseline-fde-participants': 'examples/maakbo-fde/system-context.md',
-    'baseline-fde-change': 'examples/maakbo-fde/shape-change-context.md',
-    'baseline-requirements': 'examples/system-development/requirements/README.md',
-    'baseline-fde-change-flow': 'examples/maakbo-fde/change-design-flow.md',
-    'baseline-requirements-flow': 'examples/system-development/requirements/alignment-flow.md',
+    'baseline-fde-participants': 'experiments/mermaid-native-2026-10-13/baselines/fde-participants.md',
+    'baseline-fde-change': 'experiments/mermaid-native-2026-10-13/baselines/fde-change.md',
+    'baseline-requirements': 'experiments/mermaid-native-2026-10-13/baselines/requirements-context.md',
+    'baseline-fde-change-flow': 'experiments/mermaid-native-2026-10-13/baselines/fde-change-flow.md',
+    'baseline-requirements-flow': 'experiments/mermaid-native-2026-10-13/baselines/requirements-flow.md',
 }
 
 

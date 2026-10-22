@@ -1,6 +1,6 @@
 # 要求を整える — ユースケース試作
 
-[現行図](../../examples/system-development/requirements/README.md) · [比較へ戻る](README.md)
+[比較時の図](baselines/requirements-context.md) · [比較へ戻る](README.md)
 
 アクターがどの業務に関わるかを、線に沿って読む。順序・指揮命令・担当責任を示す線ではない。
 

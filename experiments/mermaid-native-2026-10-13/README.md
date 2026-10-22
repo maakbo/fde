@@ -8,7 +8,7 @@ PNGはMarkdown内のMermaidから直接描画した固定の比較用プレビ�
 
 ## 1. FDEを誰と実現するか
 
-[現行source](../../examples/maakbo-fde/system-context.md) · [ユースケースsourceと省略](fde-participants-usecase.md)
+[現行source](baselines/fde-participants.md) · [ユースケースsourceと省略](fde-participants-usecase.md)
 
 | 現行の固定アイコン | 標準アクター・楕円（neutral / classic） |
 | --- | --- |
@@ -26,7 +26,7 @@ Actor 4件、Business 1件、参加関係4本を保持した。現行の目的�
 
 ## 2. 業務の変化を描く
 
-[現行source](../../examples/maakbo-fde/shape-change-context.md) · [ユースケースsourceと省略](fde-change-usecase.md)
+[現行source](baselines/fde-change.md) · [ユースケースsourceと省略](fde-change-usecase.md)
 
 | 現行のBusiness Context | アクターと業務へ絞ったユースケース |
 | --- | --- |
@@ -36,7 +36,7 @@ Actor 4件、Business 3件、参加関係12本を保持。情報6件と関連10�
 
 ## 3. 要求を整える
 
-[現行source](../../examples/system-development/requirements/README.md) · [ユースケースsourceと省略](requirements-usecase.md)
+[比較時のsource](baselines/requirements-context.md) · [ユースケースsourceと省略](requirements-usecase.md)
 
 | 現行のBusiness Context | アクターと業務へ絞ったユースケース |
 | --- | --- |
@@ -48,7 +48,7 @@ Actor 3件、Business 3件、参加関係5本を保持。情報4件・外部シ�
 
 ## 4. 対象を見極め、業務を定義する
 
-[現行source](../../examples/maakbo-fde/change-design-flow.md) · [スイムレーンsourceと担当案](fde-change-swimlane.md)
+[現行source](baselines/fde-change-flow.md) · [スイムレーンsourceと担当案](fde-change-swimlane.md)
 
 | 現行のFlow | 四者の共同レーン（仮置き） |
 | --- | --- |
@@ -58,7 +58,7 @@ Actor 3件、Business 3件、参加関係5本を保持。情報4件・外部シ�
 
 ## 5. 要件合意
 
-[現行source](../../examples/system-development/requirements/alignment-flow.md) · [スイムレーンsourceと担当案](requirements-swimlane.md)
+[比較時のsource](baselines/requirements-flow.md) · [スイムレーンsourceと担当案](requirements-swimlane.md)
 
 | 現行のFlow | 担当別レーン（仮置き） |
 | --- | --- |
@@ -122,3 +122,5 @@ Node >=22.13.0。ChromeまたはPuppeteerのbrowserが必要。MacのChromeが�
 公開時の初回pushはHTTP 400 / RPC failedで失敗し、remote mainが基準commitのままであることを確認した。コマンド単位のHTTP/1.1・送信buffer指定で再試行して成功し、remote mainのcommit一致を確認した。恒久的なGit設定変更は行っていない。
 
 この比較で保存した旧Lucide由来の埋込SVGには、[履歴素材の第三者ライセンス表示](THIRD_PARTY_NOTICES.md)が付属します。現行のmaakbo／MDIセットとは別の比較履歴です。
+
+2026-10-22にシステム開発sampleを全面再構成したため、比較元5件は`baselines/`へ当時のcommit `5dd79d9`から固定しています。現在のsampleを過去の比較結果として扱いません。

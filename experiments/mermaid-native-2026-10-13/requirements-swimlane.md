@@ -1,6 +1,6 @@
 # 要件合意 — スイムレーン試作
 
-[現行図](../../examples/system-development/requirements/alignment-flow.md) · [比較へ戻る](README.md)
+[比較時の図](baselines/requirements-flow.md) · [比較へ戻る](README.md)
 
 矢印で順序・分岐・戻りを読み、レーンで試作上の担当案を読む。
 

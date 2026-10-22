@@ -2,7 +2,7 @@
 
 対象業務について、AIへ任せる意味と、試す前に決めることを整理する。
 [記入欄](../../../../templates/agent-feasibility.md)と[架空の記入例](../../../../examples/request-triage/README.md)を使う。
-基礎の仕組みと選択肢は[AIエージェントの知識](../../architecture-modeling/references/ai-agent-foundations.md)、開発への適用は[一件の改修で試す](../../../../examples/system-development/ai-assisted-change.md)へ。知識を理解することと、実案件の設計を確定することは分ける。
+基礎の仕組みと選択肢は[AIエージェントの知識](../../architecture-modeling/references/ai-agent-foundations.md)、開発への適用は[実装・テストの協働で試す](../../../../examples/system-development/implementation/agent-assisted-flow.md)へ。知識を理解することと、実案件の設計を確定することは分ける。
 Discoveryでは実現可能性の仮説までを扱い、責務・合格条件をDefinitionへ、接続方式やモデル構成の確定をDesignへ渡す。
 すでに選定済みの対象なら、その根拠を引き継いで不足分だけ確認する。
 
