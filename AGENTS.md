@@ -16,6 +16,9 @@ This repository is a portable environment for forward-deployed business modeling
 
 1. If a request clearly matches a Skill under `.agents/skills/`, read that `SKILL.md` completely and follow it.
 2. Use `discovery-facilitation` when the user wants to improve real work, identify what should change first, judge whether AI / automation fits, or move from a field description toward a Discovery decision and Definition handoff.
+Use `definition-facilitation` after a selected target needs observable conditions and
+responsibility boundaries. For an end-to-end introduction, follow Discovery
+`references/field-delivery-loop.md`; preserve the record across Skill handoffs.
 3. Use `business-context-modeling` for loose business or operational descriptions, especially when the work itself is not yet visible enough to discuss purpose, actors, activities, information, systems, decisions, or boundaries. Discovery may invoke it as a supporting Skill.
    When actor, external-system, or information inventories and their same-type
    relationships are part of the question, update the corresponding master maps

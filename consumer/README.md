@@ -24,6 +24,16 @@ The consumer's root `AGENTS.md` and Copilot instructions remain untouched.
 Read `.fde/fde-instructions.md` and decide locally whether to add its short
 integration snippet.
 
+## Field delivery profile
+
+`field-delivery-v0.1.paths.json` adds Discovery, Definition, Architecture and their
+direct templates/references to the smaller modeling profile. Use it when carrying
+a field problem through selection, conditions, work design and bounded trial.
+Build with the same command and this profile path. Its additional methods are
+provisional field guidance; packaging does not establish production readiness.
+A full clone also contains the executable synthetic case and public examples.
+No tagged release is published by a local build.
+
 ## Icon preference
 
 The profile includes maakbo SVGs, the shared registry, and MDI license information.

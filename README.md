@@ -18,6 +18,10 @@ iPad・iPhone・MacBookからChatGPTやCodexを使い、GitHubへ記憶と成果
 
 ## 実務で試す
 
+[相談から一件を試して仕事へ戻す](.agents/skills/discovery-facilitation/references/field-delivery-loop.md): 業務理解・対象選択・条件と責任・任せ方の設計・試行・評価・運用引継ぎを、同じ記録でつなぎます。
+
+[注文の再送を題材に一連を試した結果](examples/field-delivery/order-retry/README.md): 架空の業務相談からJavaの実行検証、別条件での再試行、残る運用条件まで。
+
 [業務フローで対話する](.agents/skills/business-flow-facilitation/SKILL.md): コンテキストの一つの業務から、現行・変更案・判断・差戻しを具体化します。
 
 [AIエージェントと実装・テストを進める](examples/system-development/implementation/agent-assisted-flow.md): 調査から実装・テスト・修正を任せ、差分と結果をレビューする導入案。

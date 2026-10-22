@@ -136,6 +136,10 @@ Definition is ready enough when the team can review:
 - unresolved human / automation responsibility boundaries;
 - Design questions that should not be answered in Definition.
 
+Pass the agreed conditions to [agent-work-design.md](../architecture-modeling/references/agent-work-design.md)
+when designing AI-assisted work. Preserve condition IDs, rationale, unresolved points,
+and authority; use Architecture Views only where relationships need discussion.
+
 ## Output contract
 
 Create a compact Definition Brief using templates/definition-brief.md.

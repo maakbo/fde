@@ -51,6 +51,9 @@ REQUIRED = [
     "templates/architecture-context.md",
     "templates/business-flow.md",
     "templates/discovery-brief.md",
+    "templates/definition-brief.md",
+    ".agents/skills/discovery-facilitation/references/field-delivery-loop.md",
+    ".agents/skills/architecture-modeling/references/agent-work-design.md",
     "templates/knowledge-use-brief.md",
     "templates/ai-trial-brief.md",
     ".agents/skills/knowledge-stewardship/references/knowledge-and-retrieval.md",
@@ -98,6 +101,7 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "definition-facilitation",
     "knowledge-stewardship",
     "ai-pilot-evaluation",
     "business-flow-facilitation",

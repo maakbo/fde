@@ -4,6 +4,7 @@ from pathlib import Path
 import hashlib
 import importlib.util
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -16,6 +17,30 @@ REVIEW = '.agents/skills/reader-facing-artifact-review'
 
 
 class ReviewProfile(unittest.TestCase):
+    def test_delivery_profile_skill_handoffs_resolve_without_upstream_checkout(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            archive = base / 'delivery.zip'
+            subprocess.run([sys.executable, str(ROOT / 'scripts/build_consumer_profile.py'),
+                            '--profile', str(ROOT / 'consumer/profiles/field-delivery-v0.1.paths.json'),
+                            '--output', str(archive), '--version', 'delivery-test', '--allow-dirty'],
+                           check=True, capture_output=True, text=True)
+            with zipfile.ZipFile(archive) as package:
+                package.extractall(base / 'stage')
+            stage = base / 'stage'
+            for skill in ('discovery-facilitation', 'definition-facilitation',
+                          'architecture-modeling', 'knowledge-stewardship', 'ai-pilot-evaluation'):
+                self.assertTrue((stage / '.agents/skills' / skill / 'SKILL.md').is_file())
+            for document in (stage / '.agents/skills').rglob('*.md'):
+                # Example code is not a live dependency (e.g. hypothetical parent.md).
+                prose = re.sub(r'(?ms)^```.*?^```[^\n]*', '', document.read_text())
+                for target in re.findall(r'\]\(([^)]+)\)', prose):
+                    if '://' in target or target.startswith('#'):
+                        continue
+                    dependency = document.parent / target.split('#', 1)[0]
+                    self.assertTrue(dependency.exists(),
+                                    f'{document.relative_to(stage)} -> {target}')
+
     def test_profile_build_install_and_source_only_review(self):
         with tempfile.TemporaryDirectory() as temporary:
             base = Path(temporary)

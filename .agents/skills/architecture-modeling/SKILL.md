@@ -41,6 +41,11 @@ copying this repository's literal maakbo choice into a consumer project.
 - Move down to detail and back up to the parent whenever detail changes a node's responsibility,
   boundary, name, or relationship.
 
+For translating agreed conditions into executable AI-assisted work, read
+[agent-work-design.md](references/agent-work-design.md). It connects responsibility,
+design rationale, permitted execution and independent acceptance before trial evaluation.
+Do not substitute a structural diagram for these decisions.
+
 ## AI-agent collaboration knowledge
 
 When the architecture includes AI agents, read the relevant parts of

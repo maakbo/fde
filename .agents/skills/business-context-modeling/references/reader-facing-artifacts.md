@@ -17,6 +17,12 @@ private checkpoint, and delete the remaining duplication.
 
 ## The diagram is the reader's entry point
 
+This contract governs business model pages. A worked practice case may instead
+follow a field question through evidence, decisions, execution and retesting,
+linking the relevant model pages without copying their diagrams. Keep its
+synthetic inputs, measured runs and unmeasured outcomes distinguishable. A case
+does not become evidence of method quality merely by illustrating the method.
+
 A reader-facing model exists to support shared recognition of the work. The
 reader should be able to look at the diagram, understand the nearby business
 meaning, and move directly to a deeper or higher View without hunting through

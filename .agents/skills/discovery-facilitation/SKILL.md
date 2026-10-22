@@ -9,6 +9,10 @@ Use this Skill when the user wants to improve real work, identify a useful AI / 
 
 This Skill does not assume that AI is the answer. Its purpose is to find the most meaningful change target and produce a grounded handoff into Definition.
 
+For an end-to-end introduction, use [field-delivery-loop.md](references/field-delivery-loop.md)
+to carry decisions through Definition, work design, trial, and operational handoff.
+Keep the same work record; do not require the user to select each Skill.
+
 ## One-line entry
 
 When the user says something as short as 「この業務を改善したい」, start Discovery immediately. Do not ask the user to invoke a longer prompt, fill out a template, or name the 5D stage. Ask one natural opening question, such as 「今、どんな仕事で困っていますか？」, and continue one question at a time. Work toward the Discovery Brief incrementally; do not expose the full checklist at the outset. The user can provide context naturally over several turns.
@@ -154,6 +158,8 @@ State:
 If evidence is insufficient, the correct output may be a field-observation task rather than a selected AI use case.
 
 ### 7. Hand off to Definition
+
+Use [definition-facilitation](../definition-facilitation/SKILL.md) for the next handoff.
 
 Discovery is complete enough to move forward when the team can discuss:
 

@@ -2,6 +2,9 @@
 
 Read and follow `/AGENTS.md` before changing artifacts.
 
+- Route improvement and end-to-end introduction requests through
+  `.agents/skills/discovery-facilitation/SKILL.md` and its field-delivery loop.
+  Continue selected targets with `.agents/skills/definition-facilitation/SKILL.md`.
 - Route sequence, handoff, decision, and rework dialogue through
   `.agents/skills/business-flow-facilitation/SKILL.md`; retain a parent Business
   and separate current from proposed flows.

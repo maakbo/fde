@@ -40,6 +40,12 @@ prove visual readability. A visual-review request permits temporary rendering
 when a native preview or exporter is available; source-only installations need
 no Node/browser dependencies merely for prose review.
 
+For the `field-delivery-v0.1` profile, start improvement requests with
+`.agents/skills/discovery-facilitation/SKILL.md` and its
+`references/field-delivery-loop.md`. Continue through Definition and the
+Architecture work-design reference without making the user choose stages.
+These additional Skills are not included in the smaller `business-context-v0.1` profile.
+
 Use `.agents/skills/knowledge-stewardship/SKILL.md` for tacit judgments, sources,
 retrieval and maintenance. Use `.agents/skills/ai-pilot-evaluation/SKILL.md` for
 quality, adoption and effect trials. Their templates support existing work

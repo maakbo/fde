@@ -150,3 +150,5 @@ flowchart LR
 | `deliverables.md` | `i_results` | テスト結果 | 本文に示す担当・入出力・利用先 |
 | `people.md` | `a_ops` | 運用担当者 | 本文に示す担当・入出力・利用先 |
 -->
+
+[注文再送の相談から、実装・再試行まで通した架空例](../field-delivery/order-retry/README.md)では、この業務へfdeの手順を使った結果を確認できます。
