@@ -151,4 +151,4 @@ flowchart LR
 | `people.md` | `a_ops` | 運用担当者 | 本文に示す担当・入出力・利用先 |
 -->
 
-[注文再送の相談から、実装・再試行まで通した架空例](../field-delivery/order-retry/README.md)では、この業務へfdeの手順を使った結果を確認できます。
+[受注一覧の機能追加を進めた架空例](../field-delivery/order-search/README.md)では、要件定義から設計・実装・テスト・レビュー・リリース準備へ、AIと成果を引き継いだ結果を確認できます。
