@@ -110,6 +110,9 @@ Read only the references needed for the task:
 - [business-story-and-5w2h.md](references/business-story-and-5w2h.md): build a
   Business Story, use 5W2H as an analysis lens, and preserve the Why-to-How
   meaning trace.
+- [work-understanding-and-redesign.md](references/work-understanding-and-redesign.md):
+  observe one case, elicit tacit decisions, reconsider the work, and choose
+  IPO / SIPOC / HTA / handoff views without forcing a complete set.
 - [modeling-rules.md](references/modeling-rules.md): extract candidates,
   classify Actor / Business / Information / External System, align grain, and
   name Business activities through semantic compression and transformation.

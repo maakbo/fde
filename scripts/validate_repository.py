@@ -42,6 +42,8 @@ REQUIRED = [
     "templates/agent-feasibility.md",
     ".agents/skills/architecture-modeling/references/ai-agent-foundations.md",
     "examples/system-development/ai-assisted-change.md",
+    "examples/system-development/work-improvement.md",
+    ".agents/skills/business-context-modeling/references/work-understanding-and-redesign.md",
     ".agents/skills/discovery-facilitation/references/agent-feasibility.md",
     "examples/request-triage/README.md",
     "templates/master-actor-map.md",
@@ -1026,6 +1028,7 @@ def main() -> int:
          "examples/maakbo-fde/README.md",
          "examples/request-triage/README.md",
          "examples/system-development/ai-assisted-change.md",
+         "examples/system-development/work-improvement.md",
          "templates/icon-context.md", "templates/business-flow.md", "templates/architecture-context.md"])
     validate_fde_reader_surface()
     validate_architecture_reader_surface()

@@ -55,7 +55,15 @@ For each meaningful activity or friction point, ask whether the work can be:
 - reordered;
 - simplified.
 
-Use ICRS as a thinking lens, not as a mandatory public label.
+Use ECRS (Eliminate / Combine / Rearrange / Simplify) as a thinking lens,
+not as a mandatory public label. An unknown purpose is a reason to investigate,
+not proof that a step can be removed; check recipients, controls, and responsibility.
+
+For a concrete walkthrough, tacit decisions, As-Is / To-Be, and choosing a useful
+IPO / SIPOC / HTA / handoff view, use
+[work-understanding-and-redesign.md](../business-context-modeling/references/work-understanding-and-redesign.md).
+Return observed facts, desired changes, constraints, and evidence needed to test
+them separately. Do not require every view or a full redesign project.
 
 Do not carry a task forward merely because it exists today.
 
