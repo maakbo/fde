@@ -28,6 +28,8 @@ iPad・iPhone・MacBookからChatGPTやCodexを使い、GitHubへ記憶と成果
 
 [AIエージェントと実装・テストを進める](examples/system-development/implementation/agent-assisted-flow.md): 調査から実装・テスト・修正を任せ、差分と結果をレビューする導入案。
 
+[チームで使える仕事にする](.agents/skills/team-adoption-facilitation/SKILL.md): 使う人と受取者の懸念、役割、練習、支援、受渡し全体の効果を確かめます。
+
 ## モデルを作る
 
 整理されていない事業や業務の話から、目的、業務、関わる人、情報、システムの関係をModelへ外に出します。Howだけでなく、その背景にあるWhyも残すことで、状況が変わったあとも新しいHowを考え直せるようにします。

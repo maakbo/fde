@@ -39,6 +39,11 @@ task-context reference. The smaller profile still does not provide Discovery,
 Definition or the full Architecture Skill. The delivery profile provides that
 complete route; its packaged instructions link to public worked examples.
 
+Both profiles also include Team Adoption and its optional brief: participant
+concerns, decision/support roles, hands-on practice and whole-handoff measures.
+This dependency of Pilot Evaluation does not add Discovery or Definition to the
+smaller profile, or authorize an organizational change.
+
 ## Icon preference
 
 The profile includes maakbo SVGs, the shared registry, and MDI license information.

@@ -58,6 +58,8 @@ REQUIRED = [
     ".agents/skills/architecture-modeling/references/agent-work-design.md",
     "templates/knowledge-use-brief.md",
     "templates/ai-trial-brief.md",
+    "templates/team-adoption-brief.md",
+    ".agents/skills/team-adoption-facilitation/references/operating-and-measures.md",
     ".agents/skills/knowledge-stewardship/references/knowledge-and-retrieval.md",
     ".agents/skills/ai-pilot-evaluation/references/governance-and-use.md",
     ".agents/skills/business-context-modeling/references/field-interview-and-grain.md",
@@ -103,6 +105,7 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "team-adoption-facilitation",
     "workflow-design-facilitation",
     "definition-facilitation",
     "knowledge-stewardship",

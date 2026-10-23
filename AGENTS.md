@@ -32,6 +32,10 @@ boundaries, triggers, action/value contracts, branches and review/resume.
 Use `knowledge-stewardship` for tacit judgment, source preparation, retrieval
    diagnosis, and maintained knowledge. Use `ai-pilot-evaluation` for bounded
    quality/adoption/effect trials and operational handoff.
+Use `.agents/skills/team-adoption-facilitation/SKILL.md` for introducing AI-assisted
+work through participants' concerns, actual decision/support roles, practice and
+whole-handoff value. It does not grant rollout or personnel-policy authority.
+
 4. Use `architecture-modeling` for human, AI-agent, system, repository, service,
    channel, artifact, or technical-boundary relationships. Keep structural
    Context separate from Interaction Flow.

@@ -41,6 +41,8 @@
     "templates/ai-trial-brief.md",
     ".agents/skills/workflow-design-facilitation",
     "templates/workflow-brief.md",
-    ".agents/skills/architecture-modeling/references/task-context.md"
+    ".agents/skills/architecture-modeling/references/task-context.md",
+    ".agents/skills/team-adoption-facilitation",
+    "templates/team-adoption-brief.md"
   ]
 }

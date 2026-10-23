@@ -1,0 +1,4 @@
+interface:
+  display_name: "Team Adoption Facilitation"
+  short_description: "Turn an AI trial into workable team roles and practice"
+  default_prompt: "Use $team-adoption-facilitation to rehearse one team handoff and decide what is ready to try."

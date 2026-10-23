@@ -213,3 +213,8 @@ After field use, capture what was hard:
 - a case where the selected intervention was wrong.
 
 Use that evidence to refine this Skill, its template, or the underlying business-modeling capability.
+
+When introduction depends on participation, responsibility, reviewer capacity or
+learning/support, use [team-adoption-facilitation](../team-adoption-facilitation/SKILL.md)
+alongside discovery and the trial. Hear practical concerns before choosing a
+solution; do not defer every people question until rollout.

@@ -169,3 +169,8 @@ After field review, capture:
 - responsibility boundaries that caused disagreement.
 
 Use that evidence to refine Definition before moving deeper into Design.
+
+When assigning review or operational decisions, check actual time, competence,
+source access and rejection/stop authority. Use
+[team-adoption-facilitation](../team-adoption-facilitation/SKILL.md) when the team
+needs to rehearse roles and support; do not invent staffing or approvals.

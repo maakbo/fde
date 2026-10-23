@@ -47,6 +47,8 @@
     "templates/agent-feasibility.md",
     "templates/architecture-context.md",
     ".agents/skills/workflow-design-facilitation",
-    "templates/workflow-brief.md"
+    "templates/workflow-brief.md",
+    ".agents/skills/team-adoption-facilitation",
+    "templates/team-adoption-brief.md"
   ]
 }

@@ -40,6 +40,8 @@ permissions, specialist review, or operational readiness.
      maintenance, and downstream quality. Capture a baseline before the trial
      when possible. If absent, record it as missing and plan how to obtain it.
      Before/after differences alone do not establish causal attribution.
+     For each measure name observation frequency and the action/owner when it
+     worsens; include small qualitative handoff friction, not just totals.
 5. **Agree evaluation cases before tuning.** Keep input, source version, expected
    evidence/behavior, assessor, observed result and failure severity. Include
    normal, exception, unavailable evidence, conflict, access denial and relevant
@@ -67,6 +69,11 @@ permissions, specialist review, or operational readiness.
    maintenance owners separately. A successful PoC does not authorize rollout.
    Plan ongoing observation and re-evaluation when data, model, purpose, or policy
    changes; retain rollback and return-to-human work where needed.
+
+When people need an introduction plan, new responsibilities, practical learning
+or support, use [team-adoption-facilitation](../team-adoption-facilitation/SKILL.md).
+Preserve the same scope and evidence. Do not turn a technical pass into adoption,
+or use AI activity counts as an employee performance judgment.
 
 ## Return the decision surface
 

@@ -55,3 +55,7 @@ Use `.agents/skills/knowledge-stewardship/SKILL.md` for tacit judgments, sources
 retrieval and maintenance. Use `.agents/skills/ai-pilot-evaluation/SKILL.md` for
 quality, adoption and effect trials. Their templates support existing work
 records; they do not grant permission to upload data or deploy a service.
+
+Both profiles include `.agents/skills/team-adoption-facilitation/SKILL.md` and its
+optional template for roles, learning/support and team adoption. It complements
+Pilot Evaluation without authorizing rollout, employment changes or data upload.

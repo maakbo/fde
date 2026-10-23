@@ -79,3 +79,5 @@ HTMLの配信確認だけでは、画面の操作確認を完了したと扱わ�
 追加検証した。作業用の文脈を渡し、実行した版と結果をreviewへ返す。
 
 [開発案件の一連へ戻る](README.md) / [実装・テストの受渡し](../../system-development/implementation/agent-assisted-flow.md)
+
+現場で使う前の担当時間・支援・練習と比較計画は[チームでの試行](team-trial.md)を参照。

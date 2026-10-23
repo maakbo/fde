@@ -45,3 +45,7 @@ Read and follow `/AGENTS.md` before changing artifacts.
   Detailed Architecture Context, and Interaction Flow as optional recursive
   View roles rather than a fixed mandatory ladder.
 - Run `python3 scripts/validate_repository.py` before reporting completion.
+
+Use `.agents/skills/team-adoption-facilitation/SKILL.md` for introducing AI-assisted
+work through participants' concerns, actual decision/support roles, practice and
+whole-handoff value. It does not grant rollout or personnel-policy authority.
