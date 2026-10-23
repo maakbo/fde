@@ -45,6 +45,8 @@
     "templates/discovery-brief.md",
     "templates/definition-brief.md",
     "templates/agent-feasibility.md",
-    "templates/architecture-context.md"
+    "templates/architecture-context.md",
+    ".agents/skills/workflow-design-facilitation",
+    "templates/workflow-brief.md"
   ]
 }

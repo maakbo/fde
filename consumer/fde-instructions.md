@@ -44,7 +44,12 @@ For the `field-delivery-v0.1` profile, start improvement requests with
 `.agents/skills/discovery-facilitation/SKILL.md` and its
 `references/field-delivery-loop.md`. Continue through Definition and the
 Architecture work-design reference without making the user choose stages.
-These additional Skills are not included in the smaller `business-context-v0.1` profile.
+Use `.agents/skills/workflow-design-facilitation/SKILL.md` for executable triggers,
+value/branch contracts and review/resume. Architecture `references/task-context.md`
+selects what each worker receives.
+Discovery, Definition and the full Architecture Skill are not included in the
+smaller `business-context-v0.1` profile. Workflow Design, its template and the
+task-context reference are dependencies available in both profiles.
 
 Use `.agents/skills/knowledge-stewardship/SKILL.md` for tacit judgments, sources,
 retrieval and maintenance. Use `.agents/skills/ai-pilot-evaluation/SKILL.md` for

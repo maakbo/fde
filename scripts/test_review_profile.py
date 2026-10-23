@@ -29,7 +29,8 @@ class ReviewProfile(unittest.TestCase):
                 package.extractall(base / 'stage')
             stage = base / 'stage'
             for skill in ('discovery-facilitation', 'definition-facilitation',
-                          'architecture-modeling', 'knowledge-stewardship', 'ai-pilot-evaluation'):
+                          'architecture-modeling', 'knowledge-stewardship', 'ai-pilot-evaluation',
+                          'workflow-design-facilitation'):
                 self.assertTrue((stage / '.agents/skills' / skill / 'SKILL.md').is_file())
             for document in (stage / '.agents/skills').rglob('*.md'):
                 # Example code is not a live dependency (e.g. hypothetical parent.md).

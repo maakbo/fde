@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workflow Design Facilitation"
+  short_description: "Design triggers, handoffs, branches and bounded execution"
+  default_prompt: "Use $workflow-design-facilitation to turn this agreed flow into testable work."

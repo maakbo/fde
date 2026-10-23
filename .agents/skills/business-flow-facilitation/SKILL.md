@@ -70,6 +70,11 @@ A diagram plus actionable dialogue is the output; a method description alone is 
    and revise the smallest trial. Preserve the distinction between desk exercise,
    observed workplace use, and measured effect.
 
+When the question becomes executing the selected flow, use
+[workflow-design-facilitation](../workflow-design-facilitation/SKILL.md) for autonomy,
+triggers, action/value contracts, branches, review and resume. Keep those runtime
+details below the business discussion surface.
+
 ## Deliver and continue
 
 Return the linked parent Context and Markdown Flow, necessary business prose,

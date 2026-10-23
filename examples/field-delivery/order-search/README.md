@@ -79,4 +79,7 @@ AIが[設計](design.md)に要件IDとの対応を付けた。例えば、R2は�
 
 実行方法と確認結果は[レビューとリリース準備](review-and-release.md)を参照。
 
+[設計から次の作業へ渡す条件](work-handoff.md)では、起動・未決定・権限・資料の版を
+値として引き継ぎ、進める／戻す／reviewへ返す条件を実際に動かして確かめた。
+
 [要件定義](requirements.md) / [設計](design.md) / [レビューとリリース準備](review-and-release.md)

@@ -27,6 +27,8 @@ responsibility boundaries. For an end-to-end introduction, follow Discovery
 Use `business-flow-facilitation` to turn a selected Business into a conversational
    current/proposed Flow with order, owners, conditions, handoffs, and returns.
    Keep task detail below the parent Business Context.
+Use `workflow-design-facilitation` when the selected flow needs automation
+boundaries, triggers, action/value contracts, branches and review/resume.
 Use `knowledge-stewardship` for tacit judgment, source preparation, retrieval
    diagnosis, and maintained knowledge. Use `ai-pilot-evaluation` for bounded
    quality/adoption/effect trials and operational handoff.

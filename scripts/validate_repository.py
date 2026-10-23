@@ -52,6 +52,8 @@ REQUIRED = [
     "templates/business-flow.md",
     "templates/discovery-brief.md",
     "templates/definition-brief.md",
+    "templates/workflow-brief.md",
+    ".agents/skills/architecture-modeling/references/task-context.md",
     ".agents/skills/discovery-facilitation/references/field-delivery-loop.md",
     ".agents/skills/architecture-modeling/references/agent-work-design.md",
     "templates/knowledge-use-brief.md",
@@ -101,6 +103,7 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "workflow-design-facilitation",
     "definition-facilitation",
     "knowledge-stewardship",
     "ai-pilot-evaluation",
@@ -602,6 +605,8 @@ def main() -> int:
     run([sys.executable, "scripts/test_maakbo_icons.py"])
     run([sys.executable, "scripts/test_icon_sets.py"])
     run([sys.executable, "scripts/test_review_profile.py"])
+    run([sys.executable, "-m", "unittest", "discover", "-s",
+         "examples/field-delivery/order-search", "-p", "test_workflow.py"])
     reader_checker = ".agents/skills/reader-facing-artifact-review/scripts/check_reader_artifact.py"
     run([sys.executable, ".agents/skills/reader-facing-artifact-review/scripts/test_reader_artifact.py"])
     run([sys.executable, ".agents/skills/mermaid-diagram-export/scripts/test_diagram_selection.py"])

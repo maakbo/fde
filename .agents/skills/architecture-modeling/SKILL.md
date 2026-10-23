@@ -46,6 +46,12 @@ For translating agreed conditions into executable AI-assisted work, read
 design rationale, permitted execution and independent acceptance before trial evaluation.
 Do not substitute a structural diagram for these decisions.
 
+Use [task-context.md](references/task-context.md) when handing work between stages:
+select instructions, current sources, decisions, state, tools and output for the
+receiver, rather than forwarding the entire conversation. Use
+[workflow-design-facilitation](../workflow-design-facilitation/SKILL.md) for execution
+contracts, variables, branches and resume beyond the structural View.
+
 ## AI-agent collaboration knowledge
 
 When the architecture includes AI agents, read the relevant parts of

@@ -34,6 +34,11 @@ provisional field guidance; packaging does not establish production readiness.
 A full clone also contains the executable synthetic case and public examples.
 No tagged release is published by a local build.
 
+Both profiles include Workflow Design as a dependency of Business Flow and the
+task-context reference. The smaller profile still does not provide Discovery,
+Definition or the full Architecture Skill. The delivery profile provides that
+complete route; its packaged instructions link to public worked examples.
+
 ## Icon preference
 
 The profile includes maakbo SVGs, the shared registry, and MDI license information.

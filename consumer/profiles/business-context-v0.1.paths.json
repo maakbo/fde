@@ -38,6 +38,9 @@
     ".agents/skills/knowledge-stewardship",
     ".agents/skills/ai-pilot-evaluation",
     "templates/knowledge-use-brief.md",
-    "templates/ai-trial-brief.md"
+    "templates/ai-trial-brief.md",
+    ".agents/skills/workflow-design-facilitation",
+    "templates/workflow-brief.md",
+    ".agents/skills/architecture-modeling/references/task-context.md"
   ]
 }

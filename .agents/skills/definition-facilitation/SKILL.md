@@ -140,6 +140,10 @@ Pass the agreed conditions to [agent-work-design.md](../architecture-modeling/re
 when designing AI-assisted work. Preserve condition IDs, rationale, unresolved points,
 and authority; use Architecture Views only where relationships need discussion.
 
+When required behavior is stable enough to execute, use
+[workflow-design-facilitation](../workflow-design-facilitation/SKILL.md) to design
+triggers, values, branches and review; do not silently add them as requirements.
+
 ## Output contract
 
 Create a compact Definition Brief using templates/definition-brief.md.
