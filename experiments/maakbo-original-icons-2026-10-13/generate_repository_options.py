@@ -15,7 +15,7 @@ def icon(mark,x,y,size):return f'<svg x="{x}" y="{y}" width="{size}" height="{si
 def t(x,y,s,size=14,color=INK,anchor='start'):return f'<text x="{x}" y="{y}" font-family="{FONT}" font-size="{size}" fill="{color}" text-anchor="{anchor}">{s}</text>'
 folder=ROOT/'candidate-repository';folder.mkdir(exist_ok=True)
 for name in GLYPHS:
-    (folder/f'{name if name=='linear' else 'branch-original'}.svg').write_text(f'<!-- Original maakbo repository exploration; not adopted. -->\n<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="color:{INK}"><title>リポジトリ</title>{g(name)}</svg>\n')
+    (folder/f"{name if name=='linear' else 'branch-original'}.svg").write_text(f'<!-- Original maakbo repository exploration; not adopted. -->\n<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="color:{INK}"><title>リポジトリ</title>{g(name)}</svg>\n')
 p=[t(50,50,'maakbo / repository exploration',16,MUTED),t(50,95,'フォルダから、丸と線の記号へ。',29),t(50,130,'リポジトリの比較候補 · 線幅1.15 / 透明背景 / 実寸32px',14,MUTED)]
 for x,title,shape,desc in [(190,'現行 · フォルダ',CURRENT,'置き場所としての意味が強い'),(570,'候補1 · 直線の履歴',g('linear'),'3つの丸を、まっすぐつなぐ'),(950,'候補2 · 枝分かれ',g('branch'),'履歴と分岐を、丸と線で表す')]:
     p += [t(x,190,title,19,anchor='middle'),icon(shape,x-48,225,96),t(x,360,'リポジトリ',17,anchor='middle'),t(x,393,desc,13,MUTED,'middle'),icon(shape,x-16,445,32),t(x,515,'実寸32px',12,MUTED,'middle')]

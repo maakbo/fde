@@ -22,6 +22,8 @@ iPad・iPhone・MacBookからChatGPTやCodexを使い、GitHubへ記憶と成果
 
 [機能追加を、要件定義からリリース準備まで進める](examples/field-delivery/order-search/README.md): 開発チームがAIと要件・設計・実装・テストを引き継ぐ、通常のシステム開発の一件。
 
+[受注一覧にCSV出力を追加する](examples/field-delivery/csv-export/README.md): 工程ごとに別のエージェントへ引き継ぎ、コード・独立受入・運用受取を実行し、詰まりをSkillへ戻した記録。
+
 [仕事を動かす条件を設計する](.agents/skills/workflow-design-facilitation/SKILL.md): 自動化の範囲、起動、値の受渡し、分岐と再開を一件で確かめます。
 
 [業務フローで対話する](.agents/skills/business-flow-facilitation/SKILL.md): コンテキストの一つの業務から、現行・変更案・判断・差戻しを具体化します。

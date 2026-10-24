@@ -77,3 +77,10 @@ sandboxからpilot、修正再試行、展開と知識の更新は
 [運用と学習](../../ai-pilot-evaluation/references/operational-learning.md)を使う。
 [通常開発での選択と判断の記録](https://github.com/maakbo/fde/blob/main/examples/field-delivery/order-search/delivery-record.md)
 では、対象選定から次の運用判断までの証拠と限界を一件で追える。
+
+手順全体の引継ぎを検証する時は、[工程ごとの独立した試行](independent-delivery-rehearsal.md)で
+入力・質問・返却・実行・修正を追う。机上で一連を説明したことと、別担当が順に
+作業できたことを分けて確認する。
+
+
+別の担当へ順に引き継いで方法を確かめた例は、[受注一覧にCSV出力を追加する](https://github.com/maakbo/fde/blob/main/examples/field-delivery/csv-export/README.md)を参照する。

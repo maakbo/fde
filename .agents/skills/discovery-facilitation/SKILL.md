@@ -176,7 +176,7 @@ Do not jump to prompt, RAG, MCP, schema, or implementation detail before this ha
 
 ## Output contract
 
-Create a compact Discovery Brief using templates/discovery-brief.md.
+Create a compact Discovery Brief using [discovery-brief.md](../../../templates/discovery-brief.md).
 
 The brief should contain:
 
@@ -223,3 +223,10 @@ When selecting a bottleneck, distinguish active effort from queueing, review and
 downstream delay. The largest effort total alone does not establish what limits
 the whole flow. AI fit is a hypothesis by operation; data format or the presence
 of a human reviewer alone does not establish usefulness, safety or permission.
+
+When using a feature change to test a development-team improvement, distinguish
+three scopes: the overall trial and deliverable, the handoff being improved,
+and details deferred to the next stage. Deferring feature requirements to
+Definition does not exclude the authorized implementation/verification trial.
+Carry the end-to-end purpose forward; do not close the work after documenting
+a handoff when its usefulness must still be tested in the subsequent work.

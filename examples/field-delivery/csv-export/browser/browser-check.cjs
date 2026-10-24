@@ -1,0 +1,52 @@
+const { chromium } = require('playwright');
+const assert = require('node:assert/strict');
+const fs = require('node:fs/promises');
+const os = require('node:os');
+const path = require('node:path');
+(async () => {
+  const base = process.argv[2];
+  if (!base || new URL(base).hostname !== '127.0.0.1') throw Error('localhost demo URL required');
+  const browser = await chromium.launch({headless:true, ...(process.env.FDE_BROWSER_EXECUTABLE ? {executablePath: process.env.FDE_BROWSER_EXECUTABLE} : {})});
+  let folder;
+  try {
+    folder=await fs.mkdtemp(path.join(os.tmpdir(),'fde-csv-browser-'));
+    const context=await browser.newContext({acceptDownloads:true});
+    const page=await context.newPage();
+    await page.goto(base+'/');
+    await page.locator('[name=status]').selectOption('NEW');
+    await page.locator('[name=from]').fill('2026-10-02');
+    await page.locator('[name=to]').fill('2026-10-04');
+    const search=page.waitForResponse(r=>new URL(r.url()).pathname==='/orders');
+    await page.getByRole('button',{name:'検索',exact:true}).click();
+    assert.equal((await search).status(),200);
+    await page.locator('#results tr').first().waitFor();
+    assert.equal(await page.locator('#results tr').count(),2);
+    assert.match(await page.locator('#results').innerText(),/O-105/);
+    await page.locator('[name=status]').selectOption('SHIPPED');
+    await page.locator('[name=from]').fill('2026-10-01');
+    await page.locator('[name=to]').fill('2026-10-02');
+    const event=page.waitForEvent('download');
+    await page.getByRole('button',{name:'現在の入力条件でCSV出力',exact:true}).click();
+    const download=await event;
+    assert.equal(download.suggestedFilename(),'orders.csv');
+    const file=path.join(folder,'orders.csv');await download.saveAs(file);
+    const bytes=await fs.readFile(file);
+    assert.deepEqual([...bytes.subarray(0,3)],[239,187,191]);
+    const text=bytes.toString('utf8');
+    assert.match(text,/O-102,2026-10-02,SHIPPED\r\n/);
+    assert(!text.includes('O-105'),'CSV must use edited input, not previous search');
+    const downloadCount=[];page.on('download',d=>downloadCount.push(d));
+    await page.locator('[name=from]').fill('2026-10-04');
+    await page.locator('[name=to]').fill('2026-10-01');
+    const error=page.waitForResponse(r=>new URL(r.url()).pathname==='/orders.csv');
+    await page.getByRole('button',{name:'現在の入力条件でCSV出力',exact:true}).click();
+    assert.equal((await error).status(),400);
+    await page.getByText(/入力エラー:/).waitFor();
+    assert.equal(downloadCount.length,0,'invalid input must not download');
+    if (process.env.FDE_BROWSER_SCREENSHOT) await page.screenshot({path:process.env.FDE_BROWSER_SCREENSHOT,fullPage:true});
+    console.log('PASS browser: existing search, edited-input CSV download, filename/BOM/rows, invalid input without download');
+  } finally {
+    await browser.close();
+    if(folder)await fs.rm(folder,{recursive:true,force:true});
+  }
+})().catch(e=>{console.error(e);process.exitCode=1});

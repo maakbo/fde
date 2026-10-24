@@ -153,7 +153,7 @@ triggers, values, branches and review; do not silently add them as requirements.
 
 ## Output contract
 
-Create a compact Definition Brief using templates/definition-brief.md.
+Create a compact Definition Brief using [definition-brief.md](../../../templates/definition-brief.md).
 
 Keep it reviewable by field participants. The brief is a shared decision surface, not a specification dump.
 
