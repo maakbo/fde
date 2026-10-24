@@ -45,6 +45,8 @@ For translating agreed conditions into executable AI-assisted work, read
 [agent-work-design.md](references/agent-work-design.md). It connects responsibility,
 design rationale, permitted execution and independent acceptance before trial evaluation.
 Do not substitute a structural diagram for these decisions.
+For prompt/examples, output validation and controls, use
+[prompt-and-output-contract.md](references/prompt-and-output-contract.md).
 
 Use [task-context.md](references/task-context.md) when handing work between stages:
 select instructions, current sources, decisions, state, tools and output for the

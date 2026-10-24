@@ -9,7 +9,8 @@ SEが要件を確認し、設計へまとめ、開発者が実装する。テス
 利用・効果測定とは区別する。
 
 [システム開発の仕事全体](../../system-development/README.md) /
-[一連を進めるガイド](../../../.agents/skills/discovery-facilitation/references/field-delivery-loop.md)
+[一連を進めるガイド](../../../.agents/skills/discovery-facilitation/references/field-delivery-loop.md) /
+[何を変え、何を確かめたか](delivery-record.md)
 
 ## 開発チームの仕事を、依頼からたどる
 

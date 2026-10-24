@@ -218,3 +218,8 @@ When introduction depends on participation, responsibility, reviewer capacity or
 learning/support, use [team-adoption-facilitation](../team-adoption-facilitation/SKILL.md)
 alongside discovery and the trial. Hear practical concerns before choosing a
 solution; do not defer every people question until rollout.
+
+When selecting a bottleneck, distinguish active effort from queueing, review and
+downstream delay. The largest effort total alone does not establish what limits
+the whole flow. AI fit is a hypothesis by operation; data format or the presence
+of a human reviewer alone does not establish usefulness, safety or permission.

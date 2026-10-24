@@ -52,6 +52,8 @@ REQUIRED = [
     "templates/business-flow.md",
     "templates/discovery-brief.md",
     "templates/definition-brief.md",
+    ".agents/skills/architecture-modeling/references/prompt-and-output-contract.md",
+    ".agents/skills/ai-pilot-evaluation/references/operational-learning.md",
     "templates/workflow-brief.md",
     ".agents/skills/architecture-modeling/references/task-context.md",
     ".agents/skills/discovery-facilitation/references/field-delivery-loop.md",

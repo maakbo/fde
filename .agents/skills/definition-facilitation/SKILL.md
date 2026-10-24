@@ -108,6 +108,11 @@ For each important decision or action, identify what must be decided before Desi
 
 Do not choose an agent architecture here. Capture the unresolved boundary and evidence needed to settle it.
 
+For direct users and indirect receivers/reviewers, describe the situation,
+information they can inspect, how they use the output and what decision they
+must make. Do not invent demographic personas. Translate each actual need into
+observable behavior and evidence; different receivers can need different outputs.
+
 ### 7. Write acceptance criteria
 
 Acceptance criteria should let a field team judge whether the defined change is good enough to enter Design / PoC.
@@ -118,7 +123,9 @@ Use observable scenarios:
 - When the defined behavior occurs,
 - Then a person can observe a specific result.
 
-Include important failure / exception cases.
+Include important failure / exception cases. Define criteria before tuning or
+observing the result. Distinguish a trial entry/exit decision from ongoing KPI
+observation; acceptance is not a one-time promise that remains valid after change.
 
 Mark criteria whose threshold is still TBD. A TBD threshold is better than an invented number.
 

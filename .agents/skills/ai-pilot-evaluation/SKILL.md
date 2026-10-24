@@ -36,7 +36,11 @@ permissions, specialist review, or operational readiness.
    - Adoption: eligible opportunities, actual use, abandonment/reasons, field
      observations and participant explanation. Short trials can use both counts
      and qualitative feedback; a click or forced use is not meaningful adoption.
-   - Effect: outcome, rework, waiting, human effort including correction and
+   - Effect: keep whose work changes explicit. For AI-assisted development,
+     measure the development handoff; product users' search or business outcomes
+     are a different hypothesis unless explicitly included. Do not switch scope
+     when naming a convenient metric.
+     Outcome, rework, waiting, human effort including correction and
      maintenance, and downstream quality. Capture a baseline before the trial
      when possible. If absent, record it as missing and plan how to obtain it.
      Before/after differences alone do not establish causal attribution.
@@ -74,6 +78,11 @@ When people need an introduction plan, new responsibilities, practical learning
 or support, use [team-adoption-facilitation](../team-adoption-facilitation/SKILL.md).
 Preserve the same scope and evidence. Do not turn a technical pass into adoption,
 or use AI activity counts as an employee performance judgment.
+
+Use [operational-learning.md](references/operational-learning.md) for sandbox vs
+pilot decisions, failure-to-retest, Go/No-Go/Pivot, operational handoff, rollout
+vs changed-scope scaling, and turning observed work into maintained knowledge.
+Carry actual evidence and limits into the next decision, not just stage labels.
 
 ## Return the decision surface
 

@@ -43,6 +43,7 @@
     "templates/workflow-brief.md",
     ".agents/skills/architecture-modeling/references/task-context.md",
     ".agents/skills/team-adoption-facilitation",
-    "templates/team-adoption-brief.md"
+    "templates/team-adoption-brief.md",
+    ".agents/skills/architecture-modeling/references/prompt-and-output-contract.md"
   ]
 }

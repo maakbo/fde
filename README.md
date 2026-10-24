@@ -30,6 +30,19 @@ iPad・iPhone・MacBookからChatGPTやCodexを使い、GitHubへ記憶と成果
 
 [チームで使える仕事にする](.agents/skills/team-adoption-facilitation/SKILL.md): 使う人と受取者の懸念、役割、練習、支援、受渡し全体の効果を確かめます。
 
+### 自分の現場で始める
+
+このrepoを取得し、AIエージェントに次のように依頼します。
+
+> このrepoの手順で、私の開発業務へAIを入れる一件を進めてください。
+> 最初に最近の機能追加を聞き、現行の受渡しと変えたいことを小さく返してください。
+> 未確認を推測で決めず、許可された資料と環境で試し、結果から直してください。
+
+最初から様式を埋める必要はありません。[進行ガイド](.agents/skills/discovery-facilitation/references/field-delivery-loop.md)
+を入口に、[通常開発で試した判断と結果](examples/field-delivery/order-search/delivery-record.md)も参照できます。
+実案件の資料は、その現場で許可された環境・範囲で扱います。cloneしただけでサービス接続や
+本番操作の権限が付くわけではありません。
+
 ## モデルを作る
 
 整理されていない事業や業務の話から、目的、業務、関わる人、情報、システムの関係をModelへ外に出します。Howだけでなく、その背景にあるWhyも残すことで、状況が変わったあとも新しいHowを考え直せるようにします。

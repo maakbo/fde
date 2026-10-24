@@ -61,3 +61,19 @@
 確認し、例外で正しい場所へ戻れるかを確かめる。
 
 [システム開発で試した一件](https://github.com/maakbo/fde/blob/main/examples/field-delivery/order-search/README.md)
+
+## 今の範囲を判断して、次の担当へ渡す
+
+受取者は、渡された資料だけでなく次の三点を言い返してから進める。
+
+- 何をどの条件で確かめ、何の証拠があるか。
+- 何が未決定・未検証で、誰へ返すか。
+- 今進められる操作と、次の判断が必要な操作は何か。
+
+直接使う人だけでなく、出力を受け取って判断・確認する人の必要情報もDefinitionへ戻す。
+指示と例、機械が読む出力、構造/意味/実行の検証は
+[出力契約の設計](../../architecture-modeling/references/prompt-and-output-contract.md)、
+sandboxからpilot、修正再試行、展開と知識の更新は
+[運用と学習](../../ai-pilot-evaluation/references/operational-learning.md)を使う。
+[通常開発での選択と判断の記録](https://github.com/maakbo/fde/blob/main/examples/field-delivery/order-search/delivery-record.md)
+では、対象選定から次の運用判断までの証拠と限界を一件で追える。
