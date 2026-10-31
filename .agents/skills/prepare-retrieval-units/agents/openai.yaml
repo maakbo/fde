@@ -1,0 +1,4 @@
+interface:
+  display_name: "許可された原資料から、条件と例外・原資料の位置を保った参照単位を作り、代表質問で分割を直す"
+  short_description: "条件・例外・出典を保った参照単位を作り、質問で分割を確かめる。"
+  default_prompt: "Use $prepare-retrieval-units for one bounded use case, reuse existing evidence records, and verify the next step."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "取得した根拠と回答の主張を別々に照合し、原資料・抽出・検索・入力受渡し・生成のどこを直すか決める"
+  short_description: "取得根拠と回答を別々に照合し、検索・入力・生成の修正先を絞る。"
+  default_prompt: "Use $evaluate-retrieval-evidence for one bounded use case, reuse existing evidence records, and verify the next step."

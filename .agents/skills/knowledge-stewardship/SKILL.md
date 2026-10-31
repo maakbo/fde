@@ -20,6 +20,11 @@ to resolve source scope and status, or [exercise-knowledge-transfer](https://git
 to test application and return corrections. Keep the same knowledge ID, version,
 evidence and unresolved decisions across these handoffs; load only the task needed.
 
+For retrieval preparation or evaluation in the full clone, use
+[prepare-retrieval-units](https://github.com/maakbo/fde/blob/main/.agents/skills/prepare-retrieval-units/SKILL.md)
+and [evaluate-retrieval-evidence](https://github.com/maakbo/fde/blob/main/.agents/skills/evaluate-retrieval-evidence/SKILL.md)
+only for the task needed. Reuse the source reconciliation and output checks already recorded.
+
 ## Work through one use case
 
 1. **Choose the decision and user.** Ask what someone needs to judge or do, what

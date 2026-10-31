@@ -55,10 +55,6 @@
 - [導入した仕組みの目的・管理者・版・利用・負担・失敗を棚卸し、継続/改善/停止の判断材料を返す](../../.agents/skills/review-operating-inventory/SKILL.md)
 - [技術や業務条件の変化を、対象業務の未達・品質・負担・費用へ結び付けて再評価する](../../.agents/skills/reassess-technology-fit/SKILL.md)
 
-### 実装へ渡す
-
-- [設計から実装へ引き渡す](../../.agents/skills/prepare-implementation-handoff/SKILL.md)
-
 ### 知識を引き継ぐ
 
 - [経験者の判断を条件・理由・例外がある知識にする](../../.agents/skills/write-conditional-knowledge/SKILL.md)
@@ -71,11 +67,22 @@
 - [資料の版・適用条件・利用範囲を区別する属性を設計する](../../.agents/skills/design-source-metadata/SKILL.md)
 - [次へ渡す項目と、意味・権限の確認や返却を決める](../../.agents/skills/define-data-handoff/SKILL.md)
 
+### 根拠を探して回答を確かめる
+
+- [条件・例外・出典を保った参照単位を作る](../../.agents/skills/prepare-retrieval-units/SKILL.md)
+- [検索結果・回答入力・回答を分けて評価する](../../.agents/skills/evaluate-retrieval-evidence/SKILL.md)
+
+### 実装へ渡す
+
+- [設計から実装へ引き渡す](../../.agents/skills/prepare-implementation-handoff/SKILL.md)
+
 ## 前後をつなぐ
 
 現場の仕事が曖昧なら粒度確認と一件の追跡へ。変更案は現状とは別に作り、図を返して具体例で訂正します。
 方式や投資の判断前には対象の失敗・影響と対応案も渡します。未確認は仮説/未決のまま残します。
 対象・版・根拠・未決を次の作業へ引き継ぎ、同じ質問を最初から繰り返しません。
+資料と根拠の照合→必要な属性/参照単位→取得と入力→回答の照合→実装への受渡しを、今の課題に必要な部分だけ使います。
+Skillも排除・統合・順序変更・簡素化で見直します。同じ入力から同じ判断/成果を返す重複を減らし、成果の責任や使う場面が違う作業は集中できる単位として残します。
 
 導入全体の進行は[一件を試して仕事へ戻す](../../.agents/skills/discovery-facilitation/references/field-delivery-loop.md)、
 知識の維持は[Knowledge Stewardship](../../.agents/skills/knowledge-stewardship/SKILL.md)、
@@ -88,6 +95,7 @@ FDEは設計文書の作成に留まらず、動くagent・接続・コード・
 [基本設計をまとめる例](../../examples/design-preparation/README.md)では、現状の追跡、変更案、図への訂正、試行で見つけた誤りと修正を確認できます。
 [経験者の判断を次の設計へ渡す例](../../examples/design-preparation/knowledge-practice.md)では、条件付き知識・根拠照合・別役の適用まで試しています。
 [設計下書きの情報と受渡しの例](../../examples/design-preparation/data-practice.md)では、部分ごとの処理分担と属性・契約を試しています。
+[根拠を探して条件を確かめる例](../../examples/design-preparation/retrieval-practice.md)では、取得と回答入力・回答を分け、既存の記録を再利用します。
 成果の型は[templates/field-work](../../templates/field-work/)。空欄を全て埋めることを完了条件にしません。
 
 この作業群はfull cloneで取得できます。既存のconsumer profileは選択した範囲の配布で、この作業群全てを含むものではありません。

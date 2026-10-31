@@ -108,6 +108,8 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "prepare-retrieval-units",
+    "evaluate-retrieval-evidence",
     "map-data-processing",
     "design-source-metadata",
     "define-data-handoff",

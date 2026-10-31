@@ -1,0 +1,14 @@
+{
+  "exercise_only": true,
+  "sources": [
+    {"id": "P0", "product": "予約管理v1", "state": "旧版", "audience": "内部設計", "allowed": true, "sections": [{"position": "§1", "text": "候補を絞り込むなら自由入力の状態値を置ける"}]},
+    {"id": "P2", "product": "予約管理v2", "state": "承認済み現行", "audience": "内部設計", "allowed": true, "sections": [
+      {"position": "§1", "text": "状態条件を追加する設計では、承認済み状態マスターの版を設計票へ記録する"},
+      {"position": "§2", "text": "§1の版を確認できない場合は状態値を推測せず、未解決として担当SEへ返す"},
+      {"position": "§3", "text": "CSV出力の設計は§1–§2の対象外"}
+    ]},
+    {"id": "P3", "product": "予約管理v2", "state": "未承認草案", "audience": "内部設計", "allowed": true, "sections": [{"position": "§1", "text": "候補を絞り込むなら仮の状態値で進める案"}]},
+    {"id": "P4", "product": "予約管理v2", "state": "承認済み", "audience": "別チーム専用", "allowed": false, "sections": []},
+    {"id": "P9", "product": "予約管理v2", "state": "承認済み現行", "audience": "別チーム専用", "allowed": false, "test_only": true, "sections": [{"position": "§test", "text": "候補を絞り込む 状態条件 CSV"}]}
+  ]
+}
