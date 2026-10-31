@@ -1,0 +1,4 @@
+interface:
+  display_name: "知識の候補を承認済みの根拠と適用範囲・有効状態へ照合し、現行/保留/失効を整理する"
+  short_description: "知識の候補を承認済みの根拠と適用範囲・有効状態へ照合し、現行/保留/失効を整理する。新しい日付や経験だけで正本を決めない作業。"
+  default_prompt: "Use $reconcile-knowledge-sources to turn the available evidence into usable knowledge and a verifiable next action."

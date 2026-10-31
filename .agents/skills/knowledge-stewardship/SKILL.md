@@ -13,6 +13,13 @@ knowledge, SECI, data types, source preparation, RAG, and diagnosis. For control
 and specialist handoff read
 [governance-and-use.md](../ai-pilot-evaluation/references/governance-and-use.md).
 
+Focused tasks are available in the full FDE clone (selected consumer profiles
+do not include them): [write-conditional-knowledge](https://github.com/maakbo/fde/blob/main/.agents/skills/write-conditional-knowledge/SKILL.md)
+to express the reasoning, [reconcile-knowledge-sources](https://github.com/maakbo/fde/blob/main/.agents/skills/reconcile-knowledge-sources/SKILL.md)
+to resolve source scope and status, or [exercise-knowledge-transfer](https://github.com/maakbo/fde/blob/main/.agents/skills/exercise-knowledge-transfer/SKILL.md)
+to test application and return corrections. Keep the same knowledge ID, version,
+evidence and unresolved decisions across these handoffs; load only the task needed.
+
 ## Work through one use case
 
 1. **Choose the decision and user.** Ask what someone needs to judge or do, what

@@ -59,6 +59,12 @@
 
 - [設計から実装へ引き渡す](../../.agents/skills/prepare-implementation-handoff/SKILL.md)
 
+### 知識を引き継ぐ
+
+- [経験者の判断を条件・理由・例外がある知識にする](../../.agents/skills/write-conditional-knowledge/SKILL.md)
+- [根拠の版・権限・適用範囲を照合する](../../.agents/skills/reconcile-knowledge-sources/SKILL.md)
+- [別の担当者・別の一件で知識を使い、誤りを戻す](../../.agents/skills/exercise-knowledge-transfer/SKILL.md)
+
 ## 前後をつなぐ
 
 現場の仕事が曖昧なら粒度確認と一件の追跡へ。変更案は現状とは別に作り、図を返して具体例で訂正します。
@@ -74,6 +80,7 @@ FDEは設計文書の作成に留まらず、動くagent・接続・コード・
 ## まず一件を試す
 
 [基本設計をまとめる例](../../examples/design-preparation/README.md)では、現状の追跡、変更案、図への訂正、試行で見つけた誤りと修正を確認できます。
+[経験者の判断を次の設計へ渡す例](../../examples/design-preparation/knowledge-practice.md)では、条件付き知識・根拠照合・別役の適用まで試しています。
 成果の型は[templates/field-work](../../templates/field-work/)。空欄を全て埋めることを完了条件にしません。
 
 この作業群はfull cloneで取得できます。既存のconsumer profileは選択した範囲の配布で、この作業群全てを含むものではありません。

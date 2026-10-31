@@ -1,0 +1,4 @@
+interface:
+  display_name: "経験者の判断を、場面・理由・条件・例外・根拠と更新先がある知識記録へまとめる"
+  short_description: "経験者の判断を、場面・理由・条件・例外・根拠と更新先がある知識記録へまとめる。手順や要約だけでは判断が引き継げない時に使う。"
+  default_prompt: "Use $write-conditional-knowledge to turn the available evidence into usable knowledge and a verifiable next action."

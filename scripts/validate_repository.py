@@ -108,6 +108,9 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "write-conditional-knowledge",
+    "reconcile-knowledge-sources",
+    "exercise-knowledge-transfer",
     "agree-staged-change",
     "analyze-change-gaps",
     "clarify-work-grain",

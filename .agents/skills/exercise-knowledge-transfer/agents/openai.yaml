@@ -1,0 +1,4 @@
+interface:
+  display_name: "知識記録を別の人や別条件の一件へ適用し、誤りを元の知識へ戻す"
+  short_description: "知識記録を別の人や別条件の一件へ適用し、誤りを元の知識へ戻す。説明や保存だけで知識移転が終わったとしないための試行。"
+  default_prompt: "Use $exercise-knowledge-transfer to turn the available evidence into usable knowledge and a verifiable next action."
