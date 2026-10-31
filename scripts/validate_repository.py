@@ -108,6 +108,9 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "map-data-processing",
+    "design-source-metadata",
+    "define-data-handoff",
     "write-conditional-knowledge",
     "reconcile-knowledge-sources",
     "exercise-knowledge-transfer",

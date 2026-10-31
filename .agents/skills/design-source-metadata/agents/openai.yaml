@@ -1,0 +1,4 @@
+interface:
+  display_name: "必要な資料を対象・版・適用条件・権限で区別できる属性を設計し、作成更新の手順へ組み込む"
+  short_description: "資料の版・適用条件・利用範囲を区別し、作成更新に必要な属性を設計する。"
+  default_prompt: "Use $design-source-metadata to turn available data evidence into a bounded processing design and verifiable next step."

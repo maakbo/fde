@@ -1,0 +1,4 @@
+interface:
+  display_name: "処理結果を次の担当やシステムへ渡す項目・型・根拠・未解決・拒否条件を定める"
+  short_description: "次へ渡す項目と、型・意味・根拠・操作許可の確認や返却を定める。"
+  default_prompt: "Use $define-data-handoff to turn available data evidence into a bounded processing design and verifiable next step."

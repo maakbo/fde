@@ -1,0 +1,4 @@
+interface:
+  display_name: "業務の情報を部分ごとに見て、取得・計算・解釈・操作の担当を決める"
+  short_description: "業務の情報を部分ごとに調べ、取得・計算・解釈・操作の担当を整理する。"
+  default_prompt: "Use $map-data-processing to turn available data evidence into a bounded processing design and verifiable next step."

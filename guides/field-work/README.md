@@ -65,6 +65,12 @@
 - [根拠の版・権限・適用範囲を照合する](../../.agents/skills/reconcile-knowledge-sources/SKILL.md)
 - [別の担当者・別の一件で知識を使い、誤りを戻す](../../.agents/skills/exercise-knowledge-transfer/SKILL.md)
 
+### 情報を処理と受渡しへつなぐ
+
+- [情報の部分ごとに取得・計算・解釈・操作の担当を決める](../../.agents/skills/map-data-processing/SKILL.md)
+- [資料の版・適用条件・利用範囲を区別する属性を設計する](../../.agents/skills/design-source-metadata/SKILL.md)
+- [次へ渡す項目と、意味・権限の確認や返却を決める](../../.agents/skills/define-data-handoff/SKILL.md)
+
 ## 前後をつなぐ
 
 現場の仕事が曖昧なら粒度確認と一件の追跡へ。変更案は現状とは別に作り、図を返して具体例で訂正します。
@@ -81,6 +87,7 @@ FDEは設計文書の作成に留まらず、動くagent・接続・コード・
 
 [基本設計をまとめる例](../../examples/design-preparation/README.md)では、現状の追跡、変更案、図への訂正、試行で見つけた誤りと修正を確認できます。
 [経験者の判断を次の設計へ渡す例](../../examples/design-preparation/knowledge-practice.md)では、条件付き知識・根拠照合・別役の適用まで試しています。
+[設計下書きの情報と受渡しの例](../../examples/design-preparation/data-practice.md)では、部分ごとの処理分担と属性・契約を試しています。
 成果の型は[templates/field-work](../../templates/field-work/)。空欄を全て埋めることを完了条件にしません。
 
 この作業群はfull cloneで取得できます。既存のconsumer profileは選択した範囲の配布で、この作業群全てを含むものではありません。
