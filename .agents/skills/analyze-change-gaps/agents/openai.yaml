@@ -1,0 +1,4 @@
+interface:
+  display_name: "現行と変更案の差から、必要な情報・役割・許可・実装・検証の変更を特定する"
+  short_description: "現行と変更案の差から、必要な情報・役割・許可・実装・検証の変更を特定する。To-Beの図だけで導入可能としない受渡し作業。"
+  default_prompt: "Use $analyze-change-gaps to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "件数・処理経路・入出力トークンと単価から推論利用費を見積もる"
+  short_description: "件数・処理経路・入出力トークンと単価から推論利用費を見積もる。工数やROI、総費用と混同しない概算作業。"
+  default_prompt: "Use $estimate-inference-cost to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

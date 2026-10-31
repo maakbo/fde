@@ -1,0 +1,4 @@
+interface:
+  display_name: "業務に合う起動条件を決める"
+  short_description: "業務の開始契機から起動対象・委任範囲・重複・失敗・返却を設計する。直接依頼・定時・イベントを選び、実行器へ起動契約を渡す時に使"
+  default_prompt: "Use $design-trigger-contract to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

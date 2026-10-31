@@ -1,0 +1,4 @@
+interface:
+  display_name: "相手の仕事に沿ってAIへ任せる仕組みを説明する"
+  short_description: "相手の仕事に沿ってAIへ任せる仕組みを説明する。AI、生成、参照、実行の混同や過大期待をほどく説明・対話時に使う。"
+  default_prompt: "Use $explain-agent-capability to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

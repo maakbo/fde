@@ -1,0 +1,4 @@
+interface:
+  display_name: "選んだ業務の成果を子目標と作業へ分け、順序・条件・受渡しを具体化する"
+  short_description: "選んだ業務の成果を子目標と作業へ分け、順序・条件・受渡しを具体化する。HTAの粒度をクリックやagent数へ機械的に合わせない"
+  default_prompt: "Use $decompose-work-goals to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

@@ -18,6 +18,8 @@ iPad・iPhone・MacBookからChatGPTやCodexを使い、GitHubへ記憶と成果
 
 ## 実務で試す
 
+[作業を選んで、相談から試せる条件を作る](guides/field-work/README.md)：現場観察・業務再設計・委任・接続・費用・検証を作業単位のSkillで進めます。[基本設計をまとめる実践例](examples/design-preparation/README.md)も使えます。
+
 [相談から一件を試して仕事へ戻す](.agents/skills/discovery-facilitation/references/field-delivery-loop.md): 業務理解・対象選択・条件と責任・任せ方の設計・試行・評価・運用引継ぎを、同じ記録でつなぎます。
 
 [機能追加を、要件定義からリリース準備まで進める](examples/field-delivery/order-search/README.md): 開発チームがAIと要件・設計・実装・テストを引き継ぐ、通常のシステム開発の一件。

@@ -1,0 +1,4 @@
+interface:
+  display_name: "特定した失敗に対し予防・検知・停止・業務継続・復旧を設計する"
+  short_description: "特定した失敗に対し予防・検知・停止・業務継続・復旧を設計する。指示や根拠表示だけで安全としない具体的な運用契約を作る時に使う。"
+  default_prompt: "Use $design-risk-response to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

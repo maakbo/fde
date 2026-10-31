@@ -1,0 +1,4 @@
+interface:
+  display_name: "業務の関係と手順を図で返し、担当者の具体例で訂正して反映する"
+  short_description: "業務の関係と手順を図で返し、担当者の具体例で訂正して反映する。Contextから選んだ業務のFlowへ降りる対話作業。"
+  default_prompt: "Use $facilitate-process-dialogue to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

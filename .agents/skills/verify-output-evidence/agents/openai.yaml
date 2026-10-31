@@ -1,0 +1,4 @@
+interface:
+  display_name: "生成物の主張や操作を原資料・期待結果・許可へ照合し、修正と再確認へ返す"
+  short_description: "生成物の主張や操作を原資料・期待結果・許可へ照合し、修正と再確認へ返す。出典表示や流暢さだけで正しいと扱わない確認作業。"
+  default_prompt: "Use $verify-output-evidence to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

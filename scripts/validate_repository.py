@@ -108,6 +108,35 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "agree-staged-change",
+    "analyze-change-gaps",
+    "clarify-work-grain",
+    "classify-task-nature",
+    "compare-model-options",
+    "decompose-work-goals",
+    "define-delegation-boundary",
+    "design-future-work",
+    "design-risk-response",
+    "design-task-input",
+    "design-trigger-contract",
+    "elicit-tacit-decisions",
+    "estimate-benefit-conditions",
+    "estimate-inference-cost",
+    "estimate-total-cost",
+    "explain-agent-capability",
+    "facilitate-process-dialogue",
+    "identify-adoption-risks",
+    "measure-workload-and-wait",
+    "partition-agent-roles",
+    "prepare-connection-requirements",
+    "prepare-investment-decision",
+    "reassess-technology-fit",
+    "reconcile-procedure-and-practice",
+    "redesign-process-options",
+    "review-operating-inventory",
+    "verify-output-evidence",
+    "walkthrough-current-case",
+    "prepare-implementation-handoff",
     "team-adoption-facilitation",
     "workflow-design-facilitation",
     "definition-facilitation",
@@ -635,6 +664,14 @@ def main() -> int:
     architecture = ".agents/skills/architecture-modeling/scripts/check_architecture_context.py"
     business = ".agents/skills/business-context-modeling/scripts/check_business_context.py"
     flow = ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py"
+    design_sample = "examples/design-preparation"
+    run([sys.executable, reader_checker,
+         f"{design_sample}/README.md", f"{design_sample}/current-flow.md",
+         f"{design_sample}/agent-assisted-flow.md", f"{design_sample}/practice.md"])
+    run([sys.executable, context, f"{design_sample}/README.md", "--strict"])
+    run([sys.executable, business, f"{design_sample}/README.md"])
+    run([sys.executable, flow, f"{design_sample}/current-flow.md", "--strict"])
+    run([sys.executable, flow, f"{design_sample}/agent-assisted-flow.md", "--strict"])
     run([sys.executable, flow, "examples/request-triage/README.md", "--strict"])
     run([sys.executable, business, "templates/icon-context.md"])
     run([sys.executable, architecture, "templates/architecture-context.md", "--strict"])

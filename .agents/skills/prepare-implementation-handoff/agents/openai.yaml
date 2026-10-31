@@ -1,0 +1,4 @@
+interface:
+  display_name: "設計から実装へ引き渡す"
+  short_description: "業務・要件の条件を、実行可能なエージェントやシステムを作る担当へ渡す"
+  default_prompt: "Use $prepare-implementation-handoff to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

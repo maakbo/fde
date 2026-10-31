@@ -1,0 +1,4 @@
+interface:
+  display_name: "理想の業務変更と現実の制約の間で、段階案・残る負担・リスクと期待を関係者へ返す"
+  short_description: "理想の業務変更と現実の制約の間で、段階案・残る負担・リスクと期待を関係者へ返す。制約があっても許可内の次の試行へ進むための調整"
+  default_prompt: "Use $agree-staged-change to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

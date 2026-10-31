@@ -1,0 +1,4 @@
+interface:
+  display_name: "人とagentの提案・確定・実行・確認の境界を操作単位で決める"
+  short_description: "人とagentの提案・確定・実行・確認の境界を操作単位で決める。自律性の呼び名を実行可能な契約にする時に使う。"
+  default_prompt: "Use $define-delegation-boundary to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

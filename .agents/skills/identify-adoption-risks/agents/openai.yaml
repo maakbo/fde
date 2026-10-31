@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI導入の対象業務から具体的失敗と影響を洗い出す"
+  short_description: "AI導入の対象業務から具体的失敗と影響を洗い出す。品質だけでなく利用・管理・情報や公平性を含め、対応設計へ渡す時に使う。"
+  default_prompt: "Use $identify-adoption-risks to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

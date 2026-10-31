@@ -1,0 +1,4 @@
+interface:
+  display_name: "現行業務を目的から見直し、排除・統合・順序変更・簡素化の選択肢を比較する"
+  short_description: "現行業務を目的から見直し、排除・統合・順序変更・簡素化の選択肢を比較する。不要工程をそのままAI化しないための作業。"
+  default_prompt: "Use $redesign-process-options to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

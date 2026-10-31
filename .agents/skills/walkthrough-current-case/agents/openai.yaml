@@ -1,0 +1,4 @@
+interface:
+  display_name: "最近の一件を担当者とたどり、現状の入力・判断・受渡し・例外を記録する"
+  short_description: "最近の一件を担当者とたどり、現状の入力・判断・受渡し・例外を記録する。改善案と現状を分けて業務フローの材料を作る時に使う。"
+  default_prompt: "Use $walkthrough-current-case to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

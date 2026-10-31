@@ -1,0 +1,4 @@
+interface:
+  display_name: "技術や業務条件の変化を、対象業務の未達・品質・負担・費用へ結び付けて再評価する"
+  short_description: "技術や業務条件の変化を、対象業務の未達・品質・負担・費用へ結び付けて再評価する。話題の新技術をそのまま採用しないための作業。"
+  default_prompt: "Use $reassess-technology-fit to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

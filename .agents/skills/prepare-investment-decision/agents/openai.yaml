@@ -1,0 +1,4 @@
+interface:
+  display_name: "投資と次の試行の判断材料を作る"
+  short_description: "費用・効果・定性的価値・リスクを比較し、判断者へ次の検証や投資の判断材料を返す。余力換算だけのROIや架空の承認を避ける時に使"
+  default_prompt: "Use $prepare-investment-decision to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

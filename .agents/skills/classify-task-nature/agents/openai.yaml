@@ -1,0 +1,4 @@
+interface:
+  display_name: "一連の業務から具体的作業の性質と検証方法を整理する"
+  short_description: "一連の業務から具体的作業の性質と検証方法を整理する。分類・生成という名前だけで実装方式を決めず、手段比較へ渡す時に使う。"
+  default_prompt: "Use $classify-task-nature to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

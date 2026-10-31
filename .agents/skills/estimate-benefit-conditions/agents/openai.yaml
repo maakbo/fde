@@ -1,0 +1,4 @@
+interface:
+  display_name: "業務の変更から余力・品質・利用体験・実際の支出減へつながる条件を見積もる"
+  short_description: "業務の変更から余力・品質・利用体験・実際の支出減へつながる条件を見積もる。工数削減を現金効果と混同せず、効果を検証へ渡す作業。"
+  default_prompt: "Use $estimate-benefit-conditions to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

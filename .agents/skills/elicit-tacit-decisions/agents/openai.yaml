@@ -1,0 +1,4 @@
+interface:
+  display_name: "担当者が無意識に使う判断条件を、実例の違いと反例から引き出す"
+  short_description: "担当者が無意識に使う判断条件を、実例の違いと反例から引き出す。手順だけでは説明できない分岐を実装へ渡す時に使う。"
+  default_prompt: "Use $elicit-tacit-decisions to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

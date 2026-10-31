@@ -1,0 +1,4 @@
+interface:
+  display_name: "現場で必要な外部接続の情報・操作・権限・変更予定を整理し、方式比較と実装へ渡す"
+  short_description: "現場で必要な外部接続の情報・操作・権限・変更予定を整理し、方式比較と実装へ渡す。MCPの採用や接続設定を先に決めないための作業"
+  default_prompt: "Use $prepare-connection-requirements to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

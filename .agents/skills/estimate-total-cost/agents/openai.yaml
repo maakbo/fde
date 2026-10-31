@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI導入の初期・情報整備・評価・利用・監視保守・終了費を同じ期間で積み上げる"
+  short_description: "AI導入の初期・情報整備・評価・利用・監視保守・終了費を同じ期間で積み上げる。API費用だけの概算を総費用へ展開する時に使う。"
+  default_prompt: "Use $estimate-total-cost to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

@@ -48,6 +48,7 @@ whole-handoff value. It does not grant rollout or personnel-policy authority.
    repository requests that review; the reviewer does not edit or publish.
    Do not call self-review independent review.
 8. Read only the references directly required by the selected Skill.
+For a focused analysis, design, evaluation, or operating task, select the task-sized Skill from `guides/field-work/README.md`. Preserve the same target, evidence, version, and unresolved conditions across handoffs.
 
 ## Working principles
 

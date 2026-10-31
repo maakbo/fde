@@ -1,0 +1,4 @@
+interface:
+  display_name: "一件の時間を担当別の人手・機械処理・待ちへ分け、効果比較に使える観測を作る"
+  short_description: "一件の時間を担当別の人手・機械処理・待ちへ分け、効果比較に使える観測を作る。体感や月次支援を案件の経過時間に混ぜない時に使う。"
+  default_prompt: "Use $measure-workload-and-wait to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

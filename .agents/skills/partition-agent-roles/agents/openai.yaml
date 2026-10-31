@@ -1,0 +1,4 @@
+interface:
+  display_name: "agentの役割と受渡しを分け、単一手順か複数agentかを比較して実行構成を渡す"
+  short_description: "agentの役割と受渡しを分け、単一手順か複数agentかを比較して実行構成を渡す。役割分解をagent増設と混同しない設計作"
+  default_prompt: "Use $partition-agent-roles to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

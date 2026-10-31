@@ -1,0 +1,4 @@
+interface:
+  display_name: "変更案を担当者が使う一件の流れへ具体化し、人とagentの役割・例外・成果を設計する"
+  short_description: "変更案を担当者が使う一件の流れへ具体化し、人とagentの役割・例外・成果を設計する。To-Beを実務で訂正できる形にする作業"
+  default_prompt: "Use $design-future-work to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

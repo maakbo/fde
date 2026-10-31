@@ -1,0 +1,4 @@
+interface:
+  display_name: "作業の期待結果から必要情報と入力の構成を設計する"
+  short_description: "作業の期待結果から必要情報と入力の構成を設計する。全文投入・検索・抽出・要約を条件欠落や費用で比較し、必要な根拠を渡す時に使う"
+  default_prompt: "Use $design-task-input to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

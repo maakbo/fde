@@ -1,0 +1,4 @@
+interface:
+  display_name: "導入した仕組みの目的・管理者・版・利用・負担・失敗を棚卸し、継続/改善/停止の判断材料を返す"
+  short_description: "導入した仕組みの目的・管理者・版・利用・負担・失敗を棚卸し、継続/改善/停止の判断材料を返す。台帳の存在を運用実態と混同しない"
+  default_prompt: "Use $review-operating-inventory to produce the next useful artifact for this work, preserving evidence and unresolved conditions."

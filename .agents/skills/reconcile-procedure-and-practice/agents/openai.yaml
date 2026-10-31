@@ -1,0 +1,4 @@
+interface:
+  display_name: "規定された手順と実際の一件の差を照合し、工夫・例外・統制上の未決を分ける"
+  short_description: "規定された手順と実際の一件の差を照合し、工夫・例外・統制上の未決を分ける。マニュアルをそのままAs-Isにしないための作業。"
+  default_prompt: "Use $reconcile-procedure-and-practice to produce the next useful artifact for this work, preserving evidence and unresolved conditions."
