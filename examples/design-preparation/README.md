@@ -80,3 +80,5 @@ flowchart LR
 [設計のAI支援を選び、次の担当へ渡す](standard-handoff/README.md)では、候補・業務境界・現行・役割・評価・判断の6成果を同じIDでつなぎます。
 
 [実践例の一覧](../../examples/README.md) / [FDEの仕事と業務](../../work/README.md)
+
+[変更レビューの準備](branch-practice.md)では、変更種別・影響度・資料の利用条件から、担当と確認範囲を振り分けます。

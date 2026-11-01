@@ -1,0 +1,4 @@
+interface:
+  display_name: "変数・条件分岐の設計"
+  short_description: "判断材料から二択・経路・選別と例外を設計し、境界ケースを実装へ渡す。"
+  default_prompt: "Use $design-workflow-branches to define workflow variables, routing and filtering conditions, defaults and returns, then verify branch boundaries."

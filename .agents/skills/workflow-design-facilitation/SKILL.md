@@ -57,6 +57,9 @@ is optional support. A diagram alone and a list of tools are not an executable d
    authority and tool failure need different meanings. Do not make low model
    confidence the only escalation condition or mistake high confidence for approval.
    Return an unmet requirement to its owner, not to a prompt that invents it.
+   For a focused variable/branch design, the full clone provides
+   [design-workflow-branches](https://github.com/maakbo/fde/blob/main/.agents/skills/design-workflow-branches/SKILL.md).
+   Reuse the existing value/data contracts and return testable routes, not a second process inventory.
 7. **Prepare the worker's context.** Use Architecture's
    [task-context.md](../architecture-modeling/references/task-context.md) to select
    instructions, current sources, decisions, state, tool/environment constraints

@@ -108,6 +108,7 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "design-workflow-branches",
     "design-action-chain",
     "compare-automation-options",
     "design-trial-success",
@@ -366,7 +367,7 @@ def validate_fde_reader_surface() -> None:
                 raise ValueError(f"{business}: missing {heading}")
         if procedure.count("```mermaid") != (2 if business == "operations" else 1):
             raise ValueError(f"{business}: unexpected task flow count")
-    # The 44 focused tasks precede the orchestration/modeling Skills in the
+    # The focused tasks precede the orchestration/modeling Skills in the
     # existing registry. Preserve their business entry points during migration.
     task_skills = set(SKILLS[:SKILLS.index("team-adoption-facilitation")])
     routed = set()
@@ -628,6 +629,8 @@ def main() -> int:
     run([sys.executable, "scripts/test_review_profile.py"])
     run([sys.executable, "-m", "unittest", "discover", "-s",
          "examples/field-delivery/order-search", "-p", "test_workflow.py"])
+    run([sys.executable, "-m", "unittest", "discover", "-s",
+         "examples/design-preparation/branch-lab", "-p", "test_*.py"])
     reader_checker = ".agents/skills/reader-facing-artifact-review/scripts/check_reader_artifact.py"
     run([sys.executable, ".agents/skills/reader-facing-artifact-review/scripts/test_reader_artifact.py"])
     run([sys.executable, ".agents/skills/mermaid-diagram-export/scripts/test_diagram_selection.py"])
