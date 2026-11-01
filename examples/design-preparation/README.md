@@ -82,3 +82,5 @@ flowchart LR
 [実践例の一覧](../../examples/README.md) / [FDEの仕事と業務](../../work/README.md)
 
 [変更レビューの準備](branch-practice.md)では、変更種別・影響度・資料の利用条件から、担当と確認範囲を振り分けます。
+
+[検索機能の設計レビュー](context-practice.md)では、作業へ渡す要件・API契約・許可を選び、根拠が欠ける時の返却まで確認します。

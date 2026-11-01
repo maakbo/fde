@@ -79,6 +79,7 @@ FDEとAIエージェントは、今必要な作業の手順だけを使います
 - [作業目標の分解](../../.agents/skills/decompose-work-goals/SKILL.md)
 - [自動化方式の比較](../../.agents/skills/compare-automation-options/SKILL.md)
 - [変数・条件分岐の設計](../../.agents/skills/design-workflow-branches/SKILL.md)
+- [AI出力の原因分析](../../.agents/skills/diagnose-context-quality/SKILL.md)
 - [AI入力の設計](../../.agents/skills/design-task-input/SKILL.md)
 - [委任範囲の設計](../../.agents/skills/define-delegation-boundary/SKILL.md)
 - [起動条件の設計](../../.agents/skills/design-trigger-contract/SKILL.md)

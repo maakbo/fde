@@ -78,6 +78,7 @@ flowchart TB
 FDEとAIエージェントは、今必要な作業の手順だけを使います。顧客は相談や具体例の確認から参加でき、全てのSkillを読む必要はありません。
 
 - [PoCの成功条件の設計](../../.agents/skills/design-trial-success/SKILL.md)
+- [AI出力の原因分析](../../.agents/skills/diagnose-context-quality/SKILL.md)
 - [出力と根拠の照合](../../.agents/skills/verify-output-evidence/SKILL.md)
 - [検索・回答品質の評価](../../.agents/skills/evaluate-retrieval-evidence/SKILL.md)
 - [判断知識の適用確認](../../.agents/skills/exercise-knowledge-transfer/SKILL.md)

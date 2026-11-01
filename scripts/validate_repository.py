@@ -108,6 +108,7 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "diagnose-context-quality",
     "design-workflow-branches",
     "design-action-chain",
     "compare-automation-options",

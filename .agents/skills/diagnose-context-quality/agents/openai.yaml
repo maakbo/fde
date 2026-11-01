@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI出力の原因分析"
+  short_description: "入力・根拠・状態・道具から原因仮説を立て、同条件と別条件の比較で改善を返す。"
+  default_prompt: "Use $diagnose-context-quality to compare this output with the actual input and evidence, test a bounded context change, and return remaining causes."

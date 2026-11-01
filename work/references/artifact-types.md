@@ -13,7 +13,7 @@
 | [現在の一件と暗黙の判断](../../templates/field-work/case-observation-record.md) | [elicit-tacit-decisions](../../.agents/skills/elicit-tacit-decisions/SKILL.md), [reconcile-procedure-and-practice](../../.agents/skills/reconcile-procedure-and-practice/SKILL.md), [walkthrough-current-case](../../.agents/skills/walkthrough-current-case/SKILL.md) |
 | [判断を引き継ぐ知識記録](../../templates/field-work/conditional-knowledge.md) | [reconcile-knowledge-sources](../../.agents/skills/reconcile-knowledge-sources/SKILL.md), [write-conditional-knowledge](../../.agents/skills/write-conditional-knowledge/SKILL.md) |
 | [接続の必要条件と実装への受渡し](../../templates/field-work/connection-requirements.md) | [prepare-connection-requirements](../../.agents/skills/prepare-connection-requirements/SKILL.md) |
-| [渡す情報と出力の根拠](../../templates/field-work/context-and-evidence-record.md) | [design-task-input](../../.agents/skills/design-task-input/SKILL.md), [verify-output-evidence](../../.agents/skills/verify-output-evidence/SKILL.md) |
+| [渡す情報と出力の根拠](../../templates/field-work/context-and-evidence-record.md) | [design-task-input](../../.agents/skills/design-task-input/SKILL.md), [verify-output-evidence](../../.agents/skills/verify-output-evidence/SKILL.md), [diagnose-context-quality](../../.agents/skills/diagnose-context-quality/SKILL.md) |
 | [総費用と効果の前提](../../templates/field-work/cost-benefit-record.md) | [estimate-benefit-conditions](../../.agents/skills/estimate-benefit-conditions/SKILL.md), [estimate-total-cost](../../.agents/skills/estimate-total-cost/SKILL.md), [prepare-investment-decision](../../.agents/skills/prepare-investment-decision/SKILL.md) |
 | [次の処理へ渡すデータの契約](../../templates/field-work/data-handoff-contract.md) | [define-data-handoff](../../.agents/skills/define-data-handoff/SKILL.md) |
 | [情報と処理の対応](../../templates/field-work/data-processing-record.md) | [design-source-capture](../../.agents/skills/design-source-capture/SKILL.md), [design-source-metadata](../../.agents/skills/design-source-metadata/SKILL.md), [map-data-processing](../../.agents/skills/map-data-processing/SKILL.md), [prepare-retrieval-units](../../.agents/skills/prepare-retrieval-units/SKILL.md) |
@@ -31,6 +31,6 @@
 | [人手・処理・待ちを分けた時間観測](../../templates/field-work/work-time-record.md) | [measure-workload-and-wait](../../.agents/skills/measure-workload-and-wait/SKILL.md) |
 | [知識を使い、更新するための記録](../../templates/knowledge-use-brief.md) | [evaluate-retrieval-evidence](../../.agents/skills/evaluate-retrieval-evidence/SKILL.md), [refresh-reference-release](../../.agents/skills/refresh-reference-release/SKILL.md) |
 | [AI導入の体制・定着計画](../../templates/team-adoption-brief.md) | [team-adoption-facilitation](../../.agents/skills/team-adoption-facilitation/SKILL.md) |
-| [自動化ワークフロー設計](../../templates/workflow-brief.md) | [design-action-chain](../../.agents/skills/design-action-chain/SKILL.md)  [design-workflow-branches](../../.agents/skills/design-workflow-branches/SKILL.md) |
+| [自動化ワークフロー設計](../../templates/workflow-brief.md) | [design-action-chain](../../.agents/skills/design-action-chain/SKILL.md), [design-workflow-branches](../../.agents/skills/design-workflow-branches/SKILL.md) |
 
 この一覧の26型は記入区分を確認した範囲。型の分類と、別担当が実際に使えること、現場で効果が出ることは別に確認する。受渡しの段階判断は既存の成果を参照し、試行で不足が見つかれば該当する型/Skillへ戻して直す。
