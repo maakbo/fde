@@ -6,10 +6,10 @@
 
 | 成果 | 主に使う作業/進行 |
 | --- | --- |
-| [小さく試して、次を判断する](../../../templates/ai-trial-brief.md) | [decide-trial-next-step](../../../.agents/skills/decide-trial-next-step/SKILL.md), [design-trial-success](../../../.agents/skills/design-trial-success/SKILL.md) |
-| [変える仕事の条件を合わせる](../../../templates/definition-brief.md) | [definition-facilitation](../../../.agents/skills/definition-facilitation/SKILL.md) |
-| [次の仕事へ進める根拠を確認する](../../../templates/delivery-review.md) | [decide-trial-next-step](../../../.agents/skills/decide-trial-next-step/SKILL.md) |
-| [Discovery Brief](../../../templates/discovery-brief.md) | [discovery-facilitation](../../../.agents/skills/discovery-facilitation/SKILL.md) |
+| [PoC計画・評価](../../../templates/ai-trial-brief.md) | [decide-trial-next-step](../../../.agents/skills/decide-trial-next-step/SKILL.md), [design-trial-success](../../../.agents/skills/design-trial-success/SKILL.md) |
+| [業務要件定義](../../../templates/definition-brief.md) | [definition-facilitation](../../../.agents/skills/definition-facilitation/SKILL.md) |
+| [次工程への移行判断](../../../templates/delivery-review.md) | [decide-trial-next-step](../../../.agents/skills/decide-trial-next-step/SKILL.md) |
+| [業務課題・改善候補の整理](../../../templates/discovery-brief.md) | [discovery-facilitation](../../../.agents/skills/discovery-facilitation/SKILL.md) |
 | [現在の一件と暗黙の判断](../../../templates/field-work/case-observation-record.md) | [elicit-tacit-decisions](../../../.agents/skills/elicit-tacit-decisions/SKILL.md), [reconcile-procedure-and-practice](../../../.agents/skills/reconcile-procedure-and-practice/SKILL.md), [walkthrough-current-case](../../../.agents/skills/walkthrough-current-case/SKILL.md) |
 | [判断を引き継ぐ知識記録](../../../templates/field-work/conditional-knowledge.md) | [reconcile-knowledge-sources](../../../.agents/skills/reconcile-knowledge-sources/SKILL.md), [write-conditional-knowledge](../../../.agents/skills/write-conditional-knowledge/SKILL.md) |
 | [接続の必要条件と実装への受渡し](../../../templates/field-work/connection-requirements.md) | [prepare-connection-requirements](../../../.agents/skills/prepare-connection-requirements/SKILL.md) |
@@ -30,7 +30,7 @@
 | [仕事・業務・作業の位置と境界](../../../templates/field-work/work-grain-record.md) | [clarify-work-grain](../../../.agents/skills/clarify-work-grain/SKILL.md), [decompose-work-goals](../../../.agents/skills/decompose-work-goals/SKILL.md) |
 | [人手・処理・待ちを分けた時間観測](../../../templates/field-work/work-time-record.md) | [measure-workload-and-wait](../../../.agents/skills/measure-workload-and-wait/SKILL.md) |
 | [知識を使い、更新するための記録](../../../templates/knowledge-use-brief.md) | [evaluate-retrieval-evidence](../../../.agents/skills/evaluate-retrieval-evidence/SKILL.md), [refresh-reference-release](../../../.agents/skills/refresh-reference-release/SKILL.md) |
-| [チームで一件を試すための記録](../../../templates/team-adoption-brief.md) | [team-adoption-facilitation](../../../.agents/skills/team-adoption-facilitation/SKILL.md) |
-| [一回の仕事を動かす条件](../../../templates/workflow-brief.md) | [design-action-chain](../../../.agents/skills/design-action-chain/SKILL.md) |
+| [AI導入の体制・定着計画](../../../templates/team-adoption-brief.md) | [team-adoption-facilitation](../../../.agents/skills/team-adoption-facilitation/SKILL.md) |
+| [自動化ワークフロー設計](../../../templates/workflow-brief.md) | [design-action-chain](../../../.agents/skills/design-action-chain/SKILL.md) |
 
 この一覧の26型は記入区分を確認した範囲。型の分類と、別担当が実際に使えること、現場で効果が出ることは別に確認する。受渡しの段階判断は既存の成果を参照し、試行で不足が見つかれば該当する型/Skillへ戻して直す。
