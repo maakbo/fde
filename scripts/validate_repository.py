@@ -108,6 +108,8 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "clarify-adoption-conditions",
+    "rehearse-ai-assisted-work",
     "diagnose-context-quality",
     "design-workflow-branches",
     "design-action-chain",

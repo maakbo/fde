@@ -1,0 +1,4 @@
+interface:
+  display_name: "導入条件のすり合わせ"
+  short_description: "関係者の具体的な仕事から条件・支援・実行した範囲を整理し、次の判断へ渡す。"
+  default_prompt: "Use $clarify-adoption-conditions to facilitate this team introduction and return evidence, unresolved conditions and next support without inventing consent."

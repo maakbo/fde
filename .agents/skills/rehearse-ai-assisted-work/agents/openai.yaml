@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI協働の実務練習"
+  short_description: "関係者の具体的な仕事から条件・支援・実行した範囲を整理し、次の判断へ渡す。"
+  default_prompt: "Use $rehearse-ai-assisted-work to facilitate this team introduction and return evidence, unresolved conditions and next support without inventing consent."

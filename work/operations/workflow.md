@@ -120,6 +120,8 @@ flowchart TB
 
 FDEとAIエージェントは、今必要な作業の手順だけを使います。顧客は相談や具体例の確認から参加でき、全てのSkillを読む必要はありません。
 
+- [導入条件のすり合わせ](../../.agents/skills/clarify-adoption-conditions/SKILL.md)
+- [AI協働の実務練習](../../.agents/skills/rehearse-ai-assisted-work/SKILL.md)
 - [運用状況の棚卸し](../../.agents/skills/review-operating-inventory/SKILL.md)
 - [技術・業務適合の再評価](../../.agents/skills/reassess-technology-fit/SKILL.md)
 - [参照知識の更新・切替](../../.agents/skills/refresh-reference-release/SKILL.md)

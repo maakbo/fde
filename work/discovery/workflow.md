@@ -91,3 +91,5 @@ FDEとAIエージェントは、今必要な作業の手順だけを使います
 [業務分析の考え方](references/work-analysis-methods.md)
 
 [次の業務：業務要件定義](../planning/README.md)
+
+関係者の懸念や過去の導入経験が対象選定に影響する時は、[導入条件のすり合わせ](../../.agents/skills/clarify-adoption-conditions/SKILL.md)で具体的な確認条件へ返します。
