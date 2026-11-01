@@ -89,3 +89,9 @@ sandboxからpilot、修正再試行、展開と知識の更新は
 既存の試行結果から次だけを決める時は、full cloneの
 [次の範囲と戻り先を決める作業](https://github.com/maakbo/fde/blob/main/.agents/skills/decide-trial-next-step/SKILL.md)
 を使える。条件の版と元の観測を引き継ぎ、品質の通過を業務適合や運用許可へ広げない。
+
+
+## 受渡しの判断を残す
+
+full cloneでは[次の仕事へ進める判断記録](https://github.com/maakbo/fde/blob/main/templates/delivery-review.md)へ、今回渡す成果/版、適用する条件/根拠、未達/未確認、判断案と実決定、次の許可済み操作/止める範囲をまとめる。
+既存Briefと試行結果をIDで参照し、全段階の表を複写しない。必須条件の未達を他の成功で相殺せず、欠測は失敗や成功へ変えない。受取者に不足と次の検証を返し、既に許可された準備は進める。
