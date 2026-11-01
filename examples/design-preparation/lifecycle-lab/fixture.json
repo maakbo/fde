@@ -1,0 +1,9 @@
+{
+  "exercise_only": true,
+  "documents": [
+    {"id":"D-S","version":"v1","status":"approved","product":"v2","valid_from":"2026-01-01","valid_until":"2026-11-01","internal_allowed":true,"content":"状態条件は自由入力"},
+    {"id":"D-S","version":"v2","status":"approved","product":"v2","valid_from":"2026-11-01","valid_until":null,"internal_allowed":true,"content":"状態条件は状態マスターを参照し、版が不明なら未決として担当SEへ返す"},
+    {"id":"D-S","version":"v3","status":"draft","product":"v2","valid_from":null,"valid_until":null,"internal_allowed":false,"content":"状態値を推測して進める案"},
+    {"id":"D-S","version":"v4","status":"approved","product":"v2","valid_from":"2026-12-01","valid_until":null,"internal_allowed":true,"content":"将来の手順"}
+  ]
+}
