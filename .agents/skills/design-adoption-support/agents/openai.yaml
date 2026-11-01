@@ -1,0 +1,4 @@
+interface:
+  display_name: "推進体制の設計"
+  short_description: "共通ルール・現場裁量・専門支援を比較し、担当・資源・例外と戻り先を具体化する。"
+  default_prompt: "Use $design-adoption-support to compare operating arrangements, define decision boundaries and support handoffs, and return unresolved capacity and authority."
