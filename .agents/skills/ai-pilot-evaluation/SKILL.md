@@ -70,7 +70,9 @@ permissions, specialist review, or operational readiness.
    single metric overrules safety/rights or resolves a missing authority. When
    ready for limited operations, check data access, service identity, integration,
    load/performance, failure/monitoring, stop/recovery, training/support and
-   maintenance owners separately. A successful PoC does not authorize rollout.
+   maintenance owners separately. A successful PoC does not authorize rollout. Link each governing condition
+   to its implemented control and observed evidence; a policy document alone is
+   not proof of enforcement. Reuse the risk-response and inventory records.
    Plan ongoing observation and re-evaluation when data, model, purpose, or policy
    changes; retain rollback and return-to-human work where needed.
 

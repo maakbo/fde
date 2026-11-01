@@ -72,6 +72,12 @@
 - [条件・例外・出典を保った参照単位を作る](../../.agents/skills/prepare-retrieval-units/SKILL.md)
 - [検索結果・回答入力・回答を分けて評価する](../../.agents/skills/evaluate-retrieval-evidence/SKILL.md)
 
+### 利用条件を判断へ返す
+
+- [情報の経路と操作を、法務・セキュリティ・業務の相談材料へする](../../.agents/skills/prepare-governance-review/SKILL.md)
+
+確認済みの条件は委任・対応設計へ引き継ぎ、方針/実行制御/証跡を結びます。運用移行の判定は既存のPilot、継続の実態は棚卸しを使います。
+
 ### 実装へ渡す
 
 - [設計から実装へ引き渡す](../../.agents/skills/prepare-implementation-handoff/SKILL.md)
@@ -96,6 +102,7 @@ FDEは設計文書の作成に留まらず、動くagent・接続・コード・
 [経験者の判断を次の設計へ渡す例](../../examples/design-preparation/knowledge-practice.md)では、条件付き知識・根拠照合・別役の適用まで試しています。
 [設計下書きの情報と受渡しの例](../../examples/design-preparation/data-practice.md)では、部分ごとの処理分担と属性・契約を試しています。
 [根拠を探して条件を確かめる例](../../examples/design-preparation/retrieval-practice.md)では、取得と回答入力・回答を分け、既存の記録を再利用します。
+[利用条件を相談へ返す例](../../examples/design-preparation/governance-practice.md)では、既存記録から判断材料をまとめ、許可内の下書きと確認待ちの操作を分けます。
 成果の型は[templates/field-work](../../templates/field-work/)。空欄を全て埋めることを完了条件にしません。
 
 この作業群はfull cloneで取得できます。既存のconsumer profileは選択した範囲の配布で、この作業群全てを含むものではありません。

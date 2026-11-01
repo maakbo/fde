@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI利用の条件を判断できる相談材料を作る"
+  short_description: "情報経路と操作・根拠を揃え、法務・セキュリティ・業務の判断へ返す。"
+  default_prompt: "Use $prepare-governance-review to prepare a bounded decision brief from the known data flow, authority, evidence and unresolved conditions."
