@@ -1,0 +1,4 @@
+interface:
+  display_name: "処理の成果をつなぎ、失敗と再開を決める"
+  short_description: "取得・抽出・生成・保存・人への受渡しを入出力でつなぎ、検証と戻り先を設計。"
+  default_prompt: "Use $design-action-chain to connect action inputs and outputs, validate dependencies, and define failure and resume paths for this work."

@@ -43,6 +43,9 @@ is optional support. A diagram alone and a list of tools are not an executable d
    stop/return. Separate obtaining data, interpreting/generating, and side effects;
    an API can do any of these. Arrange dependencies before notifying a recipient.
    Link related workflows through their output contract, rather than one giant flow.
+   For focused action handoffs, the full clone provides [design-action-chain](https://github.com/maakbo/fde/blob/main/.agents/skills/design-action-chain/SKILL.md).
+   Reuse its contracts and distinguish durable artifacts, readiness notification,
+   review waiting and business completion.
 5. **Make handoff values explicit.** For each value record name, meaning, source,
    expected type/allowed values, missing versus empty/false/zero, validator,
    lifetime, access and consumers. Distinguish one run's intermediate state from

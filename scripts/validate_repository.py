@@ -108,6 +108,7 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "design-action-chain",
     "compare-automation-options",
     "design-trial-success",
     "decide-trial-next-step",

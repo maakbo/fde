@@ -37,6 +37,7 @@
 - [相手の仕事に沿ってAIへ任せる仕組みを説明する](../../.agents/skills/explain-agent-capability/SKILL.md)
 - [作業の期待結果から必要情報と入力の構成を設計する](../../.agents/skills/design-task-input/SKILL.md)
 - [人とagentの提案・確定・実行・確認の境界を操作単位で決める](../../.agents/skills/define-delegation-boundary/SKILL.md)
+- [処理の入力と成果をつなぎ、検証・失敗・再開を実装へ渡す](../../.agents/skills/design-action-chain/SKILL.md)
 - [業務に合う起動条件を決める](../../.agents/skills/design-trigger-contract/SKILL.md)
 - [agentの役割と受渡しを分け、単一手順か複数agentかを比較して実行構成を渡す](../../.agents/skills/partition-agent-roles/SKILL.md)
 - [現場で必要な外部接続の情報・操作・権限・変更予定を整理し、方式比較と実装へ渡す](../../.agents/skills/prepare-connection-requirements/SKILL.md)
