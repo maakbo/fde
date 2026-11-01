@@ -126,6 +126,7 @@ FDEは設計文書の作成に留まらず、動くagent・接続・コード・
 [試行結果から次を決める例](../../examples/design-preparation/next-step-practice.md)では、事前条件と全受渡しの負担から次の最小試行を返します。
 [設計下書きの任せ方を選ぶ例](../../examples/design-preparation/automation-practice.md)では、候補比較から操作ごとの境界へつなぎ、下書きと模擬経路を実行します。
 [起動から下書きの受渡しまで動かす例](../../examples/design-preparation/action-practice.md)では、保存と準備完了の記録を分け、失敗/再開を試します。
+[6つの成果を同じIDで受け渡す例](../../examples/design-preparation/standard-handoff/README.md)では、型の列と未知/未達を保ち、次の担当へ渡す記録を確認できます。
 成果の型は[templates/field-work](../../templates/field-work/)。空欄を全て埋めることを完了条件にしません。
 
 この作業群はfull cloneで取得できます。既存のconsumer profileは選択した範囲の配布で、この作業群全てを含むものではありません。
