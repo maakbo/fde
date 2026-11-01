@@ -94,3 +94,5 @@ for a fictional application. Do not present its roles or thresholds as defaults.
 For focused work in a full clone, use [clarify-adoption-conditions](https://github.com/maakbo/fde/blob/main/.agents/skills/clarify-adoption-conditions/SKILL.md) to turn concerns/history into testable conditions, and [rehearse-ai-assisted-work](https://github.com/maakbo/fde/blob/main/.agents/skills/rehearse-ai-assisted-work/SKILL.md) to practise the handoff and report actual help/limits. Keep the same introduction record; do not repeat the interview or invent a participant's consent.
 
 For a focused operating arrangement, the full clone provides [design-adoption-support](https://github.com/maakbo/fde/blob/main/.agents/skills/design-adoption-support/SKILL.md). Reuse the same decision and role record; compare actual support and local discretion, not organization labels alone.
+
+For a changed job, use [redesign-work-role](https://github.com/maakbo/fde/blob/main/.agents/skills/redesign-work-role/SKILL.md) in the full clone to compare duties, capabilities, development support and contribution evidence. This returns a proposal, not an employee appraisal or an authorized job change.

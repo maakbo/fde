@@ -1,0 +1,4 @@
+interface:
+  display_name: "職務・育成の設計"
+  short_description: "AI導入前後の職務と必要な能力を比較し、育成・支援と評価観点を具体化する"
+  default_prompt: "$redesign-work-role を使い、この業務の職務変更案と育成・支援計画を作ってください。"

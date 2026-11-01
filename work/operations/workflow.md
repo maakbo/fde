@@ -120,6 +120,7 @@ flowchart TB
 
 FDEとAIエージェントは、今必要な作業の手順だけを使います。顧客は相談や具体例の確認から参加でき、全てのSkillを読む必要はありません。
 
+- [職務・育成の設計](../../.agents/skills/redesign-work-role/SKILL.md)
 - [推進体制の設計](../../.agents/skills/design-adoption-support/SKILL.md)
 - [導入条件のすり合わせ](../../.agents/skills/clarify-adoption-conditions/SKILL.md)
 - [AI協働の実務練習](../../.agents/skills/rehearse-ai-assisted-work/SKILL.md)
@@ -129,6 +130,7 @@ FDEとAIエージェントは、今必要な作業の手順だけを使います
 
 成果物は、次の型を既存の資料や記録にも対応させて使います。不明な項目は推測で埋めず、確認先とともに残します。
 
+- [職務・育成計画](../../templates/field-work/role-development-record.md)
 - [AI導入の体制・定着計画](../../templates/team-adoption-brief.md)
 - [失敗と対応、運用の確認](../../templates/field-work/risk-and-operation-record.md)
 - [条件変化を受けた方式の再評価](../../templates/field-work/technology-reassessment.md)
