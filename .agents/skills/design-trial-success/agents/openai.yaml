@@ -1,0 +1,4 @@
+interface:
+  display_name: "試す前に成功条件と測り方を決める"
+  short_description: "望む業務効果から使われ方と品質を結び、根拠付きの評価計画を返す。"
+  default_prompt: "Use $design-trial-success to connect desired work outcomes to meaningful use and quality criteria, preserving evidence, unknowns and authority."

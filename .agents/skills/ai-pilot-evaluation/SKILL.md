@@ -30,6 +30,10 @@ permissions, specialist review, or operational readiness.
    what people must be able and willing to use for it to occur, then the quality
    necessary to support that use. Record current evidence, target or TBD, method,
    assessor, denominator and time window. Do not import sample thresholds.
+   Link effect, meaningful use and quality as hypotheses; retain the calculation
+   and assumptions behind usage targets. A missing baseline or an unagreed
+   criterion is not zero or a failed observation. For focused measurement design,
+   the full clone provides [design-trial-success](https://github.com/maakbo/fde/blob/main/.agents/skills/design-trial-success/SKILL.md).
    - Quality: representative behaviors, omissions, false alarms, critical errors,
      latency, review burden and cost where relevant. Compare to current work and
      error consequences, not an arbitrary overall accuracy percentage.

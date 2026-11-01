@@ -128,6 +128,10 @@ observing the result. Distinguish a trial entry/exit decision from ongoing KPI
 observation; acceptance is not a one-time promise that remains valid after change.
 
 Mark criteria whose threshold is still TBD. A TBD threshold is better than an invented number.
+For a bounded AI trial, connect the desired work effect to meaningful use and
+necessary quality before setting measures. Focused measurement design is available
+in the full clone as [design-trial-success](https://github.com/maakbo/fde/blob/main/.agents/skills/design-trial-success/SKILL.md);
+reuse these condition IDs and unresolved points rather than duplicating Definition.
 
 ### 8. Handoff to Design
 
