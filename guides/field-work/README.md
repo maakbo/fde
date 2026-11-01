@@ -72,6 +72,11 @@
 - [条件・例外・出典を保った参照単位を作る](../../.agents/skills/prepare-retrieval-units/SKILL.md)
 - [検索結果・回答入力・回答を分けて評価する](../../.agents/skills/evaluate-retrieval-evidence/SKILL.md)
 
+### 記録を作り、変更を参照へ届ける
+
+- [今後の記録に必要な入力・参照・確認を設計する](../../.agents/skills/design-source-capture/SKILL.md)
+- [原資料の変更を参照先へ反映し、切替/保留と確認をつなぐ](../../.agents/skills/refresh-reference-release/SKILL.md)
+
 ### 利用条件を判断へ返す
 
 - [情報の経路と操作を、法務・セキュリティ・業務の相談材料へする](../../.agents/skills/prepare-governance-review/SKILL.md)

@@ -1,0 +1,4 @@
+interface:
+  display_name: "原資料の変更を参照単位・索引・キャッシュへ反映し、旧情報の除外と更新後の確認をつなぐ"
+  short_description: "変更を参照先へ反映し、旧情報の除外・検証・切替や保留をつなぐ。"
+  default_prompt: "Use $refresh-reference-release for one bounded record lifecycle, reuse existing evidence, and distinguish proposals from executed changes."

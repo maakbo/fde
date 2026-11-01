@@ -1,0 +1,4 @@
+interface:
+  display_name: "判断に必要な記録を自然に残せる入力項目・参照・確認を設計する"
+  short_description: "曖昧な記録を減らす入力項目・参照・確認を、一件から設計する。"
+  default_prompt: "Use $design-source-capture for one bounded record lifecycle, reuse existing evidence, and distinguish proposals from executed changes."

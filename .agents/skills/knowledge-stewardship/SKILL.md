@@ -25,6 +25,12 @@ For retrieval preparation or evaluation in the full clone, use
 and [evaluate-retrieval-evidence](https://github.com/maakbo/fde/blob/main/.agents/skills/evaluate-retrieval-evidence/SKILL.md)
 only for the task needed. Reuse the source reconciliation and output checks already recorded.
 
+For ongoing record entry or reference refresh in the full clone, use
+[design-source-capture](https://github.com/maakbo/fde/blob/main/.agents/skills/design-source-capture/SKILL.md)
+or [refresh-reference-release](https://github.com/maakbo/fde/blob/main/.agents/skills/refresh-reference-release/SKILL.md).
+Reuse the same source IDs and authority checks; changing a document is not proof
+that downstream retrieval or caches changed.
+
 ## Work through one use case
 
 1. **Choose the decision and user.** Ask what someone needs to judge or do, what
