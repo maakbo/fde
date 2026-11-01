@@ -152,3 +152,5 @@ flowchart LR
 -->
 
 [受注一覧の機能追加を進めた架空例](../field-delivery/order-search/README.md)では、要件定義から設計・実装・テスト・レビュー・リリース準備へ、AIと成果を引き継いだ結果を確認できます。
+
+[実践例の一覧](../../examples/README.md) / [FDEの仕事と業務](../../work/README.md)

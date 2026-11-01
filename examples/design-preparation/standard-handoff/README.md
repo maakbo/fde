@@ -4,7 +4,7 @@
 架空の開発チームで二つの候補を比べ、設計下書きを一件探索する相談から、担当者へ渡せる記録を作りました。
 通常の検索機能追加を進めるチームへのAI支援で、製品へAI機能を足す話ではありません。
 
-[相談条件](intake.md)／[設計業務の全体](../README.md)／[成果の型を選ぶ](../../../guides/field-work/references/artifact-types.md)
+[相談条件](intake.md)／[設計業務の全体](../README.md)／[成果の型を選ぶ](../../../work/references/artifact-types.md)
 
 ## 何を次へ渡したか
 

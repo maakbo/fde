@@ -5,7 +5,7 @@ description: 業務の開始契機から起動対象・委任範囲・重複・�
 
 # 業務に合う起動条件を決める
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 入力
 

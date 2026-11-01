@@ -5,7 +5,7 @@ description: 業務の情報を部分ごとに見て、取得・計算・解釈�
 
 # 業務の情報を部分ごとに見て、取得・計算・解釈・操作の担当を決める
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 入力
 
@@ -25,4 +25,4 @@ description: 業務の情報を部分ごとに見て、取得・計算・解釈�
 
 [作業の記録](../../../templates/field-work/data-processing-record.md)を必要な部分だけ使う。
 場面→情報の部分→必要操作→担当候補/理由→確かめ方/不足時がつながる。採用確定と未比較を分け、形式の名前だけの表で終えない。
-背景は[情報と処理を分ける](../../../guides/field-work/references/data-and-processing.md)。
+背景は[情報と処理を分ける](../../../work/design/references/data-and-processing.md)。

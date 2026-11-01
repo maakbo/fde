@@ -5,7 +5,7 @@ description: 選んだ業務の望む効果から、必要な使われ方と品�
 
 # 何が変われば成功かを、試す前に決める
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 入力
 
@@ -27,4 +27,4 @@ description: 選んだ業務の望む効果から、必要な使われ方と品�
 
 [試行記録](../../../templates/ai-trial-brief.md)の既存欄へ、望む変化→必要な利用→品質条件と測り方のつながりを残す。全様式の記入を開始条件にしない。
 別の評価者が同じ条件で判定でき、根拠のない数値・欠測・未合意と次の確認先が見える。
-算式/指標の選択に迷う時だけ[成功条件の測り方](../../../guides/field-work/references/success-measures.md)を読む。
+算式/指標の選択に迷う時だけ[成功条件の測り方](../../../work/evaluation/references/success-measures.md)を読む。

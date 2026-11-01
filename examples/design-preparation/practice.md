@@ -39,4 +39,4 @@ AIによるチケット更新、規程変更、支出や本番開始は含めて
 第二記録が何を証明するか、修正後にどの記録を揃えるか、実際の確認・修正負担と品質を確かめます。
 この例で実行したのは、架空資料からの成果作成・訂正・再試行です。新しい業務の稼働や削減効果を証明したものではありません。
 
-[業務の関係](README.md)／[現在の作業](current-flow.md)／[変更案](agent-assisted-flow.md)／[作業を選んで進める](../../guides/field-work/README.md)
+[業務の関係](README.md)／[現在の作業](current-flow.md)／[変更案](agent-assisted-flow.md)／[作業を選んで進める](../../work/README.md)

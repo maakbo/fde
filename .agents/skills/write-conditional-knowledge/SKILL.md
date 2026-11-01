@@ -5,7 +5,7 @@ description: 経験者の判断を、場面・理由・条件・例外・根拠�
 
 # 経験者の判断を、場面・理由・条件・例外・根拠と更新先がある知識記録へまとめる
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 入力
 
@@ -25,4 +25,4 @@ description: 経験者の判断を、場面・理由・条件・例外・根拠�
 
 [作業の記録](../../../templates/field-work/conditional-knowledge.md)を必要な範囲で使う。
 対象場面と根拠/理由/条件/反例/状態/更新先が追え、経験者の確認と未確認が分かれる。
-背景の区別が必要な時だけ[知識を使える形にする判断](../../../guides/field-work/references/knowledge-in-work.md)を読む。
+背景の区別が必要な時だけ[知識を使える形にする判断](../../../work/design/references/knowledge-in-work.md)を読む。

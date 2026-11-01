@@ -5,7 +5,7 @@ description: AIを使う一件の情報経路・操作・契約や方針の根�
 
 # AI利用の条件を判断できる相談材料を作る
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 入力
 

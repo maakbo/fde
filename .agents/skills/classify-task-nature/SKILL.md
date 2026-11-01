@@ -5,7 +5,7 @@ description: 一連の業務から具体的作業の性質と検証方法を整�
 
 # 一連の業務から具体的作業の性質と検証方法を整理する
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 開始入力
 
@@ -29,4 +29,4 @@ description: 一連の業務から具体的作業の性質と検証方法を整�
 ## 成果と必要時の参照
 
 出力は[作業と手段の比較](../../../templates/field-work/task-design-record.md)。候補方式をcompare-model-optionsへ渡す。
-原理/判断の確認が必要な時は[判断の基礎](../../../guides/field-work/references/decision-foundations.md)の該当項目のみ読む。
+原理/判断の確認が必要な時は[判断の基礎](../../../work/planning/references/decision-foundations.md)の該当項目のみ読む。

@@ -58,7 +58,7 @@ output stem includes the number so review images do not overwrite each other.
 
 ```bash
 python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py \
-  examples/maakbo-fde/README.md --diagram 5 --type context \
+  work/README.md --diagram 1 --type context \
   --allow-complexity --format png --output-dir /tmp/fde-review
 ```
 

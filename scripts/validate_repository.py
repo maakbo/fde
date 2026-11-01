@@ -104,7 +104,7 @@ REQUIRED = [
     ".agents/skills/business-context-modeling/fixtures/repair-intake/previews/README.md",
     ".agents/skills/discovery-facilitation/fixtures/system-development-intake.md",
     ".agents/skills/discovery-facilitation/fixtures/system-development-brief.md",
-    "examples/maakbo-fde/README.md",
+    "work/README.md",
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
@@ -278,7 +278,7 @@ def validate_maakbo_icons() -> None:
             if child.tag.rsplit("}", 1)[-1] not in {"path", "rect", "ellipse", "circle"}:
                 raise ValueError(f"unsupported maakbo geometry: {path.name}")
     # Historical comparisons keep their source; active authoring must use the new URLs.
-    for folder in (".agents", "templates", "examples", "consumer"):
+    for folder in (".agents", "templates", "examples", "work", "consumer"):
         for path in (ROOT / folder).rglob("*.md"):
             if "assets/icons/lucide-thin/" in path.read_text():
                 raise ValueError(f"legacy icon URL in active source: {path.relative_to(ROOT)}")
@@ -317,39 +317,19 @@ def validate_icon_sizes() -> None:
                     raise ValueError(f"{path.relative_to(ROOT)}: image nodes must use 28x28")
 
 
-FDE_READER_MODEL_FILES = ("README.md",)
-FDE_READER_SECTIONS = (
-    "FDEを担う人とAI",
-    "業務を理解し、変化を決める",
-    "人とAIの協働をつくり、試す",
-    "現場で使い、ともに育てる",
+FDE_BUSINESS_DIRS = (
+    "discovery", "planning", "design", "implementation", "evaluation", "operations",
 )
-
-FDE_READER_BUSINESSES = {
-    "FDEを担う人とAI": (),
-    "業務を理解し、変化を決める": ("対象業務選定", "業務定義"),
-    "人とAIの協働をつくり、試す": ("協働設計", "協働検証"),
-    "現場で使い、ともに育てる": ("現場導入・改善",),
-}
-
-
-def fde_reader_sections() -> dict[str, str]:
-    text = (ROOT / "examples/maakbo-fde/README.md").read_text(encoding="utf-8")
-    sections = {}
-    for section in re.split(r"^## ", text, flags=re.MULTILINE)[1:]:
-        title, _, body = section.partition("\n")
-        if title in FDE_READER_SECTIONS:
-            if title in sections:
-                raise ValueError(f"duplicate FDE section: {title}")
-            sections[title] = body
-    if tuple(sections) != FDE_READER_SECTIONS:
-        raise ValueError("FDE reader sections are missing or out of order")
-    return sections
+FDE_CONTEXT_FILES = ("work/README.md",) + tuple(
+    f"work/{business}/README.md" for business in FDE_BUSINESS_DIRS
+)
 
 
 def _validate_sample_links(sample: Path) -> None:
-    for artifact in sample.glob("*.md"):
+    for artifact in sample.rglob("*.md"):
         text = artifact.read_text(encoding="utf-8")
+        # Fenced examples contain illustrative paths, not reader navigation.
+        text = re.sub(r"(?ms)^(`{3,}|~{3,})[^\n]*\n.*?^\1[ \t]*$", "", text)
         for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
             if "://" in target or target.startswith("#"):
                 continue
@@ -361,57 +341,48 @@ def _validate_sample_links(sample: Path) -> None:
 
 
 def validate_fde_reader_surface() -> None:
-    """Keep the public FDE sample focused on business understanding."""
+    """Validate business-owned navigation and preserved task reachability.
 
-    sample = ROOT / "examples/maakbo-fde"
-    forbidden_sections = (
-        "## Modeling question",
-        "## Candidate inventory",
-        "## ASCII options",
-        "## Boundary",
-        "## Unresolved",
-        "## Next review question",
-        "## Status",
-        "## Complexity note",
-        "## モデル",
-        "### モデル",
-        "## このモデルが表していること",
-        "### このモデルが表していること",
-        "### この段階で残すもの",
-        "## このページの構成",
-    )
-
-    for name in FDE_READER_MODEL_FILES:
-        relative = Path(name)
-        artifact = sample / relative
-        text = artifact.read_text(encoding="utf-8")
-        sections = fde_reader_sections()
-        if text.count("```mermaid") != len(FDE_READER_SECTIONS):
-            raise ValueError(f"{artifact.relative_to(ROOT)}: unexpected Mermaid count")
-        for title, body in sections.items():
-            if body.count("```mermaid") != 1:
-                raise ValueError(f"{artifact.relative_to(ROOT)} / {title}: expected one Mermaid model")
-            # Retain all five businesses under the three scenes after removing
-            # the separate delivery flow. Headings alone do not validate meaning.
-            businesses = tuple(re.findall(r"^### (.+)$", body, re.MULTILINE))
-            if businesses != FDE_READER_BUSINESSES[title]:
-                raise ValueError(
-                    f"{artifact.relative_to(ROOT)} / {title}: missing or misplaced business"
-                )
-            # A subject heading leads directly to its diagram and business reading.
-            reading = body.strip()
-            match = re.match(r"```mermaid\n.*?\n```\n\n(.+)", reading, re.DOTALL)
-            if not match:
-                raise ValueError(
-                    f"{artifact.relative_to(ROOT)} / {title}: expected diagram then business reading"
-                )
-        for heading in forbidden_sections:
-            if heading in text:
-                raise ValueError(
-                    f"{artifact.relative_to(ROOT)}: authoring section leaked into reader surface: "
-                    f"{heading}"
-                )
-    _validate_sample_links(sample)
+    These checks establish structure, not natural prose or field effectiveness.
+    """
+    for name in FDE_CONTEXT_FILES:
+        text = (ROOT / name).read_text(encoding="utf-8")
+        if text.count("```mermaid") != 1:
+            raise ValueError(f"{name}: expected one business/system context")
+        if re.search(r"^#{1,3} (モデル|このページの構成|保守メモ)$", text, re.MULTILINE):
+            raise ValueError(f"{name}: authoring heading on reader surface")
+        if not re.search(r"```mermaid\n.*?\n```\n\n\S", text, re.DOTALL):
+            raise ValueError(f"{name}: missing business explanation beside diagram")
+    for business in FDE_BUSINESS_DIRS:
+        folder = ROOT / "work" / business
+        overview = (folder / "README.md").read_text(encoding="utf-8")
+        procedure = (folder / "workflow.md").read_text(encoding="utf-8")
+        if "(workflow.md)" not in overview or "(../README.md)" not in overview:
+            raise ValueError(f"{business}: overview must link procedure and parent")
+        if "(README.md)" not in procedure or "../../templates/" not in procedure:
+            raise ValueError(f"{business}: procedure must link overview and outputs")
+        for heading in ("## 作業の流れ", "## 判断と戻り先", "## 作業の手順と成果物"):
+            if heading not in procedure:
+                raise ValueError(f"{business}: missing {heading}")
+        if procedure.count("```mermaid") != (2 if business == "operations" else 1):
+            raise ValueError(f"{business}: unexpected task flow count")
+    # The 44 focused tasks precede the orchestration/modeling Skills in the
+    # existing registry. Preserve their business entry points during migration.
+    task_skills = set(SKILLS[:SKILLS.index("team-adoption-facilitation")])
+    routed = set()
+    for business in FDE_BUSINESS_DIRS:
+        text = (ROOT / "work" / business / "workflow.md").read_text(encoding="utf-8")
+        routed.update(re.findall(r"\.agents/skills/([^/]+)/SKILL\.md", text))
+    missing = task_skills - routed
+    if missing:
+        raise ValueError(f"tasks missing business entry points: {sorted(missing)}")
+    if (ROOT / "guides").exists():
+        raise ValueError("business procedures belong under work, not a separate guides tree")
+    for name in ("README.md", "examples/README.md", "templates/README.md", ".agents/skills/README.md"):
+        if "work/README.md" not in (ROOT / name).read_text(encoding="utf-8"):
+            raise ValueError(f"{name}: missing FDE work entry point")
+    for name in ("work", "templates", "examples", ".agents/skills"):
+        _validate_sample_links(ROOT / name)
 
 
 def validate_architecture_reader_surface() -> None:
@@ -661,7 +632,7 @@ def main() -> int:
     run([sys.executable, ".agents/skills/reader-facing-artifact-review/scripts/test_reader_artifact.py"])
     run([sys.executable, ".agents/skills/mermaid-diagram-export/scripts/test_diagram_selection.py"])
     run([sys.executable, reader_checker,
-         "examples/maakbo-fde/README.md",
+         "work/README.md",
          "examples/request-triage/README.md",
          "templates/icon-context.md", "templates/business-flow.md", "templates/architecture-context.md"])
     validate_fde_reader_surface()
@@ -742,21 +713,21 @@ def main() -> int:
     run([sys.executable, flow, "templates/business-flow.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/overview.md", "--strict"])
     run([sys.executable, flow, f"{fixture}/flow.md", "--strict"])
-    # Existing checkers accept one model per input. Extract the consolidated
-    # sections only into a temporary directory, keeping README as the sole source.
-    sections = fde_reader_sections()
-    checks = (
-        ("FDEを担う人とAI", context, ["--strict"]),
-        ("業務を理解し、変化を決める", business, []),
-        ("人とAIの協働をつくり、試す", business, []),
-        ("現場で使い、ともに育てる", business, []),
-    )
-    with tempfile.TemporaryDirectory(prefix="fde-reader-") as temporary:
-        for index, (title, checker, options) in enumerate(checks):
-            artifact = Path(temporary) / f"section-{index}.md"
-            artifact.write_text(f"# {title}\n\n{sections[title]}", encoding="utf-8")
-            print(f"FDE reader section: {title}")
-            run([sys.executable, checker, str(artifact), *options])
+    for name in FDE_CONTEXT_FILES:
+        checker = context if name == "work/README.md" else business
+        run([sys.executable, checker, name, *(["--strict"] if checker == context else [])])
+    for name in FDE_BUSINESS_DIRS:
+        # The operation start and post-start improvement are separate scenes.
+        # Check original blocks unchanged; keep Markdown as the sole source.
+        text = (ROOT / f"work/{name}/workflow.md").read_text(encoding="utf-8")
+        blocks = re.findall(r"```mermaid\n.*?\n```", text, re.DOTALL)
+        with tempfile.TemporaryDirectory(prefix="fde-work-flow-") as temporary:
+            for index, block in enumerate(blocks):
+                artifact = Path(temporary) / f"{name}-{index}.md"
+                artifact.write_text(f"# {name}\n\n{block}\n", encoding="utf-8")
+                run([sys.executable, flow, str(artifact), "--strict"])
+    run([sys.executable, reader_checker, *FDE_CONTEXT_FILES,
+         *(f"work/{name}/workflow.md" for name in FDE_BUSINESS_DIRS)])
     print("OK: repository structure, skills, privacy, Python, and Markdown Mermaid sources")
     return 0
 

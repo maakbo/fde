@@ -5,7 +5,7 @@ description: 相手の仕事に沿ってAIへ任せる仕組みを説明する�
 
 # 相手の仕事に沿ってAIへ任せる仕組みを説明する
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 開始入力
 
@@ -38,5 +38,5 @@ description: 相手の仕事に沿ってAIへ任せる仕組みを説明する�
 | 理解の確認 | 相手の実回答と訂正、または理解確認未実施。作った説明を相手の理解/同意にしない |
 
 学習/参照/履歴等の混同がある時は対比例と訂正が必要。補助図や追加例は理解を助ける場合だけ加える。
-説明の原理→[判断の基礎](../../../guides/field-work/references/decision-foundations.md)。次は候補業務が分かればclassify-task-natureへ。
-原理/判断の確認が必要な時は[判断の基礎](../../../guides/field-work/references/decision-foundations.md)の該当項目のみ読む。
+説明の原理→[判断の基礎](../../../work/planning/references/decision-foundations.md)。次は候補業務が分かればclassify-task-natureへ。
+原理/判断の確認が必要な時は[判断の基礎](../../../work/planning/references/decision-foundations.md)の該当項目のみ読む。

@@ -5,7 +5,7 @@ description: 変更案を担当者が使う一件の流れへ具体化し、人�
 
 # 変更案を担当者が使う一件の流れへ具体化し、人とagentの役割・例外・成果を設計する
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 開始入力
 
@@ -24,5 +24,5 @@ description: 変更案を担当者が使う一件の流れへ具体化し、人�
 
 [作業の記録](../../../templates/field-work/process-change-record.md)の必要な欄を使う。
 使う一件で開始/役割/受渡し/完了/例外が説明でき、変更案と現状/実決定が分かれる。
-原理や手法の違いが判断に必要な時だけ[業務分析の判断](../../../guides/field-work/references/work-analysis-methods.md)を読む。
+原理や手法の違いが判断に必要な時だけ[業務分析の判断](../../../work/discovery/references/work-analysis-methods.md)を読む。
 不一致や新条件は該当作業/判断者へ戻す。全様式の記入を開始条件にしない。

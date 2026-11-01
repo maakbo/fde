@@ -5,7 +5,7 @@ description: 知識の候補を承認済みの根拠と適用範囲・有効状�
 
 # 知識の候補を承認済みの根拠と適用範囲・有効状態へ照合し、現行/保留/失効を整理する
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 入力
 
@@ -25,4 +25,4 @@ description: 知識の候補を承認済みの根拠と適用範囲・有効状�
 
 [作業の記録](../../../templates/field-work/conditional-knowledge.md)を必要な範囲で使う。
 資料と知識の適用範囲/権限/状態/矛盾が追え、使える部分と保留/更新先を分けられる。
-背景の区別が必要な時だけ[知識を使える形にする判断](../../../guides/field-work/references/knowledge-in-work.md)を読む。
+背景の区別が必要な時だけ[知識を使える形にする判断](../../../work/design/references/knowledge-in-work.md)を読む。

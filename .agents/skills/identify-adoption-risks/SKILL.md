@@ -5,7 +5,7 @@ description: AI導入の対象業務から具体的失敗と影響を洗い出�
 
 # AI導入の対象業務から具体的失敗と影響を洗い出す
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 入力
 

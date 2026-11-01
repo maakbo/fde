@@ -5,7 +5,7 @@ description: 処理結果を次の担当やシステムへ渡す項目・型・�
 
 # 処理結果を次の担当やシステムへ渡す項目・型・根拠・未解決・拒否条件を定める
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 入力
 
@@ -25,4 +25,4 @@ description: 処理結果を次の担当やシステムへ渡す項目・型・�
 
 [作業の記録](../../../templates/field-work/data-handoff-contract.md)を必要な部分だけ使う。
 必要項目・版・意味/根拠・不明・拒否/返却が受取側に伝わる。形式/意味/権限の検証範囲と、実装していない部分が明確。
-背景は[情報と処理を分ける](../../../guides/field-work/references/data-and-processing.md)。
+背景は[情報と処理を分ける](../../../work/design/references/data-and-processing.md)。

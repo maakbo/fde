@@ -5,7 +5,7 @@ description: 現行と変更案の差から、必要な情報・役割・許可�
 
 # 現行と変更案の差から、必要な情報・役割・許可・実装・検証の変更を特定する
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 開始入力
 
@@ -24,5 +24,5 @@ description: 現行と変更案の差から、必要な情報・役割・許可�
 
 [作業の記録](../../../templates/field-work/process-change-record.md)の必要な欄を使う。
 差分IDから理由/必要変更/依存/確認先/受入例へ追え、実装/導入の未実施が分かる。
-原理や手法の違いが判断に必要な時だけ[業務分析の判断](../../../guides/field-work/references/work-analysis-methods.md)を読む。
+原理や手法の違いが判断に必要な時だけ[業務分析の判断](../../../work/discovery/references/work-analysis-methods.md)を読む。
 不一致や新条件は該当作業/判断者へ戻す。全様式の記入を開始条件にしない。

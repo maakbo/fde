@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This repository is a portable environment for forward-deployed business modeling.
+This repository supports FDE work from field understanding through design, implementation, evaluation, and operational improvement with customers.
 
 ## Purpose
 
@@ -48,7 +48,7 @@ whole-handoff value. It does not grant rollout or personnel-policy authority.
    repository requests that review; the reviewer does not edit or publish.
    Do not call self-review independent review.
 8. Read only the references directly required by the selected Skill.
-For a focused analysis, design, evaluation, or operating task, select the task-sized Skill from `guides/field-work/README.md`. Preserve the same target, evidence, version, and unresolved conditions across handoffs.
+For a focused analysis, design, evaluation, or operating task, start with the business overview in `work/README.md`, then select the task-sized Skill linked by that business's `workflow.md`. Preserve the same target, evidence, version, and unresolved conditions across handoffs.
 
 ## Working principles
 
@@ -115,3 +115,8 @@ and the necessary business supplement with natural related-work links. Omit
 Mermaid frontmatter titles and author-facing section headings. Put concise
 maintenance intent in Mermaid `%%` comments; keep private history and review
 logs out of the reader surface. Do not copy the authoring checklist into it.
+
+
+## Reader and repository structure
+
+The readers are future FDE practitioners and their customers; do not assume the owner's chat history. `work/README.md` owns the FDE purpose and business overview. Each business directory owns its reader-facing `README.md` and `workflow.md`; do not create a separate `guides` hierarchy. Link task instructions in `.agents/skills`, output formats in `templates`, and fictional engagements in `examples`. Business pages explain purpose, participants, information, outcomes, decisions, and next work before presenting optional Skill choices. Define vague references such as "one case" or "handoff" through the actual work, artifact, and recipient. Keep method/validation history separate from the customer's business story. Preserve verification limits near the claims they qualify.

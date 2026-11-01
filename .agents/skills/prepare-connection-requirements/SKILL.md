@@ -5,7 +5,7 @@ description: 現場で必要な外部接続の情報・操作・権限・変更�
 
 # 現場で必要な外部接続の情報・操作・権限・変更予定を整理し、方式比較と実装へ渡す
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 開始入力
 
@@ -24,6 +24,6 @@ description: 現場で必要な外部接続の情報・操作・権限・変更�
 
 ## 成果と完了
 
-[接続要件](../../../templates/field-work/connection-requirements.md)。MCP等を比較する場合だけ[方式の前提](../../../guides/field-work/references/connection-options.md)を読む。
+[接続要件](../../../templates/field-work/connection-requirements.md)。MCP等を比較する場合だけ[方式の前提](../../../work/design/references/connection-options.md)を読む。
 接続IDから業務の必要性・操作・権限・変更条件・未決が追える。未許可接続を実施せず、実装者の最初の確認/試行が分かる。
 入力/前提が変われば該当行へ戻す。許可や実回答が必要な事項をagentが代作しない。

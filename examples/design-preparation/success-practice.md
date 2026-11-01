@@ -103,4 +103,4 @@ python3 examples/design-preparation/success-lab/calculate.py
 今回実施したのは、別contextのagentによる生入力からの測定計画作成と別条件の検討、
 ローカルPythonによる算術・固定表の集計、その結果の別計算による照合です。
 実担当者の同意、表示の改修、実モデルの評価、次の比較試行、現場の定着・効果は未実施です。
-[指標と測定方法の考え方](../../guides/field-work/references/success-measures.md)／[結果がそろった後の判断](next-step-practice.md)
+[指標と測定方法の考え方](../../work/evaluation/references/success-measures.md)／[結果がそろった後の判断](next-step-practice.md)

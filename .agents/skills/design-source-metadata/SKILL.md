@@ -5,7 +5,7 @@ description: 必要な資料を対象・版・適用条件・権限で区別で�
 
 # 必要な資料を対象・版・適用条件・権限で区別できる属性を設計し、作成更新の手順へ組み込む
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 入力
 
@@ -25,4 +25,4 @@ description: 必要な資料を対象・版・適用条件・権限で区別で�
 
 [作業の記録](../../../templates/field-work/data-processing-record.md)を必要な部分だけ使う。
 属性の目的/定義/根拠/不明/更新担当と、正しく区別できた例・失敗・訂正が追える。新規更新と必要な過去整備を分け、全移行を強制しない。
-背景は[情報と処理を分ける](../../../guides/field-work/references/data-and-processing.md)。
+背景は[情報と処理を分ける](../../../work/design/references/data-and-processing.md)。

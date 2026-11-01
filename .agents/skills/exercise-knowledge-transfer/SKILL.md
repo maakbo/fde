@@ -5,7 +5,7 @@ description: 知識記録を別の人や別条件の一件へ適用し、誤り�
 
 # 知識記録を別の人や別条件の一件へ適用し、誤りを元の知識へ戻す
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 入力
 
@@ -26,4 +26,4 @@ description: 知識記録を別の人や別条件の一件へ適用し、誤り�
 
 [作業の記録](../../../templates/field-work/knowledge-transfer.md)を必要な範囲で使う。
 知識の版→適用事例→結果/理由→照合→修正/再試行/未決が追え、実演習と現場の効果を区別できる。
-背景の区別が必要な時だけ[知識を使える形にする判断](../../../guides/field-work/references/knowledge-in-work.md)を読む。
+背景の区別が必要な時だけ[知識を使える形にする判断](../../../work/design/references/knowledge-in-work.md)を読む。

@@ -55,7 +55,7 @@ flowchart LR
 
 架空の例です。実際の現場の合意や効果を示すものではありません。
 
-[この業務で作業Skillを試した結果](practice.md)／[同じ条件で始める架空の入力](intake.md)／[自分の仕事で始める](../../guides/field-work/README.md)
+[この業務で作業Skillを試した結果](practice.md)／[同じ条件で始める架空の入力](intake.md)／[自分の仕事で始める](../../work/README.md)
 
 ## 設計の判断も引き継ぐ
 
@@ -78,3 +78,5 @@ flowchart LR
 [準備済みの要件から、レビューできる下書きを届ける](action-practice.md)では、起動と処理の成果をつなぎ、保存/受渡し失敗からの再開をローカルで試します。
 
 [設計のAI支援を選び、次の担当へ渡す](standard-handoff/README.md)では、候補・業務境界・現行・役割・評価・判断の6成果を同じIDでつなぎます。
+
+[実践例の一覧](../../examples/README.md) / [FDEの仕事と業務](../../work/README.md)

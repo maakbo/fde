@@ -5,7 +5,7 @@ description: agentの役割と受渡しを分け、単一手順か複数agentか
 
 # agentの役割と受渡しを分け、単一手順か複数agentかを比較して実行構成を渡す
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 開始入力
 
@@ -29,4 +29,4 @@ description: agentの役割と受渡しを分け、単一手順か複数agentか
 ## 成果と必要時の参照
 
 出力は[役割契約](../../../templates/field-work/delegation-record.md)。実装受渡しでは既存の[受渡しSkill](../prepare-implementation-handoff/SKILL.md)も必要時に参照する。
-原理/判断の確認が必要な時は[判断の基礎](../../../guides/field-work/references/decision-foundations.md)の該当項目のみ読む。
+原理/判断の確認が必要な時は[判断の基礎](../../../work/planning/references/decision-foundations.md)の該当項目のみ読む。

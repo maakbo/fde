@@ -5,7 +5,7 @@ description: 人とagentの提案・確定・実行・確認の境界を操作�
 
 # 人とagentの提案・確定・実行・確認の境界を操作単位で決める
 
-成果は[共通の成果形式](../../../guides/field-work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
+成果は[共通の成果形式](../../../work/references/artifact-contract.md)と、この作業が参照する型の必須項目を保つ。既存記録への追記でも同じ項目を引き継ぐ。
 
 ## 開始入力
 
@@ -29,4 +29,4 @@ description: 人とagentの提案・確定・実行・確認の境界を操作�
 ## 成果と必要時の参照
 
 出力は[委任契約](../../../templates/field-work/delegation-record.md)。実行構成をpartition-agent-rolesへ渡す。
-原理/判断の確認が必要な時は[判断の基礎](../../../guides/field-work/references/decision-foundations.md)の該当項目のみ読む。
+原理/判断の確認が必要な時は[判断の基礎](../../../work/planning/references/decision-foundations.md)の該当項目のみ読む。

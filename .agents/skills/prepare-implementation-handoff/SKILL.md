@@ -11,7 +11,7 @@ description: 設計から実装へ引き渡す。業務・要件の条件を、�
 
 ## 作業
 
-[共通の受渡し条件](../../../guides/field-work/references/artifact-contract.md)を確認し、この作業に関係する資料を読む。
+[共通の受渡し条件](../../../work/references/artifact-contract.md)を確認し、この作業に関係する資料を読む。
 目的と受取者、条件ID、I/Oと権限、参照版、例外、非機能の未決定をまとめる。方式候補と選択理由、接続・状態・実行器・評価の実装責任へ分ける。コード、ツール接続、テスト、配備の次の成果と受入を指定し、文書だけで実装完了としない。
 
 [成果物の型](../../../templates/field-work/implementation-handoff.md)の該当欄を使い、既存成果があれば対象箇所を更新する。
