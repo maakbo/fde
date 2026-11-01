@@ -1,0 +1,4 @@
+interface:
+  display_name: "仕事に合う自動化の形を比較して選ぶ"
+  short_description: "手順・途中判断・接続・影響から任せ方を比較し、最初に試す範囲を返す。"
+  default_prompt: "Use $compare-automation-options to compare automation choices for this work and return a bounded trial, delegation limits and conditions for revisiting the choice."

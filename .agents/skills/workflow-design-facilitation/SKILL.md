@@ -26,7 +26,9 @@ is optional support. A diagram alone and a list of tools are not an executable d
    why more autonomy is useful, how it is contained, and what remains human.
    Trial thresholds come from consequence and current evidence, not a universal
    percentage. Read [automation-boundaries.md](references/automation-boundaries.md)
-   for choices, tradeoffs and when to revise them.
+   for choices, tradeoffs and when to revise them. For focused comparison before
+   these contracts, the full clone provides [compare-automation-options](https://github.com/maakbo/fde/blob/main/.agents/skills/compare-automation-options/SKILL.md);
+   preserve its decision and evidence rather than repeat the comparison.
 
 ## Turn the flow into contracts
 

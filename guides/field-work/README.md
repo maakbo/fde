@@ -32,6 +32,8 @@
 
 ### 任せる条件と構成を設計する
 
+- [業務に合う自動化の形を比較し、最初に試す範囲と選択理由を返す](../../.agents/skills/compare-automation-options/SKILL.md)
+
 - [相手の仕事に沿ってAIへ任せる仕組みを説明する](../../.agents/skills/explain-agent-capability/SKILL.md)
 - [作業の期待結果から必要情報と入力の構成を設計する](../../.agents/skills/design-task-input/SKILL.md)
 - [人とagentの提案・確定・実行・確認の境界を操作単位で決める](../../.agents/skills/define-delegation-boundary/SKILL.md)
