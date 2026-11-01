@@ -1,0 +1,4 @@
+interface:
+  display_name: "試行の根拠から次の範囲と戻り先を決める"
+  short_description: "事前条件と観測を照合し、続行・修正・証拠待ち・停止と次の試行を返す。"
+  default_prompt: "Use $decide-trial-next-step to compare existing trial evidence to prior criteria, preserve scope and authority, and plan the smallest useful next test."

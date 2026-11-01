@@ -21,9 +21,9 @@
 | --- | --- | --- | --- |
 | 仕事をつかむ | [業務の聞取り](../../business-context-modeling/references/field-interview-and-grain.md)、必要なContextと[Flow](../../business-flow-facilitation/SKILL.md) | 一件の開始・成果・受取者、現行の困りごとと根拠、別のTo-Be | 粒度や担当が違えば親Contextへ。分からない戻り先を作らない |
 | 最初に変える仕事を選ぶ | [Discovery](../SKILL.md) | 目的、ECRSと手段比較、選定理由、対象外、証拠不足。関係者が対象を話せる | AI前提が崩れれば情報整備・通常処理・人の仕事も選ぶ |
-| 合格と責任を決める | [Definition](../../definition-facilitation/SKILL.md) | 入力・観測可能な結果、通常／例外、許可範囲、合格条件、決定者、未決定 | 仕様不足は責任者へ。目的や対象が変わればDiscoveryへ |
+| 合格と責任を決める | [Definition](../../definition-facilitation/SKILL.md) | 入力・観測可能な結果、通常／例外、許可範囲、合格条件と版/評価対象、決定者、未決定。条件は結果の前に置く | 仕様不足は責任者へ。目的や対象が変わればDiscoveryへ |
 | 任せ方を設計する | [作業の設計](../../architecture-modeling/references/agent-work-design.md) | 人・agent・通常ツールの分担、根拠、接続、実行範囲、テスト・停止・復旧。要件との対応が説明できる | 方式で要件を実現できなければDefinitionへ。情報不足ならKnowledgeへ |
-| 小さく実行する | [知識整備](../../knowledge-stewardship/SKILL.md)と[試行評価](../../ai-pilot-evaluation/SKILL.md) | 入力と版、期待を先に決めたケース、実行環境・コマンド・実際の結果、変更・未解決 | 根拠不足／検索／解釈／実装／仕事の不適合を分け、該当手順へ戻す |
+| 小さく実行する | [知識整備](../../knowledge-stewardship/SKILL.md)と[試行評価](../../ai-pilot-evaluation/SKILL.md) | 今回減らす不確実性、入力と版、期待を先に決めたケース、実行環境・コマンド・実際の結果、変更・未解決 | 根拠不足／検索／解釈／実装／仕事の不適合を分け、該当手順へ戻す |
 | 結果から次を決める | 同じ試行評価 | 品質・定着・効果を別に評価し、続行／修正再試行／証拠待ち／停止を理由と共に返す | 机上演習やテスト合格を、現場定着・業務効果へ格上げしない |
 | チームで使う準備をする | [役割・練習・支援](../../team-adoption-facilitation/SKILL.md) | 使う人と受取者の懸念、決定・確認・支援の担当、実際にやってみた結果、未確認の開始条件 | 確認者の時間・権限がなければ体制や対象を戻す。架空の回答を同意にしない |
 | 限定運用へ渡す | 下の引継ぎと試行評価の運用確認 | 引継ぎを受ける責任者が残件と開始条件を判断できる | 許可・担当・復旧が未成立なら準備まで。試行成功で展開しない |
@@ -84,3 +84,8 @@ sandboxからpilot、修正再試行、展開と知識の更新は
 
 
 別の担当へ順に引き継いで方法を確かめた例は、[受注一覧にCSV出力を追加する](https://github.com/maakbo/fde/blob/main/examples/field-delivery/csv-export/README.md)を参照する。
+
+
+既存の試行結果から次だけを決める時は、full cloneの
+[次の範囲と戻り先を決める作業](https://github.com/maakbo/fde/blob/main/.agents/skills/decide-trial-next-step/SKILL.md)
+を使える。条件の版と元の観測を引き継ぎ、品質の通過を業務適合や運用許可へ広げない。

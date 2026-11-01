@@ -83,6 +83,10 @@
 
 確認済みの条件は委任・対応設計へ引き継ぎ、方針/実行制御/証跡を結びます。運用移行の判定は既存のPilot、継続の実態は棚卸しを使います。
 
+### 試行の根拠から次を決める
+
+- [事前条件と観測から、次に進む範囲・修正・証拠待ち・停止を判断へ返す](../../.agents/skills/decide-trial-next-step/SKILL.md)
+
 ### 実装へ渡す
 
 - [設計から実装へ引き渡す](../../.agents/skills/prepare-implementation-handoff/SKILL.md)

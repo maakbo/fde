@@ -86,6 +86,11 @@ pilot decisions, failure-to-retest, Go/No-Go/Pivot, operational handoff, rollout
 vs changed-scope scaling, and turning observed work into maintained knowledge.
 Carry actual evidence and limits into the next decision, not just stage labels.
 
+For a focused review of existing results, the full clone also provides
+[decide-trial-next-step](https://github.com/maakbo/fde/blob/main/.agents/skills/decide-trial-next-step/SKILL.md).
+Use the same criteria versions and observations; do not restart discovery or
+require a new approval for work already within the agreed scope.
+
 ## Return the decision surface
 
 Show scope, evidence for each layer, limits, governing constraints, decision,
