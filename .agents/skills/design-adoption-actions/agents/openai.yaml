@@ -1,0 +1,4 @@
+interface:
+  display_name: "定着施策の設計"
+  short_description: "導入時の困り事に合う支援と使う場面を選び、実務で試して見直す計画を作る"
+  default_prompt: "$design-adoption-actions を使い、この仕事の導入支援と業務に組み込む施策を設計してください。"
