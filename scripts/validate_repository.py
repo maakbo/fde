@@ -108,6 +108,7 @@ REQUIRED = [
     "examples/human-agent-workspace/README.md",
 ]
 SKILLS = [
+    "select-improvement-target",
     "respond-adoption-concerns",
     "design-adoption-actions",
     "redesign-work-role",

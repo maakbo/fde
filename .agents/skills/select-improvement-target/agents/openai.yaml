@@ -1,0 +1,4 @@
+interface:
+  display_name: "改善対象の選定"
+  short_description: "全体への影響と実現条件から候補を比較し、最初の対象または次の観察を選ぶ"
+  default_prompt: "$select-improvement-target を使い、この業務で最初に扱う改善対象と理由を整理してください。"

@@ -9,7 +9,7 @@
 | [PoC計画・評価](../../templates/ai-trial-brief.md) | [decide-trial-next-step](../../.agents/skills/decide-trial-next-step/SKILL.md), [design-trial-success](../../.agents/skills/design-trial-success/SKILL.md) |
 | [業務要件定義](../../templates/definition-brief.md) | [definition-facilitation](../../.agents/skills/definition-facilitation/SKILL.md) |
 | [次工程への移行判断](../../templates/delivery-review.md) | [decide-trial-next-step](../../.agents/skills/decide-trial-next-step/SKILL.md) |
-| [業務課題・改善候補の整理](../../templates/discovery-brief.md) | [discovery-facilitation](../../.agents/skills/discovery-facilitation/SKILL.md) |
+| [業務課題・改善候補の整理](../../templates/discovery-brief.md) | [discovery-facilitation](../../.agents/skills/discovery-facilitation/SKILL.md), [select-improvement-target](../../.agents/skills/select-improvement-target/SKILL.md) |
 | [現在の一件と暗黙の判断](../../templates/field-work/case-observation-record.md) | [elicit-tacit-decisions](../../.agents/skills/elicit-tacit-decisions/SKILL.md), [reconcile-procedure-and-practice](../../.agents/skills/reconcile-procedure-and-practice/SKILL.md), [walkthrough-current-case](../../.agents/skills/walkthrough-current-case/SKILL.md) |
 | [判断を引き継ぐ知識記録](../../templates/field-work/conditional-knowledge.md) | [reconcile-knowledge-sources](../../.agents/skills/reconcile-knowledge-sources/SKILL.md), [write-conditional-knowledge](../../.agents/skills/write-conditional-knowledge/SKILL.md) |
 | [接続の必要条件と実装への受渡し](../../templates/field-work/connection-requirements.md) | [prepare-connection-requirements](../../.agents/skills/prepare-connection-requirements/SKILL.md) |

@@ -125,12 +125,16 @@ Use four lenses:
 
 For AI fit, explicitly look for reasons not to use an AI agent, such as:
 
-- legally required perfect correctness;
+- unacceptable errors whose detection, correction or oversight is not feasible;
 - empathy / relationship as the core value;
 - data that cannot be exposed to the available AI environment;
 - physical manipulation as the core work;
 - deterministic rules being sufficient;
 - cost or risk exceeding likely benefit.
+
+Data form and human final review are clues, not proof of fit. Assess whether early
+omissions/bias can affect later options and whether reviewers have sources, skill,
+time and authority; do not postpone these questions until design.
 
 Do not calculate a numeric score unless the underlying measurements are available and meaningful. Prefer High / Medium / Low with a short evidence statement.
 
@@ -144,7 +148,9 @@ architecture choices for Definition / Design after the business target is ground
 
 ### 6. Select the first target
 
-Choose one first target when the evidence supports it.
+Choose one first target when the evidence supports it. For focused comparison and
+selection, the full clone provides [select-improvement-target](https://github.com/maakbo/fde/blob/main/.agents/skills/select-improvement-target/SKILL.md).
+Reuse the existing candidates and evidence rather than restarting Discovery.
 
 State:
 

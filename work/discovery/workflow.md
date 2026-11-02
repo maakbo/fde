@@ -73,6 +73,7 @@ flowchart TB
 
 FDEとAIエージェントは、今必要な作業の手順だけを使います。顧客は相談や具体例の確認から参加でき、全てのSkillを読む必要はありません。
 
+- [改善対象の選定](../../.agents/skills/select-improvement-target/SKILL.md)
 - [業務範囲の整理](../../.agents/skills/clarify-work-grain/SKILL.md)
 - [現行業務の聞取り](../../.agents/skills/walkthrough-current-case/SKILL.md)
 - [暗黙の判断の聞取り](../../.agents/skills/elicit-tacit-decisions/SKILL.md)
