@@ -120,6 +120,7 @@ flowchart TB
 
 FDEとAIエージェントは、今必要な作業の手順だけを使います。顧客は相談や具体例の確認から参加でき、全てのSkillを読む必要はありません。
 
+- [導入懸念への回答](../../.agents/skills/respond-adoption-concerns/SKILL.md)
 - [定着施策の設計](../../.agents/skills/design-adoption-actions/SKILL.md)
 - [職務・育成の設計](../../.agents/skills/redesign-work-role/SKILL.md)
 - [推進体制の設計](../../.agents/skills/design-adoption-support/SKILL.md)

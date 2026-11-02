@@ -98,3 +98,5 @@ For a focused operating arrangement, the full clone provides [design-adoption-su
 For a changed job, use [redesign-work-role](https://github.com/maakbo/fde/blob/main/.agents/skills/redesign-work-role/SKILL.md) in the full clone to compare duties, capabilities, development support and contribution evidence. This returns a proposal, not an employee appraisal or an authorized job change.
 
 For concrete adoption interventions and event-linked work, the full clone provides [design-adoption-actions](https://github.com/maakbo/fde/blob/main/.agents/skills/design-adoption-actions/SKILL.md). Reuse the concerns, criteria and support record; do not convert an intervention plan into evidence of workplace adoption.
+
+For a concise evidence-grounded answer to a stakeholder, use [respond-adoption-concerns](https://github.com/maakbo/fde/blob/main/.agents/skills/respond-adoption-concerns/SKILL.md) in the full clone. It links the existing evaluation, data, cost and role records to a bounded next decision; it does not grant approvals.

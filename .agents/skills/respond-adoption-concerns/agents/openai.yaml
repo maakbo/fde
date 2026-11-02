@@ -1,0 +1,4 @@
+interface:
+  display_name: "導入懸念への回答"
+  short_description: "相手の判断に合う短い回答を、今回の根拠・限界・必要な確認とともに作る"
+  default_prompt: "$respond-adoption-concerns を使い、この懸念への回答と次に確認する事項をまとめてください。"
