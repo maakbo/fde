@@ -73,6 +73,7 @@ flowchart TB
 
 FDEとAIエージェントは、今必要な作業の手順だけを使います。顧客は相談や具体例の確認から参加でき、全てのSkillを読む必要はありません。
 
+- [利用場面の定義](../../.agents/skills/define-usage-scenarios/SKILL.md)
 - [業務改善案の比較](../../.agents/skills/redesign-process-options/SKILL.md)
 - [変更後の業務設計](../../.agents/skills/design-future-work/SKILL.md)
 - [現状・変更案の差分分析](../../.agents/skills/analyze-change-gaps/SKILL.md)
@@ -93,3 +94,5 @@ FDEとAIエージェントは、今必要な作業の手順だけを使います
 [AIへ任せる仕事の判断](references/decision-foundations.md)。評価方法は[PoCの成功条件](../evaluation/workflow.md)で試行前に具体化します。
 
 [次の業務：協働設計](../design/README.md)
+
+[利用場面から要件を定義した例](../../examples/design-preparation/definition-practice.md) / [利用場面と要件の考え方](references/usage-and-requirements.md)

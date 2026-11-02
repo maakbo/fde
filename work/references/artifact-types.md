@@ -7,7 +7,7 @@
 | 成果 | 主に使う作業/進行 |
 | --- | --- |
 | [PoC計画・評価](../../templates/ai-trial-brief.md) | [decide-trial-next-step](../../.agents/skills/decide-trial-next-step/SKILL.md), [design-trial-success](../../.agents/skills/design-trial-success/SKILL.md) |
-| [業務要件定義](../../templates/definition-brief.md) | [definition-facilitation](../../.agents/skills/definition-facilitation/SKILL.md) |
+| [業務要件定義](../../templates/definition-brief.md) | [definition-facilitation](../../.agents/skills/definition-facilitation/SKILL.md), [define-usage-scenarios](../../.agents/skills/define-usage-scenarios/SKILL.md) |
 | [次工程への移行判断](../../templates/delivery-review.md) | [decide-trial-next-step](../../.agents/skills/decide-trial-next-step/SKILL.md) |
 | [業務課題・改善候補の整理](../../templates/discovery-brief.md) | [discovery-facilitation](../../.agents/skills/discovery-facilitation/SKILL.md), [select-improvement-target](../../.agents/skills/select-improvement-target/SKILL.md) |
 | [現在の一件と暗黙の判断](../../templates/field-work/case-observation-record.md) | [elicit-tacit-decisions](../../.agents/skills/elicit-tacit-decisions/SKILL.md), [reconcile-procedure-and-practice](../../.agents/skills/reconcile-procedure-and-practice/SKILL.md), [walkthrough-current-case](../../.agents/skills/walkthrough-current-case/SKILL.md) |

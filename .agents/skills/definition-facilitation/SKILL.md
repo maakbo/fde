@@ -52,6 +52,12 @@ Capture:
 - output / changed state;
 - who uses or confirms the result.
 
+When unclear order, handoffs or exceptions affect requirements, use
+business-flow-facilitation to return a proposed flow and check a normal case,
+important exception and correction path. Reuse an adequate existing flow. Keep
+the parent business boundary and current/proposed state explicit. If participants
+are unavailable, leave field confirmation pending; a diagram draft is not agreement.
+
 Use concrete examples when tacit judgment appears. Ask what an experienced person notices, compares, rejects, escalates, or treats as exceptional.
 
 ### 3. Define functional requirements
@@ -112,10 +118,15 @@ For direct users and indirect receivers/reviewers, describe the situation,
 information they can inspect, how they use the output and what decision they
 must make. Do not invent demographic personas. Translate each actual need into
 observable behavior and evidence; different receivers can need different outputs.
+For this focused task use [define-usage-scenarios](https://github.com/maakbo/fde/blob/main/.agents/skills/define-usage-scenarios/SKILL.md)
+in the full clone. Preserve situation/requirement/condition IDs and source versions
+in the existing Definition Brief rather than creating a separate persona report.
 
 ### 7. Write acceptance criteria
 
-Acceptance criteria should let a field team judge whether the defined change is good enough to enter Design / PoC.
+Write business acceptance criteria for the changed behavior. Separately identify
+what must be known or agreed to enter Design or a trial; document completeness
+alone does not prove that the behavior or model works.
 
 Use observable scenarios:
 

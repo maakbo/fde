@@ -1,0 +1,4 @@
+interface:
+  display_name: "利用場面の定義"
+  short_description: "出力を誰がどう使い何を判断するかを具体化し、必要な振る舞いと確認条件へつなぐ"
+  default_prompt: "$define-usage-scenarios を使い、この業務の利用場面から必要な出力と要件を定義してください。"
