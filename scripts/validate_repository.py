@@ -110,6 +110,7 @@ REQUIRED = [
 SKILLS = [
     "select-improvement-target",
     "define-usage-scenarios",
+    "design-task-prompt",
     "respond-adoption-concerns",
     "design-adoption-actions",
     "redesign-work-role",

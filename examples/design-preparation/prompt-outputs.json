@@ -1,0 +1,100 @@
+[
+  {
+    "case_id": "E1",
+    "output": {
+      "schema_version": "SCHEMA-v2",
+      "request_id": "REQUEST-E1",
+      "status": "draft",
+      "findings": []
+    }
+  },
+  {
+    "case_id": "E2",
+    "output": {
+      "schema_version": "SCHEMA-v2",
+      "request_id": "REQUEST-E2",
+      "status": "draft",
+      "findings": [
+        {
+          "kind": "open_question",
+          "source_ids": ["S2"],
+          "evidence": {"source_id": "S2", "field": "text", "value": "検索範囲の端点を含むか未決"},
+          "note": "検索範囲の端点を含むか確認してください。"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "E3",
+    "output": {
+      "schema_version": "SCHEMA-v2",
+      "request_id": "REQUEST-E3",
+      "status": "draft",
+      "findings": [
+        {
+          "kind": "version_conflict",
+          "source_ids": ["S3"],
+          "evidence": {"source_id": "S3", "field": "text", "value": "この資料S3の版はv1"},
+          "note": "S3のmetadata版v2と本文の自己申告版v1のどちらが正しいか確認してください。"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "T1",
+    "output": {
+      "schema_version": "SCHEMA-v2",
+      "request_id": "REQUEST-T1",
+      "status": "draft",
+      "findings": [
+        {
+          "kind": "open_question",
+          "source_ids": ["S4"],
+          "evidence": {"source_id": "S4", "field": "text", "value": "日付の時刻帯は設計レビューで確認予定"},
+          "note": "日付の時刻帯を確認してください。"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "T2",
+    "output": {
+      "schema_version": "SCHEMA-v2",
+      "request_id": "REQUEST-T2",
+      "status": "draft",
+      "findings": [
+        {
+          "kind": "missing_version",
+          "source_ids": ["S5"],
+          "evidence": {"source_id": "S5", "field": "version", "value": ""},
+          "note": "S5の版を確認してください。"
+        }
+      ]
+    }
+  },
+  {
+    "case_id": "T3",
+    "output": {
+      "schema_version": "SCHEMA-v2",
+      "request_id": "REQUEST-T3",
+      "status": "draft",
+      "findings": []
+    }
+  },
+  {
+    "case_id": "T4",
+    "output": {
+      "schema_version": "SCHEMA-v2",
+      "request_id": "REQUEST-T4",
+      "status": "draft",
+      "findings": [
+        {
+          "kind": "missing_version",
+          "source_ids": ["S7"],
+          "evidence": {"source_id": "S7", "field": "version", "value": ""},
+          "note": "S7の版を確認してください。"
+        }
+      ]
+    }
+  }
+]

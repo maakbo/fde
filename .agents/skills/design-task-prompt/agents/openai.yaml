@@ -1,0 +1,4 @@
+interface:
+  display_name: "プロンプト設計"
+  short_description: "業務要件から指示と例を作って試し、出力の根拠と限界を確認して次の実装へ渡す"
+  default_prompt: "$design-task-prompt を使い、この作業の指示案と必要な例を設計し、別条件でも確かめてください。"

@@ -80,6 +80,7 @@ FDEとAIエージェントは、今必要な作業の手順だけを使います
 - [自動化方式の比較](../../.agents/skills/compare-automation-options/SKILL.md)
 - [変数・条件分岐の設計](../../.agents/skills/design-workflow-branches/SKILL.md)
 - [AI出力の原因分析](../../.agents/skills/diagnose-context-quality/SKILL.md)
+- [プロンプト設計](../../.agents/skills/design-task-prompt/SKILL.md)
 - [AI入力の設計](../../.agents/skills/design-task-input/SKILL.md)
 - [委任範囲の設計](../../.agents/skills/define-delegation-boundary/SKILL.md)
 - [起動条件の設計](../../.agents/skills/design-trigger-contract/SKILL.md)
@@ -109,3 +110,5 @@ FDEとAIエージェントは、今必要な作業の手順だけを使います
 [知識の整備](references/knowledge-in-work.md) / [情報と処理](references/data-and-processing.md) / [接続方式](references/connection-options.md)
 
 [次の業務：実装・テスト](../implementation/README.md)
+
+[レビュー依頼の照合補助を設計した例](../../examples/design-preparation/prompt-practice.md)

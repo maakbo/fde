@@ -25,7 +25,7 @@ description: 作業の期待結果から必要情報と入力の構成を設計�
 
 ## 成果と完了
 
-[入力構成](../../../templates/field-work/context-and-evidence-record.md)。費用はestimate-inference-cost、出力照合はverify-output-evidenceへ。
+[入力構成](../../../templates/field-work/context-and-evidence-record.md)。費用はestimate-inference-cost、出力照合はverify-output-evidenceへ。選んだ情報から指示と例を具体化して試す時は[プロンプト設計](../design-task-prompt/SKILL.md)へ、同じ条件/版を渡す。
 期待出力と必要情報が対応し、入力の方法/版/許可/欠落と容量/費用の根拠が分かる。実測/設計を区別する。
 
 入力の種類と保存/選択/圧縮/分割の使い分けは[作業へ渡す文脈](../architecture-modeling/references/task-context.md)。

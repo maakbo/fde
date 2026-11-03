@@ -3,6 +3,8 @@
 合意した条件IDを受け、担当へ何を渡すか、何を返させるか、何を実行側で防ぐかを
 分けて決める。AIに依頼する文章だけで、権限や品質が成立したことにしない。
 
+作業の手順は[プロンプト設計](https://github.com/maakbo/fde/blob/main/.agents/skills/design-task-prompt/SKILL.md)を参照。リポジトリ一式を取得した環境で使える追加手順で、選択導入には同梱されていない。情報の選別や出力契約の既存IDを引き継ぎ、全体設計をやり直さない。
+
 ## 指示と例を作って試す
 
 1. 役割、目的、対象、正本と版、制約、未決定の返し先、返却先を短く指定する。
@@ -57,3 +59,10 @@ JSONは形式の一つで、スキーマはその構造を定める。`propertie
 2026-10-24に[OpenAIの推論モデルの指示指針](https://developers.openai.com/api/docs/guides/reasoning-best-practices)
 で単純な指示とCoT要求の扱い、[JSON Schema公式説明](https://json-schema.org/understanding-json-schema/reference/object)
 でオブジェクトの必須項目・追加項目を照合。モデルやAPIの導入を必須にはしない。
+
+
+## 設計レビューから実装へ
+
+指示、出力形式、制御は独立した三枚の資料で終えず、同じ要件/条件IDへ対応させる。出力の根拠欄が必要というニーズなら、指示だけでなく項目・根拠の意味照合・受取側の閲覧まで確かめる。入口の情報削減、実アクセス許可、出口の検査、実行権限は異なる制御で、マスキングだけでアクセスを制限したことにはならない。生成した合格フラグは検査器の結果と分け、誰が何を検査したかを追う。
+
+2026-11-04に[OpenAIの推論モデル指針](https://developers.openai.com/api/docs/guides/reasoning-best-practices)、[JSON Schemaの必須/追加項目](https://json-schema.org/understanding-json-schema/reference/object)、[OWASPのPrompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)を再確認。モデルごとの指示の扱いを一般化せず、入力の命令や自然文出力を権限ある操作へ直結させない。これらの資料は個別設計の合格や安全性を認定するものではない。
