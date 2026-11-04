@@ -112,6 +112,7 @@ SKILLS = [
     "define-usage-scenarios",
     "design-task-prompt",
     "run-trial-cycle",
+    "plan-staged-rollout",
     "respond-adoption-concerns",
     "design-adoption-actions",
     "redesign-work-role",

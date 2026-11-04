@@ -100,3 +100,5 @@ For a changed job, use [redesign-work-role](https://github.com/maakbo/fde/blob/m
 For concrete adoption interventions and event-linked work, the full clone provides [design-adoption-actions](https://github.com/maakbo/fde/blob/main/.agents/skills/design-adoption-actions/SKILL.md). Reuse the concerns, criteria and support record; do not convert an intervention plan into evidence of workplace adoption.
 
 For a concise evidence-grounded answer to a stakeholder, use [respond-adoption-concerns](https://github.com/maakbo/fde/blob/main/.agents/skills/respond-adoption-concerns/SKILL.md) in the full clone. It links the existing evaluation, data, cost and role records to a bounded next decision; it does not grant approvals.
+
+For a staged pilot, rollout or changed-capability plan, use [plan-staged-rollout](https://github.com/maakbo/fde/blob/main/.agents/skills/plan-staged-rollout/SKILL.md), an additional task available with the full repository. Reuse evaluation/role/control IDs, and distinguish a plan from permission or actual deployment.

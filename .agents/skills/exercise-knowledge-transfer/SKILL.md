@@ -24,6 +24,6 @@ description: 知識記録を別の人や別条件の一件へ適用し、誤り�
 
 ## 成果と完了
 
-[作業の記録](../../../templates/field-work/knowledge-transfer.md)を必要な範囲で使う。
+[作業の記録](../../../templates/field-work/knowledge-transfer.md)の事例8列を使い、独立確認/訂正先/再試行も同じ行で追う。既存記録を再利用する場合は同義欄の対応を示し、未実施の確認を空欄や確認済みにしない。
 知識の版→適用事例→結果/理由→照合→修正/再試行/未決が追え、実演習と現場の効果を区別できる。
 背景の区別が必要な時だけ[知識を使える形にする判断](../../../work/design/references/knowledge-in-work.md)を読む。

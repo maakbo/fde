@@ -120,6 +120,7 @@ flowchart TB
 
 FDEとAIエージェントは、今必要な作業の手順だけを使います。顧客は相談や具体例の確認から参加でき、全てのSkillを読む必要はありません。
 
+- [段階展開の計画](../../.agents/skills/plan-staged-rollout/SKILL.md)
 - [導入懸念への回答](../../.agents/skills/respond-adoption-concerns/SKILL.md)
 - [定着施策の設計](../../.agents/skills/design-adoption-actions/SKILL.md)
 - [職務・育成の設計](../../.agents/skills/redesign-work-role/SKILL.md)
@@ -139,3 +140,5 @@ FDEとAIエージェントは、今必要な作業の手順だけを使います
 - [次工程への移行判断](../../templates/delivery-review.md)
 
 [チームへの導入手順](../../.agents/skills/team-adoption-facilitation/SKILL.md) / [知識の維持管理](../../.agents/skills/knowledge-stewardship/SKILL.md)
+
+[レビュー支援の限定運用と展開を計画した例](../../examples/design-preparation/rollout-practice.md)

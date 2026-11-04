@@ -1,0 +1,4 @@
+interface:
+  display_name: "段階展開の計画"
+  short_description: "試行の根拠から限定運用と横展開・能力拡張の条件、観測と止め方を具体化する"
+  default_prompt: "$plan-staged-rollout を使い、検証済みの範囲と残件から次の段階の計画を整理してください。"
