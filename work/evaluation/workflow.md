@@ -77,6 +77,7 @@ flowchart TB
 
 FDEとAIエージェントは、今必要な作業の手順だけを使います。顧客は相談や具体例の確認から参加でき、全てのSkillを読む必要はありません。
 
+- [PoC検証の実行](../../.agents/skills/run-trial-cycle/SKILL.md)
 - [PoCの成功条件の設計](../../.agents/skills/design-trial-success/SKILL.md)
 - [AI出力の原因分析](../../.agents/skills/diagnose-context-quality/SKILL.md)
 - [出力と根拠の照合](../../.agents/skills/verify-output-evidence/SKILL.md)
@@ -93,3 +94,5 @@ FDEとAIエージェントは、今必要な作業の手順だけを使います
 [評価指標の考え方](references/success-measures.md) / [試行評価の手順](../../.agents/skills/ai-pilot-evaluation/SKILL.md)
 
 [次の業務：導入・運用改善](../operations/README.md)
+
+[レビュー候補を確認待ちへ渡す試作](../../examples/design-preparation/poc-practice.md)

@@ -62,6 +62,9 @@ permissions, specialist review, or operational readiness.
    retention. API/schema checks, executed software tests, model evaluation,
    desk simulation and workplace use are different evidence. Missing permission
    stops dependent actions, not preparation of the reviewable plan.
+   For a focused build/run/correct/retest task, use [run-trial-cycle](https://github.com/maakbo/fde/blob/main/.agents/skills/run-trial-cycle/SKILL.md),
+   available with the full repository. Reuse the criteria and execution record,
+   and preserve what was not measured.
 7. **Review three layers and diagnose.** First see whether required quality holds,
    then whether it fits actual use, then whether the outcome improved. These are
    lenses, not a guaranteed causal ladder. Diagnose wrong output, cumbersome UX,

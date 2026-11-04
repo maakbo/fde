@@ -1,0 +1,4 @@
+interface:
+  display_name: "PoC検証の実行"
+  short_description: "事前の条件から試作を動かし、確認と修正、同条件・別条件の再試行を証拠として返す"
+  default_prompt: "$run-trial-cycle を使い、この設計を許可範囲で試作・検証し、修正と再試行の結果を残してください。"

@@ -1,0 +1,9 @@
+{
+  "type_mutations": 126,
+  "stale_review_states": {
+    "C_metadata_version": "pending_review",
+    "candidate_note": "pending_review",
+    "contract_description": "pending_review"
+  },
+  "failures": []
+}

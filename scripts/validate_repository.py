@@ -111,6 +111,7 @@ SKILLS = [
     "select-improvement-target",
     "define-usage-scenarios",
     "design-task-prompt",
+    "run-trial-cycle",
     "respond-adoption-concerns",
     "design-adoption-actions",
     "redesign-work-role",

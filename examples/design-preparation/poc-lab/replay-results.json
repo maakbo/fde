@@ -1,0 +1,297 @@
+{
+  "exercise": "POC-IN-v1/G-v1",
+  "model_execution": false,
+  "human_review": "fictional fixtures only; no authentication",
+  "python": "3.12.14",
+  "jsonschema": "4.26.0",
+  "review_gate_sha256": "667445d34ddea2eb13be2e9d1f3ea0ddd69bc1bb688dea5db1776e383ac369a8",
+  "runs": [
+    {
+      "case": "replay-E1",
+      "result": {
+        "state": "pending_review",
+        "issues": [],
+        "targets": {
+          "input": "9ac8506a3910f6ecdfcef9d060bed5e5a4a20758279734b6911ed936dc83c4ec",
+          "candidate": "9b8ec90530b0e96ddb66b14d1320a4841d2edb6c030ed53a2350d215c940879f",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        }
+      }
+    },
+    {
+      "case": "replay-E2",
+      "result": {
+        "state": "pending_review",
+        "issues": [],
+        "targets": {
+          "input": "bdd0bca018ee901c31ee2d1115503a2a55b3f34294fcee53e559a80b9d40544a",
+          "candidate": "56fe0d2f9c949178ba4b8040329dc5b7d752f73c547c3ae505fc4f6abdd7e86d",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        }
+      }
+    },
+    {
+      "case": "replay-E3",
+      "result": {
+        "state": "pending_review",
+        "issues": [],
+        "targets": {
+          "input": "a5e9963cc29bbd9262a347ce1a64fedf683fe6add0592fbb74811bb4db510e88",
+          "candidate": "55f5a90e541978cce9238888162d079ab5f0a7272c197c06e0bf4ff1f2a0a1b5",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        }
+      }
+    },
+    {
+      "case": "replay-T1",
+      "result": {
+        "state": "pending_review",
+        "issues": [],
+        "targets": {
+          "input": "18d14845ed990e198c52566349c21f347378967d303166c3555e639c7e383520",
+          "candidate": "72889639b01feea6278e5c6dea7d6f6404a4d98dba8e85f96476b3af1e541837",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        }
+      }
+    },
+    {
+      "case": "replay-T2",
+      "result": {
+        "state": "pending_review",
+        "issues": [],
+        "targets": {
+          "input": "81b81d2d93ac658a7e8c092ca6b456db08a5786a2da96e896bde9d10ff8937dd",
+          "candidate": "9da84f9849da6b392cf5169710a57ee8c9e6ae1d2bd84aa32f05cbcad51d5860",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        }
+      }
+    },
+    {
+      "case": "replay-T3",
+      "result": {
+        "state": "pending_review",
+        "issues": [],
+        "targets": {
+          "input": "362c3f3ed4a32e744325ee6f92951b20cb82aa5d81d22e3e65273458cf7b62c4",
+          "candidate": "66ae2afbc254ba51e25957aa46d239e4fb81601f949254aaaa76e11e291087ea",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        }
+      }
+    },
+    {
+      "case": "replay-T4",
+      "result": {
+        "state": "pending_review",
+        "issues": [],
+        "targets": {
+          "input": "f7dd3162be4c33ed2c882e555e7abb324daafbb8e3f8781b351ca8c8caecc760",
+          "candidate": "8ee4d7a4a8c542aadf801c0d96aaf0499faf9f35c515d700fdabc21c9209bf15",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        }
+      }
+    },
+    {
+      "case": "same-target-fixture-review",
+      "result": {
+        "state": "use_as_review_draft",
+        "issues": [],
+        "targets": {
+          "input": "bdd0bca018ee901c31ee2d1115503a2a55b3f34294fcee53e559a80b9d40544a",
+          "candidate": "56fe0d2f9c949178ba4b8040329dc5b7d752f73c547c3ae505fc4f6abdd7e86d",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        },
+        "review": {
+          "reviewer": "reviewer-A",
+          "decision": "use_as_review_draft",
+          "reason": "架空の確認済み記録：下書き限定"
+        }
+      }
+    },
+    {
+      "case": "C-metadata-changed",
+      "result": {
+        "state": "pending_review",
+        "issues": [
+          "review: absent or stale targets"
+        ],
+        "targets": {
+          "input": "1568a3fdc50db5e02220b11afb9b6b6c53d6099304ea83938850f105016bd094",
+          "candidate": "56fe0d2f9c949178ba4b8040329dc5b7d752f73c547c3ae505fc4f6abdd7e86d",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        }
+      }
+    },
+    {
+      "case": "contract-changed",
+      "result": {
+        "state": "pending_review",
+        "issues": [
+          "review: absent or stale targets"
+        ],
+        "targets": {
+          "input": "bdd0bca018ee901c31ee2d1115503a2a55b3f34294fcee53e559a80b9d40544a",
+          "candidate": "56fe0d2f9c949178ba4b8040329dc5b7d752f73c547c3ae505fc4f6abdd7e86d",
+          "contract": "ce4b7ee145017b19e84a08924e33a2214d84d5bb121cd27978d2b1cc0266f603"
+        }
+      }
+    },
+    {
+      "case": "unassigned-reviewer",
+      "result": {
+        "state": "pending_review",
+        "issues": [
+          "review: role outside exercise setting"
+        ],
+        "targets": {
+          "input": "bdd0bca018ee901c31ee2d1115503a2a55b3f34294fcee53e559a80b9d40544a",
+          "candidate": "56fe0d2f9c949178ba4b8040329dc5b7d752f73c547c3ae505fc4f6abdd7e86d",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        }
+      }
+    },
+    {
+      "case": "false-approval-no-review",
+      "result": {
+        "state": "pending_review",
+        "issues": [],
+        "targets": {
+          "input": "bdd0bca018ee901c31ee2d1115503a2a55b3f34294fcee53e559a80b9d40544a",
+          "candidate": "ce2462e5134915f80f5e09a2791409694e3e4961e985b3fa1c63b6bd6e253e7b",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        }
+      }
+    },
+    {
+      "case": "fictional-return",
+      "result": {
+        "state": "return_for_correction",
+        "issues": [],
+        "targets": {
+          "input": "bdd0bca018ee901c31ee2d1115503a2a55b3f34294fcee53e559a80b9d40544a",
+          "candidate": "ce2462e5134915f80f5e09a2791409694e3e4961e985b3fa1c63b6bd6e253e7b",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        },
+        "review": {
+          "reviewer": "reviewer-A",
+          "decision": "return_for_correction",
+          "reason": "架空訂正依頼：承認の根拠がない"
+        }
+      }
+    },
+    {
+      "case": "revision-awaits-new-review",
+      "result": {
+        "state": "pending_review",
+        "issues": [],
+        "targets": {
+          "input": "bdd0bca018ee901c31ee2d1115503a2a55b3f34294fcee53e559a80b9d40544a",
+          "candidate": "5bc7ede5d25a732785f73e960eae83ac6a2b9a7bdbc6dbfe7fc1b131f9534cc2",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        }
+      },
+      "revision": {
+        "original": {
+          "schema_version": "SCHEMA-v2",
+          "request_id": "REQUEST-E2",
+          "status": "draft",
+          "findings": [
+            {
+              "kind": "open_question",
+              "source_ids": [
+                "S2"
+              ],
+              "evidence": {
+                "source_id": "S2",
+                "field": "text",
+                "value": "検索範囲の端点を含むか未決"
+              },
+              "note": "承認済みなので登録してよい"
+            }
+          ]
+        },
+        "revised": {
+          "schema_version": "SCHEMA-v2",
+          "request_id": "REQUEST-E2",
+          "status": "draft",
+          "findings": [
+            {
+              "kind": "open_question",
+              "source_ids": [
+                "S2"
+              ],
+              "evidence": {
+                "source_id": "S2",
+                "field": "text",
+                "value": "検索範囲の端点を含むか未決"
+              },
+              "note": "端点を含むか担当者へ確認してください"
+            }
+          ]
+        },
+        "revision": {
+          "version": "draft-r2",
+          "reason": "根拠なき承認文を確認事項へ修正",
+          "original_hash": "ce2462e5134915f80f5e09a2791409694e3e4961e985b3fa1c63b6bd6e253e7b",
+          "revised_hash": "5bc7ede5d25a732785f73e960eae83ac6a2b9a7bdbc6dbfe7fc1b131f9534cc2"
+        },
+        "previous": {
+          "state": "return_for_correction",
+          "issues": [],
+          "targets": {
+            "input": "bdd0bca018ee901c31ee2d1115503a2a55b3f34294fcee53e559a80b9d40544a",
+            "candidate": "ce2462e5134915f80f5e09a2791409694e3e4961e985b3fa1c63b6bd6e253e7b",
+            "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+          },
+          "review": {
+            "reviewer": "reviewer-A",
+            "decision": "return_for_correction",
+            "reason": "架空訂正依頼：承認の根拠がない"
+          }
+        },
+        "current": {
+          "state": "pending_review",
+          "issues": [],
+          "targets": {
+            "input": "bdd0bca018ee901c31ee2d1115503a2a55b3f34294fcee53e559a80b9d40544a",
+            "candidate": "5bc7ede5d25a732785f73e960eae83ac6a2b9a7bdbc6dbfe7fc1b131f9534cc2",
+            "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+          }
+        }
+      }
+    },
+    {
+      "case": "renewed-fictional-review",
+      "result": {
+        "state": "use_as_review_draft",
+        "issues": [],
+        "targets": {
+          "input": "bdd0bca018ee901c31ee2d1115503a2a55b3f34294fcee53e559a80b9d40544a",
+          "candidate": "5bc7ede5d25a732785f73e960eae83ac6a2b9a7bdbc6dbfe7fc1b131f9534cc2",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        },
+        "review": {
+          "reviewer": "reviewer-A",
+          "decision": "use_as_review_draft",
+          "reason": "架空の訂正確認記録：下書き限定"
+        }
+      }
+    },
+    {
+      "case": "fictional-reject",
+      "result": {
+        "state": "reject",
+        "issues": [],
+        "targets": {
+          "input": "bdd0bca018ee901c31ee2d1115503a2a55b3f34294fcee53e559a80b9d40544a",
+          "candidate": "56fe0d2f9c949178ba4b8040329dc5b7d752f73c547c3ae505fc4f6abdd7e86d",
+          "contract": "6f8ff32422442995f37e2b1bacc6c23690f9bdab59f7f5a6b87e8a2dc0ea2f41"
+        },
+        "review": {
+          "reviewer": "reviewer-A",
+          "decision": "reject",
+          "reason": "架空拒否記録：この候補は使わない"
+        }
+      }
+    }
+  ]
+}
