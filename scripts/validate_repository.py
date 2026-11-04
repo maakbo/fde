@@ -17,16 +17,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     "examples/system-development/README.md",
-    "examples/system-development/deliverables.md",
-    "examples/system-development/design/README.md",
-    "examples/system-development/environments.md",
+    "examples/system-development/basic-design/README.md",
+    "examples/system-development/deployment/README.md",
+    "examples/system-development/detailed-design/README.md",
+    "examples/system-development/external-integration/README.md",
+    "examples/system-development/handoffs.md",
     "examples/system-development/implementation/README.md",
-    "examples/system-development/implementation/agent-assisted-flow.md",
-    "examples/system-development/implementation/development-flow.md",
-    "examples/system-development/people.md",
-    "examples/system-development/release-and-operations/README.md",
+    "examples/system-development/internal-integration/README.md",
+    "examples/system-development/operations/README.md",
     "examples/system-development/requirements/README.md",
-    "examples/system-development/testing/README.md",
+    "examples/system-development/system-test/README.md",
+    "examples/system-development/user-acceptance/README.md",
 
     "AGENTS.md",
     "README.md",
@@ -452,47 +453,48 @@ def validate_architecture_reader_surface() -> None:
 
 
 def validate_system_development_reader_surface() -> None:
-    """Validate linked reader pages, semantic profiles and shared identities."""
+    """Validate the human waterfall sample's overview, task flows and handoffs."""
     sample = ROOT / "examples/system-development"
     context = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py"
-    business = ROOT / ".agents/skills/business-context-modeling/scripts/check_business_context.py"
     flow = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py"
-    master = ROOT / ".agents/skills/business-context-modeling/scripts/check_master_map.py"
-    refs = ROOT / ".agents/skills/business-context-modeling/scripts/check_master_references.py"
     reader = ROOT / ".agents/skills/reader-facing-artifact-review/scripts/check_reader_artifact.py"
-    masters = {"people.md": "actor", "deliverables.md": "information", "environments.md": "system"}
+    phases = ("requirements", "basic-design", "detailed-design", "implementation",
+              "internal-integration", "external-integration", "system-test",
+              "user-acceptance", "deployment", "operations")
     root_text = (sample / "README.md").read_text()
-    for child in ("requirements", "design", "implementation", "testing", "release-and-operations"):
+    for child in phases:
         if f"({child}/)" not in root_text:
             raise ValueError(f"sample root missing business link: {child}")
     for artifact in sorted(sample.rglob("*.md")):
         text = artifact.read_text()
         run([sys.executable, str(reader), str(artifact)])
-        if artifact.name in masters and artifact.parent == sample:
-            run([sys.executable, str(master), str(artifact), "--kind", masters[artifact.name],
-                 "--strict", "--allow-complexity", "--allow-sparse"])
-        elif artifact.name.endswith("-flow.md"):
-            run([sys.executable, str(flow), str(artifact), "--strict"])
-        else:
-            run([sys.executable, str(context), str(artifact), "--strict", "--allow-complexity"])
-            run([sys.executable, str(business), str(artifact), "--allow-complexity"])
-            run([sys.executable, str(refs), str(artifact),
-                 "--actor", str(sample / "people.md"),
-                 "--information", str(sample / "deliverables.md"),
-                 "--system", str(sample / "environments.md"),
-                 "--allow-complexity", "--allow-sparse"])
-        parent = re.search(r"%% parent: ([^ ;]+) / (b_[a-z0-9_]+)", text)
-        if artifact != sample / "README.md" and artifact.name not in masters and not parent:
-            raise ValueError(f"{artifact}: missing parent Business trace")
-        if parent:
-            target = (artifact.parent / parent[1]).resolve()
-            if not target.is_file() or not re.search(rf"^\s+{re.escape(parent[2])}@", target.read_text(), re.M):
-                raise ValueError(f"{artifact}: missing parent Business {parent[1]} / {parent[2]}")
+        blocks = re.findall(r"```mermaid\n(.*?)```", text, re.S)
+        # Root: one overall participation Context plus three consecutive Flow segments.
+        # Phase pages: a task Flow. Handoffs: shared prose, no fabricated Context.
+        profiles = ([context, flow, flow, flow] if artifact == sample / "README.md"
+                    else [] if artifact == sample / "handoffs.md" else [flow])
+        if len(blocks) != len(profiles):
+            raise ValueError(f"{artifact}: expected {len(profiles)} diagrams, got {len(blocks)}")
+        for block, checker in zip(blocks, profiles):
+            with tempfile.TemporaryDirectory() as directory:
+                source = Path(directory) / "diagram.md"
+                source.write_text("```mermaid\n" + block + "```\n")
+                run([sys.executable, str(checker), str(source), "--strict"])
+            parent = re.search(r"%% parent: ([^ ;]+) / (b_[a-z0-9_]+)", block)
+            if checker == flow and not parent:
+                raise ValueError(f"{artifact}: missing parent Business trace")
+            if parent:
+                target = (artifact.parent / parent[1]).resolve()
+                if not target.is_file() or not re.search(rf"^\s+{re.escape(parent[2])}@", target.read_text(), re.M):
+                    raise ValueError(f"{artifact}: missing parent Business {parent[1]} / {parent[2]}")
         for link in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
             if "://" in link or link.startswith("#"):
                 continue
             if not (artifact.parent / link.split("#", 1)[0]).resolve().exists():
                 raise ValueError(f"{artifact}: broken sample link: {link}")
+        for target in re.findall(r'click \w+ "https://github.com/maakbo/fde/blob/main/([^"]+)"', text):
+            if not (ROOT / target).is_file():
+                raise ValueError(f"{artifact}: broken diagram navigation: {target}")
 
 
 MODEL_SET_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")

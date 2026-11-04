@@ -77,7 +77,7 @@ loose conversation
 ```bash
 npm ci
 python3 .agents/skills/mermaid-diagram-export/scripts/export_mermaid.py \
-  examples/system-development/README.md --type context --allow-complexity --output-dir /tmp/fde-export
+  examples/system-development/README.md --type context --diagram 1 --output-dir /tmp/fde-export
 ```
 
 ## Visual language

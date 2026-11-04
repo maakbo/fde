@@ -1,9 +1,5 @@
 # 実装・単体テスト
 
-設計をコードにし、処理単位の動作と変更の妥当性を確認する仕事です。
-
-## 実装と検証、レビューの仕事
-
 ```mermaid
 ---
 config:
@@ -13,76 +9,53 @@ config:
     curve: basis
     diagramPadding: 40
     htmlLabels: false
-    nodeSpacing: 64
-    rankSpacing: 80
+    nodeSpacing: 52
+    rankSpacing: 52
     padding: 8
   themeVariables:
     background: "#FFFFFF"
-    lineColor: "#8A847A"
+    lineColor: "#9E988E"
+    primaryTextColor: "#25231F"
+    edgeLabelBackground: "#FFFFFF"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "14px"
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
-flowchart LR
-  %% parent: ../README.md / b_build
-  a_team@{ label: "開発チーム", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_design@{ label: "設計書", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_implement@{ label: "実装", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_code@{ label: "ソースコード", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_unit_test@{ label: "単体テスト", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  x_repo@{ label: "ソース管理・CI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_code_review@{ label: "コードレビュー", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_results@{ label: "テスト結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+flowchart TB
+  %% parent: ../README.md / b_implementation ; 人手の通常経路と工程内の修正。保留・工程外への戻りは本文。
+  b_implementation_1@{ label: "コードを書く", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_implementation_2@{ label: "単体を試す", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_implementation_3@{ label: "コードを確認", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  d_implementation_ready@{ label: "進められる？", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/diamond.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_implementation_4@{ label: "単体を渡す", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 
-  a_team --- b_implement
-  a_team --- b_unit_test
-  a_team --- b_code_review
-  i_design --- b_implement
-  i_design --- b_unit_test
-  b_implement --- i_code
-  i_code --- b_unit_test
-  i_code --- b_code_review
-  b_unit_test --- x_repo
-  b_unit_test --- i_results
-  b_code_review --- i_results
-
-  class a_team actor;
-  class i_design,i_code,i_results information;
-  class b_implement,b_unit_test,b_code_review business;
-  class x_repo external;
-  classDef actor fill:none,stroke:none,color:#25231F;
-  classDef information fill:none,stroke:none,color:#5F5A52;
-  classDef business fill:none,stroke:none,color:#25231F;
-  classDef external fill:none,stroke:none,color:#5F5A52;
-  linkStyle default stroke:#9E988E,stroke-width:0.75px;
+  b_implementation_1 --> b_implementation_2
+  b_implementation_2 --> b_implementation_3
+  b_implementation_3 --> d_implementation_ready
+  d_implementation_ready -->|はい| b_implementation_4
+  d_implementation_ready -->|要修正| b_implementation_1
+  class b_implementation_1,b_implementation_2,b_implementation_3,b_implementation_4 activity;
+  classDef activity fill:none,stroke:none,color:#25231F;
+  class d_implementation_ready decision;
+  classDef decision fill:none,stroke:none,color:#25231F;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px,fill:none;
 ```
 
-開発チームが実装・テスト・レビューを繰り返し、後続のテストへ渡せる版を作ります。
+詳細設計どおりにコードを作成し、処理単位の振る舞いを確認する。
 
-## コードを書き、確かめて渡す
+[開発・運用の全体](../README.md) / [受渡しと変更](../handoffs.md)
 
-注文登録の実装では、既存の入力処理や保存処理を読み、変更する責務と呼出し元を確認します。設計で決まった条件に沿ってコードを書き、単体テストで通常の登録と入力不足・保存失敗などを確かめます。テストで問題が出たら原因を調べ、修正して再実行します。
+**開始時に受け取るもの**: 承認済み詳細設計、DB定義、開発規約、単体テスト観点。
 
-レビューでは差分だけでなく、変更理由、要件・設計との対応、実行したテストと未確認の範囲を共有します。仕様が足りない時は実装者が独断で決めず、設計・要件へ戻します。テスト担当へは、対象の版と確認結果が対応する状態で渡します。
-
-[実装からレビューへ進める流れ](development-flow.md)では、テストに失敗した時の戻り先までたどれます。
-
-## AIエージェントに一件を任せるなら
-
-設計と対象コード、変更範囲、実行可能なテストを渡し、調査→テストとコードの作成→実行→失敗の調査と修正を任せます。返してもらうのはコード案だけでなく、差分、変更理由、実行結果、未解決です。開発者は仕様・設計の採否とレビューを担います。
-
-[エージェントと実装・テストを進める](agent-assisted-flow.md)で、具体的な依頼と返る成果を見ます。
-
-[システム開発の全体](../) / [結合・総合・受入テストへ](../testing/)
-
-<!--
-## Master references
-
-| Master | ID | Canonical label | Use in this view |
+| 作業 | 実行・確認する人 | 人が行うこと | 残すもの |
 | --- | --- | --- | --- |
-| `../people.md` | `a_team` | 開発チーム | 本文に示す担当・入出力・利用先 |
-| `../deliverables.md` | `i_design` | 設計書 | 本文に示す担当・入出力・利用先 |
-| `../deliverables.md` | `i_code` | ソースコード | 本文に示す担当・入出力・利用先 |
-| `../environments.md` | `x_repo` | ソース管理・CI | 本文に示す担当・入出力・利用先 |
-| `../deliverables.md` | `i_results` | テスト結果 | 本文に示す担当・入出力・利用先 |
--->
+| コードを書く | 実装担当 | 設計を読み、ソースと設定を手で作成し、コンパイル・起動する | ソースコード、設定、ビルド結果 |
+| 単体を試す | 実装担当 | 仕様からテスト項目・入力・期待値を作り、処理単位を手動実行して正常・境界・異常を照合する | 単体テスト仕様・結果・証跡 |
+| コードを確認 | 別の開発担当・開発責任者 | コード、設計との対応、テスト期待値と証跡を読み、修正漏れを確認する | コードレビュー記録、指摘対応 |
+| 単体を渡す | 実装担当 | 対象コードの版、設定、ビルド手順、単体結果、既知の残件を引き渡す | 単体確認済みコード一式、版一覧 |
+
+**次へ進む判断**: 開発責任者がレビューと単体テストの完了、重大な未解決不具合がないことを確認する。
+
+**差戻し・待ち**: 実装不良はコードへ戻して再テストする。仕様の曖昧さは設計担当へ質問し、設計承認前に独断で仕様を追加しない。
+
+**受渡し先**: 内部結合テスト担当。対象範囲・成果物の版・確認結果・残件を説明し、受取側が着手または継続できることを確かめます。

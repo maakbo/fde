@@ -105,6 +105,5 @@ next smallest test and one question participants can answer. Preserve their
 reason for the work; do not replace it with maximizing AI usage. Publish no
 organizational approval, business effect, or model capability you did not verify.
 
-Use the [fictional development collaboration example](https://github.com/maakbo/fde/blob/main/examples/system-development/implementation/agent-assisted-flow.md).
 Follow host validation and independent reader/forward review for reusable Skills;
 validate actual artifacts and observations, not merely template completeness.

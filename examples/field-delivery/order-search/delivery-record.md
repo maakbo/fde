@@ -11,7 +11,7 @@
 
 進行役は「設計を渡した後、次の担当が何を聞き直しますか」と聞き、
 「画面の入力項目より、日付の意味や0件の扱いを確認したい」という回答を置いた。
-全体の仕事は既存の[開発業務](../../system-development/README.md)と[開発の流れ](../../system-development/implementation/development-flow.md)で確認し、
+全体の仕事は既存の[開発業務](../../system-development/README.md)と[開発の流れ](../../system-development/implementation/README.md)で確認し、
 この一件では設計→実装・テスト→レビューの受渡しへ絞る。
 
 | 候補 | 見直すこと | 今回の判断 |
