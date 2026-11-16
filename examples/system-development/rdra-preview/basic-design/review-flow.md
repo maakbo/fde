@@ -5,16 +5,34 @@
 「設計をレビューする」を一件の作業と判断へ展開した、**人が行う架空のAs-Is**。左右のレーンはそれぞれ担当者、**時系列は上から下**です。
 
 ```mermaid
+---
+config:
+  layout: dagre
+  theme: neutral
+  flowchart:
+    curve: basis
+    diagramPadding: 40
+    htmlLabels: false
+    nodeSpacing: 64
+    rankSpacing: 80
+    padding: 8
+  themeVariables:
+    background: "#FFFFFF"
+    lineColor: "#8A847A"
+    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontSize: "14px"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
+---
 swimlane-beta TB
   subgraph designer [設計担当]
-    b_prepare["設計仕様と要件を揃える"]
-    b_revise["指摘を踏まえて修正する"]
-    b_handover["確定版と結果を引き渡す"]
+    b_prepare@{ label: "設計仕様と要件を揃える", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+    b_revise@{ label: "指摘を踏まえて修正する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+    b_handover@{ label: "確定版と結果を引き渡す", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   end
 
   subgraph reviewer [レビュー担当]
-    b_check["要件と設計を照合する"]
-    d_pass{"確認を終えられるか？"}
+    b_check@{ label: "要件と設計を照合する", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+    d_pass@{ label: "確認を終えられるか？", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/diamond.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   end
 
   b_prepare -->|"合意済み要件・設計仕様"| b_check
@@ -22,6 +40,11 @@ swimlane-beta TB
   d_pass -->|"要修正・レビュー結果"| b_revise
   b_revise -->|"修正版"| b_check
   d_pass -->|"確認完了・レビュー結果"| b_handover
+  class b_prepare,b_revise,b_handover,b_check business;
+  class d_pass decision;
+  classDef business fill:none,stroke:none,color:#25231F;
+  classDef decision fill:none,stroke:none,color:#25231F;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
 - **入力**：合意済み要件、設計仕様。
