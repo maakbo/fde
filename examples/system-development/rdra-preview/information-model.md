@@ -5,16 +5,34 @@
 業務で扱う**情報の意味**を明確にするモデルです。文書形式の一覧や工程順ではありません。「要求」「要件」「設計」「レビュー」「テスト」「変更」を別の概念として定義し、業務の間で同じ言葉を使います。
 
 ```mermaid
+---
+config:
+  layout: dagre
+  theme: neutral
+  flowchart:
+    curve: basis
+    diagramPadding: 40
+    htmlLabels: false
+    nodeSpacing: 64
+    rankSpacing: 80
+    padding: 8
+  themeVariables:
+    background: "#FFFFFF"
+    lineColor: "#8A847A"
+    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontSize: "14px"
+  themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
+---
 flowchart LR
-  i_request["開発要求"]
-  i_requirements["合意済み要件"]
-  i_design["設計仕様"]
-  i_review["レビュー結果"]
-  i_code["実装"]
-  i_cases["テスト観点・ケース"]
-  i_results["検証結果"]
-  i_handover["運用引継ぎ"]
-  i_change["変更要求"]
+  i_request@{ label: "開発要求", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_requirements@{ label: "合意済み要件", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_design@{ label: "設計仕様", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_review@{ label: "レビュー結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_code@{ label: "実装", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_cases@{ label: "テスト観点・ケース", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_results@{ label: "検証結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_handover@{ label: "運用引継ぎ", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_change@{ label: "変更要求", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 
   i_request -->|"目的・必要性を具体化"| i_requirements
   i_requirements -->|"実現方法を規定"| i_design
@@ -25,6 +43,9 @@ flowchart LR
   i_results -->|"受入・利用開始の判断に用いる"| i_handover
   i_change -->|"影響確認・再合意"| i_requirements
   i_change -->|"影響確認・修正"| i_design
+  class i_request,i_requirements,i_design,i_review,i_code,i_cases,i_results,i_handover,i_change information;
+  classDef information fill:none,stroke:none,color:#5F5A52;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
 | 安定ID | 用語 | 意味 | 主な利用場面 |
