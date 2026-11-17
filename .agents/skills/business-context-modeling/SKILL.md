@@ -64,6 +64,9 @@ master/context URLs remain authoritative until explicitly migrated.
   the relationships, but cannot replace this projection; if the integrated
   view becomes unreadable, stop for a grain or review decision rather than
   silently separating the meaning.
+- The root-page completeness gate applies to the upper model set across its
+  linked Views. Its sparse first System Context excludes Information; the
+  subsequent Business Context carries the grounded Information projection.
 - Keep reader-facing prose about the work itself: purpose, participants,
   handled Information, and resulting value. Do not use `図`, `モデル`, `View`,
   `ノード`, placement, or authoring language as the subject of the explanation.
@@ -138,7 +141,7 @@ Read only the references needed for the task:
   actor, external-system, and information maps when reusable identities or
   same-type relationships matter.
 - [spatial-context-and-abstraction-loop.md](references/spatial-context-and-abstraction-loop.md): **mandatory** SIPO-by-placement, purpose above-right, sparse whole-work System Context, concrete-first clustering and upward correction, rejection gates and field-use regressions.
-- [multi-view-modeling.md](references/multi-view-modeling.md): distinguish Model- [multi-view-modeling.md](references/multi-view-modeling.md): distinguish Model
+- [multi-view-modeling.md](references/multi-view-modeling.md): distinguish Model
   from View, choose Purpose / Map / Context / Flow views, and keep upward and
   downward trace.
 - [reader-facing-artifacts.md](references/reader-facing-artifacts.md): separate
@@ -192,8 +195,6 @@ Reuse one identity across Businesses and Contexts when the meaning is the same.
 Apply the **System Context acceptance gate** from `spatial-context-and-abstraction-loop.md` when the user needs the whole job in one picture: keep it exceptionally simple. Use the agreed purpose, major roles, and a single central Business, not the set of later input/output Information or procedural phases. The purpose must be shown visually **above-right** of that Business (source order is not a visual assertion). If the source renderer does not place it correctly, do not call the image accepted; inspect and revise.
 
 When moving to Business Context, begin with the concrete work and its complete meaningful Business-element × relation canvas, rather than reusing a generic list of phase boxes. Split only after semantic and density review, preserving the parent/child link and returning upstream when a child changes the meaning.
-### 4. Connect Why to How and choose Views
-
 Keep the meaning chain behind the model. Publish only the Views that answer a
 reader's question, such as:
 
@@ -244,8 +245,6 @@ Views; record the impact search and review result in the private checkpoint.
 **Use the right profile:** for a whole-work System Context run `python3 .agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py path/to/context.md --profile system-context --strict`; for a detailed Business Context use the existing Business Context and relationship checkers. The System Context profile is a **source guard**, not a guarantee of coordinates: inspect the rendered diagram and specifically verify that the shared purpose is **upper-right**, the work is central, and roles occupy meaningful left and right positions.
 
 The first trial diagram may be crowded while discussing all real elements; that is an **observation surface**, not a finished reader View. When relationships prevent a person from explaining the scene, reconsider scope/grain and cluster around a change of participants, Information, responsibility, value or outcome. Publish coherent parent and child Views and revisit the parent after each meaningful child correction.
-
-### 6. Author and validate the working model
 
 Use Mermaid as a discussion surface. Keep one subject, state, relationship
 meaning, and main abstraction level per diagram. Run the matching source-only
@@ -348,8 +347,6 @@ review state, unresolved items, next action, and stopping point.
 ## Field-use readiness
 
 **Do not confuse model-acceptance and Skill-acceptance.** A one-off `examples/` model is not the objective or the evidence. For a reusable Skill change, require (a) the sparse System Context source check **and rendered spatial review**, (b) at least two different unmemorized work conversations that test concrete-first modeling and justified splitting, (c) a linked child View and a correction propagated back to the parent, and (d) an explicit report of which checks were run and what remains unverified. See `spatial-context-and-abstraction-loop.md`. Do not publish real customer data to validate the Skill.
-
-## Field-use readiness
 
 The Skill is ready for a first field use when this chain works end to end:
 

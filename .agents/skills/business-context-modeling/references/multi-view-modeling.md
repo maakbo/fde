@@ -28,7 +28,8 @@ merge, responsibility, Information concept, or Context boundary.
 Use this as the default shape, not a fixed number of levels:
 
 ```text
-Overall / Business Map
+Whole-work System Context (purpose and major participants)
+  -> Overall / Business Map (when composition needs a separate View)
   -> Business Context: one Business Use Case / scene
        -> Business activity: a detail expansion point
             -> Business Flow
@@ -37,7 +38,9 @@ Overall / Business Map
                       -> further detail when useful
 ```
 
-An Overall Context or Business Map names the whole and its major capabilities.
+A whole-work System Context names the work, purpose, and major participants;
+follow `spatial-context-and-abstraction-loop.md` for its sparse first-view gate.
+An Overall / Business Map names the whole and its major capabilities.
 A Business Context selects one coherent scene and shows its Business backbone,
 Actors, Information, and External Systems. Each Business node can expand in one
 of two ways:
@@ -112,7 +115,9 @@ expansion. A child View is evidence about its parent, not a terminal artifact.
 
 When a model set has a root page, place the whole-system question, major
 Actors, External Systems, Information, and top-level Business composition
-there before opening child Views. Keep one semantic question per diagram, but
+there before opening child Views. This is a page-level model set, not a demand
+to put Information or capabilities into the sparse first System Context.
+Keep one semantic question per diagram, but
 let the root page contain several reader-facing sections when those upper
 views need to be read together.
 

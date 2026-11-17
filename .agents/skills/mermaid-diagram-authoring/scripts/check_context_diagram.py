@@ -196,6 +196,10 @@ def main() -> int:
             class_defs[match.group("class_name")] = match.group("style")
         elif line.strip().startswith("linkStyle"):
             link_styles.append((number, line.strip()))
+        elif args.profile == "system-context" and re.match(
+            r'^\s*[A-Za-z_][A-Za-z0-9_]*\s*[\[({]', line
+        ):
+            errors.append(f"line {number}: System Context requires canonical semantic nodes")
         elif "@{" in line:
             errors.append(
                 f"line {number}: use canonical one-line image-node property order: "
@@ -264,6 +268,9 @@ def main() -> int:
         if len(participants) < 2:
             errors.append("System Context needs major participating Actors/Systems")
         if len(business_ids) == 1:
+            for left, right, _directed in edges:
+                if business_ids[0] not in (left, right):
+                    errors.append("System Context relations must join the central Business to a participant or purpose")
             ordered_ids = list(nodes)
             center = ordered_ids.index(business_ids[0])
             left_participants = [node for node in participants if ordered_ids.index(node) < center]

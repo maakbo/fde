@@ -114,6 +114,37 @@ class WholeWorkContextProfile(unittest.TestCase):
         )
         self.assert_check(source, False, "requires one dotted Business-to-purpose relation")
 
+    def test_multiple_businesses_are_rejected(self) -> None:
+        source = valid_system_context().replace(
+            image_node("b_work", "仕事", "ellipse.svg"),
+            image_node("b_work", "仕事", "ellipse.svg") + "\n" +
+            image_node("b_other", "別業務", "ellipse.svg"),
+        ).replace("  class b_work business;", "  class b_work,b_other business;")
+        self.assert_check(source, False, "requires one central whole-work Business")
+
+    def test_participant_relation_does_not_bypass_central_business(self) -> None:
+        source = valid_system_context().replace(
+            "  a_provider --- b_work", "  a_provider --- a_recipient"
+        )
+        self.assert_check(source, False, "relations must join the central Business")
+
+    def test_default_box_cannot_hide_an_extra_phase(self) -> None:
+        for name in ("phase", "Phase"):
+            with self.subTest(name=name):
+                source = valid_system_context().replace(
+                    "flowchart LR", f'flowchart LR\n  {name}["工程"]'
+                )
+                self.assert_check(source, False, "requires canonical semantic nodes")
+
+    def test_device_is_rejected(self) -> None:
+        source = valid_system_context().replace(
+            image_node("a_provider", "提供者", "user.svg"),
+            image_node("v_device", "端末", "laptop.svg"),
+        ).replace("a_provider", "v_device").replace(
+            "  class v_device,a_recipient actor;", "  class a_recipient actor;"
+        )
+        self.assert_check(source, False, "excludes Information and devices")
+
     def test_default_checker_remains_backward_compatible(self) -> None:
         result = subprocess.run(
             [sys.executable, str(CHECKER), str(ROOT / "templates/icon-context.md"), "--strict"],

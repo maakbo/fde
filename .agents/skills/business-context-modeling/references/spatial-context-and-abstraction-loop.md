@@ -65,7 +65,7 @@ Do **not** start with an elegant but ungrounded 4–6 box taxonomy. Begin with w
 
 ## Domain-informed example as a repeatable Skill evaluation
 
-The repository's existing \`examples/system-development/\` is a useful **evaluation workspace** precisely because a domain-informed reviewer can recognize misplaced responsibilities, phases masquerading as Businesses, and invented Information relations. Its purpose is not to store one approved diagram that the agent can copy. After each Skill change, the model should be **regenerated from the scenario facts**, examined with the reviewer, and the learning returned to the Skill and its semantic checks.
+The repository's existing `examples/system-development/` is a useful **evaluation workspace** precisely because a domain-informed reviewer can recognize misplaced responsibilities, phases masquerading as Businesses, and invented Information relations. Its purpose is not to store one approved diagram that the agent can copy. After each Skill change, the model should be **regenerated from the scenario facts**, examined with the reviewer, and the learning returned to the Skill and its semantic checks.
 
 Treat the existing synthetic BtoB Web approval / accounting-integration / waterfall content, if present, as **legacy baseline**, not automatically as the current scenario. Before a new trial, identify what the reviewer has kept, corrected, or reset. Never import old named systems, workflow constraints or phase lists into a newly reset "system development as work" scenario merely because the README still contains them. Do not silently rewrite or delete the historical baseline: make a reviewable separate branch and explain the scope of the replacement.
 

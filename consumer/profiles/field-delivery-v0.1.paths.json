@@ -6,6 +6,7 @@
     ".agents/skills/business-context-modeling/references/master-elements.md",
     ".agents/skills/business-context-modeling/references/modeling-rules.md",
     ".agents/skills/business-context-modeling/references/multi-view-modeling.md",
+    ".agents/skills/business-context-modeling/references/spatial-context-and-abstraction-loop.md",
     ".agents/skills/business-context-modeling/references/reader-facing-artifacts.md",
     ".agents/skills/business-context-modeling/scripts/check_business_context.py",
     ".agents/skills/business-context-modeling/scripts/check_master_map.py",
