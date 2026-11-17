@@ -28,6 +28,16 @@ a_customer@{ label: "依頼者", img: "https://raw.githubusercontent.com/maakbo/
 - Use `-->` only when direction itself is essential and placement cannot
   express it. Record the reason and validate with `--allow-arrow-exception`.
 
+## Whole-work System Context (strict first-view profile)
+
+The *System Context of work* has a narrower contract than a scene-specific Business Context. Start with **one whole-work `b_` anchor**, **one concise `p_` purpose note above-right of that Business**, and **only the major `a_` Actors / observed `x_` External Systems**. The composition should communicate shared orientation toward the goal. Do not add `i_` Information, phase sequences, handoff details, or implementation devices to make the first View feel "complete". Explain scope in nearby prose if needed.
+
+Use `flowchart LR`. Declare the provider/executor Actors and Systems first, central Business second, the purpose note next, and value recipients afterward. Place participants through their **primary role** in the value relationship; do not draw them on both sides as a layout trick. The source-order intent is *left → center → right*, with purpose **upper-right**, not an extra step to be completed. Use `---` for meaningful participation and exactly one `b_work -.- p_purpose` note relationship. Keep lines few and without arrows.
+
+Run `check_context_diagram.py path/to/first-view.md --profile system-context --strict`. This checks source structure, not actual rendered coordinates. **Render and visually confirm the purpose appears upper-right**; if it does not, the layout has **not** passed. Reconsider node relationships, meaningful node ordering, and boundary before any layout machinery. Do not draw invisible or fabricated edges.
+
+For the complementary, more detailed spatial SIPO and abstraction/splitting practice, follow `../../business-context-modeling/references/spatial-context-and-abstraction-loop.md`.
+
 ## Context profiles
 
 Use the profile that matches the question; do not make one figure carry every
@@ -35,7 +45,7 @@ level at once.
 
 | Profile | Center | Include |
 | --- | --- | --- |
-| Overall context | A title-level business area or outcome as a `b_` anchor | Major actor subjects; keep detailed information and systems for child views |
+| Whole-work System Context | One `b_` work anchor, with `p_` purpose above-right | Major Actors and observed external systems only; no Information/phase/steps; use `--profile system-context` |
 | Use-case / scene context | Multiple sibling `b_` activities forming one Business Use Case backbone | The `a_`, `x_`, and `i_` elements whose responsibility, boundary, handoff, or value matters in that scene |
 | Complexity observation | The current same-level backbone | All useful candidates when the density itself needs to be seen; acknowledge it with `--allow-complexity` |
 
