@@ -1,10 +1,8 @@
 # システム開発
 
-**人が担うシステム開発のAs-Is（架空の例）**。要件定義から運用・保守までを対象に、RDRAの考え方を参考にして、仕事の背景・目的から業務・作業・情報まで一続きで読むための試作です。ソフトウェアそのもののアーキテクチャ図ではなく、ソフトウェアを作り、利用を支える**仕事**を可視化しています。
+**システム開発という仕事の全体像（構成案）**。開発対象となる個別製品のアーキテクチャではなく、事業の意図と利用者のニーズを受け、関係者が協力して価値を生む仕事を捉えています。
 
-> 実案件の事実・標準手順ではありません。ここでは法人顧客の申請・承認Webシステムと既存会計システムの連携を、架空の開発対象として置いています。すべての業務判断、作成、レビュー、テスト操作、導入判断は人が行い、AI/自動化をAs-Isへ混ぜません。
-
-## システムコンテキスト — なぜ、誰と、どこまで
+## システムコンテキスト
 
 ```mermaid
 ---
@@ -26,34 +24,43 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
-  a_user@{ label: "利用部門", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  a_customer_it@{ label: "顧客IT担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  a_dev@{ label: "開発チーム", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  a_ops@{ label: "運用保守担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  x_accounting@{ label: "既存会計システム", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_work@{ label: "システム開発", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  n_background("背景：利用部門の申請・承認と会計連携を\n支えるシステムが必要")
-  n_purpose("目的：業務要求を合意し、利用できる形へ実現し、\n継続して使える状態を支える")
-  n_scope("対象：要件定義～運用・保守\n対象外：営業・契約締結")
+  %% 全体の仕事のコンテキスト。左=価値を提供する役割、中央=仕事、右=価値を受ける役割。
+  %% 目的は中央業務の右上に置く意図で、右側の要素のうち最初に定義・接続する。
+  %% 方向は配置で伝える。実線は参加関係、点線は目的。時系列と情報の受渡しは次のView。
+  a_business_owner@{ label: "事業責任者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  a_business_staff@{ label: "業務担当者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  a_pm@{ label: "PM", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  a_developer@{ label: "開発者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 
-  a_user ---|"業務要求・受入"| b_work
-  a_customer_it ---|"制約・運用判断"| b_work
-  a_dev ---|"設計・実装・検証"| b_work
-  b_work ---|"運用引継ぎ"| a_ops
-  b_work ---|"連携仕様の確認・接続試験"| x_accounting
-  n_background -.-> b_work
-  n_purpose -.-> b_work
-  n_scope -.-> b_work
-  class a_user,a_customer_it,a_dev,a_ops actor;
-  class x_accounting external;
-  class b_work business;
+  b_system_development@{ label: "システム開発", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+
+  p_purpose("事業の目指す姿や利用者のニーズを捉え、\n関係者とともに、価値を生むシステムを開発する。")
+  a_user@{ label: "利用者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  a_operator@{ label: "運用者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+
+  a_business_owner --- b_system_development
+  a_business_staff --- b_system_development
+  a_pm --- b_system_development
+  a_developer --- b_system_development
+
+  b_system_development -.- p_purpose
+  b_system_development --- a_user
+  b_system_development --- a_operator
+
+  class a_business_owner,a_business_staff,a_pm,a_developer,a_user,a_operator actor;
+  class b_system_development business;
+  class p_purpose purpose;
   classDef actor fill:none,stroke:none,color:#25231F;
-  classDef external fill:none,stroke:none,color:#5F5A52;
   classDef business fill:none,stroke:none,color:#25231F;
+  classDef purpose fill:#FFFFFF,stroke:#9E988E,color:#25231F,stroke-width:0.75px;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-利用部門が使う申請・承認の仕組みを、顧客IT担当と開発チームが要件から実装・検証まで具体化し、受入・導入後も運用保守担当が利用を支えます。既存会計システムは**開発対象の連携先**であり、開発業務全体を実行するシステムではありません。着手契機は、契約などの前提が整った後の開発依頼です。
+事業責任者・業務担当者・PM・開発者が目的や知見、力を持ち寄り、利用者と運用者へ価値を届けます。運用者は受け取るだけでなく、継続的な価値提供と改善にも関わります。関係線は**参加・関与**を示し、工程順や一方向の受渡しを意味しません。役割の位置はこの場面の主要な価値関係であり、固定した組織境界を表しません。
+
+**この一枚には情報・工程・具体的な外部システムを置きません**。外部システムが不要という意味ではなく、特定の接続先や開発方式を前提にしないためです。業務や情報の関係は下位のビューで整理します。引き渡して終わりではなく、運用・保守・改善による継続的な価値提供も視野に入れます。
+
+> **下記は以前の題材による旧試作で、現在の合意に未対応です。** 申請・承認Webシステムと会計連携を含む具体的な設定、既存の10工程の整理は今回のシステム開発モデルの決定事項ではありません。後続図はこれから再検討します。
 
 ## ビジネスコンテキスト — 業務、関係者、情報のつながり
 
