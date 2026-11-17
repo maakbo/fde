@@ -14,6 +14,7 @@ Write the smallest diagram people can inspect while the conversation is still ch
 - Keep the Markdown file as the single editable source and working visual-review surface; do not duplicate it into `.mmd` automatically.
 - Use a standalone `.mmd` only when the user explicitly asks for one or an integration requires it.
 - Preserve business meaning while improving notation and visual consistency. Treat the established icon stroke width and size, spacing, relation line, arrow usage, color, and typography as visual-language assets; do not change them without explicit agreement.
+- For a **whole-work System Context**, keep one central Business, a concise purpose visually **above-right**, and only major Actors / observed External Systems. Do not put detailed Information, phase or tasks here. Review positional SIPO and keep arrows absent; use the dedicated `--profile system-context` source check, followed by a rendered layout check.
 - In a business model set, keep the profiles separate: Overall / Business Map,
   Business Context for one scene with a multi-Business backbone, and a Flow or
   recursive Detailed Business Context expanding one selected Business. Record
@@ -46,6 +47,7 @@ preference is applied. Existing diagrams keep their explicit icon URLs.
 1. Identify the diagram's purpose, reader, subject, and one-sentence reading.
 2. Reuse an existing Markdown file when one already carries the discussion. Otherwise instantiate `/templates/icon-context.md` or `/templates/business-flow.md` with `icon_registry.py create`.
 3. Choose the smallest suitable profile:
+   - For a top-level **System Context of work**, read the same reference's strict first-view profile and run `check_context_diagram.py path/to/context.md --profile system-context --strict` (not merely the general context checker). Its source-order check cannot establish actual upper-right positioning.
    - Read [references/icon-context.md](references/icon-context.md) for actors,
      activities, information, systems, semantic left/center/right layout, and
      context relationships.
@@ -72,7 +74,7 @@ The context checker rejects arrows by default. If direction itself is a
 documented semantic exception, opt in with `--allow-arrow-exception`; ordinary
 provider, recipient, input, and output relations do not need it.
 
-6. Inspect the native or rendered preview after source validation. For a
+6. Inspect the native or rendered preview after source validation. For System Context, withhold acceptance if the purpose is not visibly upper-right of the whole Business or the first View has been overloaded with inputs, outputs, implementation detail or phases. For any Context, a dense first concrete picture is a signal to revisit semantic scope or granularity—not to hide elements, shrink the drawing or reuse a generic phase chart. For a
    Business Context, confirm the Business backbone is traceable, both semantic
    sides are legible, crossings do not hide the scene, and relation endpoints
    are intact. Then let the user inspect the Markdown in GitHub or VS Code. When the user asks
