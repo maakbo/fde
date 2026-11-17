@@ -63,6 +63,25 @@ Do **not** start with an elegant but ungrounded 4–6 box taxonomy. Begin with w
 - A child View changes the meaning of an Actor/Information/Business and leaves the parent stale.
 - A specific synthetic example or screenshot is presented as proof that the **Skill** itself now works across real conversations.
 
+## Domain-informed example as a repeatable Skill evaluation
+
+The repository's existing \`examples/system-development/\` is a useful **evaluation workspace** precisely because a domain-informed reviewer can recognize misplaced responsibilities, phases masquerading as Businesses, and invented Information relations. Its purpose is not to store one approved diagram that the agent can copy. After each Skill change, the model should be **regenerated from the scenario facts**, examined with the reviewer, and the learning returned to the Skill and its semantic checks.
+
+Treat the existing synthetic BtoB Web approval / accounting-integration / waterfall content, if present, as **legacy baseline**, not automatically as the current scenario. Before a new trial, identify what the reviewer has kept, corrected, or reset. Never import old named systems, workflow constraints or phase lists into a newly reset "system development as work" scenario merely because the README still contains them. Do not silently rewrite or delete the historical baseline: make a reviewable separate branch and explain the scope of the replacement.
+
+A useful trial progression is:
+
+1. **Start from the agreed work purpose and principal roles**, or elicit them without imposing the old case. Produce a small, readable **whole-work System Context**. Review actual upper-right goal placement and visual semantics, not only Mermaid validity.
+2. **Derive one concrete Business Context** from a real-world-style development situation in the reviewer's language. Write the Actor × Business and Information × Business matrices **before projection**. Test whether the model tells a coherent SIPO story without arrowheads.
+3. **Expand where meaning changes**: if the scene is overloaded, show which actors, information, responsibility, system boundaries or outcome changed, justify a split/merge and give the resulting parent and child stable IDs and links. Don't split by phase names or node-count quotas.
+4. **Detail one Business** into a Business Use Case and a role-separated, top-to-bottom Flow, and maintain one conceptual Information model referenced by the business Views. Observe what the detailed case changes in the root, and propagate that correction.
+5. **Ask the domain reviewer what is wrong or missing**. Separate observed facts, reviewer decisions, alternatives, assumptions and unknowns. For each substantive correction, identify the Skill rule / modeling step / validation gate that should change to prevent the same mistake in a different domain.
+6. **Run again without copying the corrected picture**, then test with at least one **unrelated** business domain to expose overfitting. A visually improved example alone is not Skill acceptance.
+
+Record each iteration compactly as **input → generated Views → semantic/visual findings → Skill amendment → rerun result → unresolved risk** in the project's private checkpoint or approved evaluation area. If an old example must be replaced, preserve the parent objective and existing unfinished tests; changes to the example are evidence of the Skill's progress, not a substitute for changing the Skill.
+
+**Acceptance evidence** requires both structural/visual conformance and a domain review of business meaning. Do not claim "skill complete" when only a diagram was corrected, only code compiled, or only tests about one known example passed.
+
 ## Checks and evidence
 
 1. Run the icon/context and semantic checkers, including the **System Context profile** for a first View (when available), but recognize that source order cannot prove on-screen coordinates.
