@@ -37,6 +37,8 @@ REQUIRED = [
     "assets/icons/maakbo/PROVENANCE.md",
     "scripts/test_maakbo_icons.py",
     "scripts/test_icon_sets.py",
+    "scripts/test_system_context_profile.py",
+    ".agents/skills/business-context-modeling/references/spatial-context-and-abstraction-loop.md",
     "scripts/test_review_profile.py",
     ".agents/skills/mermaid-diagram-authoring/scripts/icon_registry.py",
     ".agents/skills/mermaid-diagram-authoring/references/icon-sets.json",
@@ -640,6 +642,7 @@ def main() -> int:
     validate_icon_sizes()
     run([sys.executable, "scripts/test_maakbo_icons.py"])
     run([sys.executable, "scripts/test_icon_sets.py"])
+    run([sys.executable, "scripts/test_system_context_profile.py"])
     run([sys.executable, "scripts/test_review_profile.py"])
     run([sys.executable, "-m", "unittest", "discover", "-s",
          "examples/field-delivery/order-search", "-p", "test_workflow.py"])
