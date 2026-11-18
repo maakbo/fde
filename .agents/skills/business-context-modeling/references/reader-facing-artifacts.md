@@ -11,6 +11,14 @@ understood.
 | Reader-facing sample | person trying to understand the business | diagram, nearby Japanese explanation, direct links to parent / child Views | authoring history, method tutorials, internal uncertainty, validator notes |
 | Private checkpoint | project owner and future workers | decisions, rejected options, unresolved items, review state, next, stopping point | public-facing repetition that already exists in the sample |
 
+When the user designates a repository's synthetic example as the evaluation
+area, keep the generated diagrams and their business explanation there as the
+single editable source. Keep project decisions, evaluation findings, and
+unresolved authoring choices in the private checkpoint, linking to those
+artifacts. Separating surfaces does not mean relocating the generated model to
+the private checkpoint. Do not move confidential scenarios into a public
+example; only use synthetic or explicitly approved public material.
+
 Do not solve this separation by leaving a hidden public `model.md` full of
 authoring history. Move reusable knowledge to references, project history to a
 private checkpoint, and delete the remaining duplication.
