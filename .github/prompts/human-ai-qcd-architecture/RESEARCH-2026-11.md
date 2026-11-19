@@ -137,7 +137,7 @@ Agent Memoryを、transcript / notes / knowledge representations / preloaded con
 
 ### 3-4. テストを「AIが自分で変えられる言い訳」にしない [D]
 
-Giorgio Giammaria et al., *Tests as data*, Martin Fowler, 2026-11-11
+Matteo Vaccari, *Tests as data*, Martin Fowler, 2026-11-11
 https://martinfowler.com/articles/tests-as-data.html
 
 顧客の言葉による受入シナリオと、実装コード・テストランナーを分離し、テストデータを変更に強い独立資産として扱う実践提案。黒箱テスト、Mutation Testing、Property-based Test、Linter、Human Exploratory Testingも組み合わせる。特定の実践者の見解であり、厳密な比較実験ではない。
