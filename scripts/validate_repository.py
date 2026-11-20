@@ -17,6 +17,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     "examples/system-development/README.md",
+    "examples/system-development/work-context/README.md",
+    "examples/system-development/work-context/requirements-agreement/README.md",
     "examples/system-development/basic-design/README.md",
     "examples/system-development/deployment/README.md",
     "examples/system-development/detailed-design/README.md",
@@ -37,6 +39,8 @@ REQUIRED = [
     "assets/icons/maakbo/PROVENANCE.md",
     "scripts/test_maakbo_icons.py",
     "scripts/test_icon_sets.py",
+    "scripts/test_system_context_profile.py",
+    ".agents/skills/business-context-modeling/references/spatial-context-and-abstraction-loop.md",
     "scripts/test_review_profile.py",
     ".agents/skills/mermaid-diagram-authoring/scripts/icon_registry.py",
     ".agents/skills/mermaid-diagram-authoring/references/icon-sets.json",
@@ -453,10 +457,11 @@ def validate_architecture_reader_surface() -> None:
 
 
 def validate_system_development_reader_surface() -> None:
-    """Validate the human waterfall sample's overview, task flows and handoffs."""
+    """Validate legacy phase flows and the separate whole-work context trial."""
     sample = ROOT / "examples/system-development"
     context = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_context_diagram.py"
     flow = ROOT / ".agents/skills/mermaid-diagram-authoring/scripts/check_business_flow.py"
+    business = ROOT / ".agents/skills/business-context-modeling/scripts/check_business_context.py"
     reader = ROOT / ".agents/skills/reader-facing-artifact-review/scripts/check_reader_artifact.py"
     phases = ("requirements", "basic-design", "detailed-design", "implementation",
               "internal-integration", "external-integration", "system-test",
@@ -471,7 +476,10 @@ def validate_system_development_reader_surface() -> None:
         blocks = re.findall(r"```mermaid\n(.*?)```", text, re.S)
         # Root: one overall participation Context plus three consecutive Flow segments.
         # Phase pages: a task Flow. Handoffs: shared prose, no fabricated Context.
+        work_context = sample / "work-context/README.md"
+        agreement_context = sample / "work-context/requirements-agreement/README.md"
         profiles = ([context, flow, flow, flow] if artifact == sample / "README.md"
+                    else [context] if artifact in (work_context, agreement_context)
                     else [] if artifact == sample / "handoffs.md" else [flow])
         if len(blocks) != len(profiles):
             raise ValueError(f"{artifact}: expected {len(profiles)} diagrams, got {len(blocks)}")
@@ -479,7 +487,12 @@ def validate_system_development_reader_surface() -> None:
             with tempfile.TemporaryDirectory() as directory:
                 source = Path(directory) / "diagram.md"
                 source.write_text("```mermaid\n" + block + "```\n")
-                run([sys.executable, str(checker), str(source), "--strict"])
+                options = (["--profile", "system-context"] if artifact == work_context
+                           else ["--allow-complexity"] if artifact == agreement_context else [])
+                run([sys.executable, str(checker), str(source), "--strict", *options])
+                if artifact == agreement_context:
+                    # This is a dense, provisional observation surface, not visual acceptance.
+                    run([sys.executable, str(business), str(source), "--allow-complexity"])
             parent = re.search(r"%% parent: ([^ ;]+) / (b_[a-z0-9_]+)", block)
             if checker == flow and not parent:
                 raise ValueError(f"{artifact}: missing parent Business trace")
@@ -640,6 +653,7 @@ def main() -> int:
     validate_icon_sizes()
     run([sys.executable, "scripts/test_maakbo_icons.py"])
     run([sys.executable, "scripts/test_icon_sets.py"])
+    run([sys.executable, "scripts/test_system_context_profile.py"])
     run([sys.executable, "scripts/test_review_profile.py"])
     run([sys.executable, "-m", "unittest", "discover", "-s",
          "examples/field-delivery/order-search", "-p", "test_workflow.py"])

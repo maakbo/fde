@@ -89,6 +89,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--allow-complexity", action="store_true")
     parser.add_argument(
+        "--profile", choices=("business-context", "system-context"),
+        default="business-context",
+        help="use the sparse whole-work System Context gate when modeling the top View",
+    )
+    parser.add_argument(
         "--allow-arrow-exception",
         action="store_true",
         help="allow directed relations whose direction is essential to the view",
@@ -191,6 +196,10 @@ def main() -> int:
             class_defs[match.group("class_name")] = match.group("style")
         elif line.strip().startswith("linkStyle"):
             link_styles.append((number, line.strip()))
+        elif args.profile == "system-context" and re.match(
+            r'^\s*[A-Za-z_][A-Za-z0-9_]*\s*[\[({]', line
+        ):
+            errors.append(f"line {number}: System Context requires canonical semantic nodes")
         elif "@{" in line:
             errors.append(
                 f"line {number}: use canonical one-line image-node property order: "
@@ -240,6 +249,63 @@ def main() -> int:
         observations.append(
             f"arrow exception enabled for {directed_count} directed relationship(s); "
             "retain the semantic reason in the authoring workspace"
+        )
+
+    if args.profile == "system-context":
+        # Source structure cannot prove rendered x/y positions: review the preview.
+        if flow_lines != ["flowchart LR"]:
+            errors.append("System Context uses flowchart LR for spatial SIPO reading")
+        business_ids = [node for node in nodes if node.startswith("b_")]
+        purpose_ids = [node for node in nodes if node.startswith("p_")]
+        participants = [node for node in nodes if node.startswith(("a_", "x_"))]
+        extra = [node for node in nodes if node.startswith(("i_", "v_"))]
+        if len(business_ids) != 1:
+            errors.append("System Context requires one central whole-work Business")
+        if len(purpose_ids) != 1:
+            errors.append("System Context requires exactly one agreed purpose note")
+        if extra:
+            errors.append("System Context excludes Information and devices: " + ", ".join(extra))
+        if len(participants) < 2:
+            errors.append("System Context needs major participating Actors/Systems")
+        if len(business_ids) == 1:
+            for left, right, _directed in edges:
+                if business_ids[0] not in (left, right):
+                    errors.append("System Context relations must join the central Business to a participant or purpose")
+            ordered_ids = list(nodes)
+            center = ordered_ids.index(business_ids[0])
+            left_participants = [node for node in participants if ordered_ids.index(node) < center]
+            right_participants = [node for node in participants if ordered_ids.index(node) > center]
+            if not left_participants or not right_participants:
+                errors.append("System Context needs providers left and recipients right of the Business in source order")
+            if len(purpose_ids) == 1:
+                purpose_index = ordered_ids.index(purpose_ids[0])
+                if purpose_index <= center or (
+                    right_participants and
+                    purpose_index >= min(ordered_ids.index(node) for node in right_participants)
+                ):
+                    warnings.append(
+                        "declare the purpose after the central Business and before right-side "
+                        "participants; visually verify upper-right placement"
+                    )
+                purpose_edges = [
+                    (left, right) for left, right, _directed in edges
+                    if purpose_ids[0] in (left, right)
+                ]
+                if len(purpose_edges) != 1 or set(purpose_edges[0]) != {business_ids[0], purpose_ids[0]}:
+                    errors.append("System Context purpose must relate only to its central Business")
+        if directed_count:
+            errors.append("System Context must not use directed arrows")
+        dotted_links = [
+            (match.group("left"), match.group("right"))
+            for line in lines
+            if (match := DOTTED_EDGE_RE.match(line))
+        ]
+        if len(business_ids) == 1 and len(purpose_ids) == 1:
+            if len(dotted_links) != 1 or set(dotted_links[0]) != {business_ids[0], purpose_ids[0]}:
+                errors.append("System Context requires one dotted Business-to-purpose relation")
+        observations.append(
+            "Source-only gate: visually check the purpose above-right of Business, "
+            "providers on the left, and recipients on the right"
         )
 
     for node_id, data in nodes.items():
