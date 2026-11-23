@@ -1,6 +1,6 @@
 # 業務を捉える
 
-[ルートの業務ユースケースに戻る](../../../README.md#uc-understand) · [用語辞書](../../../README.md#概念データモデル用語辞書)
+[ルートの業務ユースケースに戻る](../../README.md#uc-understand) · [用語辞書](../../README.md#概念データモデル用語辞書)
 
 ## 業務コンテキスト図
 
@@ -25,7 +25,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
-  %% 親: ../../../README.md#業務コンテキスト図 / b_understand
+  %% 親: ../../README.md#業務コンテキスト図 / b_understand
   %% 線は参加・情報の扱い。手順は下のスイムレーン。
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
@@ -69,4 +69,4 @@ swimlane-beta TB
 
 図が現実と違うときは、どの場面・誰の視点で違うのかを聞き直す。
 
-既存設計とのつながり：[業務理解・対象選定](../../discovery/README.md)。
+既存設計とのつながり：[業務理解・対象選定](../../../../../work/discovery/README.md)。

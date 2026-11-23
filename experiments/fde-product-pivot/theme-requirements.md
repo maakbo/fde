@@ -1,3 +1,3 @@
 # アクターの役割と要求モデル
 
-[ルートREADME：アクターの役割](../../README.md#アクターの役割)と[要求モデル図](../../README.md#要求モデル図)へ移しました。
+[可視化ルートのREADME：アクターの役割](visualization/README.md#アクターの役割)と[要求モデル図](visualization/README.md#要求モデル図)へ移しました。
