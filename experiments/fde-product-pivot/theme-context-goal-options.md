@@ -130,25 +130,23 @@ config:
 ---
 flowchart LR
   %% テーマコンテキスト図：製品を育てる活動。fdeで描く個々の仕事は別のテーマ。
-  %% 作り手と受け手は役割で区別する。同じ人でも役割が異なれば別ノード。
+  %% 右の仕事関係者は一つのアクター群。複数人を表すが、人数や内訳は特定しない。
   %% 点線は目指すゴールを添えるための注釈。業務フローではない。
   a_product_owner@{ label: "fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   b_fde_product("fdeを育てる")
-  a_first_user@{ label: "初期利用者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  a_work_members@{ label: "仕事の関係者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   goal["仕事が、もっと心地よく進む。<br/>立場が違えば、見え方も違う。"]
 
   a_product_owner --- b_fde_product
   a_build_agent --- b_fde_product
   b_fde_product -.- goal
-  b_fde_product --- a_first_user
   b_fde_product --- a_work_members
 
   classDef icon fill:none,stroke:none,color:#25231F;
   classDef compass fill:none,stroke:none,color:#25231F,font-weight:600;
   classDef themeNode fill:#FFFFFF,stroke:#4A4640,stroke-width:1.25px,color:#25231F,font-weight:700,font-size:23px;
-  class a_product_owner,a_build_agent,a_first_user,a_work_members icon;
+  class a_product_owner,a_build_agent,a_work_members icon;
   class goal compass;
   class b_fde_product themeNode;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
