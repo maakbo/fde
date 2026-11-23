@@ -22,12 +22,12 @@ config:
 ---
 flowchart LR
   %% テーマコンテキスト図：製品を育てる活動。fdeで描く個々の仕事は別のテーマ。
-  %% 作り手と受け手は役割で区別する。同じクボでも別ノード。
+  %% 作り手と受け手は役割で区別する。同じ人でも役割が異なれば別ノード。
   %% ゴールへの不可視リンクは配置専用。業務上の関係ではない。
-  a_product_owner@{ label: "クボ（企画・判断）", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  a_product_owner@{ label: "企画担当", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "AI（開発支援）", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   b_fde_product@{ label: "fdeを育てる", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  a_first_user@{ label: "クボ（初回利用）", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  a_first_user@{ label: "初期利用者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_work_members@{ label: "仕事の関係者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   goal["仕事が、もっと心地よく進む。<br/>立場が違えば、見え方も違う。"]
 
@@ -45,6 +45,6 @@ flowchart LR
   linkStyle 2 stroke:transparent,stroke-width:0px;
 ```
 
-クボがAIと一緒にfdeをつくり、自分の仕事で使って確かめる。その先で、仕事の関係者が互いの前提や仕事のつながりを見ながら、納得して仕事を進められるようにする。
+企画担当はAIの支援を受けてfdeをつくる。初期利用者は自分の仕事で使って確かめる。その先で、仕事の関係者が互いの前提や仕事のつながりを見ながら、納得して仕事を進められるようにする。
 
 [コンセプトと設計の全体](README.md)
