@@ -31,7 +31,7 @@ flowchart LR
   b_fde_product("fdeを育てる")
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   x_github@{ label: "GitHub", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  goal["AIと一緒に仕事のつながりを見える形にし、<br/>関わる人たちが納得して<br/>進められるように整えることで、<br/>仕事がうまく回るようにする。"]
+  goal["仕事をAIと一緒に可視化して、<br/>関わるものたちが納得して進められて、<br/>仕事がうまくいきます。"]
 
   a_product_owner --- b_fde_product
   a_build_agent --- b_fde_product
@@ -49,7 +49,7 @@ flowchart LR
   linkStyle 2 stroke:#A0988E,stroke-width:1px,stroke-dasharray:2 4;
 ```
 
-**ゴール**：AIと一緒に仕事のつながりを見える形にし、関わる人たちが納得して進められるように整えることで、仕事がうまく回るようにする。
+**ゴール**：仕事をAIと一緒に可視化して、関わるものたちが納得して進められて、仕事がうまくいきます。
 
 ここで扱うテーマは、個別の仕事ではなく、**仕事を一緒に理解し、納得して進めるためのプロダクト「fde」をつくり、使いながら磨くこと**。このページは設計のたたき台です。
 
