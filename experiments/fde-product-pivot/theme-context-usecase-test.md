@@ -1,6 +1,6 @@
 # テーマコンテキスト図：ユースケース図の楕円テスト
 
-横長ボタン形ではなく、Mermaidのユースケース図の楕円を試す。既存アイコンを使ったA〜Cとは別の描画方式。GitHubプレビューでは中央が実際に楕円になる。アクターは標準アイコンで、ゴールの注釈は自動配置（この試作では左下）。
+横長ボタン形ではなく、Mermaidのユースケース図の楕円を試す。既存アイコンを使ったA〜Dとは別の描画方式。GitHubプレビューでは中央が実際に楕円になる。アクターは標準アイコンで、ゴールの注釈は自動配置（この試作では左下）。
 
 ```mermaid
 ---
@@ -12,7 +12,7 @@ config:
 ---
 usecase-beta
 direction LR
-actor planner("企画担当")
+actor planner("fdeエンジニア")
 actor assistant("AI（開発支援）")
 b_fde_product("fdeを育てる"):::themeNode
 actor first_user("初期利用者")
