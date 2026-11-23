@@ -1,6 +1,6 @@
 # テーマコンテキスト図：ゴールの見せ方
 
-中央は白地の角丸四角と大きめの文字に統一。右上の文言と矢印なしの点線も揃え、コメントの見せ方だけを比べる。
+中央は白地の角丸四角と大きめの文字に統一し、枠の内側に余白を取った。右上の文言と矢印なしの点線も揃え、コメントの見せ方だけを比べる。
 
 ## 1｜吹き出し
 
@@ -18,7 +18,7 @@ config:
     wrappingWidth: 280
     nodeSpacing: 38
     rankSpacing: 58
-    padding: 8
+    padding: 18
   themeVariables:
     background: "#FFFFFF"
     lineColor: "#8A847A"
@@ -69,7 +69,7 @@ config:
     wrappingWidth: 280
     nodeSpacing: 38
     rankSpacing: 58
-    padding: 8
+    padding: 18
   themeVariables:
     background: "#FFFFFF"
     lineColor: "#8A847A"
@@ -120,7 +120,7 @@ config:
     wrappingWidth: 280
     nodeSpacing: 38
     rankSpacing: 58
-    padding: 8
+    padding: 18
   themeVariables:
     background: "#FFFFFF"
     lineColor: "#8A847A"
