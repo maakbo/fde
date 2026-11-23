@@ -93,7 +93,7 @@ swimlane-beta TB
 
 ## 関連リンク
 
-- [全体の中での位置](../../README.md#uc-maintain)：この仕事の入口に戻る。
+- [問いに戻る：図と実際の仕事が、どこか違う](../../README.md#uc-maintain)
 - [業務を捉える](../understand/README.md)
 - [取り組みを決める](../decide/README.md)
 - [改善を試して確かめる](../validate/README.md)

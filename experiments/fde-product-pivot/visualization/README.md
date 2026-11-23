@@ -55,11 +55,22 @@ flowchart LR
 
 **仕事をAIと一緒に可視化して、関わるものたちが納得して進められて、仕事がうまくいきます。**
 
-仕事の説明が噛み合わないとき、普段の言葉で一件を持ち寄るところから始めます。fde AIと一緒に、目的・役割・情報のつながりを図にし、実際の仕事と照らして直します。今の進め方を続けるか、何か試すかを決めるのは、仕事に関わる人たちです。ここでは、そのやり方をfde自身を育てる仕事に使っています。
+仕事の話を持ち寄り、fde AIと一緒に、目的・役割・情報のつながりを一枚にします。図を見ながら進め方を決めるのは、仕事に関わる人たちです。ここでは、fdeを育てる仕事そのものを描いています。
+
+## いま、何を確かめたい？
+
+- <a name="uc-understand"></a>**同じ仕事の話なのに、説明がかみ合わない**\
+  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 業務を捉える](work/understand/README.md)：実際に起きた一件をたどり、誰が何を受け渡しているかを一枚にする。
+- <a name="uc-decide"></a>**今のまま進めるか、別のやり方を試すか迷っている**\
+  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 取り組みを決める](work/decide/README.md)：選択肢を見比べ、何を選んだかと、その理由を残す。
+- <a name="uc-validate"></a>**試したやり方で、本当に仕事がよくなるか知りたい**\
+  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 改善を試して確かめる](work/validate/README.md)：何が変わったかと、まだ分からないことを分けて残す。
+- <a name="uc-maintain"></a>**図と実際の仕事が、どこか違う**\
+  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 仕事とモデルを見直す](work/maintain/README.md)：ズレた箇所を確かめ、仕事を変えるのか、図だけを直すのかを決める。
+
+## 関わる人と仕組み
 
 [![fdeエンジニア](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](#actor-product-owner) · [![fde AI](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](#actor-build-agent) · [![仕事関係者](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](#actor-work-members) · [![GitHub](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg) GitHub](#github)
-
-### 関わる人と仕組み
 
 | 誰が | どう関わるか |
 | --- | --- |
@@ -242,8 +253,8 @@ classDiagram
 
 ## 関連リンク
 
-- <a name="uc-understand"></a>[業務を捉える](work/understand/README.md)：説明が噛み合わず、実際の仕事を一緒に確かめたいとき。
-- <a name="uc-decide"></a>[取り組みを決める](work/decide/README.md)：そのまま進めるか、別のやり方を試すか考えたいとき。
-- <a name="uc-validate"></a>[改善を試して確かめる](work/validate/README.md)：決めた条件で試して、どんな変化があったか確かめたいとき。
-- <a name="uc-maintain"></a>[仕事とモデルを見直す](work/maintain/README.md)：日々の指摘や試した結果から、図や手順を見直したいとき。
+- [業務を捉える](work/understand/README.md)
+- [取り組みを決める](work/decide/README.md)
+- [改善を試して確かめる](work/validate/README.md)
+- [仕事とモデルを見直す](work/maintain/README.md)
 - [FDEの実務ガイド](../../../work/README.md)：業務理解から導入・運用までの進め方。

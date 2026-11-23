@@ -85,7 +85,7 @@ swimlane-beta TB
 
 ## 関連リンク
 
-- [全体の中での位置](../../README.md#uc-validate)：この仕事の入口に戻る。
+- [問いに戻る：試したやり方で、本当に仕事がよくなるか知りたい](../../README.md#uc-validate)
 - [取り組みを決める](../decide/README.md)
 - [仕事とモデルを見直す](../maintain/README.md)
 - 参考：[実装・テスト](../../../../../work/implementation/README.md)・[PoC・導入評価](../../../../../work/evaluation/README.md)。

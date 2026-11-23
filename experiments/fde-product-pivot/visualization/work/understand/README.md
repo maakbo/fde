@@ -85,7 +85,7 @@ swimlane-beta TB
 
 ## 関連リンク
 
-- [全体の中での位置](../../README.md#uc-understand)：この仕事の入口に戻る。
+- [問いに戻る：同じ仕事の話なのに、説明がかみ合わない](../../README.md#uc-understand)
 - [取り組みを決める](../decide/README.md)
 - [仕事とモデルを見直す](../maintain/README.md)
 - 参考：[業務理解・対象選定](../../../../../work/discovery/README.md)。
