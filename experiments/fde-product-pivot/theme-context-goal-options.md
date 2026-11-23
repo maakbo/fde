@@ -136,17 +136,19 @@ flowchart LR
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   b_fde_product("fdeを育てる")
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  x_github@{ label: "GitHub", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   goal["仕事が、もっと心地よく進む。<br/>立場が違えば、見え方も違う。"]
 
   a_product_owner --- b_fde_product
   a_build_agent --- b_fde_product
   b_fde_product -.- goal
   b_fde_product --- a_work_members
+  b_fde_product --- x_github
 
   classDef icon fill:none,stroke:none,color:#25231F;
   classDef compass fill:none,stroke:none,color:#25231F,font-weight:600;
   classDef themeNode fill:#FFFFFF,stroke:#4A4640,stroke-width:1.25px,color:#25231F,font-weight:700,font-size:23px;
-  class a_product_owner,a_build_agent,a_work_members icon;
+  class a_product_owner,a_build_agent,a_work_members,x_github icon;
   class goal compass;
   class b_fde_product themeNode;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
