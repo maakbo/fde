@@ -1,3 +1,3 @@
-# アクターの役割と要求モデル
+# アクターと要求
 
-[可視化ルートのREADME：アクターの役割](visualization/README.md#アクターの役割)と[要求モデル図](visualization/README.md#要求モデル図)へ移しました。
+[関わる人と仕組み](visualization/README.md#関わる人と仕組み)と、[業務](visualization/README.md#業務)にまとめています。
