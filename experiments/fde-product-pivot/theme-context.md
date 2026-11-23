@@ -29,7 +29,7 @@ flowchart LR
   b_fde_product("fdeを育てる")
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   x_github@{ label: "GitHub", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  goal["AIと一緒に仕事のつながりを見える形にし、<br/>関わる人たちが納得して進められるように<br/>整えることで、仕事がうまく回るようにする。"]
+  goal["AIと一緒に仕事のつながりを見える形にし、<br/>関わる人たちが納得して<br/>進められるように整えることで、<br/>仕事がうまく回るようにする。"]
 
   a_product_owner --- b_fde_product
   a_build_agent --- b_fde_product
