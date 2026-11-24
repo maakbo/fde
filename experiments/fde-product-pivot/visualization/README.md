@@ -158,7 +158,7 @@ config:
   themeVariables:
     lineColor: "#9E988E"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
-    fontSize: "14px"
+    fontSize: "13px"
 ---
 flowchart LR
   accTitle: fdeを育てる仕事の要求
@@ -184,7 +184,7 @@ flowchart LR
   r4 --- d4
   classDef actor fill:none,stroke:none,color:#25231F
   classDef request fill:none,stroke:none,color:#25231F,font-weight:600
-  classDef response fill:#FFFFFF,stroke:#BDB4A8,color:#25231F
+  classDef response fill:none,stroke:none,color:#514D46,font-weight:400
   class a_product_owner,a_work_members actor
   class r1,r2,r3,r4 request
   class d1,d2,d3,d4 response
