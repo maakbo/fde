@@ -88,7 +88,7 @@ flowchart TB
   accTitle: fdeを育てる業務
   accDescr: 事例から業務モデルを作り、方針を選ぶ。試行は選んだときだけ行い、結果または実態とのずれをもとに見直す。
   %% 上位の業務コンテキスト。線は参加・情報の関係で、作業順や必須条件ではない。
-  %% 図のアクター線は主な接点。参加の詳細と条件は本文・work 配下に残す。
+  %% 主な参加・判断・記録の接点を表示。作業ごとの参加や試行条件は work 配下に記す。
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_product_owner@{ label: "fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
@@ -118,18 +118,29 @@ flowchart TB
 
   a_work_members --- b_understand
   a_work_members --- b_decide
+  a_work_members --- b_validate
+  a_work_members --- b_maintain
   a_build_agent --- b_understand
+  a_build_agent --- b_maintain
+  a_product_owner --- b_decide
   a_product_owner --- b_maintain
   b_maintain --- x_github
 
-  classDef element fill:none,stroke:none,color:#25231F
-  class a_work_members,a_build_agent,a_product_owner,x_github,b_understand,b_decide,b_validate,b_maintain,i_work_example,i_work_model,i_direction,i_trial,i_change element
+  class a_work_members,a_build_agent,a_product_owner actor;
+  class x_github system;
+  class b_understand,b_decide,b_validate,b_maintain business;
+  class i_work_example,i_work_model,i_direction,i_trial,i_change information;
+  classDef actor fill:none,stroke:none,color:#25231F;
+  classDef system fill:none,stroke:none,color:#25231F;
+  classDef business fill:none,stroke:none,color:#25231F;
+  classDef information fill:none,stroke:none,color:#25231F;
+  linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-- <a name="uc-understand"></a>[業務可視化](work/understand/README.md)：仕事関係者が実際に起きた一件を話し、fde AIが目的・役割・受け渡しを業務モデルにする。関係者と確かめ、方針を選ぶときの前提にする。
-- <a name="uc-decide"></a>[方針選定](work/decide/README.md)：fde AIが業務モデルをもとに案を並べ、仕事関係者が進め方を選ぶ。fdeエンジニアは続ける・見送る理由を残し、試す場合は条件と確かめ方を試行・評価へ渡す。
-- <a name="uc-validate"></a>[試行・評価](work/validate/README.md)：仕事関係者が決めた条件で実際に試し、何が変わったかを記録する。試行結果は、やり方を採り入れるか見直すときに使う。
-- <a name="uc-maintain"></a>[業務・モデル見直し](work/maintain/README.md)：仕事関係者とfdeエンジニアが、試行結果や日々の指摘を業務モデルと照らし合わせる。仕事のやり方と図のどちらを直すかを決め、理由をGitHubに残す。試していなくても、指摘があれば見直せる。
+- <a name="uc-understand"></a>[業務可視化](work/understand/README.md)：仕事関係者が実際に起きた一件を話し、fde AIが目的・役割・受け渡しを業務モデルにする。仕事関係者が実態と照らし合わせ、fdeエンジニアが確認済みの内容と未確認点を業務モデルに残す。
+- <a name="uc-decide"></a>[方針選定](work/decide/README.md)：fde AIが業務モデルをもとに案を並べ、仕事関係者が続ける・試す・見送るを選ぶ。fdeエンジニアが理由を「取り組みの判断」に残し、試す場合だけ範囲と比較条件を次へ渡す。
+- <a name="uc-validate"></a>[試行・評価](work/validate/README.md)：仕事関係者が決めた条件で実際に試す。fdeエンジニアが期待した変化と照らし合わせ、観測できたことと未確認点を試行結果にまとめて見直しへ渡す。
+- <a name="uc-maintain"></a>[業務・モデル見直し](work/maintain/README.md)：fde AIが日々の事例や試行結果から影響先を洗い出し、仕事関係者が手順を変えるか、業務モデルだけを直すかを決める。試行を待たずに見直せる。fdeエンジニアが確認した変更箇所と理由をGitHubに残す。
 
 <a name="要求モデル図"></a>
 
@@ -202,7 +213,7 @@ config:
 flowchart TB
   accTitle: fdeを育てる仕事で扱う情報
   accDescr: 仕事の事例、業務モデル、取り組みの判断、試行結果、変更記録がどう関係するか。
-  %% 関連線だけを表示。業務の順番、保存形式、多重度は規定しない。
+  %% 根拠・参照先の関連。取り組みの判断に試す条件を記した場合のみ試行結果が生じ得る。変更記録は日々の事例または試行結果に基づき、試行は必須でない。
   i_work_example["仕事の事例"]
   i_work_model["業務モデル"]
   i_direction["取り組みの判断"]
@@ -218,34 +229,36 @@ flowchart TB
   class i_work_example,i_work_model,i_direction,i_trial,i_change entity
 ```
 
+現場で起きたことと、何を変えると決めたかは分けて残します。試行をしない場合も、日々の事例まで判断の根拠をたどれます。
+
 ### 用語集
 
 <a name="info-work-example"></a>
 
 #### 仕事の事例
 
-実際に起きた一件の話や記録。業務可視化の出発点になり、見直しで事実を確かめるときにも使う。
+実際に起きた一件の話や記録。備品の引継ぎなら、担当者が見た記録と受け手が見た保管場所。業務モデルを作るときや、指摘が実態と合うか確かめるときの根拠にする。
 
 <a name="info-work-model"></a>
 
 #### 業務モデル
 
-仕事の目的、役割、業務、情報のつながり。可視化で作り、方針選定で使い、見直しで確かめた箇所を更新する。
+仕事の目的、役割、業務、情報のつながりを表す。事例から作り、確認済みの内容と未確認点を区別する。方針を選ぶ前提として使い、後で実態と違うと分かった箇所を更新する。
 
 <a name="info-direction"></a>
 
 #### 取り組みの判断
 
-続ける・試す・見送るという方針と理由。方針選定で残し、試す場合だけ条件と確かめ方を次へ渡す。
+続ける・試す・見送るという結論と、その理由。試すときは範囲と比較条件を、続けるときは判断を見直す条件があればそれも残す。
 
 <a name="info-trial"></a>
 
 #### 試行結果
 
-試して分かった変化と、まだ分からないこと。試行・評価で残し、見直しの根拠にする。
+決めた条件で試したときの記録。実際に観測した変化と確かめられなかったことを分け、やり方を採り入れるか判断する材料にする。
 
 <a name="info-change"></a>
 
 #### 変更記録
 
-何を直し、何を変えないかと、その理由。見直しで残し、後から判断をたどれるようにする。
+仕事の手順を変えたのか、実態に合わせて業務モデルだけを直したのかを、その理由とともに残す。どちらも変えないと判断した場合も、理由をたどれるようにする。
