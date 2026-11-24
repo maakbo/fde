@@ -1,6 +1,6 @@
 <a name="context"></a>
 
-# 改善を試して確かめる
+# 試行・評価
 
 ```mermaid
 ---
@@ -23,14 +23,14 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
-  accTitle: 改善を試して確かめる：関わる人と情報
+  accTitle: 試行・評価：関わる人と情報
   %% 親: ../../README.md#try-revise / b_validate
   %% 線は参加・情報の扱い。手順は下のスイムレーン。
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_product_owner@{ label: "fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   i_direction@{ label: "取り組みの判断", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_validate@{ label: "改善を試して確かめる", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_validate@{ label: "試行・評価", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   i_trial@{ label: "試行結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_work_members --- b_validate
   a_build_agent --- b_validate
@@ -44,7 +44,7 @@ flowchart LR
   click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "fde AIの説明を開く" _blank
   click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "fdeエンジニアの説明を開く" _blank
   click i_direction href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-direction" "取り組みの判断の説明を開く" _blank
-  click b_validate href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/validate/README.md#flow" "改善を試して確かめるの手順を開く" _blank
+  click b_validate href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/validate/README.md#flow" "試行・評価の手順を開く" _blank
   click i_trial href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-trial" "試行結果の説明を開く" _blank
 ```
 
@@ -54,7 +54,7 @@ flowchart LR
 
 [![](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](../../README.md#actor-work-members) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](../../README.md#actor-build-agent) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](../../README.md#actor-product-owner)  
 [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 取り組みの判断](../../README.md#info-direction)  
-[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 改善を試して確かめる](#flow)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 試行・評価](#flow)  
 [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 試行結果](../../README.md#info-trial)
 
 <a name="flow"></a>
@@ -106,6 +106,6 @@ swimlane-beta TB
 ## 関連リンク
 
 - [問いに戻る：試したやり方で、本当に仕事がよくなるか知りたい](../../README.md#uc-validate)
-- [取り組みを決める](../decide/README.md)
-- [仕事とモデルを見直す](../maintain/README.md)
+- [方針選定](../decide/README.md)
+- [業務・モデル見直し](../maintain/README.md)
 - 参考：[実装・テスト](https://github.com/maakbo/fde/blob/7d5649d952569543862a58c6a8934200e4436203/work/implementation/README.md)・[PoC・導入評価](https://github.com/maakbo/fde/blob/7d5649d952569543862a58c6a8934200e4436203/work/evaluation/README.md)。

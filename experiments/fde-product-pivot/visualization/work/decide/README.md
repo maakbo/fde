@@ -1,6 +1,6 @@
 <a name="context"></a>
 
-# 取り組みを決める
+# 方針選定
 
 ```mermaid
 ---
@@ -23,14 +23,14 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
-  accTitle: 取り組みを決める：関わる人と情報
+  accTitle: 方針選定：関わる人と情報
   %% 親: ../../README.md#scope-decide / b_decide
   %% 線は参加・情報の扱い。手順は下のスイムレーン。
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_product_owner@{ label: "fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   i_work_model@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_decide@{ label: "取り組みを決める", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_decide@{ label: "方針選定", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   i_direction@{ label: "取り組みの判断", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_work_members --- b_decide
   a_build_agent --- b_decide
@@ -44,7 +44,7 @@ flowchart LR
   click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "fde AIの説明を開く" _blank
   click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "fdeエンジニアの説明を開く" _blank
   click i_work_model href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-model" "業務モデルの説明を開く" _blank
-  click b_decide href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/decide/README.md#flow" "取り組みを決めるの手順を開く" _blank
+  click b_decide href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/decide/README.md#flow" "方針選定の手順を開く" _blank
   click i_direction href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-direction" "取り組みの判断の説明を開く" _blank
 ```
 
@@ -54,7 +54,7 @@ flowchart LR
 
 [![](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](../../README.md#actor-work-members) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](../../README.md#actor-build-agent) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](../../README.md#actor-product-owner)  
 [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 業務モデル](../../README.md#info-work-model)  
-[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 取り組みを決める](#flow)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 方針選定](#flow)  
 [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 取り組みの判断](../../README.md#info-direction)
 
 <a name="flow"></a>
@@ -111,7 +111,7 @@ swimlane-beta TB
 ## 関連リンク
 
 - [問いに戻る：今のまま進めるか、別のやり方を試すか迷っている](../../README.md#uc-decide)
-- [業務を捉える](../understand/README.md)
-- [改善を試して確かめる](../validate/README.md)
-- [仕事とモデルを見直す](../maintain/README.md)
+- [業務可視化](../understand/README.md)
+- [試行・評価](../validate/README.md)
+- [業務・モデル見直し](../maintain/README.md)
 - 参考：[業務要件定義](https://github.com/maakbo/fde/blob/7d5649d952569543862a58c6a8934200e4436203/work/planning/README.md)・[協働設計](https://github.com/maakbo/fde/blob/7d5649d952569543862a58c6a8934200e4436203/work/design/README.md)。
