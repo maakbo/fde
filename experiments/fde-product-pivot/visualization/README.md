@@ -77,6 +77,7 @@ config:
   flowchart:
     curve: basis
     htmlLabels: false
+    wrappingWidth: 180
     nodeSpacing: 28
     rankSpacing: 54
   themeVariables:
