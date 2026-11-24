@@ -1,3 +1,5 @@
+<a name="context"></a>
+
 # 改善を試して確かめる
 
 ```mermaid
@@ -21,6 +23,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  accTitle: 改善を試して確かめる：関わる人と情報
   %% 親: ../../README.md#try-revise / b_validate
   %% 線は参加・情報の扱い。手順は下のスイムレーン。
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
@@ -37,26 +40,41 @@ flowchart LR
   classDef element fill:none,stroke:none,color:#25231F;
   class a_work_members,a_build_agent,a_product_owner,i_direction,b_validate,i_trial element;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
-  click a_work_members href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-work-members" "関連する説明を開く" _blank
-  click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "関連する説明を開く" _blank
-  click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "関連する説明を開く" _blank
-  click i_direction href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-direction" "関連する説明を開く" _blank
-  click b_validate href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/validate/README.md#flow" "関連する説明を開く" _blank
-  click i_trial href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-trial" "関連する説明を開く" _blank
+  click a_work_members href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-work-members" "仕事関係者の説明を開く" _blank
+  click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "fde AIの説明を開く" _blank
+  click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "fdeエンジニアの説明を開く" _blank
+  click i_direction href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-direction" "取り組みの判断の説明を開く" _blank
+  click b_validate href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/validate/README.md#flow" "改善を試して確かめるの手順を開く" _blank
+  click i_trial href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-trial" "試行結果の説明を開く" _blank
 ```
 
 事前に決めた条件で、実際の仕事の一部を試します。結果と測れていないことを分けて残します。
 
-[maakbo fde](../../README.md#theme) / [ここにつながる仕事を見る](../../README.md#try-revise)
+[いまの問いに戻る](../../README.md#uc-validate) / [ここにつながる仕事を見る](../../README.md#try-revise)
 
-[![仕事関係者](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](../../README.md#actor-work-members) · [![fde AI](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](../../README.md#actor-build-agent) · [![fdeエンジニア](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](../../README.md#actor-product-owner) · [![取り組みの判断](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 取り組みの判断](../../README.md#info-direction) · [![改善を試して確かめる](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 改善を試して確かめる](#flow) · [![試行結果](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 試行結果](../../README.md#info-trial)
+[![](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](../../README.md#actor-work-members) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](../../README.md#actor-build-agent) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](../../README.md#actor-product-owner)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 取り組みの判断](../../README.md#info-direction)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 改善を試して確かめる](#flow)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 試行結果](../../README.md#info-trial)
 
 <a name="flow"></a>
 
 ## 試して変化を確かめる
 
 ```mermaid
+---
+config:
+  theme: neutral
+  swimlane:
+    ignoreCrossLaneEdges: false
+    optimizeRanksByCrossings: false
+  themeVariables:
+    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontSize: "14px"
+---
 swimlane-beta TB
+  accTitle: 試して変化を確かめる
+  accDescr: 仕事関係者が試せる範囲を確かめ、fde AIが試す形を用意します。仕事関係者が試し、fdeエンジニアが比較して観測と未確認点を残します。
   %% 手順は上から下。誰が判断し、どこで情報を受け渡すかを示す。
   subgraph people [仕事関係者]
     agree["実際に試せる範囲を確かめる"]
@@ -72,9 +90,11 @@ swimlane-beta TB
   agree --> prototype --> run --> compare --> save
 ```
 
-[![仕事関係者](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](../../README.md#actor-work-members) · [![fde AI](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](../../README.md#actor-build-agent) · [![fdeエンジニア](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](../../README.md#actor-product-owner)
+[![](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](../../README.md#actor-work-members) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](../../README.md#actor-build-agent) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](../../README.md#actor-product-owner)
 
-比較条件が合わなければ決め直す。結果がまとまったら、仕事や図のどこに反映するかを考える。
+比較条件が合わなければ[決め直す](../decide/README.md#context)。結果がまとまったら、[仕事や図のどこに反映するかを考える](../maintain/README.md#context)。
+
+[この仕事の関係に戻る](#context)
 
 ## 情報
 
@@ -88,4 +108,4 @@ swimlane-beta TB
 - [問いに戻る：試したやり方で、本当に仕事がよくなるか知りたい](../../README.md#uc-validate)
 - [取り組みを決める](../decide/README.md)
 - [仕事とモデルを見直す](../maintain/README.md)
-- 参考：[実装・テスト](../../../../../work/implementation/README.md)・[PoC・導入評価](../../../../../work/evaluation/README.md)。
+- 参考：[実装・テスト](https://github.com/maakbo/fde/blob/7d5649d952569543862a58c6a8934200e4436203/work/implementation/README.md)・[PoC・導入評価](https://github.com/maakbo/fde/blob/7d5649d952569543862a58c6a8934200e4436203/work/evaluation/README.md)。

@@ -23,6 +23,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  accTitle: fdeを育てる仕事の関係
   %% テーマコンテキスト図：製品を育てる活動。fdeで描く個々の仕事は別のテーマ。
   %% 右の仕事関係者は一つのアクター群。複数人を表すが、人数や内訳は特定しない。
   %% 点線は目指すゴールを添えるための注釈。業務フローではない。
@@ -47,30 +48,34 @@ flowchart LR
   class b_fde_product themeNode;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
   linkStyle 2 stroke:#A0988E,stroke-width:1px,stroke-dasharray:2 4;
-  click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "関連する説明を開く" _blank
-  click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "関連する説明を開く" _blank
-  click a_work_members href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-work-members" "関連する説明を開く" _blank
-  click x_github href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#github" "関連する説明を開く" _blank
+  click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "fdeエンジニアの説明を開く" _blank
+  click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "fde AIの説明を開く" _blank
+  click a_work_members href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-work-members" "仕事関係者の説明を開く" _blank
+  click x_github href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#github" "GitHubの説明を開く" _blank
 ```
 
 **仕事をAIと一緒に可視化して、関わるものたちが納得して進められて、仕事がうまくいきます。**
 
 仕事の話を持ち寄り、fde AIと一緒に、目的・役割・情報のつながりを一枚にします。図を見ながら進め方を決めるのは、仕事に関わる人たちです。ここでは、fdeを育てる仕事そのものを描いています。
 
+<a name="questions"></a>
+
 ## いま、何を確かめたい？
 
 - <a name="uc-understand"></a>**同じ仕事の話なのに、説明がかみ合わない**\
-  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 業務を捉える](work/understand/README.md)：実際に起きた一件をたどり、誰が何を受け渡しているかを一枚にする。
+  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 業務を捉える](work/understand/README.md#context)：実際に起きた一件をたどり、誰が何を受け渡しているかを一枚にする。
 - <a name="uc-decide"></a>**今のまま進めるか、別のやり方を試すか迷っている**\
-  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 取り組みを決める](work/decide/README.md)：選択肢を見比べ、何を選んだかと、その理由を残す。
+  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 取り組みを決める](work/decide/README.md#context)：選択肢を見比べ、何を選んだかと、その理由を残す。
 - <a name="uc-validate"></a>**試したやり方で、本当に仕事がよくなるか知りたい**\
-  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 改善を試して確かめる](work/validate/README.md)：何が変わったかと、まだ分からないことを分けて残す。
+  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 改善を試して確かめる](work/validate/README.md#context)：何が変わったかと、まだ分からないことを分けて残す。
 - <a name="uc-maintain"></a>**図と実際の仕事が、どこか違う**\
-  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 仕事とモデルを見直す](work/maintain/README.md)：ズレた箇所を確かめ、仕事を変えるのか、図だけを直すのかを決める。
+  [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 仕事とモデルを見直す](work/maintain/README.md#context)：ズレた箇所を確かめ、仕事を変えるのか、図だけを直すのかを決める。
+
+[架空の一件をたどる：今の手順を続けると決めた理由](WALKTHROUGH.md)
 
 ## 関わる人と仕組み
 
-[![fdeエンジニア](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](#actor-product-owner) · [![fde AI](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](#actor-build-agent) · [![仕事関係者](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](#actor-work-members) · [![GitHub](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg) GitHub](#github)
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](#actor-product-owner) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](#actor-build-agent) · [![](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](#actor-work-members) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg) GitHub](#github)
 
 | 誰が | どう関わるか |
 | --- | --- |
@@ -106,6 +111,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  accTitle: 仕事を持ち寄り、進め方を決める
   %% 線は業務に関わる人・情報の関係を示す。手順は各業務のページへ。
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
@@ -128,19 +134,21 @@ flowchart LR
   classDef element fill:none,stroke:none,color:#25231F;
   class a_work_members,a_build_agent,a_product_owner,b_understand,b_decide,i_work_example,i_work_model,i_direction element;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
-  click a_work_members href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-work-members" "関連する説明を開く" _blank
-  click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "関連する説明を開く" _blank
-  click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "関連する説明を開く" _blank
-  click b_understand href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/understand/README.md" "関連する説明を開く" _blank
-  click b_decide href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/decide/README.md" "関連する説明を開く" _blank
-  click i_work_example href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-example" "関連する説明を開く" _blank
-  click i_work_model href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-model" "関連する説明を開く" _blank
-  click i_direction href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-direction" "関連する説明を開く" _blank
+  click a_work_members href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-work-members" "仕事関係者の説明を開く" _blank
+  click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "fde AIの説明を開く" _blank
+  click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "fdeエンジニアの説明を開く" _blank
+  click b_understand href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/understand/README.md" "業務を捉えるの説明を開く" _blank
+  click b_decide href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/decide/README.md" "取り組みを決めるの説明を開く" _blank
+  click i_work_example href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-example" "仕事の事例の説明を開く" _blank
+  click i_work_model href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-model" "業務モデルの説明を開く" _blank
+  click i_direction href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-direction" "取り組みの判断の説明を開く" _blank
 ```
 
 一件の仕事を、関係者が照らし合わせられる図にします。今のまま続ける、改善を試す、見送るのどれでも、決めた理由を残します。
 
-[![仕事関係者](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](#actor-work-members) · [![fde AI](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](#actor-build-agent) · [![fdeエンジニア](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](#actor-product-owner) · [![業務を捉える](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 業務を捉える](work/understand/README.md) · [![取り組みを決める](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 取り組みを決める](work/decide/README.md) · [![仕事の事例](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 仕事の事例](#info-work-example) · [![業務モデル](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 業務モデル](#info-work-model) · [![取り組みの判断](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 取り組みの判断](#info-direction)
+[![](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](#actor-work-members) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](#actor-build-agent) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](#actor-product-owner)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 業務を捉える](work/understand/README.md#context) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 取り組みを決める](work/decide/README.md#context)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 仕事の事例](#info-work-example) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 業務モデル](#info-work-model) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 取り組みの判断](#info-direction)
 
 <a name="try-revise"></a>
 
@@ -167,6 +175,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  accTitle: 試した結果や日々の気づきから見直す
   %% 線は業務に関わる人・情報の関係を示す。手順は各業務のページへ。
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
@@ -195,22 +204,24 @@ flowchart LR
   classDef element fill:none,stroke:none,color:#25231F;
   class a_work_members,a_build_agent,a_product_owner,x_github,b_validate,b_maintain,i_direction,i_trial,i_work_example,i_work_model,i_change element;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
-  click a_work_members href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-work-members" "関連する説明を開く" _blank
-  click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "関連する説明を開く" _blank
-  click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "関連する説明を開く" _blank
-  click x_github href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#github" "関連する説明を開く" _blank
-  click b_validate href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/validate/README.md" "関連する説明を開く" _blank
-  click b_maintain href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/maintain/README.md" "関連する説明を開く" _blank
-  click i_direction href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-direction" "関連する説明を開く" _blank
-  click i_trial href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-trial" "関連する説明を開く" _blank
-  click i_work_example href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-example" "関連する説明を開く" _blank
-  click i_work_model href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-model" "関連する説明を開く" _blank
-  click i_change href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-change" "関連する説明を開く" _blank
+  click a_work_members href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-work-members" "仕事関係者の説明を開く" _blank
+  click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "fde AIの説明を開く" _blank
+  click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "fdeエンジニアの説明を開く" _blank
+  click x_github href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#github" "GitHubの説明を開く" _blank
+  click b_validate href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/validate/README.md" "改善を試して確かめるの説明を開く" _blank
+  click b_maintain href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/maintain/README.md" "仕事とモデルを見直すの説明を開く" _blank
+  click i_direction href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-direction" "取り組みの判断の説明を開く" _blank
+  click i_trial href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-trial" "試行結果の説明を開く" _blank
+  click i_work_example href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-example" "仕事の事例の説明を開く" _blank
+  click i_work_model href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-model" "業務モデルの説明を開く" _blank
+  click i_change href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-change" "変更記録の説明を開く" _blank
 ```
 
 試すと決めた場合は結果を持ち寄ります。改善を試していなくても、仕事と図が違うという指摘だけで見直せます。手順は変えず、図だけを直しても構いません。
 
-[![仕事関係者](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](#actor-work-members) · [![fde AI](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](#actor-build-agent) · [![fdeエンジニア](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](#actor-product-owner) · [![GitHub](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg) GitHub](#github) · [![改善を試して確かめる](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 改善を試して確かめる](work/validate/README.md) · [![仕事とモデルを見直す](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 仕事とモデルを見直す](work/maintain/README.md) · [![取り組みの判断](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 取り組みの判断](#info-direction) · [![試行結果](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 試行結果](#info-trial) · [![仕事の事例](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 仕事の事例](#info-work-example) · [![業務モデル](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 業務モデル](#info-work-model) · [![変更記録](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 変更記録](#info-change)
+[![](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](#actor-work-members) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](#actor-build-agent) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](#actor-product-owner) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg) GitHub](#github)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 改善を試して確かめる](work/validate/README.md#context) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 仕事とモデルを見直す](work/maintain/README.md#context)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 取り組みの判断](#info-direction) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 試行結果](#info-trial) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 仕事の事例](#info-work-example) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 業務モデル](#info-work-model) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 変更記録](#info-change)
 
 <a name="information"></a>
 
@@ -219,10 +230,16 @@ flowchart LR
 ```mermaid
 ---
 config:
+  theme: neutral
+  themeVariables:
+    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontSize: "14px"
   class:
     hideEmptyMembersBox: true
 ---
 classDiagram
+  accTitle: 情報のつながり
+  accDescr: 仕事の事例、業務モデル、取り組みの判断、試行結果、変更記録の関係。各用語の意味と使う仕事は図の下の表から開けます。
   direction LR
   %% 業務の中で使う情報と同じID。保存形式や件数は規定しない。
   class i_work_example["仕事の事例"]
@@ -236,25 +253,29 @@ classDiagram
   i_trial -- i_change : 見直しの根拠
   i_work_example -- i_change : 指摘の根拠
   i_change -- i_work_model : 変更対象
-  click i_work_example href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-example" "関連する説明を開く"
-  click i_work_model href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-model" "関連する説明を開く"
-  click i_direction href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-direction" "関連する説明を開く"
-  click i_trial href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-trial" "関連する説明を開く"
-  click i_change href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-change" "関連する説明を開く"
+  click i_work_example href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-example" "仕事の事例の説明を開く" _blank
+  click i_work_model href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-model" "業務モデルの説明を開く" _blank
+  click i_direction href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-direction" "取り組みの判断の説明を開く" _blank
+  click i_trial href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-trial" "試行結果の説明を開く" _blank
+  click i_change href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-change" "変更記録の説明を開く" _blank
 ```
+
+試行結果を残すのは、試すと決めた場合です。今の仕事を続ける判断も、理由とともに残します。
 
 | この仕事で使う言葉 | 意味 | どこで使うか |
 | --- | --- | --- |
-| <a name="info-work-example"></a>![情報](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 仕事の事例 | 実際に起きた一件。誰が何を受け取り、どう判断して誰に渡したかをたどれる話や記録。 | [業務を捉える](work/understand/README.md)・[仕事とモデルを見直す](work/maintain/README.md) |
-| <a name="info-work-model"></a>![情報](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 業務モデル | 仕事の目的・関係者・業務・情報のつながりを、関係者の言葉で表したもの。 | [業務を捉える](work/understand/README.md)・[取り組みを決める](work/decide/README.md)・[仕事とモデルを見直す](work/maintain/README.md) |
-| <a name="info-direction"></a>![情報](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 取り組みの判断 | 今のやり方を続ける、改善を試す、見送るなど、次の方針と理由。試すときは確かめ方も含む。 | [取り組みを決める](work/decide/README.md)・[改善を試して確かめる](work/validate/README.md) |
-| <a name="info-trial"></a>![情報](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 試行結果 | 事前に合意した条件で試し、分かった変化と、まだ測れていないことを残したもの。 | [改善を試して確かめる](work/validate/README.md)・[仕事とモデルを見直す](work/maintain/README.md) |
-| <a name="info-change"></a>![情報](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 変更記録 | 何を直すか、何を変えないか、その理由と影響範囲の記録。 | [仕事とモデルを見直す](work/maintain/README.md) |
+| <a name="info-work-example"></a>![情報](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 仕事の事例 | 実際に起きた一件。誰が何を受け取り、どう判断して誰に渡したかをたどれる話や記録。 | [業務を捉える](work/understand/README.md#context)・[仕事とモデルを見直す](work/maintain/README.md#context) |
+| <a name="info-work-model"></a>![情報](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 業務モデル | 仕事の目的・関係者・業務・情報のつながりを、関係者の言葉で表したもの。 | [業務を捉える](work/understand/README.md#context)・[取り組みを決める](work/decide/README.md#context)・[仕事とモデルを見直す](work/maintain/README.md#context) |
+| <a name="info-direction"></a>![情報](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 取り組みの判断 | 今のやり方を続ける、改善を試す、見送るなど、次の方針と理由。試すときは確かめ方も含む。 | [取り組みを決める](work/decide/README.md#context)・[改善を試して確かめる](work/validate/README.md#context) |
+| <a name="info-trial"></a>![情報](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 試行結果 | 事前に合意した条件で試し、分かった変化と、まだ測れていないことを残したもの。 | [改善を試して確かめる](work/validate/README.md#context)・[仕事とモデルを見直す](work/maintain/README.md#context) |
+| <a name="info-change"></a>![情報](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 変更記録 | 何を直すか、何を変えないか、その理由と影響範囲の記録。 | [仕事とモデルを見直す](work/maintain/README.md#context) |
+
+[情報のつながりを見る](#information)
 
 ## 関連リンク
 
-- [業務を捉える](work/understand/README.md)
-- [取り組みを決める](work/decide/README.md)
-- [改善を試して確かめる](work/validate/README.md)
-- [仕事とモデルを見直す](work/maintain/README.md)
-- [FDEの実務ガイド](../../../work/README.md)：業務理解から導入・運用までの進め方。
+- [業務を捉える](work/understand/README.md#context)
+- [取り組みを決める](work/decide/README.md#context)
+- [改善を試して確かめる](work/validate/README.md#context)
+- [仕事とモデルを見直す](work/maintain/README.md#context)
+- [FDEの実務ガイド](https://github.com/maakbo/fde/blob/7d5649d952569543862a58c6a8934200e4436203/work/README.md)：業務理解から導入・運用までの進め方。

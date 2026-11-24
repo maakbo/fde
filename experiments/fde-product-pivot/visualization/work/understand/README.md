@@ -1,3 +1,5 @@
+<a name="context"></a>
+
 # 業務を捉える
 
 ```mermaid
@@ -21,6 +23,7 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
+  accTitle: 業務を捉える：関わる人と情報
   %% 親: ../../README.md#scope-decide / b_understand
   %% 線は参加・情報の扱い。手順は下のスイムレーン。
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
@@ -37,26 +40,41 @@ flowchart LR
   classDef element fill:none,stroke:none,color:#25231F;
   class a_work_members,a_build_agent,a_product_owner,i_work_example,b_understand,i_work_model element;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
-  click a_work_members href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-work-members" "関連する説明を開く" _blank
-  click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "関連する説明を開く" _blank
-  click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "関連する説明を開く" _blank
-  click i_work_example href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-example" "関連する説明を開く" _blank
-  click b_understand href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/understand/README.md#flow" "関連する説明を開く" _blank
-  click i_work_model href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-model" "関連する説明を開く" _blank
+  click a_work_members href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-work-members" "仕事関係者の説明を開く" _blank
+  click a_build_agent href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-build-agent" "fde AIの説明を開く" _blank
+  click a_product_owner href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#actor-product-owner" "fdeエンジニアの説明を開く" _blank
+  click i_work_example href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-example" "仕事の事例の説明を開く" _blank
+  click b_understand href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/understand/README.md#flow" "業務を捉えるの手順を開く" _blank
+  click i_work_model href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/README.md#info-work-model" "業務モデルの説明を開く" _blank
 ```
 
 仕事の説明が噛み合わないとき、実際に起きた一件から始めます。見え方が違うところは残し、何をもう一度聞けばよいかを確かめます。
 
-[maakbo fde](../../README.md#theme) / [ここにつながる仕事を見る](../../README.md#scope-decide)
+[いまの問いに戻る](../../README.md#uc-understand) / [ここにつながる仕事を見る](../../README.md#scope-decide)
 
-[![仕事関係者](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](../../README.md#actor-work-members) · [![fde AI](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](../../README.md#actor-build-agent) · [![fdeエンジニア](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](../../README.md#actor-product-owner) · [![仕事の事例](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 仕事の事例](../../README.md#info-work-example) · [![業務を捉える](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 業務を捉える](#flow) · [![業務モデル](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 業務モデル](../../README.md#info-work-model)
+[![](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](../../README.md#actor-work-members) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](../../README.md#actor-build-agent) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](../../README.md#actor-product-owner)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 仕事の事例](../../README.md#info-work-example)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg) 業務を捉える](#flow)  
+[![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg) 業務モデル](../../README.md#info-work-model)
 
 <a name="flow"></a>
 
 ## 一件の仕事を図にする
 
 ```mermaid
+---
+config:
+  theme: neutral
+  swimlane:
+    ignoreCrossLaneEdges: false
+    optimizeRanksByCrossings: false
+  themeVariables:
+    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontSize: "14px"
+---
 swimlane-beta TB
+  accTitle: 一件の仕事を図にする
+  accDescr: 仕事関係者が事例を持ち寄り、fde AIが図にし、仕事関係者が実態と比較します。違う箇所は図へ戻り、fdeエンジニアが業務モデルと未確認点を残します。
   %% 手順は上から下。誰が判断し、どこで情報を受け渡すかを示す。
   subgraph people [仕事関係者]
     bring["実際に起きた一件を持ち寄る"]
@@ -72,9 +90,11 @@ swimlane-beta TB
   compare -->|違う箇所がある| draw
 ```
 
-[![仕事関係者](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](../../README.md#actor-work-members) · [![fde AI](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](../../README.md#actor-build-agent) · [![fdeエンジニア](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](../../README.md#actor-product-owner)
+[![](https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg) 仕事関係者](../../README.md#actor-work-members) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg) fde AI](../../README.md#actor-build-agent) · [![](https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg) fdeエンジニア](../../README.md#actor-product-owner)
 
-図と実態が合えば、進め方を決める。運用中にズレが見つかったら見直す。
+図と実態が合えば、[進め方を決める](../decide/README.md#context)。運用中にズレが見つかったら[見直す](../maintain/README.md#context)。
+
+[この仕事の関係に戻る](#context)
 
 ## 情報
 
@@ -88,4 +108,4 @@ swimlane-beta TB
 - [問いに戻る：同じ仕事の話なのに、説明がかみ合わない](../../README.md#uc-understand)
 - [取り組みを決める](../decide/README.md)
 - [仕事とモデルを見直す](../maintain/README.md)
-- 参考：[業務理解・対象選定](../../../../../work/discovery/README.md)。
+- 参考：[業務理解・対象選定](https://github.com/maakbo/fde/blob/7d5649d952569543862a58c6a8934200e4436203/work/discovery/README.md)。
