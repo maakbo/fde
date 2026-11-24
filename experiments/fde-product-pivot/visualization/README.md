@@ -195,22 +195,37 @@ flowchart LR
 ## 情報
 
 ```mermaid
-classDiagram
-  direction LR
-  accTitle: fdeを育てる仕事で扱う情報
-  accDescr: 仕事の事例、業務モデル、取り組みの判断、試行結果、変更記録の関係。
-  %% 試行は条件付き。線は根拠・参照先の関係であり、作業順を示さない。
-  class i_work_example["仕事の事例"]
-  class i_work_model["業務モデル"]
-  class i_direction["取り組みの判断"]
-  class i_trial["試行結果"]
-  class i_change["変更記録"]
-  i_work_example -- i_work_model
-  i_work_model -- i_direction
-  i_direction -- i_trial
-  i_trial -- i_change
-  i_work_example -- i_change
-  i_work_model -- i_change
+---
+config:
+  theme: base
+  themeCSS: ".nodeLabel, .nodeLabel p { font-family: Inter, Hiragino Sans, sans-serif !important; font-size: 14px !important; }"
+  block:
+    padding: 12
+  flowchart:
+    curve: linear
+  themeVariables:
+    background: "#FFFFFF"
+    primaryColor: "#FFFFFF"
+    primaryTextColor: "#25231F"
+    primaryBorderColor: "#9E988E"
+    lineColor: "#9E988E"
+    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontSize: "14px"
+---
+block-beta
+  %% 関連線は根拠・参照先の関係。手順や多重度ではない。
+  columns 3
+  space i_work_example["仕事の<br/>事例"] space
+  i_work_model["業務<br/>モデル"] space i_change["変更<br/>記録"]
+  i_direction["取り組み<br/>の判断"] space i_trial["試行<br/>結果"]
+  i_work_example --- i_work_model
+  i_work_model --- i_direction
+  i_direction --- i_trial
+  i_trial --- i_change
+  i_work_example --- i_change
+  i_work_model --- i_change
+  classDef info fill:#FFFFFF,stroke:#9E988E,stroke-width:1px,color:#25231F;
+  class i_work_example,i_work_model,i_direction,i_trial,i_change info;
 ```
 
 現場で起きたことと、何を変えると決めたかは分けて残します。試行をしない場合も、日々の事例まで判断の根拠をたどれます。
