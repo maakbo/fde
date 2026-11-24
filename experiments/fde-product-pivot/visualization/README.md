@@ -196,37 +196,22 @@ flowchart LR
 ## 情報
 
 ```mermaid
----
-config:
-  layout: dagre
-  theme: neutral
-  flowchart:
-    curve: linear
-    htmlLabels: false
-    nodeSpacing: 24
-    rankSpacing: 32
-  themeVariables:
-    lineColor: "#9E988E"
-    fontFamily: "Inter, Hiragino Sans, sans-serif"
-    fontSize: "14px"
----
-flowchart TB
+classDiagram
+  direction LR
   accTitle: fdeを育てる仕事で扱う情報
-  accDescr: 仕事の事例、業務モデル、取り組みの判断、試行結果、変更記録がどう関係するか。
-  %% 根拠・参照先の関連。取り組みの判断に試す条件を記した場合のみ試行結果が生じ得る。変更記録は日々の事例または試行結果に基づき、試行は必須でない。
-  i_work_example["仕事の事例"]
-  i_work_model["業務モデル"]
-  i_direction["取り組みの判断"]
-  i_trial["試行結果"]
-  i_change["変更記録"]
-  i_work_example --- i_work_model
-  i_work_model --- i_direction
-  i_direction --- i_trial
-  i_trial --- i_change
-  i_work_example --- i_change
-  i_work_model --- i_change
-  classDef entity fill:#FFFFFF,stroke:#9E988E,stroke-width:1px,color:#25231F
-  class i_work_example,i_work_model,i_direction,i_trial,i_change entity
+  accDescr: 仕事の事例、業務モデル、取り組みの判断、試行結果、変更記録の関係。
+  %% 試行は条件付き。線は根拠・参照先の関係であり、作業順を示さない。
+  class i_work_example["仕事の事例"]
+  class i_work_model["業務モデル"]
+  class i_direction["取り組みの判断"]
+  class i_trial["試行結果"]
+  class i_change["変更記録"]
+  i_work_example -- i_work_model
+  i_work_model -- i_direction
+  i_direction -- i_trial
+  i_trial -- i_change
+  i_work_example -- i_change
+  i_work_model -- i_change
 ```
 
 現場で起きたことと、何を変えると決めたかは分けて残します。試行をしない場合も、日々の事例まで判断の根拠をたどれます。
