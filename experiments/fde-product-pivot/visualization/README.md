@@ -198,9 +198,9 @@ flowchart LR
 ---
 config:
   theme: base
-  themeCSS: ".nodeLabel, .nodeLabel p { font-family: Inter, Hiragino Sans, sans-serif !important; font-size: 14px !important; }"
+  themeCSS: ".nodeLabel, .nodeLabel p { font-family: Inter, Hiragino Sans, sans-serif !important; font-size: 14px !important; line-height: 2.3 !important; }"
   block:
-    padding: 12
+    padding: 18
   flowchart:
     curve: linear
   themeVariables:
@@ -215,9 +215,9 @@ config:
 block-beta
   %% 関連線は根拠・参照先の関係。手順や多重度ではない。
   columns 3
-  space i_work_example["仕事の<br/>事例"] space
-  i_work_model["業務<br/>モデル"] space i_change["変更<br/>記録"]
-  i_direction["取り組み<br/>の判断"] space i_trial["試行<br/>結果"]
+  space i_work_model["業務モデル"] i_direction["取り組みの判断"]
+  i_work_example["仕事の事例"] space space
+  space i_change["変更記録"] i_trial["試行結果"]
   i_work_example --- i_work_model
   i_work_model --- i_direction
   i_direction --- i_trial
