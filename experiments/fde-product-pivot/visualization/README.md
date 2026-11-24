@@ -52,7 +52,7 @@ flowchart LR
 
 立場によって、同じ仕事でも見えていることが違います。fdeは、関係者がAIと一緒に仕事を図にし、互いの前提を確かめて進め方を決めるための仕組みです。ここで扱うのは、fdeを実際の仕事で使いながら育てる活動です。
 
-## 関わる人と仕組み
+<a name="関わる人と仕組み"></a>
 
 | 関係者・仕組み | 役割 |
 | --- | --- |
@@ -60,6 +60,8 @@ flowchart LR
 | <a name="actor-build-agent"></a>fde AI | 話を図と記録にし、進め方の案や変更の影響先を示す。 |
 | <a name="actor-work-members"></a>仕事関係者 | 仕事の実態を持ち寄って確かめ、進め方を選ぶ。 |
 | <a name="github"></a>GitHub | 図と記録を共有し、何をなぜ変えたかを残す。 |
+
+目次：[業務](#業務) · [要求](#要求) · [情報](#情報) · [用語集](#用語集)
 
 <a name="questions"></a>
 <a name="scope-decide"></a>
@@ -129,6 +131,55 @@ flowchart TB
 - <a name="uc-validate"></a>[試行・評価](work/validate/README.md)：仕事関係者が決めた条件で実際に試し、何が変わったかを記録する。試行結果は、やり方を採り入れるか見直すときに使う。
 - <a name="uc-maintain"></a>[業務・モデル見直し](work/maintain/README.md)：仕事関係者とfdeエンジニアが、試行結果や日々の指摘を業務モデルと照らし合わせる。仕事のやり方と図のどちらを直すかを決め、理由をGitHubに残す。試していなくても、指摘があれば見直せる。
 
+<a name="要求モデル図"></a>
+
+## 要求
+
+```mermaid
+---
+config:
+  layout: dagre
+  theme: neutral
+  flowchart:
+    curve: basis
+    htmlLabels: false
+    nodeSpacing: 24
+    rankSpacing: 32
+  themeVariables:
+    lineColor: "#9E988E"
+    fontFamily: "Inter, Hiragino Sans, sans-serif"
+    fontSize: "14px"
+---
+flowchart LR
+  accTitle: fdeを育てる仕事の要求
+  accDescr: fdeエンジニアは修正の影響先を追いたい。仕事関係者は普段の言葉で仕事を捉え、目的とのつながりを知り、納得して進め方を決めたい。
+  %% 旧要求モデルの R1–R4 を復帰。右列は対応案で、対応済みを意味しない。
+  a_product_owner@{ label: "fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  r1(["修正の影響先を追いたい"])
+  r2(["普段の言葉で仕事の実態を見たい"])
+  r3(["自分の仕事と目的のつながりを知りたい"])
+  r4(["納得して進め方を決めたい"])
+  d1["関連する図・ページへの影響を示す"]
+  d2["現場の呼び名を図と用語に使う"]
+  d3["全体の目的と必要な業務詳細をつなぐ"]
+  d4["選択肢と理由を残し、人が判断する"]
+  a_product_owner --- r1
+  a_work_members --- r2
+  a_work_members --- r3
+  a_work_members --- r4
+  r1 --- d1
+  r2 --- d2
+  r3 --- d3
+  r4 --- d4
+  classDef actor fill:none,stroke:none,color:#25231F
+  classDef request fill:none,stroke:none,color:#25231F,font-weight:600
+  classDef response fill:#FFFFFF,stroke:#BDB4A8,color:#25231F
+  class a_product_owner,a_work_members actor
+  class r1,r2,r3,r4 request
+  class d1,d2,d3,d4 response
+```
+
 <a name="information"></a>
 
 ## 情報
@@ -139,7 +190,7 @@ config:
   layout: dagre
   theme: neutral
   flowchart:
-    curve: basis
+    curve: linear
     htmlLabels: false
     nodeSpacing: 24
     rankSpacing: 32
@@ -167,61 +218,34 @@ flowchart TB
   class i_work_example,i_work_model,i_direction,i_trial,i_change entity
 ```
 
-| 用語 | 意味と使いどころ |
-| --- | --- |
-| <a name="info-work-example"></a>仕事の事例 | 実際に起きた一件の話や記録。業務可視化の出発点になり、見直しで事実を確かめるときにも使う。 |
-| <a name="info-work-model"></a>業務モデル | 仕事の目的、役割、業務、情報のつながり。可視化で作り、方針選定で使い、見直しで確かめた箇所を更新する。 |
-| <a name="info-direction"></a>取り組みの判断 | 続ける・試す・見送るという方針と理由。方針選定で残し、試す場合だけ条件と確かめ方を次へ渡す。 |
-| <a name="info-trial"></a>試行結果 | 試して分かった変化と、まだ分からないこと。試行・評価で残し、見直しの根拠にする。 |
-| <a name="info-change"></a>変更記録 | 何を直し、何を変えないかと、その理由。見直しで残し、後から判断をたどれるようにする。 |
+### 用語集
 
-<a name="要求モデル図"></a>
+<a name="info-work-example"></a>
 
-## 要求
+#### 仕事の事例
 
-```mermaid
----
-config:
-  layout: dagre
-  theme: neutral
-  flowchart:
-    curve: basis
-    htmlLabels: false
-    nodeSpacing: 24
-    rankSpacing: 32
-  themeVariables:
-    lineColor: "#9E988E"
-    fontFamily: "Inter, Hiragino Sans, sans-serif"
-    fontSize: "14px"
----
-flowchart LR
-  accTitle: fdeを育てる仕事の要求
-  accDescr: 左に要求を持つ人、中央に要求、右にその対応案。
-  %% 旧要求モデルの R1–R4 を復帰。右列は対応案で、対応済みを意味しない。
-  a_product_owner["fdeエンジニア"]
-  a_work_members["仕事関係者"]
-  r1(["修正の影響先を追いたい"])
-  r2(["普段の言葉で仕事の実態を見たい"])
-  r3(["自分の仕事と目的のつながりを知りたい"])
-  r4(["納得して進め方を決めたい"])
-  d1["関連する図・ページへの影響を示す"]
-  d2["現場の呼び名を図と用語に使う"]
-  d3["全体の目的と必要な業務詳細をつなぐ"]
-  d4["選択肢と理由を残し、人が判断する"]
-  a_product_owner --- r1
-  a_work_members --- r2
-  a_work_members --- r3
-  a_work_members --- r4
-  r1 --- d1
-  r2 --- d2
-  r3 --- d3
-  r4 --- d4
-  classDef actor fill:#FFFFFF,stroke:#9E988E,color:#25231F,font-weight:600
-  classDef request fill:#FAF8F4,stroke:#BDB4A8,color:#25231F
-  classDef response fill:#FFFFFF,stroke:#BDB4A8,color:#25231F
-  class a_product_owner,a_work_members actor
-  class r1,r2,r3,r4 request
-  class d1,d2,d3,d4 response
-```
+実際に起きた一件の話や記録。業務可視化の出発点になり、見直しで事実を確かめるときにも使う。
 
-左が要求を持つ人、中央がその人の要求、右が対応案です。仕事関係者の要求は、実際に使う人とこれから照らし合わせます。
+<a name="info-work-model"></a>
+
+#### 業務モデル
+
+仕事の目的、役割、業務、情報のつながり。可視化で作り、方針選定で使い、見直しで確かめた箇所を更新する。
+
+<a name="info-direction"></a>
+
+#### 取り組みの判断
+
+続ける・試す・見送るという方針と理由。方針選定で残し、試す場合だけ条件と確かめ方を次へ渡す。
+
+<a name="info-trial"></a>
+
+#### 試行結果
+
+試して分かった変化と、まだ分からないこと。試行・評価で残し、見直しの根拠にする。
+
+<a name="info-change"></a>
+
+#### 変更記録
+
+何を直し、何を変えないかと、その理由。見直しで残し、後から判断をたどれるようにする。
