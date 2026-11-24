@@ -77,18 +77,17 @@ config:
   flowchart:
     curve: basis
     htmlLabels: false
-    nodeSpacing: 24
-    rankSpacing: 32
+    nodeSpacing: 28
+    rankSpacing: 54
   themeVariables:
     lineColor: "#9E988E"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "14px"
 ---
-flowchart TB
+flowchart LR
   accTitle: fdeを育てる業務
-  accDescr: 事例から業務モデルを作り、方針を選ぶ。試行は選んだときだけ行い、結果または実態とのずれをもとに見直す。
-  %% 上位の業務コンテキスト。線は参加・情報の関係で、作業順や必須条件ではない。
-  %% 主な参加・判断・記録の接点を表示。作業ごとの参加や試行条件は work 配下に記す。
+  accDescr: 左は人とAI、中央は四つの業務、右は各業務で扱う情報とGitHub。線は関係で、手順は業務ごとのページにある。
+  %% 業務は同じ粒度で並べる。情報の生成・参照・受け渡しは本文と詳細に置き、作業順を表さない。
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_product_owner@{ label: "fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
@@ -105,17 +104,6 @@ flowchart TB
   i_trial@{ label: "試行結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   i_change@{ label: "変更記録", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
 
-  i_work_example --- b_understand
-  b_understand --- i_work_model
-  i_work_model --- b_decide
-  b_decide --- i_direction
-  i_direction --- b_validate
-  b_validate --- i_trial
-  i_trial --- b_maintain
-  i_work_example --- b_maintain
-  i_work_model --- b_maintain
-  b_maintain --- i_change
-
   a_work_members --- b_understand
   a_work_members --- b_decide
   a_work_members --- b_validate
@@ -124,6 +112,16 @@ flowchart TB
   a_build_agent --- b_maintain
   a_product_owner --- b_decide
   a_product_owner --- b_maintain
+  b_understand --- i_work_example
+  b_understand --- i_work_model
+  b_decide --- i_work_model
+  b_decide --- i_direction
+  b_validate --- i_direction
+  b_validate --- i_trial
+  b_maintain --- i_trial
+  b_maintain --- i_work_example
+  b_maintain --- i_work_model
+  b_maintain --- i_change
   b_maintain --- x_github
 
   class a_work_members,a_build_agent,a_product_owner actor;
