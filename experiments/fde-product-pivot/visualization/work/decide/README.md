@@ -23,30 +23,33 @@ config:
   themeCSS: ".image-shape p { padding: 0 !important; background-color:#FFFFFF !important; } .image-shape foreignObject { overflow: visible; } .image-shape .labelBkg { background-color:#FFFFFF !important; } .image-shape .label rect { fill:#FFFFFF !important; opacity:1 !important; } .image-shape[id*='-flowchart-b_'] .label p { margin-top: -6px !important; } .image-shape g:first-child path { stroke:#FFFFFF !important; stroke-width:6px !important; }"
 ---
 flowchart LR
-  accTitle: 方針選定：関わる人と情報
+  accTitle: 方針選定を構成する二つの業務
   %% 親: ../../README.md#uc-decide / b_decide
-  %% 線は参加・情報の扱い。手順は下のスイムレーン。
+  %% 業務コンテキストの b_decide を「前提確認」と「方針決定」に分解する。線は参加・情報の関係。
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_product_owner@{ label: "fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   i_work_model@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_decide@{ label: "方針選定", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_confirm@{ label: "前提確認", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_select@{ label: "方針決定", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   i_direction@{ label: "取り組みの判断", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  a_work_members --- b_decide
-  a_build_agent --- b_decide
-  a_product_owner --- b_decide
-  i_work_model --- b_decide
-  b_decide --- i_direction
+  a_work_members --- b_confirm
+  a_work_members --- b_select
+  a_build_agent --- b_select
+  a_product_owner --- b_select
+  i_work_model --- b_confirm
+  i_work_model --- b_select
+  b_select --- i_direction
   classDef element fill:none,stroke:none,color:#25231F;
-  class a_work_members,a_build_agent,a_product_owner,i_work_model,b_decide,i_direction element;
+  class a_work_members,a_build_agent,a_product_owner,i_work_model,b_confirm,b_select,i_direction element;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-仕事の実態を確かめたら、どのやり方で進めるかを決めます。fde AIは[業務モデル](../../README.md#info-work-model)をもとに現行と変更案を比較し、仕事関係者が続ける・試す・見送るを選びます。fdeエンジニアは、前提と結論、その理由を[取り組みの判断](../../README.md#info-direction)に残します。
+まず**前提確認**で、仕事関係者が業務モデルと実態のズレを確かめます。**方針決定**では、fde AIが[業務モデル](../../README.md#info-work-model)をもとに現行と変更案を比較し、仕事関係者が続ける・試す・見送るを選びます。fdeエンジニアは、前提と結論、その理由を[取り組みの判断](../../README.md#info-direction)に残します。
 
 <a name="flow"></a>
 
-## 進め方を決める
+## 方針決定の進め方
 
 ```mermaid
 ---
@@ -62,7 +65,7 @@ config:
 swimlane-beta TB
   accTitle: 方針選定の業務フロー
   accDescr: 仕事関係者が現状の前提を確かめ、fde AIが案を比較します。仕事関係者が選び、fdeエンジニアが結論と次へ渡す内容を記録します。
-  %% 親業務: ../../README.md#uc-decide / b_decide。
+  %% 対象: このページの b_select。前提確認の結果から開始し、ずれがあれば業務可視化へ戻る。
   subgraph engineer [fdeエンジニア]
     trial["試す範囲・比較条件を記録し、試行・評価へ渡す"]
     keep["続ける・見送る理由と見直す条件を記録する"]
