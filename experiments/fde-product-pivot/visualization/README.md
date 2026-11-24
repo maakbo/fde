@@ -153,6 +153,7 @@ config:
   flowchart:
     curve: basis
     htmlLabels: false
+    wrappingWidth: 250
     nodeSpacing: 24
     rankSpacing: 32
   themeVariables:
@@ -160,6 +161,7 @@ config:
     lineColor: "#9E988E"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "13px"
+  themeCSS: ".node.request *, .node.response * { filter: none !important; }"
 ---
 flowchart LR
   accTitle: fdeを育てる仕事の要求
