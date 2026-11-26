@@ -88,38 +88,36 @@ config:
 ---
 flowchart LR
   accTitle: 主な業務と、参照する情報・残す情報
-  accDescr: FDEと仕事関係者は四つの業務に関わる。各業務の左は参照する情報、右は残す情報。試行は条件付きで、日々の事例からも見直せる。
+  accDescr: FDEと仕事関係者は四つの業務に関わる。業務可視化で作る業務モデルは、方針決定と業務の見直しで参照する。試行は条件付きで、日々の事例からも見直せる。
   subgraph fde["FDE"]
     direction TB
   a_product_owner@{ label: "fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   end
-  subgraph work["主な業務"]
-    direction LR
   in_understand@{ label: "業務事例", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   b_understand@{ label: "業務可視化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  out_understand@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  in_understand --- b_understand --- out_understand
-  in_decide@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_work_model@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   b_decide@{ label: "方針決定", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   out_decide@{ label: "方針判断", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  in_decide --- b_decide --- out_decide
   in_validate@{ label: "方針判断（試す場合）", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   b_validate@{ label: "試行・評価", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   out_validate@{ label: "試行結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  in_validate --- b_validate --- out_validate
-  in_maintain@{ label: "業務事例・業務モデル<br/>試行結果（ある場合）", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  in_maintain@{ label: "業務事例<br/>試行結果（ある場合）", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   b_maintain@{ label: "業務の見直し", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   out_maintain@{ label: "見直し記録", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  in_maintain --- b_maintain --- out_maintain
-  end
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  fde --- work
-  work --- a_work_members
+  fde --- b_understand --- a_work_members
+  in_validate --- b_validate --- out_validate
+  in_understand --- b_understand --- i_work_model
+  fde --- b_decide --- a_work_members
+  i_work_model --- b_decide --- out_decide
+  i_work_model --- b_maintain
+  in_maintain --- b_maintain --- out_maintain
+  fde --- b_validate --- a_work_members
+  fde --- b_maintain --- a_work_members
   click b_decide href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/decide/README.md#context" "方針決定の詳細を開く" _blank
   classDef default fill:none,stroke:none,color:#25231F;
   style fde fill:#FFFFFF,stroke:#9E988E,stroke-width:0.75px
-  style work fill:#FFFFFF,stroke:#9E988E,stroke-width:0.75px
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
@@ -202,7 +200,7 @@ config:
     classText: "#25231F"
     lineColor: "#9E988E"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
-    fontSize: "13px"
+    fontSize: "12px"
   themeCSS: ".label-group .label { font-weight: 400 !important; }"
 ---
 classDiagram
