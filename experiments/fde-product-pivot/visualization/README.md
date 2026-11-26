@@ -74,65 +74,64 @@ config:
   layout: dagre
   theme: neutral
   flowchart:
-    curve: linear
+    curve: basis
     htmlLabels: false
-    wrappingWidth: 240
-    nodeSpacing: 18
-    rankSpacing: 28
-    padding: 10
+    wrappingWidth: 180
+    nodeSpacing: 28
+    rankSpacing: 54
   themeVariables:
-    background: "#FFFFFF"
     lineColor: "#9E988E"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "14px"
 ---
-flowchart TB
-  accTitle: FDEの主な業務
-  accDescr: 左に入力、中央に業務と関わる人、右に出力。上から業務可視化、方針決定、試行・評価、業務の見直し。試行は試すと決めた場合だけ。
-  %% 各行の線は関係、行間の点線は受け渡し。試行の有無は方針判断に従い、見直しは日々の業務事例からも始まる。
-  subgraph lane_understand[" "]
-    direction LR
-    in_understand["業務事例"]
-    b_understand@{ label: "業務可視化<br/>仕事関係者・fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-    out_understand["業務モデル"]
-    in_understand --- b_understand --- out_understand
-  end
-  style lane_understand fill:none,stroke:none
-  subgraph lane_decide[" "]
-    direction LR
-    in_decide["業務モデル"]
-    b_decide@{ label: "方針決定<br/>仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-    out_decide["方針判断"]
-    in_decide --- b_decide --- out_decide
-  end
-  style lane_decide fill:none,stroke:none
-  subgraph lane_validate[" "]
-    direction LR
-    in_validate["方針判断（試す場合）"]
-    b_validate@{ label: "試行・評価<br/>仕事関係者・fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-    out_validate["試行結果"]
-    in_validate --- b_validate --- out_validate
-  end
-  style lane_validate fill:none,stroke:none
-  subgraph lane_maintain[" "]
-    direction LR
-    in_maintain["業務事例／試行結果"]
-    b_maintain@{ label: "業務の見直し<br/>仕事関係者・fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-    out_maintain["見直し記録"]
-    in_maintain --- b_maintain --- out_maintain
-  end
-  style lane_maintain fill:none,stroke:none
-  lane_understand -.- lane_decide
-  lane_decide -.-|試す場合のみ| lane_validate
-  lane_validate -.- lane_maintain
-  class in_understand,out_understand,in_decide,out_decide,in_validate,out_validate,in_maintain,out_maintain artifact
-  class b_understand,b_decide,b_validate,b_maintain business
-  classDef artifact fill:#FFFFFF,stroke:#9E988E,stroke-width:0.75px,color:#25231F;
+flowchart LR
+  accTitle: fdeを育てる業務
+  accDescr: 左は人とAI、中央は四つの業務、右は各業務で扱う情報とGitHub。線は関係で、手順は業務ごとのページにある。
+  %% 業務は同じ粒度で並べる。情報の生成・参照・受け渡しは本文と詳細に置き、作業順を表さない。
+  a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  a_product_owner@{ label: "fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  x_github@{ label: "GitHub", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+
+  b_understand@{ label: "業務可視化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_decide@{ label: "方針選定", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_validate@{ label: "試行・評価", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_maintain@{ label: "業務・モデル見直し", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+
+  i_work_example@{ label: "仕事の事例", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_work_model@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_direction@{ label: "取り組みの判断", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_trial@{ label: "試行結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  i_change@{ label: "変更記録", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+
+  a_work_members --- b_understand
+  a_work_members --- b_decide
+  a_work_members --- b_validate
+  a_work_members --- b_maintain
+  a_build_agent --- b_understand
+  a_build_agent --- b_maintain
+  a_product_owner --- b_decide
+  a_product_owner --- b_maintain
+  b_understand --- i_work_example
+  b_understand --- i_work_model
+  b_decide --- i_work_model
+  b_decide --- i_direction
+  b_validate --- i_direction
+  b_validate --- i_trial
+  b_maintain --- i_trial
+  b_maintain --- i_work_example
+  b_maintain --- i_work_model
+  b_maintain --- i_change
+  b_maintain --- x_github
+
+  class a_work_members,a_build_agent,a_product_owner actor;
+  class x_github system;
+  class b_understand,b_decide,b_validate,b_maintain business;
+  class i_work_example,i_work_model,i_direction,i_trial,i_change information;
+  classDef actor fill:none,stroke:none,color:#25231F;
+  classDef system fill:none,stroke:none,color:#25231F;
   classDef business fill:none,stroke:none,color:#25231F;
-  click b_understand href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/understand/README.md#context" "業務可視化を開く" _blank
-  click b_decide href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/decide/README.md#context" "方針決定を開く" _blank
-  click b_validate href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/validate/README.md#context" "試行・評価を開く" _blank
-  click b_maintain href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/work/maintain/README.md#context" "業務の見直しを開く" _blank
+  classDef information fill:none,stroke:none,color:#25231F;
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
