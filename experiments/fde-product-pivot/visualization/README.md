@@ -188,7 +188,7 @@ flowchart LR
   r4 --- d4
   classDef actor fill:none,stroke:none,color:#25231F
   classDef request fill:#FFFFFF,stroke:#FFFFFF,stroke-width:4px,color:#25231F,font-weight:600
-  classDef response fill:#FFFFFF,stroke:#FFFFFF,stroke-width:4px,color:#514D46,font-weight:400
+  classDef response fill:#FFFFFF,stroke:#FFFFFF,stroke-width:4px,color:#25231F,font-weight:400
   class a_product_owner,a_work_members actor
   class r1,r2,r3,r4 request
   class d1,d2,d3,d4 response
@@ -210,7 +210,8 @@ config:
     classText: "#25231F"
     lineColor: "#9E988E"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
-    fontSize: "14px"
+    fontSize: "13px"
+  themeCSS: ".label-group .label { font-weight: 400 !important; }"
 ---
 classDiagram
   direction LR
