@@ -24,7 +24,7 @@ config:
 ---
 flowchart LR
   accTitle: 方針決定を構成する二つの業務
-  %% 親: ../../README.md#uc-decide / b_decide
+  %% 親: ../README.md#uc-decide / b_decide
   %% 業務コンテキストの b_decide を「前提確認」と「方針決定」に分解する。線は参加・情報の関係。
   a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
@@ -45,7 +45,7 @@ flowchart LR
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-まず**前提確認**で、仕事関係者が業務モデルと実態のズレを確かめます。**方針決定**では、fde AIが[業務モデル](../../README.md#info-work-model)をもとに現行と変更案を比較し、仕事関係者が続ける・試す・見送るを選びます。fdeエンジニアは、前提と結論、その理由を[方針判断](../../README.md#info-direction)に残します。
+まず**前提確認**で、仕事関係者が業務モデルと実態のズレを確かめます。**方針決定**では、fde AIが[業務モデル](../README.md#info-work-model)をもとに現行と変更案を比較し、仕事関係者が続ける・試す・見送るを選びます。fdeエンジニアは、前提と結論、その理由を[方針判断](../README.md#info-direction)に残します。
 
 <a name="flow"></a>
 
@@ -85,8 +85,8 @@ swimlane-beta TB
   choose -->|続ける・見送る| keep
 ```
 
-業務モデルが実態と違う場合は、案を選ぶ前に[業務可視化](../understand/README.md#context)へ戻ります。
+業務モデルが実態と違う場合は、案を選ぶ前に[業務可視化](../README.md#uc-understand)へ戻ります。
 
-試すときは、対象とする仕事、何と比べるか、何を見て判断するかを決めてから[試行・評価](../validate/README.md#context)へ渡します。続けるときは今の仕事に戻ります。変更案を見送るときは、その案と理由を残します。どちらの場合も、見直す条件があれば記録します。
+試すときは、対象とする仕事、何と比べるか、何を見て判断するかを決めてから[試行・評価](../README.md#uc-validate)へ渡します。続けるときは今の仕事に戻ります。変更案を見送るときは、その案と理由を残します。どちらの場合も、見直す条件があれば記録します。
 
-[全体の「方針決定」に戻る](../../README.md#uc-decide)
+[全体の「方針決定」に戻る](../README.md#uc-decide)

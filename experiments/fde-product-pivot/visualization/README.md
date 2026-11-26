@@ -59,7 +59,7 @@ flowchart LR
 - <a name="actor-work-members"></a>**仕事関係者**：仕事の実態を持ち寄り、どう進めるかを選び、実際に試して確かめる。
 - <a name="github"></a>**GitHub**：図と判断の記録を共有し、何をなぜ見直したかを残す。
 
-目次：[主な業務](#主な業務) · [要求](#要求) · [情報](#情報) · [用語集](#用語集)
+目次：[主な業務](#主な業務) · [ニーズ](#ニーズ) · [情報モデル](#情報モデル) · [業務用語](#業務用語)
 
 <a name="questions"></a>
 <a name="scope-decide"></a>
@@ -67,6 +67,8 @@ flowchart LR
 <a name="業務"></a>
 
 ## 主な業務
+
+図の中央に4つの業務を並べています。各行の左はその業務で参照する情報、右は残す情報です。FDEと仕事関係者は、どの業務にも関わります。
 
 ```mermaid
 ---
@@ -77,74 +79,62 @@ config:
     curve: basis
     htmlLabels: false
     wrappingWidth: 180
-    nodeSpacing: 28
-    rankSpacing: 54
+    nodeSpacing: 20
+    rankSpacing: 24
   themeVariables:
     lineColor: "#9E988E"
     fontFamily: "Inter, Hiragino Sans, sans-serif"
     fontSize: "14px"
 ---
 flowchart LR
-  accTitle: fdeを育てる業務
-  accDescr: 左は人とAI、中央は四つの業務、右は各業務で扱う情報とGitHub。線は関係で、手順は業務ごとのページにある。
-  %% 業務は同じ粒度で並べる。情報の生成・参照・受け渡しは本文と詳細に置き、作業順を表さない。
-  a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  accTitle: 主な業務と、参照する情報・残す情報
+  accDescr: FDEと仕事関係者は四つの業務に関わる。各業務の左は参照する情報、右は残す情報。試行は条件付きで、日々の事例からも見直せる。
+  subgraph fde["FDE"]
+    direction TB
   a_product_owner@{ label: "fdeエンジニア", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/user.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  x_github@{ label: "GitHub", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/server.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-
+  a_build_agent@{ label: "fde AI", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/bot.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  end
+  subgraph work["主な業務"]
+    direction LR
+  in_understand@{ label: "業務事例", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   b_understand@{ label: "業務可視化", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_decide@{ label: "方針選定", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  out_understand@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  in_understand --- b_understand --- out_understand
+  in_decide@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_decide@{ label: "方針決定", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  out_decide@{ label: "方針判断", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  in_decide --- b_decide --- out_decide
+  in_validate@{ label: "方針判断（試す場合）", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
   b_validate@{ label: "試行・評価", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  b_maintain@{ label: "業務・モデル見直し", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-
-  i_work_example@{ label: "仕事の事例", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_work_model@{ label: "業務モデル", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_direction@{ label: "取り組みの判断", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_trial@{ label: "試行結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-  i_change@{ label: "変更記録", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
-
-  a_work_members --- b_understand
-  a_work_members --- b_decide
-  a_work_members --- b_validate
-  a_work_members --- b_maintain
-  a_build_agent --- b_understand
-  a_build_agent --- b_maintain
-  a_product_owner --- b_decide
-  a_product_owner --- b_maintain
-  b_understand --- i_work_example
-  b_understand --- i_work_model
-  b_decide --- i_work_model
-  b_decide --- i_direction
-  b_validate --- i_direction
-  b_validate --- i_trial
-  b_maintain --- i_trial
-  b_maintain --- i_work_example
-  b_maintain --- i_work_model
-  b_maintain --- i_change
-  b_maintain --- x_github
-
-  class a_work_members,a_build_agent,a_product_owner actor;
-  class x_github system;
-  class b_understand,b_decide,b_validate,b_maintain business;
-  class i_work_example,i_work_model,i_direction,i_trial,i_change information;
-  classDef actor fill:none,stroke:none,color:#25231F;
-  classDef system fill:none,stroke:none,color:#25231F;
-  classDef business fill:none,stroke:none,color:#25231F;
-  classDef information fill:none,stroke:none,color:#25231F;
+  out_validate@{ label: "試行結果", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  in_validate --- b_validate --- out_validate
+  in_maintain@{ label: "業務事例・業務モデル<br/>試行結果（ある場合）", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  b_maintain@{ label: "業務の見直し", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/ellipse.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  out_maintain@{ label: "見直し記録", img: "https://raw.githubusercontent.com/maakbo/fde/main/assets/icons/maakbo/file.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  in_maintain --- b_maintain --- out_maintain
+  end
+  a_work_members@{ label: "仕事関係者", img: "https://raw.githubusercontent.com/maakbo/fde/523072a59582f5d41d998c1b2f65929afc47270d/experiments/fde-product-pivot/work-group.svg", pos: "b", w: 28, h: 28, constraint: "on" }
+  fde --- work
+  work --- a_work_members
+  click b_decide href "https://github.com/maakbo/fde/blob/draft/fde-product-pivot/experiments/fde-product-pivot/visualization/decide/README.md#context" "方針決定の詳細を開く" _blank
+  classDef default fill:none,stroke:none,color:#25231F;
+  style fde fill:#FFFFFF,stroke:#9E988E,stroke-width:0.75px
+  style work fill:#FFFFFF,stroke:#9E988E,stroke-width:0.75px
   linkStyle default stroke:#9E988E,stroke-width:0.75px;
 ```
 
-- <a name="uc-understand"></a>[業務可視化](work/understand/README.md#context)：仕事関係者が実際に起きた一件を持ち寄り、fde AIが目的・役割・受け渡しを図と言葉にする。仕事関係者が実態を確かめ、fdeエンジニアが未確認点も業務モデルに残す。
-- <a name="uc-decide"></a>[方針決定](work/decide/README.md#context)：fde AIが案を比較し、仕事関係者が続ける・試す・見送るを選ぶ。fdeエンジニアが結論と理由を残し、試す場合だけ範囲と比較条件を次に渡す。
-- <a name="uc-validate"></a>[試行・評価](work/validate/README.md#context)：仕事関係者が決めた条件で実際に試す。fdeエンジニアが期待した変化と照らし合わせ、観測したことと未確認点を試行結果に残す。
-- <a name="uc-maintain"></a>[業務の見直し](work/maintain/README.md#context)：fde AIが影響先を示し、仕事関係者が手順を改めるか、業務モデルだけを直すか、現行を続けるかを選ぶ。fdeエンジニアが判断と理由を残す。
+- <a name="uc-understand"></a>**業務可視化**：仕事関係者が実際に起きた一件を持ち寄り、fde AIが目的・役割・受け渡しを図と言葉にする。仕事関係者が実態を確かめ、fdeエンジニアが未確認点も業務モデルに残す。
+- <a name="uc-decide"></a>[方針決定](decide/README.md#context)：fde AIが案を比較し、仕事関係者が続ける・試す・見送るを選ぶ。fdeエンジニアが結論と理由を残し、試す場合だけ範囲と比較条件を次に渡す。
+- <a name="uc-validate"></a>**試行・評価**：仕事関係者が決めた条件で実際に試す。fdeエンジニアが期待した変化と照らし合わせ、観測したことと未確認点を試行結果に残す。
+- <a name="uc-maintain"></a>**業務の見直し**：fde AIが影響先を示し、仕事関係者が手順を改めるか、業務モデルだけを直すか、現行を続けるかを選ぶ。fdeエンジニアが判断と理由をGitHubの見直し記録に残す。
 
 試すと決めた場合だけ「試行・評価」へ進みます。日々の事例から、試行を待たずに見直すこともできます。
 
 <a name="要求モデル図"></a>
 
-## 要求
+<a name="要求"></a>
+
+## ニーズ
 
 ```mermaid
 ---
@@ -196,7 +186,9 @@ flowchart LR
 
 <a name="information"></a>
 
-## 情報
+<a name="情報"></a>
+
+## 情報モデル
 
 ```mermaid
 ---
@@ -233,7 +225,9 @@ classDiagram
 
 現場で起きたことと、何を変えると決めたかは分けて残します。試行をしない場合も、日々の事例まで判断の根拠をたどれます。
 
-### 用語集
+<a name="用語集"></a>
+
+## 業務用語
 
 <a name="info-work-example"></a>
 
